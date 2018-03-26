@@ -1,0 +1,77 @@
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+.a{
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+    line-height: 1.6;
+    margin-left: 10%;
+    
+}
+.buttons{
+    background-color: gray;
+    padding: 5px;
+    border: 2px;
+}
+h3{
+    font-family: sans-serif;
+    text-align: left;
+    margin-left: 10px;
+}
+
+        /*GRID*/
+.dx-datagrid-headers{
+    color: black !important;
+}
+.dx-datagrid .dx-link{
+    color: blue;
+    text-decoration: none !important;
+}
+
+.dx-toolbar-text-auto-hide .dx-button .dx-button-text{
+    display: block;
+}
+.dx-datagrid-borders .dx-datagrid-headers .dx-datagrid-table {
+    background-color: gray;
+}
+.dx-datagrid-nowrap.dx-datagrid-headers .dx-header-row > td > .dx-datagrid-text-content{
+    color: white;
+    font-size: 17px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-weight: 400;
+}
+.dx-datagrid{
+    border: solid 2px gray;
+    box-shadow: 1px 1px 10px gray;
+}
+.dx-button{
+    margin-right: 2px;
+    margin-top: 1px;
+    height: 45px;
+    border: solid 1px rgba(128, 128, 128, 0.49);
+}
+
+        /*ACTIVE*/
+
+.dx-datagrid .dx-link:active{
+    color: red;
+}
+.dx-toolbar-text-auto-hide .dx-button .dx-button-text:active{
+    color: blue;
+}  
+
+
+        /*HOVER*/
+.a:hover{
+    background-color: rgba(13, 12, 12, 0.12);
+    font-size: 18.1px;
+}

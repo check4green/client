@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>SensorList</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/17.2.5/css/dx.light.css" />
+		<script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
+		
+        <link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<script src="data.js"></script>
+        <script src="IndexChart.js"></script>
+        <script src="chartService.js"></script>
+    </head>
+    <body class="dx-viewport">
+		<div class="demo-container" ng-app="chartApp" ng-controller="chartController as vm">
+			<div id="chart" dx-chart="vm.chartOptions"></div>
+		</div>
+	</body>
+</html>
