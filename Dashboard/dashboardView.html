@@ -1,0 +1,6 @@
+<h3>{{vm.title}}</h3>
+		<div class="chart" dx-data-grid="vm.dashboardDataGrid" dx-item-alias="item">
+            <div data-options="dxTemplate: {name: 'detail'}">
+              <chart sensor-id="item.data.sensorId"></chart>
+        	</div>
+</div>

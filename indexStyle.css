@@ -1,0 +1,104 @@
+/*body{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+.swiss{
+    width: 10%;
+}
+.header{
+    background-color: gray;
+}
+.leftsearch{
+    display: flex;
+}
+.left{
+    width: 20%;
+    background-color: #6f6f6f;
+}
+.icon1{
+    width:50%;
+    float:left;
+}
+.icon{
+    width:100%;
+}
+.categories{
+    width:50%;
+    display:inline-block;
+}
+.search{
+    width:100%;
+    height:150px;
+    display:flex;
+    justify-content: center;
+}
+.searchForm{
+    height:50px;
+    margin-top:-50px;
+    position:relative;
+    top:-10px;
+}
+.searchButton{
+    height:65x;
+    margin-top:50px;
+    position:relative;
+    top:3px;
+}*/
+ body{margin: 0px;}
+.body{
+    display: flex;
+    flex-direction: column;
+}
+.header{background-color: gray;}
+.swiss{ width: 9%;}
+
+/*asezare buton+categories+search*/
+.left-search{
+    display: flex;
+}
+.left{
+    display: flex;
+    width: 20%;
+}
+.buttons{
+    background-color: #656565;
+    display: inline;
+    width: 20%;
+}
+.icon{
+    display: inline;
+    width: 100%;
+}
+
+/*stil categories*/
+.categories{
+    background-color: #656565;
+    /*display: none;*/
+    
+}
+.text{
+    font-size: 190%;
+}
+/*stil search*/
+.search{
+    margin-left: 20%;
+    margin-top: 6%;
+}
+.all{
+    height: 50px;
+}
+.all1{
+    height: 57px;
+    width: 60px;
+}
+/*hover categories
+.icon:hover .categories{
+   display: none;
+}
+.icon:hover {
+    background-color: red;
+}
+.categories:hover{
+    background-color: red;
+}*/
