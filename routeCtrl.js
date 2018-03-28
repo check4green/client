@@ -1,32 +1,24 @@
 (function(){
     "use strict";
-    var app = angular.module("sensorApp", [ "ui.router", "dx"]);
-    
+    var app = angular.module("sensorApp", [ "common.services", "ui.router", "dx", "dataResourceMock"]);
     
     app.config(["$stateProvider", "$urlRouterProvider", 
                function($stateProvider, $urlRouterProvider){
                    $urlRouterProvider.otherwise("/");
                    $stateProvider
-                   .state("dashboard",{
-                       url:"/dashboards",
-                       templateUrl: "/Dashboard/dashboardView.html",
-                       controller: "dashboardCtrl as vm",
+                   .state("sensorList", {
+                       url: "/sensors",
+                       template: "<sensor></sensor>",
                    })
                    .state("measurements", {
                        url: "/measurements",
-                       templateUrl: "/Measurements/measurementsView.html",
-                       controller:"MeasurementsCtrl as vm",
+                       template: "<measurement></measurement>"
                    })
-                   .state("sensorList", {
-                       url: "/sensors",
-                       templateUrl: "/SensorList/sensorListView.html",
-                       controller: "sensorCtrl as vm",
-                   })
-                   .state("sensorType", {
-                       url: "/types",
-                       templateUrl: "/SensorType/sensorTypeView.html",
-                       controller:"typeCtrl as vm",
+                   .state("chart", {
+                       url: "/charts",
+                       template: "<chart></chart>",
                    });
+
                }
         ]);
 }());

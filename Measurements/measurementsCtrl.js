@@ -1,19 +1,17 @@
 (function(){
     "use strict";
     angular.module("sensorApp")
-           .controller("MeasurementsCtrl", ["measurementsService", function MeasurementsCtrl(measurementsService){
+           .controller("MeasurementsCtrl", ["measureResource", function MeasurementsCtrl(measureResource){
         var vm= this;
-          
+        vm.title = 'MEASUREMENTS';       
+        measureResource.query(function (data) {
+        vm.measurements = data;
         vm.measurementsDataGrid = {
-                dataSource: measurementsService,
+                dataSource: vm.measurements,
                 showRowLines: true,
                 showBorders: true,
-            remoteOperations: {
-            sorting: true,
-            paging: true
-        },
                 paging: {
-                    pageSize:2,
+                    enabled: true
                 },
                 editing: {
                     allowUpdating: true,
@@ -22,17 +20,13 @@
                 }, 
                 columns: [
                     {
-                        dataField:"id",
+                        dataField: "TimeH/Day",
                     },
                     {
-                        dataField: "unitOfMeasure",
-                    },
-                    {
-                        dataField: "description",
-                    }
-                    
+                        dataField: "Value °C",
+                    }     
                 ],
             };
-       
+        });
      }]);
 }());

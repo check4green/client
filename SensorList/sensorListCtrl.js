@@ -1,29 +1,25 @@
 (function(){
     "use strict";
    angular.module("sensorApp")
-   .controller("sensorCtrl",["sensorsService", function sensorsCtrl(sensorsService) {
+   .controller("sensorCtrl",["sensorsResource", function sensorsCtrl(sensorsResource) {
        var vm=this;
-      
+       vm.title = 'SENSOR LIST';
+       sensorsResource.query(function (data){
+        vm.sensors=data;
         vm.dataGridOptions = {
-                dataSource: sensorsService,
+                dataSource: vm.sensors,
                 showRowLines: true,
                 showBorders: true,
-            remoteOperations: {
-            sorting: true,
-            paging: true
-        },
                 paging: {
-                pageSize:2
+                enabled: true
             },
+                
                 editing: {
                     allowUpdating: true,
                     allowDeleting: true,
                     allowAdding: true
                 }, 
                 columns: [
-                    {
-                      dataField:"id",  
-                    },
                     {
                         dataField: "productionDate",
                         dataType: "date"
@@ -32,13 +28,10 @@
                         dataField: "uploadInterval",
                     },
                     {
-                        dataField: "batchSize",
+                        dataField: "Name",
                     },  
-                    {
-                        dataField:"sensorTypeId",
-                    },
                 ],
             };
-        
+        });
     }]);
 }());

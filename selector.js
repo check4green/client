@@ -1,28 +1,17 @@
- angular.module('sensorApp').controller('clickCtrl',[clickCtrl]);
-    function clickCtrl(){
-        var vm = this;
-        vm.myStyle = function(value){
-            if(value === 1){
-                vm.Style1={"color":'white'};
-                vm.Style2={};
-                vm.Style3={};
-                vm.Style4={};
-            }else if(value === 2){
-                vm.Style2={"color":'white'};
-                vm.Style1={};
-                vm.Style3={};
-                vm.Style4={};
-            }else if(value === 3){
-                vm.Style3={"color":'white'};
-                vm.Style2={};
-                vm.Style1={};
-                vm.Style4={};
-            }else if(value === 4){
-                vm.Style4={"color":'white'};
-                vm.Style2={};
-                vm.Style3={};
-                vm.Style1={};
-            }
+var app = angular.module('sensorApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.showMe = false;
+    $scope.showMeCategories = false;
+    $scope.myFunc = function() {
+        $scope.showMe = !$scope.showMe;
+        $scope.showMeCategories = !$scope.showMeCategories;
+        $scope.myFuncCategories = function(){
+            $scope.showMe = !$scope.showMe
+            $scope.showMeCategories = !$scope.showMeCategories;
+        }
+    $scope.myCategories = function(){
+        
+    }   
+    } //aici se inchide functia pentru butonul CATEGORIES
 
-        };
-    }
+});
