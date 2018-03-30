@@ -35,13 +35,13 @@ angular.module("sensorApp")
             
        function getSensorsById(key){
          
-            return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/'+ key)
+            return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/'+ key.id)
             .then(SensorSuccess)
             .catch(SensorError);
         }
             function SensorSuccess(response){
                 
-                return{data: response.data};
+                return response.data;
             }
             
             //insert
@@ -67,7 +67,7 @@ angular.module("sensorApp")
             //update
             
             function updateSensors(key, values){
-                return $http.put( 'http://swiss-iot.azurewebsites.net/api/sensors/'+key.id)
+                return $http.put( 'http://swiss-iot.azurewebsites.net/api/sensors/'+key.id, key)
                 .then(SensorSuccess)
                 .catch(SensorError);
             }

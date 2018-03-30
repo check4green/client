@@ -1,13 +1,12 @@
 (function(){
     "use strict";
     angular.module("sensorApp")
-           .controller("MeasurementsCtrl", ["measureResource", function MeasurementsCtrl(measureResource){
+           .controller("MeasurementsCtrl", ["measurementsService", function MeasurementsCtrl(measurementsService){
         var vm= this;
         vm.title = 'MEASUREMENTS';       
-        measureResource.query(function (data) {
-        vm.measurements = data;
+       
         vm.measurementsDataGrid = {
-                dataSource: vm.measurements,
+                dataSource: measurementsService,
                 showRowLines: true,
                 showBorders: true,
                 paging: {
@@ -27,6 +26,6 @@
                     }     
                 ],
             };
-        });
+        
      }]);
 }());

@@ -1,24 +1,33 @@
 (function(){
     "use strict";
    angular.module("sensorApp")
-   .controller("sensorCtrl",["sensorsResource", function sensorsCtrl(sensorsResource) {
+   .controller("sensorCtrl",["sensorsService", function sensorsCtrl(sensorsService) {
        var vm=this;
        vm.title = 'SENSOR LIST';
-       sensorsResource.query(function (data){
-        vm.sensors=data;
+       
         vm.dataGridOptions = {
-                dataSource: vm.sensors,
+                dataSource: sensorsService,
                 showRowLines: true,
                 showBorders: true,
                 paging: {
-                enabled: true
-            },
-                
+                    enabled:true
+                },
+               searchPanel:{
+                    visible:true
+               } ,
                 editing: {
                     allowUpdating: true,
                     allowDeleting: true,
                     allowAdding: true
                 }, 
+                masterDetail: {
+                    enabled: true,
+                    template: "detail"
+                }, 
+                // selection: {
+                //     mode: "single",
+                //     template: "detail"
+                // },
                 columns: [
                     {
                         dataField: "productionDate",
@@ -28,10 +37,13 @@
                         dataField: "uploadInterval",
                     },
                     {
-                        dataField: "Name",
+                        dataField: "Name"
                     },  
                 ],
+                onSelectionChanged: function (selectedItems) {
+                        vm.selectedGrid = selectedItems.selectedRowsData[0];
+                    }
             };
-        });
+        
     }]);
 }());

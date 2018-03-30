@@ -21,11 +21,9 @@
 .buttons{
     background-color: #656565;
     display: inline;
-    width: 20%;
 }
+/* stil */
 .icon{
-    display: inline;
-    width: 100%;
     cursor: pointer;
 }
 .absolute{
@@ -33,10 +31,15 @@
     position: absolute;
     cursor: pointer;
 }
-/*stil categories*/
+.text{
+    text-decoration: none;
+    cursor: pointer;
+}
 .categories{
     background-color: #656565;  
 }
+/*stil categories*/
+/* 
 .text{
     color: #b38867;
     font-family: myFont;
@@ -51,7 +54,7 @@
 .text:active{
     background-color: #b38867;
     color: #656565;
-}
+} */
 /*stil search*/
 .search{
     margin-left: 20%;
@@ -64,3 +67,4 @@
     height: 57px;
     width: 60px;
 }
+/* hove/active */

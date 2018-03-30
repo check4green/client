@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-SensorApp (cristina) - Copy",
+      "appliesTo": "/",
+      "type": "launch"
+    },
+    {
+      "taskName": "task-SensorApp (cristina) - Copy",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}
