@@ -1,4 +1,12 @@
-
+<button onclick="myFunction()">Refresh</button>
+<script>function myFunction() {
+        location.reload();
+    }</script>
+<button onclick="goBack()">Back</button>
+<script>function goBack() {
+         window.history.back();
+        }</script>
+        
 <div dx-data-grid="vm.dataGridOptions">
   
             <div data-options="dxTemplate: {name: 'detail'}">

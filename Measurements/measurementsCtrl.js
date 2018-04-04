@@ -11,11 +11,6 @@
                 showBorders: true,
                 paging: {
                     enabled: true
-                },
-                editing: {
-                    allowUpdating: true,
-                    allowDeleting: true,
-                    allowAdding: true
                 }, 
                 columns: [
                     {

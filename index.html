@@ -4,85 +4,49 @@
     <title>Sensor App</title>
     
     <!--Style-->
-    <link rel="stylesheet" href="/CommonData/style.css" type="text/css">
-    <link rel="stylesheet" href="routeStyle.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <!--Library-->
-    <script src="/Library/jquery.js"></script>
-    <script src="/Library/angular.js"></script>
-    <script src="/Library/angular-resources.js"></script>
-    <script src="/Library/angular-mocks.js"></script>
-    <script src="/Library/angular-ui-router.js"></script>
-    
-    <!--DevExpress-->
-	<link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/17.2.5/css/dx.light.css" />
-	<script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
-    
-    <!--Data-->
-    <script src="routeCtrl.js"></script>
-	<script src="CommonData/common.services.js"></script>
-    <script src="CommonData/dataResource.js"></script>
-    <script src="CommonData/dataResourceMock.js"></script>
-    <script src="Chart1/chartService.js"></script>
-    <script src="SensorList/sensorsService.js"></script>
-    <script src="Measurements/measurementsService.js"></script>
-    
-    
-    <!--Controllers-->
-    <script src="/Measurements/measurementsCtrl.js"></script>
-    <script src="/SensorList/sensorListCtrl.js"></script>
-    <script src="Chart1/controllerChart.js"></script>
-        
-    <!--Components-->
-    <script src="Measurements/measurementsComponent.js"></script>
-    <script src="SensorList/SensorListComponent.js"></script>
-    <script src="Chart1/ChartComponent.js"></script>
-    
-    
+    <link rel="stylesheet" href="/CommonData/indexStyle.css" type="text/css"> <!-- swiss -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- icon -->
+    <link rel="stylesheet" href="/CommonData/style.css" type="text/css">  <!-- devexpress -->
+    <link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/17.2.5/css/dx.light.css" /> <!-- devexpress -->
+ 
 </head>
 <body ng-app="sensorApp">
-
-    <div class="body">
-        <div class="header"><img class="swiss" src="/iconPng/swiss.png"></div>
-            <div class="left-search">
-                <div class="left">
-                        <div class="buttons">
-                            <div><i ui-sref="index" class="icon fa fa-home"></i></div>
-                            <div><i class="icon fa fa-arrow-right"></i></div>
-                            <div><i class="icon fa fa-plane"></i></div>
-                        </div>
-                        <div class="categories">
-                            <div><a class="text" ui-sref="sensorList">Temperature</a></div>
-                            <div><a class="text">Distance</a></div>
-                            <div><a class="text">Humiditi</a></div>
-                        </div>  
-                             
-                </div>
-                <div class="search" >
-                    <form>
-                        <input class="all" type="text" placeholder="Search sensor for this type">
-                        <button class="all1" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <button onclick="myFunction()">Refresh</button>
-                <script>
-                    function myFunction() {
-                        location.reload();
-                    }
-                </script>
-                <button onclick="goBack()">Back</button>
-                <script>
-                    function goBack() {
-                         window.history.back();
-                        }
-                </script>
+    <div class="header"><img class="swiss" src="/iconPng/swiss.png"></div>
+        <div class="left">
+            <div class="buttons">
+                <div><i ui-sref="index" class="icon fa fa-home"></i></div>
+                <div><i ui-sref="categories" class="icon fa fa-arrow-right"></i></div>
+                <div><i class="icon fa fa-plane"></i></div>
+            </div>
+               <div ui-view></div>  
         </div>
-        
-    </div>
-    <div> 
-       
-    </div>
-    <div ui-view></div>
+    <div><div ui-view="filters"></div></div>  
 </body>
+
+<!--Library-->
+<script src="/Library/jquery.js"></script>
+<script src="/Library/angular.js"></script>
+<script src="/Library/angular-resources.js"></script>
+<script src="/Library/angular-mocks.js"></script>
+<script src="/Library/angular-ui-router.js"></script>
+
+<!--Data-->
+<script src="routeCtrl.js"></script>
+<script src="CommonData/common.services.js"></script>
+<script src="Chart1/chartService.js"></script>
+<script src="SensorList/sensorsService.js"></script>
+<script src="Measurements/measurementsService.js"></script>
+<script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
+
+<!--Controllers-->
+<script src="/CategoriesMenu/categoriesCtrl.js"></script>
+<script src="/SensorList/sensorListCtrl.js"></script> 
+<script src="/Measurements/measurementsCtrl.js"></script>
+<script src="Chart1/controllerChart.js"></script>
+    
+<!--Components-->
+<script src="/CategoriesMenu/categoriesComponent.js"></script>
+<script src="SensorList/SensorListComponent.js"></script>
+<script src="Measurements/measurementsComponent.js"></script>
+<script src="Chart1/ChartComponent.js"></script>
 </html>
