@@ -1,15 +1,17 @@
-<button onclick="myFunction()">Refresh</button>
+<div class="gridScroll"> 
+    <div class="reloadFlex">
+<i onclick="myFunction()" class="grid fa fa-refresh"></i>
 <script>function myFunction() {
         location.reload();
     }</script>
-<button onclick="goBack()">Back</button>
+<i onclick="goBack()" class="grid fa fa-arrow-left"></i>
 <script>function goBack() {
          window.history.back();
         }</script>
-        
+    </div>  
 <div dx-data-grid="vm.dataGridOptions">
-  
-            <div data-options="dxTemplate: {name: 'detail'}">
+<div data-options="dxTemplate: {name: 'detail'}">
               <div class="show"> <div class="measure"><measurement></measurement></div><div class="chart"><chart></chart></div></div> 
             </div>
         </div>
+</div> 

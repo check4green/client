@@ -14,11 +14,14 @@
                 }, 
                 columns: [
                     {
-                        dataField: "TimeH/Day",
+                        dataField: "id"
+                    }, 
+                    {
+                        dataField: "readingDate"
                     },
                     {
-                        dataField: "Value °C",
-                    }     
+                        dataField: "value"
+                    }
                 ],
             };
         

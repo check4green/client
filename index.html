@@ -12,15 +12,17 @@
 </head>
 <body ng-app="sensorApp">
     <div class="header"><img class="swiss" src="/iconPng/swiss.png"></div>
+    <div class="buttonsGrid">
         <div class="left">
             <div class="buttons">
-                <div><i ui-sref="index" class="icon fa fa-home"></i></div>
-                <div><i ui-sref="categories" class="icon fa fa-arrow-right"></i></div>
-                <div><i class="icon fa fa-plane"></i></div>
+                <div><i ui-sref="index" class="fa icon fa fa-home"></i></div>
+                <div><i ui-sref="categories" class="fa fa-indent"></i></div>
+                <div><i class="fa fa-cog"></i></div>
             </div>
                <div ui-view></div>  
         </div>
-    <div><div ui-view="filters"></div></div>  
+    <div class="grid"><div ui-view="filters"></div></div>  
+    </div>
 </body>
 
 <!--Library-->

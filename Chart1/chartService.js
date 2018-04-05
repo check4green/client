@@ -5,7 +5,7 @@ angular.module("sensorApp")
         
         return {load:getChart};
         function getChart(loadOptions){
-        return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/1/readings')
+        return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/42/readings')
         .then(chartSuccess)
         .catch(chartError);
         function chartSuccess(response){

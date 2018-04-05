@@ -2,65 +2,103 @@
     font-family: myFont;
     src: url(/font/Helmet-Regular.ttf);
 }
- body{margin: 0px;}
-.body{
-    display: flex;
-    flex-direction: column;
+ body{
+     margin: 0px;
+    }
+.header{
+    background-color: gray;
 }
-.header{background-color: gray;}
-.swiss{ width: 9%;}
-
-/*asezare buton+categories+search*/
-.left-search{
-    display: flex;
+.swiss{
+    width: 115px;
+    padding: 3px;
+}
+.fa{
+    font-size: 40px !important;
+    padding: 2px;
+    margin-left: 3px;
+    margin-top: 3px;
+    color: #b38867;
+    cursor: pointer;
+}
+    /* active */
+.fa:active{
+    color: #656565;
+    background-color: #ddbc95;
+}
+    /* active */
+.buttons{
+    background-color: #656565;
+    width: 50px;
+    height: 583px;
 }
 .left{
     display: flex;
-    width: ;
 }
-.buttons{
-    background-color: #656565;
-    display: inline;
-    width: 20%;
-}
-.icon{
-    display: inline;
-    width: 100%;
-    cursor: pointer;
-}
-.absolute{
-    width: 4%;
-    position: absolute;
-    cursor: pointer;
-}
-/*stil categories*/
 .categories{
     background-color: #656565;  
+    height: 150px;
+    width: 180px;
 }
 .text{
+    display: flex;
+    text-decoration: none;
     color: #b38867;
     font-family: myFont;
     font-size: 27px;
     padding: 6%;
     cursor: pointer;
 }
-.text:hover{
-    background-color: #ddbc95;
-    color: #656565;
-}
+    /* active */
 .text:active{
-    background-color: #b38867;
     color: #656565;
+    background-color: #ddbc95;
 }
-/*stil search*/
-.search{
-    margin-left: 20%;
-    margin-top: 6%;
+    /* active */
+.buttonsGrid{
+    display: flex;
 }
-.all{
-    height: 50px;
+.reloadFlex{
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    right: 240px;
+    top: 40px;
 }
-.all1{
-    height: 57px;
-    width: 60px;
+.grid .fa{
+    font-size: 25px!important;
+    background-color: #656565;
 }
+.dx-button{
+    /* position: absolute;
+    z-index: 1!important;
+    top: -16px; */
+    
+}
+.grid .fa:active{
+    background-color: #ddbc95;
+}
+.gridScroll{
+    overflow: auto !important;
+    height: 583px;
+    margin: 0px 5px 0px;
+}
+/* grid devexpress */
+.dx-datagrid-content .dx-datagrid-table{ 
+    color: #000000;
+} /* culoare text grid */
+.dx-icon{
+    color: #b38867!important;
+    font-weight: bold!important;
+} /* culoare add */
+.dx-datagrid .dx-link{
+    text-decoration: none!important;
+}
+.dx-link-edit{
+    color: #c6dd95!important;
+}
+.dx-link-delete{
+    color: #ce877b!important;
+} /* text edit/delete */
+
+
+/* grid devexpress */

@@ -12,7 +12,7 @@ angular.module("sensorApp")
                 page:loadOptions.skip/loadOptions.take,
                 pageSize:loadOptions.take
             };
-            return $http.get('http://swiss-iot.azurewebsites.net/api/measurements', {params:params})
+            return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/42/readings', {params:params})
             .then(sendResponseMeasurements)
             .catch(MeasurementError)
         }

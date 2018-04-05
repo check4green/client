@@ -10,7 +10,7 @@
                 dataSource: chartService,
                
                 commonSeriesSettings: {
-                    argumentField: "hours",
+                    argumentField: "readingDate",
                     label:{
                         visible:true}
                 },
@@ -23,8 +23,7 @@
                     }
                 },
                 series: [
-                    { valueField: "value"},
-                    { valueField: "grade"}
+                    { valueField: "value"}
                 ],
                 title: { 
                     text: "Sensor chart",
