@@ -25,9 +25,6 @@
                 series: [
                     { valueField: "value"}
                 ],
-                title: { 
-                    text: "Sensor chart",
-                },
                 scrollBar: {
                     visible: true
                 },

@@ -11,27 +11,39 @@
                 url:"/home",
                 template: "<index></index>"
                })
+
                .state("categories",{
                 url: "/home/categories",
                 template: "<categories></categories>"
                })
+
                .state('categories.sensorList',{
                     url:  "/home/categories/sensors",
                     views: {
                        'filters@':{
                            template: "<sensor></sensor>"
-                       }
+                       },
                    }
                })
+
+               .state('categories.distanceList',{
+                url:  "/home/categories/distance",
+                views: {
+                   'distance@':{
+                       template: "<distance></distance>"
+                   }
+               }
+               })
+
                .state("measurements", {
                    url: "/home/categories/sensors/measurements",
                    template: "<measurement></measurement>"
                })
+
                .state("chart", {
                    url: "/home/categories/sensors/measurements/charts",
                    template: "<chart></chart>",
                });
-
                }
         ]);
 }());

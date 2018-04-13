@@ -11,18 +11,32 @@
  
 </head>
 <body ng-app="sensorApp">
+<div class="reloadFlex">
+                <i onclick="myFunction()" class="grid fa fa-refresh"></i>
+                <script>function myFunction() {
+                        location.reload();
+                    }</script>
+                <i onclick="goBack()" class="grid fa fa-arrow-left"></i>
+                <script>function goBack() {
+                         window.history.back();
+                        }</script>
+</div>  
+
     <div class="header"><img class="swiss" src="/iconPng/swiss.png"></div>
     <div class="buttonsGrid">
         <div class="left">
             <div class="buttons">
-                <div><i ui-sref="index" class="fa icon fa fa-home"></i></div>
-                <div><i ui-sref="categories" class="fa fa-indent"></i></div>
-                <div><i class="fa fa-cog"></i></div>
+                <div><i ui-sref="index" class="fa icon fa fa-home" title="home"></i></div>
+                <div><i ui-sref="categories" class="fa fa-indent" title="categories"></i></div>
+                <div><i class="fa fa-cog" title="settings"></i></div>
             </div>
-               <div ui-view></div>  
+               <div ui-view>
+               </div>  
         </div>
-    <div class="grid"><div ui-view="filters"></div></div>  
+    <div class="grid st"><div ui-view="filters"></div></div>
+    <div class="grid sd"><div ui-view="distance"></div></div>   
     </div>
+    
 </body>
 
 <!--Library-->
@@ -43,12 +57,14 @@
 <!--Controllers-->
 <script src="/CategoriesMenu/categoriesCtrl.js"></script>
 <script src="/SensorList/sensorListCtrl.js"></script> 
+<script src="/DistanceList/distanceCtrl.js"></script>
 <script src="/Measurements/measurementsCtrl.js"></script>
 <script src="Chart1/controllerChart.js"></script>
     
 <!--Components-->
 <script src="/CategoriesMenu/categoriesComponent.js"></script>
 <script src="SensorList/SensorListComponent.js"></script>
+<script src="/DistanceList/distanceComponent.js"></script>
 <script src="Measurements/measurementsComponent.js"></script>
 <script src="Chart1/ChartComponent.js"></script>
 </html>

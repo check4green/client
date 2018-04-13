@@ -24,10 +24,6 @@
                     enabled: true,
                     template: "detail"
                 }, 
-                // selection: {
-                //     mode: "single",
-                //     template: "detail"
-                // },
                 columns: [
                     {
                         dataField: "productionDate",
