@@ -26,6 +26,7 @@
 }
     /* active */
 .fa:active{
+    width: 90%;
     font-size: 41px !important;
     color: #656565;
     background-color: #ddbc95;
@@ -47,9 +48,9 @@
     background-color: #656565;
     flex-grow: 1;
 }
-.grid:active{
+/* .grid:active{
     background-color: #ddbc95;
-}
+} */
 .gridScroll{
     overflow: auto !important;
     height: 579px;
