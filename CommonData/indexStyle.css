@@ -24,11 +24,15 @@
     padding: 2px;
     padding-left: 3px;
 }
+
     /* active */
-.fa:active{
+.rel:active{
     width: 90%;
     font-size: 41px !important;
     color: #656565;
+    background-color: #ddbc95;
+}
+.allb:active{
     background-color: #ddbc95;
 }
     /* active */
