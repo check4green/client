@@ -12,11 +12,11 @@
 </head>
 <body ng-app="sensorApp">
 <div class="reloadFlex">
-                <i onclick="myFunction()" class="grid fa fa-refresh"></i>
+                <i onclick="myFunction()" class="allb grid fa fa-refresh"></i>
                 <script>function myFunction() {
                         location.reload();
                     }</script>
-                <i onclick="goBack()" class="grid fa fa-arrow-left"></i>
+                <i onclick="goBack()" class="allb grid fa fa-arrow-left"></i>
                 <script>function goBack() {
                          window.history.back();
                         }</script>
@@ -26,9 +26,9 @@
     <div class="buttonsGrid">
         <div class="left">
             <div class="buttons">
-                <div><i ui-sref="index" class="fa icon fa fa-home" title="home"></i></div>
-                <div><i ui-sref="categories" class="fa fa-indent" title="categories"></i></div>
-                <div><i class="fa fa-cog" title="settings"></i></div>
+                <div><i ui-sref="index" class="rel fa icon fa fa-home" title="home"></i></div>
+                <div><i ui-sref="categories" class="rel fa fa-indent" title="categories"></i></div>
+                <div><i class="rel fa fa-cog" title="settings"></i></div>
             </div>
                <div ui-view>
                </div>  
