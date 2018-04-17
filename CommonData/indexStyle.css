@@ -77,16 +77,59 @@
     margin-left: 10px;
     text-transform: uppercase;
 }
+.sensorD{
+    display: flex;
+    flex-direction: column;
+}
 .distanceViewRow {
     display: flex;
+    flex-direction: column;
     /* width: 185px; */
     
 }
 .distanceViewRow p{
+    margin:0px;
     padding: 5px;
     border-style: solid;
     border-width: 1px;
     border-color: #7a7a7a91;
+}
+.sensorSet{
+    display: flex;
+    flex-direction: row;
+    margin:10px;
+}
+.sensorSet input{
+    background-color:#ce877b;
+    width:120px;
+    height:20px;
+    border: solid 1px black;
+    padding-left:5px;
+    font-family: myFont;
+    font-size: 16px;
+    color:white;
+}
+.sensorSet input:focus{
+    outline:none;
+}
+.sensorSet button{
+    width:50px;
+    background-color:#ce877b;
+    border: solid 1px black;
+    cursor:pointer;
+    font-family: myFont;
+    font-size: 16px;
+}
+.sensorSet button:active{
+    background-color:#ff00dd;
+    color:black;
+}
+.sensorSet button:focus{
+    outline:none;
+}
+.sensorView{
+    display: flex;
+    flex-direction: row;
 }
 .colorN{
     margin-left: 3px;
