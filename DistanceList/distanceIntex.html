@@ -6,8 +6,8 @@
             <button ng-click="vm.quantitySet(quantity)">Set</button>
         </form>
         <div class="sensorView">
-            <div class="distanceViewRow"><p>Sensor 1 in CM:</p><p class="colorN" ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">{{s1.value}}</p></div>
-            <div class="distanceViewRow"><p>Sensor 2 in CM:</p><p class="colorN" ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs">{{s2.value}}</p></div>
+            <div class="distanceViewRow"><p class="tableHeadSensor">Sensor 1 in CM:</p><p class="colorN" ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">{{s1.value}}</p></div>
+            <div class="distanceViewRow"><p class="tableHeadSensor">Sensor 2 in CM:</p><p class="colorN" ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs">{{s2.value}}</p></div>
         </div>
     </div>
     <div class="grow"></div>
