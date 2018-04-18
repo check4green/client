@@ -14,7 +14,6 @@
         vm.quantitySet = function(quantity){
             vm.qs = quantity;
         };
-
         vm.reload = function(){
             $http.get("http://swiss-iot.azurewebsites.net/api/sensors/46/readings")
             .then(function(response) {
