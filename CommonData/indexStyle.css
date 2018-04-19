@@ -11,12 +11,18 @@
 .swiss{
     width: 115px;
 }
+/*butoanele back+refersh*/
 .reloadFlex{
     position: absolute;
     z-index: 1;
     right: 6px;
-    top: 35px;
-}  /*butoanele back+refersh*/
+    top: 20px;
+}
+.allb{
+   background-color: rgb(122, 121, 121);
+}
+
+/*icon*/  
 .fa{
     font-size: 40px !important;
     color: #b38867;
@@ -35,49 +41,41 @@
 .allb:active{
     background-color: #ddbc95;
 }
+.black:active{
+    color:#000000ab; 
+}
     /* active */
+
 .buttonsGrid{
+    background-color: #8a8989;
     display: flex;
-}
-.buttons{
-    background-color: #656565;
-    width: 50px;
-    min-height: 579px;
-}/* flex pentru butoane si categorie si grid*/
-/* @media (max-width: 400px){
-    .buttons{ height: 349px;}
-} */
-.grid{
+    height: 579px;
+    font-family: myFont;
     font-size: 25px!important;
-    background-color: #656565;
-    flex-grow: 1;
 }
-/* .grid:active{
-    background-color: #ddbc95;
-} */
+
+.left{
+    background-color: #656565;
+    
+}
 .gridScroll{
     overflow: auto !important;
     height: 579px;
     margin: 0px 5px 0px;
 }
-
-.categories{
-    background-color: #7a7a7a31;
-    position: absolute;
-    z-index: 1;
-    top: 215px;  
-    height: 150px;
-    width: 45px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #7a7a7a91;
-} /*cele 3 butoane pentru senzori*/
-.distance{
-    display: flex;
-    flex-direction: column;
-    font-family: myFont;
+@media ( min-height: 650px ){
+    .buttonsGrid{
+        height: 891px;
+    }
+    .gridScroll{
+        height: 891px;
+    }
 }
-.title{
+.categories{
+    background-color: #101014ab;
+}
+/*distance*/
+/* .title{
     margin-left: 10px;
     text-transform: uppercase;
 }
@@ -88,8 +86,6 @@
 .distanceViewRow {
     display: flex;
     flex-direction: column;
-    /* width: 185px; */
-    
 }
 .distanceViewRow .tableHeadSensor{
     background-color:#b38867;
@@ -126,7 +122,7 @@
     font-size: 16px;
 }
 .sensorSet button:active{
-    background-color:#979595;
+    background-color:#ce877b;
     color:black;
 }
 .sensorSet button:focus{
@@ -135,14 +131,72 @@
 .sensorView{
     display: flex;
     flex-direction: row;
+    overflow: auto !important;
+    height: 500px;
+    position: relative;
 }
 .colorN{
     margin-left: 3px;
     margin-right: 5px;
     color: #b38867;
+    
 }
+@media ( min-height: 650px ){
+    .sensorView{
+        height: 800px;
+    }
+} */
+.sensorDistance{
+    text-transform: uppercase;
+    margin-left: 450px;
+}
+.sensorView{
+    
+}
+.sensorSet input, button{
+    font-family: myFont;
+    font-size: 15px;
+    border: solid 1px black; 
+    background-color: #b38867; 
+    cursor: pointer;
+    padding:5px 20px 5px;
+    margin-bottom: 5px;
+}
+.title{
+    display: flex;
+}
+.list{
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: auto;
+    max-height: 445px;
+    background-color: honeydew;
+}
+.measureList{
+    flex-grow: 1;
+    flex-direction: column;
+}
+.title .list, p{
+    border: solid 1px  #ddbc95; 
+    padding: 5px;
+    margin: 0px;
+}
+
+
+@media ( min-height: 650px ){
+    .list{
+        height: 800px;
+    }
+}
+.sensorSet button:active{
+    background-color: #ddbc95;
+}
+
+
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
+      /* remove scrollbar space */
+    width: 0px;
+
 }
 
 /* Humidity */
@@ -161,9 +215,13 @@
     color:white;
 }
 
+
+
+
+
 /* grid devexpress */
-.dx-datagrid-content .dx-datagrid-table{ 
-    color: #000000;
+.dx-datagrid-content .dx-datagrid-table, .title{ 
+    color: #000000!important;
 } /* culoare text grid */
 
 .dx-datagrid-text-content{
@@ -195,12 +253,11 @@
 /* search */
 .dx-datagrid-group-closed:before{
     color:#b38867;
-    position: absolute!important;
 }
 .dx-datagrid-group-opened:before{
     color:#b38867;
 }/*sageata show measurements*/
-.dx-datagrid-headers .dx-datagrid-table .dx-row > td{
+ .dx-datagrid-headers .dx-datagrid-table .dx-row > td, .title{
     background-color: #ddbc95;
     border-color: #ddbc95!important;
 }

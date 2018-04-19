@@ -12,11 +12,11 @@
 </head>
 <body ng-app="sensorApp">
 <div class="reloadFlex">
-                <i onclick="myFunction()" class="allb grid fa fa-refresh"></i>
+                <i onclick="myFunction()" class="allb grid fa fa-refresh" title="reload"></i>
                 <script>function myFunction() {
                         location.reload();
                     }</script>
-                <i onclick="goBack()" class="allb grid fa fa-arrow-left"></i>
+                <i onclick="goBack()" class="allb grid fa fa-arrow-left" title="back"></i>
                 <script>function goBack() {
                          window.history.back();
                         }</script>
@@ -25,17 +25,18 @@
     <div class="header"><img class="swiss" src="/iconPng/swiss.png"></div>
     <div class="buttonsGrid">
         <div class="left">
-            <div class="buttons">
+            <div class="buttons">  <!-- home/categories/set -->
                 <div><i ui-sref="index" class="rel fa icon fa fa-home" title="home"></i></div>
                 <div><i ui-sref="categories" class="rel fa fa-indent" title="categories"></i></div>
                 <div><i class="rel fa fa-cog" title="settings"></i></div>
             </div>
-               <div ui-view>
-               </div>  
+               <div ui-view></div> <!-- categories -->  
         </div>
-    <div class="grid st"><div ui-view="filters"></div></div>
-    <div class="grid sd"><div ui-view="distance"></div></div> 
-    <div class="grid sh"><div ui-view="humidity"></div></div>  
+        <div class="gridView">
+                <div class="grid st"><div ui-view="filters"></div></div>
+                <div class="grid sd"><div ui-view="distance"></div></div> 
+                <div class="grid sh"><div ui-view="humidity"></div></div>
+        </div>         
     </div>
     
 </body>
@@ -63,6 +64,7 @@
 <script src="/HumidityList/humidityCtrl.js"></script>
 <script src="/Measurements/measurementsCtrl.js"></script>
 <script src="Chart1/controllerChart.js"></script>
+
     
 <!--Components-->
 <script src="/CategoriesMenu/categoriesComponent.js"></script>

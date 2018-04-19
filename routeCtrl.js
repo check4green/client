@@ -36,14 +36,14 @@
                })
 
                .state( 'categories.humidityList',{
-                url: "/home/categories/humidity",
-                views: {
-                    'humidity@':{
-                        template: "<humidity></humidity>"
-                    }
-                }    
- 
-                })
+               url: "/home/categories/humidity",
+               views: {
+                   'humidity@':{
+                       template: "<humidity></humidity>"
+                   }
+               }    
+
+               })
 
                .state("measurements", {
                    url: "/home/categories/sensors/measurements",
