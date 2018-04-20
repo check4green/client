@@ -7,11 +7,12 @@
     </form>
         <div class="sensorView">
             <div class="title">
-                <p>Sensor 1 in CM</p><p>Sensor 2 in CM</p>
+                <p>Sensor 1 in CM</p>
+                <p>Sensor 2 in CM</p>
             </div>
             <div class="list">
-                <div class="measureList"><p class="colorN" ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs">{{s2.value}}</p></div>
                 <div class="measureList"><p class="colorN" ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">{{s1.value}}</p></div>
-            </div>
+                <div class="measureList"><p class="colorN" ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs">{{s2.value}}</p></div>
+                </div>
         </div>
 </div>

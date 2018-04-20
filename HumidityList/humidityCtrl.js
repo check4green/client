@@ -3,8 +3,8 @@
    var app = angular.module("sensorApp");
    app.controller("humidityCtrl", function ($http, $timeout) {
         var vm = this;
-        vm.collapsedRegister = true;
-        vm.collapsedEdit = true;
+        vm.collapsedRegister = false;
+        vm.collapsedEdit = false;
         vm.collapsedSensors = true;
         vm.collapsedMeasurements = true;
         vm.collapseRegister = function(){
@@ -62,7 +62,7 @@
             if(idx > -1){
                 sensors.splice(idx, 1);
             }
-            $http.delete("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId)
+            // $http.delete("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId)
         };
         vm.cancelDeleteSensor = function(){
             vm.deleting = false;

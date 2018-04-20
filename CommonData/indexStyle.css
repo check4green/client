@@ -51,7 +51,7 @@
     display: flex;
     height: 579px;
     font-family: myFont;
-    font-size: 25px!important;
+    font-size: 20px!important;
 }
 
 .left{
@@ -74,93 +74,18 @@
 .categories{
     background-color: #101014ab;
 }
-/*distance*/
-/* .title{
-    margin-left: 10px;
-    text-transform: uppercase;
-}
-.sensorD{
-    display: flex;
-    flex-direction: column;
-}
-.distanceViewRow {
-    display: flex;
-    flex-direction: column;
-}
-.distanceViewRow .tableHeadSensor{
-    background-color:#b38867;
-}
-.distanceViewRow p{
-    margin:0px;
-    padding: 5px;
-    border: solid 1px #7a7a7a91;
-}
-.sensorSet{
-    display: flex;
-    flex-direction: row;
-    margin:10px;
-}
-.sensorSet input{
-    background-color:#b38867;
-    width:120px;
-    height:20px;
-    border: solid 1px black;
-    padding-left:5px;
-    font-family: myFont;
-    font-size: 16px;
-    color:white;
-}
-.sensorSet input:focus{
-    outline:none;
-}
-.sensorSet button{
-    width:50px;
-    background-color:#b38867;
-    border: solid 1px black;
-    cursor:pointer;
-    font-family: myFont;
-    font-size: 16px;
-}
-.sensorSet button:active{
-    background-color:#ce877b;
-    color:black;
-}
-.sensorSet button:focus{
-    outline:none;
-}
-.sensorView{
-    display: flex;
-    flex-direction: row;
-    overflow: auto !important;
-    height: 500px;
-    position: relative;
-}
-.colorN{
-    margin-left: 3px;
-    margin-right: 5px;
-    color: #b38867;
-    
-}
-@media ( min-height: 650px ){
-    .sensorView{
-        height: 800px;
-    }
-} */
 .sensorDistance{
     text-transform: uppercase;
     margin-left: 450px;
 }
-.sensorView{
-    
-}
 .sensorSet input, button{
     font-family: myFont;
     font-size: 15px;
-    border: solid 1px black; 
-    background-color: #b38867; 
+    border: solid 1px #926440; 
+    background-color: #bb8f6d; 
     cursor: pointer;
     padding:5px 20px 5px;
-    margin-bottom: 5px;
+
 }
 .title{
     display: flex;
@@ -183,13 +108,49 @@
 }
 
 
+
+.sensorSet button:active{
+    background-color: #ddbc95;
+}
+
+/* Humidity */
+
+.humidityTable{
+    border-collapse: collapse;
+    
+}
+.humidityListMeasure{
+    display: flex;
+}
+.humidity{
+    overflow: auto;
+    max-height: 575px;
+    background-color: whitesmoke;
+}
+.tableBodyHumidity{
+    
+}
+.humidityMeasure{
+    overflow: auto;
+    max-height: 575px;
+    background-color: whitesmoke;
+    flex-grow: 0;
+}
 @media ( min-height: 650px ){
     .list{
         height: 800px;
     }
+    .humidity{
+        max-height: 885px;
+    }
 }
-.sensorSet button:active{
+
+.tableHeadHumidity {
     background-color: #ddbc95;
+ 
+}
+.tableBodyHumidity td{
+    border: solid 1px  #ddbc95; 
 }
 
 
@@ -199,21 +160,6 @@
 
 }
 
-/* Humidity */
-.humidityTable{
-    width:100%;
-}
-.tableHeadHumidity td{
-    width:300px;
-    border: solid 1px white;
-    color:white;
-    background-color:#b38867;
-}
-.tableBodyHumidity td{
-    width:50px;
-    border: solid 1px white;
-    color:white;
-}
 
 
 

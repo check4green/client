@@ -1,78 +1,117 @@
-<p style="color:white;">Sensors Register</p>
-<form>
-    <table class="humidityTable">
-        <tr class="tableHeadHumidity" ng-click="vm.collapseRegister()">
-            <td>ProductionDate</td>
-            <td>UploadInterval</td>
-            <td>BatchSize</td>
-            <td></td>
-        </tr>
-        <tr class="tableBodyHumidity" ng-show="vm.collapsedRegister">
-            <td><input ng-model="registerProductionDate" type="text" placeholder="ProductionDate"></td>
-            <td><input ng-model="registerUploadInterval" type="text" placeholder="UploadInterval"></td>
-            <td><input ng-model="registerBatchSize" type="text" placeholder="BatchSize"></td>
-            <td ><button ng-click="vm.sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize)">Register</button></td>
-        </tr>
-    </table>
-</form>
-<p style="color:white;">Sensors Edit</p>
-<form>
-    <table class="humidityTable">
-        <tr class="tableHeadHumidity" ng-click="vm.collapseEdit()">
-            <td>ProductionDate</td>
-            <td>UploadInterval</td>
-            <td>BatchSize</td>
-            <td>Id</td>
-            <td></td>
-        </tr>
-        <tr class="tableBodyHumidity" ng-show="vm.collapsedEdit">
+<!-- <button ng-click="vm.collapseRegister()">Add sensor</button>
+<button ng-click="vm.collapseEdit()">Edit sensor</button>
+<table >
+    <tr class="sensorSet" ng-show="vm.collapsedRegister">
+        <td><input ng-model="registerProductionDate" type="text" placeholder="ProductionDate"></td>
+        <td><input ng-model="registerUploadInterval" type="text" placeholder="UploadInterval"></td>
+        <td><input ng-model="registerBatchSize" type="text" placeholder="BatchSize"></td>
+        <td ><button ng-click="vm.sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize)">Register</button></td>
+    </tr>
+</table>
+<table class="sensorSet">
+        <tr  ng-show="vm.collapsedEdit">
             <td><input ng-model="editProductionDate" type="text" placeholder="ProductionDate"></td>
             <td><input ng-model="editUploadInterval" type="text" placeholder="UploadInterval"></td>
             <td><input ng-model="editBatchSize" type="text" placeholder="BatchSize"></td>
             <td><input ng-model="sensorId" type="text" placeholder="SensorId"></td>
             <td><button ng-click="vm.sensorEdit(editProductionDate, editUploadInterval, editBatchSize, sensorId)">Edit</button></td>
         </tr>
-    </table>
-</form>
-<p style="color:white;">Distance Sensors</p>
-<table class="humidityTable">
-    <tr class="tableHeadHumidity" ng-click="vm.collapseSensors()">
-        <td>Index</td>
-        <td>ProductionDate</td>
-        <td>UploadInterval</td>
-        <td>BatchSize</td>
-        <td>SensorTypeId</td>
-        <td>Id</td>
-        <td></td>
-    </tr>
-    <tr class="tableBodyHumidity" ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">
-        <td>{{$index+1}}</td>
-        <td>{{sensor.productionDate}}</td>
-        <td>{{sensor.uploadInterval}}</td>
-        <td>{{sensor.batchSize}}</td>
-        <td>{{sensor.sensorTypeId}}</td>
-        <td>{{sensor.id}}</td>
-        <td><button ng-click="vm.measurementSensor(sensor.id)">Measurement</button>
-            <button ng-click="vm.startDelete()" ng-hide="vm.deleting">Delete</button>
-            <span ng-show="vm.deleting">
-                <button ng-click="vm.deleteSensor(sensor.id, vm.sensors, sensor)">Deleting</button>
-                <button ng-click="vm.cancelDeleteSensor()">Cancel</button>
-            </span>
-        </td>
-    </tr>
 </table>
-<p style="color:white;">Measurements Distance</p><p></p>
-<table class="humidityTable">
-    <tr class="tableHeadHumidity" ng-click="vm.collapseMeasurements()">
-        <td>{{Index}}</td>
-        <td>SensorId</td>
-        <td>Value</td>
-        <td>Id</td>
-    </tr>
-    <tr class="tableBodyHumidity" ng-repeat="measurementSensor in vm.measurementSensors" ng-show="vm.collapsedMeasurements">
-        <td>{{$index+1}}</td>
-        <td>{{measurementSensor.sensorId}}</td>
-        <td>{{measurementSensor.value}}</td>
-        <td>{{measurementSensor.id}}</td>
-    </tr>
-</table>
+
+
+
+
+<div class="gridOneTwo">
+    <div class="gridOne">
+            <div class="title">
+            <p class="colorP" >Index</p>
+            <p class="colorP" >Production date</p>
+            <p class="colorP" >Upload interval</p>
+            <p class="colorP" >Batch size</p>
+            <p class="colorP" >Sensor type id</p>
+            <p class="colorP" >Id</p>
+           
+        </div>
+        <div class="list" >
+                <div class="measureList"><p ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">{{$index+1}}</p></div>
+                <div class="measureList"><p ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">{{sensor.productionDate}}</p></div>
+                <div class="measureList"><p ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">{{sensor.uploadInterval}}</p></div>
+                <div class="measureList"><p ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">{{sensor.batchSize}}</p></div>
+                <div class="measureList"><p ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">{{sensor.sensorTypeId}}</p></div>
+                <div class="measureList"><p ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">{{sensor.id}}</p></div>
+
+                <div class="measureListButton" ><p ng-click="vm.measurementSensor(sensor.id)" ng-repeat="sensor in vm.sensors" class="colorN">Measurement</p></div>
+                <div class="measureListButton" ><p ng-click="vm.startDelete()" ng-hide="vm.deleting" ng-repeat="sensor in vm.sensors" class="colorN">Delete</p></div>
+                <span "measureListButton" ng-show="vm.deleting">
+                    <p class="colorN" ng-click="vm.deleteSensor(sensor.id, vm.sensors, sensor)">Deleting</p>
+                    <p class="colorN" ng-click="vm.cancelDeleteSensor()">Cancel</p>
+                </span> 
+        </div>
+        
+    </div>
+
+
+    <div class="gridTwo" ng-show="vm.measurementSensors">
+        <div class="title">
+            <p>{{Index}}</p>
+            <p>Sensor id</p>
+            <p>Value</p>
+            <p>Id</p>
+        </div>
+        <div class="list">
+            <div class="measureList"><p ng-repeat="measurementSensor in vm.measurementSensors">{{$index+1}}</p></div>
+            <div class="measureList"><p ng-repeat="measurementSensor in vm.measurementSensors">{{measurementSensor.sensorId}}</p></div>
+            <div class="measureList"><p ng-repeat="measurementSensor in vm.measurementSensors">{{measurementSensor.value}}</p></div>
+            <div class="measureList"><p ng-repeat="measurementSensor in vm.measurementSensors">{{measurementSensor.id}}</p></div>  
+        </div>  
+    </div>
+</div>
+ -->
+ <div class="humidityListMeasure">
+     
+        <div class="humidity">
+            <table class="humidityTable">
+                <tr class="tableHeadHumidity" ng-click="vm.collapseSensors()">
+                    <td class="headH">Index</td>
+                    <td class="headH">ProductionDate</td>
+                    <td class="headH">UploadInterval</td>
+                    <td class="headH">BatchSize</td>
+                    <td class="headH">SensorTypeId</td>
+                    <td class="headH">Id</td>
+                    <td></td>
+                </tr>
+                <tr class="tableBodyHumidity" ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">
+               <td >{{$index+1}}</td>
+                    <td>{{sensor.productionDate}}</td>
+                    <td>{{sensor.uploadInterval}}</td>
+                    <td>{{sensor.batchSize}}</td>
+                    <td>{{sensor.sensorTypeId}}</td>
+                    <td>{{sensor.id}}</td>
+                    <td>
+                        <button ng-click="vm.measurementSensor(sensor.id)">Measurement</button>
+                        <button ng-click="vm.startDelete()" ng-hide="vm.deleting">Delete</button>
+                        <span ng-show="vm.deleting">
+                            <button ng-click="vm.deleteSensor(sensor.id, vm.sensors, sensor)">Deleting</button>
+                            <button ng-click="vm.cancelDeleteSensor()">Cancel</button>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>  
+        <div class="humidityMeasure">  
+            <table class="humidityTable">
+                <tr class="tableHeadHumidity" ng-click="vm.collapseMeasurements()">
+                    <td class="headH">{{Index}}</td>
+                    <td class="headH">SensorId</td>
+                    <td class="headH">Value</td>
+                    <td class="headH">Id</td>
+                </tr>
+                <tr class="tableBodyHumidity" ng-repeat="measurementSensor in vm.measurementSensors" ng-show="vm.collapsedMeasurements">
+                    <td>{{$index+1}}</td>
+                    <td>{{measurementSensor.sensorId}}</td>
+                    <td>{{measurementSensor.value}}</td>
+                    <td>{{measurementSensor.id}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
