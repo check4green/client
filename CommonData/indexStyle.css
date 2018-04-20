@@ -63,7 +63,7 @@
     height: 579px;
     margin: 0px 5px 0px;
 }
-@media ( min-height: 650px ){
+@media ( min-height: 950px ){
     .buttonsGrid{
         height: 891px;
     }
@@ -124,19 +124,17 @@
 }
 .humidity{
     overflow: auto;
-    max-height: 575px;
+    height: 575px;
     background-color: whitesmoke;
 }
-.tableBodyHumidity{
-    
-}
+
 .humidityMeasure{
     overflow: auto;
     max-height: 575px;
     background-color: whitesmoke;
     flex-grow: 0;
 }
-@media ( min-height: 650px ){
+@media ( min-height: 950px ){
     .list{
         height: 800px;
     }
