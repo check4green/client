@@ -1,0 +1,6 @@
+<button ng-click="startDelete()" ng-hide="deleting">Delete</button>
+<span ng-show="deleting" class="deleting">
+    <p style="border:none;">Are you sure to delete this sensor?</p><br>
+    <button ng-click="deleteSensor(sensor.id, vm.sensors, sensor)">Yes</button>
+    <button ng-click="cancelDeleteSensor()">No</button>
+</span>

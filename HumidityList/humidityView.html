@@ -89,11 +89,7 @@
                     <td>{{sensor.id}}</td>
                     <td>
                         <button ng-click="vm.measurementSensor(sensor.id)">Measurement</button>
-                        <button ng-click="vm.startDelete()" ng-hide="vm.deleting">Delete</button>
-                        <span ng-show="vm.deleting">
-                            <button ng-click="vm.deleteSensor(sensor.id, vm.sensors, sensor)">Deleting</button>
-                            <button ng-click="vm.cancelDeleteSensor()">Cancel</button>
-                        </span>
+                        <delete-sensor></delete-sensor>
                     </td>
                 </tr>
             </table>

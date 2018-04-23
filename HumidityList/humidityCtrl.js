@@ -70,19 +70,5 @@
                     vm.measurementSensors = response.data;
                 });
         };
-        vm.deleting = false;
-        vm.startDelete = function(){
-            vm.deleting = true;
-        }
-        vm.deleteSensor = function(sensorId, sensors, sensor){
-            var idx = sensors.indexOf(sensor);
-            if(idx > -1){
-                sensors.splice(idx, 1);
-            }
-            // $http.delete("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId)
-        };
-        vm.cancelDeleteSensor = function(){
-            vm.deleting = false;
-        };
     });
 }());

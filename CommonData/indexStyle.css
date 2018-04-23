@@ -134,6 +134,14 @@
     background-color: whitesmoke;
     flex-grow: 0;
 }
+.deleting{
+    background-color:white;
+    position:absolute;
+    width:auto;
+    padding:10px;
+    border: solid 1px black;
+}
+
 @media ( min-height: 950px ){
     .list{
         height: 800px;
