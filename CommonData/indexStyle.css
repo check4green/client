@@ -63,7 +63,7 @@
     height: 579px;
     margin: 0px 5px 0px;
 }
-@media ( min-height: 650px ){
+@media ( min-height: 950px ){
     .buttonsGrid{
         height: 891px;
     }
@@ -142,7 +142,8 @@
     background-color: white;
     flex-grow: 0;
 }
-@media ( min-height: 650px ){
+
+@media ( min-height: 950px ){
     .list{
         height: 800px;
     }

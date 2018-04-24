@@ -43,6 +43,23 @@
             var sensorPut = {'productionDate':editProductionDate, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize, 'sensorTypeId':"33", id:sensorId, userId:"1"}
             $http.put("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId, sensorPut);
         };
+        vm.pag = 0;
+        vm.pagination = function(pg){
+            if(pg==false){
+                vm.pag = vm.pag-1;
+            }
+            if(pg==true){
+                vm.pag = vm.pag+1;
+            }
+            if(vm.pag<0){
+                vm.pag = 0;
+            };
+            console.log(vm.pag);
+            $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/33/sensors?page=" + vm.pag + "&pageSize=30")
+                .then(function(response) {
+                    vm.sensors = response.data;
+                });
+        };
         $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/33/sensors?page=0&pageSize=30")
             .then(function(response) {
                 vm.sensors = response.data;
@@ -52,20 +69,6 @@
                 .then(function(response) {
                     vm.measurementSensors = response.data;
                 });
-        };
-        vm.deleting = false;
-        vm.startDelete = function(){
-            vm.deleting = true;
-        }
-        vm.deleteSensor = function(sensorId, sensors, sensor){
-            var idx = sensors.indexOf(sensor);
-            if(idx > -1){
-                sensors.splice(idx, 1);
-            }
-            // $http.delete("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId)
-        };
-        vm.cancelDeleteSensor = function(){
-            vm.deleting = false;
         };
     });
 }());
