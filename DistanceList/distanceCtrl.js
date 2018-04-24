@@ -15,11 +15,11 @@
             vm.qs = quantity;
         };
         vm.reload = function(){
-            $http.get("http://swiss-iot.azurewebsites.net/api/sensors/46/readings")
+            $http.get("http://swiss-iot.azurewebsites.net/api/sensors/65/readings")
             .then(function(response) {
                 vm.sensor1 = response.data;
             });
-            $http.get("http://swiss-iot.azurewebsites.net/api/sensors/57/readings")
+            $http.get("http://swiss-iot.azurewebsites.net/api/sensors/91/readings")
             .then(function(response) {
                 vm.sensor2 = response.data;
             });

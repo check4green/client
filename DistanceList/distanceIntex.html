@@ -1,18 +1,35 @@
-
-<div class="sensorDistance">    
-    <a>Distance List</a>
-    <form class="sensorSet">
-        <input ng-model="quantity" type="text" placeholder="Number of rows">
-        <button ng-click="vm.quantitySet(quantity)">Set</button>
-    </form>
-        <div class="sensorView">
-            <div class="title">
-                <p>Sensor 1 in CM</p>
-                <p>Sensor 2 in CM</p>
-            </div>
-            <div class="list">
-                <div class="measureList"><p class="colorN" ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">{{s1.value}}</p></div>
-                <div class="measureList"><p class="colorN" ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs">{{s2.value}}</p></div>
+<div class="humidityDistance">
+    <humidity></humidity>
+    <div class="sensorDistance">    
+        <form class="sensorSet">
+            <input ng-model="quantity" type="text" placeholder="Number of rows">
+            <button ng-click="vm.quantitySet(quantity)">Set</button>
+        </form>
+        
+        
+        <!-- <table class="humidityTable">
+            <tr class="tableHeadHumidity">
+                <td>S1 in cm</td>
+                <td>S1 in cm</td>
+            </tr>
+        </table> 
+        <table>  
+            <tr class="tableBodyDistance">
+                <td class="" ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">{{s1.value}}</td>
+                <td class="" ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs">{{s2.value}}</td>
+            </tr>
+        </table> -->
+        
+            <div class="sensorView">
+                <div class="title">
+                    <p class="borderB">S1 in Cm</p>
+                    <p class="borderC">S2 in Cm</p>
                 </div>
-        </div>
+                <div class="list">
+                    <div class="measureList"><p ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">{{s1.value}}</p></div>
+                    <div class="measureList"><p ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs">{{s2.value}}</p></div>
+                    </div>
+            </div>
+    </div>
+    
 </div>

@@ -74,9 +74,11 @@
 .categories{
     background-color: #101014ab;
 }
+.humidityDistance{
+    display: flex;
+}
 .sensorDistance{
     text-transform: uppercase;
-    margin-left: 450px;
 }
 .sensorSet input, button{
     font-family: myFont;
@@ -92,10 +94,13 @@
 }
 .list{
     display: flex;
-    flex-direction: row-reverse;
     overflow: auto;
-    max-height: 445px;
+    height: 510px;
     background-color: honeydew;
+}
+.borderB{
+    border: solid 1px  #b38867;
+    padding-right: 55px
 }
 .measureList{
     flex-grow: 1;
@@ -106,7 +111,9 @@
     padding: 5px;
     margin: 0px;
 }
-
+.sensorDistance{
+    margin-left: 20px;
+}
 
 
 .sensorSet button:active{
@@ -116,24 +123,23 @@
 /* Humidity */
 
 .humidityTable{
-    border-collapse: collapse;
-    
+    border-collapse: collapse;   
 }
 .humidityListMeasure{
     display: flex;
 }
 .humidity{
-    overflow: auto;
-    max-height: 575px;
-    background-color: whitesmoke;
-}
-.tableBodyHumidity{
-    
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 540px;
+    background-color: white;
 }
 .humidityMeasure{
-    overflow: auto;
-    max-height: 575px;
-    background-color: whitesmoke;
+    margin-left: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 540px;
+    background-color: white;
     flex-grow: 0;
 }
 @media ( min-height: 650px ){
@@ -141,25 +147,30 @@
         height: 800px;
     }
     .humidity{
-        max-height: 885px;
+        height: 885px;
     }
 }
 
 .tableHeadHumidity {
     background-color: #ddbc95;
- 
 }
 .tableBodyHumidity td{
     border: solid 1px  #ddbc95; 
 }
-
-
-::-webkit-scrollbar {
-      /* remove scrollbar space */
-    width: 0px;
-
+.tableHeadHumidity td{
+    border: solid 1px  #b38867;
 }
-
+/* remove scrollbar space */
+::-webkit-scrollbar{
+      
+      width: 7px;
+      background-color: #6d6c6c;
+     
+}
+::-webkit-scrollbar-thumb{
+    width: 2px;
+    background-color: #b38867;
+}
 
 
 
