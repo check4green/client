@@ -49,7 +49,7 @@
 .buttonsGrid{
     background-color: #8a8989;
     display: flex;
-    height: 579px;
+    height: 1080px;
     font-family: myFont;
     font-size: 20px!important;
 }
@@ -63,18 +63,26 @@
     height: 579px;
     margin: 0px 5px 0px;
 }
-@media ( min-height: 950px ){
+@media ( min-height: 1920px){
     .buttonsGrid{
-        height: 891px;
+        height: 1920px;
     }
     .gridScroll{
-        height: 891px;
+        height: 1920px;
+    }
+}
+@media ( min-height: 1080px){
+    .buttonsGrid{
+        height: 1080px;
+    }
+    .gridScroll{
+        height: 1080px;
     }
 }
 .categories{
     background-color: #101014ab;
 }
-.humidityDistance{
+.distanceDistance{
     display: flex;
 }
 .sensorDistance{
@@ -120,21 +128,21 @@
     background-color: #ddbc95;
 }
 
-/* Humidity */
+/* distance */
 
-.humidityTable{
+.distanceTable{
     border-collapse: collapse;   
 }
-.humidityListMeasure{
+.distanceListMeasure{
     display: flex;
 }
-.humidity{
+.distance{
     overflow-y: scroll;
     overflow-x: hidden;
     height: 540px;
     background-color: white;
 }
-.humidityMeasure{
+.distanceMeasure{
     margin-left: 20px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -147,18 +155,18 @@
     .list{
         height: 800px;
     }
-    .humidity{
+    .distance{
         height: 885px;
     }
 }
 
-.tableHeadHumidity {
+.tableHeaddistance {
     background-color: #ddbc95;
 }
-.tableBodyHumidity td{
+.tableBodydistance td{
     border: solid 1px  #ddbc95; 
 }
-.tableHeadHumidity td{
+.tableHeaddistance td{
     border: solid 1px  #b38867;
 }
 /* remove scrollbar space */

@@ -2,7 +2,7 @@ var app = angular.module("sensorApp");
 app.directive('deleteSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'HumidityList/humidityDirectiveView.html',
+        templateUrl: 'DistanceList/deleteSensorDirectiveView.html',
         controller: function($scope, $http){
             $scope.deleting = false;
             $scope.startDelete = function(){

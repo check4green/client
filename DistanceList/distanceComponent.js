@@ -3,7 +3,7 @@
     var app = angular.module('sensorApp');
     
     app.component('distance', {
-        templateUrl: 'DistanceList/distanceIntex.html',
+        templateUrl: 'DistanceList/distanceView.html',
         controller: 'distanceCtrl',
         controllerAs: 'vm'
     });

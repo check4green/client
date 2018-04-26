@@ -4,11 +4,12 @@
     <title>Sensor App</title>
     
     <!--Style-->
-    <link rel="stylesheet" href="/CommonData/indexStyle.css" type="text/css"> <!-- swiss -->
+    <link rel="stylesheet" href="indexStyle.css" type="text/css"> <!-- swiss -->
+    <link rel="stylesheet" href="/CategoriesMenu/categoriesStyle.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- icon -->
     <link rel="stylesheet" href="/CommonData/style.css" type="text/css">  <!-- devexpress -->
     <link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/17.2.5/css/dx.light.css" /> <!-- devexpress -->
- 
+    
 </head>
 <body ng-app="sensorApp">
 <div class="reloadFlex">
@@ -38,7 +39,6 @@
                 <div class="grid sh"><div ui-view="humidity"></div></div>
         </div>         
     </div>
-    
 </body>
 
 <!--Library-->
@@ -75,5 +75,5 @@
 <script src="Chart1/ChartComponent.js"></script>
 
 <!--Directive-->
-<script src="HumidityList/humidityDirective.js"></script>
+<script src="DistanceList/deleteSensorDirective.js"></script>
 </html>
