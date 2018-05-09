@@ -5,7 +5,9 @@
         <td><input ng-model="registerProductionDate" type="text" placeholder="ProductionDate"></td>
         <td><input ng-model="registerUploadInterval" type="text" placeholder="UploadInterval"></td>
         <td><input ng-model="registerBatchSize" type="text" placeholder="BatchSize"></td>
-        <td ><button ng-click="vm.sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize)">Register</button></td>
+        <td><input ng-model="registerGatewayAddress" type="text" placeholder="GatewayAddress"></td>
+        <td><input ng-model="registerClientAddress" type="text" placeholder="ClientAddress"></td>
+        <td><button ng-click="vm.sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress)">Register</button></td>
     </tr>
 </table>
 <table class="sensorSet">
@@ -13,8 +15,10 @@
             <td><input ng-model="editProductionDate" type="text" placeholder="ProductionDate"></td>
             <td><input ng-model="editUploadInterval" type="text" placeholder="UploadInterval"></td>
             <td><input ng-model="editBatchSize" type="text" placeholder="BatchSize"></td>
+            <td><input ng-model="editGatewayAddress" type="text" placeholder="GatewayAddress"></td>
+            <td><input ng-model="editClientAddress" type="text" placeholder="ClientAddress"></td>
             <td><input ng-model="sensorId" type="text" placeholder="SensorId"></td>
-            <td><button ng-click="vm.sensorEdit(editProductionDate, editUploadInterval, editBatchSize, sensorId)">Edit</button></td>
+            <td><button ng-click="vm.sensorEdit(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensorId)">Edit</button></td>
         </tr>
 </table>
 
@@ -24,16 +28,19 @@
      <div class="distance">
             <table class="distanceTable">
                 <tr class="tableHeaddistance" >
-                    <td>Nr</td>
+                    <td>Index</td>
+                    <td>GA</td>
+                    <td>CA</td>
                     <td>Prod Date</td>
                     <td>Up Int</td>
                     <td>B Size</td>
                     <td>S TypeId</td>
                     <td>Id</td>
-                    <td></td>
                 </tr>
-                <tr class="tableBodydistance" ng-repeat="sensor in vm.sensors" ng-show="vm.collapsedSensors">
+                <tr class="tableBodydistance" ng-repeat="sensor in vm.sensors">
                     <td >{{$index+1}}</td>
+                    <td>{{sensor.gatewayAddress}}</td>
+                    <td>{{sensor.clientAddress}}</td>
                     <td>{{sensor.productionDate}}</td>
                     <td>{{sensor.uploadInterval}}</td>
                     <td>{{sensor.batchSize}}</td>
@@ -50,15 +57,16 @@
         </div>  
         <div class="distanceMeasure">  
             <table class="distanceTable">
+                <tr>Sensor ID: <span style="color:red;">{{vm.sId.id}}</span></tr>
                 <tr class="tableHeaddistance">
-                    <td>{{Index}}</td>
-                    <td>S Id</td>
+                    <td>Index</td>
+                    <td>Reading Date</td>
                     <td>Val</td>
                     <td>Id</td>
                 </tr>
-                <tr class="tableBodydistance" ng-repeat="measurementSensor in vm.measurementSensors" ng-show="vm.collapsedMeasurements">
+                <tr class="tableBodydistance" ng-repeat="measurementSensor in vm.measurementSensors">
                     <td>{{$index+1}}</td>
-                    <td>{{measurementSensor.sensorId}}</td>
+                    <td>{{measurementSensor.readingDate}}</td>
                     <td>{{measurementSensor.value}}</td>
                     <td>{{measurementSensor.id}}</td>
                 </tr>

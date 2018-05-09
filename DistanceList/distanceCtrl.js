@@ -28,26 +28,12 @@
             };
             vm.collapsedEdit = false;
         };
-        vm.collapseSensors = function(){
-            if(vm.collapsedSensors == false){
-                vm.collapsedSensors = true;
-                return;
-            };
-            vm.collapsedSensors = false;
-        };
-        vm.collapseMeasurements = function(){
-            if(vm.collapsedMeasurements == false){
-                vm.collapsedMeasurements = true;
-                return;
-            };
-            vm.collapsedMeasurements = false;
-        };
-        vm.sensorRegister = function(registerProductionDate, registerUploadInterval, registerBatchSize){
-            var sensorPost = {'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'sensorTypeId':"33"}
+        vm.sensorRegister = function(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress){
+            var sensorPost = {'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress, 'clientAddress':registerClientAddress, 'sensorTypeId':"33"}
             $http.post("http://swiss-iot.azurewebsites.net/api/sensors", sensorPost);
         };
-        vm.sensorEdit = function(editProductionDate, editUploadInterval, editBatchSize, sensorId){
-            var sensorPut = {'productionDate':editProductionDate, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize, 'sensorTypeId':"33", id:sensorId, userId:"1"}
+        vm.sensorEdit = function(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensorId){
+            var sensorPut = {'productionDate':editProductionDate, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize, 'gatewayAddress':editGatewayAddress, 'clientAddress':editClientAddress, 'sensorTypeId':"33", id:sensorId, userId:"1"}
             $http.put("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId, sensorPut);
         };
         vm.pag = 0;
@@ -64,6 +50,11 @@
             console.log(vm.pag);
             $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/33/sensors?page=" + vm.pag + "&pageSize=30")
                 .then(function(response) {
+                    var totalCount=response.data.length;
+                    if(totalCount==0){
+                        vm.pag = vm.pag-1;
+                        return;
+                    }
                     vm.sensors = response.data;
                 });
         };
@@ -75,6 +66,10 @@
             $http.get("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId + "/readings")
                 .then(function(response) {
                     vm.measurementSensors = response.data;
+                });
+            $http.get("http://swiss-iot.azurewebsites.net/api/sensors/" + sensorId)
+                .then(function(response) {
+                    vm.sId = response.data;
                 });
         };
         vm.qs=1;
