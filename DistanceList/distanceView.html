@@ -1,7 +1,7 @@
 <div class="btn-group" id="collapseButton">
 
     <!-- Button Add sensor modal -->
-    <button type="button" class="btn btn-primary" ng-click="vm.collapseRegister()" data-toggle="modal" data-target="#exampleModalCenter1">Add sensor</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.collapseRegister()" data-toggle="modal" data-target="#exampleModalCenter1"><span class="glyphicon glyphicon-plus-sign"></span>Add sensor</button>
     <!-- Modal Add sensor-->
     <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -30,41 +30,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Button Edit sensor modal -->
-    <button type="button" class="btn btn-primary" ng-click="vm.collapseEdit()" data-toggle="modal" data-target="#exampleModalCenter2"><span class="glyphicon glyphicon-edit"></span>Edit sensor</button>
-    <!-- Modal Edit sensor-->
-    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit sensor view</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-                <table>
-                    <tr class="form-horizontal">
-                        <td><input class="form-control" id="focusedInput" ng-model="editProductionDate" type="text" placeholder="ProductionDate"></td>
-                        <td><input class="form-control" id="focusedInput" ng-model="editUploadInterval" type="text" placeholder="UploadInterval"></td>
-                        <td><input class="form-control" id="focusedInput" ng-model="editBatchSize" type="text" placeholder="BatchSize"></td>
-                        <td><input class="form-control" id="focusedInput" ng-model="editGatewayAddress" type="text" placeholder="GatewayAddress"></td>
-                        <td><input class="form-control" id="focusedInput" ng-model="editClientAddress" type="text" placeholder="ClientAddress"></td>
-                        <td><input class="form-control" id="focusedInput" ng-model="sensorId" type="text" placeholder="SensorId"></td>
-                    </tr>
-                </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary fa fa-check-square-o" ng-click="vm.sensorEdit(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensorId)">Edit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
- 
-           
 
     <!-- Button Live view modal -->
     <button type="button" class="btn btn-primary fa fa-calendar" ng-click="vm.collapseEdit()" data-toggle="modal" data-target="#exampleModalCenter5">Live view</button>
@@ -177,6 +142,7 @@
                                                     <td>{{measurementSensor.id}}</td>
                                                 </tr>
                                             </table>
+                                            <span ng-show="vm.noDataMeasurements" style="color:red;">No data.</span>
                                     </div>
                                   </div>
                                   <div class="modal-footer">
@@ -190,27 +156,11 @@
                     </td>
                 </tr>
             </table>
-            <button ng-click="vm.pagination(false)">Back pag</button>
-            <button ng-click="vm.pagination(true)">Next pag</button>
+            <ul class="pager">
+              <li class="previous"><a href="#" ng-click="vm.pagination(false)">Previous</a></li>
+              <li class="next"><a href="#" ng-click="vm.pagination(true)">Next</a></li>
+            </ul>    
         </div>  
-        <div class="distanceMeasure">  
-            <table class="distanceTable">
-                <tr>Sensor ID: <span style="color:green;">{{vm.sId.id}}</span></tr>
-                <tr class="tableHeaddistance">
-                    <td>Index</td>
-                    <td>Reading Date</td>
-                    <td>Val</td>
-                    <td>Id</td>
-                </tr>
-                <tr class="tableBodydistance" ng-repeat="measurementSensor in vm.measurementSensors">
-                    <td>{{$index+1}}</td>
-                    <td>{{measurementSensor.readingDate}}</td>
-                    <td>{{measurementSensor.value}}</td>
-                    <td>{{measurementSensor.id}}</td>
-                </tr>
-            </table>
-            <span ng-show="vm.noDataMeasurements" style="color:red;">No data.</span>
-        </div>
     </div>
 
         
