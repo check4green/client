@@ -11,26 +11,9 @@
             }
             vm.collapsedRegister = false;
         };
-<<<<<<< HEAD
-        vm.collapseEdit = function(){
-            if(vm.collapsedEdit == false){
-                vm.collapsedEdit = true;
-                return;
-            }
-            vm.collapsedEdit = false;
-        }
-        vm.sensorRegister = function(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress){
-            var sensorPost = {'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gateWayAddress':registerGatewayAddress,'clientAddress':registerClientAddress, 'sensorTypeId':"33"}
-            distanceService.insertSensors(sensorPost);
-        };
-        vm.sensorEdit = function(editProductionDate, editUploadInterval, editBatchSize, sensorId, editGatewayAddress, editClientAddress){
-            var sensorPut = {'productionDate':editProductionDate, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize, 'sensorTypeId':"33", id:sensorId, 'gateWayAddress':editGatewayAddress, 'clientAddress':editClientAddress, userId:"1"}
-            distanceService.updateSensors(sensorPut, sensorId);
-=======
         vm.sensorRegister = function(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress){
             var sensorPost = {'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress, 'sensorTypeId':"33"}
             distanceService.insertSensors(sensorPost);
->>>>>>> f93c686a001eda02877f8aa3abccf758c2f22ae1
         };
         vm.pag=0;
         vm.pagination = function(pg){
@@ -54,10 +37,6 @@
                     return;
                 }
                 vm.sensors = response.data;
-<<<<<<< HEAD
-                
-=======
->>>>>>> f93c686a001eda02877f8aa3abccf758c2f22ae1
             })
             vm.currentPag=vm.pag;
         }
@@ -66,17 +45,11 @@
          .then(function(response) {
             vm.sensors = response.data;
          });
-<<<<<<< HEAD
-=======
         vm.noDataMeasurements = true;
->>>>>>> f93c686a001eda02877f8aa3abccf758c2f22ae1
         vm.measurementSensor = function(sensorId){  
            distanceService.getMeasurements(sensorId)
                 .then(measureSuccess)
             function measureSuccess(measurements){
-<<<<<<< HEAD
-                    vm.measurementSensors =measurements;
-=======
                     vm.measurementSensors = measurements;
                     var measurementDataCheck = measurements.length;
                     if(measurements==0){                      
@@ -84,7 +57,6 @@
                     } else {
                         vm.noDataMeasurements = false;
                     }
->>>>>>> f93c686a001eda02877f8aa3abccf758c2f22ae1
                 }
             distanceService.getSensorById(sensorId)
                 .then(success) 
