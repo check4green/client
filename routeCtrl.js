@@ -2,7 +2,6 @@
     "use strict";
     var app = angular.module("sensorApp", [ "common.services", "ui.router", "dx"]);
 
-
     app.config(["$stateProvider", "$urlRouterProvider",
                function($stateProvider, $urlRouterProvider){
                    $urlRouterProvider.otherwise("/index");
@@ -11,10 +10,22 @@
                 url:"/home",
                 template: "<index></index>"
                })
-
+               .state("menu",{
+                   url: "/home/menu",
+                   views:{
+                       'menu@':{
+                        template:"<menu></menu>" 
+                       },
+                   }
+               })
                .state("categories",{
-                url: "/home/categories",
-                template: "<categories></categories>"
+                url: "/home/menu/categories",
+
+                views:{
+                    'categories@':{
+                       template: "<categories></categories>" 
+                    }
+                }
                })
 
                .state('categories.sensorList',{

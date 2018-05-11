@@ -4,171 +4,63 @@
 }
  body{
      margin: 0px;
+     font-size: 13px;
     }
-.header{
-    background-color: gray;
-}
+.navbar-inverse{
+    background-color: #626d71;
+    border-color: #080808;
+}    
 .swiss{
-    width: 115px;
-}
-/*butoanele back+refersh*/
-.reloadFlex{
-    position: absolute;
-    z-index: 1;
-    right: 6px;
-    top: 20px;
-}
-.allb{
-   background-color: rgb(122, 121, 121);
-}
-
-/*icon*/  
-.fa{
-    font-size: 40px !important;
-    color: #b38867;
+    margin-top: 3px;
+    width: 80px;
     cursor: pointer;
-    padding: 2px;
-    padding-left: 3px;
+    user-select: none!important;
 }
-
-    /* active */
-.rel:active{
-    width: 90%;
-    font-size: 41px !important;
-    color: #656565;
-    background-color: #ddbc95;
+#categories{
+    margin-top: -20px;
+    margin-left: -15px;
+    background-color: #353C3F;
+    /* height: 659px; */
 }
-.allb:active{
-    background-color: #ddbc95;
+#categories .btn-primary{
+    color: rgb(252, 232, 232);
+    background-color: #b38867 ;
+    border-color: #353C3F;
+    outline-color: #353C3F;
 }
-.black:active{
-    color:#000000ab; 
+#collapseButton .btn-primary{
+    color: rgb(252, 232, 232);
+    background-color: #b38867 ;
+    border-color: #353C3F;
+    outline-color: #353C3F;
 }
-    /* active */
-
-.buttonsGrid{
-    background-color: #8a8989;
-    display: flex;
-    height: 1080px;
-    font-family: myFont;
-    font-size: 20px!important;
+.btn-primary{
+    color: rgb(252, 232, 232);
+    background-color: #b38867 ;
+    border-color: #353C3F;
+    outline-color: #353C3F;
 }
-
-.left{
-    background-color: #656565;
-    
+.btn-primary:hover{
+    color: rgb(252, 232, 232);
+    background-color: #ddbc95  ;
 }
-.gridScroll{
-    overflow: auto !important;
-    height: 579px;
-    margin: 0px 5px 0px;
+.btn-primary:active{
+    color: rgb(216, 201, 201);
+    background-color: #ddbc95!important;
 }
-@media ( min-height: 1920px){
-    .buttonsGrid{
-        height: 1920px;
-    }
-    .gridScroll{
-        height: 1920px;
-    }
-}
-@media ( min-height: 1080px){
-    .buttonsGrid{
-        height: 1080px;
-    }
-    .gridScroll{
-        height: 1080px;
-    }
-}
-.categories{
-    background-color: #101014ab;
-}
-.distanceDistance{
-    display: flex;
-}
-.sensorDistance{
-    text-transform: uppercase;
-}
-.sensorSet input, button{
-    font-family: myFont;
-    font-size: 15px;
-    border: solid 1px #926440; 
-    background-color: #bb8f6d; 
-    cursor: pointer;
-    padding:5px 20px 5px;
-
+.table{
+    text-align: center;
 }
 .title{
     display: flex;
 }
 .list{
     display: flex;
-    overflow: auto;
-    height: 510px;
-    background-color: honeydew;
-}
-.borderB{
-    border: solid 1px  #b38867;
-    padding-right: 55px
-}
-.measureList{
-    flex-grow: 1;
-    flex-direction: column;
-}
-.title .list, p{
-    border: solid 1px  #ddbc95; 
-    padding: 5px;
-    margin: 0px;
-}
-.sensorDistance{
-    margin-left: 20px;
 }
 
 
-.sensorSet button:active{
-    background-color: #ddbc95;
-}
 
-/* distance */
 
-.distanceTable{
-    border-collapse: collapse;   
-}
-.distanceListMeasure{
-    display: flex;
-}
-.distance{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 540px;
-    background-color: white;
-}
-.distanceMeasure{
-    margin-left: 20px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 540px;
-    background-color: white;
-    flex-grow: 0;
-}
-
-@media ( min-height: 950px ){
-    .list{
-        height: 800px;
-    }
-    .distance{
-        height: 885px;
-    }
-}
-
-.tableHeaddistance {
-    background-color: #ddbc95;
-}
-.tableBodydistance td{
-    border: solid 1px  #ddbc95; 
-}
-.tableHeaddistance td{
-    border: solid 1px  #b38867;
-}
 /* remove scrollbar space */
 ::-webkit-scrollbar{
       
@@ -181,12 +73,14 @@
     background-color: #b38867;
 }
 
-
+ul, menu, dir{
+    -webkit-padding-start: 0px;
+}
 
 
 
 /* grid devexpress */
-.dx-datagrid-content .dx-datagrid-table, .title{ 
+.dx-datagrid-content .dx-datagrid-table{ 
     color: #000000!important;
 } /* culoare text grid */
 
@@ -223,7 +117,7 @@
 .dx-datagrid-group-opened:before{
     color:#b38867;
 }/*sageata show measurements*/
- .dx-datagrid-headers .dx-datagrid-table .dx-row > td, .title{
+ .dx-datagrid-headers .dx-datagrid-table .dx-row > td{
     background-color: #ddbc95;
     border-color: #ddbc95!important;
 }
