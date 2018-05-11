@@ -1,5 +1,4 @@
 <button ng-click="vm.collapseRegister()">Add sensor</button>
-<button ng-click="vm.collapseEdit()">Edit sensor</button>
 <table >
     <tr class="sensorSet" ng-show="vm.collapsedRegister">
         <td><input ng-model="registerProductionDate" type="text" placeholder="ProductionDate"></td>
@@ -10,20 +9,7 @@
         <td><button ng-click="vm.sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress)">Register</button></td>
     </tr>
 </table>
-<table class="sensorSet">
-        <tr  ng-show="vm.collapsedEdit">
-            <td><input ng-model="editProductionDate" type="text" placeholder="ProductionDate"></td>
-            <td><input ng-model="editUploadInterval" type="text" placeholder="UploadInterval"></td>
-            <td><input ng-model="editBatchSize" type="text" placeholder="BatchSize"></td>
-            <td><input ng-model="editGatewayAddress" type="text" placeholder="GatewayAddress"></td>
-            <td><input ng-model="editClientAddress" type="text" placeholder="ClientAddress"></td>
-            <td><input ng-model="sensorId" type="text" placeholder="SensorId"></td>
-            <td><button ng-click="vm.sensorEdit(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensorId)">Edit</button></td>
-        </tr>
-</table>
-
 <div class="distanceDistance">
-
  <div class="distanceListMeasure">
      <div class="distance">
             <table class="distanceTable">
@@ -38,7 +24,7 @@
                     <td>Id</td>
                 </tr>
                 <tr class="tableBodydistance" ng-repeat="sensor in vm.sensors">
-                    <td >{{$index+1}}</td>
+                    <td>{{$index+1}}</td>
                     <td>{{sensor.gatewayAddress}}</td>
                     <td>{{sensor.clientAddress}}</td>
                     <td>{{sensor.productionDate}}</td>
@@ -49,6 +35,7 @@
                     <td>
                         <button ng-click="vm.measurementSensor(sensor.id)">Measurement</button>
                         <delete-sensor></delete-sensor>
+                        <edit-sensor></edit-sensor>
                     </td>
                 </tr>
             </table>
@@ -57,7 +44,7 @@
         </div>  
         <div class="distanceMeasure">  
             <table class="distanceTable">
-                <tr>Sensor ID: <span style="color:red;">{{vm.sId.id}}</span></tr>
+                <tr>Sensor ID: <span style="color:green;">{{vm.sId.id}}</span></tr>
                 <tr class="tableHeaddistance">
                     <td>Index</td>
                     <td>Reading Date</td>
@@ -71,6 +58,7 @@
                     <td>{{measurementSensor.id}}</td>
                 </tr>
             </table>
+            <span ng-show="vm.noDataMeasurements" style="color:red;">No data.</span>
         </div>
     </div>
 
