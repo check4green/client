@@ -1,0 +1,12 @@
+<button ng-click="startEdit()" ng-hide="editing">Edit</button>
+<table class="sensorSet" ng-show="editing">
+    <tr>
+        <td><input ng-model="editProductionDate" type="text" placeholder="ProductionDate"></td>
+        <td><input ng-model="editUploadInterval" type="text" placeholder="UploadInterval"></td>
+        <td><input ng-model="editBatchSize" type="text" placeholder="BatchSize"></td>
+        <td><input ng-model="editGatewayAddress" type="text" placeholder="GatewayAddress"></td>
+        <td><input ng-model="editClientAddress" type="text" placeholder="ClientAddress"></td>
+        <td><button ng-click="sensorEdit(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensor.id)">Edit</button></td>
+        <td><button ng-click="cancelEditSensor()">Cancel</button></td>
+    </tr>
+</table>
