@@ -1,6 +1,19 @@
 <div class="btn-group" id="collapseButton">
-
-    <!-- Button Add sensor modal -->
+<div class="distanceDistance">
+<div class="bigTable">
+        <table class="table table-bordered table-hover">
+                <thead>
+                  <tr class="warning">
+                    <th scope="col">Index</th>
+                    <th scope="col">GatewayAddress</th>
+                    <th scope="col">ClientAddress</th>
+                    <th scope="col">ProductionDate</th>
+                    <th scope="col">UploadInterval</th>
+                    <th scope="col">BatchSize</th>
+                    <th scope="col">SensorTypeID</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">
+                      <!-- Button Add sensor modal -->
     <button type="button" class="btn btn-primary" ng-click="vm.collapseRegister()" data-toggle="modal" data-target="#exampleModalCenter1"><span class="glyphicon glyphicon-plus-sign"></span>Add sensor</button>
     <!-- Modal Add sensor-->
     <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -48,7 +61,7 @@
                 <button type="button" class="btn btn-primary glyphicon-cog" ng-click="vm.quantitySet(quantity)">Set</button>
                 <input id="msg" ng-model="quantity" type="text" class="form-control" name="msg" placeholder="Number of rows">
             </div>
-            <div class=" title">
+            <div class="tableLiveView">
                <table class="table table-bordered table-hover">
                     <thead>
                       <tr class="warning">
@@ -83,21 +96,7 @@
     </div>
     
 </div>
-
-<div class="distanceDistance">
-<div class="bigTable">
-        <table class="table table-bordered table-hover">
-                <thead>
-                  <tr class="warning">
-                    <th scope="col">Index</th>
-                    <th scope="col">GatewayAddress</th>
-                    <th scope="col">ClientAddress</th>
-                    <th scope="col">ProductionDate</th>
-                    <th scope="col">UploadInterval</th>
-                    <th scope="col">BatchSize</th>
-                    <th scope="col">SensorTypeID</th>
-                    <th scope="col">ID</th>
-                    <th scope="col"></th>
+                    </th>
                   </tr>
                 </thead>
                 <tbody  class="scrollbar" ng-repeat="sensor in vm.sensors">
