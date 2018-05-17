@@ -1,32 +1,43 @@
-    <!-- Button Edit sensor modal -->
-    <button type="button" class="btn btn-primary" ng-click="startEdit()" data-toggle="modal" data-target="#exampleModalCenter2"><span class="glyphicon glyphicon-edit"></span>Edit</button>
-    <!-- Modal Edit sensor-->
-    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit sensor view</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <table>
-                <tr>
-                    <td><input ng-model="editProductionDate" type="text" placeholder="ProductionDate"></td>
-                    <td><input ng-model="editUploadInterval" type="text" placeholder="UploadInterval"></td>
-                    <td><input ng-model="editBatchSize" type="text" placeholder="BatchSize"></td>
-                    <td><input ng-model="editGatewayAddress" type="text" placeholder="GatewayAddress"></td>
-                    <td><input ng-model="editClientAddress" type="text" placeholder="ClientAddress"></td>
-                </tr>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary fa fa-check-square-o" ng-click="sensorEdit(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensor.id)">Edit</button>
-          </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">ProductionDate</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editProductionDate">
+                  </div>
+                  
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">UploadInterval</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editUploadInterval">
+                  </div>
+                  
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">BatchSize</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editBatchSize">
+                  </div>
+                  
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">GatewayAddress</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editGatewayAddress">
+                  </div>
+                  
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">ClientAddress</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editClientAddress">
+                  </div>
+            <button type="button" id="edit-button-r" class="btn btn-primary fa fa-check-square-o" ng-click="sensorEdit(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensor.id)">Edit</button>
         </div>
       </div>
-    </div>
 
- 
+      

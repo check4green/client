@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="indexStyle.css" type="text/css"> <!-- swiss -->
-    <link rel="stylesheet" href="/DistanceList/deleteSensorDirectiveStyle.css" type="text/css">
-    <link rel="stylesheet" href="/CategoriesMenu/categoriesStyle.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- icon -->
     <link rel="stylesheet" href="/CommonData/style.css" type="text/css">  <!-- devexpress -->
     <link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/17.2.5/css/dx.light.css" /> <!-- devexpress -->
     
@@ -26,41 +23,39 @@
                         }</script>
 </div>   -->
 
-<header>   
-    <!-- Image and text -->
-    <nav class="navbar navbar-inverse">   
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <img class="swiss" ui-sref="index" title="Back to home" src="/iconPng/swiss.png">
-            </div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark container-fluid sticky-top" ng-controller="clickCtrl as vm">
+   <button id="menu" data-toggle="collapse" data-target="#demo"><span><img src="/iconPng/swiss2.png" alt=""></span></button> <!--colapse -->
+    <div id="demo" class="collapse">
+    <!-- Links -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary" ui-sref="index" title="home" ng-click="vm.myStyle(1)" ng-style="vm.Style1">Home</button>
+    <!-- Dropdown -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="Categories" ng-click="vm.myStyle(2)" ng-style="vm.Style2">Categories</button>
+      <div class="dropdown-menu row">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link" data-toggle="pill" ui-sref="categories.sensorList" title="temperature sensors list" ng-click="vm.myStyle(3)" ng-style="vm.Style3">Temperature</a>
+          <a class="nav-link" data-toggle="pill" ui-sref="categories.distanceList" title="distance sesors" ng-click="vm.myStyle(4)" ng-style="vm.Style4">Distance</a>
+          <a class="nav-link" data-toggle="pill" title="humidity" style="color: white;">Humidity</a>
         </div>
-    </nav>
-</header> 
-
-<!-- home/categories/set -->
-<div class="container-fluid">
-    <div class="btn-group-vertical col-md-1" id="categories" ng-controller="clickCtrl as vm">
-      <button type="button" title="home" class="btn btn-primary rel fa icon fa fa-home" ui-sref="index" ng-click="vm.myStyle(1)" ng-style="vm.Style1">Home</button>
-      <button type="button" title="categories" class="btn btn-primary rel fa fa-indent" data-toggle="collapse" data-target="#demo" ng-click="vm.myStyle(2)" ng-style="vm.Style2">Categories</button>
-      <div id="demo" class="collapse">
-        <div class="col-mx-1" id="categoriesNav" ng-controller="clickCtrl as vm">
-            <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a class="btn btn-primary fa fa-thermometer-2" ui-sref="categories.sensorList" title="temperature sensors list" ng-click="vm.myStyle(1)" ng-style="vm.Style1">Temperature</a></li>
-              <li class="active"><a class="btn btn-primary rel fa fa-sort-amount-asc" ui-sref="categories.distanceList" title="distance sesors" ng-click="vm.myStyle(2)" ng-style="vm.Style2">Distance</a></li>
-              <li class="active"><a class="btn btn-primary rel fa fa-tint" title="humidity" ng-click="vm.myStyle(3)" ng-style="vm.Style3">Humidity</a></li>
-            </ul>
-        </div>  
-
       </div>
-      <button type="button" title="settings" class="btn btn-primary rel fa fa-cog" ng-click="vm.myStyle(3)" ng-style="vm.Style3">Setings</button>
     </div>
+    <!-- Links -->
+    <button type="button" class="btn btn-primary" title="settings">Setings</button>
+  </div>
+</div>
+  
+  <!-- Brand -->
+  <a class="navbar-brand"  ui-sref="index">
+        <img class="swiss" title="Back to home" src="/iconPng/swiss.png">
+      </a>
+</nav>
 
-    <div class="gridView col-md-10">
-        <div class="grid st"><div ui-view="filters"></div></div>
-        <div class="grid sd"><div ui-view="distance"></div></div> 
-        <div class="grid sh"><div ui-view="humidity"></div></div>
-    </div>         
-</div>    
+<div class="gridView col-md-16 container">
+    <div class="grid st"><div ui-view="filters"></div></div>
+    <div class="grid sd"><div ui-view="distance"></div></div> 
+    <div class="grid sh"><div ui-view="humidity"></div></div>
+</div>         
 </body>
 
 <!--Library-->
@@ -91,6 +86,7 @@
 <script src="/Measurements/measurementsCtrl.js"></script>
 <script src="Chart1/controllerChart.js"></script>
 <script src="selector.js"></script>
+<script src="/DistanceList/selectRowTable.js"></script>
 
     
 <!--Components-->

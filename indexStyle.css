@@ -2,21 +2,82 @@
      margin: 0px;
      font-size: 13px;
     }
-.navbar-inverse{
-    background-color: #626d71;
-    border-color: #080808;
-}    
-.swiss{
-    margin-top: 3px;
-    width: 80px;
+#menu img{
+    width: 30px;
     cursor: pointer;
     user-select: none!important;
+}
+.swiss{
+    width: 90px;
+    cursor: pointer;
+    user-select: none!important;
+    position: absolute;
+    right: 5px;
+}
+.navbar #menu{
+    width: 70px;
+    height: 49px;
+    font-size: 22px;
+    background-color: #626d7133;
+    color: aliceblue;
+    border-style: none;
+    user-select: none!important;
+}
+.input-group-prepend span{
+    width: 75px;
+}
+.navbar #menu span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+.navbar #menu span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .navbar #menu:hover span {
+    padding-right: 25px;
+  }
+  .navbar #menu:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+.navbar button{
+    width: 200px;
+    height: 50px;
+    font-size: 14px;
+    user-select: none!important;
+}
+.btn-group .dropdown-menu{
+    background-color: #b38867;
+    padding: 5px;
+    width: 200px;
+    font-size: 12px;
+    text-align: center;
+    user-select: none!important;
+}
+.nav a{
+    color: white;
+    user-select: none;
+}
+
+.nav a:hover{
+    background-color: #ddbc95;
+    color: #000000;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #000000;
+    background-color: #ddbc95;
 }
 #categories{
     margin-top: -20px;
     margin-left: -15px;
     background-color: #353C3F;
-    /* height: 659px; */
     user-select: none!important;
 }
 #categories .btn-primary{
@@ -51,11 +112,45 @@
 .tableLiveView{
     display: flex;
 }
+.pager li{
+    cursor: pointer;
+}
+.dropdown-menu p{
+    font-size: 11px;
+}
+.dropdown-menu #edit-button-r{
+    background-color: #c6dd95;
+    color: #626d71;
+}
+.dropdown-menu button{
+    width: 50%;
+}
+.btn-group button:focus{
+    background-color: #ddbc95!important;
+}
+.btn-group button:hover{
+    background-color: #ddbc95!important;
+}
 
-
-
-
-
+.dropdown .btn-primary:focus{
+    background-color: #ddbc95!important;
+}
+.pager .btn-secondary{
+    color: #6c757d;
+    background-color: #c6dd95;
+    border-color: #6c757d;
+}
+.pager .btn-secondary:active{
+    background-color: #95dd99!important;
+}
+.pager .btn-primary{
+    color: #6c757d;
+    background-color: #ce877b!important;
+    border-color: #6c757d;
+}
+.pager .btn-primary:active{
+    background-color: #d65959!important;
+}
 /* remove scrollbar space */
 ::-webkit-scrollbar{
       
@@ -71,8 +166,6 @@
 ul, menu, dir{
     -webkit-padding-start: 0px;
 }
-
-
 
 /* grid devexpress */
 .dx-datagrid-content .dx-datagrid-table{ 
@@ -92,6 +185,13 @@ ul, menu, dir{
 .dx-button{
     border-color:#ddbc95!important; 
 }
+.distanceDistance table thead {
+    background-color: #ddbc95;
+}
+.distanceDistance table{
+    background-color: #ddbd952f;
+}
+
  /*Add button */
 .dx-datagrid .dx-link{
     text-decoration: none!important;
