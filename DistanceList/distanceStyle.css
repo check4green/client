@@ -19,6 +19,7 @@ background-color:#4e9a06;
 }
 .distanceList .subTable{
     padding:20px;
+    border-style: solid ;
     border: solid 1px #4e9a06;
     border-top: solid 5px #4e9a06;
     box-shadow: inset 0px 0px 10px grey;

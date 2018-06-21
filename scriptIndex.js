@@ -1,5 +1,6 @@
 // show arrow on navbar
-function myFunction(x) {
+
+function showNavText(x) {
     x.classList.toggle("fa-chevron-down");
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
@@ -9,17 +10,35 @@ function myFunction(x) {
     }
 }
 // scroll img moto
-window.onscroll = function() {myHeader()};
-var navbar = document.getElementById("myTopnav");
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
-function myHeader() {
+function myFunction() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky")
   } else {
     navbar.classList.remove("sticky");
   }
 }
+
+// When the user scrolls down 20px from the top of the document, show the button
+// window.onscroll = function() {scrollFunction()};
+
+// function scrollFunction() {
+//     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//         document.getElementById("myBtn").style.display = "block";
+//     } else {
+//         document.getElementById("myBtn").style.display = "none";
+//     }
+// }
+
+// // When the user clicks on the button, scroll to the top of the document
+// function buttonScrollTop() {
+//     document.body.scrollTop = 0;
+//     document.documentElement.scrollTop = 0;
+// }
 
 // open/close menu
 function openNav() {
@@ -37,3 +56,4 @@ function closeNav() {
     document.getElementById("close-menu").style.display = "none";
     document.getElementById("close-menu").style.marginLeft= "0";
 }
+

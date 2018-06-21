@@ -6,8 +6,12 @@ body {
 .topnav {
   position: relative;
   background-color: #333;
+  z-index: 1;
 }
-
+.topnav img{
+  display: none;
+  width: 100px;
+}
 .sticky {
   position: fixed;
   top: 0;
