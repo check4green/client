@@ -1,0 +1,17 @@
+<button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister()" ng-show="registerButton">Add sensor</button>
+<div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
+    <div class="col-md-3">
+        <label>Production Date:</label>
+        <input type="text" class="form-control" ng-model="registerProductionDate" >
+        <label>Upload Interval:</label>
+        <input type="text" class="form-control" ng-model="registerUploadInterval">
+        <label>Batch Size:</label>
+        <input type="text" class="form-control" ng-model="registerBatchSize" >
+        <label>Gateway Address:</label>
+        <input type="text" class="form-control" ng-model="registerGatewayAddress" >
+        <label>Client Address:</label>
+        <input type="text" class="form-control" ng-model="registerClientAddress">
+        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
+        <button type="button" class="btn btn" ng-click="cancelRegisterSensor()">Cancel</button>
+    </div>
+</div>

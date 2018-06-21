@@ -1,23 +1,19 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("distanceCtrl",["$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($localStorage, $timeout, distanceService, $http) {
+   app.controller("distanceCtrl",["$scope", "$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($scope, $localStorage, $timeout, distanceService, $http) {
         var vm = this;
-        vm.collapsedRegister = false;
-        vm.collapseRegister = function(){
-            if(vm.collapsedRegister == false){
-                vm.collapsedRegister = true;
-                return;
-            }
-            vm.collapsedRegister = false;
+
+        $scope.distanceList = true;
+
+        vm.expandSelected = function(sensor){
+            vm.sensors.forEach(function(val){
+                val.expanded=false;
+            })
+            sensor.expanded=true;
         };
-        vm.sensorRegister = function(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress){
-            var sensorPost = {'sensorTypeId':"33",'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress,userId: "1" }
-            distanceService.insertSensors(sensorPost);
-        };
-       
+
        //sensors
-       
         distanceService.getFinalPage()
         .then(finalPage);
         function finalPage(data){
@@ -65,6 +61,11 @@
                 vm.back = false;
             }
             
+            if(vm.pag == $localStorage.final-1){
+                vm.next = false;
+            }else{
+                vm.next = true;
+            }
             $localStorage.page = vm.pag;
             console.log(vm.pag);
             distanceService.getSensors(vm.pag)
@@ -73,112 +74,46 @@
             })
         }
         $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
+        // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
          });
-       
-       //readings
-       
-        vm.noDataMeasurements = true;
-        vm.measurementSensor = function(gatewayAddress, clientAddress){  
-            vm.clientAddress = clientAddress;
-            vm.gatewayAddress = gatewayAddress;
-             vm.page = 0;
-            vm.backr = false;
-            //set the number of readings/ page
-            vm.setPageSize = function(pageSize){
-                                vm.pageSize = pageSize;
-                                distanceService.getFinalPageReadings()
-                                    .then(function(response){
-                                        vm.totalReadings = response;
-                                        vm.finalPag =Math.round(vm.totalReadings / vm.pageSize) -1;
-                                        console.log('lastPage: ', vm.finalPag);
-                                    distanceService.getMeasurements(gatewayAddress, clientAddress, vm.page, vm.pageSize)
-                                        .then(measureSuccess)
-                                    function measureSuccess(measurements){
-                                        vm.measurementSensors = measurements;
-                                        var measurementDataCheck = measurements.length;
-                                        if(measurements==0){                      
-                                            vm.noDataMeasurements = true;
-                                        } else {
-                                            vm.noDataMeasurements = false;
-                                        }
-                                    }
-                                    })
-                            }
-            
-           
-            distanceService.getSensorById(gatewayAddress, clientAddress)
-                .then(success) 
-                  function success(data){
-                      vm.sId = data;
-                }
-           
-        };
-       
-       distanceService.getFinalPageReadings()
-                                    .then(function(response){
-                                        vm.totalReadings = response;
-       })
-       //pagination for readings
-       
-       vm.page = 0;
-       if(vm.page == 0){
-           vm.backr = false;
-       }else {
-           vm.backr = true;
-       }
-       vm.nextr = true;
-       vm.paginationReadings = function(pag){
-           vm.backr = true;
-           if (pag == false){
-               vm.page = vm.page -1;
-           }
-           if(pag == true){
-               vm.page = vm.page+1;
-           }
-           if(vm.page<0){
-               vm.page = 0;
-           }
-           if(vm.page == 0){
-                vm.backr = false;
-            }else {
-                vm.backr = true;
-            }
-         if (vm.page == vm.finalPag){
-             vm.nextr = false;
-         }
-           
-            console.log('page', vm.page)
-            distanceService.getMeasurements(vm.gatewayAddress, vm.clientAddress, vm.page, vm.pageSize)
+
+         vm.getLastRead = function(GA, CA){
+            distanceService.getMeasurements(GA, CA, '0', '1')
                 .then(measureSuccess)
-            function measureSuccess(measurements){
-                    vm.measurementSensors = measurements;
-                }
-       }
-       
-       
+                    function measureSuccess(measurements){
+                        vm.lastRead = measurements;
+                        if(measurements==0){                   
+                            vm.noRead = true;
+                        } else {
+                            vm.noRead = false;
+                        }
+                    } 
+                    vm.lastRead = null;
+                    if(vm.lastRead == null){
+                        vm.noRead = true;
+                    } else {
+                        vm.noRead = false;
+                    }
+        };
+        
        //live view
        
-       vm.qs=1;
-       vm.quantitySet= function(quantity){
-           vm.qs= quantity;
-       };
-        vm.reload = function(){
-            $http.get("http://swiss-iot.azurewebsites.net/api/sensors/65/readings")
-            .then(function(response) {
-                vm.sensor1 = response.data;
-            });
-            $http.get("http://swiss-iot.azurewebsites.net/api/sensors/91/readings")
-            .then(function(response) {
-                vm.sensor2 = response.data;
-            });
-            $timeout(function(){
-                vm.reload();
-            },1000)
-        };
-        vm.reload();
-       
-        
+    //    vm.qs=10;
+    //    vm.quantitySet= function(quantity){
+    //        vm.qs = quantity;
+    //    };
+    //    vm.reload = function(){
+    //     $http.get("http://192.168.0.18:32333/api/sensors/46/readings")
+    //     .then(function(response) {
+    //         vm.sensor1 = response.data;
+    //     });
+    //     $timeout(function(){
+    //         vm.reload();
+    //     },1000)
+    // };
+    // vm.reload();
+
     }]);
 }());

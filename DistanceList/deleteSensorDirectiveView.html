@@ -1,10 +1,5 @@
-<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete</button>
-    <div class="dropdown-menu" >
-        <p class="dropdown-header">Are you sure to delete this sensor?</p>
-        <div class="pager">
-            <button type="button" class="btn btn-secondary col-md-6" data-dismiss="modal" ng-click="cancelDeleteSensor()">No</button>
-            <button type="button" class="btn btn-primary col-md-6" data-dismiss="modal" ng-click="deleteSensor(sensor.id, vm.sensors, sensor)">Yes</button>
-        </div>
-    </div>
-  </div>
+<div class="deleteDisplay" ng-show="deleteDisplay">
+    <label>Are you sure to delete this sensor?</label><br>
+    <button type="button" class="btn btn-danger" ng-click="deleteSensor(sensor.gatewayAddress, sensor.clientAddress, vm.sensors, sensor)">Yes</button>
+    <button type="button" class="btn btn-primary" ng-click="cancelDeleteSensor()">No</button>
+</div>

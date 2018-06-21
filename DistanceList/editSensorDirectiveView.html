@@ -1,43 +1,10 @@
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edit</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-            <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">ProductionDate</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editProductionDate">
-                  </div>
-                  
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">UploadInterval</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editUploadInterval">
-                  </div>
-                  
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">BatchSize</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editBatchSize">
-                  </div>
-                  
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">GatewayAddress</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editGatewayAddress">
-                  </div>
-                  
-                  <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">ClientAddress</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="editClientAddress">
-                  </div>
-            <button type="button" id="edit-button-r" class="btn btn-primary fa fa-check-square-o" ng-click="sensorEdit(editProductionDate, editUploadInterval, editBatchSize, sensor.gatewayAddress, sensor.clientAddress, sensor.id)">Edit</button>
-        </div>
-      </div>
-
-      
+<div class="editDisplay" ng-show="editDisplay">
+    <div class="col-md-3">
+        <label>Upload Interval:</label>
+        <input type="text" class="form-control" ng-model="editUploadInterval">
+        <label>Batch Size:</label>
+        <input type="text" class="form-control" ng-model="editBatchSize">
+        <button type="button" class="btn btn-success" ng-click="sensorEdit(editUploadInterval, editBatchSize, sensor.gatewayAddress, sensor.clientAddress, sensor.id)">Edit</button>
+        <button type="button" class="btn btn" ng-click="cancelEditSensor()">Cancel</button>
+    </div>
+</div>

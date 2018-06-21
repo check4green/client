@@ -1,0 +1,118 @@
+.btn-success, .btn-success:hover{
+background-color:#4e9a06;
+}
+.distanceList{
+    margin-top:30px;
+}
+.distanceList table{
+    text-align:center;
+}
+.distanceList thead{
+    font-size: 15px;
+    font-weight: 600;
+}
+.distanceList tbody{
+    font-size: 12px;
+}
+.distanceListContainerInfo button{
+    width:35px;
+}
+.distanceList .subTable{
+    padding:20px;
+    border: solid 1px #4e9a06;
+    border-top: solid 5px #4e9a06;
+    box-shadow: inset 0px 0px 10px grey;
+}
+.registerDisplay{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}
+.registerDisplay input{
+    margin-bottom:10px;
+}
+.registerSensorButton{
+    margin-bottom:10px;
+}
+.deleteDisplay{
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    padding:10px;
+    font-size:20px;
+    color:red;
+}
+.deleteDisplay button{
+    margin-top:30px;
+}
+.editDisplay{
+    justify-content: center;
+    display:flex;
+}
+.editDisplay{
+    text-align: left;
+}
+.editDisplay input{
+    margin-bottom:10px;
+}
+.measurementsDisplay{
+    display:flex;
+    justify-content: center;
+}
+.measurementsDisplay button{
+    margin-top:10px;
+}
+.measurementsDisplay table{
+    text-align: center;
+}
+.measurementsContainerSet{
+    display: flex;
+    flex-direction: row;
+    margin-bottom:30px;
+}
+.measurementsContainerSet button{
+    display: flex;
+    flex-direction: row;
+    height:34px;
+    margin-top:0px;
+}
+.measurementsTotalReadings{
+    display: flex;
+    font-size:17px;
+}
+.measurementsContainerNavigation{
+    display:flex;
+}
+.measurementsCancelButton{
+    display: flex;
+}
+.chartDisplay button{
+    margin-top:10px;
+}
+.chartDisplay input{
+    margin-left:-15px!important;
+    margin-top:2px;
+}
+.line {
+    fill: none;
+    stroke: #4e9a06;
+    stroke-width: 1.5px;
+}
+.zoom {
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+}
+.tick line{
+    opacity: 0.2;
+}
+.dot {
+    fill: #4e9a06;   
+    opacity: 2;
+}
+.legend{
+    padding: 5px;
+    font: 10px sans-serif;
+    box-shadow: 2px 2px 1px #888;
+}

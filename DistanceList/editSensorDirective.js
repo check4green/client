@@ -3,22 +3,39 @@ app.directive('editSensor', function(){
     return { 
         restrict: 'E',
         templateUrl: 'DistanceList/editSensorDirectiveView.html',
-        controller: function($scope, $http, distanceService){
-            $scope.editing = false;
+        controller: function($scope, distanceService){
+            $scope.editButton = true;
+            $scope.editDisplay = false;
             $scope.startEdit = function(){
-                $scope.editing = true;
-            }
-            $scope.sensorEdit = function(editProductionDate, editUploadInterval, editBatchSize, gatewayAddress, clientAddress, sensorId){
-                var sensorPut = {'productionDate':editProductionDate, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize, 'sensorTypeId':"33", id:sensorId, 'gatewayAddress':gatewayAddress, 'clientAddress':clientAddress, userId:"1"}
+                $scope.editButton = false;
+                $scope.detailsDisplay = false;
+                $scope.deleteButton = false;
+                $scope.measurementsButton = false;
+                $scope.chartButton = false;
+                if($scope.editDisplay == false){
+                    $scope.editDisplay = true;
+                    $scope.editButton = false;
+                }
+            };
+            $scope.sensorEdit = function(editUploadInterval, editBatchSize, gatewayAddress, clientAddress, sensorId){
+                $scope.editDisplay = false;
+                $scope.editButton = true;
+                $scope.detailsDisplay = true;
+                $scope.deleteButton = true;
+                $scope.measurementsButton = true;
+                $scope.chartButton = true;
+                var sensorPut = {'uploadInterval':editUploadInterval, 'batchSize':editBatchSize}
                 distanceService.updateSensors(sensorPut, gatewayAddress, clientAddress);
-                $scope.sensor.gatewayAddress=gatewayAddress;
-                $scope.sensor.clientAddress=clientAddress;
-                $scope.sensor.productionDate=editProductionDate;
                 $scope.sensor.uploadInterval=editUploadInterval;
                 $scope.sensor.batchSize=editBatchSize;
             };
             $scope.cancelEditSensor = function(){
-                $scope.editing = false;
+                $scope.editButton = true;
+                $scope.editDisplay = false;
+                $scope.detailsDisplay = true;
+                $scope.deleteButton = true;
+                $scope.measurementsButton = true;
+                $scope.chartButton = true;
             };
         }
     }

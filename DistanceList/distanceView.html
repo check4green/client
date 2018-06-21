@@ -1,210 +1,66 @@
-<div class="btn-group" id="collapseButton">
-<div class="distanceDistance">
-        <table class="table table-hover">
-                <thead >
-                  <tr>
-                    <th>Index</th>
-                    <th>GatewayAddress</th>
-                    <th>ClientAddress</th>
-                    <th>ProductionDate</th>
-                    <th>UploadInterval</th>
-                    <th>BatchSize</th>
-                    <th>SensorTypeID</th>
-                    <th>ID</th>
-                    <th>
-                      <!-- Button Add sensor modal -->
-                      <button type="button" class="btn btn-primary" ng-click="vm.collapseRegister()" data-toggle="modal" data-target="#exampleModalCenter1"><span class="glyphicon glyphicon-plus-sign"></span>Add sensor</button>
-                      <!-- Modal Add sensor-->
-                      <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLongTitle">Add sensor view</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">ProductionDate</span>
-                                  </div>
-                                  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="registerProductionDate">
-                                </div>
-                                
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">UploadInterval</span>
-                                  </div>
-                                  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="registerUploadInterval">
-                                </div>
-                                
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">BatchSize</span>
-                                  </div>
-                                  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="registerBatchSize">
-                                </div>
-                                
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">GatewayAddress</span>
-                                  </div>
-                                  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="registerGatewayAddress">
-                                </div>
-                                
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">ClientAddress</span>
-                                  </div>
-                                  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="registerClientAddress">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary fa fa-check-square-o" data-dismiss="modal" ng-click="vm.sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress)">Register</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Button Live view modal -->
-                      <button type="button" class="btn btn-primary fa fa-calendar" ng-click="vm.collapseEdit()" data-toggle="modal" data-target="#exampleModalCenter5">Live view</button>
-                      <!-- Modal Live view-->
-                      <div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Live view menu</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group">
-                <button type="button" class="btn btn-primary glyphicon-cog" ng-click="vm.quantitySet(quantity)">Set</button>
-                <input id="msg" ng-model="quantity" type="text" class="form-control" name="msg" placeholder="Number of rows">
-            </div>
-            <!-- tableLiveView -->
-            <div class="tableLiveView">
-              <!-- S1 -->
-               <table class="table table-bordered table-hover">
-                    <theade>
-                      <tr class="warning">
-                        <th>Index</th>
-                        <th>Sensor 1 in CM</th>
-                      </tr>
-                    </theade>
-                    <tbody ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">
-                      <tr> 
-                          <th >{{$index+1}}</th>
-                        <td>{{s1.value}}</td>
-                      </tr>
-                    </tbody>
-                </table>
-                <!-- S2 -->
-                 <table class="table table-bordered table-hover">
-                    <theade>
-                      <tr class="warning">
-                        <th>Sensor 2 in CM</th>
-                      </tr>
-                    </theade>
-                    <tbody ng-repeat="s2 in vm.sensor2 | limitTo:vm.qs"{{s2.value}}>
-                      <tr> 
-                        <td>{{s2.value}}</td>
-                      </tr>
-                    </tbody>
-                </table>
-              </div>      
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-                      </div>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody ng-repeat="sensor in vm.sensors">
-                  <tr >
-                    <th >
-                      {{$index+1}}
-                    </th>
-                    <td>{{sensor.gatewayAddress}}</td>
-                    <td>{{sensor.clientAddress}}</td>
-                    <td>{{sensor.productionDate}}</td>
-                    <td>{{sensor.uploadInterval}}</td>
-                    <td>{{sensor.batchSize}}</td>
-                    <td>{{sensor.sensorTypeId}}</td>
+<div class="distanceList container">
+    <register-sensor></register-sensor>
+     <div ng-show="distanceList">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>No.</td>
+                    <td>Name</td>
+                    <td>Sensor ID</td>
+                    <td>Status</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat-start="sensor in vm.sensors">
+                    <td>{{$index+1}}</td>
+                    <td>Proximity Sensor</td>
                     <td>{{sensor.id}}</td>
-                    <td>
-                      <!-- Measurement -->
-                    <div class="btn-group">
-                      <!-- Button measurement modal -->
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3" ng-click="vm.measurementSensor(sensor.gatewayAddress, sensor.clientAddress)">Measurement</button>
-                      <!-- Modal measurement -->
-                      <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Measurement view</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <!-- Measurement table -->
-                                    <div class="distanceMeasure">  
-                                            <table class="table table-bordered table-hover">
-                                                <div class="input-group">
-                                                    <button type="button" class="btn btn-primary glyphicon-cog" ng-click="vm.setPageSize(pageSize)">Set</button>
-                                                    <input id="msg" ng-model="pageSize" type="text" class="form-control" name="msg" placeholder="Number of readings/ page">
-                                                </div>
-                                                <div>Total Readings: {{vm.totalReadings}}</div>
-                                                <tr>Sensor ID: <span style="color:red;">{{vm.sId.id}}</span></tr>
-                                                <tr class="warning">
-                                                    <td>Index</td>
-                                                    <td>ReadingDate</td>
-                                                    <td>Value</td>
-                                                    <td>Id</td>
-                                                </tr>
-                                                <tr class="tableBodydistance" ng-repeat="measurementSensor in vm.measurementSensors | limitTo: vm.pageSize">
-                                                    <td>{{$index+1}}</td>
-                                                    <td>{{measurementSensor.readingDate}}</td>
-                                                    <td>{{measurementSensor.value}}</td>
-                                                    <td>{{measurementSensor.id}}</td>
-                                                </tr>
-                                                
-                                            </table>
-                                             <span ng-show="vm.noDataMeasurements" style="color:red;">No data.</span>
-                                          
-                                        <ul class="pager">
-                                             <li class="previous"><a ng-click="vm.paginationReadings(false)" ng-show="vm.backr">Back</a></li>
-                                             <li class="next"><a ng-click="vm.paginationReadings(true)" ng-show= "vm.nextr">Next</a></li>
-                                        </ul>
-                                    </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  </div>
-                                </div>
-                            </div>
-                      </div>
-                      
-                      <edit-sensor></edit-sensor>
-                      <delete-sensor></delete-sensor>  
-                    </div>      
+                    <td>Active</td>
+                    <td class="distanceListContainerInfo">
+                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); vm.getLastRead(sensor.gatewayAddress, sensor.clientAddress);">+</button>
+                        <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
                     </td>
                 </tr>
-            </table>
-            <ul class="pager">
-              <li class="previous"><a ng-click="vm.pagination(false)" ng-show="vm.back">Previous</a></li>
-              <li class="next"><a ng-click="vm.pagination(true)" ng-show="vm.next">Next</a></li>
-            </ul>    
-   
-  
+                <tr ng-if="sensor.expanded" ng-repeat-end="">
+                    <td colspan="8" class="subTable">
+                        <details-sensor></details-sensor>
+                        <div>
+                            <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
+                            <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
+                            <button type="button" class="btn btn-success" ng-click="startEdit()" ng-show="editButton">Edit</button>
+                            <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
+                        </div>
+                        <edit-sensor></edit-sensor>
+                        <measurements></measurements>
+                        <chartd3></chartd3>
+                        <delete-sensor></delete-sensor>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <button type="button" class="btn btn-default" ng-click="vm.pagination(false)" ng-show="vm.back">< Previous</button>
+            <button type="button" class="btn btn-default" ng-click="vm.pagination(true)" ng-show="vm.next">Next ></button>
+        </div>
     </div>
 
+    <!-- <div>    
+        <form>
+            <input ng-model="quantity" type="text" placeholder="Number of rows">
+            <button ng-click="vm.quantitySet(quantity)">Set</button>
+        </form>
+        
+            <table>
+                <thead>
+                    <tr><td></td>S1 in Cm</tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">
+                        <td>{{s1.value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div> -->
     
 </div>

@@ -1,0 +1,39 @@
+<div class="measurementsDisplay" ng-show="measurementsDisplay">
+    <div>
+        <div class="measurementsContainerSet">
+            <label>Number of readins/page:</label>
+            <input type="text" class="form-control" ng-model="vm.pageSize">
+            <button type="button" class="btn btn" ng-click="setPageSize(vm.pageSize)">Set</button>
+        </div>
+        <div class="measurementsTotalReadings">
+            <label>Total Readings: {{totalReadings}}</label>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Index</td>
+                    <td>Reading Date</td>
+                    <td>Val</td>
+                    <td>Id</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="measurementSensor in measurementSensors | limitTo: pageSize">
+                    <div></div>
+                    <td>{{$index+1}}</td>
+                    <td>{{measurementSensor.readingDate}}</td>
+                    <td>{{measurementSensor.value}}</td>
+                    <td>{{measurementSensor.id}}</td>
+                </tr>
+                <tr>
+                    <td colspan="8" ng-show="noDataMeasurements">No data</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="measurementsContainerNavigation">
+            <button type="button" class="btn btn-default" ng-click="paginationReadings(false)" ng-show="backr">< Previous</button>
+            <button type="button" class="btn btn-default" ng-click="paginationReadings(true)" ng-show= "nextr">Next ></button>
+        </div>
+        <button type="button" class="btn btn measurementsCancelButton" ng-click="cancelMeasurements()">Cancel</button>
+    </div>
+</div>
