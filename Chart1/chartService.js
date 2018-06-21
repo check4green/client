@@ -1,19 +1,21 @@
 (function () {
     "use strict";
 angular.module("sensorApp")
-        .factory( "chartService" , ["$q", "$http", function chartService($q, $http){
-        
-        return {load:getChart};
+        .factory( "chartService" , [ "$http", "$q", chartService])
+       function chartService($http, $q) {
+            return { load:getChart }
         function getChart(loadOptions){
-        return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/42/readings')
-        .then(chartSuccess)
-        .catch(chartError);
+            return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/address/0xff/0xb1/readings')
+                .then(chartSuccess)
+                .catch(chartError);
+        
         function chartSuccess(response){
-        return{data:response.data};
-        }
+            return response.data;
+            }
         function chartError(response){
-        return $q.reject('Error retrieving value(s) .(HTTP status:' +response.status + ')')
-        }
-        }
-        }])
+            return $q.reject('Error retrieving value(s) .(HTTP status:' +response.status + ')')
+            }
+        
+       }
+       }
 }())

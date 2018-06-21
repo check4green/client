@@ -1,7 +1,6 @@
 (function(){
     "use strict";
-    var app = angular.module("sensorApp", [ "common.services", "ui.router", "dx"]);
-
+    var app = angular.module("sensorApp", [ "common.services", "ui.router", "dx", "ngStorage", "angularCharts", "d3"]);
     app.config(["$stateProvider", "$urlRouterProvider",
                function($stateProvider, $urlRouterProvider){
                    $urlRouterProvider.otherwise("/index");
@@ -38,7 +37,7 @@
                })
 
                .state('categories.distanceList',{
-                url:  "/home/categories/distance",
+                url:  "/home/categories/distance/",
                 views: {
                    'distance@':{
                        template: "<distance></distance>"

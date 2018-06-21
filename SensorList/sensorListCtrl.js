@@ -33,7 +33,7 @@
                         dataField: "uploadInterval",
                     },
                     {
-                        dataField: "Name"
+                        dataField: "id"
                     },  
                 ],
                 onSelectionChanged: function (selectedItems) {

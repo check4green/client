@@ -8,11 +8,33 @@
         updateSensors:updateSensors,
         deleteSensors:deleteSensors,
         getMeasurements: getMeasurements,
-        getSensorById: getSensorById
-    }   
-     function  getSensors(pag){
-    return $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/33/sensors?page=" + pag + "&pageSize=30")
-         .catch(getError);
+        getSensorById: getSensorById,
+        getFinalPage: getFinalPage,
+        getAllReadings: getAllReadings,
+        getPageFinal: getPageFinal,
+        getFinalPageReadings: getFinalPageReadings
+    } 
+       function getPageFinal(){
+           return $http.get('http://192.168.0.18:32333/api/sensors/65/readings?page=0&pageSize=50')
+           .then(function(response){
+               return response.headers('X-Tracker-Pagination-PageCount')
+           })
+       }
+       function getAllReadings(pageSize){
+           return $http.get('http://192.168.0.18:32333/api/sensors/65/readings?page=0&pageSize='+pageSize)
+           .then(function(response){
+               return response.data;
+           })
+       }
+       function getFinalPage(){
+           return  $http.get('http://192.168.0.18:32333/api/sensors?page=0&pageSize=30')
+             .then(function (response){
+                return response.headers('X-Tracker-Pagination-PageCount');
+           })
+       }
+       function  getSensors(pag){
+            return $http.get("http://192.168.0.18:32333/api/sensors?page=" + pag + "&pageSize=30")
+            .catch(getError);
      }
        function sensorsSuccess(response){
            return response.data;
@@ -28,9 +50,9 @@
        function insertError(response){
            return $q.reject('Error registering sensor(s).(HTTP status:' +response.status + ')');
        }
-       function updateSensors(newSensor, id){
-           return $http.put("http://swiss-iot.azurewebsites.net/api/sensors/"+id, newSensor)
-                .catch(updateError);
+       function updateSensors(newSensor, gatewayAdress, clientAddress){
+           return $http.put("http://swiss-iot.azurewebsites.net/api/sensors/address/"+gatewayAdress +"/"+clientAddress, newSensor)
+           .catch(updateError);
        }
        function updateError(response){
            return $q.reject('Error updating sensor(s).(HTTP status:' +response.status + ')');
@@ -43,10 +65,10 @@
        function deleteError(response){
            return $q.reject('Error deleting sensor(s).(HTTP status:' +response.status + ')');
        }
-       function getMeasurements(id){
-           return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/' + id + '/readings')
+       function getMeasurements(gatewayAddress, clientAddress, page, pageSize){
+           return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/address/' + gatewayAddress  + '/' +clientAddress + '/readings?page='+page +'&pageSize='+ pageSize)
            .then(measurementsSuccess)
-           .catch(measurementsError);
+           .catch(measurementsError)
        }
        function measurementsSuccess(response){
            return response.data;
@@ -54,10 +76,16 @@
        function measurementsError(response){
            return $q.reject('Error retrieving value(s) .(HTTP status:' + response.status + ')')
        }
-       function getSensorById(id){
-           return $http.get('http://swiss-iot.azurewebsites.net/api/sensors/' +id)
+       function getSensorById( gatewayAddress, clientAddress){
+           return $http.get('http://192.168.0.18:32333/api/sensors/' + gatewayAddress +'/'+ clientAddress)
            .then(function(response){
                return response.data;
+           })
+       }
+       function getFinalPageReadings(){
+           return $http.get('http://192.168.0.18:32333/api/sensors/65/readings')
+           .then(function(response){
+               return response.headers('X-Tracker-Pagination-SensorReadingsCount');
            })
        }
    })

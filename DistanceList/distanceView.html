@@ -142,7 +142,7 @@
                       <!-- Measurement -->
                     <div class="btn-group">
                       <!-- Button measurement modal -->
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3" ng-click="vm.measurementSensor(sensor.id)">Measurement</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3" ng-click="vm.measurementSensor(sensor.gatewayAddress, sensor.clientAddress)">Measurement</button>
                       <!-- Modal measurement -->
                       <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered" role="document">
@@ -157,6 +157,11 @@
                                     <!-- Measurement table -->
                                     <div class="distanceMeasure">  
                                             <table class="table table-bordered table-hover">
+                                                <div class="input-group">
+                                                    <button type="button" class="btn btn-primary glyphicon-cog" ng-click="vm.setPageSize(pageSize)">Set</button>
+                                                    <input id="msg" ng-model="pageSize" type="text" class="form-control" name="msg" placeholder="Number of readings/ page">
+                                                </div>
+                                                <div>Total Readings: {{vm.totalReadings}}</div>
                                                 <tr>Sensor ID: <span style="color:red;">{{vm.sId.id}}</span></tr>
                                                 <tr class="warning">
                                                     <td>Index</td>
@@ -164,18 +169,24 @@
                                                     <td>Value</td>
                                                     <td>Id</td>
                                                 </tr>
-                                                <tr class="tableBodydistance" ng-repeat="measurementSensor in vm.measurementSensors">
+                                                <tr class="tableBodydistance" ng-repeat="measurementSensor in vm.measurementSensors | limitTo: vm.pageSize">
                                                     <td>{{$index+1}}</td>
                                                     <td>{{measurementSensor.readingDate}}</td>
                                                     <td>{{measurementSensor.value}}</td>
                                                     <td>{{measurementSensor.id}}</td>
                                                 </tr>
+                                                
                                             </table>
-                                            <span ng-show="vm.noDataMeasurements" style="color:red;">No data.</span>
+                                             <span ng-show="vm.noDataMeasurements" style="color:red;">No data.</span>
+                                          
+                                        <ul class="pager">
+                                             <li class="previous"><a ng-click="vm.paginationReadings(false)" ng-show="vm.backr">Back</a></li>
+                                             <li class="next"><a ng-click="vm.paginationReadings(true)" ng-show= "vm.nextr">Next</a></li>
+                                        </ul>
                                     </div>
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                   </div>
                                 </div>
                             </div>
@@ -188,13 +199,11 @@
                 </tr>
             </table>
             <ul class="pager">
-              <li class="previous"><a ng-click="vm.pagination(false)">Previous</a></li>
-              <li class="next"><a ng-click="vm.pagination(true)">Next</a></li>
+              <li class="previous"><a ng-click="vm.pagination(false)" ng-show="vm.back">Previous</a></li>
+              <li class="next"><a ng-click="vm.pagination(true)" ng-show="vm.next">Next</a></li>
             </ul>    
-        </div>  
-    </div>
-
-        
+   
+  
     </div>
 
     

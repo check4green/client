@@ -2,11 +2,10 @@
     "use strict";
     angular.module('sensorApp')
     
-   .controller("chartCtrl",["chartService" ,function chartCtrl(chartService) {
+   .controller("chartCtrl", ["chartService" , function chartCtrl(chartService) {
         var vm=this;
-        
-            
-            vm.chartOptions = {
+       //vm.chart = function(gateWayAddress, clientAddress){
+         vm.chartOptions = {
                 dataSource: chartService,
                
                 commonSeriesSettings: {
@@ -35,6 +34,6 @@
                 },
                 width: '100%'
             };
-       
+       //}
     }]);
 }());

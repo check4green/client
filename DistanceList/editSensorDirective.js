@@ -8,11 +8,11 @@ app.directive('editSensor', function(){
             $scope.startEdit = function(){
                 $scope.editing = true;
             }
-            $scope.sensorEdit = function(editProductionDate, editUploadInterval, editBatchSize, editGatewayAddress, editClientAddress, sensorId){
-                var sensorPut = {'productionDate':editProductionDate, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize, 'sensorTypeId':"33", id:sensorId, 'gatewayAddress':editGatewayAddress, 'clientAddress':editClientAddress, userId:"1"}
-                distanceService.updateSensors(sensorPut, sensorId);
-                $scope.sensor.gatewayAddress=editGatewayAddress;
-                $scope.sensor.clientAddress=editClientAddress;
+            $scope.sensorEdit = function(editProductionDate, editUploadInterval, editBatchSize, gatewayAddress, clientAddress, sensorId){
+                var sensorPut = {'productionDate':editProductionDate, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize, 'sensorTypeId':"33", id:sensorId, 'gatewayAddress':gatewayAddress, 'clientAddress':clientAddress, userId:"1"}
+                distanceService.updateSensors(sensorPut, gatewayAddress, clientAddress);
+                $scope.sensor.gatewayAddress=gatewayAddress;
+                $scope.sensor.clientAddress=clientAddress;
                 $scope.sensor.productionDate=editProductionDate;
                 $scope.sensor.uploadInterval=editUploadInterval;
                 $scope.sensor.batchSize=editBatchSize;
