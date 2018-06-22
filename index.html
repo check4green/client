@@ -14,7 +14,7 @@
     
 </head>
 <body ng-app="sensorApp">
-    <!-- <button onclick="buttonScrollTop()" id="myBtn" title="Go to top"><span class="fa fa-angle-double-up"></span></button> -->
+    <button onclick="buttonScrollTop()" id="myBtn" title="Go to top"><span class="fa fa-angle-double-up"></span></button>
 <div class="header">
       <img class="moto-img" src="/iconPng/C4G-full-moto.png" alt="Check4Green" />
   </div>
@@ -22,25 +22,22 @@
   
   <div class="topnav" id="myTopnav">
       <span id="close-menu" class="fa fa-outdent"></span>
-      <span id="main" class="fa fa-bars" onclick="openNav()"></span>
+      <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
       <a class="active" ui-sref="index" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
-      
       <a >News</a>
       <a href="https://www.check4green.com/" title="Check4Green page">Contact</a>
       <a >About</a>
-      <a href="javascript:void(0);" class="icon fa fa-chevron-up" onclick="showNavText(this)">
-      </a>
-      <a id="img"><img src="/iconPng/C4G-full.png"></a>
+      <a href="javascript:void(0);" class="icon fa fa-align-left" onclick="showNavText(this)" title="Show header menu"></a>
   </div>
 </header>
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="/iconPng/C4G-full.png"></a>
+  <a href="javascript:void(0)" class="closebtn"><img src="/iconPng/C4G-full.png"></a>
   <a class="a" onclick="closeNav()" ui-sref="index">Home<i class="fa fa-home"></i></a>
-  <a class="a" onclick="closeNav()" title="temperature sensors list">Temperature<i class="fa fa-cloud"></i></a>
   <a class="a" onclick="closeNav()" ui-sref="distanceList" title="distance sesors">Distance<i class="fa fa-crop"></i></a>
-  <a class="a disabled" onclick="closeNav()">Humidity<i class="fa fa-tint"></i></a>
+  <a class="a" title="temperature sensors list" style="cursor: no-drop;">Temperature<i class="fa fa-cloud"></i></a>
+  <a class="a disabled" style="cursor: no-drop;">Humidity<i class="fa fa-tint"></i></a>
 </div>
-<div id="bg-gray" class="bg-gray" onclick="closeNav()"></div>
+<div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
 <div class="gridView container">
     <div class="grid st"><div ui-view="filters"></div></div>
     <div class="grid sd"><div ui-view="distance"></div></div> 
