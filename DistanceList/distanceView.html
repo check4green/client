@@ -16,7 +16,10 @@
                     <td>{{$index+1}}</td>
                     <td>Proximity Sensor</td>
                     <td>{{sensor.id}}</td>
-                    <td>{{sensor.activ}}</td>
+                    <td>
+                        <span class="label label-success" ng-if="sensor.activ == true">Active</span>
+                        <span class="label label-danger" ng-if="sensor.activ == false">Inactive</span>
+                    </td>
                     <td class="distanceListContainerInfo">
                         <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); vm.getLastRead(sensor.gatewayAddress, sensor.clientAddress);">+</button>
                         <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
