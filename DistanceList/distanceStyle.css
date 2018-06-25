@@ -1,6 +1,5 @@
 .table-overflow{
-    overflow-x: scroll;
-
+    overflow-x: auto;
 }
 .btn-success, .btn-success:hover{
 background-color:#4e9a06;
