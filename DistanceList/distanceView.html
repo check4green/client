@@ -1,6 +1,6 @@
 <div class="distanceList container">
     <register-sensor></register-sensor>
-     <div ng-show="distanceList">
+     <div ng-show="distanceList"  class="table-overflow">
         <table class="table">
             <thead>
                 <tr>
@@ -25,7 +25,7 @@
                         <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
                     </td>
                 </tr>
-                <tr ng-if="sensor.expanded" ng-repeat-end="">
+                <tr ng-if="sensor.expanded" ng-repeat-end="" class="table-overflow">
                     <td colspan="8" class="subTable">
                         <details-sensor></details-sensor>
                         <div>
