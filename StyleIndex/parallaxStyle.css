@@ -1,0 +1,59 @@
+.parallax {
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-banner {
+    text-align: center;
+    margin: 40px 20px;
+}
+
+.text-banner h1 {
+    font-size: 35px;
+}
+
+.text-banner p {
+    font-size: 14px;
+}
+
+.fill-screen {
+    background-size: cover;
+    background-position: center;
+}
+
+.fixed-attachment {
+    background-attachment: fixed;
+}
+
+.activity-section {
+    margin: 15px;
+    background-color: white;
+}
+
+.activity-element {
+    text-align: center;
+    background-color: white;
+}
+
+.activity-element img {
+    width: 150px;
+    height: 150px;
+}
+
+footer {
+    background-color: #333;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+@media only screen and (max-width: 1024px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}

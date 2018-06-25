@@ -1,7 +1,7 @@
 // show arrow on navbar
 
 function showNavText(x) {
-    x.classList.toggle("fa-chevron-down");
+    x.classList.toggle("fa-caret-up");
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
         x.className += " responsive";
@@ -10,12 +10,12 @@ function showNavText(x) {
     }
 }
 // scroll img moto
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {scrollFunction()};
 
 var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
-function myFunction() {
+function scrollFunction() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky")
   } else {

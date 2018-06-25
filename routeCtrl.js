@@ -6,9 +6,13 @@
                    $urlRouterProvider.otherwise("/index");
                    $stateProvider
             .state("index",{
-             url:"/home",
-             template: "<index></index>"
-            })
+             url:"/index",
+             views: {
+                'index@':{
+                    template: "<index></index>"
+                }
+            }
+        })
             .state('distanceList',{
              url:  "/distance",
              views: {
