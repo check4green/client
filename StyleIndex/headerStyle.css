@@ -8,11 +8,8 @@ a .down + .up{
   display: inline-block;
   padding: 3px;
 }
-.down{
-  transform: rotate(45deg);
-}
-.up{
-  transform: rotate(-135deg);
+#navbar{
+  z-index: 99;
 }
 .topnav {
   position: relative;

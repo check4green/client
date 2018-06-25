@@ -8,13 +8,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   <!-- font and icons /-->
     <link rel="stylesheet" type="text/css" href="StyleIndex/headerStyle.css"> <!-- swiss HEADER-->
     <link rel="stylesheet" type="text/css" href="/StyleIndex/menuStyle.css"> <!--swiss MENU-->
-    <link rel="stylesheet" type="text/css" href="/StyleIndex/buttonScrollStyle.css"> <!--swiss BUTTON SCROLL-->
+    <link rel="stylesheet" type="text/css" href="/StyleIndex/parallaxStyle.css"> <!--swiss PARALLAX-->
     <link rel="stylesheet" href="/StyleIndex/bootstrap.min.css">
     <link rel="stylesheet" href="/DistanceList/distanceStyle.css" type="text/css">  <!-- swiss DISTANCE -->
     
 </head>
 <body ng-app="sensorApp">
-    <button onclick="buttonScrollTop()" id="myBtn" title="Go to top"><span class="fa fa-angle-double-up"></span></button>
+    
 <div class="header">
       <img class="moto-img" src="/iconPng/C4G-full-moto.png" alt="Check4Green" />
   </div>
@@ -27,7 +27,7 @@
       <a >News</a>
       <a href="https://www.check4green.com/" title="Check4Green page">Contact</a>
       <a >About</a>
-      <a href="javascript:void(0);" class="icon fa fa-align-left" onclick="showNavText(this)" title="Show header menu"></a>
+      <a href="javascript:void(0);" class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
   </div>
 </header>
 <div id="mySidenav" class="sidenav">
@@ -37,6 +37,9 @@
   <a class="a" title="temperature sensors list" style="cursor: no-drop;">Temperature<i class="fa fa-cloud"></i></a>
   <a class="a disabled" style="cursor: no-drop;">Humidity<i class="fa fa-tint"></i></a>
 </div>
+
+<div ui-view="index"></div>
+
 <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
 <div class="gridView container">
     <div class="grid st"><div ui-view="filters"></div></div>
@@ -65,9 +68,11 @@
 
 <!--Controllers-->
 <script src="/DistanceList/distanceCtrl.js"></script>
+<script src="/Parallax-directive/parallaxCtrl.js"></script>
 
 <!--Components-->
 <script src="/DistanceList/distanceComponent.js"></script>
+<script src="/Parallax-directive/parallaxComponent.js"></script>
 
 <!--Directive-->
 <script src="DistanceList/registerSensorDirective.js"></script>

@@ -1,7 +1,7 @@
 // show arrow on navbar
 
 function showNavText(x) {
-    x.classList.toggle("fa-arrow-up");
+    x.classList.toggle("fa-caret-up");
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
         x.className += " responsive";
