@@ -57,20 +57,20 @@ background-color:#4e9a06;
 .editDisplay input{
     margin-bottom:10px;
 }
-.measurementsDisplay{
+.measurementsDisplay .measurementsContainerSet{
     display:flex;
     justify-content: center;
 }
-.measurementsDisplay button{
-    margin-top:10px;
+.measurementsDisplay .measurementsContainerSet label{
+    display:flex;
+    width:100px;
+}
+.measurementsDisplay .measurementsContainerSet input{
+    display:flex;
+    width:100px;
 }
 .measurementsDisplay table{
     text-align: center;
-}
-.measurementsContainerSet{
-    display: flex;
-    flex-direction: row;
-    margin-bottom:30px;
 }
 .measurementsContainerSet button{
     display: flex;
@@ -85,15 +85,16 @@ background-color:#4e9a06;
 .measurementsContainerNavigation{
     display:flex;
 }
-.measurementsCancelButton{
-    display: flex;
-}
-.chartDisplay button{
-    margin-top:10px;
-}
 .chartDisplay input{
     margin-left:-15px!important;
     margin-top:2px;
+}
+.noData{
+    text-align: center;
+    padding:30px;
+    color:red;
+    font-weight:600;
+    font-size: 16px;
 }
 .line {
     fill: none;

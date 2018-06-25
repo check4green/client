@@ -15,17 +15,24 @@
                     $scope.measurementsButton = false;
                     $scope.deleteButton = false;
                     $scope.editButton = false;
-                   distanceService.getMeasurements(gatewayAddress, clientAddress, page, readings)
-                                .then(function(response){
-                                    var measurements = response;
+                    d3.selectAll("svg > *").remove();
+                    distanceService.getMeasurements(gatewayAddress, clientAddress, page, readings)
+                                .then(getSuccess)
+                                .catch(getError);
+                                function getError(){
+                                    $scope.noDataChart = true;
+                                }
+                                function getSuccess(data){
+                                    $scope.noDataChart = false;
+                                    var measurements = data;
                                for (var i=0; i<measurements.length; i++){
-                                   var n = measurements.length -1;
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);
                                    if(measurements[i].value >400){
                                        measurements[i].value = 450;
                                    }
                                }
-                                var svg = d3.select("svg");
+                                var svg = d3.select("svg")
+                                            .attr("id", "svgId");
                                 var margin = {top: 20, right: 50, bottom: 110, left: 60},
                                     margin2 = {top: 430, right: 50, bottom: 30, left: 50},
                                     width = +svg.attr("width") - margin.left - margin.right,
@@ -237,9 +244,7 @@
                                     d.value = +d.value;
                                     return d;
                                 }
-                    
-                                    })
-           
+        }
             }
 
             $scope.cancelChart = function(){

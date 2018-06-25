@@ -44,6 +44,7 @@
        }
        function insertSensors(sensor){
            return $http.post("http://192.168.0.18:32333/api/sensors/", sensor)
+        //    return $http.post("http://swiss-iot.azurewebsites.net/api/sensors/", sensor)
                 .then(sensorsSuccess)
                 .catch(insertError);
        }

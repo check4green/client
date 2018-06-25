@@ -28,6 +28,8 @@ app.directive('editSensor', function(){
                 distanceService.updateSensors(sensorPut, gatewayAddress, clientAddress);
                 $scope.sensor.uploadInterval=editUploadInterval;
                 $scope.sensor.batchSize=editBatchSize;
+                $scope.editUploadInterval = '';
+                $scope.editBatchSize = '';
             };
             $scope.cancelEditSensor = function(){
                 $scope.editButton = true;
@@ -36,6 +38,8 @@ app.directive('editSensor', function(){
                 $scope.deleteButton = true;
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;
+                $scope.editUploadInterval = '';
+                $scope.editBatchSize = '';
             };
         }
     }

@@ -20,11 +20,21 @@ app.directive('registerSensor', function(){
             var sensorPost = {'sensorTypeId':"14",'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress,userId: "1" }
             distanceService.insertSensors(sensorPost);
             sensors.unshift(sensorPost);
+            $scope.registerProductionDate ='';
+            $scope.registerUploadInterval = '';
+            $scope.registerBatchSize = '';
+            $scope.registerGatewayAddress = '';
+            $scope.registerClientAddress = '';
         };
         $scope.cancelRegisterSensor = function(){
             $scope.registerDisplay = false;
             $scope.registerButton = true;
             $scope.distanceList = true;
+            $scope.registerProductionDate ='';
+            $scope.registerUploadInterval = '';
+            $scope.registerBatchSize = '';
+            $scope.registerGatewayAddress = '';
+            $scope.registerClientAddress = '';
         };
         }
     }
