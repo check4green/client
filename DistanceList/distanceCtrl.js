@@ -115,7 +115,6 @@
     //    };
     //    vm.reload = function(){
     //     $http.get("http://192.168.0.18:32333/api/sensors/46/readings")
-    //     $http.get(""http://swiss-iot.azurewebsites.net/api/sensors/46/readings")
     //     .then(function(response) {
     //         vm.sensor1 = response.data;
     //     });
