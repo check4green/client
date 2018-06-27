@@ -5,7 +5,6 @@
         var vm = this;
 
         $scope.distanceList = true;
-
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
                 val.expanded=false;
@@ -68,15 +67,24 @@
             }
             $localStorage.page = vm.pag;
             console.log(vm.pag);
+            $scope.loading=true;
             distanceService.getSensors(vm.pag)
             .then(function(response){
                  vm.sensors = response.data;
+                 $scope.loading = false;
             })
         }
+        $scope.loading = true;
         $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
         // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
+            $scope.loading = false;
+            $scope.noData = false;
+         })
+         .catch(function(response){
+            $scope.noData = true;
+            $scope.loading = false;
          });
 
          vm.getLastRead = function(GA, CA){
@@ -96,6 +104,7 @@
                     } else {
                         vm.noRead = false;
                     }
+                    
         };
         
        //live view

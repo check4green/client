@@ -46,7 +46,7 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "250px";
     document.getElementById("bg-gray").style.display = "block";
     document.getElementById("close-menu").style.display = "block";
-    document.getElementById("close-menu").style.marginLeft = "250px";
+    document.getElementById("close-menu").style.marginLeft = "249px";
 }
 
 function closeNav() {

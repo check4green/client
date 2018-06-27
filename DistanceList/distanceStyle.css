@@ -1,6 +1,5 @@
 .table-overflow{
-    overflow-x: scroll;
-
+    overflow-x: auto;
 }
 .btn-success, .btn-success:hover{
 background-color:#4e9a06;
@@ -36,6 +35,32 @@ background-color:#4e9a06;
     align-items: center;
     padding:10px;
 }
+.bg-table{
+    position: relative;
+}
+
+.checkbox-inline{
+    position: absolute;
+    left: 500px;
+    top: -10px;
+    user-select: none;
+}
+
+.checkbox-inline-a{
+    position: absolute;
+    left: 540px;
+    top: -6px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    user-select: none;
+}
+.checkbox-inline-a:hover{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
 .registerDisplay input{
     margin-bottom:10px;
 }
