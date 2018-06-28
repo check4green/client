@@ -1,7 +1,10 @@
 <div class="distanceList container">
     <register-sensor></register-sensor>
+    
      <div ng-show="distanceList"  class="table-overflow">
+        <div ng-show="loadingGray" class="loaderGray"></div>
         <div ng-show="loading" class="loader"></div>
+        
             <table class="table">
                 <thead>
                     <tr>

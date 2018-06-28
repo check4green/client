@@ -68,23 +68,28 @@
             $localStorage.page = vm.pag;
             console.log(vm.pag);
             $scope.loading=true;
+            $scope.loadingGray=true;
             distanceService.getSensors(vm.pag)
             .then(function(response){
                  vm.sensors = response.data;
                  $scope.loading = false;
+                 $scope.loadingGray = false;
             })
         }
         $scope.loading = true;
+        $scope.loadingGray = true;
         $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
         // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
+            $scope.loadingGray = false;
             $scope.noData = false;
          })
          .catch(function(response){
             $scope.noData = true;
             $scope.loading = false;
+            $scope.loadingGray = false;
          });
 
          vm.getLastRead = function(GA, CA){
