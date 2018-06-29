@@ -20,6 +20,9 @@ background-color:#4e9a06;
 .distanceListContainerInfo button{
     width:35px;
 }
+.distanceList .distanceNavigation button{
+    margin-right:10px;
+}
 .distanceList .subTable{
     padding:20px;
     border-style: solid ;
@@ -89,6 +92,12 @@ background-color:#4e9a06;
 }
 .measurementsContainerNavigation{
     display:flex;
+}
+.measurementsDisplay .measurementsContainerNavigation{
+    margin-bottom:10px;
+}
+.measurementsDisplay .measurementsContainerNavigation button{
+    margin-right:10px;
 }
 .chartDisplay input{
     margin-left:-15px!important;
