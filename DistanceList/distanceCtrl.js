@@ -5,7 +5,6 @@
         var vm = this;
 
         $scope.distanceList = true;
-
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
                 val.expanded=false;
@@ -68,15 +67,29 @@
             }
             $localStorage.page = vm.pag;
             console.log(vm.pag);
+            $scope.loading=true;
+            $scope.loadingGray=true;
             distanceService.getSensors(vm.pag)
             .then(function(response){
                  vm.sensors = response.data;
+                 $scope.loading = false;
+                 $scope.loadingGray = false;
             })
         }
+        $scope.loading = true;
+        $scope.loadingGray = true;
         $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
         // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
+            $scope.loading = false;
+            $scope.loadingGray = false;
+            $scope.noData = false;
+         })
+         .catch(function(response){
+            $scope.noData = true;
+            $scope.loading = false;
+            $scope.loadingGray = false;
          });
 
          vm.getLastRead = function(GA, CA){
@@ -96,6 +109,7 @@
                     } else {
                         vm.noRead = false;
                     }
+                    
         };
         
        //live view
@@ -106,7 +120,6 @@
     //    };
     //    vm.reload = function(){
     //     $http.get("http://192.168.0.18:32333/api/sensors/46/readings")
-    //     $http.get(""http://swiss-iot.azurewebsites.net/api/sensors/46/readings")
     //     .then(function(response) {
     //         vm.sensor1 = response.data;
     //     });

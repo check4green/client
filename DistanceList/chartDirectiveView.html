@@ -1,9 +1,17 @@
 <div class="chartDisplay" ng-show="chartDisplay">
     <div ng-show="noDataChart" class="noData">No data</div>
-    <div ng-hide="noDataChart">
-        <label class="checkbox-inline">
+    <div ng-hide="noDataChart" class="bg-table">
+
+        <!-- <label class="checkbox-inline">
             <input type="checkbox" ng-model="value" ng-click="showValues(value)"> Show values on chart.
-        </label>
+        </label> -->
+
+        <label class="checkbox-inline switch">
+          <input type="checkbox" checked ng-model="value" ng-click="showValues(value)">
+          <span class="slider round"></span>
+        </label> 
+        <a class="checkbox-inline-a">Show values on chart.</a>
+
         <svg width="960" height="500"></svg>
     </div>
     <button type="button" class="btn btn" ng-click="cancelChart()">Cancel</button>

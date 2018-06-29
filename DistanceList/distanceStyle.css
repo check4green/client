@@ -1,3 +1,12 @@
+.loaderGray{
+    position: absolute!important;
+    top: 0px!important;
+    left: 0!important;
+    width: 100vw!important;
+    height: 100vh!important;
+    background-color: white!important;
+    z-index: 0;
+}
 .table-overflow{
     overflow-x: auto;
 }
@@ -5,6 +14,7 @@
 background-color:#4e9a06;
 }
 .distanceList{
+    position: relative;
     margin-top:30px;
 }
 .distanceList table{
@@ -38,6 +48,32 @@ background-color:#4e9a06;
     align-items: center;
     padding:10px;
 }
+.bg-table{
+    position: relative;
+}
+
+.checkbox-inline{
+    position: absolute;
+    left: 500px;
+    top: -10px;
+    user-select: none;
+}
+
+.checkbox-inline-a{
+    position: absolute;
+    left: 540px;
+    top: -6px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    user-select: none;
+}
+.checkbox-inline-a:hover{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
 .registerDisplay input{
     margin-bottom:10px;
 }
