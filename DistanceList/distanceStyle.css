@@ -129,6 +129,21 @@
 .measurementsDisplay .measurementsContainerNavigation button{
     margin-right:10px;
 }
+.measurementsOk{
+    background-color:#4cae4c;
+    color:white;
+    border-radius:100px;
+}
+.measurementsOutOfRange{
+    background-color:blue;
+    color:white;
+    border-radius:100px;
+}
+.measurementsInvalidSensor{
+    background-color:red;
+    color:white;
+    border-radius:100px;
+}
 .chartDisplay input{
     margin-left:-15px!important;
     margin-top:2px;

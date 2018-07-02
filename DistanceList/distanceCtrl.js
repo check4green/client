@@ -154,3 +154,21 @@ app.directive('caGaValidation', function() {
         }
     };
 });
+
+var app = angular.module('sensorApp');
+app.directive('nameValidation', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attr, mCtrl) {
+            function myValidation(value) {
+            if ((value.indexOf("--") > -1) || (value.indexOf("__") > -1) || (value.indexOf("-_") > -1) || (value.indexOf("_-") > -1) || (value.indexOf("-") == 0) || (value.indexOf("-") == 29) || (value.indexOf("_") == 0) || (value.indexOf("_") == 29)) {
+                    mCtrl.$setValidity('charE', false);
+                } else {
+                    mCtrl.$setValidity('charE', true);
+                }
+                return value;
+            }
+            mCtrl.$parsers.push(myValidation);
+        }
+    };
+});

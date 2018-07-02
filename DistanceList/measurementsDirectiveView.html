@@ -31,7 +31,11 @@
                     <div></div>
                     <td>{{$index+1}}</td>
                     <td>{{measurementSensor.readingDate}}</td>
-                    <td>{{measurementSensor.value}}</td>
+                    <td>
+                        <div class="measurementsOk" ng-if="(measurementSensor.value < 400) && (measurementSensor.value > 0)">{{measurementSensor.value}}</div>
+                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > 400">{{measurementSensor.value}}</div>
+                        <div class="measurementsInvalidSensor" ng-if="measurementSensor.value == 0">{{measurementSensor.value}}</div>
+                    </td>
                     <td>{{measurementSensor.id}}</td>
                 </tr>
             </tbody>

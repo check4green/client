@@ -1,10 +1,17 @@
 <div class="editDisplay" ng-show="editDisplay">
     <form class="col-md-3" name="editForm" novalidate>
         <label>Name:</label>
-        <input type="text" class="form-control" ng-model="editName">
+        <div class="form-group" ng-class="{'has-error':editForm.inputName.$invalid && editForm.inputName.$dirty}">
+            <input name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" class="form-control" ng-model="registerName" required>
+            <span class="help-block has-error">
+                <span ng-show="editForm.inputName.$error.required">Name is required</span>
+                <span ng-show="editForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
+                <span ng-show="!editForm.inputName.$valid && !editForm.inputName.$error.required && !editForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and at the beginning or end of the word. Exemple: (Proximity-Sensor_01)</span>
+            </span>
+        </div>
         <div class="form-group" ng-class="{'has-error': editForm.inputUploadInt.$invalid && editForm.inputUploadInt.$dirty}">
             <label>Upload Interval:</label>
-            <input name ="inputUploadInt" type="number" min="0" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editUploadInterval" required>
+            <input name ="inputUploadInt" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editUploadInterval" required>
             <span class="help-block has-error">
                 <span ng-show="editForm.inputUploadInt.$error.required">Upload interval is required</span>
                 <span ng-show="editForm.inputUploadInt.$error.number">The Upload Interval must be a number</span>
@@ -12,7 +19,7 @@
         </div>
         <div class="form-group" ng-class="{'has-error': editForm.inputBatchSize.$invalid && editForm.inputBatchSize.$dirty}">
             <label>Batch Size:</label>
-            <input name="inputBatchSize" type="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="0" class="form-control" ng-model="editBatchSize" required>
+            <input name="inputBatchSize" type="number" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="0" class="form-control" ng-model="editBatchSize" required>
             <span class="help-block has-error">
                 <span ng-show="editForm.inputBatchSize.$error.required">Batch Size is required</span>
                 <span ng-show="editForm.inputBatchSize.$error.number">The Batch Size  must be a number</span>

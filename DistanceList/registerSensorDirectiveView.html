@@ -2,23 +2,30 @@
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
     <form class="col-md-3" name="registerForm" novalidate>
         <label>Name:</label>
-        <input type="text" class="form-control" ng-model="registerName">
+        <div class="form-group" ng-class="{'has-error':registerForm.inputName.$invalid && registerForm.inputName.$dirty}">
+            <input id="inputName" name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" class="form-control" ng-model="registerName" required>
+            <span class="help-block has-error">
+                <span ng-show="registerForm.inputName.$error.required">Name is required</span>
+                <span ng-show="registerForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
+                <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and at the beginning or end of the word. Exemple: (Proximity-Sensor_01)</span>
+            </span>
+        </div>
         <label>Production Date:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputProdDate.$invalid && registerForm.inputProdDate.$dirty}">
-            <input id= "inputProdDate" name="inputProdDate" type="datetime-local" class="form-control" ng-model="registerProductionDate" required />
+            <input id="inputProdDate" name="inputProdDate" type="datetime-local" class="form-control" ng-model="registerProductionDate" required />
             <span class="help-block has-error" ng-show="registerForm.inputProdDate.$invalid">Production Date is required</span>
         </div>
         <label>Upload Interval:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputUploadInt.$invalid && registerForm.inputUploadInt.$dirty}">
-            <input id="inputUploadInt" name="inputUploadInt" type="number" min="0" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerUploadInterval" required />
-            <span class="help-block has-error" >
+            <input id="inputUploadInt" name="inputUploadInt" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerUploadInterval" required />
+            <span class="help-block has-error">
                 <span ng-show="registerForm.inputUploadInt.$error.required">Upload Interval is required</span>
                 <span ng-show="registerForm.inputUploadInt.$error.number">The Upload Interval must be a number</span>
             </span>
         </div>
         <label>Batch Size:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputBatchSize.$invalid && registerForm.inputBatchSize.$dirty}">
-            <input id="inputBatchSize" name="inputBatchSize" type="number" min="0" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerBatchSize" required />
+            <input id="inputBatchSize" name="inputBatchSize" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerBatchSize" required />
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputBatchSize.$error.required">Batch Size is required</span>
                 <span ng-show="registerForm.inputBatchSize.$error.number">The Batch Size  must be a number</span>
@@ -29,8 +36,8 @@
             <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" ca-ga-validation type="text" class="form-control" ng-model="registerGatewayAddress" required ng-minlength="4" ng-maxlength="4" maxlength="4"/>
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputGatewayAdd.$error.required">Gateway Address is required</span>
-                <span ng-show="registerForm.inputGatewayAdd.$error.pattern">The Gateway Address must be a hexadecimal number of 4 characters</span>
-                <span ng-show="!registerForm.inputGatewayAdd.$valid && !registerForm.inputGatewayAdd.$error.required">Please insert hexadecimal prefix format '0x'</span>
+                <span ng-show="registerForm.inputGatewayAdd.$error.pattern">The Gateway Address must be a hexadecimal number of 4 characters.</span>
+                <span ng-show="!registerForm.inputGatewayAdd.$valid && !registerForm.inputGatewayAdd.$error.required && !registerForm.inputGatewayAdd.$error.pattern">Please insert hexadecimal prefix format '0x'</span>
             </span>
         </div>
         <label>Client Address:</label>
@@ -38,8 +45,8 @@
             <input id="inputClientAdd" name="inputClientAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" ca-ga-validation type="text" class="form-control" ng-model="registerClientAddress" required required ng-minlength="4" ng-maxlength="4" maxlength="4" />
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputClientAdd.$error.required">Client Address is required</span>
-                <span ng-show="registerForm.inputClientAdd.$error.pattern">The Client Address must be a hexadecimal number of 4 characters</span>
-                <span ng-show="!registerForm.inputClientAdd.$valid && !registerForm.inputClientAdd.$error.required">Please insert hexadecimal prefix format '0x'</span>
+                <span ng-show="registerForm.inputClientAdd.$error.pattern">The Client Address must be a hexadecimal number of 4 characters.</span>
+                <span ng-show="!registerForm.inputClientAdd.$valid && !registerForm.inputClientAdd.$error.required && !registerForm.inputClientAdd.$error.pattern">Please insert hexadecimal prefix format '0x'</span>
             </span>
         </div>
         <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
