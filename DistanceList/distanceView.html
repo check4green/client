@@ -2,50 +2,6 @@
     <register-sensor></register-sensor>
     
      <div ng-show="distanceList"  class="table-overflow">
-<<<<<<< HEAD
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>No.</td>
-                    <td>Name</td>
-                    <td>Sensor ID</td>
-                    <td>Status</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat-start="sensor in vm.sensors">
-                    <td>{{$index+1}}</td>
-                    <td>{{sensor.name}}</td>
-                    <td>{{sensor.id}}</td>
-                    <td>
-                        <span class="label label-success" ng-if="sensor.active == true">Active</span>
-                        <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
-                    </td>
-                    <td class="distanceListContainerInfo">
-                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); vm.getLastRead(sensor.gatewayAddress, sensor.clientAddress);">+</button>
-                        <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
-                    </td>
-                </tr>
-                <tr ng-if="sensor.expanded" ng-repeat-end="" class="table-overflow">
-                    <td colspan="8" class="subTable">
-                        <details-sensor></details-sensor>
-                        <div>
-                            <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
-                            <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
-                            <button type="button" class="btn btn-success" ng-click="startEdit()" ng-show="editButton">Edit</button>
-                            <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
-                        </div>
-                        <edit-sensor></edit-sensor>
-                        <measurements></measurements>
-                        <chartd3></chartd3>
-                        <delete-sensor></delete-sensor>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="distanceNavigation">
-=======
         <div ng-show="loadingGray" class="loaderGray"></div>
         <div ng-show="loading" class="loader"></div>
         
@@ -62,7 +18,7 @@
                 <tbody>
                     <tr ng-repeat-start="sensor in vm.sensors">
                         <td>{{$index+1}}</td>
-                        <td>Proximity Sensor</td>
+                        <td>{{sensor.name}}</td>
                         <td>{{sensor.id}}</td>
                         <td>
                             <span class="label label-success" ng-if="sensor.active == true">Active</span>
@@ -91,7 +47,6 @@
                 </tbody>
             </table>
         <div>
->>>>>>> ae4fd10ca3b97e8aac10e7b3f4e7ff35741327c2
             <button type="button" class="btn btn-default" ng-click="vm.pagination(false)" ng-show="vm.back"> < Previous</button>
             <button type="button" class="btn btn-default" ng-click="vm.pagination(true)" ng-show="vm.next">Next > </button>
         </div>
