@@ -34,19 +34,28 @@
 </header>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn"><img src="/iconPng/C4G-full.png"></a>
+
   <a class="a" onclick="closeNav()" ui-sref="index">Home<i class="fa fa-home"></i></a>
+
   <a class="a" onclick="closeNav()" ui-sref="distanceList" title="distance sesors">Distance<i class="fa fa-crop"></i></a>
-  <a class="a" title="temperature sensors list" style="cursor: no-drop;">Temperature<i class="fa fa-cloud"></i></a>
-  <a class="a disabled" style="cursor: no-drop;">Humidity<i class="fa fa-tint"></i></a>
+
+  <a class="a" onclick="closeNav()" ui-sref="temperatureList" title="temperature sensors list">Temperature<i class="fa fa-thermometer-half"></i></a>
+
+  <a class="a" onclick="closeNav()" ui-sref="electricalCurrentList" title="electrical current sensors list">Electrical Current<i class="fa fa-bolt"></i></a>
+
+  <a class="a" onclick="closeNav()" ui-sref="airQualityList" title="air quality sensors list">Air Quality<i class="	fa fa-mixcloud"></i></a>
+
 </div>
 
 <div ui-view="index"></div>
 
 <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
+
 <div class="gridView container">
-    <div class="grid st"><div ui-view="filters"></div></div>
     <div class="grid sd"><div ui-view="distance"></div></div> 
-    <div class="grid sh"><div ui-view="humidity"></div></div>
+    <div class="grid sh"><div ui-view="temperature"></div></div>
+    <div class="grid sh"><div ui-view="electricalCurrent"></div></div>
+    <div class="grid sh"><div ui-view="airQuality"></div></div>
 </div>
 
 </body>
@@ -59,7 +68,6 @@
 <script src="/Library/angular-ui-router.js"></script>
 <script src="/Library/ngStorage.js"></script>
 <script src="/Library/d3.js"></script>
-<script src="/Library/d3.js"></script>
 <script src="/Library/d3.min.js"></script>
 
 <!-- Ui-route -->
@@ -71,10 +79,16 @@
 <!--Controllers-->
 <script src="/DistanceList/distanceCtrl.js"></script>
 <script src="/Parallax-directive/parallaxCtrl.js"></script>
+<script src="/TemperatureList/temperatureCtrl.js"></script>
+<script src="/ElectricalCurrentList/electricalCurrentCtrl.js"></script>
+<script src="/AirQualityList/airQualityCtrl.js"></script>
 
 <!--Components-->
 <script src="/DistanceList/distanceComponent.js"></script>
 <script src="/Parallax-directive/parallaxComponent.js"></script>
+<script src="/TemperatureList/temperatureComponent.js"></script>
+<script src="/ElectricalCurrentList/electricalCurrentComponent.js"></script>
+<script src="/AirQualityList/airQualityComponent.js"></script>
 
 <!--Directive-->
 <script src="DistanceList/registerSensorDirective.js"></script>

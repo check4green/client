@@ -3,9 +3,9 @@
     <div ng-show="noDataMeasurements" class="noData">No data</div>
     <div ng-show="dataMeasurements">
         <div class="measurementsContainerSet">
-           <form class="form-group" name="form" novalidate>
-                <div class="form-group" ng-class="{'has-error': form.input.$invalid && form.input.$dirty}">
-                    <label>Number of readins/page:</label>
+           <form class="form-group inLine" name="form" novalidate>
+                <div class="form-group inLine" ng-class="{'has-error': form.input.$invalid && form.input.$dirty}">
+                    <label>Number of readings:</label>
                     <input name="input" type="number" min="1" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="pageSize" />
                     <span class="help-block has-error">
                         <span ng-show="form.input.$error.number">Page Size must be a number</span>

@@ -14,13 +14,41 @@
             }
         })
             .state('distanceList',{
-             url:  "/distance",
+             url: "/distance",
              views: {
                 'distance@':{
                     template: "<distance></distance>"
                 }
             }
-            });
+            })
+
+            .state('temperatureList',{
+             url: "/temperature",
+             views: {
+                'temperature@':{
+                    template: "<temperature></temperature>"
+                }
+            }
+            })
+
+            .state('electricalCurrentList',{
+             url: "/electricalCurrent",
+             views: {
+                'electricalCurrent@':{
+                    template: "<electrical-current></electrical-current>"
+                }
+            }
+            })
+
+            .state('airQualityList',{
+             url: "/airQuality",
+             views: {
+                'airQuality@':{
+                    template: "<air-quality></air-quality>"
+                }
+            }
+            })
+
             }
         ]);
 }());
