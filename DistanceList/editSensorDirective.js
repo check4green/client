@@ -17,19 +17,21 @@ app.directive('editSensor', function(){
                     $scope.editButton = false;
                 }
             };
-            $scope.sensorEdit = function(editUploadInterval, editBatchSize, gatewayAddress, clientAddress, sensorId){
+            $scope.sensorEdit = function(editName, editUploadInterval, editBatchSize, gatewayAddress, clientAddress, sensorId){
                 $scope.editDisplay = false;
                 $scope.editButton = true;
                 $scope.detailsDisplay = true;
                 $scope.deleteButton = true;
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;
-                var sensorPut = {'uploadInterval':editUploadInterval, 'batchSize':editBatchSize}
+                var sensorPut = {'name':editName, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize}
                 distanceService.updateSensors(sensorPut, gatewayAddress, clientAddress);
                 $scope.sensor.uploadInterval=editUploadInterval;
                 $scope.sensor.batchSize=editBatchSize;
-                $scope.editUploadInterval = '';
-                $scope.editBatchSize = '';
+                $scope.sensor.name = editName;
+                // $scope.editUploadInterval = '';
+                // $scope.editBatchSize = '';
+                // $scope.editName = '';
             };
             $scope.cancelEditSensor = function(){
                 $scope.editButton = true;
@@ -38,8 +40,9 @@ app.directive('editSensor', function(){
                 $scope.deleteButton = true;
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;
-                $scope.editUploadInterval = '';
-                $scope.editBatchSize = '';
+                // $scope.editUploadInterval = '';
+                // $scope.editBatchSize = '';
+                // $scope.editName = '';
             };
         }
     }

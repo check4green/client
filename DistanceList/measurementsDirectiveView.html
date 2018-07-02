@@ -1,10 +1,18 @@
 <div class="measurementsDisplay" ng-show="measurementsDisplay">
+    <div ng-show="loadingMeasurements" class="loader"></div>
     <div ng-show="noDataMeasurements" class="noData">No data</div>
-    <div ng-hide="noDataMeasurements">
+    <div ng-show="dataMeasurements">
         <div class="measurementsContainerSet">
-            <label>Number of readins/page:</label>
-            <input type="text" class="form-control" ng-model="pageSize">
-            <button type="button" class="btn btn" ng-click="setPageSize(pageSize)">Set</button>
+           <form class="form-group" name="form" novalidate>
+                <div class="form-group" ng-class="{'has-error': form.input.$invalid && form.input.$dirty}">
+                    <label>Number of readins/page:</label>
+                    <input name="input" type="number" min="1" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="pageSize" />
+                    <span class="help-block has-error">
+                        <span ng-show="form.input.$error.number">Page Size must be a number</span>
+                    </span>
+                </div>
+                <button type="button" class="btn btn" ng-click="setPageSize(pageSize)">Set</button>
+            </form>
         </div>
         <div class="measurementsTotalReadings">
         <label>Total Readings: {{totalReadings}}</label>

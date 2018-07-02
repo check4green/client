@@ -4,7 +4,7 @@
    app.controller("distanceCtrl",["$scope", "$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($scope, $localStorage, $timeout, distanceService, $http) {
         var vm = this;
 
-        $scope.distanceList = true;
+        $scope.sensorData = true;
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
                 val.expanded=false;
@@ -77,39 +77,42 @@
             })
         }
         $scope.loading = true;
-        $scope.loadingGray = true;
-        $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
-        // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
+        $scope.sensorData = false;
+        $scope.noSensorData = false;
+        // $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
+        $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
-            $scope.loadingGray = false;
-            $scope.noData = false;
+            $scope.noSensorsData = false;
+            $scope.sensorData = true;
+            $scope.registerSensor = true;
          })
          .catch(function(response){
-            $scope.noData = true;
+            $scope.noSensorsData = true;
             $scope.loading = false;
-            $scope.loadingGray = false;
+            $scope.sensorData = false;
+            $scope.registerSensor = false;
          });
-
          vm.getLastRead = function(GA, CA){
+            $scope.noRead = false;
+            $scope.detailsData = false;
+            $scope.loadingDetails = true;
             distanceService.getMeasurements(GA, CA, '0', '1')
                 .then(measureSuccess)
+                .catch(measureError)
                     function measureSuccess(measurements){
                         vm.lastRead = measurements;
-                        if(measurements==0){                   
-                            vm.noRead = true;
-                        } else {
-                            vm.noRead = false;
-                        }
+                        $scope.detailsData = true;
+                        $scope.loadingDetails = false;
+                        $scope.noRead = false;
                     } 
-                    vm.lastRead = null;
-                    if(vm.lastRead == null){
-                        vm.noRead = true;
-                    } else {
-                        vm.noRead = false;
+                    function measureError(measurements){
+                        $scope.noRead = true;
+                        $scope.loadingDetails = false;
+                        $scope.detailsData = true;
                     }
-                    
+                    vm.lastRead = null;
         };
         
        //live view
@@ -131,3 +134,23 @@
 
     }]);
 }());
+
+
+
+var app = angular.module('sensorApp');
+app.directive('caGaValidation', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attr, mCtrl) {
+            function myValidation(value) {
+                if (value.indexOf("0x") == 0) {
+                    mCtrl.$setValidity('charE', true);
+                } else {
+                    mCtrl.$setValidity('charE', false);
+                }
+                return value;
+            }
+            mCtrl.$parsers.push(myValidation);
+        }
+    };
+});

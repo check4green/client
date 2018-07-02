@@ -1,6 +1,7 @@
 <div class="chartDisplay" ng-show="chartDisplay">
+    <div ng-show="loadingChart" class="loader"></div>
     <div ng-show="noDataChart" class="noData">No data</div>
-    <div ng-hide="noDataChart" class="bg-table">
+    <div ng-show="dataChart" class="bg-table">
 
         <!-- <label class="checkbox-inline">
             <input type="checkbox" ng-model="value" ng-click="showValues(value)"> Show values on chart.

@@ -7,34 +7,35 @@ app.directive('registerSensor', function(){
             $scope.registerDisplay = false;
             $scope.registerButton = true;
             $scope.startRegister = function(){
-            $scope.distanceList = false;
+            $scope.sensorData = false;
                 if($scope.registerDisplay == false){
                     $scope.registerDisplay = true;
                     $scope.registerButton = false;
                 } 
         };
-        $scope.sensorRegister = function(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
+
+        $scope.sensorRegister = function(registerName, registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
             $scope.registerDisplay = false;
             $scope.registerButton = true;
-            $scope.distanceList = true;
-            var sensorPost = {'sensorTypeId':"14",'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress,userId: "1" }
+            $scope.sensorData = true;
+            var sensorPost = {'sensorTypeId':"33", 'name':registerName, 'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress,userId: "1" }
             distanceService.insertSensors(sensorPost);
             sensors.unshift(sensorPost);
-            $scope.registerProductionDate ='';
-            $scope.registerUploadInterval = '';
-            $scope.registerBatchSize = '';
-            $scope.registerGatewayAddress = '';
-            $scope.registerClientAddress = '';
+            // $scope.registerProductionDate ='';
+            // $scope.registerUploadInterval = '';
+            // $scope.registerBatchSize = '';
+            // $scope.registerGatewayAddress = '';
+            // $scope.registerClientAddress = '';
         };
         $scope.cancelRegisterSensor = function(){
             $scope.registerDisplay = false;
             $scope.registerButton = true;
-            $scope.distanceList = true;
-            $scope.registerProductionDate ='';
-            $scope.registerUploadInterval = '';
-            $scope.registerBatchSize = '';
-            $scope.registerGatewayAddress = '';
-            $scope.registerClientAddress = '';
+            $scope.sensorData = true;
+            // $scope.registerProductionDate ='';
+            // $scope.registerUploadInterval = '';
+            // $scope.registerBatchSize = '';
+            // $scope.registerGatewayAddress = '';
+            // $scope.registerClientAddress = '';
         };
         }
     }

@@ -1,17 +1,49 @@
 <button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister()" ng-show="registerButton">Add sensor</button>
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
-    <div class="col-md-3">
+    <form class="col-md-3" name="registerForm" novalidate>
+        <label>Name:</label>
+        <input type="text" class="form-control" ng-model="registerName">
         <label>Production Date:</label>
-        <input type="text" class="form-control" ng-model="registerProductionDate" >
+        <div class="form-group" ng-class="{'has-error':registerForm.inputProdDate.$invalid && registerForm.inputProdDate.$dirty}">
+            <input id= "inputProdDate" name="inputProdDate" type="datetime-local" class="form-control" ng-model="registerProductionDate" required />
+            <span class="help-block has-error" ng-show="registerForm.inputProdDate.$invalid">Production Date is required</span>
+        </div>
         <label>Upload Interval:</label>
-        <input type="text" class="form-control" ng-model="registerUploadInterval">
+        <div class="form-group" ng-class="{'has-error':registerForm.inputUploadInt.$invalid && registerForm.inputUploadInt.$dirty}">
+            <input id="inputUploadInt" name="inputUploadInt" type="number" min="0" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerUploadInterval" required />
+            <span class="help-block has-error" >
+                <span ng-show="registerForm.inputUploadInt.$error.required">Upload Interval is required</span>
+                <span ng-show="registerForm.inputUploadInt.$error.number">The Upload Interval must be a number</span>
+            </span>
+        </div>
         <label>Batch Size:</label>
-        <input type="text" class="form-control" ng-model="registerBatchSize" >
+        <div class="form-group" ng-class="{'has-error':registerForm.inputBatchSize.$invalid && registerForm.inputBatchSize.$dirty}">
+            <input id="inputBatchSize" name="inputBatchSize" type="number" min="0" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerBatchSize" required />
+            <span class="help-block has-error">
+                <span ng-show="registerForm.inputBatchSize.$error.required">Batch Size is required</span>
+                <span ng-show="registerForm.inputBatchSize.$error.number">The Batch Size  must be a number</span>
+            </span>
+        </div>
         <label>Gateway Address:</label>
-        <input type="text" class="form-control" ng-model="registerGatewayAddress" >
+        <div class="form-group" ng-class="{'has-error':registerForm.inputGatewayAdd.$invalid && registerForm.inputGatewayAdd.$dirty}">
+            <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" ca-ga-validation type="text" class="form-control" ng-model="registerGatewayAddress" required ng-minlength="4" ng-maxlength="4" maxlength="4"/>
+            <span class="help-block has-error">
+                <span ng-show="registerForm.inputGatewayAdd.$error.required">Gateway Address is required</span>
+                <span ng-show="registerForm.inputGatewayAdd.$error.pattern">The Gateway Address must be a hexadecimal number of 4 characters</span>
+                <span ng-show="!registerForm.inputGatewayAdd.$valid && !registerForm.inputGatewayAdd.$error.required">Please insert hexadecimal prefix format '0x'</span>
+            </span>
+        </div>
         <label>Client Address:</label>
-        <input type="text" class="form-control" ng-model="registerClientAddress">
-        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
+        <div class="form-group" ng-class="{'has-error':registerForm.inputClientAdd.$invalid && registerForm.inputClientAdd.$dirty}">
+            <input id="inputClientAdd" name="inputClientAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" ca-ga-validation type="text" class="form-control" ng-model="registerClientAddress" required required ng-minlength="4" ng-maxlength="4" maxlength="4" />
+            <span class="help-block has-error">
+                <span ng-show="registerForm.inputClientAdd.$error.required">Client Address is required</span>
+                <span ng-show="registerForm.inputClientAdd.$error.pattern">The Client Address must be a hexadecimal number of 4 characters</span>
+                <span ng-show="!registerForm.inputClientAdd.$valid && !registerForm.inputClientAdd.$error.required">Please insert hexadecimal prefix format '0x'</span>
+            </span>
+        </div>
+        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
         <button type="button" class="btn btn" ng-click="cancelRegisterSensor()">Cancel</button>
-    </div>
+    </form>
 </div>
+

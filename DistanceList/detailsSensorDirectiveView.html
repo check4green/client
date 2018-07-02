@@ -17,8 +17,9 @@
             <td>{{sensor.productionDate}}</td>
             <td>{{sensor.uploadInterval}}</td>
             <td>{{sensor.batchSize}}</td>
-            <td>{{vm.lastRead[0].value}}<span ng-show="vm.noRead">-</span></td>
-            <td>{{vm.lastRead[0].readingDate}}<span ng-show="vm.noRead">-</span></td>
+            <td>{{vm.lastRead[0].value}}<span ng-show="noRead">-</span></td>
+            <td>{{vm.lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
         </tr>
     </tbody>
 </table>
+

@@ -15,15 +15,22 @@
                     $scope.measurementsButton = false;
                     $scope.deleteButton = false;
                     $scope.editButton = false;
+                    $scope.noDataChart = false;
+                    $scope.loadingChart = true;
+                    $scope.dataChart = false;
                     d3.selectAll("svg > *").remove();
                     distanceService.getMeasurements(gatewayAddress, clientAddress, page, readings)
                                 .then(getSuccess)
                                 .catch(getError);
                                 function getError(){
                                     $scope.noDataChart = true;
+                                    $scope.loadingChart = false;
+                                    $scope.dataChart = false;
                                 }
                                 function getSuccess(data){
                                     $scope.noDataChart = false;
+                                    $scope.loadingChart = false;
+                                    $scope.dataChart = true;
                                     var measurements = data;
                                for (var i=0; i<measurements.length; i++){
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);

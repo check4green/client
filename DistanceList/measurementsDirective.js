@@ -54,29 +54,30 @@ app.directive('measurements', function(){
                             }
                         })
                     }
+                    $scope.noDataMeasurements = false;
+                    $scope.loadingMeasurements = true;
+                    $scope.dataMeasurements = false;
                 distanceService.getMeasurements(gatewayAddress, clientAddress, $scope.page, vm.pageSize)
-                                            .then(measureSuccess)
-                                        function measureSuccess(measurements){
-                                            $scope.measurementSensors = measurements;
-                                            if(measurements==0){                   
-                                                $scope.noDataMeasurements = true;
-                                            } else {
-                                                $scope.noDataMeasurements = false;
-                                            }
-                                            distanceService.getPageFinal(gatewayAddress, clientAddress)
+                                    .then(function(measurements){
+                                        $scope.measurementSensors = measurements;
+                                        $scope.loadingMeasurements = false;
+                                        $scope.noDataMeasurements = false;
+                                        $scope.dataMeasurements = true;
+                                        distanceService.getPageFinal(gatewayAddress, clientAddress)
                                             .then(Success)
-                                           function Success(data){
-                                               $scope.lastPageReadings= data
-                                           }
-                                        }
-                                        $scope.measurementSensors = null;
-                                        if($scope.measurementSensors == null){                   
+                                                function Success(data){
+                                                    $scope.lastPageReadings= data
+                                                }
+                                        })
+                                        .catch(function(response){
+                                            $scope.loadingMeasurements = false;
                                             $scope.noDataMeasurements = true;
+                                            $scope.dataMeasurements = false;
+                                        });
+                                        $scope.measurementSensors = null;
+                                        if($scope.measurementSensors == null){
                                             $scope.totalReadings = 0;
-                                        } else {
-                                            $scope.noDataMeasurements = false;
                                         }
-    
                 distanceService.getSensorByAddress(gatewayAddress, clientAddress)
                     .then(success) 
                         function success(data){
