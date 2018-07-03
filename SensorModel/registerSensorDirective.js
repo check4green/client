@@ -2,8 +2,8 @@ var app = angular.module("sensorApp");
 app.directive('registerSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'DistanceList/registerSensorDirectiveView.html',
-        controller: function($scope, SENSOR_TYPE, distanceService){
+        templateUrl: 'sensorModel/registerSensorDirectiveView.html',
+        controller: function($scope, SENSOR_TYPE, sensorModelService){
             $scope.registerDisplay = false;
             $scope.registerButton = true;
             $scope.startRegister = function(){
@@ -19,7 +19,7 @@ app.directive('registerSensor', function(){
             $scope.registerButton = true;
             $scope.sensorData = true;
             var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 'name':registerName, 'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress, userId: "1" }
-            distanceService.insertSensors(sensorPost);
+            sensorModelService.insertSensors(sensorPost);
             sensors.unshift(sensorPost);
             // $scope.registerProductionDate ='';
             // $scope.registerUploadInterval = '';

@@ -4,16 +4,6 @@
     <div ng-show="dataMeasurements">
         <button type="button" class="btn btn-success refreshMeasurements" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress)">Refresh</button>
         <div  class="form-group measurementsContainerSet">
-           <!-- <form class="form-group inLine" name="form" novalidate>
-                <div class="form-group inLine" ng-class="{'has-error': form.input.$invalid && form.input.$dirty}">
-                    <label>Number of readings:</label>
-                    <input name="input" type="number" min="1" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="pageSize" />
-                    <span class="help-block has-error">
-                        <span ng-show="form.input.$error.number">Page Size must be a number</span>
-                    </span>
-                </div>
-                <button type="button" class="btn btn" ng-click="setPageSize(pageSize)">Set</button>
-            </form> -->
             <label>Number of readings:</label>
             <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
                 <option selected disabled hidden value="">10</option>
@@ -51,10 +41,7 @@
                 </tr>
             </tbody>
         </table>
-        <div class="measurementsContainerNavigation">
-            <button type="button" class="btn btn-default" ng-click="paginationReadings(false)" ng-show="backr">< Previous</button>
-            <button type="button" class="btn btn-default" ng-click="paginationReadings(true)" ng-show= "nextr">Next ></button>
-        </div>
+        <div paging page="currentPage" total="totalReadings" page-size="size" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
     </div>
     <button type="button" class="btn btn" ng-click="cancelMeasurements()">Cancel</button>
 </div>

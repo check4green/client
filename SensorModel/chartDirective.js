@@ -2,8 +2,8 @@
     app.directive('chartd3', function(){
         return {
         restrict: 'E',
-        templateUrl: 'DistanceList/chartDirectiveView.html',
-        controller: function chartd3Ctrl(distanceService,d3, $scope){
+        templateUrl: 'sensorModel/chartDirectiveView.html',
+        controller: function chartd3Ctrl(sensorModelService,d3, $scope){
                     var readings = 1000;
                     $scope.chartButton = true;
                     $scope.chartDisplay = false;
@@ -20,7 +20,7 @@
                     $scope.loadingChart = true;
                     $scope.dataChart = false;
                     d3.selectAll("svg > *").remove();
-                    distanceService.getMeasurements(gatewayAddress, clientAddress, page, readings)
+                    sensorModelService.getMeasurements(gatewayAddress, clientAddress, page, readings)
                                 .then(getSuccess)
                                 .catch(getError);
                                 function getError(){

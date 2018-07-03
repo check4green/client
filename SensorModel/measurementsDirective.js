@@ -2,8 +2,8 @@ var app = angular.module("sensorApp");
 app.directive('measurements', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'DistanceList/measurementsDirectiveView.html',
-        controller: function($scope, distanceService){
+        templateUrl: 'sensorModel/measurementsDirectiveView.html',
+        controller: function($scope, sensorModelService, $localStorage){
             var vm = this;
             $scope.measurementsButton = true;
             $scope.measurementsDisplay = false;
@@ -31,22 +31,21 @@ app.directive('measurements', function(){
             $scope.measurementSensor = function(gatewayAddress, clientAddress){ 
                 $scope.clientAddress = clientAddress;
                 $scope.gatewayAddress = gatewayAddress; 
-                $scope.page = 1;
-                $scope.backr = false;
-                vm.pageSize = 10;
+                $scope.page = 0;
+                $scope.size = 10;
                 //set the number of readings/ page
                 $scope.setPageSize = function(pageSize){
-                    vm.pageSize = pageSize;
-                    distanceService.getFinalPageReadings(gatewayAddress, clientAddress)
+                    $scope.size = pageSize;
+                    sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress)
                         .then(function(response){
                             $scope.totalReadings = response;
-                            $scope.finalPag =Math.ceil($scope.totalReadings / vm.pageSize)-1 ;
-                            console.log('lastPage: ', $scope.finalPag);
-                        distanceService.getMeasurements(gatewayAddress, clientAddress, $scope.page, vm.pageSize)
+                            $scope.numPages =Math.ceil($scope.totalReadings / $scope.size)-1 ;
+                            console.log('lastPage: ', $scope.numPages);
+                        sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size)
                             .then(measureSuccess)
                             function measureSuccess(measurements){
                                 $scope.measurementSensors = measurements;
-                                if(measurements==0){                      
+                                if(measurements==0){
                                     $scope.noDataMeasurements = true;
                                 } else {
                                     $scope.noDataMeasurements = false;
@@ -57,13 +56,13 @@ app.directive('measurements', function(){
                     $scope.noDataMeasurements = false;
                     $scope.loadingMeasurements = true;
                     $scope.dataMeasurements = false;
-                distanceService.getMeasurements(gatewayAddress, clientAddress, $scope.page, vm.pageSize)
+                sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, vm.pageSize)
                                     .then(function(measurements){
                                         $scope.measurementSensors = measurements;
                                         $scope.loadingMeasurements = false;
                                         $scope.noDataMeasurements = false;
                                         $scope.dataMeasurements = true;
-                                        distanceService.getPageFinal(gatewayAddress, clientAddress)
+                                        sensorModelService.getPageFinal(gatewayAddress, clientAddress)
                                             .then(Success)
                                                 function Success(data){
                                                     $scope.lastPageReadings= data
@@ -78,56 +77,37 @@ app.directive('measurements', function(){
                                         if($scope.measurementSensors == null){
                                             $scope.totalReadings = 0;
                                         }
-                distanceService.getSensorByAddress(gatewayAddress, clientAddress)
+                sensorModelService.getSensorByAddress(gatewayAddress, clientAddress)
                     .then(success) 
                         function success(data){
                             $scope.address = data;
                     }
-                distanceService.getFinalPageReadings(gatewayAddress, clientAddress)
+                sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress)
                     .then(function(response){
                         $scope.totalReadings = response;
            })
         //pagination for readings
-         $scope.page = 1;
-       if($scope.page == 1){
-           $scope.backr = false;
-       }else {
-           $scope.backr = true;
+        sensorModelService.getPageFinal($scope.gatewayAddress, $scope.clientAddress, $scope.size)
+        .then(finalPage);
+        function finalPage(data){
+           $scope.numPages = data-1;
+           console.log('Last Page Readings: ', $scope.numPages)
        }
-       $scope.nextr = true;
-       $scope.paginationReadings = function(pag){
-           $scope.backr = true;
-           if (pag == false){
-               $scope.page = $scope.page -1;
-           }
-           if(pag == true){
-               $scope.page = $scope.page+1;
-           }
-           if($scope.page<1){
-               $scope.page = 1;
-           }
-           if($scope.page == 1){
-                $scope.backr = false;
-            }else {
-                $scope.backr = true;
-            }
-         if ($scope.page == $scope.finalPag){
-             $scope.nextr = false;
-         }else{
-             $scope.nextr = true;
-         }
-           console.log('lastPageRaadings :', $scope.lastPageReadings);
-           if ($scope.page == $scope.lastPageReadings-1){
-                        $scope.nextr= false;
-            }
-           
-            console.log('page', $scope.page)
-            distanceService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.page, vm.pageSize)
+       if($localStorage.readings){
+         $scope.currentPage = $localStorage.readings;
+       }else{
+       $scope.currentPage = 0;
+     }
+       $scope.setPage = function(){
+            sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.currentPage, $scope.size)
                 .then(measureSuccess)
             function measureSuccess(measurements){
                     $scope.measurementSensors = measurements;
                 }
+          console.log("Current Page Readings: ", $scope.currentPage)
        }
+       $scope.$watch('currentPage', $scope.setPage);
+
             };
         }
     }

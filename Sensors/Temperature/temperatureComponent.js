@@ -3,8 +3,8 @@
     var app = angular.module('sensorApp');
     
     app.component('temperature', {
-        templateUrl: 'DistanceList/DistanceView.html',
-        controller: 'distanceCtrl',
+        templateUrl: 'sensorModel/sensorModelView.html',
+        controller: 'sensorModelCtrl',
         controllerAs: 'vm'
     });
 }());

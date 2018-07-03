@@ -2,8 +2,8 @@ var app = angular.module("sensorApp");
 app.directive('deleteSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'DistanceList/deleteSensorDirectiveView.html',
-        controller: function($scope, distanceService){
+        templateUrl: 'sensorModel/deleteSensorDirectiveView.html',
+        controller: function($scope, sensorModelService){
             $scope.deleteButton = true;
             $scope.deleteDisplay = false;
             $scope.startDelete = function(){
@@ -19,7 +19,7 @@ app.directive('deleteSensor', function(){
                 if(idx > -1){
                     sensors.splice(idx, 1);
                 }
-                distanceService.deleteSensors(gatewayAddress, clientAddress);
+                sensorModelService.deleteSensors(gatewayAddress, clientAddress);
             };
             $scope.cancelDeleteSensor = function(){
                 $scope.deleteDisplay = false;

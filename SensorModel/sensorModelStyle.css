@@ -4,28 +4,28 @@
 .btn-success, .btn-success:hover{
     background-color:#4e9a06;
 }
-.distanceList{
+.sensorModel{
     position: relative;
     margin-top:50px;
     margin-bottom:50px;
 }
-.distanceList table{
+.sensorModel table{
     text-align:center;
 }
-.distanceList thead{
+.sensorModel thead{
     font-size: 15px;
     font-weight: 600;
 }
-.distanceList tbody{
+.sensorModel tbody{
     font-size: 12px;
 }
-.distanceListContainerInfo button{
+.sensorModelContainerInfo button{
     width:35px;
 }
-.distanceList .distanceNavigation button{
+.sensorModel .sensorModelNavigation button{
     margin-right:10px;
 }
-.distanceList .subTable{
+.sensorModel .subTable{
     padding:20px;
     border-style: solid ;
     border: solid 1px #4e9a06;

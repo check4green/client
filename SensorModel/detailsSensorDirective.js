@@ -2,8 +2,8 @@ var app = angular.module("sensorApp");
 app.directive('detailsSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'DistanceList/detailsSensorDirectiveView.html',
-        controller: function($scope, distanceService){
+        templateUrl: 'sensorModel/detailsSensorDirectiveView.html',
+        controller: function($scope, sensorModelService){
             
         $scope.detailsDisplay = true;
         

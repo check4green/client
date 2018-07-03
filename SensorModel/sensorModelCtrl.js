@@ -1,7 +1,7 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("distanceCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($scope, SENSOR_TYPE, $localStorage, $timeout, distanceService, $http) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$timeout", "sensorModelService","$http", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $timeout, sensorModelService, $http) {
         var vm = this;
         console.log(SENSOR_TYPE);
         $scope.sensorData = true;
@@ -13,74 +13,40 @@
         };
 
        //sensors
-        distanceService.getFinalPage()
+       $scope.sensPerPage = 10;
+       sensorModelService.getFinalPage($scope.sensPerPage)
         .then(finalPage);
         function finalPage(data){
-           vm.lastPage = data;
-            console.log('Last page', vm.lastPage);
-            $localStorage.final = vm.lastPage;
-           if(vm.pag == vm.lastPage-1){
-                vm.next = false;
-            }else {
-                vm.next = true;
-            }
+           $scope.numPages = data;
+           console.log('Last Page: ', $scope.numPages)
        }
-         if($localStorage.page){
-                vm.pag = $localStorage.page;
-            }else{
-                vm.pag = 1;
-            }
-        if ($localStorage.page){
-        if ($localStorage.page == 1){
-            vm.back = false;
+       sensorModelService.getAllSensors($scope.sensPerPage)
+            .then(allSensors);
+        function allSensors(data){
+          $scope.allSensors = data;
+        }
+        if($localStorage.page){
+          $scope.currentPage = $localStorage.page;
         }else{
-            vm.back = true;
+          $scope.currentPage = 1;
         }
-        }else{
-            vm.back = false;
+        vm.setPage = function(){
+          $scope.loading=true;
+          sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage)
+             .then(function(response){
+               vm.sensors = response.data;
+               $localStorage.page = $scope.currentPage;
+               $scope.loading=false;
+               console.log("Current Page: ", $scope.currentPage)
+
+             })
         }
-        if (vm.pag == $localStorage.final-1){
-            vm.next = false;
-        }else {
-            vm.next = true;
-        }
-        vm.pagination = function(pg){
-           
-            if(pg==false){
-                vm.pag = vm.pag-1;
-            }
-            if(pg==true && vm.totalCount != 1){
-                vm.pag = vm.pag+1;
-                vm.back = true;
-            }
-            if(vm.pag<1){
-                vm.pag = 1;
-            }
-            if (vm.pag == 1){
-                vm.back = false;
-            }
-            
-            if(vm.pag == $localStorage.final-1){
-                vm.next = false;
-            }else{
-                vm.next = true;
-            }
-            $localStorage.page = vm.pag;
-            console.log(vm.pag);
-            $scope.loading=true;
-            $scope.loadingGray=true;
-            distanceService.getSensors(vm.pag)
-            .then(function(response){
-                 vm.sensors = response.data;
-                 $scope.loading = false;
-                 $scope.loadingGray = false;
-            })
-        }
+        $scope.$watch('currentPage', vm.setPage);
         $scope.loading = true;
         $scope.sensorData = false;
         $scope.noSensorData = false;
-        $http.get("http://192.168.0.18:32333/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
-        // $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
+        // $http.get("http://192.168.0.18:32333/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + $scope.currentPage + "&pageSize=" + $scope.sensPerPage)
+        $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + $scope.currentPage + "&pageSize=" + $scope.sensPerPage)
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
@@ -98,7 +64,7 @@
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
-            distanceService.getMeasurements(GA, CA, '0', '1')
+            sensorModelService.getMeasurements(GA, CA, '1', '1')
                 .then(measureSuccess)
                 .catch(measureError)
                     function measureSuccess(measurements){
@@ -115,7 +81,7 @@
                     vm.lastRead = null;
         };
 
-        distanceService.getAllSensors()
+        sensorModelService.getAllSensors()
             .then(function(response){
                 $scope.totalSensors = response;
             });

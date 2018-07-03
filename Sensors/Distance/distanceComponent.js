@@ -3,8 +3,8 @@
     var app = angular.module('sensorApp');
     
     app.component('distance', {
-        templateUrl: 'DistanceList/distanceView.html',
-        controller: 'distanceCtrl',
+        templateUrl: 'sensorModel/sensorModelView.html',
+        controller: 'sensorModelCtrl',
         controllerAs: 'vm'
     });
 }());

@@ -1,6 +1,6 @@
 (function(){
     "use strict";
-    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3"])
+    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3", "bw.paging"])
     .constant('SENSOR_TYPE', {
         'ID' : '0'
     });
@@ -16,7 +16,7 @@
                 }
             }
         })
-            .state('distanceList',{
+            .state('distance',{
              url: "/distance",
              views: {
                 'distance@':{
@@ -28,7 +28,7 @@
             }
             })
 
-            .state('temperatureList',{
+            .state('temperature',{
              url: "/temperature",
              views: {
                 'temperature@':{
@@ -40,7 +40,7 @@
             }
             })
 
-            .state('electricalCurrentList',{
+            .state('electricalCurrent',{
              url: "/electricalCurrent",
              views: {
                 'electricalCurrent@':{
@@ -52,7 +52,7 @@
             }
             })
 
-            .state('airQualityList',{
+            .state('airQuality',{
              url: "/airQuality",
              views: {
                 'airQuality@':{

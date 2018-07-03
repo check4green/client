@@ -2,8 +2,8 @@ var app = angular.module("sensorApp");
 app.directive('editSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'DistanceList/editSensorDirectiveView.html',
-        controller: function($scope, distanceService){
+        templateUrl: 'sensorModel/editSensorDirectiveView.html',
+        controller: function($scope, sensorModelService){
             $scope.editButton = true;
             $scope.editDisplay = false;
             $scope.startEdit = function(){
@@ -25,7 +25,7 @@ app.directive('editSensor', function(){
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;
                 var sensorPut = {'name':editName, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize}
-                distanceService.updateSensors(sensorPut, gatewayAddress, clientAddress);
+                sensorModelService.updateSensors(sensorPut, gatewayAddress, clientAddress);
                 $scope.sensor.uploadInterval=editUploadInterval;
                 $scope.sensor.batchSize=editBatchSize;
                 $scope.sensor.name = editName;
