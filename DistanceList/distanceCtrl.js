@@ -1,9 +1,9 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("distanceCtrl",["$scope", "$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($scope, $localStorage, $timeout, distanceService, $http) {
+   app.controller("distanceCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($scope, SENSOR_TYPE, $localStorage, $timeout, distanceService, $http) {
         var vm = this;
-        
+        console.log(SENSOR_TYPE);
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
@@ -13,43 +13,74 @@
         };
 
        //sensors
-
-       $scope.sensPerPage = 10;
-       distanceService.getFinalPage($scope.sensPerPage)
+        distanceService.getFinalPage()
         .then(finalPage);
         function finalPage(data){
-           $scope.numPages = data;
-           console.log('Last Page: ', $scope.numPages)
+           vm.lastPage = data;
+            console.log('Last page', vm.lastPage);
+            $localStorage.final = vm.lastPage;
+           if(vm.pag == vm.lastPage-1){
+                vm.next = false;
+            }else {
+                vm.next = true;
+            }
        }
-       distanceService.getAllSensors($scope.sensPerPage)
-            .then(allSensors);
-        function allSensors(data){
-          $scope.allSensors = data;
-        }
-        if($localStorage.page){
-          $scope.currentPage = $localStorage.page;
+         if($localStorage.page){
+                vm.pag = $localStorage.page;
+            }else{
+                vm.pag = 1;
+            }
+        if ($localStorage.page){
+        if ($localStorage.page == 1){
+            vm.back = false;
         }else{
-          $scope.currentPage = 1;
+            vm.back = true;
         }
-        vm.setPage = function(){
-          $scope.loading=true;
-          $scope.loadingGray=true;
-          distanceService.getSensors($scope.currentPage, $scope.sensPerPage)
-             .then(function(response){
-               vm.sensors = response.data;
-               $localStorage.page = $scope.currentPage;
-               $scope.loading=false;
-               $scope.loadingGray=false;
-               console.log("Current Page: ", $scope.currentPage)
-
-             })
+        }else{
+            vm.back = false;
         }
-        $scope.$watch('currentPage', vm.setPage);
+        if (vm.pag == $localStorage.final-1){
+            vm.next = false;
+        }else {
+            vm.next = true;
+        }
+        vm.pagination = function(pg){
+           
+            if(pg==false){
+                vm.pag = vm.pag-1;
+            }
+            if(pg==true && vm.totalCount != 1){
+                vm.pag = vm.pag+1;
+                vm.back = true;
+            }
+            if(vm.pag<1){
+                vm.pag = 1;
+            }
+            if (vm.pag == 1){
+                vm.back = false;
+            }
+            
+            if(vm.pag == $localStorage.final-1){
+                vm.next = false;
+            }else{
+                vm.next = true;
+            }
+            $localStorage.page = vm.pag;
+            console.log(vm.pag);
+            $scope.loading=true;
+            $scope.loadingGray=true;
+            distanceService.getSensors(vm.pag)
+            .then(function(response){
+                 vm.sensors = response.data;
+                 $scope.loading = false;
+                 $scope.loadingGray = false;
+            })
+        }
         $scope.loading = true;
-        $scope.loadingGray = true;
-
-        $http.get("http://192.168.0.18:32333/api/sensors?page=" + $scope.currentPage + "&pageSize=" + $scope.sensPerPage)
-        // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + $scope.currentPage + "&pageSize="+$scope.numPerPage)
+        $scope.sensorData = false;
+        $scope.noSensorData = false;
+        // $http.get("http://192.168.0.18:32333/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
+        $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
@@ -75,7 +106,7 @@
                         $scope.detailsData = true;
                         $scope.loadingDetails = false;
                         $scope.noRead = false;
-                    }
+                    } 
                     function measureError(measurements){
                         $scope.noRead = true;
                         $scope.loadingDetails = false;
@@ -88,9 +119,9 @@
             .then(function(response){
                 $scope.totalSensors = response;
             });
-
+        
        //live view
-
+       
     //    vm.qs=10;
     //    vm.quantitySet= function(quantity){
     //        vm.qs = quantity;

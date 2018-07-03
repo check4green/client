@@ -2,7 +2,7 @@
     <form class="col-md-3" name="editForm" novalidate>
         <label>Name:</label>
         <div class="form-group" ng-class="{'has-error':editForm.inputName.$invalid && editForm.inputName.$dirty}">
-            <input name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" class="form-control" ng-model="registerName" required>
+            <input name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" class="form-control" ng-model="editName" required>
             <span class="help-block has-error">
                 <span ng-show="editForm.inputName.$error.required">Name is required</span>
                 <span ng-show="editForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>

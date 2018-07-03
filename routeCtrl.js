@@ -1,6 +1,9 @@
 (function(){
     "use strict";
-    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3", "bw.paging"]);
+    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3"])
+    .constant('SENSOR_TYPE', {
+        'ID' : '0'
+    });
     app.config(["$stateProvider", "$urlRouterProvider",
                function($stateProvider, $urlRouterProvider){
                    $urlRouterProvider.otherwise("/index");
@@ -17,7 +20,10 @@
              url: "/distance",
              views: {
                 'distance@':{
-                    template: "<distance></distance>"
+                    template: "<distance></distance>",
+                    controller: function($scope, SENSOR_TYPE){
+                        SENSOR_TYPE.ID = "33"
+                    }
                 }
             }
             })
@@ -26,7 +32,10 @@
              url: "/temperature",
              views: {
                 'temperature@':{
-                    template: "<temperature></temperature>"
+                    template: "<temperature></temperature>",
+                    controller: function($scope, SENSOR_TYPE){
+                        SENSOR_TYPE.ID = "24"
+                    }
                 }
             }
             })
@@ -35,7 +44,10 @@
              url: "/electricalCurrent",
              views: {
                 'electricalCurrent@':{
-                    template: "<electrical-current></electrical-current>"
+                    template: "<electrical-current></electrical-current>",
+                    controller: function($scope, SENSOR_TYPE){
+                        SENSOR_TYPE.ID = "25"
+                    }
                 }
             }
             })
@@ -52,3 +64,4 @@
             }
         ]);
 }());
+

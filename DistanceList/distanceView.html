@@ -45,11 +45,15 @@
                             <measurements></measurements>
                             <chartd3></chartd3>
                             <delete-sensor></delete-sensor>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <button type="button" class="btn btn-default" ng-click="vm.pagination(false)" ng-show="vm.back"> < Previous</button>
+            <button type="button" class="btn btn-default" ng-click="vm.pagination(true)" ng-show="vm.next">Next > </button>
+        </div>
     </div>
 
     <!-- <div>
@@ -57,7 +61,7 @@
             <input ng-model="quantity" type="text" placeholder="Number of rows">
             <button ng-click="vm.quantitySet(quantity)">Set</button>
         </form>
-
+        
             <table>
                 <thead>
                     <tr><td></td>S1 in Cm</tr>
@@ -69,5 +73,5 @@
                 </tbody>
             </table>
     </div> -->
-
+    
 </div>

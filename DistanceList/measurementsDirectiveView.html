@@ -51,7 +51,10 @@
                 </tr>
             </tbody>
         </table>
-        <div paging page="currentPage" total="totalReadings" page-size="size" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
-      </div>
+        <div class="measurementsContainerNavigation">
+            <button type="button" class="btn btn-default" ng-click="paginationReadings(false)" ng-show="backr">< Previous</button>
+            <button type="button" class="btn btn-default" ng-click="paginationReadings(true)" ng-show= "nextr">Next ></button>
+        </div>
+    </div>
     <button type="button" class="btn btn" ng-click="cancelMeasurements()">Cancel</button>
 </div>

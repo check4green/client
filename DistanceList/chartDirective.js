@@ -41,8 +41,8 @@
                                }
                                 var svg = d3.select("svg")
                                             .attr("id", "svgId");
-                                var margin = {top: 20, right: 90, bottom: 110, left: 100},
-                                    margin2 = {top: 430, right: 50, bottom: 30, left: 100},
+                                var margin = {top: 20, right: 50, bottom: 110, left: 60},
+                                    margin2 = {top: 430, right: 50, bottom: 30, left: 50},
                                     width = +svg.attr("width") - margin.left - margin.right,
                                     height = +svg.attr("height") - margin.top - margin.bottom,
                                     height2 = +svg.attr("height") - margin2.top - margin2.bottom;
@@ -89,17 +89,17 @@
                                     .attr("width", width)
                                     .attr("height", height)
                                     .attr("x", 0)
-                                    .attr("y", 0);
+                                    .attr("y", 0); 
                                 var Line_chart = svg.append("g")
                                     .attr("class", "focus")
                                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                                     .attr("clip-path", "url(#clip)")
-
-
+                                    
+                                
                                 var focus = svg.append("g")
                                     .attr("class", "focus")
                                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+                                
                                 var context = svg.append("g")
                                     .attr("class", "context")
                                     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
@@ -143,7 +143,7 @@
                                     .attr("height", height)
                                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                                     .call(zoom);
-
+                             
                                 $scope.showValues = function(value) {
                                     if( value == true){
                                     //show tooltips
@@ -154,8 +154,7 @@
                                                 .append("circle")
                                                 .attr("class", "dot")
                                                 .attr("r", 4)
-                                                .style("fill", function(d){if (d.value>400) {return "blue";}
-                                                                      else{if (d.value==0){return "red";}}})
+                                                .style("fill", function(d){if (d.value>400) {return "red";}})
                                                 .attr("cx", function(d) {return x(d.readingDate); })
                                                 .attr("cy", function(d) {return y(d.value); })
                                             Line_chart.selectAll("text")
@@ -175,27 +174,27 @@
                                                 .style("display", "none");
                                     }
                                 }
-
+                                
                             //legend
                                 var legend = svg.append("g")
                                                 .attr("class", "legend")
-                                                .attr("x", 880)
+                                                .attr("x", 900)
                                                 .attr("y", 25)
                                                 .attr("height", 100)
                                                 .attr("width", 100)
-
+                                                
                                 legend.selectAll("g")
                                                 .data(measurements)
                                                 .enter()
                                                 .append("g")
                             //value legend
                                 legend.append("circle")
-                                      .attr("cx", 880)
+                                      .attr("cx", 920)
                                       .attr("cy", 30)
                                       .attr("r", 6)
                                       .style("fill","#4e9a06");
                                 legend.append("text")
-                                     .attr("x", 890)
+                                     .attr("x", 930)
                                      .attr("y", 33)
                                      .attr("height", 30)
                                      .attr("width", 100)
@@ -203,31 +202,19 @@
                                      .text("Value")
                             //error legend
                                 legend.append("circle")
-                                      .attr("cx", 880)
+                                      .attr("cx", 920)
                                       .attr("cy", 50)
                                       .attr("r", 6)
                                       .style("fill","red");
                                 legend.append("text")
-                                     .attr("x", 890)
+                                     .attr("x", 930)
                                      .attr("y", 53)
                                      .attr("height", 30)
                                      .attr("width", 100)
                                      .style("fill", "red")
-                                     .text("Invalid sensor")
-                                legend.append("circle")
-                                        .attr("cx", 880)
-                                        .attr("cy", 69)
-                                        .attr("r", 6)
-                                        .style("fill","blue");
-                                legend.append("text")
-                                        .attr("x", 890)
-                                        .attr("y", 70)
-                                        .attr("height", 30)
-                                        .attr("width", 100)
-                                        .style("fill", "blue")
-                                        .text("Out of range")
-
-
+                                     .text("Error")
+                                                    
+                                    
                                 function brushed() {
                                         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
                                         var s = d3.event.selection || x2.range();
@@ -244,7 +231,7 @@
                                             .scale(width / (s[1] - s[0]))
                                             .translate(-s[0], 0));
                                         }
-
+                                
                                 function zoomed() {
                                     if (d3.event.sourceEvent && d3.event.sourceEvent.type === "brush") return; // ignore zoom-by-brush
                                     var t = d3.event.transform;
@@ -259,7 +246,7 @@
                                     focus.select(".axis--x").call(xAxis);
                                     context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
                                 }
-
+                                
                                 function type(d) {
                                     d.readingDate = parseDate(d.readingDate);
                                     d.value = +d.value;
