@@ -2,7 +2,7 @@ var app = angular.module("sensorApp");
 app.directive('measurements', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'sensorModel/measurementsDirectiveView.html',
+        templateUrl: 'SensorModel/measurementsDirectiveView.html',
         controller: function($scope, sensorModelService, $localStorage){
             var vm = this;
             $scope.measurementsButton = true;

@@ -2,7 +2,7 @@ var app = angular.module("sensorApp");
 app.directive('editSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'sensorModel/editSensorDirectiveView.html',
+        templateUrl: 'SensorModel/editSensorDirectiveView.html',
         controller: function($scope, sensorModelService){
             $scope.editButton = true;
             $scope.editDisplay = false;

@@ -2,7 +2,7 @@ var app = angular.module("sensorApp");
 app.directive('deleteSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'sensorModel/deleteSensorDirectiveView.html',
+        templateUrl: 'SensorModel/deleteSensorDirectiveView.html',
         controller: function($scope, sensorModelService){
             $scope.deleteButton = true;
             $scope.deleteDisplay = false;

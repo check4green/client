@@ -2,7 +2,7 @@ var app = angular.module("sensorApp");
 app.directive('registerSensor', function(){
     return { 
         restrict: 'E',
-        templateUrl: 'sensorModel/registerSensorDirectiveView.html',
+        templateUrl: 'SensorModel/registerSensorDirectiveView.html',
         controller: function($scope, SENSOR_TYPE, sensorModelService){
             $scope.registerDisplay = false;
             $scope.registerButton = true;
