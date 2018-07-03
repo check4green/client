@@ -2,6 +2,7 @@
     <div ng-show="loadingChart" class="loader"></div>
     <div ng-show="noDataChart" class="noData">No data</div>
     <div ng-show="dataChart" class="bg-table">
+        <button type="button" class="btn btn-success refreshMeasurements" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)">Refresh</button>
 
         <!-- <label class="checkbox-inline">
             <input type="checkbox" ng-model="value" ng-click="showValues(value)"> Show values on chart.

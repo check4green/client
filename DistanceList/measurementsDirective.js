@@ -24,7 +24,7 @@ app.directive('measurements', function(){
                 $scope.deleteButton = true;
                 $scope.editButton = true;
                 $scope.chartButton = true;
-                $scope.pageSize = '';
+                // $scope.pageSize = '';
             };
 
             //readings

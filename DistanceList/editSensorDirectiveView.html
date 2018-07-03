@@ -6,7 +6,7 @@
             <span class="help-block has-error">
                 <span ng-show="editForm.inputName.$error.required">Name is required</span>
                 <span ng-show="editForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
-                <span ng-show="!editForm.inputName.$valid && !editForm.inputName.$error.required && !editForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and at the beginning or end of the word. Exemple: (Proximity-Sensor_01)</span>
+                <span ng-show="!editForm.inputName.$valid && !editForm.inputName.$error.required && !editForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
         <div class="form-group" ng-class="{'has-error': editForm.inputUploadInt.$invalid && editForm.inputUploadInt.$dirty}">

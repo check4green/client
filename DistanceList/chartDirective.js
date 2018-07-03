@@ -9,6 +9,7 @@
                     $scope.chartDisplay = false;
                 $scope.chart = function(gatewayAddress, clientAddress){
                     var page = 0
+                    $scope.value = false;
                     $scope.chartDisplay = true;
                     $scope.chartButton = false;
                     $scope.detailsDisplay = false;

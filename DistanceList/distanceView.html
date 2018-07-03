@@ -3,6 +3,9 @@
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensorsData" class="noData">No Data</div>
     <div ng-show="sensorData"  class="table-overflow">
+        <div class="measurementsTotalReadings">
+            <label>Total Sensors: {{totalSensors}}</label>
+        </div>
         <table class="table">
             <thead>
                 <tr>

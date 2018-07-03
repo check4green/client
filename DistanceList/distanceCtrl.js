@@ -3,7 +3,9 @@
    var app = angular.module("sensorApp");
    app.controller("distanceCtrl",["$scope", "$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($scope, $localStorage, $timeout, distanceService, $http) {
         var vm = this;
-
+        vm.sensorTypeId = function(sensorTypeId){
+            vm.SensorType = sensorTypeId
+        }
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
@@ -79,8 +81,8 @@
         $scope.loading = true;
         $scope.sensorData = false;
         $scope.noSensorData = false;
-        // $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
-        $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
+        $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
+        // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
@@ -114,6 +116,11 @@
                     }
                     vm.lastRead = null;
         };
+
+        distanceService.getAllSensors()
+            .then(function(response){
+                $scope.totalSensors = response;
+            });
         
        //live view
        
@@ -161,7 +168,7 @@ app.directive('nameValidation', function() {
         require: 'ngModel',
         link: function(scope, element, attr, mCtrl) {
             function myValidation(value) {
-            if ((value.indexOf("--") > -1) || (value.indexOf("__") > -1) || (value.indexOf("-_") > -1) || (value.indexOf("_-") > -1) || (value.indexOf("-") == 0) || (value.indexOf("-") == 29) || (value.indexOf("_") == 0) || (value.indexOf("_") == 29)) {
+            if ((value.indexOf("--") > -1) || (value.indexOf("__") > -1) || (value.indexOf("-_") > -1) || (value.indexOf("_-") > -1)) {
                     mCtrl.$setValidity('charE', false);
                 } else {
                     mCtrl.$setValidity('charE', true);
