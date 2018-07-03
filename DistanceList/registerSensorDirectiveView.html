@@ -1,4 +1,7 @@
 <button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister()" ng-show="registerButton">Add sensor</button>
+<div>
+    <span style="color:red;" ng-show="error">{{message}}</span>
+</div>
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
     <form class="col-md-3" name="registerForm" novalidate>
         <label>Name:</label>
@@ -53,4 +56,3 @@
         <button type="button" class="btn btn" ng-click="cancelRegisterSensor()">Cancel</button>
     </form>
 </div>
-

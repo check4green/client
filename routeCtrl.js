@@ -1,6 +1,6 @@
 (function(){
     "use strict";
-    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3"]);
+    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3", "bw.paging"]);
     app.config(["$stateProvider", "$urlRouterProvider",
                function($stateProvider, $urlRouterProvider){
                    $urlRouterProvider.otherwise("/index");

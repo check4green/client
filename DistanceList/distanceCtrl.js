@@ -15,74 +15,43 @@
         };
 
        //sensors
-        distanceService.getFinalPage()
+
+       $scope.sensPerPage = 10;
+       distanceService.getFinalPage($scope.sensPerPage)
         .then(finalPage);
         function finalPage(data){
-           vm.lastPage = data;
-            console.log('Last page', vm.lastPage);
-            $localStorage.final = vm.lastPage;
-           if(vm.pag == vm.lastPage-1){
-                vm.next = false;
-            }else {
-                vm.next = true;
-            }
+           $scope.numPages = data;
+           console.log('Last Page: ', $scope.numPages)
        }
-         if($localStorage.page){
-                vm.pag = $localStorage.page;
-            }else{
-                vm.pag = 0;
-            }
-        if ($localStorage.page){
-        if ($localStorage.page == 0){
-            vm.back = false;
+       distanceService.getAllSensors($scope.sensPerPage)
+            .then(allSensors);
+        function allSensors(data){
+          $scope.allSensors = data;
+        }
+        if($localStorage.page){
+          $scope.currentPage = $localStorage.page;
         }else{
-            vm.back = true;
+          $scope.currentPage = 1;
         }
-        }else{
-            vm.back = false;
+        vm.setPage = function(){
+          $scope.loading=true;
+          $scope.loadingGray=true;
+          distanceService.getSensors($scope.currentPage, $scope.sensPerPage)
+             .then(function(response){
+               vm.sensors = response.data;
+               $localStorage.page = $scope.currentPage;
+               $scope.loading=false;
+               $scope.loadingGray=false;
+               console.log("Current Page: ", $scope.currentPage)
+
+             })
         }
-        if (vm.pag == $localStorage.final-1){
-            vm.next = false;
-        }else {
-            vm.next = true;
-        }
-        vm.pagination = function(pg){
-           
-            if(pg==false){
-                vm.pag = vm.pag-1;
-            }
-            if(pg==true && vm.totalCount != 0){
-                vm.pag = vm.pag+1;
-                vm.back = true;
-            }
-            if(vm.pag<0){
-                vm.pag = 0;
-            }
-            if (vm.pag == 0){
-                vm.back = false;
-            }
-            
-            if(vm.pag == $localStorage.final-1){
-                vm.next = false;
-            }else{
-                vm.next = true;
-            }
-            $localStorage.page = vm.pag;
-            console.log(vm.pag);
-            $scope.loading=true;
-            $scope.loadingGray=true;
-            distanceService.getSensors(vm.pag)
-            .then(function(response){
-                 vm.sensors = response.data;
-                 $scope.loading = false;
-                 $scope.loadingGray = false;
-            })
-        }
+        $scope.$watch('currentPage', vm.setPage);
         $scope.loading = true;
-        $scope.sensorData = false;
-        $scope.noSensorData = false;
-        $http.get("http://192.168.0.18:32333/api/sensors?page=" + vm.pag + "&pageSize=30")
-        // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + vm.pag + "&pageSize=30")
+        $scope.loadingGray = true;
+
+        $http.get("http://192.168.0.18:32333/api/sensors?page=" + $scope.currentPage + "&pageSize=" + $scope.sensPerPage)
+        // $http.get("http://swiss-iot.azurewebsites.net/api/sensors?page=" + $scope.currentPage + "&pageSize="+$scope.numPerPage)
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
@@ -108,7 +77,7 @@
                         $scope.detailsData = true;
                         $scope.loadingDetails = false;
                         $scope.noRead = false;
-                    } 
+                    }
                     function measureError(measurements){
                         $scope.noRead = true;
                         $scope.loadingDetails = false;
@@ -121,9 +90,9 @@
             .then(function(response){
                 $scope.totalSensors = response;
             });
-        
+
        //live view
-       
+
     //    vm.qs=10;
     //    vm.quantitySet= function(quantity){
     //        vm.qs = quantity;

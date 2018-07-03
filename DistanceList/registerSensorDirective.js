@@ -1,6 +1,6 @@
 var app = angular.module("sensorApp");
 app.directive('registerSensor', function(){
-    return { 
+    return {
         restrict: 'E',
         templateUrl: 'DistanceList/registerSensorDirectiveView.html',
         controller: function($scope, distanceService){
@@ -11,7 +11,7 @@ app.directive('registerSensor', function(){
                 if($scope.registerDisplay == false){
                     $scope.registerDisplay = true;
                     $scope.registerButton = false;
-                } 
+                }
         };
 
         $scope.sensorRegister = function(registerName, registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){

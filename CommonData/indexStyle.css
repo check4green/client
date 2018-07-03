@@ -1,0 +1,159 @@
+@font-face{
+    font-family: myFont;
+    src: url(/font/Helmet-Regular.ttf);
+}
+ body{
+     margin: 0px;
+    }
+.header{
+    background-color: gray;
+}
+.swiss{
+    width: 115px;
+}
+.reloadFlex{
+    position: absolute;
+    z-index: 1;
+    right: 6px;
+    top: 35px;
+}  /*butoanele back+refersh*/
+.fa{
+    font-size: 40px !important;
+    color: #b38867;
+    cursor: pointer;
+    padding: 2px;
+    padding-left: 3px;
+}
+    /* active */
+.fa:active{
+    font-size: 41px !important;
+    color: #656565;
+    background-color: #ddbc95;
+}
+    /* active */
+.buttonsGrid{
+    display: flex;
+}
+.buttons{
+    background-color: #656565;
+    width: 50px;
+    min-height: 579px;
+}/* flex pentru butoane si categorie si grid*/
+/* @media (max-width: 400px){
+    .buttons{ height: 349px;}
+} */
+.grid{
+    font-size: 25px!important;
+    background-color: #656565;
+    flex-grow: 1;
+}
+.grid:active{
+    background-color: #ddbc95;
+}
+.gridScroll{
+    overflow: auto !important;
+    height: 579px;
+    margin: 0px 5px 0px;
+}
+
+.categories{
+    background-color: #7a7a7a31;
+    position: absolute;
+    z-index: 1;
+    top: 215px;  
+    height: 150px;
+    width: 45px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #7a7a7a91;
+} /*cele 3 butoane pentru senzori*/
+.distance{
+    display: flex;
+    flex-direction: column;
+    font-family: myFont;
+}
+.title{
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+.distanceViewRow {
+    display: flex;
+    /* width: 185px; */
+    
+}
+.distanceViewRow p{
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #7a7a7a91;
+}
+.colorN{
+    margin-left: 3px;
+    margin-right: 5px;
+    color: #b38867;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+}
+
+
+/* grid devexpress */
+.dx-datagrid-content .dx-datagrid-table{ 
+    color: #000000;
+} /* culoare text grid */
+
+.dx-datagrid-text-content{
+    text-transform: uppercase;
+    font-weight: bold!important;
+    font-size: 16px;
+    text-align: left!important;
+}
+.dx-icon{
+    color: #979595!important;
+    font-weight: bold!important;
+}
+.dx-button{
+    border-color:#ddbc95!important; 
+}
+ /*Add button */
+.dx-datagrid .dx-link{
+    text-decoration: none!important;
+}
+.dx-link-edit{
+    color: #c6dd95!important;
+}
+.dx-link-delete{
+    color: #ce877b!important;
+} /* text edit-delete */
+.dx-texteditor{
+    border:1px solid #ddbc95!important;
+}
+/* search */
+.dx-datagrid-group-closed:before{
+    color:#b38867;
+    position: absolute!important;
+}
+.dx-datagrid-group-opened:before{
+    color:#b38867;
+}/*sageata show measurements*/
+.dx-datagrid-headers .dx-datagrid-table .dx-row > td{
+    background-color: #ddbc95;
+    border-color: #ddbc95!important;
+}
+.dx-datagrid .dx-row-lines > td{
+    border-color: #ddbc95!important;
+}
+.dx-datagrid-rowsview .dx-row > .dx-master-detail-cell{
+    padding: 0px!important;
+}
+.dx-widget{
+    margin: 0px!important;
+}
+.dx-pager .dx-pages .dx-page{
+    font-weight: bold!important;
+    font-size: 16px;
+    font-family: myFont!important;
+    background-color: #656565!important;
+}
+
+/* grid devexpress */

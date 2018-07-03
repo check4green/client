@@ -13,15 +13,15 @@
     <link rel="stylesheet" type="text/css" href="/StyleIndex/loaderStyle.css"> <!--swiss LOADER-->
     <link rel="stylesheet" href="/StyleIndex/bootstrap.min.css">
     <link rel="stylesheet" href="/DistanceList/distanceStyle.css" type="text/css">  <!-- swiss DISTANCE -->
-    
+
 </head>
 <body ng-app="sensorApp">
-    
+
 <div class="header">
       <img class="moto-img" src="/iconPng/C4G-full-moto.png" alt="Check4Green" />
   </div>
 <header id="navbar">
-  
+
   <div class="topnav" id="myTopnav">
       <span id="close-menu" class="fa fa-outdent"></span>
       <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
@@ -52,7 +52,7 @@
 <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
 
 <div class="gridView container">
-    <div class="grid sd"><div ui-view="distance"></div></div> 
+    <div class="grid sd"><div ui-view="distance"></div></div>
     <div class="grid sh"><div ui-view="temperature"></div></div>
     <div class="grid sh"><div ui-view="electricalCurrent"></div></div>
     <div class="grid sh"><div ui-view="airQuality"></div></div>
@@ -67,8 +67,8 @@
 <script src="/Library/angular.js"></script>
 <script src="/Library/angular-ui-router.js"></script>
 <script src="/Library/ngStorage.js"></script>
-<script src="/Library/d3.js"></script>
 <script src="/Library/d3.min.js"></script>
+
 
 <!-- Ui-route -->
 <script src="routeCtrl.js"></script>
@@ -97,5 +97,6 @@
 <script src="DistanceList/measurementsDirective.js"></script>
 <script src="DistanceList/detailsSensorDirective.js"></script>
 <script src="DistanceList/chartDirective.js"></script>
+<script src="DistanceList/paginationDirective.js"></script>
 
 </html>
