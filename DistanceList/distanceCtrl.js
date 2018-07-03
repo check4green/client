@@ -3,9 +3,7 @@
    var app = angular.module("sensorApp");
    app.controller("distanceCtrl",["$scope", "$localStorage", "$timeout", "distanceService","$http", function distanceCtrl($scope, $localStorage, $timeout, distanceService, $http) {
         var vm = this;
-        vm.sensorTypeId = function(sensorTypeId){
-            vm.SensorType = sensorTypeId
-        }
+        
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
