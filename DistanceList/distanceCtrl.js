@@ -79,8 +79,8 @@
         $scope.loading = true;
         $scope.sensorData = false;
         $scope.noSensorData = false;
-        // $http.get("http://192.168.0.18:32333/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
-        $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
+        $http.get("http://192.168.0.18:32333/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
+        // $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + vm.pag + "&pageSize=30")
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
