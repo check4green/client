@@ -155,7 +155,7 @@
                                                 .attr("class", "dot")
                                                 .attr("r", 4)
                                                 .style("fill", function(d){if (d.value>399) {return "#286090";}
-                                                                      else{if (d.value<1){return "red";}}})
+                                                                      else{if (d.value<1){return "#d9534f";}}})
                                                 .attr("cx", function(d) {return x(d.readingDate); })
                                                 .attr("cy", function(d) {return y(d.value); })
                                             Line_chart.selectAll("text")
@@ -206,13 +206,13 @@
                                       .attr("cx", 880)
                                       .attr("cy", 50)
                                       .attr("r", 6)
-                                      .style("fill","red");
+                                      .style("fill","#d9534f");
                                 legend.append("text")
                                      .attr("x", 890)
                                      .attr("y", 53)
                                      .attr("height", 30)
                                      .attr("width", 100)
-                                     .style("fill", "red")
+                                     .style("fill", "#d9534f")
                                      .text("Invalid sensor")
                                 legend.append("circle")
                                         .attr("cx", 880)
