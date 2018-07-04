@@ -154,7 +154,7 @@
                                                 .append("circle")
                                                 .attr("class", "dot")
                                                 .attr("r", 4)
-                                                .style("fill", function(d){if (d.value>399) {return "blue";}
+                                                .style("fill", function(d){if (d.value>399) {return "#286090";}
                                                                       else{if (d.value<1){return "red";}}})
                                                 .attr("cx", function(d) {return x(d.readingDate); })
                                                 .attr("cy", function(d) {return y(d.value); })
@@ -218,13 +218,13 @@
                                         .attr("cx", 880)
                                         .attr("cy", 69)
                                         .attr("r", 6)
-                                        .style("fill","blue");
+                                        .style("fill","#286090");
                                 legend.append("text")
                                         .attr("x", 890)
                                         .attr("y", 70)
                                         .attr("height", 30)
                                         .attr("width", 100)
-                                        .style("fill", "blue")
+                                        .style("fill", "#286090")
                                         .text("Out of range")
 
 
