@@ -25,9 +25,9 @@ app.directive('editSensor', function(){
                 .then(function(){
                     $scope.sensorEditError = false; 
                     $scope.sensorEditSuccess = true;
-                    // $scope.sensor.uploadInterval=editUploadInterval;
-                    // $scope.sensor.batchSize=editBatchSize;
-                    // $scope.sensor.name = editName;
+                    $scope.sensor.uploadInterval=editUploadInterval;
+                    $scope.sensor.batchSize=editBatchSize;
+                    $scope.sensor.name = editName;
                 })
                 .catch(function(response){
                     $scope.message = response.data.message; 
@@ -45,8 +45,6 @@ app.directive('editSensor', function(){
                 // $scope.editName = '';
             };
             $scope.cancelEditSensor = function(){
-                $window.location.reload();
-            $timeout(function(){
                 $scope.editButton = true;
                 $scope.editDisplay = false;
                 $scope.detailsDisplay = true;
@@ -55,7 +53,6 @@ app.directive('editSensor', function(){
                 $scope.chartButton = true;
                 $scope.sensorEditError = false; 
                 $scope.sensorEditSuccess = false;
-            },300);
                 // $scope.editUploadInterval = '';
                 // $scope.editBatchSize = '';
                 // $scope.editName = '';

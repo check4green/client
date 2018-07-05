@@ -3,8 +3,8 @@
     var app = angular.module('sensorApp');
     
     app.component('airQuality', {
-        templateUrl: 'AirQuality/airQualityView.html',
-        controller: 'airQualityCtrl',
+        templateUrl: 'sensorModel/sensorModelView.html',
+        controller: 'sensorModelCtrl',
         controllerAs: 'vm'
     });
 }());

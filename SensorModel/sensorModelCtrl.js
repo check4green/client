@@ -54,13 +54,11 @@
             $scope.loading = false;
             $scope.noSensorsData = false;
             $scope.sensorData = true;
-            $scope.registerSensor = true;
          })
          .catch(function(response){
             $scope.noSensorsData = true;
             $scope.loading = false;
             $scope.sensorData = false;
-            $scope.registerSensor = false;
          });
          vm.getLastRead = function(GA, CA){
             $scope.noRead = false;
