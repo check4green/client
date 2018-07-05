@@ -15,10 +15,16 @@ a .down + .up{
   position: relative;
   background-color: #333;
 }
+.moto-img {
+  padding: 16px;
+}
 .sticky {
   position: fixed;
   top: 0;
   width: 100%;
+}
+.sticky + .moto-img {
+  padding-top: 60px;
 }
 #navbar{
   z-index: 1;
