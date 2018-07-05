@@ -41,4 +41,3 @@ function closeNav() {
     document.getElementById("close-menu").style.display = "none";
     document.getElementById("close-menu").style.marginLeft= "0";
 }
-
