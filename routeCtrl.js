@@ -56,7 +56,10 @@
              url: "/airQuality",
              views: {
                 'airQuality@':{
-                    template: "<air-quality></air-quality>"
+                    template: "<air-quality></air-quality>",
+                    controller: function($scope, SENSOR_TYPE){
+                        SENSOR_TYPE.ID = "34"
+                    }
                 }
             }
             })

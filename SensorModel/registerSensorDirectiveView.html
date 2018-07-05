@@ -1,4 +1,8 @@
 <button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister()" ng-show="registerButton">Add sensor</button>
+<div>
+    <span style="color:red;" ng-show="sensorRegisterError">{{message}}</span>
+    <span style="color:green;" ng-show="sensorRegisterSuccess">Sensor created successful!</span>
+</div>
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
     <form class="col-md-3" name="registerForm" novalidate>
         <label>Name:</label>
@@ -7,7 +11,7 @@
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputName.$error.required">Name is required</span>
                 <span ng-show="registerForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
-                <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another. Exemple: (Proximity-Sensor_01)</span>
+                <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after word, and word need min one letter. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
         <label>Production Date:</label>
@@ -33,7 +37,7 @@
         </div>
         <label>Gateway Address:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputGatewayAdd.$invalid && registerForm.inputGatewayAdd.$dirty}">
-            <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" ca-ga-validation type="text" class="form-control" ng-model="registerGatewayAddress" required ng-minlength="4" ng-maxlength="4" maxlength="4"/>
+            <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" ca-ga-validation type="text" class="form-control" ng-model="registerGatewayAddress" required ng-minlength="4" ng-maxlength="4" maxlength="4"/>
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputGatewayAdd.$error.required">Gateway Address is required</span>
                 <span ng-show="registerForm.inputGatewayAdd.$error.pattern">The Gateway Address must be a hexadecimal number of 4 characters.</span>
@@ -42,7 +46,7 @@
         </div>
         <label>Client Address:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputClientAdd.$invalid && registerForm.inputClientAdd.$dirty}">
-            <input id="inputClientAdd" name="inputClientAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" ca-ga-validation type="text" class="form-control" ng-model="registerClientAddress" required required ng-minlength="4" ng-maxlength="4" maxlength="4" />
+            <input id="inputClientAdd" name="inputClientAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" ca-ga-validation type="text" class="form-control" ng-model="registerClientAddress" required ng-minlength="4" ng-maxlength="4" maxlength="4" />
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputClientAdd.$error.required">Client Address is required</span>
                 <span ng-show="registerForm.inputClientAdd.$error.pattern">The Client Address must be a hexadecimal number of 4 characters.</span>

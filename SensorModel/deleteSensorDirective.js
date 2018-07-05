@@ -3,7 +3,7 @@ app.directive('deleteSensor', function(){
     return { 
         restrict: 'E',
         templateUrl: 'SensorModel/deleteSensorDirectiveView.html',
-        controller: function($scope, sensorModelService){
+        controller: function($scope, sensorModelService, $window, $timeout){
             $scope.deleteButton = true;
             $scope.deleteDisplay = false;
             $scope.startDelete = function(){
@@ -14,12 +14,11 @@ app.directive('deleteSensor', function(){
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
             }
-            $scope.deleteSensor = function(gatewayAddress, clientAddress, sensors, sensor){
-                var idx = sensors.indexOf(sensor);
-                if(idx > -1){
-                    sensors.splice(idx, 1);
-                }
+            $scope.deleteSensor = function(gatewayAddress, clientAddress){
                 sensorModelService.deleteSensors(gatewayAddress, clientAddress);
+                $timeout(function(){
+                    $window.location.reload();
+                },300);
             };
             $scope.cancelDeleteSensor = function(){
                 $scope.deleteDisplay = false;

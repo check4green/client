@@ -57,20 +57,17 @@
        function insertSensors(sensor){
         //    return $http.post("http://192.168.0.18:32333/api/sensors", sensor)
            return $http.post("http://swiss-iot.azurewebsites.net/api/sensors", sensor)
-                .then(sensorsSuccess)
-                .catch(insertError);
-       }
-       function insertError(response){
-           return $q.reject('Error registering sensor(s).(HTTP status:' +response.status + ')');
+            .then(function (response){
+                 return response.data;
+        })
        }
        function updateSensors(newSensor, gatewayAdress, clientAddress){
         //    return $http.put("http://192.168.0.18:32333/api/sensors/address/"+gatewayAdress +"/"+clientAddress, newSensor)
            return $http.put("http://swiss-iot.azurewebsites.net/api/sensors/address/"+gatewayAdress +"/"+clientAddress, newSensor)
-           .catch(updateError);
-       }
-       function updateError(response){
-           return $q.reject('Error updating sensor(s).(HTTP status:' +response.status + ')');
-       }
+           .then(function (response){
+                return response.data;
+            })
+        }
        function deleteSensors(gatewayAddress, clientAddress){
         //    return $http.delete("http://192.168.0.18:32333/api/sensors/address/" + gatewayAddress + "/" + clientAddress)
            return $http.delete("http://swiss-iot.azurewebsites.net/api/sensors/address/" + gatewayAddress + "/" + clientAddress)
