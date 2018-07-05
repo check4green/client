@@ -34,7 +34,7 @@
                 'temperature@':{
                     template: "<temperature></temperature>",
                     controller: function($scope, SENSOR_TYPE){
-                        SENSOR_TYPE.ID = "24"
+                        SENSOR_TYPE.ID = "31"
                     }
                 }
             }
