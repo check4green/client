@@ -1,25 +1,27 @@
 <table class="table"  ng-show="detailsDisplay">
-    <thead>
-        <tr>
-            <td>Gateway Address</td>
-            <td>Client Address</td>
-            <td>Production Date</td>
-            <td>Upload Interval</td>
-            <td>Batch Size</td>
-            <td>Last Value</td>
-            <td>Last Date</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{sensor.gatewayAddress}}</td>
-            <td>{{sensor.clientAddress}}</td>
-            <td>{{sensor.productionDate}}</td>
-            <td>{{sensor.uploadInterval}}</td>
-            <td>{{sensor.batchSize}}</td>
-            <td>{{vm.lastRead[0].value}}<span ng-show="noRead">-</span></td>
-            <td>{{vm.lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
-        </tr>
-    </tbody>
-</table>
-
+        <thead>
+            <tr>
+                <td>Gateway Address</td>
+                <td>Client Address</td>
+                <td>Production Date</td>
+                <td>Upload Interval</td>
+                <td>Batch Size</td>
+                <td>Last Value</td>
+                <td>Unit Of Measure</td>
+                <td>Last Date</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{sensor.gatewayAddress}}</td>
+                <td>{{sensor.clientAddress}}</td>
+                <td>{{sensor.productionDate}}</td>
+                <td>{{sensor.uploadInterval}}</td>
+                <td>{{sensor.batchSize}}</td>
+                <td>{{vm.lastRead[0].value}}<span ng-show="noRead">-</span></td>
+                <td>{{unitOfMeasure}}</td>
+                <td>{{vm.lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
+            </tr>
+        </tbody>
+    </table>
+    

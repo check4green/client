@@ -96,7 +96,17 @@ app.directive('measurements', function(){
           console.log("Current Page Readings: ", $scope.currentPage)
        }
        $scope.$watch('currentPage', $scope.setPage);
+       sensorModelService.getMeasureId()
+          .then(idSuccess)
+        function idSuccess(data){
+          $scope.id= data.measureId;
 
+        sensorModelService.getUnitOfMeasure($scope.id)
+          .then(unitOfMeasureSuccess)
+        function unitOfMeasureSuccess(data){
+          $scope.unitOfMeasure = data.unitOfMeasure;
+        }
+        }
             };
         }
     }
