@@ -3,6 +3,18 @@
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensorsData" class="noData">No Data</div>
     <div ng-show="sensorData"  class="table-overflow">
+        <div  class="form-group measurementsContainerSet">
+            <label>Number of sensors:</label>
+            <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
+                <option selected disabled hidden value="">50</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="120">120</option>
+                <option value="140">140</option>
+                <option value="160">160</option>
+                <option value="200">200</option>
+            </select>
+        </div>
         <div class="measurementsTotalReadings">
             <label>Total Sensors: {{totalSensors}}</label>
         </div>

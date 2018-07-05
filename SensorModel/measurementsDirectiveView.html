@@ -34,7 +34,7 @@
                     <td>{{measurementSensor.readingDate}}</td>
                     <td>
                         <div class="measurementsOk" ng-if="(measurementSensor.value < 400) && (measurementSensor.value > 0)">{{measurementSensor.value}}</div>
-                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > 400">OoR</div>
+                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > 400">OR</div>
                         <div class="measurementsInvalidSensor" ng-if="measurementSensor.value < 1">IS</div>
                     </td>
                     <td>{{measurementSensor.id}}</td>

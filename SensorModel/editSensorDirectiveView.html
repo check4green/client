@@ -1,4 +1,8 @@
 <div class="editDisplay" ng-show="editDisplay">
+    <div>
+        <span style="color:red;" ng-show="sensorEditError">{{message}}</span>
+        <span style="color:green;" ng-show="sensorEditSuccess">Sensor created successful!</span>
+    </div>
     <form class="col-md-3" name="editForm" novalidate>
         <label>Name:</label>
         <div class="form-group" ng-class="{'has-error':editForm.inputName.$invalid && editForm.inputName.$dirty}">
@@ -6,7 +10,7 @@
             <span class="help-block has-error">
                 <span ng-show="editForm.inputName.$error.required">Name is required</span>
                 <span ng-show="editForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
-                <span ng-show="!editForm.inputName.$valid && !editForm.inputName.$error.required && !editForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another. Exemple: (Proximity-Sensor_01)</span>
+                <span ng-show="!editForm.inputName.$valid && !editForm.inputName.$error.required && !editForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after word, and word need min one letter. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
         <div class="form-group" ng-class="{'has-error': editForm.inputUploadInt.$invalid && editForm.inputUploadInt.$dirty}">

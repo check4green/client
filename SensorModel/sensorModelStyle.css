@@ -98,16 +98,16 @@
 .editDisplay input{
     margin-bottom:10px;
 }
-.measurementsDisplay .measurementsContainerSet{
+.measurementsContainerSet{
     display:flex;
     text-align: center;
     width:200px;
 }
-.measurementsDisplay .measurementsContainerSet label{
+.measurementsContainerSet label{
     display:flex;
     width:100px;
 }
-.measurementsDisplay .measurementsContainerSet input{
+.measurementsContainerSet input{
     display:flex;
     width:100px;
 }
