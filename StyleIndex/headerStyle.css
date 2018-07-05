@@ -9,7 +9,7 @@ a .down + .up{
   padding: 3px;
 }
 #navbar{
-  z-index: 99;
+  z-index: 99 !important;
 }
 .topnav {
   position: relative;

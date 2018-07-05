@@ -45,29 +45,6 @@
 .bg-table{
     position: relative;
 }
-
-.checkbox-inline{
-    position: absolute;
-    left: 500px;
-    top: -10px;
-    user-select: none;
-}
-
-.checkbox-inline-a{
-    position: absolute;
-    left: 540px;
-    top: -6px;
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-    user-select: none;
-}
-.checkbox-inline-a:hover{
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-}
-
 .registerDisplay input{
     margin-bottom:10px;
 }
@@ -80,7 +57,7 @@
     margin-right:auto;
     padding:10px;
     font-size:20px;
-    color:red;
+    color:#d9534f;
 }
 .inLine{
     display: flex;
@@ -98,25 +75,48 @@
 .editDisplay input{
     margin-bottom:10px;
 }
-.measurementsContainerSet{
-    display:flex;
-    text-align: center;
-    width:200px;
+inLine-measurement{
+    display: flex;
 }
-.measurementsContainerSet label{
-    display:flex;
+.legend-measurement{
+    float: right;
+    margin-top: 0px;
+    padding: 5px;
+}
+.legend-measurement a1{
+    margin-left: 2px;
+}
+#butonRefresh{
+    float: left;
+}
+.pages-center{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.measurementsContainerSet{
+    display: flex;
+    width:200px;
+    margin-left: 40%;
+}
+.measurementsDisplay .measurementsContainerSet{
+    /* display:flex; */
+    /* text-align: center; */
+    
+}
+.measurementsDisplay .measurementsContainerSet label{
+    /* display:flex; */
     width:100px;
 }
-.measurementsContainerSet input{
-    display:flex;
+.measurementsDisplay .measurementsContainerSet input{
+    /* display:flex; */
     width:100px;
 }
 .measurementsDisplay table{
     text-align: center;
 }
 .measurementsContainerSet button{
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     height:34px;
     margin-top:0px;
 }
@@ -139,12 +139,12 @@
     border-radius:100px;
 }
 .measurementsOutOfRange{
-    background-color:blue;
+    background-color:#286090;
     color:white;
     border-radius:100px;
 }
 .measurementsInvalidSensor{
-    background-color:red;
+    background-color:#d9534f;
     color:white;
     border-radius:100px;
 }
@@ -158,7 +158,7 @@
 .noData{
     text-align: center;
     padding:30px;
-    color:red;
+    color:#d9534f;
     font-weight:600;
     font-size: 16px;
 }
@@ -183,4 +183,101 @@
     padding: 5px;
     font: 10px sans-serif;
     box-shadow: 2px 2px 1px #888;
+}
+.checkbox-inline{
+    position: absolute;
+    left: 500px;
+    top: 3px;
+    user-select: none;
+}
+
+.checkbox-inline-a{
+    position: absolute;
+    left: 540px;
+    top: 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    user-select: none;
+}
+overflow{
+    position: absolute;
+}
+.scrollAll{
+    overflow-x: auto;
+    width: 100%;
+}
+.svgChart{
+    width: 960px;
+    overflow-x: scroll;
+}
+@media (max-width: 1072px) {
+    .svgChart{
+        width: 800px;
+    }
+    .pages-center{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+@media (max-width: 972px) {
+    .svgChart{
+        width: 700px;
+    }
+}
+@media (max-width: 780px) {
+    .svgChart{
+        width: 600px;
+    }
+    .checkbox-inline{
+        top: 5px;
+        left: 80px;
+    }
+    .checkbox-inline-a{
+        left: 120px;
+        top: 5px;
+    }
+    .pages-center{
+        z-index: 0 !important;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+@media (max-width: 675px) {
+    .svgChart{
+        width: 500px;
+    }
+    .pages-center{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+@media (max-width: 590px) {
+    .svgChart{
+        width: 400px;
+    }
+    .pages-center{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+@media (max-width: 480px) {
+    .svgChart{
+        width: 300px;
+    }
+    inLine-measurement{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .measurementsContainerSet{
+        display: flex;
+        width:150px;
+        margin-left: 7%;
+    }
+    #butonRefresh{
+        float: none;
+    }
+    #label-float{
+        width: 200px;
+    }
 }
