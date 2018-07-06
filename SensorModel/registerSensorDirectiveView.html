@@ -1,9 +1,9 @@
 <button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister()" ng-show="registerButton">Add sensor</button>
-<div>
-    <span style="color:red;" ng-show="sensorRegisterError">{{message}}</span>
-    <span style="color:green;" ng-show="sensorRegisterSuccess">Sensor created successful!</span>
-</div>
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
+
+    <span id="alert-error" ng-show="sensorRegisterError"><p>{{message}}</p></span>
+    <span id="alert-succesful" ng-show="sensorRegisterSuccess"><p>Sensor created successful!</p></span>
+
     <form class="col-md-3" name="registerForm" novalidate>
         <label>Name:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputName.$invalid && registerForm.inputName.$dirty}">

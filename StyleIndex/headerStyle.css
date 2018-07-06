@@ -10,6 +10,7 @@ a .down + .up{
 }
 #navbar{
   z-index: 99 !important;
+  transition: top 0.3s;
 }
 .topnav {
   position: relative;
@@ -20,9 +21,7 @@ a .down + .up{
   top: 0;
   width: 100%;
 }
-#navbar{
-  z-index: 1;
-}
+
 .header{
     background-color: rgba(15, 156, 133, 0.66);
 }
@@ -38,13 +37,19 @@ a .down + .up{
   padding: 1px;
   cursor: pointer;
 }
-
-.moto-img{
+#headerImg img{
+  max-width: 60%;
+  height: auto;
+  padding: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+/* .moto-img{
   width: 50%;
   height: 50%;
   padding: 20px;
   margin-left: 20%;
-}
+} */
 
 .topnav a {
   float: right;
