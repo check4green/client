@@ -3,7 +3,7 @@
     var app = angular.module('sensorApp');
     
     app.component('electricalCurrent', {
-        templateUrl: 'sensorModel/sensorModelView.html',
+        templateUrl: 'SensorModel/sensorModelView.html',
         controller: 'sensorModelCtrl',
         controllerAs: 'vm'
     });

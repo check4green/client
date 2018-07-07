@@ -3,7 +3,7 @@
     var app = angular.module('sensorApp');
     
     app.component('temperature', {
-        templateUrl: 'sensorModel/sensorModelView.html',
+        templateUrl: 'SensorModel/sensorModelView.html',
         controller: 'sensorModelCtrl',
         controllerAs: 'vm'
     });

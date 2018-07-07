@@ -18,7 +18,6 @@
                 <td>{{sensor.productionDate}}</td>
                 <td>{{sensor.uploadInterval}}</td>
                 <td>{{sensor.batchSize}}</td>
-                <!-- <td>{{vm.lastRead[0].value}}</td> -->
                 <td>
                     <span ng-show="noRead">-</span>
                     <div class="measurementsOk" ng-if="(vm.lastRead[0].value < 400) && (vm.lastRead[0].value > 0)">{{vm.lastRead[0].value}}</div>
