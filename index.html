@@ -13,14 +13,15 @@
     <link rel="stylesheet" type="text/css" href="/StyleIndex/loaderStyle.css"> <!--swiss LOADER-->
     <link rel="stylesheet" href="/StyleIndex/bootstrap.min.css">
     <link rel="stylesheet" href="/SensorModel/sensorModelStyle.css" type="text/css">  <!-- swiss SensorModel -->
-    
+    <link rel="stylesheet" href="/Calculator/rangeBar.css" type="text/css"> <!-- range bar -->
+
 </head>
 <body ng-app="sensorApp">
     <div id="headerImg" class="header">
       <img class="moto-img" src="/iconPng/C4G-full-moto.png" alt="Check4Green" />
   </div>
 <header id="navbar">
-  
+
   <div class="topnav" id="myTopnav">
       <span id="close-menu" class="fa fa-outdent"></span>
       <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
@@ -51,7 +52,7 @@
 <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
 
 <div class="gridView container">
-    <div class="grid sd"><div ui-view="distance"></div></div> 
+    <div class="grid sd"><div ui-view="distance"></div></div>
     <div class="grid sh"><div ui-view="temperature"></div></div>
     <div class="grid sh"><div ui-view="electricalCurrent"></div></div>
     <div class="grid sh"><div ui-view="airQuality"></div></div>
@@ -93,5 +94,6 @@
 <script src="SensorModel/measurementsDirective.js"></script>
 <script src="SensorModel/detailsSensorDirective.js"></script>
 <script src="SensorModel/chartDirective.js"></script>
+<script src="Calculator/calculatorDirective.js"></script>
 
 </html>
