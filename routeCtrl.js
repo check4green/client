@@ -3,7 +3,8 @@
     var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3", "bw.paging"])
     .constant('SENSOR_TYPE', {
         'ID': '0',
-        'OUT_OF_RANGE': '0'
+        'OUT_OF_RANGE': '0',
+        'TITLE': '0'
     });
     app.config(["$stateProvider", "$urlRouterProvider",
                function($stateProvider, $urlRouterProvider){
@@ -25,6 +26,7 @@
                     controller: function($scope, SENSOR_TYPE){
                         SENSOR_TYPE.ID = "33";
                         SENSOR_TYPE.OUT_OF_RANGE = "401";
+                        SENSOR_TYPE.TITLE = "Distance";
                     }
                 }
             }
@@ -38,6 +40,7 @@
                     controller: function($scope, SENSOR_TYPE){
                         SENSOR_TYPE.ID = "31";
                         SENSOR_TYPE.OUT_OF_RANGE = "101";
+                        SENSOR_TYPE.TITLE = "Temperature";
                     }
                 }
             }
@@ -50,6 +53,7 @@
                     template: "<electrical-current></electrical-current>",
                     controller: function($scope, SENSOR_TYPE){
                         SENSOR_TYPE.ID = "25";
+                        SENSOR_TYPE.TITLE = "Electrical Current";
                     }
                 }
             }
@@ -63,6 +67,7 @@
                     controller: function($scope, SENSOR_TYPE){
                         SENSOR_TYPE.ID = "34";
                         SENSOR_TYPE.OUT_OF_RANGE = "101";
+                        SENSOR_TYPE.TITLE = "Air Quality";
                     }
                 }
             }
