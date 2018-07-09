@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-.slider {
+.slidecontainer1 .slider-calculator {
     -webkit-appearance: none;
     width: 100%;
     height: 15px;
@@ -14,11 +14,11 @@
     transition: opacity .2s;
 }
 
-.slider:hover {
+.slidecontainer1 .slider-calculator:hover {
     opacity: 1;
 }
 
-.slider::-webkit-slider-thumb {
+.slidecontainer1 .slider-calculator::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+.slidecontainer1 .slider-calculator::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;

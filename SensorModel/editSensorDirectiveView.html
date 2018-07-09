@@ -1,8 +1,8 @@
 <div class="editDisplay" ng-show="editDisplay">
-    
-        <span id="alert-error" ng-show="sensorEditError"><p>{{message}}</p></span>
-        <span id="alert-succesful" ng-show="sensorEditSuccess"><p>Sensor edited successful!</p></span>
-    
+    <div>
+        <span style="color:red;" ng-show="sensorEditError">{{message}}</span>
+        <span style="color:green;" ng-show="sensorEditSuccess">Sensor edited successful!</span>
+    </div>
     <form class="col-md-3" name="editForm" novalidate>
         <label>Name:</label>
         <div class="form-group" ng-class="{'has-error':editForm.inputName.$invalid && editForm.inputName.$dirty}">

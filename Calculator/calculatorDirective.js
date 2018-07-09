@@ -3,7 +3,7 @@ angular.module("sensorApp")
           return {
             restrict: 'E',
             templateUrl: 'Calculator/rangeBarView.html',
-            controller: function($scope, $timeout){
+            controller: function($scope){
               var slider1 = document.getElementById('range1');
               var output1 = document.getElementById('value1');
               output1.innerHTML = slider1.value;
@@ -15,26 +15,26 @@ angular.module("sensorApp")
                   $scope.calculateCost4();
                   $scope.calculateTotal();
                 }
-                var slider2 = document.getElementById('range2');
-                var output2 = document.getElementById('value2');
-                output2.innerHTML = slider2.value;
-                slider2.oninput = function(){
+              var slider2 = document.getElementById('range2');
+              var output2 = document.getElementById('value2');
+              output2.innerHTML = slider2.value;
+              slider2.oninput = function(){
                     output2.innerHTML = this.value;
                     $scope.calculateCost2();
                     $scope.calculateTotal();
                   }
-                  var slider3 = document.getElementById('range3');
-                  var output3 = document.getElementById('value3');
-                  output3.innerHTML = slider3.value;
-                  slider3.oninput = function(){
+              var slider3 = document.getElementById('range3');
+              var output3 = document.getElementById('value3');
+              output3.innerHTML = slider3.value;
+              slider3.oninput = function(){
                       output3.innerHTML = this.value;
                       $scope.calculateCost3();
                       $scope.calculateTotal();
                     }
-                    var slider4 = document.getElementById('range4');
-                    var output4 = document.getElementById('value4');
-                    output4.innerHTML = slider4.value;
-                    slider4.oninput = function(){
+              var slider4 = document.getElementById('range4');
+              var output4 = document.getElementById('value4');
+              output4.innerHTML = slider4.value;
+              slider4.oninput = function(){
                         output4.innerHTML = this.value;
                         $scope.calculateCost4();
                         $scope.calculateTotal();
@@ -52,21 +52,21 @@ angular.module("sensorApp")
               var change4 =document.getElementById('change4');
               change4.innerHTML = $scope.price4*output4.innerHTML;
               $scope.calculateCost1 = function(){
-                  change1.innerHTML = $scope.price1*output1.innerHTML;
+                    change1.innerHTML = $scope.price1*output1.innerHTML;
               }
               $scope.calculateCost2 = function(){
-                  change2.innerHTML = $scope.price2*output2.innerHTML;
+                    change2.innerHTML = $scope.price2*output2.innerHTML;
               }
               $scope.calculateCost3 = function(){
-                  change2.innerHTML = $scope.price3*output3.innerHTML;
+                    change3.innerHTML = $scope.price3*output3.innerHTML;
               }
               $scope.calculateCost4 = function(){
-                  change4.innerHTML =$scope.price1*output4.innerHTML;
+                    change4.innerHTML =$scope.price4*output4.innerHTML;
               }
               var total = document.getElementById('total');
               total.innerHTML =0 ;
               $scope.calculateTotal = function(){
-                total.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML);
+                    total.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML);
               }
         }
       }
