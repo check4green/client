@@ -12,6 +12,7 @@
 }
 .title-grid{
     align-self: center;
+    margin-top:30px;
 }
 .table-overflow{
     overflow-x: auto;
