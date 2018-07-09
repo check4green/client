@@ -14,6 +14,7 @@ app.directive('registerSensor', function(){
                 if($scope.registerDisplay == false){
                     $scope.registerDisplay = true;
                     $scope.registerButton = false;
+                    $scope.noSensorsData = false;
                 } 
         };
 
@@ -44,6 +45,7 @@ app.directive('registerSensor', function(){
                 $scope.registerButton = true;
                 $scope.sensorData = true;
                 $scope.registerDisplay = false;
+                $scope.noSensorsData = true;
             },300);
             // $scope.registerProductionDate ='';
             // $scope.registerUploadInterval = '';

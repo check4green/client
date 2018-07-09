@@ -1,4 +1,7 @@
 <div class="sensorModel container">
+    <div class="title-grid">
+        <p>{{vm.titleGrid}}</p>
+    </div>
     <register-sensor></register-sensor>
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensorsData" class="noData">No Data</div>
@@ -63,6 +66,7 @@
             </tbody>
         </table>
         <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
+<<<<<<< HEAD
 
     </div>
     <!-- <div>
@@ -84,3 +88,7 @@
     </div> -->
 
 </div>
+=======
+    </div>
+</div>
+>>>>>>> 5a1b4d41110645e6801c2d7502df0d8eac822f9b

@@ -1,3 +1,18 @@
+
+.title-grid p{
+    width: 200px;
+    background-color: #4e9a06;
+    color: white; 
+    font: bold 20px Helvetica, Arial, Sans-Serif;
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.title-grid{
+    align-self: center;
+}
 .table-overflow{
     overflow-x: auto;
 }
@@ -5,8 +20,9 @@
     background-color:#4e9a06;
 }
 .sensorModel{
+    display: flex;
+    flex-direction: column;
     position: relative;
-    margin-top:50px;
     margin-bottom:50px;
 }
 .sensorModel table{
@@ -36,11 +52,8 @@
 }
 .registerDisplay{
     display:flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding:10px;
-    margin-top:50px;
-    margin-bottom:50px;
 }
 .bg-table{
     position: relative;
@@ -66,11 +79,37 @@
     margin-top:30px;
 }
 .editDisplay{
-    justify-content: center;
     display:flex;
-}
-.editDisplay{
+    flex-direction: column;
+    align-items: center;
     text-align: left;
+    padding: 10px;
+}
+.register-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+#alert-error p{
+    padding: 10px;
+    background-color: #d9544f55;
+    color: #d9534f;
+    border: 2px solid #d9534f;
+    border-radius: 8px;
+    width: 240px;
+    text-align: center;
+    font-weight: bold;
+}
+#alert-succesful p{
+    padding: 10px;
+    background-color: #4e9a0655;
+    color: #4e9a06;
+    border: 2px solid #4e9a06;
+    border-radius: 8px;
+    width: 240px;
+    text-align: center;
+    font-weight: bold;
 }
 .editDisplay input{
     margin-bottom:10px;
@@ -88,6 +127,7 @@ inLine-measurement{
 }
 #butonRefresh{
     float: left;
+    margin-bottom:20px;
 }
 .pages-center{
     margin-left: 25%;
@@ -103,9 +143,13 @@ inLine-measurement{
     /* text-align: center; */
     
 }
+.measurementsContainerSet label{
+    margin-right:10px;
+    width:200px;
+}
 .measurementsDisplay .measurementsContainerSet label{
     /* display:flex; */
-    width:100px;
+    width:110px;
 }
 .measurementsDisplay .measurementsContainerSet input{
     /* display:flex; */
@@ -154,6 +198,9 @@ inLine-measurement{
 .chartDisplay input{
     margin-left:-15px!important;
     margin-top:2px;
+}
+.chartDisplay .cancelButton{
+    margin-top:20px;
 }
 .noData{
     text-align: center;
@@ -211,6 +258,7 @@ overflow{
     width: 960px;
     overflow-x: scroll;
 }
+
 @media (max-width: 1072px) {
     .svgChart{
         width: 800px;

@@ -3,6 +3,20 @@
    var app = angular.module("sensorApp");
    app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$timeout", "sensorModelService","$http", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $timeout, sensorModelService, $http) {
         var vm = this;
+
+        if(SENSOR_TYPE.ID == '33'){
+           vm.titleGrid = 'Distance';
+        }
+        if(SENSOR_TYPE.ID == '31'){
+            vm.titleGrid = 'Temperature';
+        }
+        if(SENSOR_TYPE.ID == '25'){
+            vm.titleGrid = 'Electrical Current';
+        }
+        if(SENSOR_TYPE.ID == '34'){
+            vm.titleGrid = 'Air Quality';       
+        }
+
         console.log(SENSOR_TYPE);
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){

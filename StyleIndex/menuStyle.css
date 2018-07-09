@@ -28,6 +28,7 @@
 }
 
 .gridView{
+    position: relative;
     z-index: 0!important;
 }
 
