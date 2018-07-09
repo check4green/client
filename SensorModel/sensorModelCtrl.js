@@ -4,18 +4,7 @@
    app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$timeout", "sensorModelService","$http", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $timeout, sensorModelService, $http) {
         var vm = this;
 
-        if(SENSOR_TYPE.ID == '33'){
-           vm.titleGrid = 'Distance';
-        }
-        if(SENSOR_TYPE.ID == '31'){
-            vm.titleGrid = 'Temperature';
-        }
-        if(SENSOR_TYPE.ID == '25'){
-            vm.titleGrid = 'Electrical Current';
-        }
-        if(SENSOR_TYPE.ID == '34'){
-            vm.titleGrid = 'Air Quality';       
-        }
+        vm.titleGrid = SENSOR_TYPE.TITLE;
 
         console.log(SENSOR_TYPE);
         $scope.sensorData = true;

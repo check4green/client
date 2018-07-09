@@ -23,7 +23,7 @@
         <div class="legend-measurement">
             <a2 style="font-weight: bold;">Legend: </a2>
             <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
-            <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor</a1>
+            <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor (0)</a1>
             <span class="fa fa-circle" style="color: #286090;"></span><a1>Out of range</a1>
         </div>
         <table class="table">
@@ -41,9 +41,9 @@
                     <td>{{$index+1}}</td>
                     <td>{{measurementSensor.readingDate}}</td>
                     <td>
-                        <div class="measurementsOk" ng-if="(measurementSensor.value < 400) && (measurementSensor.value > 0)">{{measurementSensor.value}}</div>
-                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > 400">OR</div>
-                        <div class="measurementsInvalidSensor" ng-if="measurementSensor.value < 1">IS</div>
+                        <div class="measurementsOk" ng-if="(measurementSensor.value < outOfRangeError) && (measurementSensor.value != 0)">{{measurementSensor.value}}</div>
+                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > outOfRangeError">OR</div>
+                        <div class="measurementsInvalidSensor" ng-if="measurementSensor.value == 0">IS(0)</div>
                     </td>
                     <td>{{measurementSensor.id}}</td>
                 </tr>

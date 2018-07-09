@@ -15,6 +15,7 @@ function scrollFunction() {
 }
 
 // show arrow on navbar
+   
 
 function showNavText(x) {
     x.classList.toggle("fa-caret-up");

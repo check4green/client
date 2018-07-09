@@ -3,7 +3,9 @@ app.directive('detailsSensor', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/detailsSensorDirectiveView.html',
-        controller: function($scope, sensorModelService){
+        controller: function($scope, sensorModelService, SENSOR_TYPE){
+
+        $scope.outOfRangeError = SENSOR_TYPE.OUT_OF_RANGE;
 
         $scope.detailsDisplay = true;
         sensorModelService.getMeasureId()
