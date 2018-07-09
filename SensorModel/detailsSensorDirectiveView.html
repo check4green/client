@@ -20,9 +20,9 @@
                 <td>{{sensor.batchSize}}</td>
                 <td>
                     <span ng-show="noRead">-</span>
-                    <div class="measurementsOk" ng-if="(vm.lastRead[0].value < 400) && (vm.lastRead[0].value > 0)">{{vm.lastRead[0].value}}</div>
-                    <div class="measurementsOutOfRange" ng-if="vm.lastRead[0].value > 400">OR</div>
-                    <div class="measurementsInvalidSensor" ng-if="vm.lastRead[0].value < 1">IS</div>
+                    <div class="measurementsOk" ng-if="(vm.lastRead[0].value < outOfRangeError) && (vm.lastRead[0].value != 0)">{{vm.lastRead[0].value}}</div>
+                    <div class="measurementsOutOfRange" ng-if="vm.lastRead[0].value > outOfRangeError">OR</div>
+                    <div class="measurementsInvalidSensor" ng-if="vm.lastRead[0].value == 0">IS(0)</div>
                 </td>
                 <td>{{unitOfMeasure}}</td>
                 <td>{{vm.lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>

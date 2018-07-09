@@ -3,7 +3,7 @@
         return {
         restrict: 'E',
         templateUrl: 'SensorModel/chartDirectiveView.html',
-        controller: function chartd3Ctrl(sensorModelService,d3, $scope){
+        controller: function chartd3Ctrl(sensorModelService, d3, $scope){
                     var readings = 1000;
                     $scope.chartButton = true;
                     $scope.chartDisplay = false;
@@ -35,8 +35,8 @@
                                     var measurements = data;
                                for (var i=0; i<measurements.length; i++){
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);
-                                   if(measurements[i].value >399){
-                                       measurements[i].value = 400;
+                                   if(measurements[i].value >$scope.outOfRangeError){
+                                       measurements[i].value = $scope.outOfRangeError;
                                    }
                                }
                                 var svg = d3.select("svg")
@@ -154,8 +154,8 @@
                                                 .append("circle")
                                                 .attr("class", "dot")
                                                 .attr("r", 4)
-                                                .style("fill", function(d){if (d.value>399) {return "#286090";}
-                                                                      else{if (d.value<1){return "#d9534f";}}})
+                                                .style("fill", function(d){if (d.value>=$scope.outOfRangeError) {return "#286090";}
+                                                                      else{if (d.value==0){return "#d9534f";}}})
                                                 .attr("cx", function(d) {return x(d.readingDate); })
                                                 .attr("cy", function(d) {return y(d.value); })
                                             Line_chart.selectAll("text")
@@ -165,7 +165,7 @@
                                                 .append("text")
                                                 .attr("x", function(d) {return x(d.readingDate); })
                                                 .attr("y", function(d) {return y(d.value)-3; })
-                                                .text(function(d) { if(d.value<=399 && d.value>0){return d.value;} })
+                                                .text(function(d) { if(d.value<$scope.outOfRangeError && d.value!=0){return d.value;} })
                                     }
                                     else{
                                         //hide tooltips
@@ -213,7 +213,7 @@
                                      .attr("height", 30)
                                      .attr("width", 100)
                                      .style("fill", "#d9534f")
-                                     .text("Invalid sensor")
+                                     .text("Invalid sensor (0)")
                                 legend.append("circle")
                                         .attr("cx", 880)
                                         .attr("cy", 69)

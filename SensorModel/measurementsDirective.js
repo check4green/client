@@ -5,6 +5,7 @@ app.directive('measurements', function(){
         templateUrl: 'SensorModel/measurementsDirectiveView.html',
         controller: function($scope, sensorModelService, $localStorage){
             var vm = this;
+
             $scope.measurementsButton = true;
             $scope.measurementsDisplay = false;
             $scope.startMeasurements = function(){
