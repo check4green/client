@@ -7,8 +7,10 @@ function scrollFunction() {
 
   if (document.body.scrollTop > afterHead || document.documentElement.scrollTop > afterHead) {
     navbar.classList.add("sticky")
+    document.getElementById("marginTopView").style.marginTop = "70px";
 } else {
     navbar.classList.remove("sticky");
+    document.getElementById("marginTopView").style.marginTop = "15px";
 }
 }
 
