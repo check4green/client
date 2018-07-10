@@ -33,6 +33,7 @@ app.directive('measurements', function(){
                 $scope.gatewayAddress = gatewayAddress; 
                 $scope.page = 0;
                 $scope.size = 10;
+                $scope.pageSize = "";
                 //set the number of readings/ page
                 $scope.setPageSize = function(pageSize){
                     if (pageSize){
@@ -56,7 +57,7 @@ app.directive('measurements', function(){
                     $scope.noDataMeasurements = false;
                     $scope.loadingMeasurements = true;
                     $scope.dataMeasurements = false;
-                sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, vm.pageSize)
+                sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size)
                                     .then(function(measurements){
                                         $scope.measurementSensors = measurements;
                                         $scope.loadingMeasurements = false;

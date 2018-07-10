@@ -41,8 +41,8 @@
                                }
                                 var svg = d3.select("svg")
                                             .attr("id", "svgId");
-                                var margin = {top: 20, right: 90, bottom: 110, left: 100},
-                                    margin2 = {top: 430, right: 50, bottom: 30, left: 100},
+                                var margin = {top: 20, right: 95, bottom: 110, left: 105},
+                                    margin2 = {top: 435, right: 50, bottom: 30, left: 105},
                                     width = +svg.attr("width") - margin.left - margin.right,
                                     height = +svg.attr("height") - margin.top - margin.bottom,
                                     height2 = +svg.attr("height") - margin2.top - margin2.bottom;
@@ -190,12 +190,12 @@
                                                 .append("g")
                             //value legend
                                 legend.append("circle")
-                                      .attr("cx", 880)
+                                      .attr("cx", 875)
                                       .attr("cy", 30)
                                       .attr("r", 6)
                                       .style("fill","#4e9a06");
                                 legend.append("text")
-                                     .attr("x", 890)
+                                     .attr("x", 881)
                                      .attr("y", 33)
                                      .attr("height", 30)
                                      .attr("width", 100)
@@ -203,25 +203,25 @@
                                      .text("Value")
                             //error legend
                                 legend.append("circle")
-                                      .attr("cx", 880)
+                                      .attr("cx", 875)
                                       .attr("cy", 50)
                                       .attr("r", 6)
                                       .style("fill","#d9534f");
                                 legend.append("text")
-                                     .attr("x", 890)
+                                     .attr("x", 881)
                                      .attr("y", 53)
                                      .attr("height", 30)
                                      .attr("width", 100)
                                      .style("fill", "#d9534f")
                                      .text("Invalid sensor (0)")
                                 legend.append("circle")
-                                        .attr("cx", 880)
+                                        .attr("cx", 875)
                                         .attr("cy", 69)
                                         .attr("r", 6)
                                         .style("fill","#286090");
                                 legend.append("text")
-                                        .attr("x", 890)
-                                        .attr("y", 70)
+                                        .attr("x", 881)
+                                        .attr("y", 72)
                                         .attr("height", 30)
                                         .attr("width", 100)
                                         .style("fill", "#286090")
