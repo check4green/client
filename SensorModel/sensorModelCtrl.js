@@ -63,6 +63,7 @@
             $scope.loading = false;
             $scope.sensorData = false;
          });
+         function update(){
          vm.getLastRead = function(GA, CA){
             $scope.noRead = false;
             $scope.detailsData = false;
@@ -70,27 +71,28 @@
             sensorModelService.getMeasurements(GA, CA, '1', '1')
                 .then(measureSuccess)
                 .catch(measureError)
-                    function measureSuccess(measurements){
+            function measureSuccess(measurements){
                         vm.lastRead = measurements;
-                        $scope.detailsData = true;
-                        $scope.loadingDetails = false;
                         $scope.noRead = false;
-                    } 
-                    function measureError(measurements){
-                        $scope.noRead = true;
-                        $scope.loadingDetails = false;
                         $scope.detailsData = true;
+                        $scope.loadingDetails = false;
                     }
-                    vm.lastRead = null;
-        };
-
+            function measureError(measurements){
+                      $scope.noRead = true;
+                      $scope.loadingDetails = false;
+                      $scope.detailsData = true;
+                  }
+            vm.lastRead = null;
+        }
+      }
+      update();
         sensorModelService.getAllSensors()
             .then(function(response){
                 $scope.totalSensors = response;
             });
-        
+
        //live view
-       
+
     //    vm.reload = function(){
     //     $http.get("http://192.168.0.18:32333/api/sensors/46/readings")
     //     .then(function(response) {

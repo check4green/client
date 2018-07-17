@@ -1,0 +1,18 @@
+<div class="multiselect">
+  <div class="selectBoxtypeId" ng-click="showCheckBoxes()">
+    <select>
+      <option>Select sensor types</option>
+    </select>
+    <div class="overSelecttypeId"></div>
+  </div>
+  <div id="checkboxes">
+    <label for="distance">
+      <input type="checkbox" id="distance" ng-model="dist" ng-click="getdistId(dist)"/>Distance</label>
+    <label for="temp">
+      <input type="checkbox" id="temp" ng-model="temp" ng-click="getTempId(temp)"/>Temperature</label>
+    <label for="electricalCurrent">
+      <input type="checkbox" id="electricalCurrent" ng-model="elecCurrent" ng-click="getElectrId(elecCurrent)"/>Electrical Current</label>
+    <label for="airQuality">
+      <input type="checkbox" id="airQuality" ng-model="airQ" ng-click="getAirQId(airQ)"/>Air Quality</label>
+    </div>
+  </div>

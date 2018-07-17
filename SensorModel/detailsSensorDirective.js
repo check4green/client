@@ -4,7 +4,7 @@ app.directive('detailsSensor', function(){
         restrict: 'E',
         templateUrl: 'SensorModel/detailsSensorDirectiveView.html',
         controller: function($scope, sensorModelService, SENSOR_TYPE){
-
+            var vm=this;
         $scope.outOfRangeError = SENSOR_TYPE.OUT_OF_RANGE;
 
         $scope.detailsDisplay = true;
@@ -19,7 +19,7 @@ app.directive('detailsSensor', function(){
            $scope.unitOfMeasure = data.unitOfMeasure;
          }
        }
+    }
 
-        }
     }
 });

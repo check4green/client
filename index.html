@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/StyleIndex/bootstrap.min.css">
     <link rel="stylesheet" href="/SensorModel/sensorModelStyle.css" type="text/css">  <!-- swiss SensorModel -->
     <link rel="stylesheet" href="/Calculator/rangeBar.css" type="text/css"> <!-- range bar -->
+    <link rel="stylesheet" href="Parallax-directive/checkboxes.css" type="text/css">
 
 </head>
 <body ng-app="sensorApp">
@@ -25,7 +26,7 @@
 <header id="navbar">
   <div class="topnav" id="myTopnav">
       <!-- menu button-->
-      <span id="close-menu" class="fa fa-outdent"></span> 
+      <span id="close-menu" class="fa fa-outdent"></span>
       <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
       <!-- /menu button-->
       <a class="active" ui-sref="index" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
@@ -73,7 +74,6 @@
 <script src="/Library/ngStorage.js"></script>
 <script src="/Library/d3.min.js"></script>
 <script src="/Library/paginationDirective.js"></script>
-<script src="/Library/angular-mocks.js"></script>
 
 <!-- Ui-route -->
 <script src="routeCtrl.js"></script>
@@ -84,7 +84,6 @@
 <!--Controllers-->
 <script src="/SensorModel/sensorModelCtrl.js"></script>
 <script src="/Parallax-directive/parallaxCtrl.js"></script>
-<script src="indexCtrl.js"></script>
 
 <!--Components-->
 <script src="Parallax-directive/parallaxComponent.js"></script>
@@ -101,5 +100,6 @@
 <script src="SensorModel/detailsSensorDirective.js"></script>
 <script src="SensorModel/chartDirective.js"></script>
 <script src="Calculator/calculatorDirective.js"></script>
+<script src="Parallax-directive/selectTypeDirective.js"></script>
 
 </html>

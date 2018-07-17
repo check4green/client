@@ -2,17 +2,15 @@
     <div class="parallax" style="background-image: url(/imgParallax/robo-1.1.jpg);">
 
     <!-- Login nenu -->
-        <form action="/action_page.php">
+        <form name="loginForm">
           <div class="container-login">
             <h1>Login</h1>
-
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
-
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-
-            <button type="submit" class="btn-login">Login</button>
+              <input type="text" placeholder="Enter Email" name="inputEmail" ng-model="name" required>
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" ng-model="pass" required>
+            <button type="submit" class="btn-login" ng-click="authenticate(name, pass)">Login</button>
+            <select-type></select-type>
           </div>
         </form>
     <!-- /Login nenu -->
