@@ -1,21 +1,22 @@
 // scroll img moto
-window.onscroll = function() {scrollFunction()};
+var scrollHome = window;
+
+scrollHome.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
 
     var afterHead = document.getElementById('headerImg').clientHeight;
 
-  if (document.body.scrollTop > afterHead || document.documentElement.scrollTop > afterHead) {
-    navbar.classList.add("sticky")
-    document.getElementById("marginTopView").style.marginTop = "70px";
-} else {
-    navbar.classList.remove("sticky");
-    document.getElementById("marginTopView").style.marginTop = "15px";
-}
+      if (document.body.scrollTop > afterHead || document.documentElement.scrollTop > afterHead) {
+        navbar.classList.add("sticky")
+        document.getElementById("marginTopView").style.marginTop = "70px";
+    } else {
+        navbar.classList.remove("sticky");
+        document.getElementById("marginTopView").style.marginTop = "15px";
+    }
 }
 
 // show arrow on navbar
-   
 
 function showNavText(x) {
     x.classList.toggle("fa-caret-up");

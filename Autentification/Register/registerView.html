@@ -1,0 +1,104 @@
+<div class="register-container-big">
+    <span class="fa fa-close"  ui-sref="home"></span>
+
+    <img src="/Autentification/LogIn/Img-login/C4G-full-moto.png" alt="C4G-full-moto" class="register-image">
+    
+    <div class="register-container container">
+            <h2>Register</h2>
+        
+        <h>First name <h style="color: #d9534f;">*</h></h>
+        <div class="register-input-container">
+            <i class="fa fa-address-book  icon"></i>
+            <input class="register-input-filed" type="text" placeholder="First name" class="form-control" name="fname" required>
+        </div>
+
+        <h>Last name<h style="color: #d9534f;">*</h></h>
+        <div class="register-input-container">
+            <i class="fa fa-address-book-o  icon"></i>
+            <input class="register-input-filed" type="text" placeholder="Last name" class="form-control" name="lname" required>
+        </div>
+
+        <h>Email address<h style="color: #d9534f;">*</h></h>
+        <div class="register-input-container">
+            <i class="fa fa-envelope icon"></i>
+            <input class="register-input-filed" type="text" placeholder="Email address" class="form-control" name="email" required>
+        </div>
+
+        <h>Password<h style="color: #d9534f;">*</h></h>
+        <div class="register-input-container">
+            <i class="fa fa-lock icon"></i>
+            <input class="register-input-filed" type="text" placeholder="Password" class="form-control" name="pass" required>
+        </div>
+
+        <h>Repeat password<h style="color: #d9534f;">*</h></h>
+        <div class="register-input-container">
+            <i class="fa fa-lock icon"> r</i>
+            <input class="register-input-filed" type="text" placeholder="Repeat password" class="form-control" name="pass" required>
+        </div>
+
+        <h>Company name</h>
+        <div class="register-input-container">
+            <i class="fa fa-bank icon"></i>
+            <input class="register-input-filed" type="text" placeholder="Company name" class="form-control" name="cname" required>
+        </div>
+
+        <!-- <h>Country<h style="color: #d9534f;">*</h></h>
+        <div class="register-input-container">
+            <i class="fa fa-map-marker icon"></i>
+            <input class="register-input-filed" type="country" placeholder="Country" class="form-control" name="country" required>
+        </div> -->
+
+        <h>Country<h style="color: #d9534f;">*</h></h>
+        <div class="register-input-container">
+            <i class="fa fa-map-marker icon"></i>
+            <form action="/action_page.php" method="get">
+                <input list="country" name="country" class="register-input-filed" placeholder="Country" required>
+                <datalist id="country">
+                        <option value="Argentina">Argentina</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Bulgaria">Bulgaria</option>
+                        <option value="China">China</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Moldova">Moldova</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Slovakia">Slovakia</option>
+                        <option value="Slovenia">Slovenia</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Turkey">Turkey</option>                     
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                        <option value="Uruguay">Uruguay</option>
+                </datalist>
+            </form>
+        </div>
+
+        <h>Phone number</h>
+        <div class="register-input-container">
+            <i class="fa fa-phone icon"></i>
+            <input class="register-input-filed" type="text" placeholder="Phone number" class="form-control" name="nphone" required>
+        </div>
+
+        <select-type></select-type>
+
+        <button type="button">Create account</button>
+        <p>Signing up signifies that you have read and agree to the <a>Terms of Service</a> and our <a>Privacy Policy</a>.</p>
+    </div>
+
+</div>

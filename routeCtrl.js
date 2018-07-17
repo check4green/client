@@ -8,17 +8,42 @@
     });
     app.config(["$stateProvider", "$urlRouterProvider",
                function($stateProvider, $urlRouterProvider){
-                   $urlRouterProvider.otherwise("/index");
+                   $urlRouterProvider.otherwise("/home");
                    $stateProvider
-            .state("index",{
-             url:"/index",
+            .state("home",{
+             url:"/home",
              views: {
-                'index@':{
-                    template: "<index></index>"
+                'home@':{
+                    template: "<home></home>"
                 }
             }
         })
-            .state('distance',{
+            .state('home.logIn',{
+             url: "/logIn",
+             views: {
+                'logIn@':{
+                    template: "<log-in></log-in>"
+                }
+            }
+        })
+            .state('home.register',{
+             url: "/register",
+             views: {
+                'register@':{
+                    template: "<register></register>"
+                }
+            }
+        })
+            .state('sensorsHome',{
+             url: "/sensorsHome",
+             views: {
+                'sensorsHome@':{
+                    template: "<sensors-home></sensors-home>"
+                }
+            }
+        })
+
+            .state('home.distance',{
              url: "/distance",
              views: {
                 'distance@':{
@@ -32,7 +57,7 @@
             }
             })
 
-            .state('temperature',{
+            .state('home.temperature',{
              url: "/temperature",
              views: {
                 'temperature@':{

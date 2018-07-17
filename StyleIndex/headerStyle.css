@@ -23,7 +23,7 @@ a .down + .up{
 }
 
 .header{
-    background-color: rgba(15, 156, 133, 0.66);
+    background-color: hsla(170, 82%, 34%, 0.66);
 }
 
 #close-menu{
