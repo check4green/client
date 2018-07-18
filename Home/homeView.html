@@ -7,7 +7,7 @@
             <a>Home</a>
             <a>Contact</a>
             <a>About us</a>
-            <a ui-sref="home.logIn">Log in</a>
+            <a ui-sref="logIn">Log in</a>
             <a class="calculator-total-cost">Total Cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
         </div>
     </header>
@@ -33,12 +33,6 @@
 
 <!-- /header home -->
 
-<div class="container">
-    <div ui-view="logIn@"></div>
-    <div ui-view="register@"></div>
-</div>
-
-
 
 
 <!-- start page -->
@@ -50,7 +44,7 @@
             </h1>
             <p>
                 Choose from our available range of sensors and monitor them
-                 with our web application. All you have to do is <a ui-sref="home.register" style="text-decoration: underline">register</a> with 
+                 with our web application. All you have to do is <a ui-sref="logIn.register" style="text-decoration: underline">register</a> with 
                  an account and choose our monitoring offers. <br>
                  Do not forget that we can offer you all the sensors you need!
             </p>
@@ -165,7 +159,7 @@
         <img src="/Home/images-home/color-green.jpg" alt="check4green" width="1920" height="1080">
             <div class="login-text">
                 <img src="/Home/images-home/C4G-full-moto.png">
-                <button ui-sref="home.logIn">Log in</button>
+                <button ui-sref="logIn">Log in</button>
             </div>
     </div>
 <!-- /login part -->
