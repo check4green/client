@@ -11,9 +11,9 @@
             <span id="close-menu" class="fa fa-outdent"></span> 
             <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
             <!-- /menu button-->
-            <a class="active" ui-sref="home" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
-            <a >News</a>
-            <a href="https://www.check4green.com/" title="Check4Green page">Contact</a>
+            <a class="active" ui-sref="sensorsHome" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
+            <a ui-sref="sensorsHome.settings" >Settings</a>
+            <a title="Check4Green page">Contact</a>
             <a >About</a>
             <a href="javascript:void(0);" class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
         </div>
@@ -23,17 +23,15 @@
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn"><img src="/iconPng/C4G-full.png"></a>
     
-        <a class="a" onclick="closeNav()" ui-sref="home">Home<i class="fa fa-home"></i></a>
+        <a class="a" onclick="closeNav()" ui-sref="sensorsHome">Home<i class="fa fa-home"></i></a>
     
-        <a class="a" onclick="closeNav()" ui-sref="sensorsHome">sensorsHome<i class="fa fa-home"></i></a>
+        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.distance" title="distance sesors list">Distance<i class="fa fa-crop"></i></a>
     
-        <a class="a" onclick="closeNav()" ui-sref="distance" title="distance sesors list">Distance<i class="fa fa-crop"></i></a>
+        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.temperature" title="temperature sensors list">Temperature<i class="fa fa-thermometer-half"></i></a>
     
-        <a class="a" onclick="closeNav()" ui-sref="temperature" title="temperature sensors list">Temperature<i class="fa fa-thermometer-half"></i></a>
+        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.electricalCurrent" title="electrical current sensors list">Electrical Current<i class="fa fa-bolt"></i></a>
     
-        <a class="a" onclick="closeNav()" ui-sref="electricalCurrent" title="electrical current sensors list">Electrical Current<i class="fa fa-bolt"></i></a>
-    
-        <a class="a" onclick="closeNav()" ui-sref="airQuality" title="air quality sensors list">Air Quality<i class="	fa fa-mixcloud"></i></a>
+        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.airQuality" title="air quality sensors list">Air Quality<i class="	fa fa-mixcloud"></i></a>
     
       </div>
       <!-- /menu-body -->
@@ -41,23 +39,7 @@
       <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
   
     <div class="homeMenu">
-        <div class="parallax" style="background-image: url(/imgParallax/robo-1.1.jpg);">
-        
-        <!-- Login nenu
-            <form action="/action_page.php">
-              <div class="container-login">
-                <h1>Login</h1>
-            
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-            
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-            
-                <button type="submit" class="btn-login">Login</button>
-              </div>
-            </form>
-    Login nenu -->
+            <!-- <div class="parallax" style="background-image: url(/imgParallax/robo-1.1.jpg);">
         
         </div>
     
@@ -104,10 +86,22 @@
             </section>
         
             <div class="parallax" alt="Check4Green" style="background-image: url(/imgParallax/robo-2.jpg);"></div>
-        
+         -->
+         
+             <!-- route-grid -->
+        <div id="marginTopView" class="container gridView">
+            <div ui-view="settings@"></div>
+            <div ui-view="distance@"></div>
+            <div ui-view="temperature@"></div>
+            <div ui-view="electricalCurrent@"></div>
+            <div ui-view="airQuality@"></div>
+        </div>
+        <!-- /route-grid -->
+
+
     </div>
     
-    <footer class="container-fluid">
+    <footer class="container-fluid fixed-bottom">
         <div class="row">
             <h1>CONTACT</h1>
             <p>Our headquarters in Petrosani City</p>

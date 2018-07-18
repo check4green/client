@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/StyleIndex/loaderStyle.css"> <!--swiss LOADER-->
     <link rel="stylesheet" type="text/css" href="/Autentification/LogIn/logInStyle.css"> <!--swiss LOG IN-->
     <link rel="stylesheet" type="text/css" href="/Autentification/Register/registerStyle.css"> <!--swiss REGISTER-->
+    <link rel="stylesheet" type="text/css" href="/Autentification/Settings/settingsStyle.css"> <!--swiss REGISTER-->
     <link rel="stylesheet" href="/StyleIndex/bootstrap.min.css">
     <link rel="stylesheet" href="/SensorModel/sensorModelStyle.css" type="text/css">  <!-- swiss SensorModel -->
 </head>
@@ -24,16 +25,9 @@
 <!-- route-home -->
     <div ui-view="home"></div>
     <div ui-view="sensorsHome"></div>
+    <div ui-view="logIn"></div>
+    <div ui-view="register@"></div>
 <!-- /route-home -->
-
-<!-- route-grid -->
-<div id="marginTopView" class="container gridView">
-    <div ui-view="distance"></div>
-    <div ui-view="temperature"></div>
-    <div ui-view="electricalCurrent"></div>
-    <div ui-view="airQuality"></div>
-</div>
-<!-- /route-grid -->
 
 </body>
 
@@ -59,6 +53,7 @@
 <script src="/sensorsHome/sensorsHomeCtrl.js"></script>
 <script src="/Autentification/LogIn/logInCtrl.js"></script>
 <script src="/Autentification/Register/registerCtrl.js"></script>
+<script src="/Autentification/Settings/settingsCtrl.js"></script>
 
 <!--Components-->
 <script src="/Home/homeComponent.js"></script>
@@ -69,6 +64,7 @@
 <script src="/Sensors/AirQuality/airQualityComponent.js"></script>
 <script src="/Autentification/LogIn/logInComponent.js"></script>
 <script src="/Autentification/Register/registerComponent.js"></script>
+<script src="/Autentification/Settings/settingsComponent.js"></script>
 
 <!--Directive-->
 <script src="SensorModel/registerSensorDirective.js"></script>

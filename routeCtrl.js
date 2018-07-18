@@ -18,7 +18,7 @@
                 }
             }
         })
-            .state('home.logIn',{
+            .state('logIn',{
              url: "/logIn",
              views: {
                 'logIn@':{
@@ -26,7 +26,7 @@
                 }
             }
         })
-            .state('home.register',{
+            .state('logIn.register',{
              url: "/register",
              views: {
                 'register@':{
@@ -43,7 +43,16 @@
             }
         })
 
-            .state('home.distance',{
+            .state('sensorsHome.settings',{
+             url: "/settings",
+             views: {
+                'settings@':{
+                    template: "<settings></settings>"
+                }
+            }
+        })
+
+            .state('sensorsHome.distance',{
              url: "/distance",
              views: {
                 'distance@':{
@@ -57,7 +66,7 @@
             }
             })
 
-            .state('home.temperature',{
+            .state('sensorsHome.temperature',{
              url: "/temperature",
              views: {
                 'temperature@':{
@@ -71,7 +80,7 @@
             }
             })
 
-            .state('electricalCurrent',{
+            .state('sensorsHome.electricalCurrent',{
              url: "/electricalCurrent",
              views: {
                 'electricalCurrent@':{
@@ -84,7 +93,7 @@
             }
             })
 
-            .state('airQuality',{
+            .state('sensorsHome.airQuality',{
              url: "/airQuality",
              views: {
                 'airQuality@':{
