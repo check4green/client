@@ -38,9 +38,11 @@
     right: 20px;
     top: 10px;
     cursor: pointer;
+    text-shadow: 1px 2px #e0e0e0;
 }
 .settings-container-big .span:hover{
     color:  #d9534f;
+    text-shadow: 0px 0px #e0e0e0;
 }
 .settings-container-big .span-settings{
     background-color: #4e9a06;

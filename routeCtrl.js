@@ -26,6 +26,22 @@
                 }
             }
         })
+            .state('forgotPassword',{
+             url: "/forgotPassword",
+             views: {
+                'forgotPassword@':{
+                    template: "<forgot-password></forgot-password>"
+                }
+            }
+        })
+            .state('contact',{
+             url: "/contact",
+             views: {
+                'contact@':{
+                    template: "<contact></contact>"
+                }
+            }
+        })
             .state('logIn.register',{
              url: "/register",
              views: {

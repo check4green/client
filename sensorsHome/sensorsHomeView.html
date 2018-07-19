@@ -5,16 +5,16 @@
           </div>
     <!-- /img-header -->
       
-      <header id="navbar">
-        <div class="topnav" id="myTopnav">
+      <header class="sticky">
+        <div class="topnav">
             <!-- menu button-->
             <span id="close-menu" class="fa fa-outdent"></span> 
             <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
             <!-- /menu button-->
-            <a class="active" ui-sref="sensorsHome" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
+            <a class="active" ui-sref="home" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
             <a ui-sref="sensorsHome.settings" >Settings</a>
-            <a title="Check4Green page">Contact</a>
-            <a >About</a>
+            <a  ui-sref="contact" title="Check4Green page">Contact</a>
+            <a >Log out</a>
             <a href="javascript:void(0);" class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
         </div>
       </header>
