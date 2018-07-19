@@ -12,19 +12,18 @@ a .down + .up{
   position: relative;
   background-color: #333;
 }
-.sticky {
-  position: -webkit-sticky;
+.headerSensorHome {
   position: sticky;
   top: 0;
   width: 100%;
   background-color: #333;
   font-size: 20px;
-  z-index: 99 !important;
+  z-index: 99;
   transition: top 0.3s;
 }
 
 .header{
-    background-color: hsla(170, 82%, 34%, 0.66);
+    background-color: #0f9d86a8;
 }
 
 #close-menu{

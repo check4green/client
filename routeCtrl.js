@@ -59,7 +59,7 @@
             }
         })
 
-            .state('sensorsHome.settings',{
+            .state('settings',{
              url: "/settings",
              views: {
                 'settings@':{

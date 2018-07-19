@@ -1,19 +1,18 @@
-<div id="sensorsHomeView">
+<div class="container-sensorHome" id="sensorsHomeView">
     <!-- img-header -->
     <div id="headerImg" class="header">
             <img src="/iconPng/C4G-full-moto.png" alt="Check4Green"/>
           </div>
     <!-- /img-header -->
       
-      <header class="sticky">
+      <header class="headerSensorHome">
         <div class="topnav">
             <!-- menu button-->
             <span id="close-menu" class="fa fa-outdent"></span> 
             <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
             <!-- /menu button-->
             <a class="active" ui-sref="home" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
-            <a ui-sref="sensorsHome.settings" >Settings</a>
-            <a  ui-sref="contact" title="Check4Green page">Contact</a>
+            <a onclick="hideHeader()" ui-sref="settings" >Settings</a>
             <a >Log out</a>
             <a href="javascript:void(0);" class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
         </div>
@@ -90,7 +89,6 @@
          
              <!-- route-grid -->
         <div id="marginTopView" class="container gridView">
-            <div ui-view="settings@"></div>
             <div ui-view="distance@"></div>
             <div ui-view="temperature@"></div>
             <div ui-view="electricalCurrent@"></div>
@@ -100,14 +98,32 @@
 
 
     </div>
-    
-    <footer class="container-fluid fixed-bottom">
-        <div class="row">
-            <h1>CONTACT</h1>
-            <p>Our headquarters in Petrosani City</p>
-            <p> +40 720 109 740</p>
-            <p>info@check4green.com</p>
-            <p>Copyright © 2018 Check4Green</p>
+<!-- footer -->
+<footer>
+
+    <div class="footer-container fixed-bottom container">
+        <div class="footer-container-contact">
+            <h href="tel:+40720109740"><span class="fa fa-phone"></span>+40 720 109 740</h>
+            <h href="mailto:info@check4green.com"><span class="fa fa-envelope"></span>info@check4green.com</h>
         </div>
-    </footer>
+        <div class="footer-container-condition">
+            <div class="container-condition">
+                <h0>Privacy Policy</h0>
+                <h>Terms & Conditions</h>
+                <h>Disclaimer</h>
+            </div>
+            <div class="container-cc">
+                <p0 href="https://www.check4green.com/" >Copyright © 2018 Check4Green</p0>
+            </div>
+            
+        </div>
+        <div class="footer-container-social">
+            <span class="fa fa-facebook-square" href="https://www.facebook.com"></span>
+            <span class="fa fa-linkedin-square" href="https://www.linkedin.com/in/check-green-68152a120?trk=hp-identity-name"></span>
+            <span class="fa fa-twitter-square" href="https://twitter.com/CheckforGreen"></span>
+            <span class="fa fa-youtube-square" href="https://www.youtube.com"></span>
+        </div>
+    </div>
+</footer>
+<!-- /footer -->
 </div>
