@@ -1,62 +1,131 @@
 <div class="settings-container-big">
-    
+
         <span class="fa fa-close span" ui-sref="sensorsHome"></span>
-    
+
         <img src="/Autentification/Settings/Img-settings/C4G-full-setings.png" alt="C4G-full-moto" class="settings-image">
-        
+
         <div class="settings-container container">
                 <h2>Account settings</h2>
-            
-            <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover">Username: <h class="h-color">{{userName}}</h> <span class="fa fa-chevron-down span-settings"> </span><a class="hover-edit"> Edit</a> </h>
-                <div class="settings-input-container box-border-container">
-                    <input class="settings-input-filed" type="text" placeholder="The new username" class="form-control" name="fname" required>
-                </div>
-            </div>
-    
-            <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover">Email address: <h class="h-color">{{mail@gmail.com}}</h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
-                <div class="settings-input-container box-border-container">
-                    <input class="settings-input-filed" type="text" placeholder="The new email address" class="form-control" name="email" required>
-                    <input class="settings-input-filed" type="text" placeholder="The new email address" class="form-control" name="email" required>
-                    <input class="settings-input-filed" type="text" placeholder="Password" class="form-control" name="pass" required>
-                </div>
-            </div>
+            <form name="nameEdit" novalidate>
+              <div class="box-text">
+                  <h class="text-colapse-settings h-parrent-hover">Username:{{user.firstName}} {{user.lastName}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"> </span><a class="hover-edit"> Edit</a> </h>
+                  <div class="settings-input-container box-border-container">
+                    <div ng-class="{'has-error': nameEdit.fname.$invalid && nameEdit.fname.$dirty}">
+                      <input class="settings-input-filed" type="text" placeholder="The new first name" class="form-control" ng-model="editFirstname" ng-pattern="/^[a-zA-Z\s-]*$/" name="fname" name-valid required />
+                      <div class="help-block has-error">
+                        <div ng-show="nameEdit.fname.$error.required && nameEdit.fname.$dirty">This field is required!</div>
+                        <div ng-show="!nameEdit.fname.$error.required && nameEdit.fname.$error.pattern ">The name is invalid! Use only: 'A-Z', 'a-z', '-' and space!</div>
+                        <div ng-show="!nameEdit.fname.$error.required && !nameEdit.fname.$error.pattern && !nameEdit.fname.$valid">The name is invalid!</div>
+                      </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': nameEdit.lname.$invalid && nameEdit.lname.$dirty}">
+                      <input class="settings-input-filed" type="text" placeholder="The new last name" ng-model="editLastname" class="form-control" ng-pattern="/^[a-zA-Z\s-]*$/"  name="lname" required>
+                      <div class="help-block has-error">
+                          <div ng-show="nameEdit.lname.$error.required && nameEdit.lname.$dirty">This field is required!</div>
+                          <div ng-show="!nameEdit.lname.$error.required && nameEdit.lname.pattern">The name is invalid! Use only: 'A-Z', 'a-z', '-' and space!</div>
+                          <div ng-show="!nameEdit.lname.$error.required && !nameEdit.lname.pattern && !nameEdit.lname.$valid">The name is invalid!</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </form>
 
+           <form name="emailEdit" novalidate>
+            <div class="box-text">
+                <h class="text-colapse-settings h-parrent-hover">Email address:{{user.email}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+              <div class="settings-input-container box-border-container">
+                  <div class="form-group" ng-class="{'has-error': emailEdit.email.$invalid && emailEdit.email.$dirty}">
+                    <input class="settings-input-filed" type="email" placeholder="The new email address" ng-model="editEmail" class="form-control" name="email" ng-pattern="/^[A-Za-z0-9._@]*$/" required >
+                    <div class="help-block has-error">
+                      <div ng-show="emailEdit.email.$error.required && emailEdit.email.$dirty">This field is required!</div>
+                      <div ng-show="emailEdit.email.$error.email && emailEdit.email.$error.pattern">This email address is invalid!</div>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-class="{'has-error': emailEdit.password.$invalid && emailEdit.password.$dirty}">
+                    <input class="settings-input-filed" type="password" placeholder="Password" ng-model="password" class="form-control" name="password" required >
+                    <div class="help-block has-error" ng-show="emailEdit.password.$error.required && emailEdit.password.$dirty">This field is required!</div>
+                  </div>
+              </div>
+            </div>
+          </form>
+
+          <form name="passwordEdit">
             <div class="box-text">
                 <h class="text-colapse-settings h-parrent-hover">Password <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div class="settings-input-container box-border-container">
-                    <input class="settings-input-filed" type="text" placeholder="Old password" class="form-control" name="pass" required>
-                    <input class="settings-input-filed" type="text" placeholder="The new password" class="form-control" name="pass" required>
-                    <input class="settings-input-filed" type="text" placeholder="Repeat the new password" class="form-control" name="pass" required>
+                  <div class="form-group" ng-class="{'has-error': passwordEdit.pass.$invalid && password.pass.$dirty}">
+                    <input class="settings-input-filed" type="password" placeholder="Old password"  ng-model ="oldPassword" class="form-control" name="pass" required>
+                    <div class="help-block has-error">
+                      <div ng-show="passwordEdit.pass.$error.required && passwordEdit.pass.$dirty">This field is required!</div>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-class="{'has-error': passwordEdit.pass1.$invalid && passwordEdit.pass1.$dirty}">
+                    <input class="settings-input-filed" type="password" placeholder="The new password" class="form-control" ng-model="editPassword" ng-minlength="6" name="pass1" required>
+                    <div class="help-block has-error">
+                      <div ng-show="passwordEdit.pass1.$error.required && passwordEdit.pass1.$dirty">This field is required!</div>
+                      <div ng-show="!passwordEdit.pass1.$error.required && passwordEdit.pass1.$error.minlength">The password must have at least 6 characters!</div>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-class="{'has-error': passwordEdit.pass2.$invalid && passwordEdit.pass2.$dirty}">
+                    <input class="settings-input-filed" type="password" placeholder="Repeat the new password" class="form-control" ng-model="confirmEditPass" name="pass2" valid-pass required>
+                    <div class="help-block has-error">
+                      <div ng-show="passwordEdit.pass2.$error.required && passwordEdit.pass2.$dirty">This field is required!</div>
+                      <div ng-show="!passwordEdit.pass2.$error.required && passwordEdit.pass2.$error.noMatch && passwordEdit.pass1.$dirty">The passwords do not match!</div>
+                    </div>
+                  </div>
                 </div>
             </div>
-            
+          </form>
+
+          <form name="companyEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover" >Company name: <h class="h-color">{{SC SWISS SRL}}</h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+                <h class="text-colapse-settings h-parrent-hover" >Company name:{{user.company}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div class="settings-input-container box-border-container">
-                    <input class="settings-input-filed" type="text" placeholder="New company name" class="form-control" name="cname" required>
+                  <div class="form-group" ng-class="{'has-error': companyEdit.cname.$invalid && companyEdit.cname.$dirty}">
+                    <input class="settings-input-filed" type="text" placeholder="New company name" ng-model="editCompany" class="form-control" ng-pattern="/^[a-zA-Z0-9\s.-]*$/" name="cname" required>
+                    <div class="help-block has-error">
+                      <div ng-show="companyEdit.cname.$error.required && companyEdit.cname.$dirty">This field is requied!</div>
+                      <div ng-show="!companyEdit.cname.$error.required && companyEdit.cname.$error.pattern">The company name is invalid!</div>
+                    </div>
+                  </div>
                 </div>
             </div>
-    
+          </form>
+
+          <form name="countryEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover" >Country: <h class="h-color">{{Romania}}</h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+                <h class="text-colapse-settings h-parrent-hover" >Country:{{user.country}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div class="settings-input-container box-border-container">
-                    <input class="settings-input-filed" type="text" placeholder="New country" class="form-control" name="country" required>
+                  <div class="form-group" ng-class="{'has-error': countryEdit.country.$invalid && countryEdit.country.$dirty}">
+                    <input class="settings-input-filed" type="text" placeholder="New country" ng-model="editCountry" class="form-control" ng-pattern="/^[A-Za-z\s]*$/" name="country" required>
+                    <div class="help-block has-error">
+                      <div ng-show="countryEdit.country.$error.required && countryEdit.country.$dirty">This field is required!</div>
+                      <div ng-show="!countryEdit.country.$error.required && countryEdit.country.$error.pattern">The country name is invalid!</div>
+                    </div>
+                  </div>
                 </div>
             </div>
-    
+          </form>
+
+          <form name="phoneEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover" >Phone number: <h class="h-color">{{0754...}}</h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+                <h class="text-colapse-settings h-parrent-hover" >Phone number:{{user.phoneNumber}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div class="settings-input-container box-border-container">
-                    <input class="settings-input-filed" type="text" placeholder="New number" class="form-control" name="nphone" required>
+                  <div class="form-group" ng-class="{'has-error': phoneEdit.nphone.$invalid && phoneEdit.nphone.$dirty}">
+                    <input class="settings-input-filed" type="text" placeholder="New number" ng-model="editPhone" ng-pattern="/^[0-9\s+]*$/" class="form-control" name="nphone" required>
+                    <div class="help-block has-error">
+                        <div ng-show="phoneEdit.nphone.$error.required && phoneEdit.nphone.$dirty">This field is required!</div>
+                        <div ng-show="!phoneEdit.nphone.$error.required && phoneEdit.nphone.$error.pattern">The phone number is invalid!</div>
+                    </div>
+                  </div>
                 </div>
             </div>
-            
+          </form>
+
             <select-type></select-type>
-    
-            <button type="button">Save change</button>
+
+            <button type="button" ng-click="saveChanges(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, confirmEditPass, editCompany, editCountry, editPhone)">Save change</button>
             <p>Once the data is verified, it will be changed.</p>
         </div>
-    
+
     </div>

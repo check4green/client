@@ -36,11 +36,11 @@
         <div class="form-group" ng-class="{'has-error': regForm.regEmail.$invalid && regForm.regEmail.$dirty}">
         <div class="register-input-container">
             <i class="fa fa-envelope icon"></i>
-            <input class="register-input-filed" type="email" placeholder="Email address" ng-model="registerEmail" class="form-control" name="regEmail" required>
+            <input class="register-input-filed" type="email" placeholder="Email address" ng-model="registerEmail" ng-pattern="/^[A-Za-z0-9._@]*$/" class="form-control" name="regEmail" required>
         </div>
         <div class="help-block has-error">
           <div ng-show="regForm.regEmail.$error.required && regForm.regEmail.$dirty">This field is required!</div>
-          <div ng-show="!regForm.regEmail.$error.required && regForm.regEmail.$error.email">This email is invalid!</div>
+          <div ng-show="!regForm.regEmail.$error.required && regForm.regEmail.$error.pattern && regForm.regEmail.$error.email">This email is invalid!</div>
         </div>
       </div>
         <h>Password<h style="color: #d9534f;">*</h></h>
@@ -67,9 +67,12 @@
         </div>
       </div>
         <h>Company name</h>
+        <div class="form-group" ng-class="{'has-error': regForm.cname.$invalid && regForm.cname.$dirty}">
         <div class="register-input-container">
             <i class="fa fa-bank icon"></i>
-            <input class="register-input-filed" type="text" placeholder="Company name" ng-model="registerCompany" class="form-control" name="cname" required>
+            <input class="register-input-filed" type="text" placeholder="Company name" ng-model="registerCompany" ng-pattern="/^[a-zA-Z0-9\s.-]*$/" class="form-control" name="cname" required>
+          </div>
+          <div class="help-block has-error" ng-show="regForm.cname.$error.pattern && regForm.cname.$dirty">The company name is invalid!</div>
         </div>
 
         <!-- <h>Country<h style="color: #d9534f;">*</h></h>
@@ -82,7 +85,7 @@
         <div class="form-group" ng-class="{'has-error': regForm.country.$invalid && regForm.country.$dirty}">
         <div class="register-input-container">
             <i class="fa fa-map-marker icon"></i>
-                <input list="country" name="country" class="register-input-filed" placeholder="Country" ng-model="registerCountry" required>
+              <!--  <input list="country" name="country" class="register-input-filed" placeholder="Country" ng-model="registerCountry" required>
                 <datalist id="country">
                         <option value="Argentina">Argentina</option>
                         <option value="Australia">Australia</option>
@@ -115,7 +118,10 @@
                         <option value="United Kingdom">United Kingdom</option>
                         <option value="United States">United States</option>
                         <option value="Uruguay">Uruguay</option>
-                </datalist>
+                </datalist> -->
+                <select name="country" class="register-input-filed" ng-model="registerCountry" ng-options="country.name for country in countries" required>
+                  <option value="">Select country</options>
+                </select>
         </div>
         <div class="help-block has-error" ng-show="regForm.country.$error.required && regForm.country.$dirty">This field is required!</div>
       </div>
@@ -123,11 +129,13 @@
         <div class="form-group" ng-class="{'has-error': regForm.nphone.$invalid && regForm.nphone.$dirty}">
           <div class="register-input-container">
             <i class="fa fa-phone icon"></i>
-            <input class="register-input-filed" type="text" placeholder="Phone number" ng-model="registerPhone" class="form-control" ng-pattern="/^[0-9+]*$/" name="nphone" required>
+            <input value="{{registerCountry.dialCode}}" style="width:60px;" disabled >
+            <input class="register-input-filed" type="text" placeholder="Phone number" ng-model="registerPhone" class="form-control" ng-pattern="/^[0-9+()\s]*$/" name="nphone" phone-valid required>
           </div>
           <div class="help-block has-error">
             <div ng-show="regForm.nphone.$error.required && regForm.nphone.$dirty">This field is required!</div>
             <div ng-show="!regForm.nphone.$error.required && regForm.nphone.$error.pattern">The phone number is invlid!</div>
+            <div ng-show="!regForm.nphone.$error.required && !regForm.nphone.$error.pattenr && !regForm.nphone.$valid">The phone number is invlid!</div>
           </div>
       </div>
         <select-type></select-type>
