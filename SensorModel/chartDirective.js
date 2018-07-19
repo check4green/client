@@ -33,12 +33,12 @@
                                     $scope.loadingChart = false;
                                     $scope.dataChart = true;
                                     var measurements = data;
-                               for (var i=0; i<measurements.length; i++){
+                                for (var i=0; i<measurements.length; i++){
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);
                                    if(measurements[i].value >$scope.outOfRangeError){
                                        measurements[i].value = $scope.outOfRangeError;
                                    }
-                               }
+                                }
                                 var svg = d3.select("svg")
                                             .attr("id", "svgId");
                                 var margin = {top: 20, right: 95, bottom: 110, left: 105},
@@ -59,7 +59,7 @@
 
                                 var xAxis = d3.axisBottom(x)
                                                .tickSize(-height)
-                                                .tickPadding(10),
+                                               .tickPadding(10),
                                     xAxis2 = d3.axisBottom(x2),
                                     yAxis = d3.axisLeft(y)
                                               .tickSize(-width)
@@ -172,7 +172,7 @@
                                         Line_chart.selectAll(".dot")
                                                .style("display", "none");
                                         Line_chart.selectAll("text")
-                                                .style("display", "none");
+                                               .style("display", "none");
                                     }
                                 }
 
@@ -182,7 +182,7 @@
                                                 .attr("x", 880)
                                                 .attr("y", 25)
                                                 .attr("height", 100)
-                                                .attr("width", 100)
+                                                .attr("width", 150)
 
                                 legend.selectAll("g")
                                                 .data(measurements)

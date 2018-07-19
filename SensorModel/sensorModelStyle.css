@@ -2,7 +2,7 @@
 .title-grid p{
     width: 200px;
     background-color: #4e9a06;
-    color: white; 
+    color: white;
     font: bold 20px Helvetica, Arial, Sans-Serif;
     border: 2px solid;
     padding: 10px;
@@ -142,7 +142,7 @@ inLine-measurement{
 .measurementsDisplay .measurementsContainerSet{
     /* display:flex; */
     /* text-align: center; */
-    
+
 }
 .measurementsContainerSet label{
     margin-right:10px;
@@ -224,7 +224,7 @@ inLine-measurement{
     opacity: 0.2;
 }
 .dot {
-    fill: #4e9a06;   
+    fill: #4e9a06;
     opacity: 2;
 }
 .legend{

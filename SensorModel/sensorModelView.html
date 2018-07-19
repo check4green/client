@@ -66,5 +66,24 @@
             </tbody>
         </table>
         <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
+
     </div>
+    <!-- <div>
+        <form>
+            <input ng-model="quantity" type="text" placeholder="Number of rows">
+            <button ng-click="vm.quantitySet(quantity)">Set</button>
+        </form>
+
+            <table>
+                <thead>
+                    <tr><td></td>S1 in Cm</tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">
+                        <td>{{s1.value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div> -->
+
 </div>
