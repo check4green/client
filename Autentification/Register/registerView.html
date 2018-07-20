@@ -41,7 +41,7 @@
         </div>
         <div class="help-block has-error">
           <div ng-show="regForm.regEmail.$error.required && regForm.regEmail.$dirty">This field is required!</div>
-          <div ng-show="!regForm.regEmail.$error.required && regForm.regEmail.$error.pattern && regForm.regEmail.$error.email">This email is invalid!</div>
+          <div ng-show="!regForm.regEmail.$error.required && regForm.regEmail.$error.pattern || regForm.regEmail.$error.email">This email is invalid!</div>
         </div>
       </div>
         <h>Password<h style="color: #d9534f;">*</h></h>

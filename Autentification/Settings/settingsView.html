@@ -38,7 +38,7 @@
                     <input class="settings-input-filed" type="email" placeholder="The new email address" ng-model="editEmail" class="form-control" name="email" ng-pattern="/^[A-Za-z0-9._@]*$/" required >
                     <div class="help-block has-error">
                       <div ng-show="emailEdit.email.$error.required && emailEdit.email.$dirty">This field is required!</div>
-                      <div ng-show="emailEdit.email.$error.email && emailEdit.email.$error.pattern">This email address is invalid!</div>
+                      <div ng-show="emailEdit.email.$error.email || emailEdit.email.$error.pattern">This email address is invalid!</div>
                     </div>
                   </div>
                   <div class="form-group" ng-class="{'has-error': emailEdit.password.$invalid && emailEdit.password.$dirty}">
