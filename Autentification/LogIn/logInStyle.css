@@ -9,13 +9,15 @@
 }
 .login-container-big span{
     font-size: 35px;
-    position: absolute;
+    position: fixed;
     right: 20px;
     top: 10px;
     cursor: pointer;
+    text-shadow: 1px 2px #e0e0e0;
 }
 .login-container-big span:hover{
     color:  #d9534f;
+    text-shadow: 0px 0px #e0e0e0;
 }
 .login-container-big h2{
     text-align: center;
