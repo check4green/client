@@ -6,8 +6,8 @@
         <div class="header-home-right">
             <a>Home</a>
             <a ui-sref="contact">Contact</a>
-            <a>Log out</a>
-            <a ui-sref="logIn">Log in</a>
+            <a ng-click="logOut()" ng-hide="vm.log">Log out</a>
+            <a ui-sref="logIn" ng-show="vm.log">Log in</a>
             <a class="calculator-total-cost">Total Cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
         </div>
     </header>
@@ -26,7 +26,7 @@
             </h1>
             <p>
                 Choose from our available range of sensors and monitor them
-                 with our web application. All you have to do is <a ui-sref="logIn.register" style="text-decoration: underline">register</a> with 
+                 with our web application. All you have to do is <a ui-sref="logIn.register" style="text-decoration: underline">register</a> with
                  an account and choose our monitoring offers. <br>
                  Do not forget that we can offer you all the sensors you need!
             </p>
@@ -167,7 +167,7 @@
                 <div class="container-cc">
                     <p0 href="https://www.check4green.com/" >Copyright © 2018 Check4Green</p0>
                 </div>
-                
+
             </div>
 
             <div class="footer-container-social">
@@ -179,7 +179,7 @@
 
         </div>
 
-        
+
 
     </footer>
 <!-- /footer -->

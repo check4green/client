@@ -16,21 +16,23 @@
         };
 
        //sensors
+       $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+       console.log($scope.encodeduser)
        $scope.sensPerPage = 50;
-       sensorModelService.getFinalPage($scope.sensPerPage)
+       sensorModelService.getFinalPage($scope.sensPerPage, $scope.encodeduser)
         .then(finalPage);
         function finalPage(data){
            $scope.numPages = data;
            console.log('Last Page: ', $scope.numPages)
        }
-       sensorModelService.getAllSensors($scope.sensPerPage)
+       sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
             .then(allSensors);
         function allSensors(data){
           $scope.allSensors = data;
         }
         vm.setPage = function(){
           $scope.loading=true;
-          sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage)
+          sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
              .then(function(response){
                vm.sensors = response.data;
                $scope.loading=false;
@@ -44,14 +46,15 @@
         $scope.setPageSize = function(pageSize){
             if(pageSize){
             $scope.sensPerPage = pageSize;
-            sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage)
+            $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+            console.log($scope.encodeduser)
+            sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
               .then(function(response){
                 vm.sensors = response.data;
               })
             }
           }
-        // $http.get("http://192.168.0.18:32333/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + $scope.currentPage + "&pageSize=" + $scope.sensPerPage)
-        $http.get("http://swiss-iot.azurewebsites.net/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + $scope.currentPage + "&pageSize=" + $scope.sensPerPage)
+        sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
@@ -86,7 +89,7 @@
         }
       }
       update();
-        sensorModelService.getAllSensors()
+        sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
             .then(function(response){
                 $scope.totalSensors = response;
             });

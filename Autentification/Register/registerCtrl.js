@@ -1,6 +1,6 @@
 
    var app = angular.module("sensorApp");
-   app.controller("registerCtrl", function ($scope, $location) {
+   app.controller("registerCtrl", function ($scope, $location,autentificationService) {
         var vm = this;
         $scope.countries = [
           {
@@ -129,8 +129,24 @@
           },
         ]
         $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
-          $scope.user ={firstName:registerFirstName , lastName:registerLastName , email:registerEmail , password:registerPassword , company:registerCompany , country:registerCountry , phone:registerCountry.dialCode+' '+registerPhone  }
+          $scope.user ={
+            firstName:registerFirstName ,
+            lastName:registerLastName ,
+            email:registerEmail ,
+            password:registerPassword ,
+            companyName:registerCompany ,
+            country:registerCountry.name ,
+            phoneNumber:registerCountry.dialCode+registerPhone
+           }
           console.log('User: ', $scope.user)
+          autentificationService.register($scope.user)
+            .then(function(){
+              console.log('Register Success!')
+            })
+            .catch(function(response){
+              console.log('Register Error!')
+              $scope.error = response.data.message;
+            })
         }
 
     })
@@ -166,7 +182,7 @@
         require: 'ngModel',
         link: function(scope, element, attr, ctrl){
           function valid(value){
-            if ((value.indexOf('((') >-1) || (value.indexOf('))')) >-1 || (value.indexOf('++') >-1)){
+            if ((value.indexOf('++') >-1)){
               ctrl.$setValidity('charE', false);
             } else{
               ctrl.$setValidity('charE', true);

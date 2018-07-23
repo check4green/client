@@ -11,18 +11,18 @@
                   <h class="text-colapse-settings h-parrent-hover">Username:{{user.firstName}} {{user.lastName}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"> </span><a class="hover-edit"> Edit</a> </h>
                   <div class="settings-input-container box-border-container">
                     <div ng-class="{'has-error': nameEdit.fname.$invalid && nameEdit.fname.$dirty}">
-                      <input class="settings-input-filed" type="text" placeholder="The new first name" class="form-control" ng-model="editFirstname" ng-pattern="/^[a-zA-Z\s-]*$/" name="fname" name-valid required />
+                      <input class="settings-input-filed" type="text" placeholder="The new first name" class="form-control" ng-model="editFirstname" ng-pattern="/^[a-zA-Z-]*$/" name="fname" name-valid required />
                       <div class="help-block has-error">
                         <div ng-show="nameEdit.fname.$error.required && nameEdit.fname.$dirty">This field is required!</div>
-                        <div ng-show="!nameEdit.fname.$error.required && nameEdit.fname.$error.pattern ">The name is invalid! Use only: 'A-Z', 'a-z', '-' and space!</div>
+                        <div ng-show="!nameEdit.fname.$error.required && nameEdit.fname.$error.pattern ">The name is invalid! Use only: 'A-Z', 'a-z', '-'</div>
                         <div ng-show="!nameEdit.fname.$error.required && !nameEdit.fname.$error.pattern && !nameEdit.fname.$valid">The name is invalid!</div>
                       </div>
                     </div>
                     <div class="form-group" ng-class="{'has-error': nameEdit.lname.$invalid && nameEdit.lname.$dirty}">
-                      <input class="settings-input-filed" type="text" placeholder="The new last name" ng-model="editLastname" class="form-control" ng-pattern="/^[a-zA-Z\s-]*$/"  name="lname" required>
+                      <input class="settings-input-filed" type="text" placeholder="The new last name" ng-model="editLastname" class="form-control" ng-pattern="/^[a-zA-Z-]*$/"  name="lname" required>
                       <div class="help-block has-error">
                           <div ng-show="nameEdit.lname.$error.required && nameEdit.lname.$dirty">This field is required!</div>
-                          <div ng-show="!nameEdit.lname.$error.required && nameEdit.lname.pattern">The name is invalid! Use only: 'A-Z', 'a-z', '-' and space!</div>
+                          <div ng-show="!nameEdit.lname.$error.required && nameEdit.lname.pattern">The name is invalid! Use only: 'A-Z', 'a-z', '-'!</div>
                           <div ng-show="!nameEdit.lname.$error.required && !nameEdit.lname.pattern && !nameEdit.lname.$valid">The name is invalid!</div>
                       </div>
                     </div>
@@ -38,7 +38,7 @@
                     <input class="settings-input-filed" type="email" placeholder="The new email address" ng-model="editEmail" class="form-control" name="email" ng-pattern="/^[A-Za-z0-9._@]*$/" required >
                     <div class="help-block has-error">
                       <div ng-show="emailEdit.email.$error.required && emailEdit.email.$dirty">This field is required!</div>
-                      <div ng-show="emailEdit.email.$error.email && emailEdit.email.$error.pattern">This email address is invalid!</div>
+                      <div ng-show="emailEdit.email.$error.email || emailEdit.email.$error.pattern">This email address is invalid!</div>
                     </div>
                   </div>
                   <div class="form-group" ng-class="{'has-error': emailEdit.password.$invalid && emailEdit.password.$dirty}">
@@ -79,10 +79,10 @@
 
           <form name="companyEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover" >Company name:{{user.company}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+                <h class="text-colapse-settings h-parrent-hover" >Company name:{{user.companyName}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': companyEdit.cname.$invalid && companyEdit.cname.$dirty}">
-                    <input class="settings-input-filed" type="text" placeholder="New company name" ng-model="editCompany" class="form-control" ng-pattern="/^[a-zA-Z0-9\s.-]*$/" name="cname" required>
+                    <input class="settings-input-filed" type="text" placeholder="New company name" ng-model="editCompany" class="form-control" ng-pattern="/^[a-zA-Z0-9.-]*$/" name="cname" required>
                     <div class="help-block has-error">
                       <div ng-show="companyEdit.cname.$error.required && companyEdit.cname.$dirty">This field is requied!</div>
                       <div ng-show="!companyEdit.cname.$error.required && companyEdit.cname.$error.pattern">The company name is invalid!</div>
@@ -122,9 +122,8 @@
             </div>
           </form>
 
-            <select-type></select-type>
-
-            <button type="button" ng-click="saveChanges(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, confirmEditPass, editCompany, editCountry, editPhone)">Save change</button>
+            <button type="button" ng-click="saveChanges(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, editCompany, editCountry, editPhone)">Save change</button>
+            <div style="color:red;">{{message}}</div>
             <p>Once the data is verified, it will be changed.</p>
         </div>
 
