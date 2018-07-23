@@ -65,6 +65,31 @@
     width: 100%;
     margin-bottom: 15px;
 }
+.register-container-big .register-container .register-input-container .input-phone-no{
+    width: 40px;
+    background-color: white;
+    border: solid 1px #a8a7a7;
+    outline: none;
+    border-right: 0px; 
+    padding-left: 15px;
+}
+.register-container-big .register-container .register-input-container .input-phone-value{
+    width: 100%;
+    padding: 10px;
+    padding-left: 1px;
+    outline: none;
+    border: solid 1px rgb(168, 167, 167);
+    border-left: 0px;
+    
+}
+.register-container-big .register-container .register-input-container .input-phone-value:focus{
+    border: 2px solid #4e9a06;
+    outline: none;
+    border-left: 0px; 
+}
+
+
+
 .register-container-big .register-container .register-input-container .icon{
     padding: 10px;
     background: #4e9a06;

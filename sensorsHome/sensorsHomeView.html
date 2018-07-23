@@ -1,12 +1,12 @@
 <div class="container-sensorHome" id="sensorsHomeView">
     <!-- img-header -->
     <div id="headerImg" class="header">
-            <img src="/iconPng/C4G-full-moto.png" alt="Check4Green"/>
+            <img src="/Home/images-home/C4G-full-moto.png" alt="Check4Green"/>
           </div>
     <!-- /img-header -->
 
       <header class="headerSensorHome">
-        <div class="topnav">
+        <div class="topnav" id="myTopnav">
             <!-- menu button-->
             <span id="close-menu" class="fa fa-outdent"></span>
             <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
@@ -16,11 +16,14 @@
             <a ng-click="logOut()" ui-sref="home">Log out</a>
             <a href="javascript:void(0);" class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
         </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
       </header>
 
       <!-- menu-body -->
       <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn"><img src="/iconPng/C4G-full.png"></a>
+        <a href="javascript:void(0)" class="closebtn"><img src="/Home/images-home/C4G-full-moto.png"></a>
 
         <a class="a" onclick="closeNav()" ui-sref="sensorsHome">Home<i class="fa fa-home"></i></a>
 
@@ -38,54 +41,6 @@
       <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
 
     <div class="homeMenu">
-            <!-- <div class="parallax" style="background-image: url(/imgParallax/robo-1.1.jpg);">
-
-        </div>
-
-        <section class="text-banner">
-            <h1>GRID WITH SENSORS ADDED BY YOU</h1>
-            <p>We provide you with a platform where you can organize your sensors, they are classified on the categories.
-               We currently have the category of temperature sensors and the category of sensors for distance measurement.</p>
-        </section>
-
-        <div class="parallax" alt="Check4Green" style="background-image: url(/imgParallax/robo-1.jpg);"></div>
-
-        <section class="activity-section">
-            <div class="activity-element col-md-4">
-                <img src="/imgParallax/measurement.png" alt="Check4Green"/>
-                <h2>Measurement</h2>
-                <p>Here you can see the measurements sensor.</p>
-            </div>
-            <div class="activity-element col-md-4">
-                <img src="/imgParallax/live.png" alt="Check4Green"/>
-                <h2>Live view</h2>
-                <p>Here you can see real-time measurements.</p>
-            </div>
-            <div class="activity-element col-md-4">
-                <img src="/imgParallax/chart.png" alt="Check4Green"/>
-                <h2>Chart</h2>
-                <p>Here you can see the measurements made on a chart.</p>
-            </div>
-        </section>
-
-        <div class="parallax" alt="Check4Green" style="background-image: url(/imgParallax/robo-4.1.jpg);"></div>
-
-        <section class="text-banner">
-            <h1>GRID WITH SENSORS ADDED BY YOU</h1>
-            <p>We provide you with a platform where you can organize your sensors, they are classified on the categories.
-               We currently have the category of temperature sensors and the category of sensors for distance measurement.</p>
-        </section>
-
-        <div class="parallax" alt="Check4Green" style="background-image: url(/imgParallax/robo-2.1.jpg);"></div>
-
-        <section class="text-banner">
-                <h1>GRID WITH SENSORS ADDED BY YOU</h1>
-                <p>We provide you with a platform where you can organize your sensors, they are classified on the categories.
-                   We currently have the category of temperature sensors and the category of sensors for distance measurement.</p>
-            </section>
-
-            <div class="parallax" alt="Check4Green" style="background-image: url(/imgParallax/robo-2.jpg);"></div>
-         -->
 
              <!-- route-grid -->
         <div id="marginTopView" class="container gridView">
@@ -96,34 +51,8 @@
         </div>
         <!-- /route-grid -->
 
-
     </div>
 <!-- footer -->
-<footer>
-
-    <div class="footer-container fixed-bottom container">
-        <div class="footer-container-contact">
-            <h href="tel:+40720109740"><span class="fa fa-phone"></span>+40 720 109 740</h>
-            <h href="mailto:info@check4green.com"><span class="fa fa-envelope"></span>info@check4green.com</h>
-        </div>
-        <div class="footer-container-condition">
-            <div class="container-condition">
-                <h0>Privacy Policy</h0>
-                <h>Terms & Conditions</h>
-                <h>Disclaimer</h>
-            </div>
-            <div class="container-cc">
-                <p0 href="https://www.check4green.com/" >Copyright © 2018 Check4Green</p0>
-            </div>
-
-        </div>
-        <div class="footer-container-social">
-            <span class="fa fa-facebook-square" href="https://www.facebook.com"></span>
-            <span class="fa fa-linkedin-square" href="https://www.linkedin.com/in/check-green-68152a120?trk=hp-identity-name"></span>
-            <span class="fa fa-twitter-square" href="https://twitter.com/CheckforGreen"></span>
-            <span class="fa fa-youtube-square" href="https://www.youtube.com"></span>
-        </div>
-    </div>
-</footer>
+<button onclick="buttonFunction()" id="myBtn" title="Go to top" class="fa fa-arrow-up"></button>
 <!-- /footer -->
 </div>
