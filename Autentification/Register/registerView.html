@@ -1,5 +1,6 @@
 <div class="register-container-big">
-    <span class="fa fa-close"  ui-sref="home"></span>
+    <span class="fa fa-close span-x" ui-sref="home"></span>
+    <span class="fa fa-arrow-left span-back" ui-sref="logIn"></span>
 
     <img src="/Autentification/LogIn/Img-login/C4G-full-moto.png" alt="C4G-full-moto" class="register-image">
 
@@ -40,7 +41,7 @@
         </div>
         <div class="help-block has-error">
           <div ng-show="regForm.regEmail.$error.required && regForm.regEmail.$dirty">This field is required!</div>
-          <div ng-show="!regForm.regEmail.$error.required && regForm.regEmail.$error.pattern && regForm.regEmail.$error.email">This email is invalid!</div>
+          <div ng-show="!regForm.regEmail.$error.required && regForm.regEmail.$error.pattern || regForm.regEmail.$error.email">This email is invalid!</div>
         </div>
       </div>
         <h>Password<h style="color: #d9534f;">*</h></h>
@@ -130,17 +131,17 @@
           <div class="register-input-container">
             <i class="fa fa-phone icon"></i>
             <input value="{{registerCountry.dialCode}}" style="width:60px;" disabled >
-            <input class="register-input-filed" type="text" placeholder="Phone number" ng-model="registerPhone" class="form-control" ng-pattern="/^[0-9+()\s]*$/" name="nphone" phone-valid required>
+            <input class="register-input-filed" type="text" placeholder="Phone number" ng-model="registerPhone" class="form-control" ng-pattern="/^[0-9+\s]*$/" name="nphone" phone-valid required>
           </div>
           <div class="help-block has-error">
             <div ng-show="regForm.nphone.$error.required && regForm.nphone.$dirty">This field is required!</div>
             <div ng-show="!regForm.nphone.$error.required && regForm.nphone.$error.pattern">The phone number is invlid!</div>
-            <div ng-show="!regForm.nphone.$error.required && !regForm.nphone.$error.pattenr && !regForm.nphone.$valid">The phone number is invlid!</div>
+            <div ng-show="!regForm.nphone.$error.required && !regForm.nphone.$error.pattern && !regForm.nphone.$valid">The phone number is invlid!</div>
           </div>
       </div>
-        <select-type></select-type>
     </form>
-        <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone, registerType)">Create account</button>
+        <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
+        <div style="color:red;">{{error}}</div>
         <p>Signing up signifies that you have read and agree to the <a>Terms of Service</a> and our <a>Privacy Policy</a>.</p>
 
     </div>
