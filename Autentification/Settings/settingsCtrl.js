@@ -3,7 +3,7 @@
    var app = angular.module("sensorApp");
    app.controller("settingsCtrl", function ($scope, autentificationService, $localStorage) {
         var vm = this;
-        var encodeduser = btoa($localStorage.email +':' + $localStorage.password);//'bmFtZUB5YWhvby5jb206YXBhbWluZXJhbGE=';
+        var encodeduser = btoa($localStorage.email +':' + $localStorage.password);
         autentificationService.logIn(encodeduser)
             .then(function(response){
               $scope.user = response.data;
@@ -14,13 +14,11 @@
             $scope.user.firstName = editFirstname;
             $scope.user.lastName = editLastname;
           }
-          if(editEmail && password){
+          if(editEmail && (password == $localStorage.password)){
             $scope.user.email = editEmail;
-            $localStorage.email = editEmail;
           }
-          if(oldPassword && editPassword){
+          if((oldPassword == $localStorage.password) && editPassword){
             $scope.user.password = editPassword;
-            $localStorage.password = editPassword;
           }
           if(editCompany){
             $scope.user.companyName = editCompany;
@@ -38,9 +36,19 @@
           console.log('User Edit: ', $scope.user);
           var encodedData = btoa($localStorage.email + ':' + $localStorage.password);
           autentificationService.settings(encodedData, $scope.user)
-            .catch(function(response){
-              $scope.message = response.data.message;
+            .then(function(){
+              $scope.message = 'Account edited successfully!';
+              if(editPassword){
+                $localStorage.password = editPassword;
+              }
+              if (editEmail && (password == $localStorage.password)){
+                $localStorage.email = editEmail;
+            }
             })
+            .catch(function(response){
+              $scope.error = response.data.message;
+            })
+
         }
     });
     app.directive("validPass", function(){

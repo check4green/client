@@ -92,7 +92,7 @@
           <i class="fa fa-phone icon"></i>
           <input id="inputPhone" value="{{registerCountry.dialCode}}" class="input-phone-no" disabled >
           <input class="input-phone-value" onfocus="borderInput()" onfocusout="borderInputOut()" type="text" placeholder="Phone number" ng-model="registerPhone" class="form-control" ng-pattern="/^[0-9+()\s]*$/" name="nphone" phone-valid required>
-       
+
         </div>
         <div class="help-block has-error">
           <div ng-show="regForm.nphone.$error.required && regForm.nphone.$dirty">This field is required!</div>
@@ -102,6 +102,7 @@
     </div>
     </form>
         <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
+        <div style="color:#4e9a06;">{{message}}</div>
         <div style="color:red;">{{error}}</div>
         <p>Signing up signifies that you have read and agree to the <a>Terms of Service</a> and our <a>Privacy Policy</a>.</p>
 

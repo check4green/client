@@ -142,6 +142,7 @@
           autentificationService.register($scope.user)
             .then(function(){
               console.log('Register Success!')
+              $scope.message = 'Account registered successfully!'
             })
             .catch(function(response){
               console.log('Register Error!')

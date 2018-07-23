@@ -28,7 +28,8 @@
            return  $http({
              method: "GET",
              url:'http://swiss-iot.azurewebsites.net/api/sensor-types/' + SENSOR_TYPE.ID + '/users/sensors?page=0&pageSize=' +size,
-             headers:{'Authorization' : 'Basic ' +encodedData}})
+             headers:{'Authorization' : 'Basic ' +encodedData}
+           })
              .then(function (response){
                 return response.headers('X-Tracker-Pagination-PageCount');
            })
@@ -37,7 +38,7 @@
             // return $http.get("http://192.168.0.18:32333/api/sensor-types/" + SENSOR_TYPE.ID + "/sensors?page=" + pag + "&pageSize=" + size)
             return $http({method: "GET",
             url:"http://swiss-iot.azurewebsites.net/api/sensor-types/"+ SENSOR_TYPE.ID +"/users/sensors?page=" + pag + "&pageSize=" + size,
-          headers: {'Authorization': 'Basic '+ encodedData}
+            headers: {'Authorization': 'Basic '+ encodedData}
         })
             .catch(getError);
      }
@@ -52,28 +53,43 @@
              return  $http({
                method: "GET",
                url:'http://swiss-iot.azurewebsites.net/api/sensor-types/' + SENSOR_TYPE.ID + '/users/sensors?page=0&pageSize=' + size,
-              headers: {'Authorization': 'Basic '+ encodedData}})
+               headers: {'Authorization': 'Basic '+ encodedData }
+            })
                 .then(function (response){
                     return response.headers('X-Tracker-Pagination-SensorCount');
                 })
         }
-       function insertSensors(sensor){
+       function insertSensors(sensor,encodedData){
         //    return $http.post("http://192.168.0.18:32333/api/sensors", sensor)
-           return $http.post("http://swiss-iot.azurewebsites.net/api/sensors", sensor)
+           return $http({
+             method:"POST",
+             url:"http://swiss-iot.azurewebsites.net/api/sensors",
+             data:sensor,
+             headers: {'Authorization': 'Basic '+ encodedData}
+           })
             .then(function (response){
                  return response.data;
         })
        }
-       function updateSensors(newSensor, gatewayAdress, clientAddress){
+       function updateSensors(newSensor, gatewayAdress, clientAddress, encodedData){
         //    return $http.put("http://192.168.0.18:32333/api/sensors/address/"+gatewayAdress +"/"+clientAddress, newSensor)
-           return $http.put("http://swiss-iot.azurewebsites.net/api/sensors/address/"+gatewayAdress +"/"+clientAddress, newSensor)
+           return $http({
+             method:"PUT",
+             url: "http://swiss-iot.azurewebsites.net/api/sensors/address/"+gatewayAdress +"/"+clientAddress,
+             data: newSensor,
+             headers: {'Authorization': 'Basic '+ encodedData}
+           })
            .then(function (response){
                 return response.data;
             })
         }
-       function deleteSensors(gatewayAddress, clientAddress){
+       function deleteSensors(gatewayAddress, clientAddress, encodedData){
         //    return $http.delete("http://192.168.0.18:32333/api/sensors/address/" + gatewayAddress + "/" + clientAddress)
-           return $http.delete("http://swiss-iot.azurewebsites.net/api/sensors/address/" + gatewayAddress + "/" + clientAddress)
+           return $http({
+             method:"DELETE",
+             url:"http://swiss-iot.azurewebsites.net/api/sensors/address/" + gatewayAddress + "/" + clientAddress,
+             headers: {'Authorization' :'Basic ' + encodedData}
+           })
            .then(sensorsSuccess)
            .catch(deleteError);
        }

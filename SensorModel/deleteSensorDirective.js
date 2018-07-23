@@ -1,9 +1,9 @@
 var app = angular.module("sensorApp");
 app.directive('deleteSensor', function(){
-    return { 
+    return {
         restrict: 'E',
         templateUrl: 'SensorModel/deleteSensorDirectiveView.html',
-        controller: function($scope, sensorModelService, $window, $timeout){
+        controller: function($scope, sensorModelService, $window, $timeout, $localStorage){
             $scope.deleteButton = true;
             $scope.deleteDisplay = false;
             $scope.startDelete = function(){
@@ -14,8 +14,9 @@ app.directive('deleteSensor', function(){
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
             }
+            $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             $scope.deleteSensor = function(gatewayAddress, clientAddress){
-                sensorModelService.deleteSensors(gatewayAddress, clientAddress);
+                sensorModelService.deleteSensors(gatewayAddress, clientAddress, $scope.encodedData);
                 $timeout(function(){
                     $window.location.reload();
                 },300);
