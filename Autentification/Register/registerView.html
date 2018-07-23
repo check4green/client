@@ -76,69 +76,30 @@
           <div class="help-block has-error" ng-show="regForm.cname.$error.pattern && regForm.cname.$dirty">The company name is invalid!</div>
         </div>
 
-        <!-- <h>Country<h style="color: #d9534f;">*</h></h>
-        <div class="register-input-container">
-            <i class="fa fa-map-marker icon"></i>
-            <input class="register-input-filed" type="country" placeholder="Country" class="form-control" name="country" required>
-        </div> -->
-
         <h>Country<h style="color: #d9534f;">*</h></h>
         <div class="form-group" ng-class="{'has-error': regForm.country.$invalid && regForm.country.$dirty}">
         <div class="register-input-container">
             <i class="fa fa-map-marker icon"></i>
-              <!--  <input list="country" name="country" class="register-input-filed" placeholder="Country" ng-model="registerCountry" required>
-                <datalist id="country">
-                        <option value="Argentina">Argentina</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Austria">Austria</option>
-                        <option value="Belgium">Belgium</option>
-                        <option value="Brazil">Brazil</option>
-                        <option value="Bulgaria">Bulgaria</option>
-                        <option value="China">China</option>
-                        <option value="Egypt">Egypt</option>
-                        <option value="Hungary">Hungary</option>
-                        <option value="India">India</option>
-                        <option value="Indonesia">Indonesia</option>
-                        <option value="Italy">Italy</option>
-                        <option value="Mexico">Mexico</option>
-                        <option value="Moldova">Moldova</option>
-                        <option value="Norway">Norway</option>
-                        <option value="Poland">Poland</option>
-                        <option value="Portugal">Portugal</option>
-                        <option value="Romania">Romania</option>
-                        <option value="Russia">Russia</option>
-                        <option value="Slovakia">Slovakia</option>
-                        <option value="Slovenia">Slovenia</option>
-                        <option value="South Africa">South Africa</option>
-                        <option value="Spain">Spain</option>
-                        <option value="Sweden">Sweden</option>
-                        <option value="Switzerland">Switzerland</option>
-                        <option value="Turkey">Turkey</option>
-                        <option value="Ukraine">Ukraine</option>
-                        <option value="United Arab Emirates">United Arab Emirates</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="United States">United States</option>
-                        <option value="Uruguay">Uruguay</option>
-                </datalist> -->
                 <select name="country" class="register-input-filed" ng-model="registerCountry" ng-options="country.name for country in countries" required>
                   <option value="">Select country</options>
                 </select>
         </div>
         <div class="help-block has-error" ng-show="regForm.country.$error.required && regForm.country.$dirty">This field is required!</div>
       </div>
-        <h>Phone number<h style="color: #d9534f;">*</h></h>
-        <div class="form-group" ng-class="{'has-error': regForm.nphone.$invalid && regForm.nphone.$dirty}">
-          <div class="register-input-container">
-            <i class="fa fa-phone icon"></i>
-            <input value="{{registerCountry.dialCode}}" style="width:60px;" disabled >
-            <input class="register-input-filed" type="text" placeholder="Phone number" ng-model="registerPhone" class="form-control" ng-pattern="/^[0-9+\s]*$/" name="nphone" phone-valid required>
-          </div>
-          <div class="help-block has-error">
-            <div ng-show="regForm.nphone.$error.required && regForm.nphone.$dirty">This field is required!</div>
-            <div ng-show="!regForm.nphone.$error.required && regForm.nphone.$error.pattern">The phone number is invlid!</div>
-            <div ng-show="!regForm.nphone.$error.required && !regForm.nphone.$error.pattern && !regForm.nphone.$valid">The phone number is invlid!</div>
-          </div>
-      </div>
+      <h>Phone number<h style="color: #d9534f;">*</h></h>
+      <div class="form-group" ng-class="{'has-error': regForm.nphone.$invalid && regForm.nphone.$dirty}">
+        <div class="register-input-container focus-phone">
+          <i class="fa fa-phone icon"></i>
+          <input id="inputPhone" value="{{registerCountry.dialCode}}" class="input-phone-no" disabled >
+          <input class="input-phone-value" onfocus="borderInput()" onfocusout="borderInputOut()" type="text" placeholder="Phone number" ng-model="registerPhone" class="form-control" ng-pattern="/^[0-9+()\s]*$/" name="nphone" phone-valid required>
+       
+        </div>
+        <div class="help-block has-error">
+          <div ng-show="regForm.nphone.$error.required && regForm.nphone.$dirty">This field is required!</div>
+          <div ng-show="!regForm.nphone.$error.required && regForm.nphone.$error.pattern">The phone number is invlid!</div>
+          <div ng-show="!regForm.nphone.$error.required && !regForm.nphone.$error.pattern && !regForm.nphone.$valid">The phone number is invlid!</div>
+        </div>
+    </div>
     </form>
         <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
         <div style="color:red;">{{error}}</div>

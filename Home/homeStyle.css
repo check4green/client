@@ -44,6 +44,12 @@
         width: 100%;
         z-index: 20;
     }
+    /* .calculator-total-cost{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+    } */
     .container-home .header-home a{
         float: none;
         display: block;
@@ -66,6 +72,22 @@
 }
 /* /header home <-- */
 
+/* --> progres bar */
+.container-home .progress-container {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 3px;
+    background: #ccc;
+}
+
+.container-home .progress-container .progress-bar {
+    height: 3px;
+    background: #4e9a06;
+    width: 0%;
+}
+/* <-- progres bar */
 
 
 /* --> start page */
@@ -124,6 +146,12 @@
     width: 30%;
     margin-bottom: 16px;
     padding: 0 8px;
+}
+
+@media screen and (max-width: 1000px){
+    /* .container-home{
+        fo
+     } */
 }
 @media screen and (max-width: 640px){
     .container-home .container-column-dercr{
@@ -194,6 +222,7 @@
 .container-home .container-slider-home-margin{
     margin: 0px;
 }
+
 /* calculator <-- */
 
 
@@ -240,7 +269,29 @@
 }
 
 /* /login part <-- */
-
+/* --> scroll button */
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 10px;
+    z-index: 99;
+    font-size: 23px;
+    border: none;
+    outline: none;
+    background-color: #4e9a06;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+  }
+  
+  #myBtn:hover {
+    background-color: white;
+    color: #4e9a06;
+    box-shadow: 0px 0px 20px #4e9a06;
+  }
+/* <-- scroll button */
 
 
 /* --> footer */
@@ -265,7 +316,11 @@
 .container-home .footer-container .footer-container-contact a{
     margin-bottom: 5px;
 }
-.container-home .footer-container .footer-container-contact a:hover, span:hover{
+.container-home .footer-container .footer-container-contact a:hover{
+    color: #4e9a06;
+    text-shadow: 0px 0px 25px #4e9a06;
+}
+.container-home .footer-container.footer-container-condition .container-condition a:hover{
     color: #4e9a06;
     text-shadow: 0px 0px 25px #4e9a06;
 }
@@ -277,17 +332,17 @@
 .container-home .footer-container .footer-container-condition .container-condition a{
     margin-left: 30px;
 }
-.container-home .footer-container .footer-container-condition .container-condition a:hover, h:hover{
+/* .container-home .footer-container .footer-container-condition .container-condition a:hover, h:hover{
     color: #4e9a06;
     text-shadow: 0px 0px 25px #4e9a06;
-}
+} */
 .container-home .footer-container .footer-container-condition .container-cc{
     margin-top: 15px;
 }
 .container-home .footer-container .footer-container-condition .container-cc a{
     color: #686868;
 }
-.container-home .footer-container .footer-container-condition .container-cc a:hover{
+.container-home .footer-container .footer-container-condition .container-condition a:hover{
     color: #4e9a06;
     text-shadow: 0px 0px 25px #4e9a06;
 }
