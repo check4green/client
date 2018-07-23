@@ -232,6 +232,7 @@
     cursor: pointer;
     margin-top: 20%;
     box-shadow: 2px 4px 1px 1px #e0e0e0;
+    border: 1px solid #33333300;
 }
 .container-home .login-image-home .login-text button:hover{
     box-shadow: 2px 4px 1px 1px #333;
@@ -247,6 +248,10 @@
     display: flex;
     cursor: pointer;
 }
+.container-home .footer-container a{
+    text-decoration: none;
+    color: #adaaaa;
+}
 .container-home .footer-container .footer-container-contact{
     display: flex;
     flex-direction: column;
@@ -257,10 +262,10 @@
 .container-home .footer-container .footer-container-contact span{
     margin-right: 10px;
 }
-.container-home .footer-container .footer-container-contact h{
+.container-home .footer-container .footer-container-contact a{
     margin-bottom: 5px;
 }
-.container-home .footer-container .footer-container-contact h:hover, span:hover{
+.container-home .footer-container .footer-container-contact a:hover, span:hover{
     color: #4e9a06;
     text-shadow: 0px 0px 25px #4e9a06;
 }
@@ -269,18 +274,20 @@
     flex-grow: 1;
     font-size: 13px;
 }
-.container-home .footer-container .footer-container-condition .container-condition h{
+.container-home .footer-container .footer-container-condition .container-condition a{
     margin-left: 30px;
 }
-.container-home .footer-container .footer-container-condition .container-condition h0:hover, h:hover{
+.container-home .footer-container .footer-container-condition .container-condition a:hover, h:hover{
     color: #4e9a06;
     text-shadow: 0px 0px 25px #4e9a06;
 }
 .container-home .footer-container .footer-container-condition .container-cc{
     margin-top: 15px;
-    color: rgb(161, 161, 161);
 }
-.container-home .footer-container .footer-container-condition .container-cc p0:hover{
+.container-home .footer-container .footer-container-condition .container-cc a{
+    color: #686868;
+}
+.container-home .footer-container .footer-container-condition .container-cc a:hover{
     color: #4e9a06;
     text-shadow: 0px 0px 25px #4e9a06;
 }
@@ -308,7 +315,7 @@
     .container-home .footer-container .footer-container-contact{
         align-self: center;
     }
-    .container-home .footer-container .footer-container-condition .container-condition h{
+    .container-home .footer-container .footer-container-condition .container-condition a{
         margin-left: 5px;
     }
     .container-home .footer-container .footer-container-social{
