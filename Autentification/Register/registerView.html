@@ -1,5 +1,6 @@
 <div class="register-container-big">
-    <span class="fa fa-close"  ui-sref="home"></span>
+    <span class="fa fa-close span-x" ui-sref="home"></span>
+    <span class="fa fa-arrow-left span-back" ui-sref="logIn"></span>
 
     <img src="/Autentification/LogIn/Img-login/C4G-full-moto.png" alt="C4G-full-moto" class="register-image">
 
@@ -138,9 +139,8 @@
             <div ng-show="!regForm.nphone.$error.required && !regForm.nphone.$error.pattenr && !regForm.nphone.$valid">The phone number is invlid!</div>
           </div>
       </div>
-        <select-type></select-type>
     </form>
-        <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone, registerType)">Create account</button>
+        <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
         <p>Signing up signifies that you have read and agree to the <a>Terms of Service</a> and our <a>Privacy Policy</a>.</p>
 
     </div>

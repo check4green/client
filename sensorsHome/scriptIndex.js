@@ -1,21 +1,3 @@
-// scroll img moto
-var scrollHome = window;
-
-scrollHome.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-
-    var afterHead = document.getElementById('headerImg').clientHeight;
-
-      if (document.body.scrollTop > afterHead || document.documentElement.scrollTop > afterHead) {
-        navbar.classList.add("sticky")
-        document.getElementById("marginTopView").style.marginTop = "70px";
-    } else {
-        navbar.classList.remove("sticky");
-        document.getElementById("marginTopView").style.marginTop = "15px";
-    }
-}
-
 // show arrow on navbar
 
 function showNavText(x) {

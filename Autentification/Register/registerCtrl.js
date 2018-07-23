@@ -128,9 +128,9 @@
             "dialCode": "+598"
           },
         ]
-        $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone, registerType){
-          $scope.user ={firstName:registerFirstName , lastName:registerLastName , email:registerEmail , password:registerPassword , company:registerCompany , country:registerCountry.name , phone:registerCountry.dialCode+ ' ' +registerPhone  , sensorType:$scope.sensTypeId }
-              console.log('user: ', $scope.user);
+        $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
+          $scope.user ={firstName:registerFirstName , lastName:registerLastName , email:registerEmail , password:registerPassword , company:registerCompany , country:registerCountry , phone:registerCountry.dialCode+' '+registerPhone  }
+          console.log('User: ', $scope.user)
         }
 
     })
