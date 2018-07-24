@@ -9,8 +9,8 @@
     overflow-y: auto; 
 }
 .settings-container-big .box-text{
-    position: relative;
-    margin-top: 10px;
+    margin-bottom: 13px;
+    margin-top: 13px;
 }
 .settings-container-big .box-text .h-parrent-hover:hover .hover-edit{
     display: inline-block;
@@ -21,16 +21,15 @@
     margin-left: 5px;
 }
 .settings-container-big .box-text .text-colapse-settings{
-    position: absolute;
-    top: -11px;
-    background-color: white;
-    border: solid 1px #b1afaf;
-    border-radius: 2px;
-    padding: 5px;
+    background-color: #4e9a06;
+    border-radius: 10px;
+    padding: 10px;
 }
 .settings-container-big .box-border-container{
-    border: solid 1px #b1afaf;
+    border: solid 3px #4e9a06;
+    border-radius: 0px 20px 20px 20px;
     padding: 10px;
+    background-color: #4e9a062d;
 }
 .settings-container-big .span{
     font-size: 35px;
@@ -77,12 +76,15 @@
     background-color: white;
     margin-bottom: 30px;
 }
+.settings-container-big .settings-container h2{
+    margin-bottom: 20px;
+}
 .settings-container-big .settings-container h{
     font-size: 15px;
     font-weight: bold;
 }
 .settings-container-big .settings-container .h-color{
-    color: #4e9a06;
+    color: #ffffff;
     font-weight: bold;
 }
 .settings-container-big .settings-container form{
@@ -99,7 +101,7 @@
     width: 100%;
     padding: 5px;
     outline: none;
-    margin-top: 15px;
+    margin-top: 12px;
 }
 .settings-container-big .settings-container .settings-input-container .settings-input-filed:focus{
     border: 2px solid #4e9a06;
@@ -112,7 +114,8 @@
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
-    margin-bottom: 5px; 
+    margin-bottom: 10px; 
+    margin-top: 30px; 
 }
 .settings-container-big .settings-container button:hover{
     opacity: 1;
