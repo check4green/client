@@ -17,7 +17,6 @@
 
        //sensors
        $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
-       console.log($scope.encodeduser)
        $scope.sensPerPage = 50;
        sensorModelService.getFinalPage($scope.sensPerPage, $scope.encodeduser)
         .then(finalPage);
