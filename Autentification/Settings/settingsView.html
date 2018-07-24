@@ -7,8 +7,8 @@
         <div class="settings-container container">
                 <h2>Account settings</h2>
 
-                <div id="alert-error"><p>{{error}}</p></div>
-                <div id="alert-succesful"><p>{{message}}</p></div>
+                <div ng-show="vm.showSettingsError" id="alert-error"><p>{{error}}</p></div>
+                <div ng-show="vm.showSettingsMessage" id="alert-succesful"><p>{{message}}</p></div>
 
             <form name="nameEdit" novalidate>
               <div class="box-text">

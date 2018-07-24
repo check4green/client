@@ -57,6 +57,8 @@
                 vm.showPhoneNumber = false;
               }
             }
+            vm.showSettingsMessage = false;
+            vm.showSettingsError = false;
         $scope.saveChanges = function(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, editCompany, editCountry, editPhone){
           if(editFirstname && editLastname){
             $scope.user.firstName = editFirstname;
@@ -72,7 +74,7 @@
             $scope.user.companyName = editCompany;
           }
           if(editCountry){
-            $scope.user.country = editCountry;
+            $scope.user.country = editCountry.name;
           }
           if(editPhone){
             $scope.user.phoneNumber = editPhone;
@@ -82,6 +84,8 @@
           var encodedData = btoa($localStorage.email + ':' + $localStorage.password);
           autentificationService.settings(encodedData, $scope.user)
             .then(function(){
+              vm.showSettingsMessage = true;
+              vm.showSettingsError = false;
                 $scope.message = 'Account edited successfully!';
                 if(editPassword){
                     $localStorage.password = editPassword;
@@ -95,6 +99,8 @@
                 }
             })
             .catch(function(response){
+              vm.showSettingsMessage = false;
+              vm.showSettingsError = true;
               $scope.error = response.data.message;
             })
 

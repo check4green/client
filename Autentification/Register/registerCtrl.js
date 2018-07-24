@@ -128,6 +128,7 @@
             "dialCode": "+598"
           },
         ]
+        vm.showRegisterError = false;
         $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
           if (!registerCountry){
             $scope.user ={
@@ -160,6 +161,7 @@
               $localStorage.password = $scope.user.password;
             })
             .catch(function(response){
+              vm.showRegisterError = true;
               $scope.error = response.data.message;
             })
         }
