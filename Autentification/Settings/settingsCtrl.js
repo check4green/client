@@ -7,7 +7,6 @@
         autentificationService.getUser(encodeduser)
             .then(function(response){
               $scope.user = response.data;
-              console.log($scope.user)
             })
             vm.showUserName = false;
             vm.showEmailAddress = false;
