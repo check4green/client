@@ -9,6 +9,54 @@
               $scope.user = response.data;
               console.log($scope.user)
             })
+            vm.showUserName = false;
+            vm.showEmailAddress = false;
+            vm.showPassword = false;
+            vm.showCompanyName = false;
+            vm.showCountry = false;
+            vm.showPhoneNumber = false;
+            vm.collapsUserName = function(){
+              if(vm.showUserName == false){
+                vm.showUserName = true;
+              } else{
+                vm.showUserName = false;
+              }
+            }
+            vm.collapsEmailAddress = function(){
+              if(vm.showEmailAddress == false){
+                vm.showEmailAddress = true;
+              }else{
+                vm.showEmailAddress = false;
+              }
+            }
+            vm.collapsPassword = function(){
+              if(vm.showPassword == false){
+                vm.showPassword = true;
+              }else{
+                vm.showPassword = false;
+              }
+            }
+            vm.collapsCompanyName = function(){
+              if(vm.showCompanyName == false){
+                vm.showCompanyName = true;
+              }else{
+                vm.showCompanyName = false;
+              }
+            }
+            vm.collapsCountry = function(){
+              if(vm.showCountry == false){
+                vm.showCountry = true;
+              }else{
+                vm.showCountry = false;
+              }
+            }
+            vm.collapsPhoneNumber = function(){
+              if(vm.showPhoneNumber == false){
+                vm.showPhoneNumber = true;
+              }else{
+                vm.showPhoneNumber = false;
+              }
+            }
         $scope.saveChanges = function(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, editCompany, editCountry, editPhone){
           if(editFirstname && editLastname){
             $scope.user.firstName = editFirstname;
