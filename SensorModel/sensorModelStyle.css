@@ -101,6 +101,8 @@
     width: 240px;
     text-align: center;
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
 }
 #alert-succesful p{
     padding: 10px;
@@ -111,6 +113,8 @@
     width: 240px;
     text-align: center;
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
 }
 .editDisplay input{
     margin-bottom:10px;
