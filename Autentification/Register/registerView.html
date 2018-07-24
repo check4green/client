@@ -102,8 +102,10 @@
     </div>
     </form>
         <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
-        <div style="color:#4e9a06;">{{message}}</div>
-        <div style="color:red;">{{error}}</div>
+        <div id="alert-succesful" ><p>{{message}}</p></div>
+        <div id="alert-error" ><p>{{error}}</p></div>
+       
+
         <p>Signing up signifies that you have read and agree to the <a>Terms of Service</a> and our <a>Privacy Policy</a>.</p>
 
     </div>
