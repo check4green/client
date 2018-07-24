@@ -6,6 +6,10 @@
 
     <div class="register-container container">
             <h2>Register</h2>
+
+            <div id="alert-succesful" ><p>{{message}}</p></div>
+            <div id="alert-error" ><p>{{error}}</p></div>
+
       <form name="regForm" novalidate>
         <h>First name <h style="color: #d9534f;">*</h></h>
         <div class="form-group" ng-class="{'has-error': regForm.fname.$invalid && regForm.fname.$dirty}">
@@ -102,10 +106,7 @@
     </div>
     </form>
         <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
-        <div id="alert-succesful" ><p>{{message}}</p></div>
-        <div id="alert-error" ><p>{{error}}</p></div>
        
-
         <p>Signing up signifies that you have read and agree to the <a>Terms of Service</a> and our <a>Privacy Policy</a>.</p>
 
     </div>
