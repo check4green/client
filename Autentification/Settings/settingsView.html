@@ -35,14 +35,14 @@
                 <h class="text-colapse-settings h-parrent-hover">Email address:{{user.email}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
               <div class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': emailEdit.email.$invalid && emailEdit.email.$dirty}">
-                    <input class="settings-input-filed" type="email" placeholder="The new email address" ng-model="editEmail" class="form-control" name="email" ng-pattern="/^[A-Za-z0-9._@]*$/" required >
+                    <input class="settings-input-filed" type="email" placeholder="The new email address" ng-model="editEmail" class="form-control" name="email" ng-pattern="/^[A-Za-z0-9._@]*$/" required>
                     <div class="help-block has-error">
                       <div ng-show="emailEdit.email.$error.required && emailEdit.email.$dirty">This field is required!</div>
                       <div ng-show="emailEdit.email.$error.email || emailEdit.email.$error.pattern">This email address is invalid!</div>
                     </div>
                   </div>
                   <div class="form-group" ng-class="{'has-error': emailEdit.password.$invalid && emailEdit.password.$dirty}">
-                    <input class="settings-input-filed" type="password" placeholder="Password" ng-model="password" class="form-control" name="password" required >
+                    <input class="settings-input-filed" type="password" placeholder="Password" ng-model="password" class="form-control" name="password" required>
                     <div class="help-block has-error" ng-show="emailEdit.password.$error.required && emailEdit.password.$dirty">This field is required!</div>
                   </div>
               </div>
@@ -97,7 +97,9 @@
                 <h class="text-colapse-settings h-parrent-hover" >Country:{{user.country}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': countryEdit.country.$invalid && countryEdit.country.$dirty}">
-                    <input class="settings-input-filed" type="text" placeholder="New country" ng-model="editCountry" class="form-control" ng-pattern="/^[A-Za-z\s]*$/" name="country" required>
+                    <select name="country" class="settings-input-filed" ng-model="editCountry" ng-options="country.name for country in countries" required>
+                      <option selected disabled hidden value="">Romania</options>
+                    </select>
                     <div class="help-block has-error">
                       <div ng-show="countryEdit.country.$error.required && countryEdit.country.$dirty">This field is required!</div>
                       <div ng-show="!countryEdit.country.$error.required && countryEdit.country.$error.pattern">The country name is invalid!</div>
@@ -112,10 +114,11 @@
                 <h class="text-colapse-settings h-parrent-hover" >Phone number:{{user.phoneNumber}} <h class="h-color"></h> <span class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': phoneEdit.nphone.$invalid && phoneEdit.nphone.$dirty}">
-                    <input class="settings-input-filed" type="text" placeholder="New number" ng-model="editPhone" ng-pattern="/^[0-9\s+]*$/" class="form-control" name="nphone" required>
+                    <input class="settings-input-filed" type="text" placeholder="New number" ng-model="editPhone" ng-pattern="/^[0-9\s+]*$/" class="form-control" name="nphone" phone-validation required>
                     <div class="help-block has-error">
                         <div ng-show="phoneEdit.nphone.$error.required && phoneEdit.nphone.$dirty">This field is required!</div>
                         <div ng-show="!phoneEdit.nphone.$error.required && phoneEdit.nphone.$error.pattern">The phone number is invalid!</div>
+                        <div ng-show="!phoneEdit.nphone.$error.required && !phoneEdit.nphone.$error.pattern && !phoneEdit.nphone.$valid">You have to enter the country dial code!</div>
                     </div>
                   </div>
                 </div>
@@ -123,7 +126,8 @@
           </form>
 
             <button type="button" ng-click="saveChanges(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, editCompany, editCountry, editPhone)">Save change</button>
-            <div style="color:red;">{{message}}</div>
+            <div style="color:red;">{{error}}</div>
+            <div style="color:#4e9a06;">{{message}}</div>
             <p>Once the data is verified, it will be changed.</p>
         </div>
 

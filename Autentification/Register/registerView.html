@@ -81,7 +81,7 @@
         <div class="register-input-container">
             <i class="fa fa-map-marker icon"></i>
                 <select name="country" class="register-input-filed" ng-model="registerCountry" ng-options="country.name for country in countries" required>
-                  <option value="">Select country</options>
+                  <option selected disabled hidden value="" id="country">Romania</options>
                 </select>
         </div>
         <div class="help-block has-error" ng-show="regForm.country.$error.required && regForm.country.$dirty">This field is required!</div>

@@ -6,7 +6,6 @@
         $scope.logOut = function(){
           $localStorage.email = 0;
           $localStorage.password = 0;
-          console.log('Log Out!')
         }
     });
 }());

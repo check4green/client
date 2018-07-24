@@ -3,6 +3,8 @@
    var app = angular.module("sensorApp");
    app.controller("homeCtrl", function ($scope,$localStorage) {
         var vm = this;
+        $localStorage.email = 0;
+        $localStorage.password = 0;
         if(($localStorage.email !=0) && ($localStorage.password!=0)){
           vm.log = false;
         }else{

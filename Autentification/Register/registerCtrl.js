@@ -1,6 +1,6 @@
 
    var app = angular.module("sensorApp");
-   app.controller("registerCtrl", function ($scope, $location,autentificationService) {
+   app.controller("registerCtrl", function ($scope, $location, $localStorage, autentificationService) {
         var vm = this;
         $scope.countries = [
           {
@@ -129,22 +129,37 @@
           },
         ]
         $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
-          $scope.user ={
-            firstName:registerFirstName ,
-            lastName:registerLastName ,
-            email:registerEmail ,
-            password:registerPassword ,
-            companyName:registerCompany ,
-            country:registerCountry.name ,
-            phoneNumber:registerCountry.dialCode+registerPhone
+          if (!registerCountry){
+            $scope.user ={
+              firstName:registerFirstName ,
+              lastName:registerLastName ,
+              email:registerEmail ,
+              password:registerPassword ,
+              companyName:registerCompany ,
+              country: 'Romania' ,
+              phoneNumber:'+40'+registerPhone
+             }
+             document.getElementById('inputPhone').value = '+40';
            }
+           else{
+              $scope.user = {
+                  firstName:registerFirstName ,
+                  lastName:registerLastName ,
+                  email:registerEmail ,
+                  password:registerPassword ,
+                  companyName:registerCompany ,
+                  country:registerCountry.name ,
+                  phoneNumber:registerCountry.dialCode+registerPhone
+                }
+         }
           console.log('User: ', $scope.user)
           autentificationService.register($scope.user)
             .then(function(){
-              console.log('Register Success!')
+              $location.path('/sensorsHome');
+              $localStorage.email = $scope.user.email;
+              $localStorage.password = $scope.user.password;
             })
             .catch(function(response){
-              console.log('Register Error!')
               $scope.error = response.data.message;
             })
         }

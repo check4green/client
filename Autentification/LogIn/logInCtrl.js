@@ -1,19 +1,18 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("logInCtrl", function ($scope, autentificationService, $localStorage) {
+   app.controller("logInCtrl", function ($scope, autentificationService, $localStorage, $location) {
         var vm = this;
         $scope.login = function(email, password){
           $localStorage.email = email;
           $localStorage.password = password;
           $scope.encodeduser = btoa(email +':'+ password)
-          console.log($scope.encodeduser)
           autentificationService.logIn($scope.encodeduser)
-              .then(function(){
-                console.log('Success!')
+              .then(function(response){
+                  $location.path('/sensorsHome');
               })
-              .catch(function(){
-                console.log('Error!')
+              .catch(function(response){
+                  $scope.message = response.data.message;
               })
 
         }

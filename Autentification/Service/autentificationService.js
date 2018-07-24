@@ -4,12 +4,20 @@ angular.module("sensorApp")
             logIn: logIn,
             register: register,
             settings: settings,
+            getUser: getUser,
           }
           function logIn(encodedData){
             return $http({
               method: "GET",
-              url:'http://swiss-iot.azurewebsites.net/api/users',
+              url:'http://swiss-iot.azurewebsites.net/api/users/logIn',
               headers: {'Authorization': 'Basic ' + encodedData}
+            })
+          }
+          function getUser(encodedData){
+            return $http({
+              method: "GET",
+              url: 'http://swiss-iot.azurewebsites.net/api/users',
+              headers: { 'Authorization': 'Basic ' + encodedData }
             })
           }
           function register(user){
