@@ -118,11 +118,12 @@
                 <h class="text-colapse-settings h-parrent-hover" >Phone number: <h class="h-color">{{user.phoneNumber}}</h> <span ng-click="vm.collapsPhoneNumber()" class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
                 <div ng-show="vm.showPhoneNumber" class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': phoneEdit.nphone.$invalid && phoneEdit.nphone.$dirty}">
-                    <input class="settings-input-filed" type="text" placeholder="New number" ng-model="editPhone" ng-pattern="/^[0-9\s+]*$/" class="form-control" name="nphone" phone-validation required>
+                    <input class="settings-input-filed" type="text" placeholder="New number" ng-model="editPhone" ng-pattern="/^[0-9\s+]*$/" class="form-control" ng-maxlength="13" name="nphone" phone-validation required>
                     <div class="help-block has-error">
                         <div ng-show="phoneEdit.nphone.$error.required && phoneEdit.nphone.$dirty">This field is required!</div>
                         <div ng-show="!phoneEdit.nphone.$error.required && phoneEdit.nphone.$error.pattern">The phone number is invalid!</div>
-                        <div ng-show="!phoneEdit.nphone.$error.required && !phoneEdit.nphone.$error.pattern && !phoneEdit.nphone.$valid">You have to enter the country dial code!</div>
+                        <div ng-show="!phoneEdit.nphone.$error.required && !phoneEdit.nphone.$valid && phoneEdit.nphone.$error.maxlength">The phone number can't have more than 13 characters!</div>
+                        <div ng-show="!phoneEdit.nphone.$error.required && !phoneEdit.nphone.$error.pattern && !phoneEdit.nphone.$error.maxlength && !phoneEdit.nphone.$valid">You have to enter the country dial code!</div>
                     </div>
                   </div>
                 </div>
@@ -130,7 +131,7 @@
           </form>
 
             <button type="button" ng-click="saveChanges(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, editCompany, editCountry, editPhone)">Save change</button>
-            
+
             <p>Once the data is verified, it will be changed.</p>
         </div>
 

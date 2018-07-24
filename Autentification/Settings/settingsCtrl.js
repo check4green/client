@@ -71,7 +71,7 @@
             $scope.user.companyName = editCompany;
           }
           if(editCountry){
-            $scope.user.country = editCountry;
+            $scope.user.country = editCountry.name;
           }
           if(editPhone){
             $scope.user.phoneNumber = editPhone;
