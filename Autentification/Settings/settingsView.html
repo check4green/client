@@ -7,8 +7,8 @@
         <div class="settings-container container">
                 <h2>Account settings</h2>
 
-                <div id="alert-error"><p>{{error}}</p></div>
-                <div id="alert-succesful"><p>{{message}}</p></div>
+                <div ng-show="vm.showSettingsError" id="alert-error"><p>{{error}}</p></div>
+                <div ng-show="vm.showSettingsMessage" id="alert-succesful"><p>{{message}}</p></div>
 
             <form name="nameEdit" novalidate>
               <div class="box-text">
@@ -131,7 +131,11 @@
           </form>
 
             <button type="button" ng-click="saveChanges(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, editCompany, editCountry, editPhone)">Save change</button>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 704a6b7a2931fc92b4857e1a45f9443d0d17b708
             <p>Once the data is verified, it will be changed.</p>
         </div>
 

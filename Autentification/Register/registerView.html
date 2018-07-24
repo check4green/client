@@ -7,8 +7,8 @@
     <div class="register-container container">
             <h2>Register</h2>
 
-            <div id="alert-succesful" ><p>{{message}}</p></div>
-            <div id="alert-error" ><p>{{error}}</p></div>
+            <!-- <div id="alert-succesful" ><p>{{message}}</p></div> -->
+            <div ng-show="vm.showRegisterError" id="alert-error" ><p>{{error}}</p></div>
 
       <form name="regForm" novalidate>
         <h>First name <h style="color: #d9534f;">*</h></h>
