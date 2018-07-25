@@ -4,6 +4,7 @@
 
     <div class="login-container container">
             <h2>Log in</h2>
+            <div ng-show="vm.showLogInError" id="alert-error"><p>{{message}}</p></div>
       <form name="loginForm" novalidate>
           <div class="form-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
         <div class="login-input-container">
@@ -23,7 +24,6 @@
         <div class="help-block has-error" ng-show="loginForm.psw.$error.required && loginForm.psw.$dirty">This field is required!</div>
       </div>
       </form>
-        <div style="color:red;">{{message}}</div>
         <button type="button" ng-click="login(vm.email, vm.password)">Log in</button>
 
         <label>

@@ -153,7 +153,6 @@
                   phoneNumber:registerCountry.dialCode+registerPhone
                 }
          }
-          console.log('User: ', $scope.user)
           autentificationService.register($scope.user)
             .then(function(){
               $location.path('/sensorsHome');
