@@ -24,7 +24,8 @@
                    $sessionStorage.password = password;
               })
               .catch(function(response){
-                   $scope.message = response.data.message;
+                vm.showLogInError = true;
+                  $scope.message = response.data.message;
               })
 
         }

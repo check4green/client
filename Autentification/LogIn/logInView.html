@@ -4,6 +4,7 @@
 
     <div class="login-container container">
             <h2>Log in</h2>
+            <div ng-show="vm.showLogInError" id="alert-error"><p>{{message}}</p></div>
       <form name="loginForm" novalidate>
           <div class="form-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
         <div class="login-input-container">
