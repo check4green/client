@@ -3,7 +3,7 @@ app.directive('registerSensor', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/registerSensorDirectiveView.html',
-        controller: function($scope, SENSOR_TYPE, sensorModelService, $timeout, $window, $localStorage){
+        controller: function($scope, SENSOR_TYPE, sensorModelService, $timeout, $window, $localStorage, $sessionStorage){
             var vm = this;
             $scope.registerDisplay = false;
             $scope.registerButton = true;
@@ -17,7 +17,11 @@ app.directive('registerSensor', function(){
                     $scope.noSensorsData = false;
                 }
         };
-        $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
+        if($localStorage.email && $localStorage.password){
+            $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
+        }else{
+            $scope.encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
+          }
         $scope.sensorRegister = function(registerName, registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
             var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 'name':registerName, 'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress, userId: "1" }
             sensorModelService.insertSensors(sensorPost, $scope.encodeduser)

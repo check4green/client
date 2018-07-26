@@ -1,12 +1,18 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("settingsCtrl", function ($scope, autentificationService, $localStorage) {
-        var vm = this;
-        var encodeduser = btoa($localStorage.email +':' + $localStorage.password);
-        autentificationService.getUser(encodeduser)
+   app.controller("settingsCtrl", function ($scope, autentificationService, $localStorage, $sessionStorage) {
+          var vm = this;
+          if ($localStorage.email && $localStorage.password){
+          var encodeduser = btoa($localStorage.email +':' + $localStorage.password);
+        }else{
+          var encodeduser = btoa($sessionStorage.email +':' + $sessionStorage.password);
+        }
+          autentificationService.getUser(encodeduser)
             .then(function(response){
               $scope.user = response.data;
+              $scope.user.password = $sessionStorage.password;
+              $sessionStorage.user = $scope.user;
             })
             vm.showUserName = false;
             vm.showEmailAddress = false;
@@ -58,15 +64,24 @@
             }
             vm.showSettingsMessage = false;
             vm.showSettingsError = false;
-        $scope.saveChanges = function(editFirstname, editLastname, editEmail, password, editPassword, oldPassword, editCompany, editCountry, editPhone){
+
+
+        $scope.saveChanges = function(editFirstname, editLastname, editEmail, password, editPassword, confirmEditPass, oldPassword, editCompany, editCountry, editPhone){
+          if($localStorage.email && $localStorage.password){
+            $scope.email = $localStorage.email;
+            $scope.password = $localStorage.password;
+          }else{
+            $scope.email = $sessionStorage.email;
+            $scope.password = $sessionStorage.password;
+          }
           if(editFirstname && editLastname){
             $scope.user.firstName = editFirstname;
             $scope.user.lastName = editLastname;
           }
-          if(editEmail && (password == $localStorage.password)){
+          if(editEmail && (password ==$scope.password)){
             $scope.user.email = editEmail;
           }
-          if((oldPassword == $localStorage.password) && editPassword){
+          if((oldPassword == $scope.password) && editPassword){
             $scope.user.password = editPassword;
           }
           if(editCompany){
@@ -78,32 +93,96 @@
           if(editPhone){
             $scope.user.phoneNumber = editPhone;
           }
-          $scope.user.password = $localStorage.password;
+          if(oldPassword && oldPassword !=$scope.password){
+                  $scope.user ='';
+            }
+          if (password && password !=$scope.password){
+                  $scope.user = '';
+            }
+            if(editPhone && editPhone.indexOf('+') !=0){
+              $scope.user ='';
+            }
+            if((!editFirstname && editLastname) || (editFirstname && !editLastname)){
+              $scope.user='';
+            }
+            if((!editEmail && password) || (editEmail && !password)){
+              $scope.user ='';
+            }
+            if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
+              $scope.user='';
+            }
+            if(!editFirstname && !editLastname && !editPassword && !oldPassword && !editEmail && !editCompany && !editCountry && !editPhone){
+              $scope.user ='';
+            }
           console.log('User Edit: ', $scope.user);
-          var encodedData = btoa($localStorage.email + ':' + $localStorage.password);
+          var encodedData = btoa($scope.email + ':' + $scope.password);
+
           autentificationService.settings(encodedData, $scope.user)
             .then(function(){
-<<<<<<< HEAD
-=======
-              vm.showSettingsMessage = true;
-              vm.showSettingsError = false;
->>>>>>> 704a6b7a2931fc92b4857e1a45f9443d0d17b708
+                vm.showSettingsMessage = true;
+                vm.showSettingsError = false;
                 $scope.message = 'Account edited successfully!';
-                if(editPassword){
-                    $localStorage.password = editPassword;
+                if(editPassword && oldPassword == $scope.password){
+                    $scope.password = editPassword;
                 }
-                if (editEmail && (password == $localStorage.password)){
+                if (editEmail && (password ==$scope.password)){
+                  if($localStorage.email && $localStorage.password){
                     $localStorage.email = editEmail;
+                  }else{
+                    $sessionStorage.email = editEmail;
+                  }
                 }
                 if(editEmail && editPassword){
+                  if($localStorage.email && $localStorage.password){
                     $localStorage.email = editEmail;
-                    $localStorage.password = editPassword;
+                    $localStorage.password = editPassword
+                  }else{
+                    $sessionStorage.email = editEmail;
+                    $sessionStorage.password = editPassword;
+                  }
                 }
             })
             .catch(function(response){
               vm.showSettingsMessage = false;
               vm.showSettingsError = true;
               $scope.error = response.data.message;
+              $scope.user = $sessionStorage.user;
+              if(oldPassword && oldPassword != $scope.password){
+                      vm.showSettingsError = true;
+                      vm.showSettingsMessage = false;
+                      $scope.error = 'The old password is incorect.';
+                }
+              if (password && password != $scope.password){
+                      vm.showSettingsError = true;
+                      vm.showSettingsMessage = false;
+                      $scope.error = 'The password is incorect.';
+                }
+                if(editPhone && editPhone.indexOf('+') !=0){
+                  vm.showSettingsError = true;
+                  vm.showSettingsMessage = false;
+                  $scope.error ='You have to enter the country dial code.'
+                }
+
+                if((!editFirstname && editLastname) || (editFirstname && !editLastname)){
+                  vm.showSettingsError = true;
+                  vm.showSettingsMessage = false;
+                  $scope.error ='To change your user name you have to fill both fields.'
+                }
+                if((!editEmail && password) || (editEmail && !password)){
+                  vm.showSettingsError = true;
+                  vm.showSettingsMessage = false;
+                  $scope.error ='To change your email you have to fill both fields.'
+                }
+                if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
+                  vm.showSettingsError = true;
+                  vm.showSettingsMessage = false;
+                  $scope.error ='To change your password you have to fill all three fields.'
+                }
+                if(!editFirstname && !editLastname && !editPassword && !editEmail && !oldPassword && !editCompany && !editCountry && !editPhone){
+                  vm.showSettingsError = true;
+                  vm.showSettingsMessage = false;
+                  $scope.error ='To change your account you have to fill some fields.'
+                }
             })
 
         }
@@ -231,8 +310,7 @@
           {
             "name": "Uruguay",
             "dialCode": "+598"
-          },
-        ]
+          }]
     });
     app.directive("validPass", function(){
       return{

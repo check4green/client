@@ -1,19 +1,22 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("homeCtrl", function ($scope,$localStorage) {
+   app.controller("homeCtrl", function ($scope, $localStorage, $sessionStorage) {
         var vm = this;
-        $localStorage.email = 0;
-        $localStorage.password = 0;
-        if(($localStorage.email !=0) && ($localStorage.password!=0)){
+        if($localStorage.email && $localStorage.password && ($localStorage.email !=0 && $localStorage.password !=0)){
           vm.log = false;
         }else{
           vm.log = true;
+          if($sessionStorage.email && $sessionStorage.password && ($sessionStorage.email !=0 && $sessionStorage.password !=0)){
+          vm.log = false;
+        }else {
+          vm.log = true;
         }
+      }
+
         $scope.logOut = function(){
-          $localStorage.email = 0;
-          $localStorage.password = 0;
-          console.log('Log Out!');
+          $sessionStorage.email =0;
+          $sessionStorage.password=0;
           vm.log = true;
         }
     });

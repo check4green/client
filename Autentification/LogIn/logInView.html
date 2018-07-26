@@ -8,7 +8,7 @@
           <div class="form-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
         <div class="login-input-container">
             <i class="fa fa-envelope icon"></i>
-            <input class="login-input-filed" type="email" placeholder="Enter email" ng-model="vm.email" ng-pattern="/^[A-Za-z0-9._@]*$/" class="form-control" name="uname" required>
+            <input class="login-input-filed" type="email" placeholder="Enter email" ng-model="email" ng-pattern="/^[A-Za-z0-9._@]*$/" class="form-control" name="uname" required>
           </div>
           <div class="help-block has-error">
             <div ng-show="loginForm.uname.$error.required && loginForm.uname.$dirty">This field is required!</div>
@@ -18,16 +18,16 @@
         <div class="form-group" ng-class="{'has-error': loginForm.psw.$invalid && loginForm.psw.$dirty}">
         <div class="login-input-container">
             <i class="fa fa-key icon"></i>
-            <input class="login-input-filed" type="password" placeholder="Enter password" ng-model="vm.password" class="form-control" name="psw" required>
+            <input class="login-input-filed" type="password" placeholder="Enter password" ng-model="password" class="form-control" name="psw" required>
         </div>
         <div class="help-block has-error" ng-show="loginForm.psw.$error.required && loginForm.psw.$dirty">This field is required!</div>
       </div>
       </form>
         <div style="color:red;">{{message}}</div>
-        <button type="button" ng-click="login(vm.email, vm.password)">Log in</button>
+        <button type="button" ng-click="login(email, password)">Log in</button>
 
         <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
+            <input type="checkbox" checked ng-model="value" ng-click="remeberAccount(value, email, password)"> Remember me
         </label>
 
         <label class="register-pass">

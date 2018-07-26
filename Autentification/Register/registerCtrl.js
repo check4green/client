@@ -1,6 +1,6 @@
 
    var app = angular.module("sensorApp");
-   app.controller("registerCtrl", function ($scope, $location, $localStorage, autentificationService) {
+   app.controller("registerCtrl", function ($scope, $location, $localStorage, $sessionStorage, autentificationService) {
         var vm = this;
         $scope.countries = [
           {
@@ -153,12 +153,11 @@
                   phoneNumber:registerCountry.dialCode+registerPhone
                 }
          }
-          console.log('User: ', $scope.user)
           autentificationService.register($scope.user)
             .then(function(){
               $location.path('/sensorsHome');
-              $localStorage.email = $scope.user.email;
-              $localStorage.password = $scope.user.password;
+               $sessionStorage.email = $scope.user.email;
+               $sessionStorage.password = $scope.user.password;
             })
             .catch(function(response){
               vm.showRegisterError = true;

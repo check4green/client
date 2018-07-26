@@ -3,7 +3,7 @@ app.directive('deleteSensor', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/deleteSensorDirectiveView.html',
-        controller: function($scope, sensorModelService, $window, $timeout, $localStorage){
+        controller: function($scope, sensorModelService, $window, $timeout, $localStorage, $sessionStorage){
             $scope.deleteButton = true;
             $scope.deleteDisplay = false;
             $scope.startDelete = function(){
@@ -14,7 +14,11 @@ app.directive('deleteSensor', function(){
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
             }
-            $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+            if($localStorage.email && $localStorage.password){
+              $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+            }else{
+            $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+          }
             $scope.deleteSensor = function(gatewayAddress, clientAddress){
                 sensorModelService.deleteSensors(gatewayAddress, clientAddress, $scope.encodedData);
                 $timeout(function(){

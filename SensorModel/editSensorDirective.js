@@ -3,7 +3,7 @@ app.directive('editSensor', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/editSensorDirectiveView.html',
-        controller: function($scope, sensorModelService, $window, $localStorage){
+        controller: function($scope, sensorModelService, $window, $localStorage, $sessionStorage){
             $scope.editButton = true;
             $scope.editDisplay = false;
             $scope.sensorEditError = false;
@@ -19,7 +19,11 @@ app.directive('editSensor', function(){
                     $scope.editButton = false;
                 }
             };
-            $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+            if ($localStorage.email && $localStorage.password){
+              $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+            }else{
+                $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+            }
             $scope.sensorEdit = function(editName, editUploadInterval, editBatchSize, gatewayAddress, clientAddress, sensorId){
                 var sensorPut = {'name':editName, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize}
                 sensorModelService.updateSensors(sensorPut, gatewayAddress, clientAddress, $scope.encodedData)

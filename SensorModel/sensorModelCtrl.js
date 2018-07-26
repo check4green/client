@@ -1,9 +1,8 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$timeout", "sensorModelService","$http", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $timeout, sensorModelService, $http) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "$timeout",  "sensorModelService","$http", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout, sensorModelService, $http) {
         var vm = this;
-
         vm.titleGrid = SENSOR_TYPE.TITLE;
 
         console.log(SENSOR_TYPE);
@@ -16,7 +15,11 @@
         };
 
        //sensors
-       $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+       if($localStorage.email && $localStorage.password){
+          $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+       }else {
+          $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+        }
        $scope.sensPerPage = 50;
        sensorModelService.getFinalPage($scope.sensPerPage, $scope.encodeduser)
         .then(finalPage);
@@ -45,7 +48,12 @@
         $scope.setPageSize = function(pageSize){
             if(pageSize){
             $scope.sensPerPage = pageSize;
-            $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+            if($localStorage.email && $localStorage.password){
+                $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+            }else{
+                $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+            }
+            console.log($scope.encodeduser)
             console.log($scope.encodeduser)
             sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
               .then(function(response){
