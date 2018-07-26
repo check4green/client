@@ -13,7 +13,13 @@
 
             <form name="nameEdit" novalidate>
               <div class="box-text">
-                  <h class="text-colapse-settings h-parrent-hover">Username: <h class="h-color">{{user.firstName}} {{user.lastName}}</h> <span ng-click="vm.collapsUserName()" class="fa fa-chevron-down span-settings"> </span><a class="hover-edit"> Edit</a> </h>
+
+                  <h class="text-colapse-settings h-parrent-hover">Username: 
+                    <h class="h-color">{{user.firstName}} {{user.lastName}}</h> 
+                      <span ng-click="vm.collapsUserName()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"> </span>
+                    <a class="hover-edit"> Edit</a>
+                  </h>
+
                   <div ng-show="vm.showUserName" class="settings-input-container box-border-container">
                     <div ng-class="{'has-error': nameEdit.fname.$invalid && nameEdit.fname.$dirty}">
                       <input class="settings-input-filed" type="text" placeholder="The new first name" class="form-control" ng-model="editFirstname" ng-pattern="/^[a-zA-Z-\s]*$/" name="fname" name-valid required />
@@ -37,7 +43,13 @@
 
            <form name="emailEdit" novalidate>
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover">Email address: <h class="h-color">{{user.email}}</h> <span ng-click="vm.collapsEmailAddress()" class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+
+                <h class="text-colapse-settings h-parrent-hover">Email address:
+                  <h class="h-color">{{user.email}}</h>
+                    <span ng-click="vm.collapsEmailAddress()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
+                  <a class="hover-edit"> Edit</a> 
+                </h>
+
               <div ng-show="vm.showEmailAddress" class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': emailEdit.email.$invalid && emailEdit.email.$dirty}">
                     <input class="settings-input-filed" type="email" placeholder="The new email address" ng-model="editEmail" class="form-control" name="email" ng-pattern="/^[A-Za-z0-9._@]*$/" required>
@@ -56,7 +68,12 @@
 
           <form name="passwordEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover">Password <span ng-click="vm.collapsPassword()" class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+
+                <h class="text-colapse-settings h-parrent-hover">Password 
+                  <span ng-click="vm.collapsPassword()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
+                  <a class="hover-edit"> Edit</a> 
+                </h>
+
                 <div ng-show="vm.showPassword" class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': passwordEdit.pass.$invalid && passwordEdit.pass.$dirty}">
                     <input class="settings-input-filed" type="password" placeholder="Old password"  ng-model ="oldPassword" class="form-control" name="pass" required>
@@ -84,7 +101,13 @@
 
           <form name="companyEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover" >Company name: <h class="h-color">{{user.companyName}}</h> <span ng-click="vm.collapsCompanyName()" class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+
+                <h class="text-colapse-settings h-parrent-hover" >Company name: 
+                  <h class="h-color">{{user.companyName}}</h> 
+                    <span ng-click="vm.collapsCompanyName()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
+                  <a class="hover-edit"> Edit</a> 
+                </h>
+
                 <div ng-show="vm.showCompanyName" class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': companyEdit.cname.$invalid && companyEdit.cname.$dirty}">
                     <input class="settings-input-filed" type="text" placeholder="New company name" ng-model="editCompany" class="form-control" ng-pattern="/^[a-zA-Z0-9.-]*$/" name="cname" required>
@@ -99,7 +122,13 @@
 
           <form name="countryEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover" >Country: <h class="h-color">{{user.country}}</h> <span ng-click="vm.collapsCountry()" class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+
+                <h class="text-colapse-settings h-parrent-hover" >Country: 
+                  <h class="h-color">{{user.country}}</h> 
+                    <span ng-click="vm.collapsCountry()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
+                  <a class="hover-edit"> Edit</a> 
+                </h>
+
                 <div ng-show="vm.showCountry" class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': countryEdit.country.$invalid && countryEdit.country.$dirty}">
                     <select name="country" class="settings-input-filed" ng-model="editCountry" ng-options="country.name for country in countries" required>
@@ -116,7 +145,13 @@
 
           <form name="phoneEdit">
             <div class="box-text">
-                <h class="text-colapse-settings h-parrent-hover" >Phone number: <h class="h-color">{{user.phoneNumber}}</h> <span ng-click="vm.collapsPhoneNumber()" class="fa fa-chevron-down span-settings"></span><a class="hover-edit"> Edit</a> </h>
+
+                <h class="text-colapse-settings h-parrent-hover" >Phone number: 
+                  <h class="h-color">{{user.phoneNumber}}</h> 
+                    <span ng-click="vm.collapsPhoneNumber()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
+                    <a class="hover-edit"> Edit</a> 
+                </h>
+
                 <div ng-show="vm.showPhoneNumber" class="settings-input-container box-border-container">
                   <div class="form-group" ng-class="{'has-error': phoneEdit.nphone.$invalid && phoneEdit.nphone.$dirty}">
                     <input class="settings-input-filed" type="text" placeholder="New number" ng-model="editPhone" ng-pattern="/^[0-9\s+]*$/" class="form-control" ng-maxlength="13" name="nphone" phone-validation required>

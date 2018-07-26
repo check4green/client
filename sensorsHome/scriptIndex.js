@@ -9,7 +9,18 @@ function showNavText(x) {
         x.className = "topnav";
     }
 }
+// show arrow on settings
+function showSettingsColapse(a){
+    a.classList.toggle("rotate");
+    var a = document.getElementById("showHeader");
+    if (a.className === "header-home-right"){
+        a.className += "responsive";
+      } else {
+        a.className = "header-home-right";
+      }
+    }
 
+// show text HomeHeader
 // open/close menu
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
