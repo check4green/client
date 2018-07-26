@@ -38,6 +38,9 @@
 .container-home .header-home .button-header-responsive{
     display: none;
 }
+.container-home .header-home .calculator-total-cost{
+    display: block;
+}
 @media screen and (max-width: 600px){
     .container-home .header-home{
         overflow: hidden;
@@ -56,8 +59,17 @@
         color: white;
         user-select: none;
     }
+    .container-home .totalTwo{
+        display: initial;
+        background-color: #4e9a06;
+    }
+    .container-home .totalTwo:hover{
+        background-color: #4e9a06;
+        border: none;
+    }
     .container-home .header-home .calculator-total-cost{
         background-color: #4e9a06;
+        display: none;
     }
     .container-home .header-home .calculator-total-cost:hover{
         background-color: #4e9a06;
@@ -93,7 +105,7 @@
     }
     .container-home .header-home img{
         width: 50%;
-        margin-left: 30%;
+        margin-left: 10px;
         margin-right: auto;
     }
     .container-home .header-home a:hover{
@@ -180,11 +192,16 @@
     margin-bottom: 16px;
     padding: 0 8px;
 }
-
+.totalTwo{
+    display: none;
+}
 @media screen and (max-width: 1000px){
-    /* .container-home{
-        fo
-     } */
+    .container-home .container-row-descr h2{
+        font-size: 20px;
+    }
+    .container-home .container-row-descr p{
+        font-size: 10px;
+    }
 }
 @media screen and (max-width: 640px){
     .container-home .container-column-dercr{
@@ -198,7 +215,7 @@
         margin-right: 20%;
     }
 }
-@media screen and (max-width: 400px){
+@media screen and (max-width: 450px){
     .container-home .container-column-dercr{
         width: 100%;
         display: block;
@@ -209,6 +226,7 @@
         margin-left: 0;
         margin-right: 0;
     }
+
 }
 .container-home .container-card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

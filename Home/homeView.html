@@ -2,17 +2,16 @@
 <!-- header home -->
 <div class="header-home-hover-cost">
     <header  class="header-home">
+        <p class="totalTwo">Cost: <span class="fa fa-dollar"></span> <span id="totalTwo"></span></p>
         <img src="/Home/images-home/C4G-full.png" width="1122" height="251" alt="check4green" class="logo-header-home">
         <p class="button-header-responsive" onclick="showSettingsColapse(this)"><span class="fa fa-chevron-down"></p>
         <div  id="showHeader" class="header-home-right">
-            <a>Home</a>
+            <a >Home</a>
             <a ui-sref="contact">Contact</a>
-            <a  ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> <!-- ng-click="logOut()" -->
+            <a ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> <!-- ng-click="logOut()" -->
             <a ui-sref="logIn" ng-show="vm.log">Log in</a>
-            <a id="absoluteCost" class="calculator-total-cost">Cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
+            <a class="calculator-total-cost">Total cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
         </div>
-
-        
 
         <div class="progress-container">
             <div class="progress-bar" id="myBar"></div>
@@ -43,6 +42,7 @@
 
 <!-- page thwo -->
     <div class="container container-row-descr">
+        
         <div class="container-column-dercr">
             <div class="container-card">
                 <img src="/Home/images-icon/add-icon.jpg" alt="check4green/add">
@@ -50,7 +50,7 @@
                     <h2>Add sensors</h2>
                     <p>In this category you can add new sensors.</p>
                 </div>
-                <button class="cart-text-button">More info</button>
+                <button id="openVideo" class="cart-text-button">More info</button>
             </div>
         </div>
 
