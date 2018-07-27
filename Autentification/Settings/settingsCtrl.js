@@ -11,7 +11,11 @@
           autentificationService.getUser(encodeduser)
             .then(function(response){
               $scope.user = response.data;
-              $scope.user.password = $sessionStorage.password;
+              if($localStorage.password){
+                $scope.user.password = $localStorage.password;
+              }else {
+                $scope.user.password = $sessionStorages.password;
+              }
               $sessionStorage.user = $scope.user;
             })
             vm.showUserName = false;

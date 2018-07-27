@@ -5,6 +5,8 @@ angular.module("sensorApp")
             register: register,
             settings: settings,
             getUser: getUser,
+            getCode: getCode,
+            resetPassword: resetPassword,
           }
           function logIn(encodedData){
             return $http({
@@ -30,6 +32,12 @@ angular.module("sensorApp")
               headers: {'Authorization': 'Basic '+ encodedData},
               data: newUser,
             })
+          }
+          function getCode(email){
+              return $http.put('http://swiss-iot.azurewebsites.net/api/users/getCode', email)
+          }
+          function resetPassword(user){
+              return $http.put('http://swiss-iot.azurewebsites.net/api/users/resetPassword', user)
           }
 
         })
