@@ -34,6 +34,14 @@
                 }
             }
         })
+            .state('resetPassword',{
+             url: "/resetPassword",
+             views: {
+                'resetPassword@':{
+                    template: "<reset-password></reset-password>"
+                }
+            }
+        })
             .state('contact',{
              url: "/contact",
              views: {

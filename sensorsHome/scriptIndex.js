@@ -14,7 +14,7 @@ function showSettingsColapse(a){
     a.classList.toggle("rotate");
     var a = document.getElementById("showHeader");
     if (a.className === "header-home-right"){
-        a.className += "responsive";
+        a.className += "button-header-responsive";
       } else {
         a.className = "header-home-right";
       }
@@ -73,3 +73,27 @@ function buttonFunction() {
     document.documentElement.scrollTop = 0;
 }
 
+// Modal
+// var modal = document.getElementById('modalContent');
+// var btn = document.getElementById("openVideo");
+// var span = document.getElementsByClassName("close")[0];
+
+// btn.onclick = function openModal() {
+//     modal.style.display = "block";
+// }
+
+// span.onclick = function openModal() {
+//     modal.style.display = "none";
+// }
+
+// window.onclick = function openModal(event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
+ function openModal(){
+    document.getElementById("modalContent").style.display = "block";
+ }
+ function closeModal(){
+    document.getElementById("modalContent").style.display = "none";
+ }
