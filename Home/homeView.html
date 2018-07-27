@@ -10,7 +10,6 @@
             <a ui-sref="contact">Contact</a>
             <a ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> <!-- ng-click="logOut()" -->
             <a ui-sref="logIn" ng-show="vm.log">Log in</a>
-            
             <a class="calculator-total-cost">Total cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
         </div>
 
@@ -56,8 +55,11 @@
             <div id="modalContent" class="modalContentClass">
                 <div class="modal-content">
                     <span onclick="closeModal()" class="close">&times;</span>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xwOH-uMpPY8"
-                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <button id="play" type="button" onclick="PlayVideo()">Play</button>
+                    <video autoplay  id="video">
+                        <!-- <source src="/rander 1.mp4" type="video/mp4"> -->
+                        
+                      </video>
                 </div>
             </div>
         </div>

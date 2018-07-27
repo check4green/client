@@ -74,26 +74,23 @@ function buttonFunction() {
 }
 
 // Modal
-// var modal = document.getElementById('modalContent');
-// var btn = document.getElementById("openVideo");
-// var span = document.getElementsByClassName("close")[0];
-
-// btn.onclick = function openModal() {
-//     modal.style.display = "block";
-// }
-
-// span.onclick = function openModal() {
-//     modal.style.display = "none";
-// }
-
-// window.onclick = function openModal(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
  function openModal(){
     document.getElementById("modalContent").style.display = "block";
  }
  function closeModal(){
     document.getElementById("modalContent").style.display = "none";
+ }
+
+ // Play
+ var video = document.getElementById("video");
+ var btn = document.getElementById("play");
+
+ function PlayVideo(){
+    if (video.paused) {
+        video.play();
+        btn.innerHTML = "Pause";
+      } else {
+        video.pause();
+        btn.innerHTML = "Play";
+      }
  }
