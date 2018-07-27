@@ -1,15 +1,18 @@
 <div class="container-home">
 <!-- header home -->
 <div class="header-home-hover-cost">
-    <header class="header-home">
+    <header  class="header-home">
+        <p class="totalTwo">Cost: <span class="fa fa-dollar"></span> <span id="totalTwo"></span></p>
         <img src="/Home/images-home/C4G-full.png" width="1122" height="251" alt="check4green" class="logo-header-home">
-        <div class="header-home-right">
-            <a>Home</a>
+        <p class="button-header-responsive" onclick="showSettingsColapse(this)"><span class="fa fa-chevron-down"></p>
+        <div  id="showHeader" class="header-home-right">
+            <a >Home</a>
             <a ui-sref="contact">Contact</a>
-            <a  ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> <!-- ng-click="logOut()" -->
+            <a ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> <!-- ng-click="logOut()" -->
             <a ui-sref="logIn" ng-show="vm.log">Log in</a>
-            <a class="calculator-total-cost">Total Cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
+            <a class="calculator-total-cost">Total cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
         </div>
+
         <div class="progress-container">
             <div class="progress-bar" id="myBar"></div>
         </div>
@@ -22,7 +25,7 @@
 
 <!-- start page -->
     <div class="container-home-parts">
-        <img src="/Home/images-home/robo-0.jpg" alt="check4green" width="1920" height="1080">
+        <img src="/Home/images-home/5.jpg" alt="check4green" width="1920" height="1080">
         <div class="content-parts">
             <h1>
                 Check4Green sensors
@@ -39,6 +42,7 @@
 
 <!-- page thwo -->
     <div class="container container-row-descr">
+        
         <div class="container-column-dercr">
             <div class="container-card">
                 <img src="/Home/images-icon/add-icon.jpg" alt="check4green/add">
@@ -46,7 +50,7 @@
                     <h2>Add sensors</h2>
                     <p>In this category you can add new sensors.</p>
                 </div>
-                <button class="cart-text-button">More info</button>
+                <button id="openVideo" class="cart-text-button">More info</button>
             </div>
         </div>
 
@@ -141,9 +145,9 @@
 
 <!-- login part -->
     <div class="login-image-home">
-        <img src="/Home/images-home/color-green.jpg" alt="check4green" width="1920" height="1080">
+        <img src="/Home/images-home/color-green-edit.jpg" alt="check4green" width="1920" height="1080">
             <div class="login-text">
-                <img src="/Home/images-home/C4G-full-moto.png">
+                <img src="/Home/images-home/C4G-full-moto-shadow.png">
                 <button  ui-sref="sensorsHome" ng-hide="vm.log">Go to sensor management</button>
                 <button ui-sref="logIn" ng-show="vm.log">Log in for sensor management</button>
             </div>

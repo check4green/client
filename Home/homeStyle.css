@@ -1,12 +1,13 @@
 /* --> header home  */
 .container-home .header-home{
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.52);
+    background-color: #ffffff85;
     padding: 20px 10px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 20;
+    transition: top 0.3s;
     -webkit-box-shadow: 1px 1px 14px 0px rgba(0, 92, 78, 0.3);
 }
 .container-home .header-home img{
@@ -34,40 +35,84 @@
 .container-home .header-home .header-home-right{
     float: right;
 }
+.container-home .header-home .button-header-responsive{
+    display: none;
+}
+.container-home .header-home .calculator-total-cost{
+    display: block;
+}
 @media screen and (max-width: 600px){
     .container-home .header-home{
         overflow: hidden;
-        background-color: #0f9c85a8;
+        background-color: #0f9c85;
         padding: 20px 10px;
-        position: static;
+        position: fixed;
         top: 0;
         width: 100%;
         z-index: 20;
     }
-    /* .calculator-total-cost{
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        z-index: 1;
-    } */
     .container-home .header-home a{
         float: none;
         display: block;
         text-align: center;
+        background-color: rgba(51, 51, 51, 0.096);
+        color: white;
+        user-select: none;
+    }
+    .container-home .totalTwo{
+        display: initial;
+        background-color: #4e9a06;
+    }
+    .container-home .totalTwo:hover{
+        background-color: #4e9a06;
+        border: none;
+    }
+    .container-home .header-home .calculator-total-cost{
+        background-color: #4e9a06;
+        display: none;
+    }
+    .container-home .header-home .calculator-total-cost:hover{
+        background-color: #4e9a06;
+        border: none;
+    }
+    .container-home .header-home .button-header-responsive{
+        display: block;
+        position: absolute;
+        top: 25px;
+        right: 10px;
+        padding: 5px;
+        border: solid 1px #333;
+        border-radius: 10px;
+        background-color: #4e9a06;
+        cursor: pointer;
+        user-select: none;
+    }
+    .container-home .header-home .button-header-responsive:hover{
+        background-color: #376e03;
+        color: white;
+        border: solid 1px #4e9a06;
     }
     .container-home .header-home .header-home-right{
+        float: none;
+        display: none;
+    }
+    .showHeader{
+        transform: rotate(180deg);
+    }
+    .responsiveHeaderHome{
+        display: block;
         float: none;
     }
     .container-home .header-home img{
         width: 50%;
-        margin-left: 30%;
+        margin-left: 10px;
         margin-right: auto;
     }
     .container-home .header-home a:hover{
-        background-color: rgba(51, 51, 51, 0.048);
+        background-color: #069a8e;
         color: black;
         font-weight: bold;
-        border-bottom: 4px solid #4e9a06;
+        border-bottom: 4px solid black;
     }
 }
 /* /header home <-- */
@@ -147,11 +192,16 @@
     margin-bottom: 16px;
     padding: 0 8px;
 }
-
+.totalTwo{
+    display: none;
+}
 @media screen and (max-width: 1000px){
-    /* .container-home{
-        fo
-     } */
+    .container-home .container-row-descr h2{
+        font-size: 20px;
+    }
+    .container-home .container-row-descr p{
+        font-size: 10px;
+    }
 }
 @media screen and (max-width: 640px){
     .container-home .container-column-dercr{
@@ -165,7 +215,7 @@
         margin-right: 20%;
     }
 }
-@media screen and (max-width: 400px){
+@media screen and (max-width: 450px){
     .container-home .container-column-dercr{
         width: 100%;
         display: block;
@@ -176,6 +226,7 @@
         margin-left: 0;
         margin-right: 0;
     }
+
 }
 .container-home .container-card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -248,7 +299,7 @@
 .container-home .login-image-home .login-text img{
     width: 100%;
     height: auto;
-    margin-top: 30%;
+    margin-top: 37%;
 }
 .container-home .login-image-home .login-text button{
     border: none;
@@ -259,7 +310,7 @@
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-    margin-top: 20%;
+    margin-top: 7%;
     box-shadow: 2px 4px 1px 1px #e0e0e0;
     border: 1px solid #33333300;
 }

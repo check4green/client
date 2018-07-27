@@ -14,6 +14,7 @@ angular.module("sensorApp")
                   $scope.calculateCost3();
                   $scope.calculateCost4();
                   $scope.calculateTotal();
+                  $scope.calculateTotalTwo();
                 }
               var slider2 = document.getElementById('range2');
               var output2 = document.getElementById('value2');
@@ -22,6 +23,7 @@ angular.module("sensorApp")
                     output2.innerHTML = this.value;
                     $scope.calculateCost2();
                     $scope.calculateTotal();
+                    $scope.calculateTotalTwo();
                   }
               var slider3 = document.getElementById('range3');
               var output3 = document.getElementById('value3');
@@ -30,6 +32,7 @@ angular.module("sensorApp")
                       output3.innerHTML = this.value;
                       $scope.calculateCost3();
                       $scope.calculateTotal();
+                      $scope.calculateTotalTwo();
                     }
               var slider4 = document.getElementById('range4');
               var output4 = document.getElementById('value4');
@@ -38,6 +41,7 @@ angular.module("sensorApp")
                         output4.innerHTML = this.value;
                         $scope.calculateCost4();
                         $scope.calculateTotal();
+                        $scope.calculateTotalTwo();
                       }
               $scope.price1 = 25;
               $scope.price2 = 50;
@@ -67,6 +71,11 @@ angular.module("sensorApp")
               total.innerHTML =0 ;
               $scope.calculateTotal = function(){
                     total.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML);
+              }
+              var totalTwo = document.getElementById('totalTwo');
+              totalTwo.innerHTML =0 ;
+              $scope.calculateTotalTwo = function(){
+                    totalTwo.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML);
               }
         }
       }
