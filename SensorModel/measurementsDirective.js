@@ -68,11 +68,6 @@ app.directive('measurements', function(){
                                         if($scope.measurementSensors == null){
                                             $scope.totalReadings = 0;
                                         }
-                sensorModelService.getSensorByAddress(gatewayAddress, clientAddress)
-                    .then(success)
-                        function success(data){
-                            $scope.address = data;
-                    }
                 sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress, $scope.size)
                     .then(function(response){
                         $scope.totalReadings = response;

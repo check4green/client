@@ -8,7 +8,6 @@
         updateSensors:updateSensors,
         deleteSensors:deleteSensors,
         getMeasurements: getMeasurements,
-        getSensorByAddress: getSensorByAddress,
         getFinalPage: getFinalPage,
         getPageFinal: getPageFinal,
         getFinalPageReadings: getFinalPageReadings,
@@ -122,13 +121,6 @@
              return response.data;
            })
       }
-       function getSensorByAddress( gatewayAddress, clientAddress){
-        //    return $http.get('http://192.168.0.18:32333/api/sensors/address/' + gatewayAddress +'/'+ clientAddress)
-           return $http.get('https://swiss-iot.azurewebsites.net/api/sensors/address/' + gatewayAddress +'/'+ clientAddress)
-           .then(function(response){
-               return response.data;
-           })
-       }
        function getFinalPageReadings(gatewayAddress, clientAdress){
         //    return $http.get('http://192.168.0.18:32333/api/sensors/address/'+gatewayAddress+'/'+clientAdress+'/readings')
            return $http.get('https://swiss-iot.azurewebsites.net/api/sensors/address/'+gatewayAddress+'/'+clientAdress+'/readings')
