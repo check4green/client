@@ -11,33 +11,33 @@ angular.module("sensorApp")
           function logIn(encodedData){
             return $http({
               method: "GET",
-              url:'http://swiss-iot.azurewebsites.net/api/users/logIn',
+              url:'https://swiss-iot.azurewebsites.net/api/users/logIn',
               headers: {'Authorization': 'Basic ' + encodedData}
             })
           }
           function getUser(encodedData){
             return $http({
               method: "GET",
-              url: 'http://swiss-iot.azurewebsites.net/api/users',
+              url: 'https://swiss-iot.azurewebsites.net/api/users',
               headers: { 'Authorization': 'Basic ' + encodedData }
             })
           }
           function register(user){
-            return $http.post("http://swiss-iot.azurewebsites.net/api/users", user)
+            return $http.post("https://swiss-iot.azurewebsites.net/api/users", user)
           }
           function settings(encodedData, newUser){
             return $http({
               method: 'PUT',
-              url: 'http://swiss-iot.azurewebsites.net/api/users',
+              url: 'https://swiss-iot.azurewebsites.net/api/users',
               headers: {'Authorization': 'Basic '+ encodedData},
               data: newUser,
             })
           }
           function getCode(email){
-              return $http.put('http://swiss-iot.azurewebsites.net/api/users/getCode', email)
+              return $http.put('https://swiss-iot.azurewebsites.net/api/users/getCode', email)
           }
           function resetPassword(user){
-              return $http.put('http://swiss-iot.azurewebsites.net/api/users/resetPassword', user)
+              return $http.put('https://swiss-iot.azurewebsites.net/api/users/resetPassword', user)
           }
 
         })
