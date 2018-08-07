@@ -4,7 +4,6 @@
    app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "$timeout",  "sensorModelService","$http", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout, sensorModelService, $http) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
-
         console.log(SENSOR_TYPE);
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){
@@ -13,8 +12,8 @@
             })
             sensor.expanded=true;
         };
-
        //sensors
+      $scope.searchSensor ='';
        if($localStorage.email && $localStorage.password){
           $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
        }else {
@@ -73,6 +72,7 @@
             $scope.loading = false;
             $scope.sensorData = false;
          });
+
          function update(){
          vm.getLastRead = function(GA, CA){
             $scope.noRead = false;
@@ -100,6 +100,8 @@
             .then(function(response){
                 $scope.totalSensors = response;
             });
+
+
 
        //live view
 

@@ -21,6 +21,7 @@
         <div class="measurementsTotalReadings">
             <label>Total Sensors: {{totalSensors}}</label>
         </div>
+        <search></search>
         <table class="table">
             <thead>
                 <tr>
@@ -30,9 +31,12 @@
                     <td>Status</td>
                     <td></td>
                 </tr>
+
             </thead>
+
             <tbody>
-                <tr ng-repeat-start="sensor in vm.sensors">
+
+                <tr ng-repeat-start="sensor in filterSensors =(vm.sensors | filter: filterSearch)">
                     <td>{{$index+1}}</td>
                     <td>{{sensor.name}}</td>
                     <td>{{sensor.id}}</td>
@@ -44,6 +48,7 @@
                         <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); vm.getLastRead(sensor.gatewayAddress, sensor.clientAddress);">+</button>
                         <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
                     </td>
+
                 </tr>
                 <tr ng-if="sensor.expanded" ng-repeat-end="" class="table-overflow">
                     <td colspan="8" class="subTable">
@@ -62,9 +67,11 @@
                             <delete-sensor></delete-sensor>
                         </div>
                     </td>
+
                 </tr>
             </tbody>
         </table>
+        <div ng-show="!filterSensors.length">No result</div>
         <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
 
     </div>
