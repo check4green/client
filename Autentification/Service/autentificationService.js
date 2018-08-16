@@ -7,6 +7,8 @@ angular.module("sensorApp")
             getUser: getUser,
             getCode: getCode,
             resetPassword: resetPassword,
+            getUserSensors: getUserSensors,
+            getAllSensors : getAllSensors
           }
           function logIn(encodedData){
             return $http({
@@ -38,6 +40,24 @@ angular.module("sensorApp")
           }
           function resetPassword(user){
               return $http.put('https://swiss-iot.azurewebsites.net/api/users/resetPassword', user)
+          }
+
+          function getUserSensors(encodedData, page, pageSize){
+            return $http({
+              method:'GET',
+              url:'http://swiss-iot.azurewebsites.net/api/users/sensors?page='+page +'&pageSize=' +pageSize,
+              headers: {'Authorization': 'Basic '+ encodedData}
+            })
+          }
+          function getAllSensors(encodedData){
+            return $http({
+              method: 'GET',
+              url: 'http://swiss-iot.azurewebsites.net/api/users/sensors',
+              headers: {'Authorization': 'Basic '+ encodedData}
+            })
+            .then(function(response){
+              return response.headers('X-Tracker-Pagination-SensorCount')
+            })
           }
 
         })

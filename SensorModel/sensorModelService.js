@@ -108,7 +108,7 @@
            return $q.reject('Error retrieving value(s) .(HTTP status:' + response.status + ')')
        }
        function getMeasureId(){
-        // return $http.get('http://192.168.0.18:32333/api/sensor-types/'+ SENSOR_TYPE.ID)
+        // return $http.get('http://192.168.0.18:32333/api/sensor-types/'+ sensTypeID)
         return $http.get('https://swiss-iot.azurewebsites.net/api/sensor-types/'+ SENSOR_TYPE.ID)
              .then(function(response){
                return response.data;

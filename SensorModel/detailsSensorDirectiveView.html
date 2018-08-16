@@ -6,8 +6,8 @@
                 <td>Production Date</td>
                 <td>Upload Interval</td>
                 <td>Batch Size</td>
-                <td>Last Value</td>
                 <td>Unit Of Measure</td>
+                <td>Last Value</td>
                 <td>Last Date</td>
             </tr>
         </thead>
@@ -18,14 +18,14 @@
                 <td>{{sensor.productionDate}}</td>
                 <td>{{sensor.uploadInterval}}</td>
                 <td>{{sensor.batchSize}}</td>
+                <td>{{unitOfMeasure}}</td>
                 <td>
                     <span ng-show="noRead">-</span>
-                    <div class="measurementsOk" ng-if="(vm.lastRead[0].value < outOfRangeError) && (vm.lastRead[0].value != 0)" >{{vm.lastRead[0].value}}</div>
-                    <div class="measurementsOutOfRange" ng-if="vm.lastRead[0].value > outOfRangeError">OR</div>
-                    <div class="measurementsInvalidSensor" ng-if="vm.lastRead[0].value == 0">IS(0)</div>
+                    <div class="measurementsOk" ng-if="(lastRead[0].value < outOfRangeError) && (lastRead[0].value != 0)" >{{lastRead[0].value}}</div>
+                    <div class="measurementsOutOfRange" ng-if="lastRead[0].value > outOfRangeError">OR</div>
+                    <div class="measurementsInvalidSensor" ng-if="lastRead[0].value == 0">IS(0)</div>
                 </td>
-                <td>{{unitOfMeasure}}</td>
-                <td>{{vm.lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
+                <td>{{lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
             </tr>
         </tbody>
     <!--  <div style="height:45px; width:25px">

@@ -31,9 +31,10 @@
         function allSensors(data){
           $scope.allSensors = data;
         }
+        
         vm.setPage = function(){
           $scope.loading=true;
-          sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
+          sensorModelService.getSensors(0, $scope.allSens, $scope.encodeduser)
              .then(function(response){
                vm.sensors = response.data;
                $scope.loading=false;
@@ -52,15 +53,20 @@
             }else{
                 $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
             }
-            console.log($scope.encodeduser)
-            console.log($scope.encodeduser)
             sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
               .then(function(response){
                 vm.sensors = response.data;
               })
             }
           }
-        sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
+          
+         $scope.$watch('filterSensors', function(newValue, oldValue){
+             if(oldValue != newValue){
+                var filterSensors = document.getElementById('filteredSens');
+                $scope.allSensors = filterSensors.innerHTML;
+            }
+         }, true)
+        sensorModelService.getSensors(0, $scope.allSens, $scope.encodeduser)
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
@@ -72,9 +78,18 @@
             $scope.loading = false;
             $scope.sensorData = false;
          });
-
-         function update(){
-         vm.getLastRead = function(GA, CA){
+            sensorModelService.getMeasureId()
+                 .then(idSuccess)
+             function idSuccess(data){
+                 $scope.id= data.measureId;
+                 sensorModelService.getUnitOfMeasure($scope.id)
+                     .then(unitOfMeasureSuccess)
+                 function unitOfMeasureSuccess(data){
+                     $scope.unitOfMeasure = data.unitOfMeasure;
+                 }
+             }
+         
+         $scope.getLastRead = function(GA, CA){
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
@@ -82,7 +97,7 @@
                 .then(measureSuccess)
                 .catch(measureError)
             function measureSuccess(measurements){
-                        vm.lastRead = measurements;
+                        $scope.lastRead = measurements;
                         $scope.noRead = false;
                         $scope.detailsData = true;
                         $scope.loadingDetails = false;
@@ -91,16 +106,13 @@
                       $scope.noRead = true;
                       $scope.loadingDetails = false;
                       $scope.detailsData = true;
-                  }
-            vm.lastRead = null;
+                  };
         }
-      }
-      update();
+      
         sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
             .then(function(response){
                 $scope.totalSensors = response;
             });
-
 
 
        //live view

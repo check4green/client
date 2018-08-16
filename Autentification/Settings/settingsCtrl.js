@@ -14,7 +14,7 @@
               if($localStorage.password){
                 $scope.user.password = $localStorage.password;
               }else {
-                $scope.user.password = $sessionStorages.password;
+                $scope.user.password = $sessionStorage.password;
               }
               $sessionStorage.user = $scope.user;
             })
@@ -70,7 +70,7 @@
             vm.showSettingsError = false;
 
 
-        $scope.saveChanges = function(editFirstname, editLastname, editEmail, password, editPassword, confirmEditPass, oldPassword, editCompany, editCountry, editPhone){
+        $scope.saveChanges = function(editFirstname, editLastname, currentEmail, editEmail, confirmEmail, password, editPassword, confirmEditPass, oldPassword, editCompany, editCountry, editPhone){
           if($localStorage.email && $localStorage.password){
             $scope.email = $localStorage.email;
             $scope.password = $localStorage.password;
@@ -82,7 +82,7 @@
             $scope.user.firstName = editFirstname;
             $scope.user.lastName = editLastname;
           }
-          if(editEmail && (password ==$scope.password)){
+          if((currentEmail == $scope.email) && editEmail && confirmEmail && (password ==$scope.password)){
             $scope.user.email = editEmail;
           }
           if((oldPassword == $scope.password) && editPassword){
@@ -109,13 +109,19 @@
             if((!editFirstname && editLastname) || (editFirstname && !editLastname)){
               $scope.user='';
             }
-            if((!editEmail && password) || (editEmail && !password)){
+            if(editEmail != confirmEmail){
+              $scope.user ='';
+            }
+            if(currentEmail != $scope.email){
+              $scope.user='';
+            }
+            if((!currentEmail && editEmail && confirmEmail) || (currentEmail && !editEmail && confirmEmail) || (currentEmail && editEmail && !confirmEmail) ||(currentEmail && !editEmail && !confirmEmail) || (!currentEmail && editEmail && !confirmEmail) || (!currentEmail && !editEmail && confirmEmail)){
               $scope.user ='';
             }
             if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
               $scope.user='';
             }
-            if(!editFirstname && !editLastname && !editPassword && !oldPassword && !editEmail && !editCompany && !editCountry && !editPhone){
+            if(!editFirstname && !editLastname && !editPassword && !oldPassword && !editEmail && !currentEmail && !confirmEmail && !editCompany && !editCountry && !editPhone){
               $scope.user ='';
             }
           console.log('User Edit: ', $scope.user);
@@ -136,7 +142,7 @@
                     $sessionStorage.email = editEmail;
                   }
                 }
-                if(editEmail && editPassword){
+                if(editEmail && currentEmail == $scope.email){
                   if($localStorage.email && $localStorage.password){
                     $localStorage.email = editEmail;
                     $localStorage.password = editPassword
@@ -154,12 +160,12 @@
               if(oldPassword && oldPassword != $scope.password){
                       vm.showSettingsError = true;
                       vm.showSettingsMessage = false;
-                      $scope.error = 'The old password is incorect.';
+                      $scope.error = 'The old password is incorrect.';
                 }
               if (password && password != $scope.password){
                       vm.showSettingsError = true;
                       vm.showSettingsMessage = false;
-                      $scope.error = 'The password is incorect.';
+                      $scope.error = 'The password is incorrect.';
                 }
                 if(editPhone && editPhone.indexOf('+') !=0){
                   vm.showSettingsError = true;
@@ -172,17 +178,25 @@
                   vm.showSettingsMessage = false;
                   $scope.error ='To change your user name you have to fill both fields.'
                 }
-                if((!editEmail && password) || (editEmail && !password)){
+                if((!currentEmail && editEmail && confirmEmail) || (currentEmail && !editEmail && confirmEmail) || (currentEmail && editEmail && !confirmEmail) ||(currentEmail && !editEmail && !confirmEmail) || (!currentEmail && editEmail && !confirmEmail) || (!currentEmail && !editEmail && confirmEmail)){
                   vm.showSettingsError = true;
                   vm.showSettingsMessage = false;
-                  $scope.error ='To change your email you have to fill both fields.'
+                  $scope.error ='To change your email you have to fill all fields.'
+                }
+                if(currentEmail != $scope.email){
+                  $scope.error = 'The current email is incorrect'
+                }
+                if(editEmail != confirmEmail){
+                  vm.showSettingsError = true;
+                  vm.showSettingsMessage = false;
+                  $scope.error ='The emails do not match.'
                 }
                 if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
                   vm.showSettingsError = true;
                   vm.showSettingsMessage = false;
                   $scope.error ='To change your password you have to fill all three fields.'
                 }
-                if(!editFirstname && !editLastname && !editPassword && !editEmail && !oldPassword && !editCompany && !editCountry && !editPhone){
+                if(!editFirstname && !editLastname && !editPassword && !editEmail && !currentEmail && !confirmEmail && !oldPassword && !editCompany && !editCountry && !editPhone){
                   vm.showSettingsError = true;
                   vm.showSettingsMessage = false;
                   $scope.error ='To change your account you have to fill some fields.'
@@ -322,6 +336,18 @@
         link: function(scope, elem, attrs, ctrl){
           ctrl.$parsers.unshift(function(viewValue, $scope){
             var noMatch = viewValue != scope.passwordEdit.pass1.$viewValue
+              ctrl.$setValidity('noMatch', !noMatch)
+          })
+        }
+      }
+    })
+    
+    app.directive("validEmail", function(){
+      return{
+        require:'ngModel',
+        link: function(scope, elem, attrs, ctrl){
+          ctrl.$parsers.unshift(function(viewValue, $scope){
+            var noMatch = viewValue != scope.emailEdit.email.$viewValue
               ctrl.$setValidity('noMatch', !noMatch)
           })
         }

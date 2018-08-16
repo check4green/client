@@ -1,5 +1,5 @@
 <div class="container-sensorHome" id="sensorsHomeView">
-    <!-- img-header --><div style="float:right; padding:10px; margin:10px;" class="label label-success"> Logged in by<p style="margin:5px; font-size:20px;">{{vm.username}}</p></div>
+    <!-- img-header --><div style="float:right; padding:10px; margin:10px;" class="label label-success"> Logged in as<p style="margin:5px; font-size:20px;">{{vm.username}}</p></div>
     <div id="headerImg" class="header">
             <img src="/Home/images-home/C4G-full-moto.png" alt="Check4Green"/>
           </div>
@@ -12,7 +12,7 @@
             <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
             <!-- /menu button-->
             <a class="active" ui-sref="home" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
-            <a onclick="hideHeader()" ui-sref="settings" >Settings</a>
+            <a onclick="hideHeader()" ui-sref="settings" >Account Settings</a>
             <a ng-click="logOut()" ui-sref="home">Log out</a>
             <a href="javascript:void(0);" class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
         </div>
@@ -20,7 +20,6 @@
             <div class="progress-bar" id="myBar"></div>
         </div>
       </header>
-
       <!-- menu-body -->
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn"><img src="/Home/images-home/C4G-full-moto.png"></a>
@@ -52,6 +51,8 @@
         <!-- /route-grid -->
 
     </div>
+    <!-- sensors grid -->
+   
 <!-- footer -->
 <button onclick="buttonFunction()" id="myBtn" title="Go to top" class="fa fa-arrow-up"></button>
 <!-- /footer -->

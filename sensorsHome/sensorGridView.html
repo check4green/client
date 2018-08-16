@@ -1,13 +1,9 @@
-<div class="sensorModel container">
-    <div class="title-grid">
-        <p>{{vm.titleGrid}}</p>
-    </div>
-    <register-sensor></register-sensor>
+<div class="sensorModel container" ng-show="home">
     <div ng-show="loading" class="loader"></div>
-    <div ng-show="noSensorsData" class="noData">No Data</div>
-    <div ng-show="sensorData"  class="table-overflow">
+    <div ng-show="noData" class="noData">No Data</div>
+    <div ng-show="sensorHomeData" class="table-overflow">
         <div  class="form-group measurementsContainerSet">
-            <label>Number of sensors:</label>
+            <label>Number of sensors per page:</label>
             <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
                 <option selected disabled hidden value="">50</option>
                 <option value="50">50</option>
@@ -19,9 +15,9 @@
             </select>
         </div>
         <div class="measurementsTotalReadings">
-            <label>Total Sensors: {{totalSensors}}</label>
+            <label>Total Sensors: {{allSensors}}</label>
         </div>
-        <search></search>
+       <search></search> 
         <table class="table">
             <thead>
                 <tr>
@@ -36,7 +32,7 @@
 
             <tbody>
 
-                <tr ng-repeat-start= "sensor in filterSensors =(vm.sensors | filter: {name:filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
+                <tr ng-repeat-start="sensor in filterSensors =(userSensors | filter: {name: filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
                     <td>{{$index+1}}</td>
                     <td>{{sensor.name}}</td>
                     <td>{{sensor.id}}</td>
@@ -45,7 +41,7 @@
                         <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
                     </td>
                     <td class="sensorModelContainerInfo">
-                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress);">+</button>
+                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); outOfRange(sensor.sensorTypeId)">+</button>
                         <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
                     </td>
 
@@ -73,25 +69,8 @@
         </table>
         <div ng-show="!filterSensors.length">No result</div> 
         <div id="filteredSens" ng-show="filtSens">{{filterSensors.length}}</div> 
-        <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div> 
+        <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
 
     </div>
-    <!-- <div>
-        <form>
-            <input ng-model="quantity" type="text" placeholder="Number of rows">
-            <button ng-click="vm.quantitySet(quantity)">Set</button>
-        </form>
-
-            <table>
-                <thead>
-                    <tr><td></td>S1 in Cm</tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="s1 in vm.sensor1 | limitTo:vm.qs">
-                        <td>{{s1.value}}</td>
-                    </tr>
-                </tbody>
-            </table>
-    </div> -->
 
 </div>

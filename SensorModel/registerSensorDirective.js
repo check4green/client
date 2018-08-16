@@ -40,7 +40,6 @@ app.directive('registerSensor', function(){
             // $scope.registerGatewayAddress = '';
             // $scope.registerClientAddress = '';
         };
-
         $scope.cancelRegisterSensor = function(){
             $window.location.reload();
             $timeout(function(){
