@@ -17,7 +17,7 @@
                   <h class="text-colapse-settings h-parrent-hover">Username: 
                     <h class="h-color">{{user.firstName}} {{user.lastName}}</h> 
                       <span ng-click="vm.collapsUserName()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"> </span>
-                    <a class="hover-edit"> Edit</a>
+                    <!-- <a class="hover-edit"> Edit</a> -->
                   </h>
 
                   <div ng-show="vm.showUserName" class="settings-input-container box-border-container">
@@ -47,7 +47,7 @@
                 <h class="text-colapse-settings h-parrent-hover">Email address:
                   <h class="h-color">{{user.email}}</h>
                     <span ng-click="vm.collapsEmailAddress()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
-                  <a class="hover-edit"> Edit</a> 
+                  <!-- <a class="hover-edit"> Edit</a>  -->
                 </h>
 
               <div ng-show="vm.showEmailAddress" class="settings-input-container box-border-container">
@@ -71,7 +71,7 @@
 
                 <h class="text-colapse-settings h-parrent-hover">Password 
                   <span ng-click="vm.collapsPassword()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
-                  <a class="hover-edit"> Edit</a> 
+                  <!-- <a class="hover-edit"> Edit</a>  -->
                 </h>
 
                 <div ng-show="vm.showPassword" class="settings-input-container box-border-container">
@@ -105,7 +105,7 @@
                 <h class="text-colapse-settings h-parrent-hover" >Company name: 
                   <h class="h-color">{{user.companyName}}</h> 
                     <span ng-click="vm.collapsCompanyName()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
-                  <a class="hover-edit"> Edit</a> 
+                  <!-- <a class="hover-edit"> Edit</a>  -->
                 </h>
 
                 <div ng-show="vm.showCompanyName" class="settings-input-container box-border-container">
@@ -126,7 +126,7 @@
                 <h class="text-colapse-settings h-parrent-hover" >Country: 
                   <h class="h-color">{{user.country}}</h> 
                     <span ng-click="vm.collapsCountry()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
-                  <a class="hover-edit"> Edit</a> 
+                  <!-- <a class="hover-edit"> Edit</a>  -->
                 </h>
 
                 <div ng-show="vm.showCountry" class="settings-input-container box-border-container">
@@ -149,7 +149,7 @@
                 <h class="text-colapse-settings h-parrent-hover" >Phone number: 
                   <h class="h-color">{{user.phoneNumber}}</h> 
                     <span ng-click="vm.collapsPhoneNumber()" class="fa fa-chevron-down span-settings" onclick="showSettingsColapse(this)"></span>
-                    <a class="hover-edit"> Edit</a> 
+                    <!-- <a class="hover-edit"> Edit</a>  -->
                 </h>
 
                 <div ng-show="vm.showPhoneNumber" class="settings-input-container box-border-container">
@@ -170,4 +170,9 @@
             <p>Once the data is verified, it will be changed.</p>
         </div>
 
+        <!-- fake elements for js -->
+        <button onclick="buttonFunction()" id="myBtn" title="Go to top" class="fa fa-arrow-up"></button>
+        <div class="progress-bar" id="myBar" style="display: none !important"></div>
+        <div id="header-scroll" class="fake" style="display: none !important"></div>
+        <!-- /fake elements for js -->
     </div>

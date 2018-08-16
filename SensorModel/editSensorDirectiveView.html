@@ -4,32 +4,60 @@
         <span id="alert-succesful" ng-show="sensorEditSuccess"><p>Sensor edited successful!</p></span>
     </div>
     <form class="col-md-3" name="editForm" novalidate>
+
         <label>Name:</label>
         <div class="form-group" ng-class="{'has-error':editForm.inputName.$invalid && editForm.inputName.$dirty}">
-            <input name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" ng-model="editName" required>
+            <div class="container-name">
+                <input name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" 
+                name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" 
+                ng-model="editName" required>
+
+                <div class="container-info 	fa fa-info-circle">
+                    <p class="info-hover">The name is a sensor identifier. To make it easier to find.</p>
+                </div>
+            </div>
+            
+
             <span class="help-block has-error">
                 <span ng-show="editForm.inputName.$error.required">Name is required</span>
                 <span ng-show="editForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
                 <span ng-show="!editForm.inputName.$valid && !editForm.inputName.$error.required && !editForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after word, and word need min one letter. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
+
         <div class="form-group" ng-class="{'has-error': editForm.inputUploadInt.$invalid && editForm.inputUploadInt.$dirty}">
             <label>Upload Interval:</label>
-            <input name ="inputUploadInt" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editUploadInterval" required>
+
+            <div class="container-name">
+                <input name ="inputUploadInt" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editUploadInterval" required>
+                <div class="container-info 	fa fa-info-circle">
+                    <p class="info-hover">You can change the time interval between readings.</p>
+                </div>
+            </div>
+
             <span class="help-block has-error">
                 <span ng-show="editForm.inputUploadInt.$error.required">Upload interval is required</span>
                 <span ng-show="editForm.inputUploadInt.$error.number">The Upload Interval must be a number</span>
             </span>
         </div>
+
         <div class="form-group" ng-class="{'has-error': editForm.inputBatchSize.$invalid && editForm.inputBatchSize.$dirty}">
             <label>Batch Size:</label>
-            <input name="inputBatchSize" type="number" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="0" class="form-control" ng-model="editBatchSize" required>
+
+            <div class="container-name">
+                <input name="inputBatchSize" type="number" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="0" class="form-control" ng-model="editBatchSize" required>
+                <div class="container-info 	fa fa-info-circle">
+                    <p class="info-hover"> How many readings are within a timeframe set by you (day, week, etc.).</p>
+                </div>
+            </div>
             <span class="help-block has-error">
                 <span ng-show="editForm.inputBatchSize.$error.required">Batch Size is required</span>
                 <span ng-show="editForm.inputBatchSize.$error.number">The Batch Size  must be a number</span>
             </span>
         </div>
+
         <button type="button" class="btn btn-success" ng-click="sensorEdit(editName, editUploadInterval, editBatchSize, sensor.gatewayAddress, sensor.clientAddress, sensor.id)">Edit</button>
         <button type="button" class="btn btn" ng-click="cancelEditSensor()">Cancel</button>
+
     </form>
 </div>

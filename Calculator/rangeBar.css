@@ -2,11 +2,14 @@
 .container-home .header-home .header-home-right .calculator-total-cost{
     background-color: #4e9a06;
     margin-right: 10px;
+    padding: 5px;
+    margin-top: 7px;
+    border: 1px solid #333;
 }
 .container-home .header-home .header-home-right .calculator-total-cost span{
     font-weight: bold;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
 }
 .container-home .header-home .header-home-right .calculator-total-cost:hover{
     font-weight: initial;

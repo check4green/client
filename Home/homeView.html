@@ -1,12 +1,10 @@
 <div class="container-home">
 <!-- header home -->
-<div class="header-home-hover-cost">
-    <header  class="header-home">
+    <header id="header-scroll" class="header-home">
         <p class="totalTwo">Cost: <span class="fa fa-dollar"></span> <span id="totalTwo"></span></p>
         <img src="/Home/images-home/C4G-full.png" width="1122" height="251" alt="check4green" class="logo-header-home">
         <p class="button-header-responsive" onclick="showSettingsColapse(this)"><span class="fa fa-chevron-down"></p>
         <div  id="showHeader" class="header-home-right">
-            <a >Home</a>
             <a ui-sref="contact">Contact</a>
             <a ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> <!-- ng-click="logOut()" -->
             <a ui-sref="logIn" ng-show="vm.log">Log in</a>
@@ -17,7 +15,6 @@
             <div class="progress-bar" id="myBar"></div>
         </div>
     </header>
-</div>
 
 <!-- /header home -->
 
@@ -28,13 +25,14 @@
         <img src="/Home/images-home/5.jpg" alt="check4green" width="1920" height="1080">
         <div class="content-parts" id="absoluteID">
             <h1>
-                Check4Green sensors
+            Check4Green Smart monitoring
             </h1>
             <p>
-                Choose from our available range of sensors and monitor them
-                 with our web application. All you have to do is <a ng-show="vm.log" ui-sref="logIn.register" style="text-decoration: underline">register</a><a ng-hide="vm.log" style="text-decoration: underline">register</a> with
-                 an account and choose our monitoring offers. <br>
-                 Do not forget that we can offer you all the sensors you need!
+            Our services allow intelligent monitorization and management for any of your IoT devices. 
+            We offer a large range of sensors to help manage aspects such as: 
+            Smart metering, smart building, smart waste management, smart home and more. 
+            Get in touch with us today to find out how we can help you and your business. 
+            <!-- <a ng-show="vm.log" ui-sref="logIn.register" style="text-decoration: underline">register</a><a ng-hide="vm.log" style="text-decoration: underline">register</a> -->
             </p>
         </div>
     </div>
@@ -173,16 +171,16 @@
                 </div>
 
                 <div class="container-cc">
-                    <a href="https://www.check4green.com/">Copyright © 2018 Check4Green</a>
+                    <a target="_blank" href="https://www.check4green.com/">Copyright © 2018 Check4Green</a>
                 </div>
 
             </div>
 
             <div class="footer-container-social">
-                <a href="https://www.facebook.com"><span class="fa fa-facebook-square"></span></a>
-                <a href="https://www.linkedin.com/in/check-green-68152a120?trk=hp-identity-name"><span class="fa fa-linkedin-square"></span></a>
-                <a href="https://twitter.com/CheckforGreen"><span class="fa fa-twitter-square"></span></a>
-                <a href="https://www.youtube.com"><span class="fa fa-youtube-square"></span></a>
+                <a target="_blank" href="https://www.facebook.com"><span class="fa fa-facebook-square"></span></a>
+                <a target="_blank" href="https://www.linkedin.com/in/check-green-68152a120?trk=hp-identity-name"><span class="fa fa-linkedin-square"></span></a>
+                <a target="_blank" href="https://twitter.com/CheckforGreen"><span class="fa fa-twitter-square"></span></a>
+                <a target="_blank" href="https://www.youtube.com"><span class="fa fa-youtube-square"></span></a>
             </div>
 
         </div>

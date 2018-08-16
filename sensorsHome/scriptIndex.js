@@ -49,11 +49,13 @@ function borderInputOut(){
   }
 
 // scroll button
-window.onscroll = function() {buttonScrollFunction()};
+window.onscroll = function() { buttonScrollFunction()};
 
 function buttonScrollFunction() {
 
 // When the user scrolls the page, execute myFunction 
+
+    var element = document.getElementById("header-scroll");   //header
 
     var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -62,8 +64,10 @@ function buttonScrollFunction() {
 
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("myBtn").style.display = "block";
+        element.classList.add("header-home-add");  //header
     } else {
         document.getElementById("myBtn").style.display = "none";
+        element.classList.remove("header-home-add");  //header
     }
 }
 
@@ -73,24 +77,15 @@ function buttonFunction() {
     document.documentElement.scrollTop = 0;
 }
 
-// Modal
- function openModal(){
-    document.getElementById("modalContent").style.display = "block";
- }
- function closeModal(){
-    document.getElementById("modalContent").style.display = "none";
- }
 
- // Play
- var video = document.getElementById("video");
- var btn = document.getElementById("play");
 
- function PlayVideo(){
-    if (video.paused) {
-        video.play();
-        btn.innerHTML = "Pause";
-      } else {
-        video.pause();
-        btn.innerHTML = "Play";
-      }
- }
+// Menu account
+
+function toggle_visibility(id){
+    var e = document.getElementById(id);
+
+    if(e.style.display == 'initial')
+       e.style.display = 'none';
+       else
+       e.style.display = 'initial';
+}
