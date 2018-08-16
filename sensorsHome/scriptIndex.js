@@ -1,24 +1,18 @@
-// show arrow on navbar
-
-function showNavText(x) {
-    x.classList.toggle("fa-caret-up");
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-// show arrow on settings
+// rotate on settings
 function showSettingsColapse(a){
     a.classList.toggle("rotate");
-    var a = document.getElementById("showHeader");
-    if (a.className === "header-home-right"){
-        a.className += "button-header-responsive";
-      } else {
-        a.className = "header-home-right";
-      }
+  }
+
+  // show text headerHome and rotate arrow
+    function  showheaderHomeColapse(){
+        var head = document.getElementById('showHeader');
+        document.getElementById('arrowRotate').classList.toggle("rotate");
+        if(head.style.display == 'initial')
+           head.style.display = 'none';
+           else
+           head.style.display = 'initial';
     }
+    
 
 // show text HomeHeader
 // open/close menu
