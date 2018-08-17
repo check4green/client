@@ -1,8 +1,11 @@
 <div class="container-sensorHome" id="sensorsHomeView">
-    <!-- img-header --><div style="float:right; padding:10px; margin:10px;" class="label label-success"> Logged in as<p style="margin:5px; font-size:20px;">{{vm.username}}</p></div>
+    <!-- img-header -->
+    
+    
+
     <div id="headerImg" class="header">
-            <img src="/Home/images-home/C4G-full-moto.png" alt="Check4Green"/>
-          </div>
+      <img src="/Home/images-home/C4G-full-moto.png" alt="Check4Green"/>
+    </div>
     <!-- /img-header -->
 
       <header class="headerSensorHome">
@@ -11,14 +14,57 @@
             <span id="close-menu" class="fa fa-outdent"></span>
             <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
             <!-- /menu button-->
+            
+            <a class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
+            <div class="logged-hover" onclick="toggle_visibility('containerAccountId')">
+                <img src="/sensorsHome/img-logged-in-as/user-250p.png">
+
+                <div class="logged-container"> 
+                    <p class="title-user">Check4Green account</p>
+                    <p class="about-user">User: {{vm.username}}</p>
+                    <p class="about-user">Email: {{user.email}}</p>
+                </div>
+                
+            </div>
             <a class="active" ui-sref="home" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
-            <a onclick="hideHeader()" ui-sref="settings" >Account Settings</a>
-            <a ng-click="logOut()" ui-sref="home">Log out</a>
-            <a href="javascript:void(0);" class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
+            
+
         </div>
+
         <div class="progress-container">
             <div class="progress-bar" id="myBar"></div>
         </div>
+
+
+        <!-- Menu account -->
+        <div id="containerAccountId" class="container-account">
+                <span class="fa fa-close span" onclick="toggle_visibility('containerAccountId')" title="Close"></span>
+               <div class="container-detailAcc">
+
+                    <img src="/sensorsHome/img-logged-in-as/user-250p.png">
+
+                    <div class="container-loggedMenu"> 
+                        <p class="title-user">Check4Green account</p>
+                        <p class="about-user">User: {{vm.username}}</p>
+                        <p class="about-user">Email: {{user.email}}</p>
+                    </div>
+
+               </div>
+               
+               <div class="container-logOut">
+                    <a class="flex-settings" ui-sref="settings" >Account settings</a>
+                    <a class="flex-logOut" ng-click="logOut()" ui-sref="home">Log out</a>
+               </div>
+        </div>
+        
+        <!-- /Menu account -->
+        
+        <!-- fake elements for js -->
+        <div id="header-scroll" class="fake" style="display: none !important"></div>
+        <!-- /fake elements for js -->
+
+        <!-- <div id="outside-element" class="outside-element" ></div> -->
+
       </header>
       <!-- menu-body -->
       <div id="mySidenav" class="sidenav">

@@ -1,6 +1,12 @@
 .homeMenu{
     height: 100%;
 }
+.outside-element{
+    position: absolute;
+    width: 10000px !important;
+    height: 10000px !important;
+    background-color: red;
+}
 .homeMenu .parallax {
     min-height: 900px; 
     background-attachment: fixed;
@@ -8,6 +14,126 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* --> Logged in as */
+.container-sensorHome .logged-hover{
+    padding: 10px 10px;
+    height: auto;
+    cursor: pointer;
+}
+.container-sensorHome .logged-hover:hover .logged-container{
+    display: initial;
+    display: flex;
+}
+.container-sensorHome .logged-hover img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* box-shadow: 0px 0px 20px #4e9a06; */
+}
+.container-sensorHome .logged-container{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 10px 10px 0px 10px;
+    right: 5px;
+    background-color: #4e9a06;
+    border-radius: 5px;
+    margin-top: 5px;
+    height: auto;
+    display: none;
+    line-height: 8px;
+}
+.container-sensorHome .logged-container img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.container-sensorHome .logged-container p{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+.container-sensorHome .logged-container .title-user{
+    color: white;
+}
+.container-sensorHome .logged-container .about-user{
+    color: #333333e5;
+}
+/* <-- Logged in as */
+
+/* --> colapse account */
+#containerAccountId{
+    display: none;
+}
+.container-account{
+    position: absolute;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #d8d8d8;
+    box-shadow: 0px 2px 15px  #707070;
+    top: 45px;
+    right: 10px;
+    background-color: white;
+}
+.container-account span{
+    float: right;
+    cursor: pointer;
+    font-size: 22px;
+}
+.container-account span:hover{
+    color: #d9534f;
+    text-shadow: 0px 2px 2px  #707070;
+}
+.container-account .container-detailAcc{
+    display: flex;
+    border-bottom: 1px solid #333;
+    padding: 5px;
+}
+.container-account .container-detailAcc img{
+    width: auto;
+    height: 100px;
+    border-radius: 50%;
+}
+.container-account .container-loggedMenu{
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 25px;
+    padding: 5px;
+    line-height: 9px;
+}
+.container-account .container-loggedMenu .title-user{
+    font-weight: bold;
+}
+.container-account .container-logOut{
+    display: flex;
+    font-size: 17px;
+}
+.container-account .container-logOut .flex-settings{
+    flex-grow: 2;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(197, 195, 195);
+    margin-top: 5px;
+    text-align: center;
+}
+.container-account .container-logOut .flex-logOut{
+    flex-grow: 1;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(197, 195, 195);
+    margin-top: 5px;
+    margin-left: 5px;
+    text-align: center;
+}
+.container-account .container-logOut a:hover{
+    background-color: rgb(206, 206, 206);
+    transition: 0.5s;
+}
+/* <-- colapse account */
 
 /* --> progres bar */
 .container-sensorHome .progress-container {
