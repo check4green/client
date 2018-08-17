@@ -76,7 +76,7 @@
   border-bottom: none;
 }
 /* <-- icon ce apare cu media */
-
+/* 
 @media screen and (max-width: 650px) {
   .container-sensorHome .topnav a:not(:first-child) {display: none;}
   .container-sensorHome .topnav a.icon {
@@ -99,4 +99,4 @@
   .container-sensorHome .logged-hover{
     margin-right: 25px;
   }
-}
+} */

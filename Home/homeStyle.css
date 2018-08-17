@@ -11,6 +11,7 @@
     -webkit-box-shadow: 1px 1px 14px 0px #005c4e4d;
 }
 
+
 .header-home-add{
     background-color: #0f9c85 !important;
     padding: 5px 10px !important;
@@ -48,7 +49,30 @@
 .container-home .header-home .calculator-total-cost{
     display: block;
 }
+.responsive-header-home{
+    display: initial;
+}
 @media screen and (max-width: 600px){
+    .container-home .header-home .button-header-responsive{
+        display: initial;
+        padding: 5px;
+        
+        border: solid 1px #33333348;
+        border-radius: 10px;
+        background-color: #4e9a06;
+        cursor: pointer;
+        user-select: none;
+        float: right;
+    }
+    .container-home .header-home .button-header-responsive:hover{
+        background-color: #376e03;
+        color: white;
+        border: solid 1px #4e9a06;
+    }
+    .container-home .header-home .header-home-right{
+        float: none;
+        display: none;
+    }
     .container-home .header-home{
         overflow: hidden;
         background-color: #0f9c85;
@@ -72,10 +96,7 @@
         padding: 5px;
         border-radius: 10px;
         border: solid 1px #33333348;
-    }
-    .container-home .totalTwo:hover{
-        background-color: #4e9a06;
-        border: none;
+        cursor: pointer;
     }
     .container-home .header-home .calculator-total-cost{
         background-color: #4e9a06;
@@ -84,26 +105,6 @@
     .container-home .header-home .calculator-total-cost:hover{
         background-color: #4e9a06;
         border: none;
-    }
-    .container-home .header-home .button-header-responsive{
-        display: initial;
-        margin-left: 5px;
-        padding: 5px;
-        border: solid 1px #33333348;
-        border-radius: 10px;
-        background-color: #4e9a06;
-        cursor: pointer;
-        user-select: none;
-        float: right;
-    }
-    .container-home .header-home .button-header-responsive:hover{
-        background-color: #376e03;
-        color: white;
-        border: solid 1px #4e9a06;
-    }
-    .container-home .header-home .header-home-right{
-        float: none;
-        display: none;
     }
     .showHeader{
         transform: rotate(180deg);

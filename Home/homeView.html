@@ -3,7 +3,8 @@
     <header id="header-scroll" class="header-home">
         <p class="totalTwo">Cost: <span class="fa fa-dollar"></span> <span id="totalTwo"></span></p>
         <img src="/Home/images-home/C4G-full.png" width="1122" height="251" alt="check4green" class="logo-header-home">
-        <p class="button-header-responsive" onclick="showSettingsColapse(this)"><span class="fa fa-chevron-down"></p>
+        <p id="arrowRotate" class="button-header-responsive" onclick="showheaderHomeColapse()"><span class="fa fa-chevron-down"></p>
+            
         <div  id="showHeader" class="header-home-right">
             <a ui-sref="contact">Contact</a>
             <a ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> <!-- ng-click="logOut()" -->
