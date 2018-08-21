@@ -4,15 +4,14 @@ function showSettingsColapse(a){
   }
 
   // show text headerHome and rotate arrow
-    function  showheaderHomeColapse(){
-        var head = document.getElementById('showHeader');
-        document.getElementById('arrowRotate').classList.toggle("rotate");
-        if(head.style.display == 'initial')
-           head.style.display = 'none';
-           else
-           head.style.display = 'initial';
+    function nowHeaderFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "header-container header-home-add") {
+            x.className += " responsive";
+        } else {
+            x.className = "header-container header-home-add";
+        }
     }
-    
 
 // show text HomeHeader
 // open/close menu
@@ -49,8 +48,7 @@ function buttonScrollFunction() {
 
 // When the user scrolls the page, execute myFunction 
 
-    var element = document.getElementById("header-scroll");   //header
-
+    var element = document.getElementById("myTopnav");   //header
     var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     var scrolled = (winScroll / height) * 100;
@@ -59,9 +57,11 @@ function buttonScrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("myBtn").style.display = "block";
         element.classList.add("header-home-add");  //header
+  //      document.getElementById("nowHeaderImg").style.height = "50px";
     } else {
         document.getElementById("myBtn").style.display = "none";
         element.classList.remove("header-home-add");  //header
+  //      document.getElementById("nowHeaderImg").style.height = "60px";
     }
 }
 

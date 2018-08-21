@@ -48,6 +48,7 @@
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
+    margin-bottom: 10px;
 }
 
 .container-range-bar .container-slide .slider-calculator:hover {

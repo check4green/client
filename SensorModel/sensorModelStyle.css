@@ -1,3 +1,50 @@
+/* Search --> */
+.search-container .input-group-container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    height: 40px;
+    position: relative;
+}
+.search-container .input-group-container .input-icon{
+    padding: 10px;
+    background: #4e9a06;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    
+}
+.search-container .input-group-container .input-icon p{
+    position: absolute;
+    left: -5px;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 13px;
+    background-color: white;
+    color: #333;
+    border-radius: 5px;
+    border: 2px solid #4e9a06;
+    min-height: 30px;
+    min-width: 100px;
+    z-index: 100;
+    box-shadow: 2px 2px 2px #888;
+    display: none;
+}
+.search-container .input-group-container .input-icon:hover #hover-search{
+    display: block;
+}
+.search-container .input-group-container .input-form-control{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+.search-container .input-group-container .input-form-control:focus{
+    border: 2px solid #4e9a06;
+}
+/* <-- Search */
+
 /* --> Edit info */
 .container-name{
     display: flex;
@@ -215,7 +262,13 @@ inLine-measurement{
 .measurementsTotalReadings{
     display: flex;
     font-size:17px;
+    align-self: baseline;
 }
+ 
+.measurementsTotalReadings .grow{
+    flex-grow: 1;
+}
+
 .measurementsContainerNavigation{
     display:flex;
 }
