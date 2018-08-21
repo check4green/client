@@ -1,8 +1,8 @@
-<form>
-<div class="form-group">
-  <div class="input-group">
-  <div class="input-group-addon" ng-click="filterSearch = searchSensor"><i class="fa fa-search" ></i></div>
-  <input type="text" class="form-control" placeholder="Search sensors by name" ng-model="searchSensor">
-</div>
-</div>
+<form class="search-container">
+    <div class="form-group">
+        <div class="input-group-container">
+            <div class="input-icon" ng-click="filterSearch = searchSensor"><i class="fa fa-search"></i><p id="hover-search">Click here to search</p></div>
+            <input type="text" class="input-form-control" style="font-size: 13px;" placeholder="Search sensors by name" ng-model="searchSensor">
+        </div>
+    </div>
 </form>

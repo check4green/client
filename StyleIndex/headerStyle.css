@@ -53,11 +53,6 @@
   user-select: none;
 }
 
-.container-sensorHome .topnav a:hover {
-  color: #4e9a06;
-  border-bottom: 4px solid #4e9a06;
-}
-
 /* --> icon ce apare cu media */
 
 .container-sensorHome .topnav .icon {
