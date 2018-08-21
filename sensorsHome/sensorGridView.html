@@ -41,7 +41,7 @@
                         <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
                     </td>
                     <td class="sensorModelContainerInfo">
-                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); outOfRange(sensor.sensorTypeId)">+</button>
+                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); outOfRange(sensor.sensorTypeId); measureUnit(sensor.sensorTypeId)">+</button>
                         <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
                     </td>
 
@@ -69,7 +69,7 @@
         </table>
         <div ng-show="!filterSensors.length">No result</div> 
         <div id="filteredSens" ng-show="filtSens">{{filterSensors.length}}</div> 
-        <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
+        <div paging page="currentPage" page-size="sensPerPage" total="allSens" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
 
     </div>
 

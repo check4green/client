@@ -45,7 +45,7 @@
                         <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
                     </td>
                     <td class="sensorModelContainerInfo">
-                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress);">+</button>
+                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); outOfRange(sensor.sensorTypeId); measureUnit(sensor.sensorTypeId)">+</button>
                         <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
                     </td>
 

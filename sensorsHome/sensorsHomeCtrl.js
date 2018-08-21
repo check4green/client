@@ -8,6 +8,14 @@
         }else{
           var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
+        $scope.hideSensGrid = function(){
+          $scope.home = false;
+          $sessionStorage.home = $scope.home;
+        }
+        $scope.showSensGrid = function(){
+          $scope.home = true;
+          $sessionStorage.home = $scope.home;
+        }
         autentificationService.getUser(encodeduser)
             .then(function(response){
               $scope.user = response.data;

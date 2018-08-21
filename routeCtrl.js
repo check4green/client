@@ -110,7 +110,7 @@
                 'electricalCurrent@':{
                     template: "<electrical-current></electrical-current>",
                     controller: function($scope, SENSOR_TYPE){
-                        SENSOR_TYPE.ID = "25";
+                        SENSOR_TYPE.ID = "35";
                         SENSOR_TYPE.TITLE = "Electrical Current";
                     }
                 }

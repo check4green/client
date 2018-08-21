@@ -5,10 +5,20 @@ app.directive('detailsSensor', function(){
         templateUrl: 'SensorModel/detailsSensorDirectiveView.html',
         controller: function($scope, sensorModelService, SENSOR_TYPE){
             var vm=this;
-        $scope.outOfRangeError = SENSOR_TYPE.OUT_OF_RANGE;
 
-        $scope.detailsDisplay = true;
-        sensorModelService.getMeasureId()
+        $scope.detailsDisplay = true
+        $scope.outOfRange = function(sensType){
+          if(sensType == 33){
+              $scope.outOfRangeError = 401;
+          } else if(sensType == 31){
+              $scope.outOfRangeError = 101;
+          }else if(sensType == 34){
+              $scope.outOfRangeError = 101;
+          }
+      }
+      
+        $scope.measureUnit = function(sensTypeId){
+        sensorModelService.getMeasureId(sensTypeId)
            .then(idSuccess)
          function idSuccess(data){
            $scope.id= data.measureId;
@@ -19,6 +29,7 @@ app.directive('detailsSensor', function(){
            $scope.unitOfMeasure = data.unitOfMeasure;
          }
        }
+      }
     }
 
     }

@@ -24,6 +24,7 @@ app.directive('registerSensor', function(){
           }
         $scope.sensorRegister = function(registerName, registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
             var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 'name':registerName, 'productionDate':registerProductionDate, 'uploadInterval':registerUploadInterval, 'batchSize':registerBatchSize, 'gatewayAddress':registerGatewayAddress,'clientAddress':registerClientAddress, userId: "1" }
+            console.log(sensorPost);
             sensorModelService.insertSensors(sensorPost, $scope.encodeduser)
             .then(function(){
                 $scope.sensorRegisterError = false;
@@ -40,6 +41,39 @@ app.directive('registerSensor', function(){
             // $scope.registerGatewayAddress = '';
             // $scope.registerClientAddress = '';
         };
+        $scope.today = new Date();
+        var day = $scope.today.getDate()+ 2;
+        var month = $scope.today.getMonth() +1;
+        var year = $scope.today.getFullYear();
+        var hour = $scope.today.getHours();
+        var minutes = $scope.today.getMinutes();
+         if(hour< 10){
+             hour = '0' + hour;
+         }
+         if(minutes< 10){
+             minutes ='0' + minutes;
+        }
+        $scope.time = hour +':' + minutes;
+        console.log($scope.time)
+        if (day< 10){
+            day = '0'+ day;
+        }
+        if(month< 10){
+            month = '0' + month;
+        }
+        var minMonth = $scope.today.getMonth()+1;
+        var minDay = $scope.today.getDate();
+        if(minMonth <10){
+            minMonth = '0'+ minMonth;
+        }
+        if(minDay <10){
+            minDay = '0' +minDay;
+        }
+        $scope.maxDate = year+ '-' + month +'-'+  day+ 'T' +$scope.time;
+        document.getElementById('inputProdDate').setAttribute('max', $scope.maxDate);
+        $scope.minDate = year +'-' + minMonth+ '-' + minDay+ 'T' +$scope.time;
+        document.getElementById('inputProdDate').setAttribute('min', $scope.minDate)
+        console.log($scope.minDate)
         $scope.cancelRegisterSensor = function(){
             $window.location.reload();
             $timeout(function(){

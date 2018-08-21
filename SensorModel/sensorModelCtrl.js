@@ -13,6 +13,8 @@
             sensor.expanded=true;
         };
        //sensors
+       $scope.home = false;
+       $sessionStorage.home = $scope.home;
       $scope.searchSensor ='';
        if($localStorage.email && $localStorage.password){
           $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
@@ -78,7 +80,8 @@
             $scope.loading = false;
             $scope.sensorData = false;
          });
-            sensorModelService.getMeasureId()
+         $scope.measureUnit = function(sensTypeId){
+            sensorModelService.getMeasureId(sensTypeId)
                  .then(idSuccess)
              function idSuccess(data){
                  $scope.id= data.measureId;
@@ -88,7 +91,16 @@
                      $scope.unitOfMeasure = data.unitOfMeasure;
                  }
              }
-         
+            }
+            $scope.outOfRange = function(sensType){
+              if(sensType == 33){
+                  $scope.outOfRangeError = 401;
+              } else if(sensType == 31){
+                  $scope.outOfRangeError = 101;
+              }else if(sensType == 34){
+                  $scope.outOfRangeError = 101;
+              }
+          }
          $scope.getLastRead = function(GA, CA){
             $scope.noRead = false;
             $scope.detailsData = false;

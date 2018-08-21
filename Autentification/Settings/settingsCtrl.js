@@ -18,6 +18,7 @@
               }
               $sessionStorage.user = $scope.user;
             })
+            $sessionStorage.home = true;
             vm.showUserName = false;
             vm.showEmailAddress = false;
             vm.showPassword = false;
