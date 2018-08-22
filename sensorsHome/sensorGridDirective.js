@@ -29,7 +29,7 @@ app.directive('gridSensors', function(){
                 $scope.allSensors = data;
               })
             $scope.currentPage = 1;
-            $scope.sensPerPage = 10;
+            $scope.sensPerPage = 50;
             $scope.loading=true;
             vm.setPage = function(){
               autentificationService.getUserSensors(encodeduser,  0, $scope.allSensors)
@@ -67,7 +67,7 @@ app.directive('gridSensors', function(){
             $scope.$watch('filterSensors', function(newValue, oldValue){
                 if(oldValue != newValue){
                     var filterSensors = document.getElementById('filteredSens');
-                    $scope.allSensors = filterSensors.innerHTML;
+                    $scope.allSens = filterSensors.innerHTML;
                 }
             }, true)
               $scope.measureUnit = function(sensTypeID){

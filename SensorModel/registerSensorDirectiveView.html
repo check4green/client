@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister()" ng-show="registerButton">Add sensor</button>
+<button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister(); updateTime()" ng-show="registerButton">Add sensor</button>
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
 
     <span id="alert-error" ng-show="sensorRegisterError"><p>{{message}}</p></span>
@@ -10,7 +10,7 @@
 
             
             <div class="container-name">
-                <input id="inputName" name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" ng-model="registerName" required>
+                <input id="inputName" name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]*$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" ng-model="registerName" required>
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">The name is a sensor identifier. To make it easier to find.</p>
                 </div>
@@ -18,20 +18,22 @@
 
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputName.$error.required">Name is required</span>
-                <span ng-show="registerForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
-                <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after word, and word need min one letter. Exemple: (Proximity-Sensor_01)</span>
+                <span ng-show="!registerForm.inputName.$error.required && registerForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'. Exemple: (Proximity-Sensor_01)</span>
+                <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after the word, and the word needs min one letter. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
         <label>Production Date:</label>
-        <div class="form-group" ng-class="{'has-error':registerForm.inputProdDate.$invalid && registerForm.inputProdDate.$dirty}">
+        <div class="form-group" ng-class="{'has-error':(registerForm.inputProdDate.$invalid && registerForm.inputProdDate.$dirty) || (registerForm.regTime.$invalid && registerForm.regTime.$dirty)}">
             <div class="container-name">
-                <input id="inputProdDate" name="inputProdDate" type="datetime-local" class="form-control" ng-model="registerProductionDate" required />
+                <input id="inputProdDate" name="inputProdDate"  type="date" class="form-control" onkeydown="return false" style="width:165px;"  ng-model="regDate" required />
+                <input id="inputTime" type="time" ng-model="regTime" onkeydown="return false" name ="regTime" required/>
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">Sensor registration date.</p>
                 </div>
             </div>
-            
-            <span class="help-block has-error" ng-show="registerForm.inputProdDate.$invalid">Production Date is required</span>
+            <div id="registerDate" ng-show ="date">{{regDate | date: "yyyy-MM-dd" }}</div>
+            <div id="registerTime" ng-show ="date">{{regTime | date: "hh:mm"}}</div>
+            <span class="help-block has-error" ng-show="registerForm.inputProdDate.$invalid || registerForm.regTime.$invalid">Production Date is required</span>
         </div>
         <label>Upload Interval:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputUploadInt.$invalid && registerForm.inputUploadInt.$dirty}">
@@ -89,7 +91,7 @@
                 <span ng-show="!registerForm.inputClientAdd.$valid && !registerForm.inputClientAdd.$error.required && !registerForm.inputClientAdd.$error.pattern">Please insert hexadecimal prefix format '0x'</span>
             </span>
         </div>
-        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, registerProductionDate, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
+        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, regDate, regTime, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
         <button type="button" class="btn btn" ng-click="cancelRegisterSensor()">Cancel</button>
     </form>
 </div>

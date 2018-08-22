@@ -27,7 +27,7 @@
                 </div>
                 
             </div>
-            <a class="active" ui-sref="home" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
+            <a class="active" ui-sref="home" ng-click="showSensGrid()" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
             
 
         </div>
@@ -71,15 +71,15 @@
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn"><img src="/Home/images-home/C4G-full-moto.png"></a>
 
-        <a class="a" onclick="closeNav()" ui-sref="sensorsHome">Home<i class="fa fa-home"></i></a>
+        <a class="a" onclick="closeNav()" ng-click="showSensGrid()" ui-sref="sensorsHome">Home<i class="fa fa-home"></i></a>
 
-        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.distance" title="distance sesors list">Distance<i class="fa fa-crop"></i></a>
+        <a class="a" onclick="closeNav()" ng-click="hideSensGrid()" ui-sref="sensorsHome.distance" title="distance sesors list">Distance<i class="fa fa-crop"></i></a>
 
-        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.temperature" title="temperature sensors list">Temperature<i class="fa fa-thermometer-half"></i></a>
+        <a class="a" onclick="closeNav()" ng-click="hideSensGrid()" ui-sref="sensorsHome.temperature" title="temperature sensors list">Temperature<i class="fa fa-thermometer-half"></i></a>
 
-        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.electricalCurrent" title="electrical current sensors list">Electrical Current<i class="fa fa-bolt"></i></a>
+        <a class="a" onclick="closeNav()" ng-click="hideSensGrid()" ui-sref="sensorsHome.electricalCurrent" title="electrical current sensors list">Electrical Current<i class="fa fa-bolt"></i></a>
 
-        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.airQuality" title="air quality sensors list">Air Quality<i class="	fa fa-mixcloud"></i></a>
+        <a class="a" onclick="closeNav()" ng-click="hideSensGrid()" ui-sref="sensorsHome.airQuality" title="air quality sensors list">Air Quality<i class="	fa fa-mixcloud"></i></a>
 
       </div>
       <!-- /menu-body -->
@@ -96,9 +96,8 @@
             <div ui-view="airQuality@"></div>
         </div>
         <!-- /route-grid -->
-
+        <grid-sensors></grid-sensors>
     </div>
-    <!-- sensors grid -->
    
 <!-- footer -->
 <button onclick="buttonFunction()" id="myBtn" title="Go to top" class="fa fa-arrow-up"></button>
