@@ -83,3 +83,16 @@ function toggle_visibility(id){
        else
        e.style.display = 'initial';
 }
+
+
+var video = document.getElementById("containerVideo1");
+var btn = document.getElementById("playBtn");
+function playVideo() {
+    if (video.paused) {
+      video.play();
+      btn.innerHTML = "Pause";
+    } else {
+      video.pause();
+      btn.innerHTML = "Play";
+    }
+  }

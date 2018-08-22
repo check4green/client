@@ -25,7 +25,7 @@
 
 <!-- start page -->
     <div class="container-home-parts" id="absoluteIDpar">
-        <img src="/Home/images-home/5.jpg" alt="check4green" width="1920" height="1080">
+        <img src="/Home/images-home/5.jpg" alt="check4green" alt="Green" width="1920" height="1080">
         <div class="content-parts" id="absoluteID">
             <h1>
             Check4Green Smart monitoring
@@ -51,8 +51,14 @@
                     <h2>Live measurements</h2>
                     <p>In this category you can see your measurements in real time.</p>
                 </div>
-                <button class="cart-text-button">More info</button>
+                <button class="cart-text-button" onclick="toggle_visibility('containerVideo1')">More info</button>
             </div>
+        </div>
+
+        <div class="container-video" id="containerVideo1">
+            <button id="stopBtn" onclick="toggle_visibility('containerVideo1')">X</button>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/twT9e4sCdH4?rel=0&amp;showinfo=0" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
 
         <div class="container-column-dercr">
@@ -145,7 +151,7 @@
 
 <!-- login part -->
     <div class="login-image-home">
-        <img src="/Home/images-home/color-green-edit-now2.jpg" alt="check4green" width="1920" height="1080">
+        <img src="/Home/images-home/color-green-edit-now2.jpg" alt="check4green"  alt="Green" width="1920" height="1080">
             <div class="login-text">
                 <!-- <img src="/Home/images-home/C4G-full-moto-shadow.png"> -->
                 <button  ui-sref="sensorsHome" ng-hide="vm.log">Go to sensor management</button>
