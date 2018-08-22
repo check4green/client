@@ -1,9 +1,12 @@
 <div class="sensorModel container" ng-show="home">
+    <div class="title-grid">
+        <p>{{vm.titleGrid}}</p>
+    </div>
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noData" class="noData">No Data</div>
     <div ng-show="sensorHomeData" class="table-overflow">
         <div  class="form-group measurementsContainerSet">
-            <label>Number of sensors per page:</label>
+            <label>Sensors per page:</label>
             <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
                 <option selected disabled hidden value="">50</option>
                 <option value="50">50</option>

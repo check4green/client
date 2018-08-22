@@ -62,7 +62,10 @@
              url: "/sensorsHome",
              views: {
                 'sensorsHome@':{
-                    template: "<sensors-home></sensors-home>"
+                    template: "<sensors-home></sensors-home>",
+                    controller: function($scope, SENSOR_TYPE){
+                        SENSOR_TYPE.TITLE = "Home";
+                    }
                 }
             }
         })
