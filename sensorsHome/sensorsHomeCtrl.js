@@ -11,7 +11,6 @@
         }else{
           var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
-      }
       $scope.hideRegisterTemp = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
