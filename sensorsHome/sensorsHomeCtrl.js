@@ -1,8 +1,11 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $localStorage, autentificationService, sensorModelService) {
+   app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
         var vm = this;
+
+        vm.titleGrid = SENSOR_TYPE.TITLE;
+
         if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
           var encodeduser = btoa($localStorage.email+ ':'+ $localStorage.password)
         }else{
