@@ -5,7 +5,10 @@ app.directive('registerSensor', function(){
         templateUrl: 'SensorModel/registerSensorDirectiveView.html',
         controller: function($scope, SENSOR_TYPE, sensorModelService, $timeout, $window, $localStorage, $sessionStorage){
             var vm = this;
-            $scope.registerDisplay = false;
+            $sessionStorage.register = false;
+            if($sessionStorage.register == false){
+                $scope.registerDisplay = false;
+            }
             $scope.registerButton = true;
             $scope.sensorRegisterError = false;
             $scope.sensorRegisterSuccess = false;
@@ -13,46 +16,61 @@ app.directive('registerSensor', function(){
                 $scope.sensorData = false;
                 if($scope.registerDisplay == false){
                     $scope.registerDisplay = true;
+                    $sessionStorage.register = true;
                     $scope.registerButton = false;
                     $scope.noSensorsData = false;
                 }
-        };
-        if($localStorage.email && $localStorage.password){
-            $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
-        }else{
-            $scope.encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
-          }
-        $scope.sensorRegister = function(registerName, regDate, regTime, registerUploadInterval, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
-            var registerDate = document.getElementById('registerDate');
-            var registerTime = document.getElementById('registerTime');
-            if(registerDate.innerHTML && registerTime.innerHTML){
-                var registerProductionDate = registerDate.innerHTML +'T'+ registerTime.innerHTML;
+            };
+            if($localStorage.email && $localStorage.password){
+                $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
+            }else{
+                $scope.encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
             }
-            var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 
+            $scope.sensorRegister = function(registerName, registerProductionDate, registerDays,registerHours, registerMinutes, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
+                var registerDate = document.getElementById('registerDate');
+                var registerTime = document.getElementById('registerTime');
+                if(registerDate.innerHTML && registerTime.innerHTML){
+                    registerProductionDate = registerDate.innerHTML +'T'+ registerTime.innerHTML;
+                }
+                if(registerDays == null){
+                    registerDays = 0;
+                }
+                if(registerHours == null){
+                    registerHours = 0;
+                }
+                if(registerMinutes == null){
+                    registerMinutes = 0;
+                }
+                var days = registerDays*1440;
+                var hours = registerHours*60;
+                var minutes = registerMinutes;
+                $scope.uploadInt = days + hours + minutes;
+                console.log($scope.uploadInt)
+                var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 
                               'name':registerName,
                               'productionDate':registerProductionDate,
-                              'uploadInterval':registerUploadInterval,
+                              'uploadInterval':$scope.uploadInt,
                               'batchSize':registerBatchSize,
                               'gatewayAddress':registerGatewayAddress,
                               'clientAddress':registerClientAddress,
                                userId: "1" }
-            sensorModelService.insertSensors(sensorPost, $scope.encodeduser)
-            .then(function(){
-                $scope.sensorRegisterError = false;
-                $scope.sensorRegisterSuccess = true;
-            })
-            .catch(function(response){
-                $scope.message = response.data.message;
-                $scope.sensorRegisterError = true;
-                $scope.sensorRegisterSuccess = false;
-            });
+                sensorModelService.insertSensors(sensorPost, $scope.encodeduser)
+                    .then(function(){
+                    $scope.sensorRegisterError = false;
+                    $scope.sensorRegisterSuccess = true;
+                })
+                .catch(function(response){
+                    $scope.message = response.data.message;
+                    $scope.sensorRegisterError = true;
+                    $scope.sensorRegisterSuccess = false;
+                });
             // $scope.registerProductionDate ='';
             // $scope.registerUploadInterval = '';
             // $scope.registerBatchSize = '';
             // $scope.registerGatewayAddress = '';
             // $scope.registerClientAddress = '';
-        };
-        $scope.updateTime = function(){
+            };
+            $scope.updateTime = function(){
                 $scope.today = new Date();
                 var day = $scope.today.getDate()+ 2;
                 var month = $scope.today.getMonth() +1;
@@ -86,23 +104,24 @@ app.directive('registerSensor', function(){
                 document.getElementById('inputProdDate').setAttribute('min', $scope.minDate);
                 document.getElementById('inputTime').setAttribute('min', $scope.time);
                 document.getElementById('inputTime').setAttribute('max', $scope.time);
-        }
-        $scope.cancelRegisterSensor = function(){
-            $window.location.reload();
-            $timeout(function(){
-                $scope.sensorRegisterError = false;
-                $scope.sensorRegisterSuccess = false;
-                $scope.registerButton = true;
-                $scope.sensorData = true;
-                $scope.registerDisplay = false;
-                $scope.noSensorsData = true;
-            },300);
-            // $scope.registerProductionDate ='';
-            // $scope.registerUploadInterval = '';
-            // $scope.registerBatchSize = '';
-            // $scope.registerGatewayAddress = '';
-            // $scope.registerClientAddress = '';
-        };
+            }
+            $scope.cancelRegisterSensor = function(){
+                $window.location.reload();
+                $timeout(function(){
+                    $scope.sensorRegisterError = false;
+                    $scope.sensorRegisterSuccess = false;
+                    $scope.registerButton = true;
+                    $scope.sensorData = true;
+                    $scope.registerDisplay = false;
+                    $sessionStorage.register = false;
+                    $scope.noSensorsData = true;
+                },300);
+                // $scope.registerProductionDate ='';
+                // $scope.registerUploadInterval = '';
+                // $scope.registerBatchSize = '';
+                // $scope.registerGatewayAddress = '';
+                // $scope.registerClientAddress = '';
+            };
         }
     }
 });

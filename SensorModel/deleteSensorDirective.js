@@ -15,10 +15,10 @@ app.directive('deleteSensor', function(){
                 $scope.chartButton = false;
             }
             if($localStorage.email && $localStorage.password){
-              $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+                $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
-            $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
-          }
+                $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+            }
             $scope.deleteSensor = function(gatewayAddress, clientAddress){
                 sensorModelService.deleteSensors(gatewayAddress, clientAddress, $scope.encodedData);
                 $timeout(function(){

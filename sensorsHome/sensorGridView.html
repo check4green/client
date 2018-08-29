@@ -1,4 +1,7 @@
 <div class="sensorModel container" ng-show="home">
+    <div style="height: 100px;"></div>
+    <map></map>
+    <div style="height: 100px;"></div>
     <div class="title-grid">
         <p>{{vm.titleGrid}}</p>
     </div>
@@ -75,7 +78,7 @@
         <div ng-show="!filterSensors.length">No result</div> 
         <div id="filteredSens" ng-show="filtSens">{{filterSensors.length}}</div> 
         <div paging page="currentPage" page-size="sensPerPage" total="allSens" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
-
+        
     </div>
 
 </div>

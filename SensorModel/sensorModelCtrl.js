@@ -12,26 +12,25 @@
             })
             sensor.expanded=true;
         };
-       //sensors
-       $scope.home = false;
-       $sessionStorage.home = $scope.home;
-      $scope.searchSensor ='';
-       if($localStorage.email && $localStorage.password){
-          $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
-       }else {
+        $scope.home = false;
+        $sessionStorage.home = $scope.home;
+        $scope.searchSensor ='';
+        if($localStorage.email && $localStorage.password){
+            $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+        }else {
           $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
-       $scope.sensPerPage = 50;
-       sensorModelService.getFinalPage($scope.sensPerPage, $scope.encodeduser)
+        $scope.sensPerPage = 50;
+        sensorModelService.getFinalPage($scope.sensPerPage, $scope.encodeduser)
         .then(finalPage);
         function finalPage(data){
            $scope.numPages = data;
            console.log('Last Page: ', $scope.numPages)
-       }
-       sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
+        }
+        sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
             .then(allSensors);
         function allSensors(data){
-          $scope.allSensors = data;
+            $scope.allSensors = data;
         }
         
         vm.setPage = function(){
@@ -41,7 +40,7 @@
                vm.sensors = response.data;
                $scope.loading=false;
                console.log("Current Page: ", $scope.currentPage);
-             })
+            })
         }
         $scope.$watch('currentPage', vm.setPage);
         $scope.loading = true;
@@ -49,32 +48,32 @@
         $scope.noSensorData = false;
         $scope.setPageSize = function(pageSize){
             if(pageSize){
-            $scope.sensPerPage = pageSize;
-            if($localStorage.email && $localStorage.password){
-                $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
-            }else{
-                $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                $scope.sensPerPage = pageSize;
+                if($localStorage.email && $localStorage.password){
+                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+                }else{
+                    $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                }
+                sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
+                    .then(function(response){
+                    vm.sensors = response.data;
+                })
             }
-            sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
-              .then(function(response){
-                vm.sensors = response.data;
-              })
-            }
-          }
+        }
           
-         $scope.$watch('filterSensors', function(newValue, oldValue){
-             if(oldValue != newValue){
+        $scope.$watch('filterSensors', function(newValue, oldValue){
+            if(oldValue != newValue){
                 var filterSensors = document.getElementById('filteredSens');
                 $scope.allSensors = filterSensors.innerHTML;
             }
-         }, true)
+        }, true)
         sensorModelService.getSensors(0, $scope.allSens, $scope.encodeduser)
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;
             $scope.noSensorsData = false;
             $scope.sensorData = true;
-         })
+        })
          .catch(function(response){
             $scope.noSensorsData = true;
             $scope.loading = false;
@@ -83,25 +82,25 @@
          $scope.measureUnit = function(sensTypeId){
             sensorModelService.getMeasureId(sensTypeId)
                  .then(idSuccess)
-             function idSuccess(data){
-                 $scope.id= data.measureId;
-                 sensorModelService.getUnitOfMeasure($scope.id)
-                     .then(unitOfMeasureSuccess)
-                 function unitOfMeasureSuccess(data){
-                     $scope.unitOfMeasure = data.unitOfMeasure;
-                 }
-             }
+            function idSuccess(data){
+                $scope.id= data.measureId;
+                sensorModelService.getUnitOfMeasure($scope.id)
+                    .then(unitOfMeasureSuccess)
+                function unitOfMeasureSuccess(data){
+                    $scope.unitOfMeasure = data.unitOfMeasure;
+                }
             }
-            $scope.outOfRange = function(sensType){
-              if(sensType == 33){
-                  $scope.outOfRangeError = 401;
-              } else if(sensType == 31){
-                  $scope.outOfRangeError = 101;
-              }else if(sensType == 34){
-                  $scope.outOfRangeError = 101;
-              }
-          }
-         $scope.getLastRead = function(GA, CA){
+        }
+        $scope.outOfRange = function(sensType){
+            if(sensType == 33){
+                $scope.outOfRangeError = 401;
+            } else if(sensType == 31){
+                $scope.outOfRangeError = 101;
+            }else if(sensType == 34){
+                $scope.outOfRangeError = 101;
+            }
+        }
+        $scope.getLastRead = function(GA, CA){
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
@@ -125,21 +124,18 @@
             .then(function(response){
                 $scope.totalSensors = response;
             });
-
-
        //live view
 
-    //    vm.reload = function(){
-    //     $http.get("http://192.168.0.18:32333/api/sensors/46/readings")
-    //     .then(function(response) {
-    //         vm.sensor1 = response.data;
-    //     });
-    //     $timeout(function(){
-    //         vm.reload();
-    //     },1000)
-    // };
-    // vm.reload();
-
+        //    vm.reload = function(){
+        //     $http.get("http://192.168.0.18:32333/api/sensors/46/readings")
+        //     .then(function(response) {
+        //         vm.sensor1 = response.data;
+        //     });
+        //     $timeout(function(){
+        //         vm.reload();
+        //     },1000)
+        // };
+        // vm.reload();
     }]);
 }());
 

@@ -3,7 +3,7 @@ app.directive('gridSensors', function(){
     return {
         restrict: 'E',
         templateUrl: 'sensorsHome/sensorGridView.html',
-        controller: function ($scope, $sessionStorage, $localStorage, autentificationService, sensorModelService, $filter) {
+        controller: function ($scope, $sessionStorage, $localStorage, autentificationService, sensorModelService, $filter){
             var vm = this;
             if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
               var encodeduser = btoa($localStorage.email+ ':'+ $localStorage.password)
@@ -23,6 +23,8 @@ app.directive('gridSensors', function(){
                 })
                 sensor.expanded=true;
             };
+            $scope.sensorHomeData = false;
+            $scope.noData = false;
             $scope.searchSensor ='';
             autentificationService.getAllSensors(encodeduser)
               .then(function(data){
@@ -36,6 +38,7 @@ app.directive('gridSensors', function(){
                  .then(function(response){
                   $scope.userSensors = response.data;
                   $scope.loading=false;
+                  $scope.sensorHomeData = true;
                  })
             }
             $scope.$watch('currentPage', vm.setPage);
@@ -50,12 +53,15 @@ app.directive('gridSensors', function(){
               autentificationService.getUserSensors(encodeduser,  0, $scope.allSensors)
                 .then(function(response){
                   $scope.userSensors = response.data;
+                  $scope.loading=false;
+                  $scope.sensorHomeData = true;
                 })
               }
             }
             autentificationService.getUserSensors(encodeduser,  0, $scope.allSensors)
               .then(function(response){
                 $scope.userSensors = response.data;
+                $scope.loading=false;
                 $scope.sensorHomeData = true;
               })
               .catch(function(response){
@@ -74,15 +80,15 @@ app.directive('gridSensors', function(){
                 sensorModelService.getMeasureId(sensTypeID)
                      .then(idSuccess)
                  function idSuccess(data){
-                     $scope.id= data.measureId;
-                     sensorModelService.getUnitOfMeasure($scope.id)
-                         .then(unitOfMeasureSuccess)
-                     function unitOfMeasureSuccess(data){
-                         $scope.unitOfMeasure = data.unitOfMeasure;
-                     }
-                 }
-             }
-              $scope.getLastRead = function(GA, CA){
+                    $scope.id= data.measureId;
+                    sensorModelService.getUnitOfMeasure($scope.id)
+                        .then(unitOfMeasureSuccess)
+                    function unitOfMeasureSuccess(data){
+                        $scope.unitOfMeasure = data.unitOfMeasure;
+                    }
+                }
+            }
+            $scope.getLastRead = function(GA, CA){
                 $scope.noRead = false;
                 $scope.detailsData = false;
                 $scope.loadingDetails = true;
@@ -99,9 +105,9 @@ app.directive('gridSensors', function(){
                           $scope.noRead = true;
                           $scope.loadingDetails = false;
                           $scope.detailsData = true;
-                      }
-                      $scope.lastRead = null;
-                      
+                }
+                $scope.lastRead = null;
+            }      
             $scope.outOfRange = function(sensType){
                 if(sensType == 33){
                     $scope.outOfRangeError = 401;
@@ -110,7 +116,6 @@ app.directive('gridSensors', function(){
                 }else if(sensType == 34){
                     $scope.outOfRangeError = 101;
                 }
-            }
             }
         }
     }
