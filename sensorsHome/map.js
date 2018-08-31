@@ -6,7 +6,9 @@ app.directive('map', function(){
         controller: function(sensorModelService, d3, $scope){
             var map = new google.maps.Map(d3.select('#map').node(), {
                 zoom: 4,
-                center: new google.maps.LatLng(51.508742, -0.120850)
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                mapTypeControl: false,
+                streetViewControl: false
             });
             //[Lng, Lat]
             d3.json("sensorsHome/stations.json", function(error, data){
@@ -17,6 +19,15 @@ app.directive('map', function(){
                     overlay.draw = function(){
                         var projection = this.getProjection(),
                             padding = 10;
+                        var proj = d3.geoMercator()
+                        d3.select("#map")
+                            .on("click", function(){
+                                    var pos = d3.mouse(d3.select("#map").node()),
+                                        px= pos[0],
+                                        py= pos[1];
+                                    var coordonates = proj.invert([px, py]);
+                                    console.log(coordonates)
+                            })
                         var marker = layer.selectAll("svg")
                                 .data(d3.entries(data))
                                 .each(transform)
