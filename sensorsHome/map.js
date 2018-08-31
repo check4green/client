@@ -20,14 +20,14 @@ app.directive('map', function(){
                         var projection = this.getProjection(),
                             padding = 10;
                         var proj = d3.geoMercator()
-                        d3.select("#map")
-                            .on("click", function(){
-                                    var pos = d3.mouse(d3.select("#map").node()),
-                                        px= pos[0],
-                                        py= pos[1];
-                                    var coordonates = proj.invert([px, py]);
-                                    console.log(coordonates)
-                            })
+                        // d3.select("#map")
+                        //     .on("click", function(){
+                        //             var pos = d3.mouse(d3.select("#map").node()),
+                        //                 px= pos[0],
+                        //                 py= pos[1];
+                        //             var coordonates = proj.invert([px, py]);
+                        //             console.log(coordonates)
+                        //     })
                         var marker = layer.selectAll("svg")
                                 .data(d3.entries(data))
                                 .each(transform)
