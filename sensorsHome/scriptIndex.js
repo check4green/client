@@ -76,23 +76,13 @@ function buttonFunction() {
 // Menu account
 
 function toggle_visibility(id){
+
+    var video = document.getElementById("video1"); // Video var
     var e = document.getElementById(id);
 
     if(e.style.display == 'initial')
-       e.style.display = 'none';
+       e.style.display = 'none', video.pause(); // Video pause
+       
        else
        e.style.display = 'initial';
 }
-
-
-var video = document.getElementById("containerVideo1");
-var btn = document.getElementById("playBtn");
-function playVideo() {
-    if (video.paused) {
-      video.play();
-      btn.innerHTML = "Pause";
-    } else {
-      video.pause();
-      btn.innerHTML = "Play";
-    }
-  }
