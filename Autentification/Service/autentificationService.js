@@ -45,14 +45,14 @@ angular.module("sensorApp")
           function getUserSensors(encodedData, page, pageSize){
             return $http({
               method:'GET',
-              url:'http://swiss-iot.azurewebsites.net/api/users/sensors?page='+page +'&pageSize=' +pageSize,
+              url:'https://swiss-iot.azurewebsites.net/api/users/sensors?page='+page +'&pageSize=' +pageSize,
               headers: {'Authorization': 'Basic '+ encodedData}
             })
           }
           function getAllSensors(encodedData){
             return $http({
               method: 'GET',
-              url: 'http://swiss-iot.azurewebsites.net/api/users/sensors',
+              url: 'https://swiss-iot.azurewebsites.net/api/users/sensors',
               headers: {'Authorization': 'Basic '+ encodedData}
             })
             .then(function(response){
