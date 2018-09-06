@@ -1,3 +1,6 @@
+/* .container-loader{
+  position: relative;
+} */
 .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -14,7 +17,14 @@
     margin-right:auto;
     margin-top:100px;
     margin-bottom:100px;
+
   }
+  /* .img-loader{
+    position: absolute;
+    height: auto;
+    width: 50px;
+    z-index: 100;
+  } */
 
   /* Safari */
   @-webkit-keyframes spin {
