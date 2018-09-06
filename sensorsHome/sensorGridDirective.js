@@ -10,7 +10,6 @@ app.directive('gridSensors', function(){
             }else{
               var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
             }
-            
             if($sessionStorage.home == false){
               $scope.home = false;
             }else{

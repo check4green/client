@@ -117,7 +117,7 @@
                       $scope.noRead = true;
                       $scope.loadingDetails = false;
                       $scope.detailsData = true;
-                  };
+                    };
         }
       
         sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)

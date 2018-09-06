@@ -92,6 +92,11 @@
                 <span ng-show="!registerForm.inputClientAdd.$valid && !registerForm.inputClientAdd.$error.required && !registerForm.inputClientAdd.$error.pattern">Please insert hexadecimal prefix format '0x'</span>
             </span>
         </div>
+        <div class="form-group">
+            <label>Choose the location of your sensor on the map: </label>
+            <map></map>
+        </div>
+
         <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, registerProductionDate, registerDays,registerHours, registerMinutes, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
         <button type="button" class="btn btn" ng-click="cancelRegisterSensor()">Cancel</button>
     </form>

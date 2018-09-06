@@ -6,6 +6,7 @@ app.directive('editSensor', function(){
         controller: function($scope, sensorModelService, $window, $localStorage, $sessionStorage){
             $scope.editButton = true;
             $scope.editDisplay = false;
+            $sessionStorage.editDisplay = $scope.editDisplay;
             $scope.sensorEditError = false;
             $scope.sensorEditSuccess = false;
             $scope.startEdit = function(){
@@ -16,6 +17,7 @@ app.directive('editSensor', function(){
                 $scope.chartButton = false;
                 if($scope.editDisplay == false){
                     $scope.editDisplay = true;
+                    $sessionStorage.editDisplay = $scope.editDisplay;
                     $scope.editButton = false;
                 }
             };

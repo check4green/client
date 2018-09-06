@@ -1,7 +1,7 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
+   app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $location, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
         var vm = this;
 
         vm.titleGrid = SENSOR_TYPE.TITLE;
@@ -11,6 +11,20 @@
         }else{
           var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
+      $scope.showSensGrid = function(){
+          $scope.home = true;
+          $sessionStorage.home = $scope.home;
+      }
+      $scope.hideSensGrid = function(){
+          $scope.home = false;
+          $sessionStorage.home = $scope.home;
+      }
+      $scope.hideRegisterDist = function(){
+        if($sessionStorage.register == true){
+          $sessionStorage.register = false;
+          $location.path('/distance');
+        }
+      }
       $scope.hideRegisterTemp = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;

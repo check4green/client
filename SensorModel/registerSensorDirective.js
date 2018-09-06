@@ -19,6 +19,8 @@ app.directive('registerSensor', function(){
                     $sessionStorage.register = true;
                     $scope.registerButton = false;
                     $scope.noSensorsData = false;
+                    $scope.sensorData = false;
+
                 }
             };
             if($localStorage.email && $localStorage.password){
@@ -53,6 +55,8 @@ app.directive('registerSensor', function(){
                               'batchSize':registerBatchSize,
                               'gatewayAddress':registerGatewayAddress,
                               'clientAddress':registerClientAddress,
+                              'latitude': $sessionStorage.lat,
+                              'longitude': $sessionStorage.lng,
                                userId: "1" }
                 sensorModelService.insertSensors(sensorPost, $scope.encodeduser)
                     .then(function(){

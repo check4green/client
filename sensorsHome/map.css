@@ -7,8 +7,27 @@
 .stations, .stations svg{
     position: absolute
 } 
-.station svg{
+.stations svg{
     width: 60px;
     height: 20px;
-    padding-right: 100px
+    padding-right: 100px;
+    font: 7px sans-serif;
 }
+.stations circle{
+    stroke: black;
+    stroke-width: 1px;
+    fill: #4e9a06;
+}
+.tooltip {
+    position: absolute;
+    line-height: .7;
+    font-weight: bold;
+    padding: 8px;
+    background:#fff;
+    color: black;
+    border: 2px solid #4e9a06;
+    font-weight: bold;
+    font: 11.5px sans-serif;
+    border-radius: 2px;
+    pointer-events: none;    
+  }
