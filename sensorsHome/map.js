@@ -12,7 +12,9 @@ app.directive('map', function(){
             });
             var marker;
             google.maps.event.addListener(map, "click", function(event){
-                placeMarker(map, event.latLng)
+              if($sessionStorage.register == true){  
+                  placeMarker(map, event.latLng)
+                }
             })
             function placeMarker(map, location){
                 if(!marker || !marker.setPosition){
@@ -31,7 +33,6 @@ app.directive('map', function(){
                 }
             }
             $sessionStorage.register = false;
-            $sessionStorage.editDisplay = false;
             if($localStorage.email && $localStorage.password){
                 $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
             }else{
@@ -58,16 +59,20 @@ app.directive('map', function(){
                                 overlay.draw = function(){
                                     var projection = this.getProjection(),
                                     padding = 10;
+                                    var tooltip  = d3.select("body")
+                                                    .append("div")
+                                                    .style("opacity", 0);
                                     var marker = layer.selectAll("svg")
                                         .data(d3.entries(pos))
                                         .each(transform)
                                         .enter().append("svg")
                                         .each(transform)
-                                        .attr("class", "marker");
-                                    marker.append("circle")
+                                        .attr("class", "marker")
+                                        
+                                    marker.append("svg:circle")
                                         .attr("r",11)
                                         .attr("cx", padding)
-                                        .attr("cy", padding);
+                                        .attr("cy", padding)
                                     marker.append("text")
                                             .data(sensors)
                                            .attr("x", padding+12)
