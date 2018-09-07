@@ -4,43 +4,32 @@ app.directive('map', function(){
         restrict: 'E',
         templateUrl: 'sensorsHome/map.html',
         controller: function(sensorModelService, d3, $scope, $sessionStorage, $localStorage, autentificationService){
-            var map = new google.maps.Map(d3.select('#map').node(), {
+            var map = new google.maps.Map(d3.selectAll('#map').node(), {
                 zoom: 4,
                 center: new google.maps.LatLng(51.508742, -0.120850),
                 mapTypeControl: false,
                 streetViewControl: false,
             });
-            var id =1;
-            var markers = [];
+            var marker;
             google.maps.event.addListener(map, "click", function(event){
-                var location = event.latLng;
-                if($sessionStorage.register == true || $sessionStorage.editDisplay == true){
-                    $sessionStorage.lng = event.latLng.lng();
-                    $sessionStorage.lat = event.latLng.lat();
-                    console.log("["+ $sessionStorage.lng +","+ $sessionStorage.lat +"]")
-                    var mark = new google.maps.Marker({
-                        position: location,
-                        map:map,
-                        animation: google.maps.Animation.DROP
-                    })
-                    mark.id = id;
-                    id++;
-                    markers.push(mark);
-                    google.maps.event.addListener(mark, "click", function(event)
-                    { 
-                        function deleteMark(id){
-                            for(var i=0; i<markers.length; i++){
-                                if(markers[i].id == id){
-                                    markers[i].setMap(null);
-                                    markers.splice(i, 1);
-                                    return;
-                                }
-                            }
-                        }
-                        deleteMark(mark.id);
-                    })
-                }
+                placeMarker(map, event.latLng)
             })
+            function placeMarker(map, location){
+                if(!marker || !marker.setPosition){
+                    marker= new google.maps.Marker({
+                        position: location,
+                        map:map
+                    })
+                    $sessionStorage.lat = marker.getPosition().lat();
+                    $sessionStorage.lng = marker.getPosition().lng();
+                    console.log("["+$sessionStorage.lng+ "," + $sessionStorage.lat+ "]");
+                } else{
+                    marker.setPosition(location);
+                    $sessionStorage.lat = marker.getPosition().lat();
+                    $sessionStorage.lng = marker.getPosition().lng();
+                    console.log("["+$sessionStorage.lng+ "," + $sessionStorage.lat+ "]");
+                }
+            }
             $sessionStorage.register = false;
             $sessionStorage.editDisplay = false;
             if($localStorage.email && $localStorage.password){
@@ -76,9 +65,17 @@ app.directive('map', function(){
                                         .each(transform)
                                         .attr("class", "marker");
                                     marker.append("circle")
-                                        .attr("r",10.5)
+                                        .attr("r",11)
                                         .attr("cx", padding)
                                         .attr("cy", padding);
+                                    marker.append("text")
+                                            .data(sensors)
+                                           .attr("x", padding+12)
+                                           .attr("y", padding)
+                                           .attr("dy", ".31em")
+                                           .style("font-weight", "bold")
+                                           .style("font-size", "12px")
+                                           .text(function(d){ return d.name;})
                                     function transform(d){
                                         d = new google.maps.LatLng(d.value[1], d.value[0]);
                                         d = projection.fromLatLngToDivPixel(d);

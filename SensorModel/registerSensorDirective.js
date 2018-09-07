@@ -28,12 +28,8 @@ app.directive('registerSensor', function(){
             }else{
                 $scope.encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
             }
-            $scope.sensorRegister = function(registerName, registerProductionDate, registerDays,registerHours, registerMinutes, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
-                var registerDate = document.getElementById('registerDate');
-                var registerTime = document.getElementById('registerTime');
-                if(registerDate.innerHTML && registerTime.innerHTML){
-                    registerProductionDate = registerDate.innerHTML +'T'+ registerTime.innerHTML;
-                }
+            $scope.sensorRegister = function(registerName, registerDays, registerHours, registerMinutes, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
+               
                 if(registerDays == null){
                     registerDays = 0;
                 }
@@ -50,7 +46,7 @@ app.directive('registerSensor', function(){
                 console.log($scope.uploadInt)
                 var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 
                               'name':registerName,
-                              'productionDate':registerProductionDate,
+                              'productionDate':$scope.maxDate,
                               'uploadInterval':$scope.uploadInt,
                               'batchSize':registerBatchSize,
                               'gatewayAddress':registerGatewayAddress,
@@ -76,11 +72,11 @@ app.directive('registerSensor', function(){
             };
             $scope.updateTime = function(){
                 $scope.today = new Date();
-                var day = $scope.today.getDate()+ 2;
+                var day = $scope.today.getDate();
                 var month = $scope.today.getMonth() +1;
                 var year = $scope.today.getFullYear();
                 var hour = $scope.today.getHours();
-                var minutes = $scope.today.getMinutes() +1;
+                var minutes = $scope.today.getMinutes();
                 if(hour< 10){
                      hour = '0' + hour;
                  }
@@ -102,12 +98,8 @@ app.directive('registerSensor', function(){
                 if(minDay <10){
                     minDay = '0' +minDay;
                 }
-                $scope.maxDate = year+ '-' + month +'-'+  day;
-                document.getElementById('inputProdDate').setAttribute('max', $scope.maxDate);
-                $scope.minDate = year +'-' + minMonth+ '-' + minDay;
-                document.getElementById('inputProdDate').setAttribute('min', $scope.minDate);
-                document.getElementById('inputTime').setAttribute('min', $scope.time);
-                document.getElementById('inputTime').setAttribute('max', $scope.time);
+                $scope.maxDate = year+ '-' + month +'-'+  day + 'T'+ $scope.time;
+                console.log($scope.max)
             }
             $scope.cancelRegisterSensor = function(){
                 $window.location.reload();
