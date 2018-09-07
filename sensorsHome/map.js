@@ -74,6 +74,7 @@ app.directive('map', function(){
                                            .attr("y", padding)
                                            .attr("dy", ".31em")
                                            .style("font-weight", "bold")
+                                           .style("fill", "#4e9a06")
                                            .style("font-size", "12px")
                                            .text(function(d){ return d.name;})
                                     function transform(d){
