@@ -90,16 +90,8 @@ app.directive('registerSensor', function(){
                 if(month< 10){
                     month = '0' + month;
                 }
-                var minMonth = $scope.today.getMonth()+1;
-                var minDay = $scope.today.getDate();
-                if(minMonth <10){
-                    minMonth = '0'+ minMonth;
-                }
-                if(minDay <10){
-                    minDay = '0' +minDay;
-                }
                 $scope.maxDate = year+ '-' + month +'-'+  day + 'T'+ $scope.time;
-                console.log($scope.max)
+                console.log($scope.maxDate)
             }
             $scope.cancelRegisterSensor = function(){
                 $window.location.reload();

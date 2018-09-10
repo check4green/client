@@ -39,8 +39,7 @@
                                        measurements[i].value = $scope.outOfRangeError;
                                    }
                                 }
-                                var svg = d3.select("svg")
-                                            .attr("id", "svgId");
+                                var svg = d3.select("#chart");
                                 var margin = {top: 20, right: 95, bottom: 110, left: 105},
                                     margin2 = {top: 435, right: 50, bottom: 30, left: 105},
                                     width = +svg.attr("width") - margin.left - margin.right,
