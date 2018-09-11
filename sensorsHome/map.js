@@ -4,6 +4,7 @@ app.directive('map', function(){
         restrict: 'E',
         templateUrl: 'sensorsHome/map.html',
         controller: function(sensorModelService, d3, $scope, $sessionStorage, $localStorage, autentificationService){
+            
             var map = new google.maps.Map(d3.selectAll('#map').node(), {
                 zoom: 4,
                 center: new google.maps.LatLng(51.508742, -0.120850),
@@ -45,28 +46,17 @@ app.directive('map', function(){
                         .then(function(response){
                             var sensors = response.data;
                             var pos = [];
-                            var lat, long, name, status;
+                            var lat, long, name, status, gatewayAddress, clientAddress;
                             for(var i=0; i< sensors.length; i++){
-                                // sensorModelService.getMeasurements(sensors[i].gatewayAddress, sensors[i].clientAddress, 1, 1)
-                                //     .then(lastReadSuccess)
-                                //     .catch(lastReadError)
-                                // function lastReadSuccess(data){
-                                //     $scope.lastRead = data;
-                                //     for(var i=0; i< $scope.lastRead.length; i++){
-                                //         $scope.lastRead = $scope.lastRead[i].value;
-                                //     }
-                                // }
-                                // function lastReadError(){
-                                //     $scope.lastRead = "No data"
-                                // }
                                 
-                                    lat = sensors[i].latitude;
-                                    long = sensors[i].longitude;
-                                    name = sensors[i].name;
-                                    status = sensors[i].active
-                                    var loc = [long, lat, name, status]
-                                    pos.push(loc)
-                                
+                                lat = sensors[i].latitude;
+                                long = sensors[i].longitude;
+                                name = sensors[i].name;
+                                status = sensors[i].active;
+                                gatewayAddress = sensors[i].gatewayAddress;
+                                clientAddress = sensors[i].clientAddress;
+                                var loc = [long, lat, name, status, gatewayAddress, clientAddress]
+                                pos.push(loc)
                             }
                             var overlay = new google.maps.OverlayView;
                             overlay.onAdd = function() {
@@ -82,19 +72,39 @@ app.directive('map', function(){
                                     var marker = layer.selectAll("svg")
                                         .data(d3.entries(pos))
                                         .each(transform)
-                                        .enter().append("svg:svg")
+                                        .enter().append("svg")
                                         .each(transform)
                                         .attr("class", "marker")
                                         .on("mouseover", function (d) {
-                                                tooltip.transition()
-                                                    .duration(200)
-                                                    .style("opacity", 0.9)
-                                                tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3])
+                                            if(!$sessionStorage.register){
+                                            sensorModelService.getMeasurements(d.value[4], d.value[5], 1, 1)
+                                                .then(lastReadSuccess)
+                                                .catch(lastReadError)
+                                                function lastReadSuccess(readings){
+                                                    for (var i=0; i< readings.length; i++){
+                                                        $scope.lastRead = readings[i].value;
+                                                    }
+                                                    tooltip.transition()
+                                                        .duration(200)
+                                                        .style("opacity", 0.9)
+                                                    tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead)
+                                                }
+                                                
+                                                function lastReadError(){
+                                                    $scope.lastRead = "No data";
+                                                    tooltip.transition()
+                                                        .duration(200)
+                                                        .style("opacity", 0.9)
+                                                    tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead)
+                                                }
+                                                
+                                                tooltip
                                                     .style("left", (d3.event.pageX +5)+ "px")
                                                     .style("top", (d3.event.pageY -28)+ "px");
-                                            
-                                            }) 
-                                            .on("mouseout", function mouseout() {
+                                            }
+                                        })
+                                             
+                                            .on("mouseleave", function mouseout() {
                                                 tooltip.transition()
                                                     .duration(200)
                                                     .style("opacity", 0);
