@@ -14,6 +14,7 @@
       $scope.showSensGrid = function(){
           $scope.home = true;
           $sessionStorage.home = $scope.home;
+          $sessionStorage.register = false;
       }
       $scope.hideSensGrid = function(){
           $scope.home = false;

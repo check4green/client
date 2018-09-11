@@ -19,7 +19,7 @@
                     $scope.noDataChart = false;
                     $scope.loadingChart = true;
                     $scope.dataChart = false;
-                    d3.selectAll("svg > *").remove();
+                    d3.selectAll("#chart > *").remove();
                     sensorModelService.getMeasurements(gatewayAddress, clientAddress, page, readings)
                                 .then(getSuccess)
                                 .catch(getError);
