@@ -234,7 +234,10 @@
 }
 
 /* /start page <-- */
-
+/* Video */
+#containerVideo1, #containerVideo2, #containerVideo3, #containerVideo4{
+    display: none;
+}
 /* Video */
 #containerVideo1{
     display: none;
@@ -274,7 +277,12 @@
     margin-bottom: 20px;
     box-shadow:  2px 4px 10px 1px #e0e0e0;
 }
-
+.container-row-descr .container-video img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow:  2px 4px 10px 1px #e0e0e0;
+}
 .container-videoBG{
     background-color: white;
     border-radius: 20px;
