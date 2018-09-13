@@ -25,7 +25,6 @@
         .then(finalPage);
         function finalPage(data){
            $scope.numPages = data;
-           console.log('Last Page: ', $scope.numPages)
         }
         sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
             .then(allSensors);
@@ -35,25 +34,19 @@
         
         vm.setPage = function(){
           $scope.loading=true;
-          sensorModelService.getSensors(0, $scope.allSens, $scope.encodeduser)
+          sensorModelService.getSensors(1, $scope.allSens, $scope.encodeduser)
              .then(function(response){
                vm.sensors = response.data;
                $scope.loading=false;
-               console.log("Current Page: ", $scope.currentPage);
             })
         }
         $scope.$watch('currentPage', vm.setPage);
         $scope.loading = true;
         $scope.sensorData = false;
         $scope.noSensorData = false;
-        $scope.setPageSize = function(pageSize){
-            if(pageSize){
-                $scope.sensPerPage = pageSize;
-                if($localStorage.email && $localStorage.password){
-                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
-                }else{
-                    $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
-                }
+        $scope.setPageSize = function(modelSize){
+            if(modelSize){
+                $scope.sensPerPage = modelSize;
                 sensorModelService.getSensors($scope.currentPage, $scope.sensPerPage, $scope.encodeduser)
                     .then(function(response){
                     vm.sensors = response.data;

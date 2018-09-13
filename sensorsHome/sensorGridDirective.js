@@ -41,14 +41,10 @@ app.directive('gridSensors', function(){
                  })
             }
             $scope.$watch('currentPage', vm.setPage);
-            $scope.setPageSize = function(pageSize){
-              if(pageSize){
-              $scope.sensPerPage = pageSize;
-              if($localStorage.email && $localStorage.password){
-                 encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
-              }else{
-                  encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
-              }
+            $scope.gridSize ='';
+            $scope.setPageSize = function(gridSize){
+              if(gridSize){
+              $scope.sensPerPage = gridSize;
               autentificationService.getUserSensors(encodeduser,  0, $scope.allSensors)
                 .then(function(response){
                   $scope.userSensors = response.data;

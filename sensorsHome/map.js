@@ -46,7 +46,7 @@ app.directive('map', function(){
                         .then(function(response){
                             var sensors = response.data;
                             var pos = [];
-                            var lat, long, name, status, gatewayAddress, clientAddress;
+                            var lat, long, name, status, gatewayAddress, clientAddress, sensTypeId;
                             for(var i=0; i< sensors.length; i++){
                                 
                                 lat = sensors[i].latitude;
@@ -55,7 +55,8 @@ app.directive('map', function(){
                                 status = sensors[i].active;
                                 gatewayAddress = sensors[i].gatewayAddress;
                                 clientAddress = sensors[i].clientAddress;
-                                var loc = [long, lat, name, status, gatewayAddress, clientAddress]
+                                sensTypeId = sensors[i].sensorTypeId;
+                                var loc = [long, lat, name, status, gatewayAddress, clientAddress, sensTypeId]
                                 pos.push(loc)
                             }
                             var overlay = new google.maps.OverlayView;
@@ -84,10 +85,21 @@ app.directive('map', function(){
                                                     for (var i=0; i< readings.length; i++){
                                                         $scope.lastRead = readings[i].value;
                                                     }
-                                                    tooltip.transition()
-                                                        .duration(200)
-                                                        .style("opacity", 0.9)
-                                                    tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead)
+                                                    sensorModelService.getMeasureId(d.value[6])
+                                                        .then(idSuccess)
+                                                    function idSuccess(data){
+                                                        $scope.id= data.measureId;
+                                                        sensorModelService.getUnitOfMeasure($scope.id)
+                                                            .then(unitOfMeasureSuccess)
+                                                        function unitOfMeasureSuccess(data){
+                                                            $scope.unitOfMeasure = data.unitOfMeasure;
+                                                            tooltip.transition()
+                                                                .duration(200)
+                                                                .style("opacity", 0.9)
+                                                            tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +" "+$scope.unitOfMeasure)
+                                                        }
+                                                    }
+                                                    
                                                 }
                                                 
                                                 function lastReadError(){
@@ -104,7 +116,7 @@ app.directive('map', function(){
                                             }
                                         })
                                              
-                                            .on("mouseleave", function mouseout() {
+                                            .on("mouseout", function mouseout() {
                                                 tooltip.transition()
                                                     .duration(200)
                                                     .style("opacity", 0);
