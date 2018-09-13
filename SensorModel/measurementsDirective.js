@@ -37,21 +37,21 @@ app.directive('measurements', function(){
                 //set the number of readings/ page
                 $scope.setPageSize = function(pageSize){
                     if (pageSize){
-                      $scope.size = pageSize;
-                          sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress, $scope.size)
+                        $scope.size = pageSize;
+                        sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress, $scope.size)
                             .then(function(response){
                               $scope.totalReadings = response;
                             })
-                          sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size)
-                              .then(measureSuccess)
-                              function measureSuccess(measurements){
-                                  $scope.measurementSensors = measurements;
-                              }
-                            }
-                      }
-                    $scope.noDataMeasurements = false;
-                    $scope.loadingMeasurements = true;
-                    $scope.dataMeasurements = false;
+                        sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size)
+                            .then(measureSuccess)
+                        function measureSuccess(measurements){
+                            $scope.measurementSensors = measurements;
+                        }
+                    }
+                }
+                $scope.noDataMeasurements = false;
+                $scope.loadingMeasurements = true;
+                $scope.dataMeasurements = false;
                 sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size)
                                     .then(function(measurements){
                                         $scope.measurementSensors = measurements;
@@ -71,34 +71,31 @@ app.directive('measurements', function(){
                 sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress, $scope.size)
                     .then(function(response){
                         $scope.totalReadings = response;
-           })
-        //pagination for readings
-        sensorModelService.getPageFinal($scope.gatewayAddress, $scope.clientAddress, $scope.size)
-        .then(finalPage);
-        function finalPage(data){
-           $scope.numPages = data;
-           console.log('Last Page Readings: ', $scope.numPages)
-       }
-       $scope.setPage = function(){
-            sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.currentPage, $scope.size)
-                .then(measureSuccess)
-            function measureSuccess(measurements){
-                    $scope.measurementSensors = measurements;
+                })
+                //pagination for readings
+                sensorModelService.getPageFinal($scope.gatewayAddress, $scope.clientAddress, $scope.size)
+                    .then(finalPage);
+                function finalPage(data){
+                    $scope.numPages = data;
                 }
-          console.log("Current Page Readings: ", $scope.currentPage)
-       }
-       $scope.$watch('currentPage', $scope.setPage);
-       sensorModelService.getMeasureId()
-          .then(idSuccess)
-        function idSuccess(data){
-          $scope.id= data.measureId;
-
-        sensorModelService.getUnitOfMeasure($scope.id)
-          .then(unitOfMeasureSuccess)
-        function unitOfMeasureSuccess(data){
-          $scope.unitOfMeasure = data.unitOfMeasure;
-        }
-        }
+                $scope.setPage = function(){
+                    sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.currentPage, $scope.size)
+                        .then(measureSuccess)
+                    function measureSuccess(measurements){
+                        $scope.measurementSensors = measurements;
+                    }
+                }
+                $scope.$watch('currentPage', $scope.setPage);
+                sensorModelService.getMeasureId()
+                    .then(idSuccess)
+                function idSuccess(data){
+                    $scope.id= data.measureId;
+                    sensorModelService.getUnitOfMeasure($scope.id)
+                        .then(unitOfMeasureSuccess)
+                    function unitOfMeasureSuccess(data){
+                        $scope.unitOfMeasure = data.unitOfMeasure;
+                    }
+                }
             };
         }
     }
