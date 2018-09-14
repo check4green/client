@@ -8,14 +8,15 @@
     position: absolute
 } 
 .stations svg{
-    width: 60px;
-    height: 20px;
+    width: 100px;
+    height: auto;
+    padding: 3px;
     padding-right: 100px;
     font: 7px sans-serif;
 }
 .stations circle{
     stroke: black;
-    stroke-width: 1px;
+    stroke-width: 0.5px;
     fill: #4e9a06;
 }
 .tooltip {
