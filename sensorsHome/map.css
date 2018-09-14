@@ -9,8 +9,7 @@
 } 
 .stations svg{
     width: 100px;
-    height: auto;
-    padding: 3px;
+    height: 20px;
     padding-right: 100px;
     font: 7px sans-serif;
 }

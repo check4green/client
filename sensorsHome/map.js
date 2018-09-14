@@ -115,13 +115,21 @@ app.directive('map', function(){
                                                     .style("top", (d3.event.pageY -28)+ "px");
                                             }
                                         })
-                                             
-                                            .on("mouseout", function mouseout() {
-                                                tooltip.transition()
-                                                    .duration(200)
-                                                    .style("opacity", 0);
-                                            });
-                                        
+                                        .on("mouseout", function(){
+                                            tooltip.transition()
+                                                .duration(200)
+                                                .style("opacity", 0);
+                                        });
+                                    google.maps.event.addListener(map,"mouseout", function(){
+                                        tooltip.transition()
+                                                .duration(200)
+                                                .style("opacity", 0);
+                                    }) 
+                                    google.maps.event.addListener(map, "dragend", function(){
+                                        tooltip.transition()
+                                                .duration(200)
+                                                .style("opacity", 0);
+                                    })   
                                     marker.append("circle")
                                         .attr("r",11)
                                         .attr("cx", padding)
