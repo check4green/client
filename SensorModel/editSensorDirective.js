@@ -26,31 +26,48 @@ app.directive('editSensor', function(){
             }else{
                 $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }
-            $scope.sensorEdit = function(editName, editUploadInterval, editBatchSize, gatewayAddress, clientAddress, sensorId){
-                var sensorPut = {'name':editName, 'uploadInterval':editUploadInterval, 'batchSize':editBatchSize}
-                sensorModelService.updateSensors(sensorPut, gatewayAddress, clientAddress, $scope.encodedData)
-                .then(function(){
-                    $scope.sensorEditError = false;
-                    $scope.sensorEditSuccess = true;
-                    $scope.sensor.uploadInterval=editUploadInterval;
-                    $scope.sensor.batchSize=editBatchSize;
-                    $scope.sensor.name = editName;
-                })
-                .catch(function(response){
-                    $scope.message = response.data.message;
-                    $scope.sensorEditError = true;
-                    $scope.sensorEditSuccess = false;
-                });
-                // $scope.editDisplay = false;
-                // $scope.editButton = true;
-                // $scope.detailsDisplay = true;
-                // $scope.deleteButton = true;
-                // $scope.measurementsButton = true;
-                // $scope.chartButton = true;
-                // $scope.editUploadInterval = '';
-                // $scope.editBatchSize = '';
-                // $scope.editName = '';
-            };
+            $scope.getSensor = function(gatewayAddress, clientAddress){
+                sensorModelService.getSensorsByAddress(gatewayAddress, clientAddress, $scope.encodedData)
+                        .then(function(sensor){
+                                var name = sensor.name;
+                                var uploadInterval = sensor.uploadInterval;
+                                var batchsize = sensor.batchSize;
+                                $scope.editSensor = {name, uploadInterval, batchsize};
+                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, editBatchSize, gatewayAddress, clientAddress, sensorId){
+                                if (editName){
+                                    $scope.editSensor.name = editName
+                                } 
+                                if(editHours || editHours || editMinutes){
+                                    if (editDays == null){
+                                        editDays = 0;
+                                    }
+                                    if (editHours == null){
+                                        editHours = 0;
+                                    }
+                                    if(editMinutes == null){
+                                        editMinutes = 0;
+                                    }
+                                    $scope.editSensor.uploadInterval = (editDays* 1440) + (editHours* 60) + editMinutes;
+                                } 
+                                if(editBatchSize){
+                                    $scope.editSensor.batchsize = editBatchSize;
+                                } 
+                                sensorModelService.updateSensors($scope.editSensor, gatewayAddress, clientAddress, $scope.encodedData)
+                                    .then(function(){
+                                        $scope.sensorEditError = false;
+                                        $scope.sensorEditSuccess = true;
+                                        $scope.sensor.uploadInterval=$scope.editSensor.uploadInterval;
+                                        $scope.sensor.batchSize= $scope.editSensor.batchsize;
+                                        $scope.sensor.name = $scope.editSensor.name;
+                                    })
+                                    .catch(function(response){
+                                        $scope.message = response.data.message;
+                                        $scope.sensorEditError = true;
+                                        $scope.sensorEditSuccess = false;
+                                    });
+                            };
+                        })
+            }
             $scope.cancelEditSensor = function(){
                 $scope.editButton = true;
                 $scope.editDisplay = false;
@@ -60,9 +77,6 @@ app.directive('editSensor', function(){
                 $scope.chartButton = true;
                 $scope.sensorEditError = false;
                 $scope.sensorEditSuccess = false;
-                // $scope.editUploadInterval = '';
-                // $scope.editBatchSize = '';
-                // $scope.editName = '';
             };
         }
     }

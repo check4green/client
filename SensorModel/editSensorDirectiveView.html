@@ -24,19 +24,20 @@
             </span>
         </div>
 
-        <div class="form-group" ng-class="{'has-error': editForm.inputUploadInt.$invalid && editForm.inputUploadInt.$dirty}">
+        <div class="form-group" ng-class="{'has-error': (registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
             <label>Upload Interval:</label>
 
             <div class="container-name">
-                <input name ="inputUploadInt" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editUploadInterval" required>
-                <div class="container-info 	fa fa-info-circle">
-                    <p class="info-hover">You can change the time interval between readings.</p>
-                </div>
-            </div>
-
+                        <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editDays" required />
+                        <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editHours" required />
+                        <input id="inputMinutes" name="inputMinutes" type="number" min="0" placeholder="Minutes" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editMinutes" required />
+                        <div class="container-info 	fa fa-info-circle">
+                            <p class="info-hover">Enter the time interval between readings.</p>
+                        </div>
+                    </div>
+                    
             <span class="help-block has-error">
-                <span ng-show="editForm.inputUploadInt.$error.required">Upload interval is required</span>
-                <span ng-show="editForm.inputUploadInt.$error.number">The Upload Interval must be a number</span>
+                <span ng-show="registerForm.inputDays.$error.required && registerForm.inputHours.$error.required && registerForm.inputMinutes.$error.required">Upload Interval is required</span>
             </span>
         </div>
 
@@ -55,7 +56,7 @@
             </span>
         </div>
             
-        <button type="button" class="btn btn-success" ng-click="sensorEdit(editName, editUploadInterval, editBatchSize, sensor.gatewayAddress, sensor.clientAddress, sensor.id)">Edit</button>
+        <button type="button" class="btn btn-success" ng-click="sensorEdit(editName, editDays, editHours, editMinutes, editBatchSize, sensor.gatewayAddress, sensor.clientAddress, sensor.id)">Edit</button>
         <button type="button" class="btn btn" ng-click="cancelEditSensor()">Cancel</button>
 
     </form>
