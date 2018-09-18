@@ -62,7 +62,7 @@
                             <div>
                                 <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
                                 <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
-                                <button type="button" class="btn btn-success" ng-click="startEdit()" ng-show="editButton">Edit</button>
+                                <button type="button" class="btn btn-success" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-show="editButton">Edit</button>
                                 <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
                             </div>
                             <edit-sensor></edit-sensor>
