@@ -58,6 +58,22 @@
                 }
             }
         })
+            .state('logIn.accountEmail',{
+                url:'/accountEmail',
+                views: {
+                    'accountEmail@':{
+                        template: '<account-email></account-email>'
+                    }
+                }
+            })
+            .state('logIn.accountEmail.activateAccount',{
+                url: "/activateAccount",
+                views: {
+                    'activateAccount@':{
+                        template: "<activate-account></activate-account>"
+                    }
+                }
+            })
             .state('sensorsHome',{
              url: "/sensorsHome",
              views: {

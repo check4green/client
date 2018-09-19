@@ -1,0 +1,24 @@
+<div class="resetPassword-container-big">
+    <span class="fa fa-close span-x" ui-sref="home"></span>
+    <span class="fa fa-arrow-left span-back" ui-sref="logIn.accountEmail"></span>
+
+    <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="resetPassword-image">
+
+    <div class="resetPassword-container container">
+        <h2>Activate account</h2>
+        <div ng-show="vm.showMessage" style="color:red;"><p>{{vm.message}}</p></div>
+        <form name="form" novalidate>
+            <div class="form-group" ng-class="{'has-error': form.code.$invalid && form.code.$dirty}">
+                <div class="resetPassword-input-container">
+                    <i class="fa fa-key icon"></i>
+                    <input class="resetPassword-input-filed" type="text" placeholder="Enter code" ng-model="activationCode" class="form-control" ng-pattern="/^[0-9]*$/" name="code" required>
+                </div>
+                <div class="help-block has-error">
+                    <div ng-show="form.code.$error.required && form.code.$dirty">This field is required</div>
+                    <div ng-show="!form.code.$error.requires && form.code.$error.pattern">The code must contain only numbers</div>
+                </div>
+            </div>
+        </form>
+        <button type="button" ng-click="activate(activationCode)">Register Account</button>
+    </div>
+</div>

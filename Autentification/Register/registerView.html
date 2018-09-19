@@ -37,17 +37,6 @@
             <div ng-show="!regForm.lname.$error.required && !regForm.lname.$error.pattern && !regForm.lname.$valid">The name format is invalid!</div>
           </div>
       </div>
-        <h>Email address<h style="color: #d9534f;">*</h></h>
-        <div class="form-group" ng-class="{'has-error': regForm.regEmail.$invalid && regForm.regEmail.$dirty}">
-        <div class="register-input-container">
-            <i class="fa fa-envelope icon"></i>
-            <input class="register-input-filed" type="email" placeholder="Email address" ng-model="registerEmail" ng-pattern="/^[A-Za-z0-9._@]*$/" class="form-control" name="regEmail" required>
-        </div>
-        <div class="help-block has-error">
-          <div ng-show="regForm.regEmail.$error.required && regForm.regEmail.$dirty">This field is required!</div>
-          <div ng-show="!regForm.regEmail.$error.required && regForm.regEmail.$error.pattern || regForm.regEmail.$error.email">This email is invalid!</div>
-        </div>
-      </div>
         <h>Password<h style="color: #d9534f;">*</h></h>
         <div class="form-group" ng-class="{'has-error': regForm.pass.$invalid && regForm.pass.$dirty}">
         <div class="register-input-container">
@@ -105,7 +94,7 @@
         </div>
     </div>
     </form>
-        <button type="button" ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
+        <button type="button" ng-click="register(registerFirstName, registerLastName, registerPassword,registerPassword2, registerCompany, registerCountry, registerPhone)">Create account</button>
        
         <p>Signing up signifies that you have read and agree to the <a>Terms of Service</a> and our <a>Privacy Policy</a>.</p>
 

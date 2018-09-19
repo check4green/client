@@ -84,6 +84,7 @@ app.directive('map', function(){
                                                 function lastReadSuccess(readings){
                                                     for (var i=0; i< readings.length; i++){
                                                         $scope.lastRead = readings[i].value;
+                                                        $scope.lastDate = readings[i].readingDate
                                                     }
                                                     sensorModelService.getMeasureId(d.value[6])
                                                         .then(idSuccess)
@@ -96,7 +97,8 @@ app.directive('map', function(){
                                                             tooltip.transition()
                                                                 .duration(200)
                                                                 .style("opacity", 0.9)
-                                                            tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +" "+$scope.unitOfMeasure)
+                                                            tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +" "+$scope.unitOfMeasure +
+                                                                            "<br>" +"Last date: " +$scope.lastDate)
                                                         }
                                                     }
                                                     
@@ -104,10 +106,11 @@ app.directive('map', function(){
                                                 
                                                 function lastReadError(){
                                                     $scope.lastRead = "No data";
+                                                    $scope.lastDate ="-"
                                                     tooltip.transition()
                                                         .duration(200)
                                                         .style("opacity", 0.9)
-                                                    tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead)
+                                                    tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +"<br>" + "Last date: "+ $scope.lastDate)
                                                 }
                                                 
                                                 tooltip

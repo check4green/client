@@ -8,7 +8,9 @@ angular.module("sensorApp")
             getCode: getCode,
             resetPassword: resetPassword,
             getUserSensors: getUserSensors,
-            getAllSensors : getAllSensors
+            getAllSensors : getAllSensors,
+            activateAccount: activateAccount,
+            getActivationCode: getActivationCode,
           }
           function logIn(encodedData){
             return $http({
@@ -27,6 +29,12 @@ angular.module("sensorApp")
           function register(user){
             return $http.post("https://swiss-iot.azurewebsites.net/api/users", user)
           }
+          function activateAccount(code){
+            return $http.put("http://swiss-iot.azurewebsites.net/api/users/validation", code)
+          }
+          function getActivationCode(email){
+            return $http.put("http://swiss-iot.azurewebsites.net/api/users/getValidationCode", email)
+          }
           function settings(encodedData, newUser){
             return $http({
               method: 'PUT',
@@ -36,7 +44,7 @@ angular.module("sensorApp")
             })
           }
           function getCode(email){
-              return $http.put('https://swiss-iot.azurewebsites.net/api/users/getCode', email)
+              return $http.put('https://swiss-iot.azurewebsites.net/api/users/getResetCode', email)
           }
           function resetPassword(user){
               return $http.put('https://swiss-iot.azurewebsites.net/api/users/resetPassword', user)

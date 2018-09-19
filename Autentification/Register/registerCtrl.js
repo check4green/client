@@ -129,7 +129,7 @@
           },
         ]
         vm.showRegisterError = false;
-        $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
+        $scope.register = function(registerFirstName, registerLastName, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
           if (!registerCountry){
             $scope.user ={
               firstName:registerFirstName ,
@@ -146,7 +146,7 @@
               $scope.user = {
                   firstName:registerFirstName ,
                   lastName:registerLastName ,
-                  email:registerEmail ,
+                  email:$sessionStorage.accountEmail ,
                   password:registerPassword ,
                   companyName:registerCompany ,
                   country:registerCountry.name ,
