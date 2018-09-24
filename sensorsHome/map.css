@@ -11,6 +11,7 @@
     width: 100px;
     height: 20px;
     padding-right: 100px;
+    padding: 3px;
     font: 7px sans-serif;
 }
 .stations circle{
