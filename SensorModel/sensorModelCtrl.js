@@ -9,9 +9,12 @@
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
                 val.expanded=false;
+
             })
             sensor.expanded=true;
         };
+        $scope.sensorData = false;
+        $scope.noData = false;
         $scope.home = false;
         $sessionStorage.home = $scope.home;
         $scope.searchSensor ='';
@@ -111,6 +114,7 @@
                       $scope.loadingDetails = false;
                       $scope.detailsData = true;
                     };
+            $scope.lastRead = null;
         }
       
         sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)

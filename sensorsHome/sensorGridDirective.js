@@ -15,7 +15,6 @@ app.directive('gridSensors', function(){
             }else{
                 $scope.home = true;
             }
-            $scope.sensorHomeData = true;
             $scope.expandSelected = function(sensor){
                 $scope.userSensors.forEach(function(val){
                     val.expanded=false;
