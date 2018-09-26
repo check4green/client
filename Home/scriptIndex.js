@@ -79,14 +79,24 @@ function toggle_visibility(id){
 
     var video1 = document.getElementById("video-1"); // Video var
     var video2 = document.getElementById("video-2"); // Video var
-    var video3 = document.getElementById("video-3"); // Video var
+//  var video3 = document.getElementById("video-3"); // Video var
+    var video4 = document.getElementById("video-4"); // Video var
+    var video5 = document.getElementById("video-5"); // Video var
+    var video6 = document.getElementById("video-6"); // Video var
+    var video7 = document.getElementById("video-7"); // Video var
+    var video8 = document.getElementById("video-8"); // Video var
     var e = document.getElementById(id);
 
     if(e.style.display == 'initial')
        e.style.display = 'none',
                           video1.pause(), 
                           video2.pause(), // Video pause
-                          video3.pause(); // Video pause
+//                        video3.pause(), // Video pause
+                          video4.pause(), // Video pause
+                          video5.pause(), // Video pause
+                          video6.pause(), // Video pause
+                          video7.pause(), // Video pause
+                          video8.pause(); // Video pause
        
        else
        e.style.display = 'initial';
