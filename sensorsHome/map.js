@@ -15,7 +15,7 @@ app.directive('map', function(){
             google.maps.event.addListener(map, "click", function(event){
               if($sessionStorage.register == true){  
                   placeMarker(map, event.latLng)
-                }
+                } 
             })
             function placeMarker(map, location){
                 if(!marker || !marker.setPosition){
@@ -25,12 +25,10 @@ app.directive('map', function(){
                     })
                     $sessionStorage.lat = marker.getPosition().lat();
                     $sessionStorage.lng = marker.getPosition().lng();
-                    console.log("["+$sessionStorage.lng+ "," + $sessionStorage.lat+ "]");
                 } else{
                     marker.setPosition(location);
                     $sessionStorage.lat = marker.getPosition().lat();
                     $sessionStorage.lng = marker.getPosition().lng();
-                    console.log("["+$sessionStorage.lng+ "," + $sessionStorage.lat+ "]");
                 }
             }
             $sessionStorage.register = false;
@@ -66,6 +64,7 @@ app.directive('map', function(){
                                 overlay.draw = function(){
                                     var projection = this.getProjection(),
                                     padding = 10;
+                                    $scope.click = true;
                                     var tooltip  = d3.select("body")
                                                     .append("div")
                                                     .attr("class", "tooltip")
@@ -76,8 +75,9 @@ app.directive('map', function(){
                                         .enter().append("svg")
                                         .each(transform)
                                         .attr("class", "marker")
-                                        .on("mouseover", function (d) {
-                                            if(!$sessionStorage.register){
+                                        .on("click", function (d) {
+                                            
+                                            if(!$sessionStorage.register && $scope.click==true){
                                             sensorModelService.getMeasurements(d.value[4], d.value[5], 1, 1)
                                                 .then(lastReadSuccess)
                                                 .catch(lastReadError)
@@ -95,7 +95,7 @@ app.directive('map', function(){
                                                         function unitOfMeasureSuccess(data){
                                                             $scope.unitOfMeasure = data.unitOfMeasure;
                                                             tooltip.transition()
-                                                                .duration(200)
+                                                                .duration(0)
                                                                 .style("opacity", 0.9)
                                                             tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +" "+$scope.unitOfMeasure +
                                                                             "<br>" +"Last date: " +$scope.lastDate)
@@ -108,7 +108,7 @@ app.directive('map', function(){
                                                     $scope.lastRead = "No data";
                                                     $scope.lastDate ="-"
                                                     tooltip.transition()
-                                                        .duration(200)
+                                                        .duration(0)
                                                         .style("opacity", 0.9)
                                                     tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +"<br>" + "Last date: "+ $scope.lastDate)
                                                 }
@@ -116,14 +116,22 @@ app.directive('map', function(){
                                                 tooltip
                                                     .style("left", (d3.event.pageX +5)+ "px")
                                                     .style("top", (d3.event.pageY -28)+ "px");
+                                            } else{
+                                                tooltip.transition()
+                                                    .duration(200)
+                                                    .style("opacity", 0);
                                             }
+                                            $scope.click = !$scope.click;
                                         })
-                                        .on("mouseout", function(){
+                                        .on('mouseout', function(){
                                             tooltip.transition()
                                                 .duration(200)
                                                 .style("opacity", 0);
-                                        });
+                                            $scope.click = true;
+                                            
+                                        })
                                     google.maps.event.addListener(map,"mouseout", function(){
+                                        $scope.click = true;
                                         tooltip.transition()
                                                 .duration(200)
                                                 .style("opacity", 0);
@@ -132,7 +140,7 @@ app.directive('map', function(){
                                         tooltip.transition()
                                                 .duration(200)
                                                 .style("opacity", 0);
-                                    })   
+                                    })  
                                     marker.append("circle")
                                         .attr("r",11)
                                         .attr("cx", padding)
