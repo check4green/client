@@ -79,7 +79,7 @@
              views: {
                 'sensorsHome@':{
                     template: "<sensors-home></sensors-home>",
-                    controller: function($scope, SENSOR_TYPE){
+                    controller: function($scope, SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.TITLE = "Home";
                     }
                 }
@@ -149,7 +149,19 @@
                 }
             }
             })
+            .state('sensorsHome.editLocation', {
+                url: "/editLocation",
+                views: {
+                    'editLocation@':{
+                        template: "<edit-location></edit-location>",
+                        controller: function($scope, $sessionStorage, $window){
+                            $sessionStorage.editLoc = true;
+                            
+                        }
+                    }
+                }
+            })
 
-            }
-        ]);
+        }
+    ]);
 }());

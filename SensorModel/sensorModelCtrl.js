@@ -9,6 +9,7 @@
         vm.expandSelected = function(sensor){
             vm.sensors.forEach(function(val){
                 val.expanded=false;
+                $scope.editLocation = true;
 
             })
             sensor.expanded=true;
@@ -36,8 +37,7 @@
         }
         
         vm.setPage = function(){
-          $scope.loading=true;
-          sensorModelService.getSensors(1, $scope.allSens, $scope.encodeduser)
+          sensorModelService.getSensors(1, $scope.allSensors, $scope.encodeduser)
              .then(function(response){
                vm.sensors = response.data;
                $scope.loading=false;
@@ -63,7 +63,7 @@
                 $scope.allSensors = filterSensors.innerHTML;
             }
         }, true)
-        sensorModelService.getSensors(0, $scope.allSens, $scope.encodeduser)
+        sensorModelService.getSensors(0, $scope.allSensors, $scope.encodeduser)
          .then(function(response) {
             vm.sensors = response.data;
             $scope.loading = false;

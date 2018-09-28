@@ -13,6 +13,7 @@ app.directive('measurements', function(){
                 $scope.deleteButton = false;
                 $scope.editButton = false;
                 $scope.chartButton = false;
+                $scope.editLocation = false;
                 if($scope.measurementsDisplay == false){
                     $scope.measurementsDisplay = true;
                     $scope.measurementsButton = false;
@@ -20,6 +21,7 @@ app.directive('measurements', function(){
             };
             $scope.cancelMeasurements = function(){
                 $scope.measurementsButton = true;
+                $scope.editLocation = true;
                 $scope.measurementsDisplay = false;
                 $scope.detailsDisplay = true;
                 $scope.deleteButton = true;

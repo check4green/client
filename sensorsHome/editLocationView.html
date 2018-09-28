@@ -1,0 +1,10 @@
+<div class="container-sensorHome">
+    <div style="height:50px;"></div>
+    <span id="alert-error" ng-show="errorMessage"><p>{{message}}</p></span>
+    <span id="alert-succesful" ng-show="showMessage"><p>Location edited successful!</p></span>
+    <label>Edit the location of your sensor: </label>
+    <map></map>
+    <div style="height:20px;"></div>
+    <button type="button" class="btn btn-success" ng-click="editLocation()">Edit</button>
+    <button type="button" class="btn btn" ng-click="goBack()">Cancel</button>
+</div>

@@ -12,13 +12,14 @@
           var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
       $scope.showSensGrid = function(){
-          $scope.home = true;
-          $sessionStorage.home = $scope.home;
-          $sessionStorage.register = false;
+        $scope.home = true;
+        $sessionStorage.home = $scope.home;
+        $sessionStorage.register = false;
+        $sessionStorage.editLoc = false;
       }
       $scope.hideSensGrid = function(){
-          $scope.home = false;
-          $sessionStorage.home = $scope.home;
+        $scope.home = false;
+        $sessionStorage.home = $scope.home;
       }
       $scope.hideRegisterDist = function(){
         if($sessionStorage.register == true){
@@ -50,7 +51,7 @@
             vm.firstName = $scope.user.firstName;
             vm.lastName =  $scope.user.lastName;
             vm.username = vm.firstName + ' '+ vm.lastName;
-          })
+        })
       $scope.logOut = function(){
         if($localStorage.email && $localStorage.password){
           $localStorage.email =0;

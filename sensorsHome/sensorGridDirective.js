@@ -3,16 +3,16 @@ app.directive('gridSensors', function(){
     return {
         restrict: 'E',
         templateUrl: 'sensorsHome/sensorGridView.html',
-        controller: function ($scope, $sessionStorage, $localStorage, autentificationService, sensorModelService, $filter){
+        controller: function ($scope, $sessionStorage, $localStorage, autentificationService, sensorModelService, $timeout, $filter, $window){
             var vm = this;
             if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
               var encodeduser = btoa($localStorage.email+ ':'+ $localStorage.password)
             }else{
               var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
             }
-            if($sessionStorage.home == false){
+            if($sessionStorage.home == false ){
               $scope.home = false;
-            }else{
+            }else {
                 $scope.home = true;
             }
             $scope.expandSelected = function(sensor){
@@ -27,24 +27,25 @@ app.directive('gridSensors', function(){
             autentificationService.getAllSensors(encodeduser)
               .then(function(data){
                 $scope.allSensors = data;
+                $scope.totalSensors = data;
               })
             $scope.currentPage = 1;
             $scope.sensPerPage = 50;
             $scope.loading=true;
             vm.setPage = function(){
-              autentificationService.getUserSensors(encodeduser,  0, $scope.allSensors)
-                 .then(function(response){
-                  $scope.userSensors = response.data;
-                  $scope.loading=false;
-                  $scope.sensorHomeData = true;
-                 })
+              autentificationService.getUserSensors(encodeduser,  1, $scope.allSensors)
+                .then(function(response){
+                    $scope.userSensors = response.data;
+                    $scope.loading=false;
+                    $scope.sensorHomeData = true;
+                })
             }
             $scope.$watch('currentPage', vm.setPage);
             $scope.gridSize ='';
             $scope.setPageSize = function(gridSize){
               if(gridSize){
               $scope.sensPerPage = gridSize;
-              autentificationService.getUserSensors(encodeduser,  0, $scope.allSensors)
+              autentificationService.getUserSensors(encodeduser,  $scope.currentPage, $scope.sensPerPage)
                 .then(function(response){
                   $scope.userSensors = response.data;
                   $scope.loading=false;
@@ -52,7 +53,7 @@ app.directive('gridSensors', function(){
                 })
               }
             }
-            autentificationService.getUserSensors(encodeduser,  0, $scope.allSensors)
+            autentificationService.getUserSensors(encodeduser,  1, $scope.sensPerPage)
               .then(function(response){
                 $scope.userSensors = response.data;
                 $scope.loading=false;
@@ -67,7 +68,7 @@ app.directive('gridSensors', function(){
             $scope.$watch('filterSensors', function(newValue, oldValue){
                 if(oldValue != newValue){
                     var filterSensors = document.getElementById('filteredSens');
-                    $scope.allSens = filterSensors.innerHTML;
+                    $scope.allSensors = filterSensors.innerHTML;
                 }
             }, true)
               $scope.measureUnit = function(sensTypeID){

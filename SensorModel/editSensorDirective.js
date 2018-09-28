@@ -13,6 +13,7 @@ app.directive('editSensor', function(){
                 $scope.editButton = false;
                 $scope.detailsDisplay = false;
                 $scope.deleteButton = false;
+                $scope.editLocation = false;
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
                 if($scope.editDisplay == false){
@@ -74,6 +75,7 @@ app.directive('editSensor', function(){
                 $scope.detailsDisplay = true;
                 $scope.deleteButton = true;
                 $scope.measurementsButton = true;
+                $scope.editLocation = true;
                 $scope.chartButton = true;
                 $scope.sensorEditError = false;
                 $scope.sensorEditSuccess = false;

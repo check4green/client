@@ -11,6 +11,7 @@ app.directive('deleteSensor', function(){
                 $scope.deleteButton = false;
                 $scope.detailsDisplay = false;
                 $scope.editButton = false;
+                $scope.editLocation = false;
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
             }
@@ -29,6 +30,7 @@ app.directive('deleteSensor', function(){
                 $scope.deleteDisplay = false;
                 $scope.deleteButton = true;
                 $scope.detailsDisplay = true;
+                $scope.editLocation = true;
                 $scope.editButton = true;
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;

@@ -15,6 +15,7 @@
                     $scope.detailsDisplay = false;
                     $scope.measurementsButton = false;
                     $scope.deleteButton = false;
+                    $scope.editLocation = false;
                     $scope.editButton = false;
                     $scope.noDataChart = false;
                     $scope.loadingChart = true;
@@ -274,6 +275,7 @@
                 $scope.detailsDisplay = true;
                 $scope.deleteButton = true;
                 $scope.measurementsButton = true;
+                $scope.editLocation = true;
             }
         }
     }
