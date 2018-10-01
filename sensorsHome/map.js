@@ -4,49 +4,6 @@ app.directive('map', function(){
         restrict: 'E',
         templateUrl: 'sensorsHome/map.html',
         controller: function(sensorModelService, d3, $scope, $sessionStorage, $localStorage, $window, $timeout, autentificationService){
-            $scope.goBack = function(){
-                $window.history.back();
-                $sessionStorage.home = true;
-                $sessionStorage.editLoc = false;
-                $timeout(function(){
-                    $window.location.reload();
-                }, 100);
-            } 
-            if ($localStorage.email && $localStorage.password){
-                $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
-            }else{
-                $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
-            }
-            $scope.startEditLocation = function(gatewayAddress, clientAddress, name, uploadInterval, batchSize){
-                $sessionStorage.home = false;
-                $sessionStorage.gatewayAddress = gatewayAddress;
-                $sessionStorage.clientAddress = clientAddress;
-                $sessionStorage.name = name;
-                $sessionStorage.uplInt = uploadInterval;
-                $sessionStorage.batchSize = batchSize;
-            }
-            $scope.editLocation = function(){
-                var name = $sessionStorage.name;
-                var uploadInterval = $sessionStorage.uplInt;
-                var batchSize = $sessionStorage.batchSize;
-                var latitude = $sessionStorage.lat;
-                var longitude = $sessionStorage.lng;
-                $scope.editLoc = {name, uploadInterval, batchSize, latitude, longitude}
-                sensorModelService.updateSensors($scope.editLoc, $sessionStorage.gatewayAddress, $sessionStorage.clientAddress, $scope.encodedData)
-                    .then(function(){
-                        $sessionStorage.lng = longitude;
-                        $sessionStorage.lat = latitude;
-                        $scope.showMessage = true;
-                        
-                    })
-                    .catch(function(response){
-                        $scope.errorMessage = true;
-                        $scope.message = response.data.message;
-                        $scope.sensorEditError = true;
-                        $scope.sensorEditSuccess = false;
-                    });
-            
-            }
             var map = new google.maps.Map(d3.selectAll('#map').node(), {
                 zoom: 4,
                 center: new google.maps.LatLng(51.508742, -0.120850),
@@ -54,6 +11,12 @@ app.directive('map', function(){
                 streetViewControl: false
             });
             var marker;
+            if($sessionStorage.editLoc == true){
+                marker= new google.maps.Marker({
+                    position: $sessionStorage.location,
+                    map:map
+                })
+            }
             google.maps.event.addListener(map, "click", function(event){
               if($sessionStorage.register == true || $sessionStorage.editLoc == true){  
                   placeMarker(map, event.latLng)
@@ -73,6 +36,14 @@ app.directive('map', function(){
                     $sessionStorage.lng = marker.getPosition().lng();
                 }
             }
+            $sessionStorage.lat = null;
+            $sessionStorage.lng = null;
+            if(($sessionStorage.register == true) || ($sessionStorage.editLoc == true)){
+                $scope.legend = false;
+            } else{
+                $scope.legend = true;
+            }
+            
             $sessionStorage.register = false;
             if($localStorage.email && $localStorage.password){
                 $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);

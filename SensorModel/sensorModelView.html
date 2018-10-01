@@ -63,7 +63,7 @@
                                 <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
                                 <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
                                 <button type="button" class="btn btn-success" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-show="editButton">Edit</button>
-                                <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize)" ng-show="editLocation">Edit location</button>
+                                <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude)" ng-show="editLocation">Location</button>
                                 <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
                             </div> 
                             <edit-sensor></edit-sensor>
@@ -76,7 +76,7 @@
             </tbody>
         </table>
         <div ng-show="!filterSensors.length" id="alert-error"><p>No result</p></div> 
-        <div id="filteredSens" ng-show="filtSens">{{filterSensors.length}}</div> 
+        <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
         <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div> 
 
     </div>

@@ -30,6 +30,7 @@
             <thead>
                 <tr>
                     <td>No.</td>
+                    <td>Sensor Color</td>
                     <td>Name</td>
                     <td>Sensor ID</td>
                     <td>Status</td>
@@ -42,6 +43,12 @@
 
                 <tr ng-repeat-start="sensor in filterSensors =(userSensors | filter: {name: filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
                     <td>{{$index+1}}</td>
+                    <td>
+                        <span class="fa fa-circle" ng-if="sensor.sensorTypeId == 31" style="color:red;"></span>
+                        <span class="fa fa-circle" ng-if="sensor.sensorTypeId == 33" style="color:blue;"></span>
+                        <span class="fa fa-circle" ng-if="sensor.sensorTypeId == 34" style="color:#4e9a06;"></span>
+                        <span class="fa fa-circle" ng-if="sensor.sensorTypeId == 35" style="color:black;"></span>
+                    </td>
                     <td>{{sensor.name}}</td>
                     <td>{{sensor.id}}</td>
                     <td>
@@ -63,7 +70,7 @@
                                 <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
                                 <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
                                 <button type="button" class="btn btn-success" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-show="editButton">Edit</button>
-                                <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize); hideSensGrid()" ng-show="editLocation">Edit location</button>
+                                <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude); hideSensGrid()" ng-show="editLocation">Location</button>
                                 <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
                             </div>
                             <edit-sensor></edit-sensor>
@@ -76,7 +83,7 @@
                 </tr>
             </tbody>
         </table>
-        <div ng-show="!filterSensors.length">No result</div> 
+        <div ng-show="!filterSensors.length" id="alert-error">No result</div> 
         <div id="filteredSens" ng-show="filtSens">{{filterSensors.length}}</div> 
         <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
         

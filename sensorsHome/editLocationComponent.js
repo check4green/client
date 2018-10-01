@@ -4,7 +4,7 @@
     
     app.component('editLocation', {
         templateUrl: 'sensorsHome/editLocationView.html',
-        controller: 'sensorModelCtrl',
+        controller: 'editLocationCtrl',
         controllerAs: 'vm'
     });
 }());
