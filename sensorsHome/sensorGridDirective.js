@@ -29,7 +29,6 @@ app.directive('gridSensors', function(){
                 .then(function(data){
                     $scope.allSensors = data;
                     $scope.totalSensors = data;
-              
                     $scope.currentPage = 1;
                     $scope.sensPerPage = 50;
                     $scope.loading=true;
@@ -54,7 +53,7 @@ app.directive('gridSensors', function(){
                                 })
                         }
                     }
-                    autentificationService.getUserSensors(encodeduser,  1, $scope.allSensors)
+                    autentificationService.getUserSensors(encodeduser,  $scope.currentPage, $scope.allSensors)
                         .then(function(response){
                             $scope.userSensors = response.data;
                             $scope.loading=false;
@@ -66,12 +65,23 @@ app.directive('gridSensors', function(){
                             $scope.sensorHomeData = false;
                             $scope.message = 'No data'
                         })
-                    $scope.$watch('filterSensors.length', function(newValue, oldValue){
-                        if(oldValue != newValue){
-                            var filterSensors = document.getElementById('filteredSens');
-                            $scope.allSensors = filterSensors.innerHTML;
-                        }
-                    }, true)
+                    $scope.search = function(){
+                        $scope.$watch('filterSensors.length', function(newValue, oldValue){
+                            if(newValue == data){
+                                $scope.allSensors = data;
+                                $scope.sensPerPage = 50;
+                                return;
+                                
+                            }
+                            if(oldValue == newValue){
+                                $scope.currentPage = 1; 
+                                var filterSensors = document.getElementById('filteredSens');
+                                $scope.allSensors = filterSensors.innerHTML;
+                                $scope.sensPerPage = filterSensors.innerHTML;
+                            }
+                            
+                        }, true);
+                    }
                 })
             $scope.measureUnit = function(sensTypeID){
                 sensorModelService.getMeasureId(sensTypeID)

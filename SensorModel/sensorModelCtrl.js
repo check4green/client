@@ -29,6 +29,7 @@
             .then(allSensors);
         function allSensors(data){
             $scope.allSensors = data;
+            $scope.currentPage = 1;
             vm.setPage = function(){
                 sensorModelService.getSensors(1, $scope.allSensors, $scope.encodeduser)
                     .then(function(response){
@@ -46,23 +47,32 @@
                     sensorModelService.getSensors($scope.currentPage, $scope.allSensors, $scope.encodeduser)
                         .then(function(response){
                             vm.sensors = response.data;
-                            $scope.length = vm.sensors.length;
                         })
                 }
             }
-            $scope.$watch('filterSensors.length', function(newValue, oldValue){
-                if(oldValue != newValue){
-                    var filterSensors = document.getElementById('filteredSens');
-                    $scope.allSensors = filterSensors.innerHTML;
-                }
-            }, true);
-            sensorModelService.getSensors(1, $scope.allSensors, $scope.encodeduser)
-                .then(function(response) {
+            $scope.search = function(){
+                $scope.$watch('filterSensors.length', function(newValue, oldValue){
+                    if(newValue == data){
+                        $scope.allSensors = data;
+                        $scope.sensPerPage = 50;
+                        return;
+                        
+                    }
+                    if(oldValue == newValue){
+                        $scope.currentPage = 1; 
+                        var filterSensors = document.getElementById('filteredSens');
+                        $scope.allSensors = filterSensors.innerHTML;
+                        $scope.sensPerPage = filterSensors.innerHTML;
+                    }
+                    
+                }, true);
+            }
+            sensorModelService.getSensors($scope.currentPage, $scope.allSensors, $scope.encodeduser)
+                .then(function(response){
                     vm.sensors = response.data;
                     $scope.loading = false;
                     $scope.noSensorsData = false;
                     $scope.sensorData = true;
-                    $scope.length = vm.sensors.length;
                 })
                 .catch(function(response){
                     $scope.noSensorsData = true;
