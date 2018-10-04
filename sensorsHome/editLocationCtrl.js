@@ -3,8 +3,8 @@ app.controller('editLocationCtrl', function($scope, $sessionStorage, $localStora
     var vm = this;
     $scope.goBack = function(){
         $window.history.back();
-        $sessionStorage.home = true;
         $sessionStorage.editLoc = false;
+        $sessionStorage.home = true;
         $timeout(function(){
             $window.location.reload();
         }, 100);

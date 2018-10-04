@@ -3,82 +3,90 @@
         <p>{{vm.titleGrid}}</p>
     </div>
     <register-sensor></register-sensor>
-    <div ng-show="loading" class="loader"></div>
-    <div ng-show="noSensorsData" class="noData">No Data</div>
-    <div ng-show="sensorData"  class="table-overflow">
-        <div  class="form-group measurementsContainerSet">
-            <label>Sensors per page:</label>
-            <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
-                <option selected disabled hidden value="">50</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="120">120</option>
-                <option value="140">140</option>
-                <option value="160">160</option>
-                <option value="200">200</option>
-            </select>
-        </div>
-        <div class="measurementsTotalReadings">
-            <label>Total Sensors: {{totalSensors}}</label>
-            <div class="grow"></div>
-            <search></search>
-        </div>
+    <div ng-show ="buttons" >
+        <div ng-show="loading" class="loader"></div>
+        <button type="button" class="btn btn-success" style="width:150px;" ng-repeat="address in addresses" ng-model="adress" ng-click="filterSens(address)">{{address}}</button>
+   </div>
+    <div ng-hide="buttons">
+        <div ng-show="loading" class="loader"></div>
+        <div ng-show="noSensorsData" class="noData">No Data</div>
+        <div ng-show="sensorData"  class="table-overflow">
+            <button type="button" class="btn btn-success" ng-click="back()">Back</button>
+            <div  class="form-group measurementsContainerSet">
+                <label>Sensors per page:</label>
+                <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
+                    <option selected disabled hidden value="">50</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="120">120</option>
+                    <option value="140">140</option>
+                    <option value="160">160</option>
+                    <option value="200">200</option>
+                </select>
+            </div>
+            <div class="measurementsTotalReadings">
+                <label>Total Sensors: {{totalSensors}}</label>
+                <div class="grow"></div>
+                <search></search>
+            </div>
 
         
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>No.</td>
-                    <td>Name</td>
-                    <td>Sensor ID</td>
-                    <td>Status</td>
-                    <td></td>
-                </tr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>No.</td>
+                        <td>Name</td>
+                        <td>Sensor ID</td>
+                        <td>Status</td>
+                        <td></td>
+                    </tr>
 
-            </thead>
+                </thead>
 
-            <tbody>
+                <tbody>
 
-                <tr ng-repeat-start= "sensor in filterSensors =(vm.sensors | filter: {name:filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
-                    <td>{{$index+1}}</td>
-                    <td>{{sensor.name}}</td>
-                    <td>{{sensor.id}}</td>
-                    <td>
-                        <span class="label label-success" ng-if="sensor.active == true">Active</span>
-                        <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
-                    </td>
-                    <td class="sensorModelContainerInfo">
-                        <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); outOfRange(sensor.sensorTypeId); measureUnit(sensor.sensorTypeId)">+</button>
-                        <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
-                    </td>
+                    <tr ng-repeat-start= "sensor in filterSensors =(vm.sensors | filter: {name:filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
+                        <td>{{$index+1}}</td>
+                        <td>{{sensor.name}}</td>
+                        <td>{{sensor.id}}</td>
+                        <td>
+                            <span class="label label-success" ng-if="sensor.active == true">Active</span>
+                            <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
+                        </td>
+                        <td class="sensorModelContainerInfo">
+                            <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); outOfRange(sensor.sensorTypeId); measureUnit(sensor.sensorTypeId)">+</button>
+                            <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
+                        </td>
 
-                </tr>
-                <tr ng-if="sensor.expanded" ng-repeat-end="" class="table-overflow">
-                    <td colspan="8" class="subTable">
-                        <div ng-show="loadingDetails" class="loader"></div>
-                        <div ng-show="detailsData">
-                            <details-sensor></details-sensor>
-                            <div>
-                                <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
-                                <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
-                                <button type="button" class="btn btn-success" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-show="editButton">Edit</button>
-                                <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude)" ng-show="editLocation">Location</button>
-                                <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
-                            </div> 
-                            <edit-sensor></edit-sensor>
-                            <measurements></measurements>
-                            <chartd3></chartd3>
-                            <delete-sensor></delete-sensor>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div ng-show="!filterSensors.length" id="alert-error"><p>No result</p></div> 
-        <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
-        <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div> 
-
+                    </tr>
+                    <tr ng-if="sensor.expanded" ng-repeat-end="" class="table-overflow">
+                        <td colspan="8" class="subTable">
+                            <div ng-show="loadingDetails" class="loader"></div>
+                            <div ng-show="detailsData">
+                                <details-sensor></details-sensor>
+                                <div>
+                                    <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
+                                    <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
+                                    <button type="button" class="btn btn-success" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-show="editButton">Edit</button>
+                                    <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude)" ng-show="editLocation">Location</button>
+                                    <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
+                                </div> 
+                                <edit-sensor></edit-sensor>
+                                <measurements></measurements>
+                                <chartd3></chartd3>
+                                <delete-sensor></delete-sensor>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="!filterSensors.length" id="alert-error"><p>No result</p></div> 
+            <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
+            <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div> 
+            
+        </div>
+        
     </div>
     <!-- <div>
         <form>

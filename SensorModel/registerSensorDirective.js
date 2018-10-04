@@ -16,6 +16,7 @@ app.directive('registerSensor', function(){
                 $scope.sensorData = false;
                 if($scope.registerDisplay == false){
                     $scope.registerDisplay = true;
+                    $scope.buttons = false;
                     $sessionStorage.register = true;
                     $scope.registerButton = false;
                     $scope.noSensorsData = false;
