@@ -49,10 +49,10 @@ function buttonScrollFunction() {
 // When the user scrolls the page, execute myFunction 
 
     var element = document.getElementById("myTopnav");   //header
-    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var scrolled = (winScroll / height) * 100;
-   
+    // var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    // var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    // var scrolled = (winScroll / height) * 100;
+    // document.getElementById("myBar").style.width = scrolled + "%";
 
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("myBtn").style.display = "block";
