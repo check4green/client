@@ -8,7 +8,7 @@
         if($localStorage.email && $localStorage.password){
             $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
         }else {
-        $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+            $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
         sensorModelService.getAllSensors(50, $scope.encodeduser)
                 .then(allSensors);
@@ -18,7 +18,7 @@
             sensorModelService.getSensors(1, $scope.allSensors, $scope.encodeduser)
                 .then(function(response){
                     $scope.sens = response.data;
-                    $scope.addresses = []
+                    $scope.addresses = [];
                     for (var i=0; i<$scope.sens.length; i++){
                         $scope.addresses.push($scope.sens[i].gatewayAddress);
                     }
@@ -34,14 +34,22 @@
             $scope.sensorData = false;
             $scope.noSensorData = false;
             $scope.buttons = true;
+            $sessionStorage.buttons = true;
+            $scope.registerNetworkButton = true;
         }
-        $scope.sensorData = false;
         $sessionStorage.home = false;
-        $scope.buttons = true;
+        $scope.change = false;
+
         $scope.filterSens = function(gatewayAddress){
             $sessionStorage.addr = gatewayAddress;
             $scope.sensorData = true;
             $scope.buttons = false;
+            $scope.registerNetworkButton = false;
+            $scope.registerButton = true;
+            $sessionStorage.buttons = false;
+            $scope.change = true;
+            $scope.cards = false;
+            $scope.backButton = true;
             vm.expandSelected = function(sensor){
                 vm.sensors.forEach(function(val){
                     val.expanded=false;
@@ -52,11 +60,8 @@
             };
             $scope.sensorData = false;
             $scope.noData = false;
-            $scope.home = false;
             $scope.noSensorData = false;
-            $sessionStorage.home = $scope.home;
             $scope.searchSensor ='';
-            
             $scope.sensPerPage = 50;
             sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
                 .then(allSensors);
@@ -203,6 +208,40 @@
                 .then(function(response){
                     $scope.totalSensors = response;
                 });
+            $scope.changeLayout = function(){
+                if($scope.cards == false){
+                    $scope.noSensorData = false;
+                    $scope.sensorData = false;
+                    $scope.buttons = false;
+                    $scope.cards = true;
+                    $scope.editLocation = false;
+                    $sessionStorage.details = true;
+                } else{
+                    $scope.sensorData = true;
+                    $scope.buttons = false;
+                    $scope.cards = false;
+                    $sessionStorage.details = false;
+                }
+                
+            }
+            $scope.details = function(){
+                $scope.editLocation = true;
+                $scope.cards = false;
+                $scope.backButton = false;
+                $scope.change = false;
+                $scope.cancel = true;
+                $scope.registerButton = false;
+            }
+            $scope.cancelDetails = function(){
+                $scope.cancel = false;
+                $scope.cards = true;
+                $sessionStorage.details = false;
+                $scope.backButton = true;
+                $scope.change = true;
+                $scope.registerButton = true;
+                $scope.editLocation = false;
+            }
+            
             //live view
 
             //    vm.reload = function(){
@@ -215,6 +254,16 @@
             //     },1000)
             // };
             // vm.reload();
+        }
+        if($sessionStorage.buttons == false){
+            $scope.buttons = false;
+            $scope.sensorData = true;
+            $scope.registerNetworkButton = false;
+            $scope.filterSens($sessionStorage.addr);
+        } else{
+            $scope.buttons = true;
+            $scope.sensorData = false;
+            $scope.registerNetworkButton = true;
         }
     }]);
 }());
