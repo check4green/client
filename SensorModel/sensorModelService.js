@@ -110,14 +110,7 @@
        function getMeasurements(gatewayAddress, clientAddress, page, pageSize){
         //    return $http.get('http://192.168.0.18:32333/api/sensors/address/' + gatewayAddress  + '/' +clientAddress + '/readings?page='+ page +'&pageSize='+ pageSize)
            return $http.get('https://swiss-iot.azurewebsites.net/api/sensors/address/' + gatewayAddress  + '/' +clientAddress + '/readings?page='+page +'&pageSize='+ pageSize)
-           .then(measurementsSuccess)
-           .catch(measurementsError)
-       }
-       function measurementsSuccess(response){
-           return response.data;
-       }
-       function measurementsError(response){
-           return $q.reject('Error retrieving value(s) .(HTTP status:' + response.status + ')')
+           
        }
        function getMeasureId(sensTypeId){
         // return $http.get('http://192.168.0.18:32333/api/sensor-types/'+ sensTypeID)

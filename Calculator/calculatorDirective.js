@@ -72,16 +72,16 @@ angular.module("sensorApp")
                     change1.innerHTML = $scope.price1*output1.innerHTML;
               }
               $scope.calculateCost2 = function(){
-                    change2.innerHTML = $scope.price2*output2.innerHTML;
+                    change2.innerHTML = parseInt($scope.price2*output2.innerHTML);
               }
               $scope.calculateCost3 = function(){
-                    change3.innerHTML = $scope.price3*output3.innerHTML;
+                    change3.innerHTML = parseInt($scope.price3*output3.innerHTML);
               }
               $scope.calculateCost4 = function(){
-                    change4.innerHTML =$scope.price4*output4.innerHTML;
+                    change4.innerHTML =parseInt($scope.price4*output4.innerHTML);
               }
               $scope.calculateCost5 = function(){
-                    change5.innerHTML =$scope.price5*output5.innerHTML;
+                    change5.innerHTML = parseInt($scope.price5*output5.innerHTML);
               }
               var total = document.getElementById('total');
               total.innerHTML =0 ;

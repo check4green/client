@@ -14,6 +14,9 @@ app.directive('deleteSensor', function(){
                 $scope.editLocation = false;
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
+                $scope.cards = false;
+                $scope.backButton = false;
+                $scope.change = false;
             }
             if($localStorage.email && $localStorage.password){
                 $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
@@ -21,10 +24,12 @@ app.directive('deleteSensor', function(){
                 $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }
             $scope.deleteSensor = function(gatewayAddress, clientAddress){
-                sensorModelService.deleteSensors(gatewayAddress, clientAddress, $scope.encodedData);
-                $timeout(function(){
-                    $window.location.reload();
-                },300);
+                sensorModelService.deleteSensors(gatewayAddress, clientAddress, $scope.encodedData)
+                .then(function(){
+                    $timeout(function(){
+                        $window.location.reload();
+                    },300);
+                })
             };
             $scope.cancelDeleteSensor = function(){
                 $scope.deleteDisplay = false;
@@ -34,6 +39,7 @@ app.directive('deleteSensor', function(){
                 $scope.editButton = true;
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;
+                $scope.sensorData = true;
             };
         }
     }
