@@ -13,6 +13,7 @@ angular.module("sensorApp")
                   $scope.calculateCost2();
                   $scope.calculateCost3();
                   $scope.calculateCost4();
+                  $scope.calculateCost5();
                   $scope.calculateTotal();
                   $scope.calculateTotalTwo();
                 }
@@ -43,10 +44,20 @@ angular.module("sensorApp")
                         $scope.calculateTotal();
                         $scope.calculateTotalTwo();
                       }
-              $scope.price1 = 25;
-              $scope.price2 = 50;
-              $scope.price3 = 250;
-              $scope.price4 = 500;
+              var slider5 = document.getElementById('range5');
+              var output5 = document.getElementById('value5');
+              output5.innerHTML = slider5.value;
+              slider5.oninput = function(){
+                        output5.innerHTML = this.value;
+                        $scope.calculateCost5();
+                        $scope.calculateTotal();
+                        $scope.calculateTotalTwo();
+                      }
+              $scope.price1 = 8;
+              $scope.price2 = 7.9;
+              $scope.price3 = 9.9;
+              $scope.price4 = 7.9;
+              $scope.price5 = 4.9;
               var change1 =document.getElementById('change1');
               change1.innerHTML = $scope.price1*output1.innerHTML;
               var change2 =document.getElementById('change2');
@@ -55,6 +66,8 @@ angular.module("sensorApp")
               change3.innerHTML = $scope.price3*output3.innerHTML;
               var change4 =document.getElementById('change4');
               change4.innerHTML = $scope.price4*output4.innerHTML;
+              var change5 =document.getElementById('change5');
+              change5.innerHTML = $scope.price5*output5.innerHTML;
               $scope.calculateCost1 = function(){
                     change1.innerHTML = $scope.price1*output1.innerHTML;
               }
@@ -67,15 +80,18 @@ angular.module("sensorApp")
               $scope.calculateCost4 = function(){
                     change4.innerHTML =$scope.price4*output4.innerHTML;
               }
+              $scope.calculateCost5 = function(){
+                    change5.innerHTML =$scope.price5*output5.innerHTML;
+              }
               var total = document.getElementById('total');
               total.innerHTML =0 ;
               $scope.calculateTotal = function(){
-                    total.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML);
+                    total.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML) + parseInt(change5.innerHTML);
               }
               var totalTwo = document.getElementById('totalTwo');
               totalTwo.innerHTML =0 ;
               $scope.calculateTotalTwo = function(){
-                    totalTwo.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML);
+                    totalTwo.innerHTML = parseInt(change1.innerHTML) + parseInt(change2.innerHTML) + parseInt(change3.innerHTML) + parseInt(change4.innerHTML) + parseInt(change5.innerHTML);
               }
         }
       }

@@ -34,7 +34,17 @@
     display: none;
 }
 /* /total const in header <--*/
-
+.container-slide h1{
+    text-align: center;
+    padding: 5px;
+}
+.container-slide a{
+    color: #68a225;
+}
+.container-slide .p-calculator{
+    margin-top: 20px;
+    text-align: center;
+}
 
 
 /* --> cristina */
