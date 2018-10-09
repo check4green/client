@@ -52,14 +52,16 @@ function buttonScrollFunction() {
     var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     var scrolled = (winScroll / height) * 100;
-   
+    document.getElementById("myBar").style.width = scrolled + "%";
 
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("myBtn").style.display = "block";
         element.classList.add("header-home-add");  //header
+  //      document.getElementById("nowHeaderImg").style.height = "50px";
     } else {
         document.getElementById("myBtn").style.display = "none";
         element.classList.remove("header-home-add");  //header
+  //      document.getElementById("nowHeaderImg").style.height = "60px";
     }
 }
 

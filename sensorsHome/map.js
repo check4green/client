@@ -12,18 +12,9 @@ app.directive('map', function(){
             });
             var marker;
             if($sessionStorage.editLoc == true){
-                map.setCenter($sessionStorage.location);
                 marker= new google.maps.Marker({
                     position: $sessionStorage.location,
                     map:map
-                });
-                var geocoder = new google.maps.Geocoder;
-                geocoder.geocode({'location': $sessionStorage.location}, function(results, status){
-                    if(status == 'OK'){
-                        if(results[0]){
-                            $scope.address = results[0].formatted_address;
-                        }
-                    }
                 })
             }
             google.maps.event.addListener(map, "click", function(event){

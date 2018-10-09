@@ -6,21 +6,21 @@
   padding: 10px;
   position: fixed;
   top: 0px;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 20;
   box-shadow: 1px 1px 14px 0px #005c4e4d;
 }
 .header-home-add{
-  padding: 0px !important;
+  padding: 5px !important;
   font-size: 14px !important;
-  background-color: #fdffff !important;
+  background-color: #0f9c85 !important;
 }
 .header-container .logo-header-home{
   padding: 3px;
   width: 200px;
   height: auto;
   float: left;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .header-container a {
@@ -33,14 +33,17 @@
   font-size: 17px;
   cursor: pointer;
   user-select: none;
+  border-radius: 5px;
   border-bottom: 3px solid #4e9a0600 !important;
+  border: 1px solid #4e9a0600;
   margin-right: 5px;
 }
 .header-container a:hover{
-    transition: 0.5s;
-    color: #265c00;
+    transition: 1s;
+    color: white;
+    background-color: #333;
     border-bottom: 3px solid #4e9a06 !important;
-    
+    border: 1px solid #4e9a06;
 }
 .header-container .icon {
   display: none;
@@ -50,14 +53,13 @@
 }
 #totalCost:hover{
     color: black;
-    cursor: text;
-    user-select: text;
     background-color: #005c4e00;
     border-bottom: 3px solid #4e9a0600 !important;
+    border: 1px solid #4e9a0600;
 }
 @media screen and (max-width: 600px) {
     .header-container{
-       
+        background-color: #0f9c85;
     }
   .header-container a:not(:first-child){
     display: none;

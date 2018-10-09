@@ -20,7 +20,6 @@
       $scope.hideSensGrid = function(){
         $scope.home = false;
         $sessionStorage.home = $scope.home;
-        $sessionStorage.buttons = true;
       }
       $scope.hideRegisterDist = function(){
         if($sessionStorage.register == true){

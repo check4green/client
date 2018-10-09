@@ -12,9 +12,6 @@ app.directive('editSensor', function(){
             $scope.startEdit = function(){
                 $scope.editButton = false;
                 $scope.detailsDisplay = false;
-                $scope.cards = false;
-                $scope.change = false;
-                $scope.backButton = false;
                 $scope.deleteButton = false;
                 $scope.editLocation = false;
                 $scope.measurementsButton = false;
@@ -36,8 +33,6 @@ app.directive('editSensor', function(){
                                 var name = sensor.name;
                                 var uploadInterval = sensor.uploadInterval;
                                 var batchsize = sensor.batchSize;
-                                $scope.gatewayAddress = gatewayAddress;
-                                $scope.clientAddress = clientAddress;
                                 $scope.editSensor = {name, uploadInterval, batchsize};
                             $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, editBatchSize, gatewayAddress, clientAddress, sensorId){
                                 if (editName){
@@ -58,7 +53,7 @@ app.directive('editSensor', function(){
                                 if(editBatchSize){
                                     $scope.editSensor.batchsize = editBatchSize;
                                 } 
-                                sensorModelService.updateSensors($scope.editSensor, $scope.gatewayAddress, $scope.clientAddress, $scope.encodedData)
+                                sensorModelService.updateSensors($scope.editSensor, gatewayAddress, clientAddress, $scope.encodedData)
                                     .then(function(){
                                         $scope.sensorEditError = false;
                                         $scope.sensorEditSuccess = true;
@@ -84,9 +79,6 @@ app.directive('editSensor', function(){
                 $scope.chartButton = true;
                 $scope.sensorEditError = false;
                 $scope.sensorEditSuccess = false;
-                $scope.sensorData = true;
-                $scope.backButton = true;
-                $scope.change = true;
             };
         }
     }
