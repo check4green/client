@@ -11,6 +11,7 @@ angular.module("sensorApp")
             getAllSensors : getAllSensors,
             activateAccount: activateAccount,
             getActivationCode: getActivationCode,
+            getRequestDemo: getRequestDemo,
           }
           function logIn(encodedData){
             return $http({
@@ -66,6 +67,9 @@ angular.module("sensorApp")
             .then(function(response){
               return response.headers('X-Tracker-Pagination-SensorCount')
             })
+          }
+          function getRequestDemo(request){
+            return $http.post('https://swiss-iot.azurewebsites.net//api/demoRequest', request)
           }
 
         })
