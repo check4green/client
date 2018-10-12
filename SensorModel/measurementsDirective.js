@@ -3,9 +3,9 @@ app.directive('measurements', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/measurementsDirectiveView.html',
-        controller: function($scope, sensorModelService, $localStorage, $location, SENSOR_TYPE, $sessionStorage){
+        controller: function($scope, sensorModelService, $localStorage, $location){
             var vm = this;
-            $scope.outOfRangeError = SENSOR_TYPE.OUT_OF_RANGE; 
+
             $scope.measurementsButton = true;
             $scope.measurementsDisplay = false;
             $scope.startMeasurements = function(){
@@ -13,11 +13,7 @@ app.directive('measurements', function(){
                 $scope.deleteButton = false;
                 $scope.editButton = false;
                 $scope.chartButton = false;
-                if($sessionStorage.details == true){
-                    $scope.editLocation = true;
-                }else{
-                    $scope.editLocation = false;
-                }
+                $scope.editLocation = false;
                 if($scope.measurementsDisplay == false){
                     $scope.measurementsDisplay = true;
                     $scope.measurementsButton = false;
@@ -40,22 +36,6 @@ app.directive('measurements', function(){
                 $scope.page = 1;
                 $scope.size = 10;
                 $scope.pageSize = "";
-                
-                $scope.noDataMeasurements = false;
-                $scope.loadingMeasurements = true;
-                $scope.dataMeasurements = false;
-                sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress, $scope.size)
-                    .then(function(response){
-                        $scope.totalReadings = response;
-                })
-                //pagination for readings
-                $scope.setPage = function(){
-                    sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.currentPageReadings, $scope.size)
-                        .then(function(response){
-                            $scope.measurementSensors = response.data;
-                        })
-                }
-                $scope.$watch('currentPageReadings', $scope.setPage);
                 //set the number of readings/ page
                 $scope.setPageSize = function(pageSize){
                     if (pageSize){
@@ -65,14 +45,18 @@ app.directive('measurements', function(){
                               $scope.totalReadings = response;
                             })
                         sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size)
-                            .then(function (response){
-                            $scope.measurementSensors = response.data;
-                        })
+                            .then(measureSuccess)
+                        function measureSuccess(measurements){
+                            $scope.measurementSensors = measurements;
+                        }
                     }
                 }
+                $scope.noDataMeasurements = false;
+                $scope.loadingMeasurements = true;
+                $scope.dataMeasurements = false;
                 sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size)
-                                    .then(function(response){
-                                        $scope.measurementSensors = response.data;
+                                    .then(function(measurements){
+                                        $scope.measurementSensors = measurements;
                                         $scope.loadingMeasurements = false;
                                         $scope.noDataMeasurements = false;
                                         $scope.dataMeasurements = true;
@@ -86,17 +70,32 @@ app.directive('measurements', function(){
                                         if($scope.measurementSensors == null){
                                             $scope.totalReadings = 0;
                                         }
-                
-                $scope.measureUnit = function(sensTypeId){
-                    sensorModelService.getMeasureId(sensTypeId)
-                        .then(idSuccess)
-                    function idSuccess(data){
-                        $scope.id= data.measureId;
-                        sensorModelService.getUnitOfMeasure($scope.id)
-                            .then(unitOfMeasureSuccess)
-                        function unitOfMeasureSuccess(data){
-                            $scope.unitOfMeasure = data.unitOfMeasure;
-                        }
+                sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress, $scope.size)
+                    .then(function(response){
+                        $scope.totalReadings = response;
+                })
+                //pagination for readings
+                sensorModelService.getPageFinal($scope.gatewayAddress, $scope.clientAddress, $scope.size)
+                    .then(finalPage);
+                function finalPage(data){
+                    $scope.numPages = data;
+                }
+                $scope.setPage = function(){
+                    sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.currentPage, $scope.size)
+                        .then(measureSuccess)
+                    function measureSuccess(measurements){
+                        $scope.measurementSensors = measurements;
+                    }
+                }
+                $scope.$watch('currentPage', $scope.setPage);
+                sensorModelService.getMeasureId()
+                    .then(idSuccess)
+                function idSuccess(data){
+                    $scope.id= data.measureId;
+                    sensorModelService.getUnitOfMeasure($scope.id)
+                        .then(unitOfMeasureSuccess)
+                    function unitOfMeasureSuccess(data){
+                        $scope.unitOfMeasure = data.unitOfMeasure;
                     }
                 }
             };

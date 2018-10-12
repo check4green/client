@@ -3,7 +3,7 @@
         return {
         restrict: 'E',
         templateUrl: 'SensorModel/chartDirectiveView.html',
-        controller: function chartd3Ctrl(sensorModelService, d3, $scope, $sessionStorage){
+        controller: function chartd3Ctrl(sensorModelService, d3, $scope){
                     var readings = 1000;
                     $scope.chartButton = true;
                     $scope.chartDisplay = false;
@@ -15,22 +15,25 @@
                     $scope.detailsDisplay = false;
                     $scope.measurementsButton = false;
                     $scope.deleteButton = false;
-                    if($sessionStorage.details == true){
-                        $scope.editLocation = true;
-                    }else{
-                        $scope.editLocation = false;
-                    }
+                    $scope.editLocation = false;
                     $scope.editButton = false;
                     $scope.noDataChart = false;
                     $scope.loadingChart = true;
                     $scope.dataChart = false;
                     d3.selectAll("#chart > *").remove();
                     sensorModelService.getMeasurements(gatewayAddress, clientAddress, page, readings)
-                                .then(function (response){
+                                .then(getSuccess)
+                                .catch(getError);
+                                function getError(){
+                                    $scope.noDataChart = true;
+                                    $scope.loadingChart = false;
+                                    $scope.dataChart = false;
+                                }
+                                function getSuccess(data){
                                     $scope.noDataChart = false;
                                     $scope.loadingChart = false;
                                     $scope.dataChart = true;
-                                    var measurements = response.data;
+                                    var measurements = data;
                                 for (var i=0; i<measurements.length; i++){
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);
                                    if(measurements[i].value >$scope.outOfRangeError){
@@ -262,12 +265,7 @@
                                     d.value = +d.value;
                                     return d;
                                 }
-        })
-        .catch(function(){
-            $scope.noDataChart = true;
-            $scope.loadingChart = false;
-            $scope.dataChart = false;
-        })
+        }
             }
 
             $scope.cancelChart = function(){
