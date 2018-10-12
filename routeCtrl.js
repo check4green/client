@@ -50,6 +50,14 @@
                 }
             }
         })
+            .state('request',{
+             url: "/request",
+             views: {
+                'request@':{
+                    template: "<request></request>"
+                }
+            }
+        })
             .state('logIn.register',{
              url: "/register",
              views: {

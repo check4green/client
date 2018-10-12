@@ -53,7 +53,7 @@ angular.module("sensorApp")
                         $scope.calculateTotal();
                         $scope.calculateTotalTwo();
                       }
-              $scope.price1 = 8;
+              $scope.price1 = 7.9;
               $scope.price2 = 7.9;
               $scope.price3 = 9.9;
               $scope.price4 = 7.9;

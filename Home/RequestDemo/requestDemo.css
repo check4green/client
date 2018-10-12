@@ -1,0 +1,62 @@
+.contact-container-request h2{
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+.contact-container-request .contact-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px;
+    background-color: white;
+}
+ .contact-container-request .contact-container .area-text-container{
+    width: 50%;
+    align-self: center;
+}
+.contact-container-request .contact-container .contact-input-container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.contact-container-request .contact-container .contact-input-container .icon{
+    padding: 10px;
+    background: #4e9a06;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+.contact-container-request .contact-container .contact-input-filed{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+.contact-container-request .contact-container .contact-input-filed:focus{
+    border: 2px solid #4e9a06;
+}
+.contact-container-request .contact-container button{
+    background-color: #4e9a06;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    align-self: center;
+}
+.contact-container-request .contact-container button:hover{
+    opacity: 1;
+}
+.contact-input-container textarea{
+    min-height: 100px;
+}
+@media screen and (max-width: 800px){
+    .contact-container-request .contact-container .area-text-container{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 600px){
+    .contact-container-request .contact-container .area-text-container{
+        width: 100%;
+    }
+}

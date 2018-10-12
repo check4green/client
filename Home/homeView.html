@@ -1,13 +1,12 @@
 <div class="container-home">
 <!-- header home -->
 <header>
+    <div class="container-header-logoIMG">
+        <img src="/Home/images-home/LOGO-END-TO-END.png">
+    </div>
     <div class="header-container" id="myTopnav">
-
-        
-      <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="check4green" class="logo-header-home">
-
+      <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="check4green" class="logo-header-home" id="logoC4Gheader">
       <a id="totalCost">Total cost: <span class="fa fa-dollar"></span> <span id="total"></span></a>
-      
       <a  style="font-size:20px;" class="icon" onclick="nowHeaderFunction()">&#9776;</a>
       <a id="costTwo" class="totalTwo icon">Cost: <span class="fa fa-dollar"></span> <span id="totalTwo"></span></a>
       <a ui-sref="contact" class="margin-header">Contact</a>
@@ -15,26 +14,63 @@
       <a ui-sref="logIn" ng-show="vm.log">Log in</a>
     </div>
 </header>
+
 <!-- /header home -->
 
 
 
 <!-- start page -->
-    <div class="container-home-parts" id="absoluteIDpar">
-        <img src="/Home/images-home/5.jpg" alt="check4green" alt="Green" width="1920" height="1080">
-        <div class="content-parts" id="absoluteID">
-            <h1>
-            Check4Green Smart monitoring
-            </h1>
-            <p>
-            Our services allow intelligent monitorization and management for any of your IoT devices. 
-            We offer a large range of sensors to help manage aspects such as: 
-            Smart metering, smart building, smart waste management, smart home and more. 
-            Get in touch with us today to find out how we can help you and your business. 
-            <!-- <a ng-show="vm.log" ui-sref="logIn.register" style="text-decoration: underline">register</a><a ng-hide="vm.log" style="text-decoration: underline">register</a> -->
-            </p>
+
+<div class="container-parents-gallery">
+    <div class="container-gallery container">
+        <div class="container-title-glr">
+            <h1>MANAGE IoT DEVICES EFFORTLESSLY WITH CHECK GREEN</h1>
+            <!-- <img src="/Home/images-home/C4G-logo-BG-white-2.svg"> -->
+        </div>
+        <div class="container-text-photo-glr">
+            
+            <div class="container-t-i-glr for-border-1">
+                <div class="h1-gallery">
+                    <h1>CONNECT DEVICES</h1>
+                </div>
+                <p>Choose from our wide range of smart sensors</p>
+                <div class="grow-class-gallery"></div>
+                <div class="container-img-glr">
+                    <img src="/Home/images-home/coperta-chart.jpg">
+                </div>
+            </div>
+        
+            <div class="container-t-i-glr for-border-2">
+                <div class="h1-gallery">
+                    <h1>COLLECT DATA</h1>
+                </div>
+                <p>
+                    Once the sensors have been placed in the desired location, 
+                    register them on our platform to allow them to transmit data 
+                    to our platform for easy visualization
+                </p>
+                <div class="grow-class-gallery"></div>
+                <div class="container-img-glr">
+                    <img src="/Home/images-home/Senzori-connect-devices-1.1.jpg">
+                </div>
+            </div>
+        
+            <div class="container-t-i-glr for-border-3">
+                <div class="h1-gallery">
+                    <h1>MANAGE DATA</h1>
+                </div>
+                <p>
+                    Manage the data and the way you receive it, visualize 
+                    devices and take action based on accurate info
+                </p>
+                <div class="grow-class-gallery"></div>
+                <div class="container-img-glr">
+                    <img src="/Home/images-home/net-work-galleryBG.jpg">
+                </div>
+            </div>
         </div>
     </div>
+</div>
 <!-- /start page -->
 
 <!-- page thwo -->
@@ -235,16 +271,10 @@
 </div>
 <!-- /calculator -->
 
-<!-- login part -->
-    <div class="login-image-home">
-        <img src="/Home/images-home/color-green-edit-now2.jpg" alt="check4green"  alt="Green" width="1920" height="1080">
-            <div class="login-text">
-                <!-- <img src="/Home/images-home/C4G-full-moto-shadow.png"> -->
-                <button  ui-sref="sensorsHome" ng-hide="vm.log">Go to sensor management</button>
-                <button ui-sref="logIn" ng-show="vm.log">Log in for sensor management</button>
-            </div>
-    </div>
-<!-- /login part -->
+<!-- Request demo -->
+<request></request>
+<!-- Request demo -->
+
 <button onclick="buttonFunction()" id="myBtn" title="Go to top" class="fa fa-arrow-up"></button>
 <!-- footer -->
     <footer>

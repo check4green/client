@@ -1,0 +1,88 @@
+/* .container-glr .bg-v-transparent{
+  background-image: url(/Home/images-home/BG-VerdeTransparent.png);
+  box-shadow: 0px 4px 15px -12.5px #222;
+} */
+.container-parents-gallery{
+  border-bottom: 1px solid rgba(51, 51, 51, 0.274);
+  border-top: 1px solid rgba(51, 51, 51, 0.274);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: #8f8f8f1a;
+}
+.container-gallery{
+  font-family: "Archivo";
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 15px -12.5px #222;
+}
+.container-title-glr{
+  background-image: url(/Home/images-home/BG-VerdeTransparent.png);
+  display: flex;
+  justify-content: center;
+}
+.grow-class-gallery{
+  flex-grow: 2;
+}
+.h1-gallery{
+  border-radius: 5%;
+  background-color: #68a225;
+}
+.container-title-glr h1{
+  text-align: center;
+  width: 50%;
+  font-size: 30px;
+  font-family: "Archivo Medium"; 
+}
+.container-text-photo-glr{
+  width: 100%;
+  display: flex;
+}
+/* .hover-c-glr{
+  position: relative;
+}
+.for-border-1{
+  z-index: 1;
+  position: absolute;
+  left: 10px;
+}
+.for-border-2{
+  z-index: 2;
+}
+.for-border-3{
+  z-index: 1;
+}
+.hover-c-glr:hover .for-border-1{
+  z-index: 4;
+
+}
+.hover-c-glr:hover .for-border-2{
+  z-index: 4;
+}
+.hover-c-glr:hover .for-border-3{
+  z-index: 4;
+} */
+.container-t-i-glr {
+  height: 100%;
+  cursor: pointer;
+  box-shadow: 0px 0px 31px -4px rgba(0,0,0,0.75);
+}
+.container-t-i-glr h1{
+  font-size: 27px;
+  font-family: "Archivo Medium";
+  text-align: center;
+  padding: 5px;
+}
+.container-t-i-glr p{
+  text-align: center;
+  display: flex;
+  height: 70px;
+  width: 90%;
+}
+.container-t-i-glr img{
+  width: 100%;
+  height: auto;
+}
+.container-img-glr{
+  align-items: flex-end;
+  
+}

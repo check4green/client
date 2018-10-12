@@ -48,18 +48,21 @@ function buttonScrollFunction() {
 
 // When the user scrolls the page, execute myFunction 
 
-    var element = document.getElementById("myTopnav");   //header
+    var element = document.getElementById("myTopnav");
+    var logo = document.getElementById("logoC4Gheader");
     // var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     // var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     // var scrolled = (winScroll / height) * 100;
     // document.getElementById("myBar").style.width = scrolled + "%";
 
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
         document.getElementById("myBtn").style.display = "block";
         element.classList.add("header-home-add");  //header
+        logo.classList.add("logo-header-home-add");  //header
     } else {
         document.getElementById("myBtn").style.display = "none";
         element.classList.remove("header-home-add");  //header
+        logo.classList.remove("logo-header-home-add");  //header
     }
 }
 
