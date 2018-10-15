@@ -4,28 +4,30 @@
    app.controller("requestCtrl", function ($scope, autentificationService) {
         var vm = this;
         $scope.requestDemo = function(fullName, emailAddr, companyName, job, compSize, phone, message){
-            $scope.request = {fullName: fullName, email:emailAddr, company: companyName, jobTitle: job, companySize: compSize, phoneNumber: phone, message: message}
+            $scope.request = {fullName: fullName, email:emailAddr, company: companyName, jobTitle: job, companiSize: compSize, phoneNumber: phone, message: message}
             autentificationService.getRequestDemo($scope.request)
                 .then(function(){
                     $scope.successMessage = true;
+                    $scope.errorMessage = false;
                 })
                 .catch(function(response){
                     $scope.errorMessage = true;
-                    $scope.message = response.data.message
+                    $scope.successMessage = false;
+                    $scope.errorMsg = response.data.message
                     if(!fullName && !emailAddr && !companyName){
-                        $scope.message = 'You have to fill the required fields!'
+                        $scope.errorMsg = 'You have to fill the required fields!'
                     }
                     if(!fullName && emailAddr && companyName){
-                        $scope.message = 'The name is required!'
+                        $scope.errorMsg = 'The name is required!'
                     }
                     if(fullName && !emailAddr && companyName){
-                        $scope.message = 'The email is required!'
+                        $scope.errorMsg = 'The email is required!'
                     }
                     if(fullName && emailAddr && !companyName){
-                        $scope.message = 'The company name is required!'
+                        $scope.errorMsg = 'The company name is required!'
                     }
                     if ((fullName && !emailAddr && !companyName) || (!fullName && !emailAddr && companyName) || (!fullName && emailAddr && !companyName)){
-                        $scope.message = 'You have to fill all required fields!'
+                        $scope.errorMsg = 'You have to fill all required fields!'
                     }
                 })
         }
