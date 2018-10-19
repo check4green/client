@@ -1,0 +1,22 @@
+.background-textHome{
+    background-color: #fdffff !important;
+    margin-bottom: 50px;
+}
+.container-products{
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+}
+.container-products .container-products-text h1{
+    font-family: "Archivo SemiBold";
+    text-align: center;
+}
+.container-products .container-products-text p{
+    font-family: "Archivo Regular";
+    text-align: justify;
+}
+.container-products .container-products-text img{
+    height: auto;
+    width: 90%;
+    padding: 10px;
+}

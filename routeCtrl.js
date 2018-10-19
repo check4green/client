@@ -14,7 +14,10 @@
              url:"/home",
              views: {
                 'home@':{
-                    template: "<home></home>"
+                    template: "<home></home>",
+                    controller: function($scope, $sessionStorage){
+                        $sessionStorage.homeContent = true;
+                    }
                 }
             }
         })
@@ -55,6 +58,51 @@
              views: {
                 'request@':{
                     template: "<request></request>"
+                }
+            }
+        })
+            .state('home.aboutUs',{
+             url: "/aboutUs",
+             views: {
+                'aboutUs@':{
+                    template: "<about-us></about-us>",
+                    controller: function($scope, $sessionStorage){
+                        $sessionStorage.homeContent = false;
+                    }
+                    
+                }
+            }
+        })
+            .state('home.pricing',{
+             url: "/pricing",
+             views: {
+                'pricing@':{
+                    template: "<pricing></pricing>",
+                    controller: function($scope, $sessionStorage){
+                        $sessionStorage.homeContent = false;
+                    }
+                }
+            }
+        })
+            .state('home.technology',{
+             url: "/technology",
+             views: {
+                'technology@':{
+                    template: "<technology></technology>",
+                    controller: function($scope, $sessionStorage){
+                        $sessionStorage.homeContent = false;
+                    }
+                }
+            }
+        })
+            .state('home.products',{
+             url: "/products",
+             views: {
+                'products@':{
+                    template: "<products></products>",
+                    controller: function($scope, $sessionStorage){
+                        $sessionStorage.homeContent = false;
+                    }
                 }
             }
         })

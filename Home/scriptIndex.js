@@ -56,11 +56,9 @@ function buttonScrollFunction() {
     // document.getElementById("myBar").style.width = scrolled + "%";
 
     if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-        document.getElementById("myBtn").style.display = "block";
         element.classList.add("header-home-add");  //header
         logo.classList.add("logo-header-home-add");  //header
     } else {
-        document.getElementById("myBtn").style.display = "none";
         element.classList.remove("header-home-add");  //header
         logo.classList.remove("logo-header-home-add");  //header
     }
@@ -69,7 +67,7 @@ function buttonScrollFunction() {
 // scroll button // When the user clicks on the button, scroll to the top of the document
 function buttonFunction() {
     document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    //document.documentElement.scrollTop = 0;
 }
 
 

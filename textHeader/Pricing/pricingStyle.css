@@ -1,0 +1,38 @@
+.background-textHome{
+    background-color: #fdffff !important;
+    margin-bottom: 50px;
+}
+.container-pricing{
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+}
+.container-pricing .container-pricing-text h1{
+    font-family: "Archivo SemiBold";
+    text-align: center;
+}
+.container-pricing .container-pricing-text p{
+    font-family: "Archivo Regular";
+    text-align: justify;
+}
+.container-pricing-text .container-sensorsPrice{
+    border-bottom: 1px solid #333;
+    position: relative;
+}
+.container-pricing-text .container-sensorsPrice img{
+    height: auto;
+    width: 200px;
+    position: absolute;
+    right: 50px;
+    bottom: 0px;
+}
+@media screen and (max-width: 980px){
+    .container-pricing-text .container-sensorsPrice img{
+        position: initial;
+    }
+}
+@media screen and (max-width: 400px){
+    .container-pricing .container-pricing-text p{
+        font-size: 12px;
+    }
+}

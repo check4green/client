@@ -8,26 +8,70 @@
   margin-bottom: 200px;
 }
 .container-gallery{
-  font-family: "Archivo";
+  font-family: "Archivo SemiBold";
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 4px 15px -12.5px #222;
 }
 .container-title-glr{
-  background-image: url(/Home/images-home/BG-VerdeTransparent.png);
+  background-color: white;
   display: flex;
   justify-content: center;
+  box-shadow: 6px 6px 9px -7px #00000013;
 }
 .grow-class-gallery{
   flex-grow: 2;
 }
 .container-title-glr h1{
   text-align: center;
-  width: 50%;
-  font-size: 30px;
-  font-family: "Archivo Medium"; 
+  font-family: "Archivo SemiBold";
+  font-size: 20px;
 }
-.container-gallery .container-ps-gallery img{
+
+.container-gallery .container-imgText-gallery {
+  display: flex;
+}
+.container-imgText-gallery .container-photoText{
+  background-color: white;
+  margin: 5px;
+  box-shadow: 6px 6px 9px -2px #00000013;
+  border: solid 1px #00000000;
+  cursor: pointer;
+}
+.container-imgText-gallery .container-photoText:hover{
+  transform: scale(1.0);
+  transition: 0.3s;
+  border: solid 1px #00000027;
+}
+.container-imgText-gallery .container-photoText img{
   height: auto;
   width: 100%;
+  margin-top: 5px;
+  background-color: #cde9ff;
+  cursor: pointer;
+  transition: 0.2s;
+  border: solid 1px #00000000;
+}
+.container-imgText-gallery .container-photoText h1{
+  font-family: "Archivo SemiBold";
+  font-size: 20px;
+  text-align: center;
+  cursor: text;
+}
+.container-imgText-gallery .container-photoText p{
+  font-family: "Archivo Regular";
+  font-size: 10px;
+  text-align: center;
+  height: 70px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-bottom: solid 1px #00000027;
+  cursor: text;
+}
+@media screen and (max-width: 815px){
+  .container-gallery .container-imgText-gallery {
+    flex-direction: column;
+  }
 }

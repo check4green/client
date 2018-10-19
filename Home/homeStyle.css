@@ -21,10 +21,10 @@
     background-color: #ffffff85;
     transition: 0.5s;
     z-index: 20;
+    font-size: 10px;
 }
 .header-home-add{
   padding: 0px !important;
-  font-size: 14px !important;
   background-color: #fdffff !important;
   box-shadow: 1px 1px 14px 0px #005c4e4d;
 }
@@ -34,23 +34,25 @@
 .header-container .logo-header-home{
     display: none;
     padding: 3px;
-    width: 200px;
+    margin-left: 5px;
+    width: 150px;
     height: auto;
     float: left;
     transition: 0.5s;
 }
 .header-container a {
+  font-family: "Archivo Regular";
   float: right;
   display: block;
   color: black;
   text-align: center;
-  padding: 14px 16px;
+  padding: 7px 9px;
   text-decoration: none !important;
-  font-size: 17px;
   cursor: pointer;
   user-select: none;
   border-bottom: 3px solid #4e9a0600 !important;
-  margin-right: 5px;
+  margin-right: 2px;
+  margin-top: 10px;
 }
 .header-container a:hover{
     transition: 0.5s;
@@ -172,7 +174,6 @@
     height: 85%;
     overflow: auto;
     background-color: #0f9c85;
-    border-radius: 10px;
     box-shadow: 0px 0px 250px 200px #0f9c85;
 }
 .container-video::-webkit-scrollbar {
@@ -197,18 +198,18 @@
     box-shadow:  2px 4px 10px 1px #e0e0e0;
 }
 .container-row-descr .container-video img{
-    width: 100%;
+    width: 90%;
     height: auto;
     margin-bottom: 20px;
-    box-shadow:  2px 4px 10px 1px #e0e0e0;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 .container-videoBG{
     background-color: white;
-    border-radius: 20px;
     padding: 10px;
-    box-shadow: 0px 0px 5px 5px white;
+    font-family: "Archivo Medium";
 }
-.container-videoBG h2{
+.container-videoBG h1{
     text-align: center;
 }
 .container-videoBG p{
@@ -394,31 +395,6 @@
     margin-top: 200px;
 }
 /* request <-- */
-
-/* --> scroll button */
-#myBtn {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 10px;
-    z-index: 99;
-    font-size: 23px;
-    border: none;
-    outline: none;
-    background-color: #4e9a06;
-    color: white;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-  }
-  
-  #myBtn:hover {
-    background-color: white;
-    color: #4e9a06;
-    box-shadow: 0px 0px 20px #4e9a06;
-  }
-/* <-- scroll button */
-
 
 /* --> footer */
 .container-home .footer-container{

@@ -1,0 +1,26 @@
+.container-technology{
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+}
+.container-technology .container-technology-text h1{
+    font-family: "Archivo SemiBold";
+    text-align: center;
+}
+.container-technology .container-technology-text p{
+    font-family: "Archivo Regular";
+    text-align: justify;
+}
+.container-technology .container-technology-text img{
+    height: auto;
+    width: 90%;
+    padding: 10px;
+}
+.container-technology .container-technology-text .container-p-technology{
+    margin-left: 25px;
+    margin-top: 10px;
+}
+.container-technology .container-technology-text a{
+    color: #68a225;
+    cursor: pointer;
+}
