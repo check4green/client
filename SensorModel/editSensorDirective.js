@@ -38,7 +38,7 @@ app.directive('editSensor', function(){
                                 if (editName){
                                     $scope.editSensor.name = editName
                                 } 
-                                if(editHours || editHours || editMinutes){
+                                if(editDays || editHours || editMinutes){
                                     if (editDays == null){
                                         editDays = 0;
                                     }
