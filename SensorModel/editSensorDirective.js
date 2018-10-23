@@ -33,7 +33,9 @@ app.directive('editSensor', function(){
                                 var name = sensor.name;
                                 var uploadInterval = sensor.uploadInterval;
                                 var batchsize = sensor.batchSize;
-                                $scope.editSensor = {name, uploadInterval, batchsize};
+                                var latitude = sensor.latitude;
+                                var longitude = sensor.longitude;
+                                $scope.editSensor = {name, uploadInterval, batchsize, latitude, longitude};
                             $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, editBatchSize, gatewayAddress, clientAddress, sensorId){
                                 if (editName){
                                     $scope.editSensor.name = editName

@@ -16,6 +16,7 @@ app.directive('map', function(){
                     position: $sessionStorage.location,
                     map:map
                 })
+                map.setCenter($sessionStorage.location)
             }
             google.maps.event.addListener(map, "click", function(event){
               if($sessionStorage.register == true || $sessionStorage.editLoc == true){  
