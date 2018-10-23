@@ -1,14 +1,19 @@
 .contact-container-request h2{
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
+}
+.contact-container-request{
+    font-size: 10px;
 }
 .contact-container-request .contact-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    font-size: 10px;
 }
+
 .contact-container-request .contact-container .area-text-container{
    width: 60%;
 }
