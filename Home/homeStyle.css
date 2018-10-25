@@ -205,9 +205,17 @@
     margin-left: 20px;
 }
 .container-videoBG{
-    background-color: white;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    background-color: white; 
     padding: 10px;
     font-family: "Archivo Medium";
+    height:50%;
+    width:50%;
+    margin: auto;
 }
 .container-videoBG h1{
     text-align: center;
