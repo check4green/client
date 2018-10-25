@@ -9,7 +9,7 @@ app.directive('editSensor', function(){
             $sessionStorage.editDisplay = $scope.editDisplay;
             $scope.sensorEditError = false;
             $scope.sensorEditSuccess = false;
-            $scope.startEdit = function(){
+            $scope.startEdit = function() {
                 $scope.editButton = false;
                 $scope.detailsDisplay = false;
                 $scope.deleteButton = false;
