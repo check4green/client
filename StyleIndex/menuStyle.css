@@ -21,7 +21,9 @@
     width: 80%;
 }
 .sidenav .closebtn{
-    background-color: #0f9c85a8;
+        background: -webkit-linear-gradient(-70deg, 
+    #77ab88 0%, #77ab88 25%, 
+    #308f58 25%, #308f58 100%); 
     width: 250px;
     height: 100px;
     padding: 0px;

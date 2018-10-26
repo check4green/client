@@ -8,11 +8,12 @@
     height: 100%;
 }
 .container-pricing .container-pricing-text h1{
-    font-family: "Archivo SemiBold";
+    font-family: "FontC4G";
+    font-weight: bold;
     text-align: center;
 }
 .container-pricing .container-pricing-text p{
-    font-family: "Archivo Regular";
+    font-family: "FontC4G";
     text-align: justify;
 }
 .container-pricing-text .container-sensorsPrice{

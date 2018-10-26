@@ -1,0 +1,127 @@
+
+/* Card tutorial*/
+.contaner-cardsAndTitle{
+    padding-bottom: 200px;
+}
+.container-titleCards h1{
+    text-align: center;
+    font-family: "FontC4G";
+    font-size: 20px;
+}
+.container-cardsParrent{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    border-top: 1px solid #33333346;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #33333346;
+}
+.container-cardsParrent .container-cards {
+    flex: 25%;
+    padding: 0 4px;
+}
+.container-cards .container-cardsChild {
+    margin-top: 8px;
+    vertical-align: middle;
+    cursor: pointer;
+    transform: scale(0.90);
+    box-shadow: 6px 6px 9px -7px #00000071;
+}
+.container-cards .container-cardsChild:hover{
+    transform: scale(0.87);
+    transition: 0.3s;
+    box-shadow: 6px 6px 9px -7px #000000;
+}
+.container-cards .container-cardsChild img{
+    vertical-align: middle;
+    height: auto;
+    width: 100%;
+}
+@media screen and (max-width: 800px) {
+    .container-cardsParrent .container-cards {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .container-cardsParrent .container-cards {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+/* Card tutorial*/
+
+/*Video tutorial */
+#containerVideo1, #containerVideo2, #containerVideo3, #containerVideo4, #containerVideo5, #containerVideo6, #containerVideo7, #containerVideo8{
+    display: none;
+}
+
+#containerVideo1{
+    display: none;
+}
+.container-row-descr{
+    background-color: #d9534f !important;
+}
+.container-row-descr .container-video{
+    position: fixed; /* Stay in place */
+    z-index: 100;
+    padding: 20px;
+    right: 20%;
+    top: 13%;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    overflow: auto;
+    background-color: #0f9c85;
+}
+.container-video::-webkit-scrollbar {
+    width: 0px;
+}
+.container-row-descr .container-video .span-video{
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    color: #d9534f;
+    font-size: 30px;
+    cursor: pointer;
+}
+.container-row-descr .container-video .span-video:hover{
+    color: #ff4640;
+    text-shadow: 0px 0px 5px #000000;
+}
+.container-row-descr .container-video video{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow:  2px 4px 10px 1px #e0e0e0;
+}
+.container-row-descr .container-video img{
+    width: 90%;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.container-videoBG{
+    background-color: white;
+    padding: 10px;
+    font-family: "FontC4G";
+    height: auto;
+    width: 50%;
+    margin: auto;
+}
+.container-videoBG h1{
+    text-align: center;
+    font-family: "FontC4G";
+    font-size: 20px;
+}
+.container-videoBG p{
+    font-size: 13px !important;
+}
+@media screen and (max-width: 650px){
+    /* .container-row-descr .container-video{
+        width: 90%;
+    } */
+}
+/*Video tutorial  */

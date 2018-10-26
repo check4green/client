@@ -8,11 +8,12 @@
     height: 100%;
 }
 .container-aboutUs .container-aboutUs-text h1{
-    font-family: "Archivo SemiBold";
+    font-family: "FontC4G";
+    font-weight: bold;
     text-align: center;
 }
 .container-aboutUs .container-aboutUs-text p{
-    font-family: "Archivo Regular";
+    font-family: "FontC4G";
     text-align: justify;
 }
 .container-aboutUs .container-aboutUs-text img{

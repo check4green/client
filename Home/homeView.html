@@ -7,13 +7,13 @@
       <a  style="font-size:20px;" class="icon" onclick="nowHeaderFunction()">&#9776;</a>
       <a id="costTwo" class="totalTwo icon">Cost: <span class="fa fa-eur"></span> <span id="totalTwo"></span></a>
       <a ui-sref="contact" class="margin-header">Contact</a>
-      <a ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> 
       <a ui-sref="home.aboutUs" ng-click="hideContent()">About us</a>
       <a ui-sref="home.technology" ng-click="hideContent()">Technology</a>
       <a ui-sref="home.products" ng-click="hideContent()">Products</a>
       <a ui-sref="home.pricing" ng-click="hideContent()">Pricing</a>
+      <a ui-sref="sensorsHome" ng-hide="vm.log">Sensor management</a> 
       <a ui-sref="logIn" ng-show="vm.log">Log in</a>
-      <a ui-sref="home" ng-click="showContent()" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i> Home</a>
+      <a ui-sref="home" style="font-weight: bold;" ng-click="showContent()" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i> Home</a>
     </div>
 </header>
 <!-- /header home -->
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="container-cc">
-                    <a target="_blank" href="https://www.check4green.com/">Copyright © 2018 Check4Green</a>
+                    <a target="_blank" href="https://www.check4green.com/">Copyright <i class="	fa fa-copyright"></i> 2018 Check4Green</a>
                 </div>
 
             </div>

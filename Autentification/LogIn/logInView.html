@@ -5,9 +5,7 @@
     <div class="login-container container">
             <h2>Log in</h2>
             <div ng-show="vm.showLogInError" id="alert-error"><p>{{message}}</p></div>
-            <div ng-show="loading" class="loader"></div>
-        <div ng-hide="loading">
-      <form name="loginForm" novalidate >
+      <form name="loginForm" novalidate>
           <div class="form-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
         <div class="login-input-container">
             <i class="fa fa-envelope icon"></i>
@@ -21,12 +19,12 @@
         <div class="form-group" ng-class="{'has-error': loginForm.psw.$invalid && loginForm.psw.$dirty}">
         <div class="login-input-container">
             <i class="fa fa-key icon"></i>
-            <input class="login-input-filed" type="password" ng-enter="login(email, password)" placeholder="Enter password" ng-model="password" class="form-control" name="psw" required>
+            <input class="login-input-filed" type="password" placeholder="Enter password" ng-model="password" class="form-control" name="psw" required>
         </div>
         <div class="help-block has-error" ng-show="loginForm.psw.$error.required && loginForm.psw.$dirty">This field is required!</div>
       </div>
       </form>
-        <button type="submit" ng-click="login(email, password)">Log in</button>
+        <button type="button" ng-click="login(email, password)">Log in</button>
 
         <label>
             <input type="checkbox" checked ng-model="value" ng-click="remeberAccount(value, email, password)"> Remember me
@@ -36,7 +34,5 @@
         <a ui-sref="logIn.accountEmail">Register</a>
         <a class="register-pass" ui-sref="forgotPassword">Forgot your password?</a>
         </label>
-        </div>
-        <button onclick="buttonFunction()" id="myBtn" title="Go to top" class="fa fa-arrow-up"></button>
     </div>
 </div>

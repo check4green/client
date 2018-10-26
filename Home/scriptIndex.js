@@ -83,7 +83,7 @@ function toggle_visibility(id){
     var video5 = document.getElementById("video-5"); // Video var
     var video6 = document.getElementById("video-6"); // Video var
     var video7 = document.getElementById("video-7"); // Video var
-    var video8 = document.getElementById("video-8"); // Video var
+//    var video8 = document.getElementById("video-8"); // Video var
     var e = document.getElementById(id);
 
     if(e.style.display == 'initial')
@@ -94,8 +94,8 @@ function toggle_visibility(id){
                           video4.pause(), // Video pause
                           video5.pause(), // Video pause
                           video6.pause(), // Video pause
-                          video7.pause(), // Video pause
-                          video8.pause(); // Video pause
+                          video7.pause(); // Video pause
+//                          video8.pause(); // Video pause
        
        else
        e.style.display = 'initial';

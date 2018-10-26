@@ -5,7 +5,9 @@
     z-index: 3124324;
     width: 100%;
     height: 100%;
-    background-color: #4e9a06;
+    background: -webkit-linear-gradient(-60deg, 
+    #77ab88 0%, #77ab88 25%, 
+    #308f58 25%, #308f58 100%);
     overflow-y: auto; 
 }
 .register-container-big .span-x{
@@ -40,21 +42,19 @@
     font-weight: bold;
 }
 .register-container-big .register-image{
-    width: 60%;
+    width: 50%;
     height: auto;
-    margin-left: 20%;
+    margin-left: 25%;
     margin-right: auto;
-    padding: 20px;
 }
 .register-container-big .register-container{
     display: flex;
     flex-direction: column;
     width: 40%;
-    border: 3px solid #4e9a06;
-    border-radius: 25px;
     padding: 40px;
     min-width: 300px;
     background-color: white;
+    box-shadow: 6px 6px 9px -7px #000000;
     margin-bottom: 30px;
 }
 .register-container-big .register-container form{

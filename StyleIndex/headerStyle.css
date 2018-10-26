@@ -12,10 +12,6 @@
   transition: top 0.3s;
 }
 
-.container-sensorHome .header{
-    background-color: #0f9d86a8;
-}
-
 #close-menu{
   display: none;
   background-color: #4e9a06;
@@ -28,11 +24,8 @@
   cursor: pointer;
 }
 #headerImg img{
-  max-width: 60%;
+  width: 100%;
   height: auto;
-  padding: 20px;
-  margin-left: 20%;
-  margin-right: 20%;
 }
 
 .container-sensorHome .topnav-shome{
