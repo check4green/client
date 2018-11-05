@@ -35,7 +35,7 @@
 }
 /* /total const in header <--*/
 .container-slide h1{
-    font-family: "Archivo SemiBold";
+    font-family: "FontC4G";
     text-align: center;
     font-size: 20px;
     padding: 5px;
@@ -116,7 +116,7 @@
     border-width:  1px 0px 1px 0px;
     padding: 30px;
     background-color: #8f8f8f1a;
-    font-family: "Archivo Regular";
+    font-family: "FontC4G";
     font-size: 12px;
 }
 .container-range-bar .container-slide .row-text-calculator{
@@ -135,7 +135,7 @@
     width: 200px;
 }
 .container-slide h1{
-    font-family: "Archivo SemiBold";
+    font-family: "FontC4G";
 }
 @media  screen and (max-width: 880px){
     .container-calc-req .img-treime{

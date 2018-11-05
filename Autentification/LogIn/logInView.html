@@ -26,10 +26,11 @@
       </form>
         <button type="button" ng-click="login(email, password)">Log in</button>
 
-        <label>
-            <input type="checkbox" checked ng-model="value" ng-click="remeberAccount(value, email, password)"> Remember me
+        <label class="container-checkboxes">
+            <input type="checkbox" checked ng-model="value" ng-click="remeberAccount(value, email, password)">Remember me
+            <span class="checkmark"></span>
         </label>
-
+        
         <label class="register-pass">
         <a ui-sref="logIn.accountEmail">Register</a>
         <a class="register-pass" ui-sref="forgotPassword">Forgot your password?</a>

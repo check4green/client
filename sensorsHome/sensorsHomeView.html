@@ -14,7 +14,7 @@
             <span id="main" class="fa fa-bars" onclick="openNav()" title="Show sensor menu"></span>
             <!-- /menu button-->
             
-            <a class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a>
+            <!-- <a class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a> -->
             <div class="logged-hover" onclick="toggle_visibility('containerAccountId')">
                 <img src="/sensorsHome/img-logged-in-as/user-250p.png">
 
@@ -26,8 +26,6 @@
                 
             </div>
             <a class="active" ui-sref="home" ng-click="showSensGrid()" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
-            
-
         </div>
 
 
@@ -38,7 +36,7 @@
 
                     <img src="/sensorsHome/img-logged-in-as/user-250p.png">
 
-                    <div class="container-loggedMenu"> 
+                    <div class="container-loggedMenu">
                         <p class="title-user">Check4Green account</p>
                         <p class="about-user">User: {{vm.username}}</p>
                         <p class="about-user">Email: {{user.email}}</p>
@@ -51,12 +49,10 @@
                     <a class="flex-logOut" ng-click="logOut()" ui-sref="home">Log out</a>
                </div>
         </div>
-        
+        <div class="bg-total" id="bg-total-account"></div>
         <!-- /Menu account -->
         
-        <!-- fake elements for js -->
-        <div id="header-scroll" class="fake" style="display: none !important"></div>
-        <!-- /fake elements for js -->
+
 
         <!-- <div id="outside-element" class="outside-element" ></div> -->
 

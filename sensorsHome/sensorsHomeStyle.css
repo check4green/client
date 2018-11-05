@@ -17,7 +17,7 @@
 
 /* --> Logged in as */
 .container-sensorHome .logged-hover{
-    padding: 10px 10px;
+    padding: 1px 5px;
     height: auto;
     cursor: pointer;
 }
@@ -54,6 +54,7 @@
     font-size: 12px;
     font-weight: bold;
     text-align: left;
+    font-family: "FontC4G";
 }
 .container-sensorHome .logged-container .title-user{
     color: white;
@@ -80,7 +81,7 @@
 .container-account span{
     float: right;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 20px;
 }
 .container-account span:hover{
     color: #d9534f;
@@ -88,27 +89,29 @@
 }
 .container-account .container-detailAcc{
     display: flex;
-    border-bottom: 1px solid #333;
+
     padding: 5px;
 }
 .container-account .container-detailAcc img{
     width: auto;
-    height: 100px;
+    height: 60px;
     border-radius: 50%;
 }
 .container-account .container-loggedMenu{
-    font-size: 15px;
+    font-size: 13px;
     margin-left: 10px;
-    margin-top: 25px;
     padding: 5px;
     line-height: 9px;
+    font-family: "FontC4G";
 }
 .container-account .container-loggedMenu .title-user{
     font-weight: bold;
 }
 .container-account .container-logOut{
     display: flex;
-    font-size: 17px;
+    font-size: 13px;
+    font-family: "FontC4G";
+    border-top: 1px solid #333;
 }
 .container-account .container-logOut .flex-settings{
     flex-grow: 2;
@@ -128,6 +131,7 @@
     margin-top: 5px;
     margin-left: 5px;
     text-align: center;
+    font-family: "FontC4G";
 }
 .container-account .container-logOut a:hover{
     background-color: rgb(206, 206, 206);

@@ -7,6 +7,9 @@
     #308f58 25%, #308f58 100%); 
     overflow-y: auto; 
 }
+.settings-container-big .form-group{
+
+}
 .settings-container-big .box-text{
     margin-bottom: 13px;
     margin-top: 13px;
@@ -35,7 +38,7 @@
     background-color: #4e9a062d;
 }
 .settings-container-big .span{
-    font-size: 35px;
+    font-size: 25px;
     position: fixed;
     right: 20px;
     top: 10px;
@@ -58,7 +61,7 @@
 }
 .settings-container-big h2{
     text-align: center;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
 }
 .settings-container-big .settings-image{
@@ -81,7 +84,7 @@
     margin-bottom: 20px;
 }
 .settings-container-big .settings-container h{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
 }
 .settings-container-big .settings-container .h-color{
@@ -95,14 +98,16 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
 }
 
 .settings-container-big .settings-container .settings-input-container .settings-input-filed{
     width: 100%;
-    padding: 5px;
+    padding: 2px;
     outline: none;
-    margin-top: 12px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+    font-size: 13px;
 }
 .settings-container-big .settings-container .settings-input-container .settings-input-filed:focus{
     border: 2px solid #4e9a06;
@@ -110,7 +115,7 @@
 .settings-container-big .settings-container button{
     background-color: #4e9a06;
     color: white;
-    padding: 15px 20px;
+    padding: 8px 10px;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -122,7 +127,7 @@
     opacity: 1;
 }
 .settings-container-big .settings-container a{
-    font-size: 15px;
+    font-size: 13px;
     cursor: pointer;
     text-decoration: underline;
 }

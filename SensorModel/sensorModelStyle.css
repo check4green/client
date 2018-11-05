@@ -12,7 +12,7 @@
     color: white;
     min-width: 50px;
     text-align: center;
-    font-size: 15px;
+    font-size: 13px;
     cursor: pointer;
     
 }
@@ -92,7 +92,7 @@
     width: 200px;
     background-color: #4e9a06;
     color: white;
-    font: bold 20px Helvetica, Arial, Sans-Serif;
+    font: bold 20px;
     border: 2px solid;
     padding: 10px;
     border-radius: 50px;
@@ -232,36 +232,27 @@ inLine-measurement{
     width:200px;
     margin-left: 40%;
 }
-.measurementsDisplay .measurementsContainerSet{
-    /* display:flex; */
-    /* text-align: center; */
-
-}
 .measurementsContainerSet label{
     margin-right:10px;
     width:250px;
-    
+    font-size: 13px;
 }
 .measurementsDisplay .measurementsContainerSet label{
-    /* display:flex; */
     width:110px;
 }
 .measurementsDisplay .measurementsContainerSet input{
-    /* display:flex; */
     width:100px;
 }
 .measurementsDisplay table{
     text-align: center;
 }
 .measurementsContainerSet button{
-    /* display: flex;
-    flex-direction: row; */
     height:34px;
     margin-top:0px;
 }
 .measurementsTotalReadings{
     display: flex;
-    font-size:17px;
+    font-size: 13px;
     align-self: baseline;
 }
  
@@ -308,7 +299,7 @@ inLine-measurement{
     padding:30px;
     color:#d9534f;
     font-weight:600;
-    font-size: 16px;
+    font-size: 13px;
 }
 .line {
     fill: none;
@@ -345,7 +336,7 @@ inLine-measurement{
     top: 5px;
     text-decoration: none;
     color: black;
-    font-size: 14px;
+    font-size: 13px;
     user-select: none;
 }
 overflow{

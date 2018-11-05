@@ -19,16 +19,18 @@
 .container-cardsParrent .container-cards {
     flex: 25%;
     padding: 0 4px;
+    margin-left: 10%;
 }
 .container-cards .container-cardsChild {
     margin-top: 8px;
     vertical-align: middle;
     cursor: pointer;
-    transform: scale(0.90);
+    width: 70%;
+    height: auto;
     box-shadow: 6px 6px 9px -7px #00000071;
 }
 .container-cards .container-cardsChild:hover{
-    transform: scale(0.87);
+    transform: scale(0.97);
     transition: 0.3s;
     box-shadow: 6px 6px 9px -7px #000000;
 }
@@ -39,14 +41,15 @@
 }
 @media screen and (max-width: 800px) {
     .container-cardsParrent .container-cards {
-        flex: 50%;
+        flex: 25%;
         max-width: 50%;
     }
 }
 @media screen and (max-width: 600px) {
     .container-cardsParrent .container-cards {
         flex: 100%;
-        max-width: 100%;
+        max-width: 70%;
+        margin-left: 25%;
     }
 }
 /* Card tutorial*/
@@ -108,7 +111,7 @@
     padding: 10px;
     font-family: "FontC4G";
     height: auto;
-    width: 50%;
+    width: 70%;
     margin: auto;
 }
 .container-videoBG h1{
@@ -119,9 +122,9 @@
 .container-videoBG p{
     font-size: 13px !important;
 }
-@media screen and (max-width: 650px){
-    /* .container-row-descr .container-video{
-        width: 90%;
-    } */
+@media screen and (max-width: 750px){
+    .container-videoBG{
+        width: 100%;
+    }
 }
 /*Video tutorial  */

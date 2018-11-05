@@ -10,7 +10,7 @@
     #308f58 25%, #308f58 100%); 
 }
 .login-container-big span{
-    font-size: 35px;
+    font-size: 23px;
     position: fixed;
     right: 20px;
     top: 10px;
@@ -22,8 +22,10 @@
     text-shadow: 0px 0px #e0e0e0;
 }
 .login-container-big h2{
+    font-family: "FontC4G";
+    font-size: 25px;
     text-align: center;
-    font-size: 35px;
+    font-size: 20px;
     font-weight: bold;
 }
 .login-container-big .login-image{
@@ -55,7 +57,7 @@
 }
 .login-container-big .login-container .login-input-container .login-input-filed{
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     outline: none;
 }
 .login-container-big .login-container .login-input-container .login-input-filed:focus{
@@ -64,7 +66,7 @@
 .login-container-big .login-container button{
     background-color: #4e9a06;
     color: white;
-    padding: 15px 20px;
+    padding: 8px 10px;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -75,6 +77,10 @@
 }
 .login-container-big .login-container .register-pass{
     float: right;
+}
+.register-pass a{
+    font-size: 10px;
+    
 }
 .login-container-big .login-container a{
     cursor: pointer;
@@ -90,3 +96,59 @@
 
     }
 }
+
+/* container-checkboxes */
+.login-container .container-checkboxes{
+    margin-top: 10px;
+    font-size: 13px;
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.login-container .container-checkboxes:hover{
+    opacity: 0.8;
+}
+.login-container .container-checkboxes input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.login-container .container-checkboxes .checkmark:after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+.login-container .container-checkboxes input:checked ~ .checkmark{
+    background-color: #4e9a06;
+}
+.login-container .container-checkboxes input:checked ~ .checkmark:after{
+    display: block;
+}
+.login-container .container-checkboxes .checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: rgb(86, 158, 19);
+}
+.login-container .container-checkboxes .checkmark:after{
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* container-checkboxes */

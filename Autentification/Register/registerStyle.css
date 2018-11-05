@@ -11,7 +11,7 @@
     overflow-y: auto; 
 }
 .register-container-big .span-x{
-    font-size: 35px;
+    font-size: 25px;
     position: fixed;
     right: 20px;
     top: 10px;
@@ -22,7 +22,7 @@
     text-shadow: 0px 0px #e0e0e0;
 }
 .register-container-big .span-back{
-    font-size: 35px;
+    font-size: 25px;
     position: fixed;
     left: 20px;
     top: 10px;
@@ -38,7 +38,7 @@
 }
 .register-container-big h2{
     text-align: center;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
 }
 .register-container-big .register-image{
@@ -99,7 +99,7 @@
 }
 .register-container-big .register-container .register-input-container .register-input-filed{
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     outline: none;
 }
 .register-container-big .register-container .register-input-container .register-input-filed:focus{
@@ -108,7 +108,7 @@
 .register-container-big .register-container button{
     background-color: #4e9a06;
     color: white;
-    padding: 15px 20px;
+    padding: 8px 10px;
     border: none;
     cursor: pointer;
     width: 100%;

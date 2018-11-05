@@ -49,9 +49,9 @@
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 4px 4px 4px 16px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 14px;
     color: white;
     display: block;
     transition: 0.3s;
@@ -78,10 +78,10 @@
 
 #main {
     transition: margin-left 0.0s;
-    padding: 16px;
+    padding: 10px;
     cursor: pointer;
     color: white;
-    font-size: 20px;
+    font-size: 13px;
 }
 
 @media screen and (max-height: 450px) {
