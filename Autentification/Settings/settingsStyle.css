@@ -7,9 +7,6 @@
     #308f58 25%, #308f58 100%); 
     overflow-y: auto; 
 }
-.settings-container-big .form-group{
-
-}
 .settings-container-big .box-text{
     margin-bottom: 13px;
     margin-top: 13px;
@@ -43,7 +40,7 @@
     right: 20px;
     top: 10px;
     cursor: pointer;
-    text-shadow: 1px 2px #e0e0e0;
+    text-shadow: 1px 1px #e0e0e0;
 }
 .settings-container-big .span:hover{
     color:  #d9534f;

@@ -1,5 +1,5 @@
 <div class="contact-container-big">
-        <span class="fa fa-close span-x" ui-sref="home"></span>
+        <span class="fas fa-window-close span-x" ui-sref="home"></span>
 
         <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="contact-image">
 
@@ -12,7 +12,7 @@
                   <form name="contactForm" novalidate>
                     <div class="form-group" ng-class="{'has-error': contactForm.uname.$invalid && contactForm.uname.$dirty}">
                     <div class="contact-input-container">
-                        <i class="fa fa-address-card icon"></i>
+                        <i class="fas fa-address-card icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Your full name" ng-model="name" ng-pattern="/^[A-Za-z\s-]*$/" class="form-control" name="uname" name-valid required>
                     </div>
                     <div class="help-block has-error">
@@ -24,7 +24,7 @@
 
                   <div class="form-group" ng-class="{'has-error': contactForm.mail.$invalid && contactForm.mail.$dirty}">
                     <div class="contact-input-container">
-                        <i class="fa fa-envelope icon"></i>
+                        <i class="fas fa-envelope icon"></i>
                         <input class="contact-input-filed" type="email" placeholder="Your email address" ng-model="email" class="form-control" ng-pattern="/^[A-Za-z0-9._@]*$/" name="mail" required>
                     </div>
                     <div class="help-block has-error">
@@ -35,7 +35,7 @@
 
                   <div class="form-group" ng-class="{'has-error': contactForm.phone.$invalid && contactForm.phone.$dirty}">
                     <div class="contact-input-container">
-                        <i class="fa fa-phone icon"></i>
+                        <i class="fas fa-phone icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Your phone number" ng-model="number" class="form-control" name="phone" ng-pattern="/^[0-9+\s]*$/" required>
                     </div>
                     <div class="help-block has-error">

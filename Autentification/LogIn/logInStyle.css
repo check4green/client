@@ -8,15 +8,17 @@
     background: -webkit-linear-gradient(-60deg, 
     #77ab88 0%, #77ab88 25%, 
     #308f58 25%, #308f58 100%); 
+    overflow: auto;
 }
 .login-container-big span{
-    font-size: 23px;
+    font-size: 25px;
     position: fixed;
     right: 20px;
     top: 10px;
     cursor: pointer;
-    text-shadow: 1px 2px #e0e0e0;
+    text-shadow: 1px 1px #e0e0e0;
 }
+
 .login-container-big span:hover{
     color:  #d9534f;
     text-shadow: 0px 0px #e0e0e0;

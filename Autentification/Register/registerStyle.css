@@ -16,7 +16,7 @@
     right: 20px;
     top: 10px;
     cursor: pointer;
-    text-shadow: 1px 2px #e0e0e0;
+    text-shadow: 1px 1px #e0e0e0;
 }
 .register-container-big .span-x:hover{
     text-shadow: 0px 0px #e0e0e0;
@@ -27,7 +27,7 @@
     left: 20px;
     top: 10px;
     cursor: pointer;
-    text-shadow: 1px 2px #e0e0e0;
+    text-shadow: 1px 1px #e0e0e0;
 }
 .register-container-big .span-back:hover{
     text-shadow: 0px 0px #e0e0e0;
@@ -75,7 +75,7 @@
 }
 .register-container-big .register-container .register-input-container .input-phone-value{
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     padding-left: 1px;
     outline: none;
     border: solid 1px rgb(168, 167, 167);
@@ -87,9 +87,6 @@
     outline: none;
     border-left: 0px; 
 }
-
-
-
 .register-container-big .register-container .register-input-container .icon{
     padding: 10px;
     background: #4e9a06;

@@ -3,29 +3,38 @@
 .contaner-cardsAndTitle{
     padding-bottom: 200px;
 }
+.container-bg2{
+    width: 100%;
+    height: auto;
+    background-image: url("/Home/images-home/Logo-png-pises/parts/LogoC4Gparts-bg-2.0.png");
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-size: cover;
+}
 .container-titleCards h1{
     text-align: center;
     font-family: "FontC4G";
-    font-size: 20px;
+    font-size: 25px;
+    margin-bottom: 15px;
 }
 .container-cardsParrent{
     display: flex;
     flex-wrap: wrap;
     padding: 0 4px;
+    padding: 15px;
     border-top: 1px solid #33333346;
-    padding-bottom: 5px;
     border-bottom: 1px solid #33333346;
 }
 .container-cardsParrent .container-cards {
-    flex: 25%;
+    flex: 15%;
     padding: 0 4px;
-    margin-left: 10%;
+    margin-left: 5%;
 }
 .container-cards .container-cardsChild {
     margin-top: 8px;
     vertical-align: middle;
     cursor: pointer;
-    width: 70%;
+    width: 100%;
     height: auto;
     box-shadow: 6px 6px 9px -7px #00000071;
 }
@@ -76,13 +85,15 @@
     left:0;
     right: 0;
     overflow: auto;
-    background-color: #0f9c85;
+    background: -webkit-linear-gradient(-60deg, 
+    #77ab88 0%, #77ab88 25%, 
+    #308f58 25%, #308f58 100%); 
 }
 .container-video::-webkit-scrollbar {
     width: 0px;
 }
 .container-row-descr .container-video .span-video{
-    position: absolute;
+    position: fixed;
     top: 18px;
     right: 24px;
     color: #d9534f;
@@ -117,7 +128,7 @@
 .container-videoBG h1{
     text-align: center;
     font-family: "FontC4G";
-    font-size: 20px;
+    font-size: 25px;
 }
 .container-videoBG p{
     font-size: 13px !important;

@@ -27,6 +27,10 @@
     right: 50px;
     bottom: 0px;
 }
+.container-sensorsPrice .app-class{
+    height: 100% !important;
+    width: 200px !important;
+}
 @media screen and (max-width: 980px){
     .container-pricing-text .container-sensorsPrice img{
         position: initial;
