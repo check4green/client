@@ -6,8 +6,33 @@ html, body{
     font-family: "FontC4G";
 }
 /* --> header home  */
-.container-header-logoIMG img{
+.container-header-logoIMG{
     width: 100%;
+    height: 100%;
+    background-image: url("/Home/images-home/Logo-png-pises/parts/LogoC4Gparts-bg.png");
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+#imgHeader{
+    display: none;
+}
+@media screen and (max-width: 960px){
+    #imgHeader{
+        display: initial;
+    }
+    .container-header-logoIMG img{
+        display: none;
+    }
+    .container-header-logoIMG{
+        background-image: url("/Home/images-home/Logo-png-pises/parts/LogoC4Gparts-bg-white.png");
+        background-size: 90%;
+        background-repeat: no-repeat;
+    }
+}
+.container-header-logoIMG img{
+    width: 90%;
     height: auto;
 }
 .header-container{
@@ -17,7 +42,7 @@ html, body{
     background-color: #ffffff85;
     transition: 0.5s;
     z-index: 20;
-    font-size: 10px;
+    font-size: 14px;
 }
 .header-home-add{
   padding: 0px !important;
@@ -30,7 +55,7 @@ html, body{
 .header-container .logo-header-home{
     display: none;
     padding: 3px;
-    margin-left: 5px;
+    margin-left: 15px;
     width: 150px;
     height: auto;
     float: left;
@@ -47,7 +72,7 @@ html, body{
   cursor: pointer;
   user-select: none;
   border-bottom: 3px solid #4e9a0600 !important;
-  margin-right: 2px;
+  margin-right: 15px;
   margin-top: 10px;
 }
 .header-container a:hover{
@@ -69,7 +94,12 @@ html, body{
     background-color: #005c4e00;
     border-bottom: 3px solid #4e9a0600 !important;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 860px){
+    .header-container{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 800px) {
   .header-container a:not(:first-child){
     display: none;
   }
@@ -93,10 +123,16 @@ html, body{
   }
 }
 
-@media screen and (max-width: 600px) {
-  /* .topnav.responsive {
-    position: fixed;
-  } */
+@media screen and (max-width: 800px) {
+    .header-container{
+        background-color: #ffffff00;
+    }
+    .header-home-add{
+      padding: 0px !important;
+      background-color: #fdffff !important;
+      box-shadow: 1px 1px 14px 0px #005c4e4d;
+    }
+
   .header-container.responsive .icon {
     position: absolute;
     right: 10px;
@@ -179,16 +215,16 @@ html, body{
 }
 .container-home .footer-container .footer-container-contact a:hover{
     color: #4e9a06;
-    text-shadow: 0px 0px 25px #4e9a06;
+    /* text-shadow: 0px 0px 25px #4e9a06; */
 }
 .container-home .footer-container.footer-container-condition .container-condition a:hover{
     color: #4e9a06;
-    text-shadow: 0px 0px 25px #4e9a06;
+    /* text-shadow: 0px 0px 25px #4e9a06; */
 }
 .container-home .footer-container .footer-container-condition{
     align-self: center;
     flex-grow: 1;
-    font-size: 13px;
+    font-size: 14px;
 }
 .container-home .footer-container .footer-container-condition .container-condition a{
     margin-left: 30px;
@@ -205,7 +241,7 @@ html, body{
 }
 .container-home .footer-container .footer-container-condition .container-condition a:hover{
     color: #4e9a06;
-    text-shadow: 0px 0px 25px #4e9a06;
+    /* text-shadow: 0px 0px 25px #4e9a06; */
 }
 .container-home .footer-container .footer-container-social{
     align-self: flex-end;
@@ -220,9 +256,9 @@ html, body{
     font-size: 20px;
 }
 .container-home .footer-container .footer-container-social span:hover{
-   color: #4e9a06;
-   text-shadow: 0px 0px 25px white;
-   box-shadow: 0px 0px 25px #4e9a06;
+   background-color: #4e9a06;
+   /* text-shadow: 0px 0px 25px white; */
+   /* box-shadow: 0px 0px 25px #4e9a06; */
 }
 @media screen and (max-width: 1000px){
     .container-home .footer-container{

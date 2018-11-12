@@ -1,6 +1,7 @@
 <div ng-show="homeContent">
     <div class="container-header-logoIMG" >
-        <img src="/Home/images-home/Logo-png-pises/Img-full-Whitebackground.png">
+        <img src="/Home/images-home/Logo-png-pises/parts/LogoC4Gparts-txt.png">
+        <img id="imgHeader" src="/Home/images-home/Logo-png-pises/Img-full-Whitebackground-2.png">
     </div>
 
         <!-- start page -->
@@ -17,14 +18,15 @@
                             <h1>CONNECT DEVICES</h1>
                             <p class="p-child-text">Choose from our wide range of smart sensors.</p>
                         </div>
-                        <img src="/Home/images-home/gallery/manage-data-snesors.png">
+                        <img title="Click to open image" src="/Home/images-home/gallery/manage-data-snesors.png" onclick="openImgmodalManage()">
                     </div>
                 
                     <div class="container-photoText exclusive">
-                        <img style=" border-bottom: solid 1px #00000027;" src="/Home/images-home/gallery/connect-devices-map.png">
+                        <img title="Click to open image" style=" border-bottom: solid 1px #00000027;" src="/Home/images-home/gallery/connect-devices-map.png" onclick="openImgmodalConnect()">
                         <div class="container-textimggallery">
                             <h1>COLLECT DATA</h1>
-                            <p style=" border-bottom: solid 1px #00000000;">Once the sensors have been placed in the desired location, 
+                            <p style=" border-bottom: solid 1px #00000000;">
+                                Once the sensors have been placed in the desired location, 
                                 register them on our platform to allow them to transmit data to our platform for 
                                 easy visualization.</p>
                         </div>
@@ -36,33 +38,64 @@
                             <p>Manage the data and the way you receive it, visualize devices and take 
                                 action based on accurate info.</p>
                         </div>
-                        <img src="/Home/images-home/gallery/collect-data-chartGrid.png">
+                        <img title="Click to open image" src="/Home/images-home/gallery/collect-data-chartGrid.png" onclick="openImgmodalCollect()">
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modal content -->
+        <div id="galleryModalConnect" class="container-modal">
+            <span class="close-modal fas fa-window-close" onclick="closeImgmodalConnect()"></span>
+            <div class="container-imgModal">
+                <img id="img01" src="/Home/images-home/gallery/connect-devices-map.png">
+            </div>
+        </div>
         
+        <div id="galleryModalCollect" class="container-modal">
+            <span class="close-modal fas fa-window-close" onclick="closeImgmodalCollect()"></span>
+            <div class="container-imgModal">
+                <img id="img01" src="/Home/images-home/gallery/collect-data-chartGrid.png">
+            </div>
+        </div>
+        
+        <div id="galleryModalManage" class="container-modal">
+            <span class="close-modal fas fa-window-close" onclick="closeImgmodalManage()"></span>
+            <div class="container-imgModal">
+                <img id="img01" src="/Home/images-home/gallery/manage-data-snesors.png">
+            </div>
+        </div>
+        <!-- Modal content -->
+
         <!-- /start page -->
 
         <!-- Card tutorial-->
-        <div class="container contaner-cardsAndTitle">
-            <div class="container-titleCards"><h1>TUTORIALS</h1></div>
-            <div class="container container-cardsParrent">
-                <div class="container-cards">
-                    <div class="container-cardsChild" onclick="toggle_visibility('containerVideo1')">
-                        <img src="/Home/images-home/card/Card-1.png" title="Click to show the video" alt="HOW WE MAKE SENSOR HOUSING"></div>
-                    <div class="container-cardsChild" onclick="toggle_visibility('containerVideo2')">
-                        <img src="/Home/images-home/card/Card-2.png" title="Click to show the video" alt="HOW DOES OUR NETWORK WORK"></div>
-                    <div class="container-cardsChild" onclick="toggle_visibility('containerVideo4')">
-                        <img src="/Home/images-home/card/Card-3.png" title="Click to show the video" alt="HOW TO ACTIVE A SENSOR"></div>
-                </div>
-                <div class="container-cards">
-                    <div class="container-cardsChild" onclick="toggle_visibility('containerVideo5')">
-                        <img src="/Home/images-home/card/Card-4.png" title="Click to show the video" alt="HOW TO REGISTER A SENSOR"></div>
-                    <div class="container-cardsChild" onclick="toggle_visibility('containerVideo6')">
-                        <img src="/Home/images-home/card/Card-5.png" title="Click to show the video" alt="HOW USE CHART VIEW"></div>
-                    <div class="container-cardsChild" onclick="toggle_visibility('containerVideo7')">
-                        <img src="/Home/images-home/card/Card-6.png" title="Click to show the video" alt="HOW TO EDIT SENSOR"></div>
+        <div class="container-bg2">
+            <div class="container contaner-cardsAndTitle">
+                <div class="container-titleCards"><h1>TUTORIALS</h1></div>
+                <div class="container container-cardsParrent">
+
+                    <div class="container-cards">
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo1')">
+                            <img src="/Home/images-home/card/Card-1.png" title="Click to show the video" alt="HOW WE MAKE SENSOR HOUSING"></div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo2')">
+                            <img src="/Home/images-home/card/Card-2.png" title="Click to show the video" alt="HOW DOES OUR NETWORK WORK"></div>
+                    </div>
+
+                    <div class="container-cards">
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo4')">
+                            <img src="/Home/images-home/card/Card-3.png" title="Click to show the video" alt="HOW TO ACTIVE A SENSOR"></div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo5')">
+                            <img src="/Home/images-home/card/Card-4.png" title="Click to show the video" alt="HOW TO REGISTER A SENSOR"></div>
+                    </div>
+
+                    <div class="container-cards">
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo6')">
+                            <img src="/Home/images-home/card/Card-5.png" title="Click to show the video" alt="HOW USE CHART VIEW"></div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo7')">
+                            <img src="/Home/images-home/card/Card-6.png" title="Click to show the video" alt="HOW TO EDIT SENSOR"></div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -71,7 +104,7 @@
         <!-- Video tutorial  -->
         <div class=" container-row-descr">
             <div class="container-video" id="containerVideo1">
-                <span class="fa fa-close span-video"  onclick="toggle_visibility('containerVideo1')"></span>
+                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo1')"></span>
                 <div class="container-videoBG">
                     <h1>How do we create sensors housing?</h1>
                 
@@ -90,7 +123,7 @@
 
         <div class=" container-row-descr">
             <div class="container-video" id="containerVideo2">
-                <span class="fa fa-close span-video" onclick="toggle_visibility('containerVideo2')"></span>
+                <span class="fas fa-window-close span-video" onclick="toggle_visibility('containerVideo2')"></span>
                 <div class="container-videoBG">
                     <h1>How does our network work?</h1>
                 
@@ -110,9 +143,9 @@
         
         <div class=" container-row-descr">
             <div class="container-video" id="containerVideo4">
-                <span class="fa fa-close span-video"  onclick="toggle_visibility('containerVideo4')"></span>
+                <span class="fas fa-window-close span-video" onclick="toggle_visibility('containerVideo4')"></span>
                 <div class="container-videoBG">
-                    <h2>How to active a sensor?</h2>
+                    <h1>How to active a sensor?</h1>
                 
                     <video id="video-4" controls>
                       <source src="/Home/source-video/Active-sensor-full.mp4" type="video/mp4">
@@ -130,7 +163,7 @@
 
         <div class=" container-row-descr">
             <div class="container-video" id="containerVideo5">
-                <span class="fa fa-close span-video"  onclick="toggle_visibility('containerVideo5')"></span>
+                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo5')"></span>
                 <div class="container-videoBG">
                     <h1>How to register a sensor?</h1>
                     <video id="video-5" controls>
@@ -148,7 +181,7 @@
 
         <div class=" container-row-descr">
             <div class="container-video" id="containerVideo6">
-                <span class="fa fa-close span-video"  onclick="toggle_visibility('containerVideo6')"></span>
+                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo6')"></span>
                 <div class="container-videoBG">
                     <h1>How use chart view</h1>
                 
@@ -168,7 +201,7 @@
 
         <div class=" container-row-descr">
             <div class="container-video" id="containerVideo7">
-                <span class="fa fa-close span-video"  onclick="toggle_visibility('containerVideo7')"></span>
+                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo7')"></span>
                 <div class="container-videoBG">
                     <h1>How to edit a sensor?</h1>
                     <video id="video-7" controls>

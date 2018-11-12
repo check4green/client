@@ -100,3 +100,34 @@ function toggle_visibility(id){
        else
        e.style.display = 'initial';
 }
+
+//Modal gallery
+
+//Connect
+function openImgmodalConnect(){
+    document.getElementById("galleryModalConnect").style.display = "block";
+}
+function closeImgmodalConnect(){
+    document.getElementById("galleryModalConnect").style.display = "none";
+}
+//-Connect
+
+//Collect
+function openImgmodalCollect(){
+    document.getElementById("galleryModalCollect").style.display = "block";
+}
+function closeImgmodalCollect(){
+    document.getElementById("galleryModalCollect").style.display = "none";
+}
+//-Collect
+
+//Manage
+function openImgmodalManage(){
+    document.getElementById("galleryModalManage").style.display = "block";
+}
+function closeImgmodalManage(){
+    document.getElementById("galleryModalManage").style.display = "none";
+}
+//-Manage
+
+//-Modal gallery

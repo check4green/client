@@ -16,6 +16,9 @@
     font-family: "FontC4G";
     text-align: justify;
 }
+.container-products .container-products-text i{
+    font-size: 6px;
+}
 .container-products .container-products-text img{
     height: auto;
     width: 90%;

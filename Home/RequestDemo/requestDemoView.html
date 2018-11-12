@@ -12,7 +12,7 @@
                 <form name="requestForm" novalidate>
                 <div class="form-group" ng-class="{'has-error' :requestForm.name.$invalid && requestForm.name.$dirty }">
                     <div class="contact-input-container">
-                        <i class="fa fa-address-card icon"></i>
+                        <i class="fas fa-address-card icon"></i>
                         <input class="contact-input-filed" type="text" name ="name" placeholder="Full name*" ng-pattern="/^[a-zA-Z -]*$/" ng-model="fullName" class="form-control" required>
                     </div>
                     <span class="help-block has-error">
@@ -23,7 +23,7 @@
 
                   <div class="form-group" ng-class="{'has-error': requestForm.mail.$invalid && requestForm.mail.$dirty}">
                     <div class="contact-input-container">
-                        <i class="fa fa-envelope icon"></i>
+                        <i class="fas fa-envelope icon"></i>
                         <input class="contact-input-filed" type="email" placeholder="Business email address*" ng-pattern="/^[A-Za-z0-9._@]*$/" ng-model="emailAddr" class="form-control" name="mail" required>
                     </div>
                     <div class="help-block has-error">
@@ -34,7 +34,7 @@
 
                   <div class="form-group" ng-class="{'has-error': requestForm.company.$invalid && requestForm.company.$dirty}">
                     <div class="contact-input-container">
-                        <i class="fa fa-bank icon"></i>
+                        <i class="	fas fa-archway icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Company*" class="form-control" ng-model="companyName" name="company" required>
                     </div>
                     <div class="help-block has-error">
@@ -43,19 +43,19 @@
                   </div>
                   <div class="form-group">
                     <div class="contact-input-container">
-                        <i class="fa fa-address-card icon"></i>
+                        <i class="fas fa-address-card icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Job title" class="form-control" ng-model="job" name="jobTitle" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="contact-input-container">
-                        <i class="fa fa-bar-chart icon"></i>
+                        <i class="fas fa-chart-line icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Company size" class="form-control" ng-model ="compSize" name="compSize" required>
                     </div>
                   </div>
                   <div class="form-group" ng-class="{'has-error': requestForm.phone.$invalid && requestForm.phone.$dirty}">
                     <div class="contact-input-container">
-                        <i class="fa fa-phone icon"></i>
+                        <i class="fas fa-phone icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Phone number" ng-model="phone" class="form-control" name="phone" ng-pattern="/^[0-9+()\s]*$/" required>
                     </div>
                     <div class="help-block has-error">
