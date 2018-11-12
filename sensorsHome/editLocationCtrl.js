@@ -1,14 +1,16 @@
 var app = angular.module("sensorApp");
 app.controller('editLocationCtrl', function($scope, $sessionStorage, $localStorage, $window, $timeout, sensorModelService, d3){
     var vm = this;
+    var timer;
     $scope.goBack = function(){
         $window.history.back();
         $sessionStorage.home = true;
         $sessionStorage.editLoc = false;
-        $timeout(function(){
+        timer = $timeout(function(){
             $window.location.reload();
         }, 100);
     } 
+    $timeout.cancel(timer)
     if ($localStorage.email && $localStorage.password){
         $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
     }else{

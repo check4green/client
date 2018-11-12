@@ -9,7 +9,7 @@
             <div class="container-name">
                 <input name="inputName" type="text" maxlength="30" placeholder="exemple: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" 
                 name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" 
-                ng-model="editName" required>
+                ng-model="editName" ng-model-options="{ debounce: 250 }" required>
 
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">The name is a sensor identifier. To make it easier to find.</p>
@@ -28,9 +28,9 @@
             <label>Upload Interval:</label>
 
             <div class="container-name">
-                        <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editDays" required />
-                        <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editHours" required />
-                        <input id="inputMinutes" name="inputMinutes" type="number" min="0" placeholder="Minutes" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editMinutes" required />
+                        <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editDays" ng-model-options="{ debounce: 250 }" required />
+                        <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editHours" ng-model-options="{ debounce: 250 }" required />
+                        <input id="inputMinutes" name="inputMinutes" type="number" min="0" placeholder="Minutes" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="editMinutes" ng-model-options="{ debounce: 250 }" required />
                         <div class="container-info 	fa fa-info-circle">
                             <p class="info-hover">Enter the time interval between readings.</p>
                         </div>
@@ -45,7 +45,7 @@
             <label>Batch Size:</label>
 
             <div class="container-name">
-                <input name="inputBatchSize" type="number" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="0" class="form-control" ng-model="editBatchSize" required>
+                <input name="inputBatchSize" type="number" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="0" class="form-control" ng-model="editBatchSize" ng-model-options="{ debounce: 250 }" required>
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover"> How many readings are within a timeframe set by you (day, week, etc.).</p>
                 </div>

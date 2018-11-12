@@ -66,7 +66,7 @@ app.directive('gridSensors', function(){
                             $scope.message = 'No data'
                         })
                     $scope.search = function(){
-                        $scope.$watch('filterSensors.length', function(newValue, oldValue){
+                        $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
                             if(newValue == data){
                                 $scope.allSensors = data;
                                 $scope.sensPerPage = 50;
@@ -80,7 +80,7 @@ app.directive('gridSensors', function(){
                                 $scope.sensPerPage = filterSensors.innerHTML;
                             }
                             
-                        }, true);
+                        });
                     }
                 })
             $scope.measureUnit = function(sensTypeID){

@@ -20,12 +20,14 @@ app.directive('deleteSensor', function(){
             }else{
                 $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }
+            var timer;
             $scope.deleteSensor = function(gatewayAddress, clientAddress){
                 sensorModelService.deleteSensors(gatewayAddress, clientAddress, $scope.encodedData);
-                $timeout(function(){
+                timer = $timeout(function(){
                     $window.location.reload();
                 },300);
             };
+            $timeout.cancel(timer);
             $scope.cancelDeleteSensor = function(){
                 $scope.deleteDisplay = false;
                 $scope.deleteButton = true;

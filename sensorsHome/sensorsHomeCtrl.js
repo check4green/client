@@ -1,7 +1,7 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $location, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
+   app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $window, $location, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
         var vm = this;
 
         vm.titleGrid = SENSOR_TYPE.TITLE;
@@ -11,6 +11,9 @@
         }else{
           var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
+      $scope.refreshButton = function(){
+        $window.location.reload();
+      }
       $scope.showSensGrid = function(){
         $scope.home = true;
         $sessionStorage.home = $scope.home;

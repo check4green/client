@@ -10,7 +10,7 @@
 
             
             <div class="container-name">
-                <input id="inputName" name="inputName" type="text" maxlength="30" placeholder="example: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]*$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" ng-model="registerName" required>
+                <input id="inputName" name="inputName" type="text" maxlength="30" placeholder="example: (Proximity-Sensor_01)" ng-pattern="/^[a-zA-Z 0-9 _-]*$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" ng-model="registerName" ng-model-options="{ debounce: 250 }" required>
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">The name is a sensor identifier. To make it easier to find.</p>
                 </div>
@@ -25,9 +25,9 @@
         <label>Upload Interval:</label>
         <div class="form-group" ng-class="{'has-error':(registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
             <div class="container-name">
-                <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerDays" required />
-                <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerHours" required />
-                <input id="inputMinutes" name="inputMinutes" type="number" min="0" placeholder="Minutes" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerMinutes" required />
+                <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerDays" ng-model-options="{ debounce: 250 }" required />
+                <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerHours" ng-model-options="{ debounce: 250 }" required />
+                <input id="inputMinutes" name="inputMinutes" type="number" min="0" placeholder="Minutes" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerMinutes" ng-model-options="{ debounce: 250 }" required />
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">Enter the time interval between readings.</p>
                 </div>
@@ -40,7 +40,7 @@
         <label>Batch Size:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputBatchSize.$invalid && registerForm.inputBatchSize.$dirty}">
             <div class="container-name">
-                <input id="inputBatchSize" name="inputBatchSize" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerBatchSize" required />
+                <input id="inputBatchSize" name="inputBatchSize" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerBatchSize" ng-model-options="{ debounce: 250 }" required />
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">How many readings are within a timeframe set by you (day, week, etc.).</p>
                 </div>
@@ -54,7 +54,7 @@
         <label>Gateway Address:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputGatewayAdd.$invalid && registerForm.inputGatewayAdd.$dirty}">
             <div class="container-name">
-                <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" ca-ga-validation type="text" class="form-control" ng-model="registerGatewayAddress" required ng-minlength="4" ng-maxlength="4" maxlength="4"/>
+                <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" ca-ga-validation type="text" class="form-control" ng-model="registerGatewayAddress" ng-model-options="{ debounce: 250 }" required ng-minlength="4" ng-maxlength="4" maxlength="4"/>
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">Write your gateway address (find gateway address on the casing). </p>
                 </div>
@@ -68,7 +68,7 @@
         <label>Client Address:</label>
         <div class="form-group" ng-class="{'has-error':registerForm.inputClientAdd.$invalid && registerForm.inputClientAdd.$dirty}">
             <div class="container-name">
-                <input id="inputClientAdd" name="inputClientAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" ca-ga-validation type="text" class="form-control" ng-model="registerClientAddress" required ng-minlength="4" ng-maxlength="4" maxlength="4" />
+                <input id="inputClientAdd" name="inputClientAdd" placeholder="0x-- (hexadecimal number)" ng-pattern="/^[a-f0-9 x]{4}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" ca-ga-validation type="text" class="form-control" ng-model="registerClientAddress" ng-model-options="{ debounce: 250 }" required ng-minlength="4" ng-maxlength="4" maxlength="4" />
                 <div class="container-info 	fa fa-info-circle">
                     <p class="info-hover">Write your client address (find client address on the casing).</p>
                 </div>

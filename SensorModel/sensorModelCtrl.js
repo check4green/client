@@ -1,13 +1,13 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "$timeout",  "sensorModelService","$http", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout, sensorModelService, $http) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "$timeout",  "sensorModelService","$http", "$window", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout, sensorModelService, $http, $window) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         console.log(SENSOR_TYPE);
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){
-            vm.sensors.forEach(function(val){
+            $scope.sensors.forEach(function(val){
                 val.expanded=false;
                 $scope.editLocation = true;
 
@@ -33,7 +33,7 @@
             vm.setPage = function(){
                 sensorModelService.getSensors(1, $scope.allSensors, $scope.encodeduser)
                     .then(function(response){
-                        vm.sensors = response.data;
+                        $scope.sensors = response.data;
                         $scope.loading=false;
                     })
             }
@@ -44,14 +44,10 @@
             $scope.setPageSize = function(modelSize){
                 if(modelSize){
                     $scope.sensPerPage = modelSize;
-                    sensorModelService.getSensors($scope.currentPage, $scope.allSensors, $scope.encodeduser)
-                        .then(function(response){
-                            vm.sensors = response.data;
-                        })
                 }
             }
             $scope.search = function(){
-                $scope.$watch('filterSensors.length', function(newValue, oldValue){
+                $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
                     if(newValue == data){
                         $scope.allSensors = data;
                         $scope.sensPerPage = 50;
@@ -65,11 +61,11 @@
                         $scope.sensPerPage = filterSensors.innerHTML;
                     }
                     
-                }, true);
+                });
             }
             sensorModelService.getSensors($scope.currentPage, $scope.allSensors, $scope.encodeduser)
                 .then(function(response){
-                    vm.sensors = response.data;
+                    $scope.sensors = response.data;
                     $scope.loading = false;
                     $scope.noSensorsData = false;
                     $scope.sensorData = true;
@@ -80,6 +76,7 @@
                     $scope.sensorData = false;
                 });
         }
+        
          $scope.measureUnit = function(sensTypeId){
             sensorModelService.getMeasureId(sensTypeId)
                  .then(idSuccess)

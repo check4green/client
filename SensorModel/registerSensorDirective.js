@@ -43,7 +43,6 @@ app.directive('registerSensor', function(){
                 var hours = registerHours*60;
                 var minutes = registerMinutes;
                 $scope.uploadInt = days + hours + minutes;
-                console.log($scope.uploadInt)
                 var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 
                               'name':registerName,
                               'productionDate':$scope.maxDate,
@@ -92,9 +91,10 @@ app.directive('registerSensor', function(){
                 }
                 $scope.maxDate = year+ '-' + month +'-'+  day + 'T'+ $scope.time;
             }
+            var timer;
             $scope.cancelRegisterSensor = function(){
                 $window.location.reload();
-                $timeout(function(){
+                timer = $timeout(function(){
                     $scope.sensorRegisterError = false;
                     $scope.sensorRegisterSuccess = false;
                     $scope.registerButton = true;
@@ -103,6 +103,7 @@ app.directive('registerSensor', function(){
                     $sessionStorage.register = false;
                     $scope.noSensorsData = true;
                 },300);
+                $timeout.cancel(timer)
                 // $scope.registerProductionDate ='';
                 // $scope.registerUploadInterval = '';
                 // $scope.registerBatchSize = '';
