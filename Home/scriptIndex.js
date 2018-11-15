@@ -71,8 +71,15 @@ function buttonFunction() {
 }
 
 
-
 // Menu account
+function toggle_visibility_div(id){
+    var cs = document.getElementById(id);
+    
+    if(cs.style.display == 'initial')
+    cs.style.display = 'none';
+}
+// /Menu account
+
 
 function toggle_visibility(id){
 
