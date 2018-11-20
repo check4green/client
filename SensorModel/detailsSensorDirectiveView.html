@@ -1,12 +1,12 @@
+<span ng-if="ui" style ="color:red">{{uploadIntMessage}}</span>
 <table class="table"  ng-show="detailsDisplay">
         <thead>
             <tr>
                 <td>Gateway Address</td>
                 <td>Client Address</td>
                 <td>Register Date</td>
-                <td>Upload Interval</td>
-                <td>Batch Size</td>
-                <td>Unit Of Measure</td>
+                <td ng-if="!vibrations">Upload Interval</td>
+                <td ng-if="!vibrations">Unit Of Measure</td>
                 <td>Last Value</td>
                 <td>Last Date</td>
             </tr>
@@ -16,9 +16,8 @@
                 <td>{{sensor.gatewayAddress}}</td>
                 <td>{{sensor.clientAddress}}</td>
                 <td>{{sensor.productionDate}}</td>
-                <td>{{sensor.uploadInterval | uploadint}}</td>
-                <td>{{sensor.batchSize}}</td>
-                <td>{{unitOfMeasure}}</td>
+                <td ng-if="!vibrations">{{sensor.uploadInterval | uploadint}}</td>
+                <td ng-if="!vibrations">{{unitOfMeasure}}</td>
                 <td>
                     <span ng-show="noRead">-</span>
                     <div class="measurementsOk" ng-if="(lastRead[0].value < outOfRangeError) && (lastRead[0].value != 0)" >{{lastRead[0].value}}</div>

@@ -25,14 +25,13 @@
                 </div>
                 
             </div>
-            <a class="active" ui-sref="home" ng-click="showSensGrid()" title="Home page"><i class="fa fa-home" style="color: #4e9a06;"></i></a>
-            <a class="active" title="Refresh" ng-click="refreshButton()"><i class="fa fa-refresh" style="color: #4e9a06;"></i></a>
+            <a class="active" ui-sref="home" ng-click="showSensGrid()" title="Home page"><i class="fas fa-home" style="color: #4e9a06;"></i></a>
         </div>
 
 
         <!-- Menu account -->
         <div id="containerAccountId" class="container-account">
-                <span class="fa fa-close span" onclick="toggle_visibility('containerAccountId')" title="Close"></span>
+                <span class="fas fa-window-close" onclick="toggle_visibility_div('containerAccountId')" title="Close"></span>
                <div class="container-detailAcc">
 
                     <img src="/sensorsHome/img-logged-in-as/user-250p.png">
@@ -72,6 +71,8 @@
 
         <a class="a" onclick="closeNav()" ui-sref="sensorsHome.airQuality" ng-click="hideSensGrid(); hideRegisterAir()" title="air quality sensors list">Air Quality<i class="	fab fa-mixcloud"></i></a>
 
+        <a class="a" onclick="closeNav()" ui-sref="sensorsHome.vibration" ng-click="hideSensGrid(); hideRegisterAir()" title="vibrations sensors list">Vibrations</a>
+
       </div>
       <!-- /menu-body -->
 
@@ -85,6 +86,7 @@
             <div ui-view="temperature@"></div>
             <div ui-view="electricalCurrent@"></div>
             <div ui-view="airQuality@"></div>
+            <div ui-view="vibration@"></div>
             <div ui-view="editLocation@">
         </div>
         <!-- /route-grid -->

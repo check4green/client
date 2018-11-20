@@ -28,7 +28,7 @@ app.directive('registerSensor', function(){
             }else{
                 $scope.encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
             }
-            $scope.sensorRegister = function(registerName, registerDays, registerHours, registerMinutes, registerBatchSize, registerGatewayAddress, registerClientAddress, sensors){
+            $scope.sensorRegister = function(registerName, registerDays, registerHours, registerMinutes, registerGatewayAddress, registerClientAddress, sensors){
                
                 if(registerDays == null){
                     registerDays = 0;
@@ -43,11 +43,13 @@ app.directive('registerSensor', function(){
                 var hours = registerHours*60;
                 var minutes = registerMinutes;
                 $scope.uploadInt = days + hours + minutes;
+                if (SENSOR_TYPE.ID == 37){
+                    $scope.uploadInt =1;
+                }
                 var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 
                               'name':registerName,
                               'productionDate':$scope.maxDate,
                               'uploadInterval':$scope.uploadInt,
-                              'batchSize':registerBatchSize,
                               'gatewayAddress':registerGatewayAddress,
                               'clientAddress':registerClientAddress,
                               'latitude': $sessionStorage.lat,

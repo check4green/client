@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister(); updateTime()" ng-show="registerButton">Add sensor</button>
+<button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister(); updateTime(); vibrationSens()" ng-show="registerButton">Add sensor</button>
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
 
     <span id="alert-error" ng-show="sensorRegisterError"><p>{{message}}</p></span>
@@ -22,8 +22,8 @@
                 <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after the word, and the word needs min one letter. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
-        <label>Upload Interval:</label>
-        <div class="form-group" ng-class="{'has-error':(registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
+        <label ng-if="!vibrations">Upload Interval:</label>
+        <div ng-if="!vibrations" class="form-group" ng-class="{'has-error':(registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
             <div class="container-name">
                 <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerDays" ng-model-options="{ debounce: 250 }" required />
                 <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerHours" ng-model-options="{ debounce: 250 }" required />
@@ -35,20 +35,6 @@
             
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputDays.$error.required && registerForm.inputHours.$error.required && registerForm.inputMinutes.$error.required">Upload Interval is required</span>
-            </span>
-        </div>
-        <label>Batch Size:</label>
-        <div class="form-group" ng-class="{'has-error':registerForm.inputBatchSize.$invalid && registerForm.inputBatchSize.$dirty}">
-            <div class="container-name">
-                <input id="inputBatchSize" name="inputBatchSize" type="number" min="0" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerBatchSize" ng-model-options="{ debounce: 250 }" required />
-                <div class="container-info 	fa fa-info-circle">
-                    <p class="info-hover">How many readings are within a timeframe set by you (day, week, etc.).</p>
-                </div>
-            </div>
-            
-            <span class="help-block has-error">
-                <span ng-show="registerForm.inputBatchSize.$error.required">Batch Size is required</span>
-                <span ng-show="registerForm.inputBatchSize.$error.number">The Batch Size  must be a number</span>
             </span>
         </div>
         <label>Gateway Address:</label>

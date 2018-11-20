@@ -175,6 +175,9 @@ app.directive('map', function(){
                                                 if(d.sensorTypeId == 35){
                                                     return 'black';
                                                 }
+                                                if(d.sensorTypeId == 37){
+                                                    return '#bd611f';
+                                                }
                                             })
                                         marker.append("text")
                                            .data(sensors)

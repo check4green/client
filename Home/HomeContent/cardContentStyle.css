@@ -1,12 +1,13 @@
 
 /* Card tutorial*/
 .contaner-cardsAndTitle{
-    padding-bottom: 200px;
+    padding-top: 100px;
+    padding-bottom: 150px;
 }
 .container-bg2{
     width: 100%;
     height: auto;
-    background-image: url("/Home/images-home/Logo-png-pises/parts/LogoC4Gparts-bg-2.0.png");
+    background-image: url("/Home/images-home/Logo-png-pises/LogoC4Gparts-bg-2.0.png");
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-size: cover;

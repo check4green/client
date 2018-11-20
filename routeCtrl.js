@@ -205,6 +205,18 @@
                 }
             }
             })
+            .state('sensorsHome.vibration',{
+                url: "/vibration",
+                views: {
+                   'vibration@':{
+                       template: "<vibration></vibration>",
+                       controller: function($scope, SENSOR_TYPE){
+                        SENSOR_TYPE.ID = "37";
+                        SENSOR_TYPE.TITLE = "Vibrations";
+                   }
+                }
+               }
+               })
             .state('sensorsHome.editLocation', {
                 url: "/editLocation",
                 views: {

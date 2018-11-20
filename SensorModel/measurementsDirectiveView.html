@@ -32,7 +32,6 @@
                     <td>Index</td>
                     <td>Reading Date</td>
                     <td>Val({{unitOfMeasure}})</td>
-                    <td>Id</td>
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +44,6 @@
                         <div class="measurementsOutOfRange" ng-if="measurementSensor.value > outOfRangeError">OR</div>
                         <div class="measurementsInvalidSensor" ng-if="measurementSensor.value == 0">IS(0)</div>
                     </td>
-                    <td>{{measurementSensor.id}}</td>
                 </tr>
             </tbody>
         </table>

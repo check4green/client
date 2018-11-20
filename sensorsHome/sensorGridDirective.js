@@ -123,6 +123,9 @@ app.directive('gridSensors', function(){
                 }else if(sensType == 34){
                     $scope.outOfRangeError = 101;
                 }
+                if(sensType == 37){
+                    $scope.vibrations =true;
+                }
             }
             $scope.startEditLocation = function(gatewayAddress, clientAddress, name, uploadInterval, batchSize, lat, long){
                 $sessionStorage.home = false;

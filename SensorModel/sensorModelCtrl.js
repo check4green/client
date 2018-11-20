@@ -98,6 +98,11 @@
                 $scope.outOfRangeError = 101;
             }
         }
+        $scope.vibrationSens = function(){
+            if(SENSOR_TYPE.ID == 37){
+                $scope.vibrations = true;
+            }
+        }
         $scope.getLastRead = function(GA, CA){
             $scope.noRead = false;
             $scope.detailsData = false;

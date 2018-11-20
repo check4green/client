@@ -24,7 +24,7 @@
             </span>
         </div>
 
-        <div class="form-group" ng-class="{'has-error': (registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
+        <div ng-if="!vibrations" class="form-group" ng-class="{'has-error': (registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
             <label>Upload Interval:</label>
 
             <div class="container-name">
@@ -38,21 +38,6 @@
                     
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputDays.$error.required && registerForm.inputHours.$error.required && registerForm.inputMinutes.$error.required">Upload Interval is required</span>
-            </span>
-        </div>
-
-        <div class="form-group" ng-class="{'has-error': editForm.inputBatchSize.$invalid && editForm.inputBatchSize.$dirty}">
-            <label>Batch Size:</label>
-
-            <div class="container-name">
-                <input name="inputBatchSize" type="number" placeholder="number" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="0" class="form-control" ng-model="editBatchSize" ng-model-options="{ debounce: 250 }" required>
-                <div class="container-info 	fa fa-info-circle">
-                    <p class="info-hover"> How many readings are within a timeframe set by you (day, week, etc.).</p>
-                </div>
-            </div>
-            <span class="help-block has-error">
-                <span ng-show="editForm.inputBatchSize.$error.required">Batch Size is required</span>
-                <span ng-show="editForm.inputBatchSize.$error.number">The Batch Size  must be a number</span>
             </span>
         </div>
             
