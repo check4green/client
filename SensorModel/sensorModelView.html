@@ -39,7 +39,7 @@
 
             <tbody>
 
-                <tr ng-repeat-start= "sensor in filterSensors =(sensors | filter: {name:filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1) track by sensor.id">
+                <tr ng-repeat-start= "sensor in filterSensors =(sensors | filter: {name:filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
                     <td>{{$index+1}}</td>
                     <td>{{sensor.name}}</td>
                     <td>
