@@ -23,6 +23,9 @@ app.directive('registerSensor', function(){
 
                 }
             };
+            if (SENSOR_TYPE.ID == 37){
+                $scope.vibrations = true;
+            }
             if($localStorage.email && $localStorage.password){
                 $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
             }else{
@@ -46,14 +49,21 @@ app.directive('registerSensor', function(){
                 if (SENSOR_TYPE.ID == 37){
                     $scope.uploadInt =1;
                 }
+                if($sessionStorage.lat == null && $sessionStorage.lng == null){
+                    var lat = 0;
+                    var lng = 0;
+                } else{
+                    var lat = $sessionStorage.lat;
+                    var lng = $sessionStorage.lng
+                }
                 var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 
                               'name':registerName,
                               'productionDate':$scope.maxDate,
                               'uploadInterval':$scope.uploadInt,
                               'gatewayAddress':registerGatewayAddress,
                               'clientAddress':registerClientAddress,
-                              'latitude': $sessionStorage.lat,
-                              'longitude': $sessionStorage.lng,
+                              'latitude': lat,
+                              'longitude': lng,
                                userId: "1" }
                 sensorModelService.insertSensors(sensorPost, $scope.encodeduser)
                     .then(function(){
