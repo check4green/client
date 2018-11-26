@@ -5,7 +5,7 @@ app.directive('detailsSensor', function(){
         templateUrl: 'SensorModel/detailsSensorDirectiveView.html',
         controller: function($scope, sensorModelService, SENSOR_TYPE){
             var vm=this;
-            $scope.detailsDisplay = true
+            $scope.detailsDisplay = true;
             $scope.outOfRange = function(sensType){
                 if(sensType == 33){
                     $scope.outOfRangeError = 401;

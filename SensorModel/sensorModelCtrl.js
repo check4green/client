@@ -16,8 +16,7 @@
         };
         $scope.sensorData = false;
         $scope.noData = false;
-        $scope.home = false;
-        $sessionStorage.home = $scope.home;
+        $sessionStorage.home = false;
         $scope.searchSensor ='';
         if($localStorage.email && $localStorage.password){
             $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
@@ -107,7 +106,7 @@
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
-            sensorModelService.getMeasurements(GA, CA, '1', '1')
+            sensorModelService.getMeasurements(GA, CA, '1', '1', $scope.encodeduser)
                 .then(measureSuccess)
                 .catch(measureError)
             function measureSuccess(measurements){

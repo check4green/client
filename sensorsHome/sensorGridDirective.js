@@ -10,6 +10,7 @@ app.directive('gridSensors', function(){
             }else{
               var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
             }
+            $scope.home = true;
             if($sessionStorage.home == false ){
               $scope.home = false;
             }else {
@@ -99,7 +100,7 @@ app.directive('gridSensors', function(){
                 $scope.noRead = false;
                 $scope.detailsData = false;
                 $scope.loadingDetails = true;
-                sensorModelService.getMeasurements(GA, CA, '1', '1')
+                sensorModelService.getMeasurements(GA, CA, '1', '1', $scope.encodeduser)
                     .then(measureSuccess)
                     .catch(measureError)
                 function measureSuccess(measurements){

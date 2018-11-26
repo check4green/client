@@ -3,10 +3,16 @@
         return {
         restrict: 'E',
         templateUrl: 'SensorModel/chartDirectiveView.html',
-        controller: function chartd3Ctrl(sensorModelService, d3, $scope, SENSOR_TYPE){
+        controller: function chartd3Ctrl(sensorModelService, d3, $scope, SENSOR_TYPE, $localStorage, $sessionStorage){
                     var readings = 1000;
                     $scope.chartButton = true;
                     $scope.chartDisplay = false;
+                    
+                    if ($localStorage.email && $localStorage.password){
+                        $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+                    }else{
+                        $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+                    }
                 $scope.chart = function(gatewayAddress, clientAddress){
                     var page = 0
                     $scope.value = false;
@@ -21,7 +27,7 @@
                     $scope.loadingChart = true;
                     $scope.dataChart = false;
                     d3.selectAll("#chart > *").remove();
-                    sensorModelService.getMeasurements(gatewayAddress, clientAddress, page, readings)
+                    sensorModelService.getMeasurements(gatewayAddress, clientAddress, page, readings, $scope.encodedData)
                                 .then(getSuccess)
                                 .catch(getError);
                                 function getError(){
