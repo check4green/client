@@ -4,8 +4,9 @@
 
     <div class="login-container container">
             <h2>Log in</h2>
+            <div ng-if = "loading" class="loader"></div>
             <div ng-show="vm.showLogInError" id="alert-error"><p>{{message}}</p></div>
-      <form name="loginForm" novalidate>
+      <form name="loginForm" novalidate ng-hide="loading">
           <div class="form-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
         <div class="login-input-container">
             <i class="fas fa-envelope icon"></i>

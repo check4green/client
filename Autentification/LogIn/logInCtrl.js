@@ -15,17 +15,19 @@
            }
      }
         $scope.login = function(email, password){
-
+          $scope.loading = true;
           $scope.encodeduser = btoa(email +':'+ password)
           autentificationService.logIn($scope.encodeduser)
               .then(function(response){
-                   $location.path('/sensorsHome');
-                   $sessionStorage.email = email;
-                   $sessionStorage.password = password;
+                  $scope.loading = false;
+                  $location.path('/sensorsHome');
+                  $sessionStorage.email = email;
+                  $sessionStorage.password = password;
               })
               .catch(function(response){
+                $scope.loading = false;
                 vm.showLogInError = true;
-                  $scope.message = response.data.message;
+                $scope.message = response.data.message;
               })
 
         }

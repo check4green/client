@@ -3,7 +3,7 @@
         return {
         restrict: 'E',
         templateUrl: 'SensorModel/chartDirectiveView.html',
-        controller: function chartd3Ctrl(sensorModelService, d3, $scope){
+        controller: function chartd3Ctrl(sensorModelService, d3, $scope, SENSOR_TYPE){
                     var readings = 1000;
                     $scope.chartButton = true;
                     $scope.chartDisplay = false;
@@ -103,8 +103,8 @@
                                 var context = svg.append("g")
                                     .attr("class", "context")
                                     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
-                                x.domain(d3.extent(measurements, function(d) { return d.readingDate; }));
-                                y.domain([0, d3.max(measurements, function (d) { return d.value +10; })]);
+                                x.domain(d3.extent(measurements, function(d) {return d.readingDate; }));
+                                y.domain([0, d3.max(measurements, function (d) { return d.value +20; })]);
                                 x2.domain(x.domain());
                                 y2.domain(y.domain());
                                 focus.append("g")
@@ -155,7 +155,11 @@
                                                 .attr("class", "dot")
                                                 .attr("r", 4)
                                                 .style("fill", function(d){if (d.value>=$scope.outOfRangeError) {return "#286090";}
-                                                                      else{if (d.value==0){return "#d9534f";}}})
+                                                                      else{if (d.value==0){return "#d9534f";}}
+                                                                    if(SENSOR_TYPE.ID == 37){
+                                                                        return "#d9534f";
+                                                                    }
+                                                                })
                                                 .attr("cx", function(d) {return x(d.readingDate); })
                                                 .attr("cy", function(d) {return y(d.value); })
                                             Line_chart.selectAll("text")
@@ -165,7 +169,27 @@
                                                 .append("text")
                                                 .attr("x", function(d) {return x(d.readingDate); })
                                                 .attr("y", function(d) {return y(d.value)-3; })
-                                                .text(function(d) { if(d.value<$scope.outOfRangeError && d.value!=0){return d.value;} })
+                                                .text(function(d) { if(d.value<$scope.outOfRangeError && d.value!=0){return d.value;} 
+                                                                    if(SENSOR_TYPE.ID == 37){
+                                                                        if(d.value == 100){
+                                                                            return 'x';
+                                                                        } else{
+                                                                            if(d.value == 200){
+                                                                                return 'y';
+                                                                            } else if(d.value == 300){
+                                                                                return 'z';
+                                                                            } else if(d.value == 400){
+                                                                                return 'xy';
+                                                                            } else if(d.value == 500){
+                                                                                return 'xz';
+                                                                            } else if(d.value == 600){
+                                                                                return 'yz';
+                                                                            }else if(d.value == 700){
+                                                                                return 'xyz';
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    })
                                     }
                                     else{
                                         //hide tooltips
@@ -177,49 +201,50 @@
                                 }
 
                             //legend
-                                var legend = svg.append("g")
+                                if(SENSOR_TYPE.ID != 37){
+                                    var legend = svg.append("g")
                                                 .attr("class", "legend")
                                                 .attr("x", 880)
                                                 .attr("y", 25)
                                                 .attr("height", 100)
                                                 .attr("width", 150)
 
-                                legend.selectAll("g")
+                                    legend.selectAll("g")
                                                 .data(measurements)
                                                 .enter()
                                                 .append("g")
                             //value legend
-                                legend.append("circle")
-                                      .attr("cx", 875)
-                                      .attr("cy", 30)
-                                      .attr("r", 6)
-                                      .style("fill","#4e9a06");
-                                legend.append("text")
-                                     .attr("x", 881)
-                                     .attr("y", 33)
-                                     .attr("height", 30)
-                                     .attr("width", 100)
-                                     .style("fill", "#4e9a06")
-                                     .text("Value")
+                                    legend.append("circle")
+                                        .attr("cx", 875)
+                                        .attr("cy", 30)
+                                        .attr("r", 6)
+                                        .style("fill","#4e9a06");
+                                    legend.append("text")
+                                        .attr("x", 881)
+                                        .attr("y", 33)
+                                        .attr("height", 30)
+                                        .attr("width", 100)
+                                        .style("fill", "#4e9a06")
+                                        .text("Value")
                             //error legend
-                                legend.append("circle")
-                                      .attr("cx", 875)
-                                      .attr("cy", 50)
-                                      .attr("r", 6)
-                                      .style("fill","#d9534f");
-                                legend.append("text")
-                                     .attr("x", 881)
-                                     .attr("y", 53)
-                                     .attr("height", 30)
-                                     .attr("width", 100)
-                                     .style("fill", "#d9534f")
-                                     .text("Invalid sensor (0)")
-                                legend.append("circle")
+                                    legend.append("circle")
+                                        .attr("cx", 875)
+                                        .attr("cy", 50)
+                                        .attr("r", 6)
+                                        .style("fill","#d9534f");
+                                    legend.append("text")
+                                        .attr("x", 881)
+                                        .attr("y", 53)
+                                        .attr("height", 30)
+                                        .attr("width", 100)
+                                        .style("fill", "#d9534f")
+                                        .text("Invalid sensor (0)")
+                                    legend.append("circle")
                                         .attr("cx", 875)
                                         .attr("cy", 69)
                                         .attr("r", 6)
                                         .style("fill","#286090");
-                                legend.append("text")
+                                    legend.append("text")
                                         .attr("x", 881)
                                         .attr("y", 72)
                                         .attr("height", 30)
@@ -227,7 +252,7 @@
                                         .style("fill", "#286090")
                                         .text("Out of range")
 
-
+                                }
                                 function brushed() {
                                         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
                                         var s = d3.event.selection || x2.range();

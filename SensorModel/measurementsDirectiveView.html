@@ -20,7 +20,7 @@
         <div class="measurementsTotalReadings">
             <label>Total Readings: {{totalReadings}}</label>
         </div>
-        <div class="legend-measurement">
+        <div class="legend-measurement" ng-if="!vibrations">
             <a2 style="font-weight: bold;">Legend: </a2>
             <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
             <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor (0)</a1>
@@ -31,18 +31,28 @@
                 <tr>
                     <td>Index</td>
                     <td>Reading Date</td>
-                    <td>Val({{unitOfMeasure}})</td>
+                    <td ng-if="!vibrations">Val({{unitOfMeasure}})</td>
+                    <td ng-if="vibrations">Alerts</td>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="measurementSensor in measurementSensors">
                     <div></div>
-                    <td>{{$index+1}}</td>
+                    <td>{{$index+1}} {{measurementSensor.id}}</td>
                     <td>{{measurementSensor.readingDate}}</td>
-                    <td>
+                    <td ng-if= "!vibrations">
                         <div class="measurementsOk" ng-if="(measurementSensor.value < outOfRangeError) && (measurementSensor.value != 0)">{{measurementSensor.value}}</div>
                         <div class="measurementsOutOfRange" ng-if="measurementSensor.value > outOfRangeError">OR</div>
                         <div class="measurementsInvalidSensor" ng-if="measurementSensor.value == 0">IS(0)</div>
+                    </td>
+                    <td ng-if ="vibrations">
+                        <div ng-if="measurementSensor.value == 100" class="measurementsInvalidSensor">x</div>
+                        <div ng-if="measurementSensor.value == 200" class="measurementsInvalidSensor">y</div>
+                        <div ng-if="measurementSensor.value == 300" class="measurementsInvalidSensor">z</div>
+                        <div ng-if="measurementSensor.value == 400" class="measurementsInvalidSensor">xy</div>
+                        <div ng-if="measurementSensor.value == 500" class="measurementsInvalidSensor">xz</div>
+                        <div ng-if="measurementSensor.value == 600" class="measurementsInvalidSensor">yz</div>
+                        <div ng-if="measurementSensor.value == 700" class="measurementsInvalidSensor">xyz</div>
                     </td>
                 </tr>
             </tbody>

@@ -12,10 +12,11 @@ angular.module("sensorApp")
             activateAccount: activateAccount,
             getActivationCode: getActivationCode,
             getRequestDemo: getRequestDemo,
+            sendMessage: sendMessage,
           }
           function logIn(encodedData){
             return $http({
-              method: "GET",
+              method: "POST",
               url:'https://swiss-iot.azurewebsites.net/api/users/logIn',
               headers: {'Authorization': 'Basic ' + encodedData}
             })
@@ -71,5 +72,7 @@ angular.module("sensorApp")
           function getRequestDemo(request){
             return $http.post('https://swiss-iot.azurewebsites.net//api/demoRequest', request)
           }
-
+          function sendMessage(contact){
+            return $http.post('http://localhost:32332/api/contact', contact)
+          }
         })

@@ -4,7 +4,8 @@
         <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="contact-image">
         <div class="contact-container container">
                 <h2>Contact</h2>
-
+            <span id="alert-succesful" ng-show="succMsg">Your message has been successfully sent.</span>
+            <span id="alert-error" ng-show="errorMsg">{{message}}</span>
             <div class="area-text-container">
 
                 <div class="input-container-flex">
@@ -46,12 +47,12 @@
                 </div>
 
                 <div class="textarea-container-flex">
-                    <textarea class="form-control contact-input-filed" name="messahe" placeholder="Your message..."></textarea>
+                    <textarea class="form-control contact-input-filed" ng-model="message" name="messahe" placeholder="Your message..."></textarea>
                 </div>
 
             </div>
 
-            <button type="button">Send message</button>
+            <button type="button" ng-click="sendMsg(name, email, number, message)">Send message</button>
 
         </div>
     </div>

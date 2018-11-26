@@ -3,7 +3,7 @@ app.directive('measurements', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/measurementsDirectiveView.html',
-        controller: function($scope, sensorModelService, $localStorage, $location){
+        controller: function($scope, sensorModelService, SENSOR_TYPE, $localStorage, $location){
             var vm = this;
 
             $scope.measurementsButton = true;
@@ -36,6 +36,9 @@ app.directive('measurements', function(){
                 $scope.page = 1;
                 $scope.size = 10;
                 $scope.pageSize = "";
+                if(SENSOR_TYPE.ID == 37){
+                    $scope.vibrations = true;
+                }
                 //set the number of readings/ page
                 $scope.setPageSize = function(pageSize){
                     if (pageSize){
