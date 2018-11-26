@@ -87,6 +87,26 @@ app.directive('measurements', function(){
                     }
                 }
                 $scope.$watch('currentPage', $scope.setPage);
+                $scope.getLastRead = function(GA, CA){
+                    $scope.noRead = false;
+                    $scope.detailsData = false;
+                    $scope.loadingDetails = true;
+                    sensorModelService.getMeasurements(GA, CA, '1', '1', $scope.encodeduser)
+                        .then(measureSuccess)
+                        .catch(measureError)
+                    function measureSuccess(measurements){
+                                $scope.lastRead = measurements;
+                                $scope.noRead = false;
+                                $scope.detailsData = true;
+                                $scope.loadingDetails = false;
+                            }
+                    function measureError(measurements){
+                              $scope.noRead = true;
+                              $scope.loadingDetails = false;
+                              $scope.detailsData = true;
+                            };
+                    $scope.lastRead = null;
+                }
             };
         }
     }
