@@ -38,7 +38,7 @@
             <tbody>
                 <tr ng-repeat="measurementSensor in measurementSensors">
                     <div></div>
-                    <td>{{$index+1}} {{measurementSensor.id}}</td>
+                    <td>{{$index+1}}</td>
                     <td>{{measurementSensor.readingDate}}</td>
                     <td ng-if= "!vibrations">
                         <div class="measurementsOk" ng-if="(measurementSensor.value < outOfRangeError) && (measurementSensor.value != 0)">{{measurementSensor.value}}</div>
