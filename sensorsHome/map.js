@@ -92,7 +92,7 @@ app.directive('map', function(){
                                         .on("click", function (d) {
                                             if(!$sessionStorage.register && !$sessionStorage.editLoc){
                                                 if( $scope.click==true ){
-                                                    sensorModelService.getMeasurements(d.value[4], d.value[5], 1, 1)
+                                                    sensorModelService.getMeasurements(d.value[4], d.value[5], 1, 1, $scope.encodeduser)
                                                         .then(lastReadSuccess)
                                                         .catch(lastReadError)
                                                     function lastReadSuccess(readings){
