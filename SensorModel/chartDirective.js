@@ -162,7 +162,7 @@
                                                 .attr("r", 4)
                                                 .style("fill", function(d){if (d.value>=$scope.outOfRangeError) {return "#286090";}
                                                                       else{if (d.value==0){return "#d9534f";}}
-                                                                    if(SENSOR_TYPE.ID == 37){
+                                                                    if(SENSOR_TYPE.ID == 37 || $scope.vibrations){
                                                                         return "#d9534f";
                                                                     }
                                                                 })
@@ -175,8 +175,9 @@
                                                 .append("text")
                                                 .attr("x", function(d) {return x(d.readingDate); })
                                                 .attr("y", function(d) {return y(d.value)-3; })
-                                                .text(function(d) { if(d.value<$scope.outOfRangeError && d.value!=0){return d.value;} 
-                                                                    if(SENSOR_TYPE.ID == 37){
+                                                .text(function(d) { 
+                                                                    if(d.value<$scope.outOfRangeError && d.value!=0){return d.value;} 
+                                                                    if(SENSOR_TYPE.ID == 37 || $scope.vibrations){
                                                                         if(d.value == 100){
                                                                             return 'x';
                                                                         } else{
@@ -207,7 +208,7 @@
                                 }
 
                             //legend
-                                if(SENSOR_TYPE.ID != 37){
+                                if((SENSOR_TYPE.ID != 37 && SENSOR_TYPE.ID !=0)|| !$scope.vibrations){
                                     var legend = svg.append("g")
                                                 .attr("class", "legend")
                                                 .attr("x", 880)

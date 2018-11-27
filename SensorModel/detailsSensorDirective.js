@@ -15,6 +15,12 @@ app.directive('detailsSensor', function(){
                     $scope.outOfRangeError = 101;
                 }
             }
+            $scope.vibrationSens = function(id){
+                if(id == 37){
+                    $scope.vibrations = true;
+                    console.log($scope.vibrations)
+                }
+            }
             $scope.measureUnit = function(sensTypeId){
                 sensorModelService.getMeasureId(sensTypeId)
                     .then(idSuccess)

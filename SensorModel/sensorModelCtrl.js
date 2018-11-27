@@ -97,8 +97,8 @@
                 $scope.outOfRangeError = 101;
             }
         }
-        $scope.vibrationSens = function(){
-            if(SENSOR_TYPE.ID == 37){
+        $scope.vibrationSens = function(id){
+            if(id == 37){
                 $scope.vibrations = true;
             }
         }

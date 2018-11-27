@@ -84,6 +84,13 @@ app.directive('gridSensors', function(){
                         });
                     }
                 })
+                $scope.vibrationSens = function(id){
+                    if(id == 37){
+                        $scope.vibrations = true;
+                    }else{
+                        $scope.vibrations = false;
+                    }
+                }
             $scope.measureUnit = function(sensTypeID){
                 sensorModelService.getMeasureId(sensTypeID)
                      .then(idSuccess)
