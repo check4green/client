@@ -24,7 +24,7 @@
             </span>
         </div>
 
-        <div ng-if="!vibrations" class="form-group" ng-class="{'has-error': (registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
+        <div ng-show="!vibrations" class="form-group" ng-class="{'has-error': (registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
             <label>Upload Interval:</label>
 
             <div class="container-name">
@@ -34,14 +34,14 @@
                         <div class="container-info 	fa fa-info-circle">
                             <p class="info-hover">Enter the time interval between readings.</p>
                         </div>
-                    </div>
+            </div>
                     
             <span class="help-block has-error">
                 <span ng-show="registerForm.inputDays.$error.required && registerForm.inputHours.$error.required && registerForm.inputMinutes.$error.required">Upload Interval is required</span>
             </span>
         </div>
             
-        <button type="button" class="btn btn-success" ng-click="sensorEdit(editName, editDays, editHours, editMinutes, editBatchSize, sensor.gatewayAddress, sensor.clientAddress, sensor.id)">Edit</button>
+        <button type="button" class="btn btn-success" ng-click="sensorEdit(editName, editDays, editHours, editMinutes, sensor.gatewayAddress, sensor.clientAddress)">Edit</button>
         <button type="button" class="btn btn" ng-click="cancelEditSensor()">Cancel</button>
 
     </form>

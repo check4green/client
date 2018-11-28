@@ -35,7 +35,7 @@ app.directive('editSensor', function(){
                                 var latitude = sensor.latitude;
                                 var longitude = sensor.longitude;
                                 $scope.editSensor = {name, uploadInterval, latitude, longitude};
-                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, gatewayAddress, clientAddress, sensorId){
+                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, gatewayAddress, clientAddress){
                                 if (editName){
                                     $scope.editSensor.name = editName
                                 } 
