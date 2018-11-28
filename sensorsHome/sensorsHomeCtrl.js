@@ -27,25 +27,31 @@
       $scope.hideRegisterDist = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/distance');
+          $location.path('/sensorsHome/distance');
         }
       }
       $scope.hideRegisterTemp = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/temperature');
+          $location.path('/sensorsHome/temperature');
         }
       }
       $scope.hideRegisterElect = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/electricalCurrent');
+          $location.path('/sensorsHome/electricalCurrent');
         }
       }
       $scope.hideRegisterAir = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/airQuality');
+          $location.path('/sensorsHome/airQuality');
+        }
+      }
+      $scope.hideRegisterVibrations = function(){
+        if($sessionStorage.register == true){
+          $sessionStorage.register = false;
+          $location.path('/sensorsHome/vibration');
         }
       }
       autentificationService.getUser(encodeduser)
