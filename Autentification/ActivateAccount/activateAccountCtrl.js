@@ -13,7 +13,9 @@
                     $location.path('/logIn/register');
                 })
                 .catch(function(response){
-                    console.log("Error!")
+                    vm.showMessage = false;
+                    $scope.errorMsg = true;
+                    $scope.error = response.data.message;
                 })
         }
     })

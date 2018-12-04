@@ -6,7 +6,7 @@
 
     <div class="forgotPassword-container container">
             <h2>Validation code</h2>
-            <div ng-show="vm.showError" id="alert-error"><p>{{message}}</p></div>
+            <div ng-show="errorMsg" id="alert-error"><p>{{error}}</p></div>
       <form name="form">
         <div class="form-group" ng-class="{'has-error': form.uname.$invalid && form.uname.$dirty}">
         <div class="forgotPassword-input-container">

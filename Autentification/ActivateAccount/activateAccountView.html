@@ -7,6 +7,7 @@
     <div class="resetPassword-container container">
         <h2>Activate account</h2>
         <div ng-show="vm.showMessage" style="color:red;"><p>{{vm.message}}</p></div>
+        <div ng-show="errorMsg" id="alert-error"><p>{{error}}</p></div>
         <form name="form" novalidate>
             <div class="form-group" ng-class="{'has-error': form.code.$invalid && form.code.$dirty}">
                 <div class="resetPassword-input-container">

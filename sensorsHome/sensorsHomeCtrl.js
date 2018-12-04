@@ -14,16 +14,6 @@
       $scope.refreshButton = function(){
         $window.location.reload();
       }
-      $scope.showSensGrid = function(){
-        $scope.home = true;
-        $sessionStorage.home = $scope.home;
-        $sessionStorage.register = false;
-        $sessionStorage.editLoc = false;
-      }
-      $scope.hideSensGrid = function(){
-        $scope.home = false;
-        $sessionStorage.home = $scope.home;
-      }
       $scope.hideRegisterDist = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;

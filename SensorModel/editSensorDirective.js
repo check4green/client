@@ -50,6 +50,9 @@ app.directive('editSensor', function(){
                                         editMinutes = 0;
                                     }
                                     $scope.editSensor.uploadInterval = (editDays* 1440) + (editHours* 60) + editMinutes;
+                                }
+                                if(!editName && !editDays && !editHours && !editMinutes){
+                                    $scope.editSensor ='';
                                 } 
                                 sensorModelService.updateSensors($scope.editSensor, gatewayAddress, clientAddress, $scope.encodedData)
                                     .then(function(response){
@@ -65,6 +68,9 @@ app.directive('editSensor', function(){
                                     })
                                     .catch(function(response){
                                         $scope.message = response.data.message;
+                                        if(!editName && !editDays && !editHours && !editMinutes){
+                                            $scope.message ='You did not edit any field!';
+                                        }
                                         $scope.sensorEditError = true;
                                         $scope.sensorEditSuccess = false;
                                     });

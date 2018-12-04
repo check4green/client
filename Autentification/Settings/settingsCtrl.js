@@ -125,7 +125,6 @@
             if(!editFirstname && !editLastname && !editPassword && !oldPassword && !editEmail && !currentEmail && !confirmEmail && !editCompany && !editCountry && !editPhone){
               $scope.user ='';
             }
-          console.log('User Edit: ', $scope.user);
           var encodedData = btoa($scope.email + ':' + $scope.password);
 
           autentificationService.settings(encodedData, $scope.user)

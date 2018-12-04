@@ -11,7 +11,8 @@
                     $location.path("/logIn/accountEmail/activateAccount")
                 })
                 .catch(function(response){
-                    console.log("Error!")
+                    $scope.errorMsg = true;
+                    $scope.error = response.data.message;
                 })
         }
     })

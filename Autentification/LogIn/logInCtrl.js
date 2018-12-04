@@ -8,7 +8,6 @@
            if(value == true){
              $localStorage.email = email;
              $localStorage.password = password;
-             console.log("Checked!")
            } else{
              $sessionStorage.email = email;
              $sessionStorage.password = password;
@@ -20,7 +19,7 @@
           autentificationService.logIn($scope.encodeduser)
               .then(function(response){
                   $scope.loading = false;
-                  $location.path('/sensorsHome');
+                  $location.path('/sensorsHome/sensors');
                   $sessionStorage.email = email;
                   $sessionStorage.password = password;
               })
@@ -33,3 +32,16 @@
         }
 });
 }())
+var app = angular.module('sensorApp');
+app.directive('ngEnter', function(){
+  return function(scope, element, attrs){
+    element.bind("keydown press", function(event){
+      if(event.which === 13){
+        scope.$apply(function(){
+          scope.$eval(attrs.ngEnter);
+        })
+        event.preventDefault();
+      }
+    });
+  }
+});
