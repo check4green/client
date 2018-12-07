@@ -155,7 +155,7 @@
          }
           autentificationService.register($scope.user)
             .then(function(){
-              $location.path('/sensorsHome');
+              $location.path('/sensorsHome/sensors');
                $sessionStorage.email = $scope.user.email;
                $sessionStorage.password = $scope.user.password;
             })

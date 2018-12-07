@@ -14,38 +14,34 @@
       $scope.refreshButton = function(){
         $window.location.reload();
       }
-      $scope.showSensGrid = function(){
-        $scope.home = true;
-        $sessionStorage.home = $scope.home;
-        $sessionStorage.register = false;
-        $sessionStorage.editLoc = false;
-      }
-      $scope.hideSensGrid = function(){
-        $scope.home = false;
-        $sessionStorage.home = $scope.home;
-      }
       $scope.hideRegisterDist = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/distance');
+          $location.path('/sensorsHome/distance');
         }
       }
       $scope.hideRegisterTemp = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/temperature');
+          $location.path('/sensorsHome/temperature');
         }
       }
       $scope.hideRegisterElect = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/electricalCurrent');
+          $location.path('/sensorsHome/electricalCurrent');
         }
       }
       $scope.hideRegisterAir = function(){
         if($sessionStorage.register == true){
           $sessionStorage.register = false;
-          $location.path('/airQuality');
+          $location.path('/sensorsHome/airQuality');
+        }
+      }
+      $scope.hideRegisterVibrations = function(){
+        if($sessionStorage.register == true){
+          $sessionStorage.register = false;
+          $location.path('/sensorsHome/vibration');
         }
       }
       autentificationService.getUser(encodeduser)

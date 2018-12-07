@@ -35,7 +35,7 @@ app.directive('editSensor', function(){
                                 var latitude = sensor.latitude;
                                 var longitude = sensor.longitude;
                                 $scope.editSensor = {name, uploadInterval, latitude, longitude};
-                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, gatewayAddress, clientAddress, sensorId){
+                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, gatewayAddress, clientAddress){
                                 if (editName){
                                     $scope.editSensor.name = editName
                                 } 
@@ -50,6 +50,9 @@ app.directive('editSensor', function(){
                                         editMinutes = 0;
                                     }
                                     $scope.editSensor.uploadInterval = (editDays* 1440) + (editHours* 60) + editMinutes;
+                                }
+                                if(!editName && !editDays && !editHours && !editMinutes){
+                                    $scope.editSensor ='';
                                 } 
                                 sensorModelService.updateSensors($scope.editSensor, gatewayAddress, clientAddress, $scope.encodedData)
                                     .then(function(response){
@@ -65,6 +68,9 @@ app.directive('editSensor', function(){
                                     })
                                     .catch(function(response){
                                         $scope.message = response.data.message;
+                                        if(!editName && !editDays && !editHours && !editMinutes){
+                                            $scope.message ='You did not edit any field!';
+                                        }
                                         $scope.sensorEditError = true;
                                         $scope.sensorEditSuccess = false;
                                     });

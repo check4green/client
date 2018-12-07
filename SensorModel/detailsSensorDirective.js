@@ -5,7 +5,7 @@ app.directive('detailsSensor', function(){
         templateUrl: 'SensorModel/detailsSensorDirectiveView.html',
         controller: function($scope, sensorModelService, SENSOR_TYPE){
             var vm=this;
-            $scope.detailsDisplay = true
+            $scope.detailsDisplay = true;
             $scope.outOfRange = function(sensType){
                 if(sensType == 33){
                     $scope.outOfRangeError = 401;
@@ -13,6 +13,12 @@ app.directive('detailsSensor', function(){
                     $scope.outOfRangeError = 101;
                 }else if(sensType == 34){
                     $scope.outOfRangeError = 101;
+                }
+            }
+            $scope.vibrationSens = function(id){
+                if(id == 37){
+                    $scope.vibrations = true;
+                    console.log($scope.vibrations)
                 }
             }
             $scope.measureUnit = function(sensTypeId){

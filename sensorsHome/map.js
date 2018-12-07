@@ -92,7 +92,7 @@ app.directive('map', function(){
                                         .on("click", function (d) {
                                             if(!$sessionStorage.register && !$sessionStorage.editLoc){
                                                 if( $scope.click==true ){
-                                                    sensorModelService.getMeasurements(d.value[4], d.value[5], 1, 1)
+                                                    sensorModelService.getMeasurements(d.value[4], d.value[5], 1, 1, $scope.encodeduser)
                                                         .then(lastReadSuccess)
                                                         .catch(lastReadError)
                                                     function lastReadSuccess(readings){
@@ -108,11 +108,34 @@ app.directive('map', function(){
                                                                 .then(unitOfMeasureSuccess)
                                                             function unitOfMeasureSuccess(data){
                                                                 $scope.unitOfMeasure = data.unitOfMeasure;
+                                                                if(d.value[6] == 37){
+                                                                    if($scope.lastRead == 100){
+                                                                        $scope.lastRead = 'x';
+                                                                    }else if($scope.lastRead == 200){
+                                                                            $scope.lastRead = 'y';
+                                                                        } else if($scope.lastRead == 300){
+                                                                            $scope.lastRead = 'z';
+                                                                        } else if($scope.lastRead == 400){
+                                                                            $scope.lastRead = 'xy';
+                                                                        } else if($scope.lastRead == 500){
+                                                                            $scope.lastRead = 'xz';
+                                                                        } else if($scope.lastRead == 600){
+                                                                            $scope.lastRead = 'yz';
+                                                                        } else if($scope.lastRead == 700){
+                                                                            $scope.lastRead = 'xyz';
+                                                                        }
+                                                                        tooltip.transition()
+                                                                        .duration(0)
+                                                                        .style("opacity", 0.9)
+                                                                    tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last alert: "+ $scope.lastRead +
+                                                                                "<br>" +"Last date: " +$scope.lastDate)
+                                                                } else{
                                                                 tooltip.transition()
                                                                     .duration(0)
                                                                     .style("opacity", 0.9)
                                                                 tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +" "+$scope.unitOfMeasure +
                                                                             "<br>" +"Last date: " +$scope.lastDate)
+                                                                }
                                                             }
                                                         }
                                                     
@@ -120,11 +143,18 @@ app.directive('map', function(){
                                                 
                                                     function lastReadError(){
                                                         $scope.lastRead = "No data";
-                                                        $scope.lastDate ="-"
+                                                        $scope.lastDate ="-";
+                                                        if(d.value[6] == 37){
+                                                            tooltip.transition()
+                                                            .duration(0)
+                                                            .style("opacity", 0.9)
+                                                        tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last alert: "+ $scope.lastRead +"<br>" + "Last date: "+ $scope.lastDate)
+                                                        }else{
                                                         tooltip.transition()
                                                             .duration(0)
                                                             .style("opacity", 0.9)
                                                         tooltip.html("Name: "+ d.value[2]+ "<br>" +"Active: "+ d.value[3]+ "<br>" + "Last value: "+ $scope.lastRead +"<br>" + "Last date: "+ $scope.lastDate)
+                                                        }
                                                     }
                                                 
                                                     tooltip

@@ -135,8 +135,15 @@
              views: {
                 'sensorsHome@':{
                     template: "<sensors-home></sensors-home>",
-                    controller: function($scope, SENSOR_TYPE, $sessionStorage){
-                        SENSOR_TYPE.TITLE = "Home";
+                    controller: function($location, $localStorage, $sessionStorage, $rootScope){
+                        if(( (!$localStorage.password && !$localStorage.email) && ($localStorage.email != 0 && $localStorage.password != 0)) && (!$sessionStorage.email && !$sessionStorage.password)){
+                            $location.path('/logIn')
+                        }
+                        $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+                            if(toState.name == 'sensorsHome'){
+                                $location.path('sensorsHome/sensors')
+                            }
+                          });
                     }
                 }
             }
@@ -146,20 +153,40 @@
              url: "/settings",
              views: {
                 'settings@':{
-                    template: "<settings></settings>"
+                    template: "<settings></settings>",
+                    controller: function($scope, $location, $localStorage, $sessionStorage){
+                        if(($sessionStorage.email && $sessionStorage.password)|| ($localStorage.password && $localStorage.email)){
+                            $location.path('/settings')
+                        }else
+                        if(( (!$localStorage.password && !$localStorage.email) && ($localStorage.email != 0 && $localStorage.password != 0)) && (!$sessionStorage.email && !$sessionStorage.password)){
+                            $location.path('/logIn')
+                        }
+                    }
                 }
             }
         })
-
+        .state('sensorsHome.sensors',{
+            url: "/sensors",
+            views: {
+               'gridSensors@':{
+                   template: "<grid-sensors></grid-sensors>",
+                   controller: function(SENSOR_TYPE, $sessionStorage){
+                       SENSOR_TYPE.TITLE = "Sensors";
+                       $sessionStorage.home = true;
+                   }
+               }
+           }
+           })
             .state('sensorsHome.distance',{
              url: "/distance",
              views: {
                 'distance@':{
                     template: "<distance></distance>",
-                    controller: function($scope, SENSOR_TYPE){
+                    controller: function(SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.ID = "33";
                         SENSOR_TYPE.OUT_OF_RANGE = "401";
                         SENSOR_TYPE.TITLE = "Distance";
+                        $sessionStorage.home = false;
                     }
                 }
             }
@@ -170,10 +197,11 @@
              views: {
                 'temperature@':{
                     template: "<temperature></temperature>",
-                    controller: function($scope, SENSOR_TYPE){
+                    controller: function(SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.ID = "31";
                         SENSOR_TYPE.OUT_OF_RANGE = "101";
                         SENSOR_TYPE.TITLE = "Temperature";
+                        $sessionStorage.home = false;
                     }
                 }
             }
@@ -184,9 +212,10 @@
              views: {
                 'electricalCurrent@':{
                     template: "<electrical-current></electrical-current>",
-                    controller: function($scope, SENSOR_TYPE){
+                    controller: function(SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.ID = "35";
                         SENSOR_TYPE.TITLE = "Electrical Current";
+                        $sessionStorage.home = false;
                     }
                 }
             }
@@ -197,10 +226,11 @@
              views: {
                 'airQuality@':{
                     template: "<air-quality></air-quality>",
-                    controller: function($scope, SENSOR_TYPE){
+                    controller: function(SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.ID = "34";
                         SENSOR_TYPE.OUT_OF_RANGE = "101";
                         SENSOR_TYPE.TITLE = "Air Quality";
+                        $sessionStorage.home = false;
                     }
                 }
             }
@@ -210,9 +240,10 @@
                 views: {
                    'vibration@':{
                        template: "<vibration></vibration>",
-                       controller: function($scope, SENSOR_TYPE){
+                       controller: function(SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.ID = "37";
                         SENSOR_TYPE.TITLE = "Vibrations";
+                        $sessionStorage.home = false;
                    }
                 }
                }
@@ -222,9 +253,10 @@
                 views: {
                     'editLocation@':{
                         template: "<edit-location></edit-location>",
-                        controller: function($scope, $sessionStorage, $window){
+                        controller: function($sessionStorage){
                             $sessionStorage.editLoc = true;
-                            
+                            $sessionStorage.home = false;
+            
                         }
                     }
                 }

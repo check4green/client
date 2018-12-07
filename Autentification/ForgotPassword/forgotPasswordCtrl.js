@@ -9,7 +9,6 @@
         .then(function(){
           vm.showError = false;
           $location.path('/resetPassword');
-          console.log(' Click!');
           $sessionStorage.inputEmail = inputEmail;
         })
         .catch(function(response){

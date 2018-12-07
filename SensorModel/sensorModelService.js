@@ -107,9 +107,12 @@
        function deleteError(response){
            return $q.reject('Error deleting sensor(s).(HTTP status:' +response.status + ')');
        }
-       function getMeasurements(gatewayAddress, clientAddress, page, pageSize){
+       function getMeasurements(gatewayAddress, clientAddress, page, pageSize, encodedData){
         //    return $http.get('http://192.168.0.18:32333/api/sensors/address/' + gatewayAddress  + '/' +clientAddress + '/readings?page='+ page +'&pageSize='+ pageSize)
-           return $http.get('https://swiss-iot.azurewebsites.net/api/sensors/address/' + gatewayAddress  + '/' +clientAddress + '/readings?page='+page +'&pageSize='+ pageSize)
+           return $http({ method: 'GET',
+               url:'https://swiss-iot.azurewebsites.net/api/sensors/address/' + gatewayAddress  + '/' +clientAddress + '/readings?page='+page +'&pageSize='+ pageSize,
+               headers: {'Authorization' :'Basic ' + encodedData}
+            })
            .then(measurementsSuccess)
            .catch(measurementsError)
        }
@@ -133,9 +136,13 @@
              return response.data;
            })
       }
-       function getFinalPageReadings(gatewayAddress, clientAdress){
+       function getFinalPageReadings(gatewayAddress, clientAdress, encodedData){
         //    return $http.get('http://192.168.0.18:32333/api/sensors/address/'+gatewayAddress+'/'+clientAdress+'/readings')
-           return $http.get('https://swiss-iot.azurewebsites.net/api/sensors/address/'+gatewayAddress+'/'+clientAdress+'/readings')
+           return $http({
+                method: 'GET', 
+                url:'https://swiss-iot.azurewebsites.net/api/sensors/address/'+gatewayAddress+'/'+clientAdress+'/readings',
+                headers: {'Authorization' :'Basic ' + encodedData}
+        })
            .then(function(response){
                return response.headers('X-Tracker-Pagination-SensorReadingsCount');
            })

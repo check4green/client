@@ -7,7 +7,8 @@
                 <td>Register Date</td>
                 <td ng-if="!vibrations">Upload Interval</td>
                 <td ng-if="!vibrations">Unit Of Measure</td>
-                <td>Last Value</td>
+                <td  ng-if="!vibrations">Last Value</td>
+                <td ng-if="vibrations">Last alert</td>
                 <td>Last Date</td>
             </tr>
         </thead>
@@ -18,11 +19,21 @@
                 <td>{{sensor.productionDate}}</td>
                 <td ng-if="!vibrations">{{sensor.uploadInterval | uploadint}}</td>
                 <td ng-if="!vibrations">{{unitOfMeasure}}</td>
-                <td>
+                <td ng-if="!vibrations">
                     <span ng-show="noRead">-</span>
                     <div class="measurementsOk" ng-if="(lastRead[0].value < outOfRangeError) && (lastRead[0].value != 0)" >{{lastRead[0].value}}</div>
                     <div class="measurementsOutOfRange" ng-if="lastRead[0].value > outOfRangeError">OR</div>
                     <div class="measurementsInvalidSensor" ng-if="lastRead[0].value == 0">IS(0)</div>
+                </td>
+                <td ng-if="vibrations"> 
+                    <span ng-show="noRead">-</span>
+                    <div ng-if="lastRead[0].value == 100 && vibrations" class="measurementsInvalidSensor">x</div>
+                    <div ng-if="lastRead[0].value == 200 && vibrations" class="measurementsInvalidSensor">y</div>
+                    <div ng-if="lastRead[0].value == 300 && vibrations" class="measurementsInvalidSensor">z</div>
+                    <div ng-if="lastRead[0].value == 400 && vibrations" class="measurementsInvalidSensor">xy</div>
+                    <div ng-if="lastRead[0].value == 500 && vibrations" class="measurementsInvalidSensor">xz</div>
+                    <div ng-if="lastRead[0].value == 600 && vibrations" class="measurementsInvalidSensor">yz</div>
+                    <div ng-if="lastRead[0].value == 700 && vibrations" class="measurementsInvalidSensor">xyz</div>
                 </td>
                 <td>{{lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
             </tr>

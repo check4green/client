@@ -1,10 +1,9 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "$timeout",  "sensorModelService","$http", "$window", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout, sensorModelService, $http, $window) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
-        console.log(SENSOR_TYPE);
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){
             $scope.sensors.forEach(function(val){
@@ -16,26 +15,37 @@
         };
         $scope.sensorData = false;
         $scope.noData = false;
-        $scope.home = false;
-        $sessionStorage.home = $scope.home;
+        $sessionStorage.home = false;
         $scope.searchSensor ='';
         if($localStorage.email && $localStorage.password){
             $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
         }else {
           $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
+        function getSens(page, size, user){
+            sensorModelService.getSensors(page, size, user)
+                .then(function(response){
+                    $scope.sensors = response.data;
+                    $scope.loading = false;
+                    $scope.noSensorsData = false;
+                    $scope.sensorData = true;
+                })
+                .catch(function(){
+                    $scope.noSensorsData = true;
+                    $scope.loading = false;
+                    $scope.sensorData = false;
+                })
+        }
         $scope.sensPerPage = 50;
         sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
             .then(allSensors);
         function allSensors(data){
             $scope.allSensors = data;
+            $scope.totalSensors = data;
             $scope.currentPage = 1;
             vm.setPage = function(){
-                sensorModelService.getSensors(1, $scope.allSensors, $scope.encodeduser)
-                    .then(function(response){
-                        $scope.sensors = response.data;
-                        $scope.loading=false;
-                    })
+                getSens(1, $scope.allSensors, $scope.encodeduser)
+                    
             }
             $scope.$watch('currentPage', vm.setPage);
             $scope.loading = true;
@@ -63,18 +73,8 @@
                     
                 });
             }
-            sensorModelService.getSensors($scope.currentPage, $scope.allSensors, $scope.encodeduser)
-                .then(function(response){
-                    $scope.sensors = response.data;
-                    $scope.loading = false;
-                    $scope.noSensorsData = false;
-                    $scope.sensorData = true;
-                })
-                .catch(function(response){
-                    $scope.noSensorsData = true;
-                    $scope.loading = false;
-                    $scope.sensorData = false;
-                });
+            getSens($scope.currentPage, $scope.allSensors, $scope.encodeduser)
+                
         }
         
          $scope.measureUnit = function(sensTypeId){
@@ -98,8 +98,8 @@
                 $scope.outOfRangeError = 101;
             }
         }
-        $scope.vibrationSens = function(){
-            if(SENSOR_TYPE.ID == 37){
+        $scope.vibrationSens = function(id){
+            if(id == 37){
                 $scope.vibrations = true;
             }
         }
@@ -107,7 +107,7 @@
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
-            sensorModelService.getMeasurements(GA, CA, '1', '1')
+            sensorModelService.getMeasurements(GA, CA, '1', '1', $scope.encodeduser)
                 .then(measureSuccess)
                 .catch(measureError)
             function measureSuccess(measurements){
@@ -132,10 +132,6 @@
             $sessionStorage.batchSize = batchSize;
             $sessionStorage.location = {lat: lat, lng: long};
         }
-        sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
-            .then(function(response){
-                $scope.totalSensors = response;
-            });
        //live view
 
         //    vm.reload = function(){

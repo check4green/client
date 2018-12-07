@@ -5,11 +5,9 @@
         var vm = this;
         vm.showStartMessage = true;
         $scope.showStartMessage = 'Please check your email. The code we sent you is avaible only 5 minutes!';
-        console.log($sessionStorage.inputEmail)
         $scope.resetPass = function(resCode, newPass){
           var resEmail = $sessionStorage.inputEmail;
           $scope.user ={email:resEmail , code: resCode, password: newPass};
-          console.log($scope.user)
           autentificationService.resetPassword($scope.user)
             .then(function(){
               vm.showStartMessage = false;

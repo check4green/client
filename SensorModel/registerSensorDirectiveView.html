@@ -22,8 +22,8 @@
                 <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after the word, and the word needs min one letter. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
-        <label ng-if="!vibrations">Upload Interval:</label>
-        <div ng-if="!vibrations" class="form-group" ng-class="{'has-error':(registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
+        <label ng-show="!vibrations">Upload Interval:</label>
+        <div ng-show="!vibrations" class="form-group" ng-class="{'has-error':(registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
             <div class="container-name">
                 <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerDays" ng-model-options="{ debounce: 250 }" required />
                 <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerHours" ng-model-options="{ debounce: 250 }" required />
@@ -66,7 +66,7 @@
             </span>
         </div>
         
-        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, registerDays,registerHours, registerMinutes, registerBatchSize, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
+        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, registerDays,registerHours, registerMinutes, registerGatewayAddress, registerClientAddress, vm.sensors)">Add</button>
         <button type="button" class="btn btn" ng-click="cancelRegisterSensor()">Cancel</button>
     </form>
     <div class="map-google">
