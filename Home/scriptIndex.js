@@ -12,6 +12,7 @@ function showSettingsColapse(a){
             x.className = "header-container";
         }
     }
+
 // scroll button
 window.onscroll = function() { buttonScrollFunction()};
 
@@ -67,9 +68,94 @@ function toggle_visibility_div(id){
     
     if(cs.style.display == 'initial')
     cs.style.display = 'none';
+    else
+       e.style.display = 'initial';
 }
 // /Menu account
 
+//gallery
+function show_gallery_content_1(){
+    document.getElementById("1Img").style.display = "none";
+    document.getElementById("2Img").style.display = "initial";
+    document.getElementById("3Img").style.display = "none";
+    document.getElementById("4Img").style.display = "none";
+    document.getElementById("circleG1").style.opacity = "0.6";
+    document.getElementById("circleG2").style.opacity = "1.0";
+    document.getElementById("circleG3").style.opacity = "0.6";
+    document.getElementById("circleG4").style.opacity = "0.6";
+}
+function show_gallery_content_2(){
+    document.getElementById("1Img").style.display = "none";
+    document.getElementById("2Img").style.display = "none";
+    document.getElementById("3Img").style.display = "initial";
+    document.getElementById("4Img").style.display = "none";
+    document.getElementById("circleG1").style.opacity = "0.6";
+    document.getElementById("circleG2").style.opacity = "0.6";
+    document.getElementById("circleG3").style.opacity = "1.0";
+    document.getElementById("circleG4").style.opacity = "0.6";
+}
+function show_gallery_content_3(){
+    document.getElementById("1Img").style.display = "none";
+    document.getElementById("2Img").style.display = "none";
+    document.getElementById("3Img").style.display = "none";
+    document.getElementById("4Img").style.display = "initial";
+    document.getElementById("circleG1").style.opacity = "0.6";
+    document.getElementById("circleG2").style.opacity = "0.6";
+    document.getElementById("circleG3").style.opacity = "0.6";
+    document.getElementById("circleG4").style.opacity = "1.0";
+}
+function show_gallery_content_4(){
+    document.getElementById("1Img").style.display = "initial";
+    document.getElementById("2Img").style.display = "none";
+    document.getElementById("3Img").style.display = "none";
+    document.getElementById("4Img").style.display = "none";
+    document.getElementById("circleG1").style.opacity = "1.0";
+    document.getElementById("circleG2").style.opacity = "0.6";
+    document.getElementById("circleG3").style.opacity = "0.6";
+    document.getElementById("circleG4").style.opacity = "0.6";
+}
+//circle gallery -->
+function show_gallery_content_5(){
+    document.getElementById("1Img").style.display = "initial";
+    document.getElementById("2Img").style.display = "none";
+    document.getElementById("3Img").style.display = "none";
+    document.getElementById("4Img").style.display = "none";
+    document.getElementById("circleG1").style.opacity = "1.0";
+    document.getElementById("circleG2").style.opacity = "0.6";
+    document.getElementById("circleG3").style.opacity = "0.6";
+    document.getElementById("circleG4").style.opacity = "0.6";
+}
+function show_gallery_content_6(){
+    document.getElementById("1Img").style.display = "none";
+    document.getElementById("2Img").style.display = "initial";
+    document.getElementById("3Img").style.display = "none";
+    document.getElementById("4Img").style.display = "none";
+    document.getElementById("circleG1").style.opacity = "0.6";
+    document.getElementById("circleG2").style.opacity = "1.0";
+    document.getElementById("circleG3").style.opacity = "0.6";
+    document.getElementById("circleG4").style.opacity = "0.6";
+}
+function show_gallery_content_7(){
+    document.getElementById("1Img").style.display = "none";
+    document.getElementById("2Img").style.display = "none";
+    document.getElementById("3Img").style.display = "initial";
+    document.getElementById("4Img").style.display = "none";
+    document.getElementById("circleG1").style.opacity = "0.6";
+    document.getElementById("circleG2").style.opacity = "0.6";
+    document.getElementById("circleG3").style.opacity = "1.0";
+    document.getElementById("circleG4").style.opacity = "0.6";
+}
+function show_gallery_content_8(){
+    document.getElementById("1Img").style.display = "none";
+    document.getElementById("2Img").style.display = "none";
+    document.getElementById("3Img").style.display = "none";
+    document.getElementById("4Img").style.display = "initial";
+    document.getElementById("circleG1").style.opacity = "0.6";
+    document.getElementById("circleG2").style.opacity = "0.6";
+    document.getElementById("circleG3").style.opacity = "0.6";
+    document.getElementById("circleG4").style.opacity = "1.0";
+}
+//gallery
 
 function toggle_visibility(id){
 

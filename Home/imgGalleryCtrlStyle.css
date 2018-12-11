@@ -1,108 +1,59 @@
-.container-parents-gallery{
-  border-bottom: 1px solid rgba(51, 51, 51, 0.274);
-  border-top: 1px solid rgba(51, 51, 51, 0.274);
-  padding-bottom: 20px;
-  padding-top: 20px;
-  background-color: #8f8f8f1a;
+.container-big-gallery{
+  width: 100%;
+  height: 100%;
+  background-image: url("/Home/images-home/newGallery-images/BG-paralax.png");
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: round;
+  border-bottom: 1px solid #33333346;
+  border-top: 1px solid #33333346;
   padding-top: 100px;
   padding-bottom: 100px;
 }
-.container-gallery{
-  font-family: "FontC4G";
-  display: flex;
-  flex-direction: column;
-}
-.container-title-glr{
+section .containerGallery-big{
   background-color: white;
+}
+section .containerGallery-mini{
   display: flex;
   justify-content: center;
-  box-shadow: 6px 6px 9px -7px #00000013;
 }
-.grow-class-gallery{
-  flex-grow: 2;
+section .box-spanGallery{
+  margin-left: 12%;
+  padding: 5px;
 }
-.container-title-glr h1{
-  text-align: center;
-  font-family: "FontC4G";
-  font-size: 25px;
+section .containerGallery-mini span{
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 7px;
+  font-size: 17px;
+}
+.box-spanGallery #circleG1{
+  opacity: 1.0;
+}
+section .containerGallery-mini span:hover{
+  opacity: 1;
 }
 
-.container-gallery .container-imgText-gallery {
-  display: flex;
-}
-.container-imgText-gallery .container-photoText{
-  background-color: white;
-  margin: 5px;
-  box-shadow: 6px 6px 9px -2px #00000013;
-  border: solid 1px #00000000;
-}
-.container-imgText-gallery .container-photoText:hover{
-  transform: scale(0.97);
-  transition: 0.3s;
-  cursor: pointer;
-  border: solid 1px #00000027;
-}
-.container-imgText-gallery .container-photoText img{
+section .containerGallery-big img{
   height: auto;
   width: 100%;
-  margin-top: 5px;
-  transition: 0.2s;
-  border: solid 1px #00000000;
-  padding-bottom: 10px;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #33333318;
 }
-.container-imgText-gallery .container-photoText h1{
-  font-family: "FontC4G";
-  font-size: 25px;
-  text-align: center;
+.container-IMGgallery{
+  display: none;
+  height: auto;
+  width: 100%;
+  user-select: none;
 }
-.container-imgText-gallery .container-photoText p{
-  font-family: "FontC4G";
-  font-size: 14px;
-  text-align: center;
-  height: 70px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 10px;
-  border-bottom: solid 1px #00000027;
-  cursor: text;
-}
-@media screen and (max-width: 815px){
-  .container-gallery .container-imgText-gallery {
-    flex-direction: column;
+@media screen and (max-width: 960px){
+  .container-big-gallery{
+    background-size: 300%;
+    background-repeat: round;
+    padding-top: 45px;
+    padding-bottom: 15px;
   }
 }
-
-/* MODAL */
-.container-modal{
-  display: none;
-  position: fixed;
-  z-index: 503213;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9)
-}
-.container-modal .container-imgModal img{
-  margin: auto;
-  display: block;
-  width: 100%;
-  width: 700px;
-  background-color: white;
-}
-.container-modal .close-modal{
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  color: #d9534f;
-  font-size: 30px;
-  cursor: pointer;
-}
-.container-modal .close-modal:hover{
-  text-shadow: 0px 0px #e0e0e0;
-}
-/* MODAL */

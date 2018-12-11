@@ -4,68 +4,24 @@
         <img id="imgHeader" src="/Home/images-home/Logo-png-pises/LogoC4Ghearer-full.png">
     </div>
 
-        <!-- start page -->
-        <div class="container-parents-gallery">
-            <div class="container-gallery container">
-                <div class="container-title-glr">
-                    <h1>MANAGE IoT DEVICES EFFORTLESSLY WITH CHECK GREEN</h1>
-                    <!-- <img src="/Home/images-home/C4G-logo-BG-white-2.svg"> -->
-                </div>
-                <div class="container-imgText-gallery">
-                
-                    <div class="container-photoText">
-                        <div class="container-textimggallery">
-                            <h1>CONNECT DEVICES</h1>
-                            <p class="p-child-text">Choose from our wide range of smart sensors.</p>
-                        </div>
-                        <img title="Click to open image" src="/Home/images-home/gallery/manage-data-snesors.png" onclick="openImgmodalManage()">
-                    </div>
-                
-                    <div class="container-photoText exclusive">
-                        <img title="Click to open image" style=" border-bottom: solid 1px #00000027;" src="/Home/images-home/gallery/connect-devices-map.png" onclick="openImgmodalConnect()">
-                        <div class="container-textimggallery">
-                            <h1>COLLECT DATA</h1>
-                            <p style=" border-bottom: solid 1px #00000000;">
-                                Once the sensors have been placed in the desired location, 
-                                register them on our platform to allow them to transmit data to our platform for 
-                                easy visualization.</p>
-                        </div>
-                    </div>
-                
-                    <div class="container-photoText">
-                        <div class="container-textimggallery">
-                            <h1>MANAGE DATA</h1>
-                            <p>Manage the data and the way you receive it, visualize devices and take 
-                                action based on accurate info.</p>
-                        </div>
-                        <img title="Click to open image" src="/Home/images-home/gallery/collect-data-chartGrid.png" onclick="openImgmodalCollect()">
-                    </div>
+    <div class="container-big-gallery">
+        <section class="container">
+            <div class="containerGallery-big" title="Click to next photo">
+                <img onclick="show_gallery_content_1()" id="1Img" src="/Home/images-home/newGallery-images/1.png">
+                <img onclick="show_gallery_content_2()" style="display: none;" id="2Img" src="/Home/images-home/newGallery-images/2.png">
+                <img onclick="show_gallery_content_3()" style="display: none;" id="3Img" src="/Home/images-home/newGallery-images/3.png">
+                <img onclick="show_gallery_content_4()" style="display: none;" id="4Img" src="/Home/images-home/newGallery-images/4.png">
+            </div>
+            <div class="containerGallery-mini">
+                <div class="box-spanGallery">
+                    <span id="circleG1" onclick="show_gallery_content_5()" class="fas fa-circle" title="Click to next photo (Connect devices)"></span>
+                    <span id="circleG2" onclick="show_gallery_content_6()" class="fas fa-circle" title="Click to next photo (Collect data)"></span>
+                    <span id="circleG3" onclick="show_gallery_content_7()" class="fas fa-circle" title="Click to next photo (Server system)"></span>
+                    <span id="circleG4" onclick="show_gallery_content_8()" class="fas fa-circle" title="Click to next photo (Web application)"></span>
                 </div>
             </div>
-        </div>
-
-        <!-- Modal content -->
-        <div id="galleryModalConnect" class="container-modal">
-            <span class="close-modal fas fa-window-close" onclick="closeImgmodalConnect()"></span>
-            <div class="container-imgModal">
-                <img id="img01" src="/Home/images-home/gallery/connect-devices-map.png">
-            </div>
-        </div>
-        
-        <div id="galleryModalCollect" class="container-modal">
-            <span class="close-modal fas fa-window-close" onclick="closeImgmodalCollect()"></span>
-            <div class="container-imgModal">
-                <img id="img01" src="/Home/images-home/gallery/collect-data-chartGrid.png">
-            </div>
-        </div>
-        
-        <div id="galleryModalManage" class="container-modal">
-            <span class="close-modal fas fa-window-close" onclick="closeImgmodalManage()"></span>
-            <div class="container-imgModal">
-                <img id="img01" src="/Home/images-home/gallery/manage-data-snesors.png">
-            </div>
-        </div>
-        <!-- Modal content -->
+        </section>
+    </div>
 
         <!-- /start page -->
 
