@@ -113,7 +113,7 @@
             if(editEmail != confirmEmail){
               $scope.user ='';
             }
-            if(currentEmail != $scope.email){
+            if(currentEmail &&(currentEmail != $scope.email)){
               $scope.user='';
             }
             if((!currentEmail && editEmail && confirmEmail) || (currentEmail && !editEmail && confirmEmail) || (currentEmail && editEmail && !confirmEmail) ||(currentEmail && !editEmail && !confirmEmail) || (!currentEmail && editEmail && !confirmEmail) || (!currentEmail && !editEmail && confirmEmail)){
@@ -183,7 +183,7 @@
                   vm.showSettingsMessage = false;
                   $scope.error ='To change your email you have to fill all fields.'
                 }
-                if(currentEmail != $scope.email){
+                if(currentEmail &&(currentEmail != $scope.email)){
                   $scope.error = 'The current email is incorrect'
                 }
                 if(editEmail != confirmEmail){
