@@ -210,3 +210,31 @@ function closeImgmodalManage(){
 //-Manage
 
 //-Modal gallery
+
+// Categories menu 
+function colapseCategories1(x) {
+    // Get the content collapse 1
+    var cont1 = document.getElementById("content1");
+    x = document.getElementById("caretMenu1");
+
+    x.classList.toggle("rotateCaret");
+    if (cont1.style.display === "block"){
+        cont1.style.display = "none";
+    } else {
+        cont1.style.display = "block";
+    }
+  }
+function colapseCategories2(x) {
+    // Get the content collapse 1
+    var cont2 = document.getElementById("content2");
+    x = document.getElementById("caretMenu2");
+
+    x.classList.toggle("rotateCaret");
+    // If the checkbox is checked, display the output text
+    if (cont2.style.display === "block"){
+        cont2.style.display = "none";
+    } else {
+        cont2.style.display = "block";
+    }
+  }
+// Categories menu 
