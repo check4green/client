@@ -69,13 +69,19 @@
 .fa-bars{
     background-color: #4e9a06;
 }
-
+.rotateCaret{
+    transform: rotate(90deg);
+}
 .sidenav .a:hover {
     cursor: pointer;
     color: #4e9a06;
     border-bottom: 3px solid #4e9a06;
 }
-
+.dropdown-container-menu {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
 #main {
     transition: margin-left 0.0s;
     padding: 10px;
