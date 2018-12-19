@@ -73,6 +73,6 @@ angular.module("sensorApp")
             return $http.post('https://swiss-iot.azurewebsites.net//api/demoRequest', request)
           }
           function sendMessage(contact){
-            return $http.post('http://swiss-iot.azurewebsites.net//api/contact', contact)
+            return $http.post('https://swiss-iot.azurewebsites.net//api/contact', contact)
           }
         })
