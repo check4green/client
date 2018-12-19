@@ -1,7 +1,7 @@
 .container-big-gallery{
   width: 100%;
   height: 100%;
-  background-image: url("/Home/images-home/newGallery-images/BG-paralax.png");
+  background-image: url("/Home/images-home/newGallery-images/BG-paralax.svg");
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-size: 100%;
