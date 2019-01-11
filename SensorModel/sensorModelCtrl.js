@@ -91,11 +91,14 @@
         }
         $scope.outOfRange = function(sensType){
             if(sensType == 33){
-                $scope.outOfRangeError = 401;
+                $scope.outOfRangePositiveError = 401;
+                $scope.outOfRangeNegativeError = -1;
             } else if(sensType == 31){
-                $scope.outOfRangeError = 101;
+                $scope.outOfRangePositiveError = 126;
+                $scope.outOfRangeNegativeError = -56;
             }else if(sensType == 34){
-                $scope.outOfRangeError = 101;
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -1;
             }
         }
         $scope.vibrationSens = function(id){

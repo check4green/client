@@ -199,7 +199,7 @@
                     template: "<temperature></temperature>",
                     controller: function(SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.ID = "31";
-                        SENSOR_TYPE.OUT_OF_RANGE = "101";
+                        SENSOR_TYPE.OUT_OF_RANGE = "126";
                         SENSOR_TYPE.TITLE = "Temperature";
                         $sessionStorage.home = false;
                     }

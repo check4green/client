@@ -21,8 +21,9 @@
                 <td ng-if="!vibrations">{{unitOfMeasure}}</td>
                 <td ng-if="!vibrations">
                     <span ng-show="noRead">-</span>
-                    <div class="measurementsOk" ng-if="(lastRead[0].value < outOfRangeError) && (lastRead[0].value != 0)" >{{lastRead[0].value}}</div>
-                    <div class="measurementsOutOfRange" ng-if="lastRead[0].value > outOfRangeError">OR</div>
+                    <div class="measurementsOk" ng-if="(lastRead[0].value < outOfRangePositiveError) && (lastRead[0].value > outOfRangeNegativeError) && (lastRead[0].value != 0)">{{lastRead[0].value}}</div>
+                    <div class="measurementsOutOfRange" ng-if="lastRead[0].value > outOfRangePositiveError">ORP</div>
+                    <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError > lastRead[0].value">ORN</div>
                     <div class="measurementsInvalidSensor" ng-if="lastRead[0].value == 0">IS(0)</div>
                 </td>
                 <td ng-if="vibrations"> 
