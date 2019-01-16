@@ -42,9 +42,7 @@
                                     var measurements = data;
                                 for (var i=0; i<measurements.length; i++){
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);
-                                   if(measurements[i].value >$scope.outOfRangeError){
-                                       measurements[i].value = $scope.outOfRangeError;
-                                   }
+                                
                                 }
                                 var svg = d3.select("#chart");
                                 var margin = {top: 20, right: 95, bottom: 110, left: 105},
@@ -101,7 +99,6 @@
                                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                                     .attr("clip-path", "url(#clip)")
 
-
                                 var focus = svg.append("g")
                                     .attr("class", "focus")
                                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -110,7 +107,8 @@
                                     .attr("class", "context")
                                     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
                                 x.domain(d3.extent(measurements, function(d) {return d.readingDate; }));
-                                y.domain([0, d3.max(measurements, function (d) { return d.value +20; })]);
+                                y.domain([d3.min(measurements, function(d){ return d.value-2}), 
+                                        d3.max(measurements, function (d) { return d.value +20; })]);
                                 x2.domain(x.domain());
                                 y2.domain(y.domain());
                                 focus.append("g")
@@ -160,11 +158,14 @@
                                                 .append("circle")
                                                 .attr("class", "dot")
                                                 .attr("r", 4)
-                                                .style("fill", function(d){if (d.value>=$scope.outOfRangeError) {return "#286090";}
-                                                                      else{if (d.value==0){return "#d9534f";}}
-                                                                    if(SENSOR_TYPE.ID == 37 || $scope.vibrations){
-                                                                        return "#d9534f";
-                                                                    }
+                                                .style("fill", function(d){
+                                                                        if(SENSOR_TYPE.ID == 37 || $scope.vibrations)
+                                                                            {return "#d9534f";}
+                                                                        else if (d.value>=$scope.outOfRangePositiveError || d.value <= $scope.outOfRangeNegativeError) 
+                                                                            {return "#286090";}
+                                                                        else if (d.value==0)
+                                                                            {return "#d9534f";}
+                                                                    
                                                                 })
                                                 .attr("cx", function(d) {return x(d.readingDate); })
                                                 .attr("cy", function(d) {return y(d.value); })
@@ -176,7 +177,7 @@
                                                 .attr("x", function(d) {return x(d.readingDate); })
                                                 .attr("y", function(d) {return y(d.value)-3; })
                                                 .text(function(d) { 
-                                                                    if(d.value<$scope.outOfRangeError && d.value!=0){return d.value;} 
+                                                                    if(d.value<$scope.outOfRangePositiveError && d.value >$scope.outOfRangeNegativeError && d.value!=0){return d.value;} 
                                                                     if(SENSOR_TYPE.ID == 37 || $scope.vibrations){
                                                                         if(d.value == 100){
                                                                             return 'x';
