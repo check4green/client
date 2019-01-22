@@ -1,2 +1,8 @@
 User-agent: *
 Disallow: /Autentification/
+Allow: /Autentification/LogIn/logInStyle.css
+Allow: /Autentification/Register/registerSyle.css
+Allow: /Autentification/Settings/settingsStyle.css
+Allow: /Autentification/ForgotPassword/forgotPasswordStyle.css
+Allow: /Autentification/ForgotPassword/resetPasswors/resetPassworsStyle.css
+Allow: /Autentification/Contact/contactStyle.css

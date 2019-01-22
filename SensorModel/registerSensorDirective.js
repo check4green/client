@@ -47,7 +47,7 @@ app.directive('registerSensor', function(){
                 var minutes = registerMinutes;
                 $scope.uploadInt = days + hours + minutes;
                 if (SENSOR_TYPE.ID == 37){
-                    $scope.uploadInt =1;
+                    $scope.uploadInt = 60;
                 }
                 if($sessionStorage.lat == null && $sessionStorage.lng == null){
                     var lat = 0;
