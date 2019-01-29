@@ -14,4 +14,11 @@ Allow: /Autentification/ForgotPassword/forgotPasswordComponent.js
 Allow: /Autentification/LogIn/logInComponent.js
 Allow: /Autentification/Register/registerComponent.js
 Allow: /Autentification/Settings/settingsComponent.js
-Allow: https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttps%3A%2F%2Fwww.check4green.com%2F%23%2Fhome&4sAIzaSyDA4oDU1249QKoLHbjRQsZTFQRQb32B2-A&callback=_xdc_._cyed0l&key=AIzaSyDA4oDU1249QKoLHbjRQsZTFQRQb32B2-A&token=29432
+Allow: /Autentification/LogIn/logInView.html
+Allow: /Autentification/Register/registerView.html
+Allow: /Autentification/Settings/settingsView.html
+Allow: /Autentification/ForgotPassword/forgotPasswordView.html
+Allow: /Autentification/ForgotPassword/resetPassword/resetPasswordView.html
+Allow: /Autentification/Contact/contactView.html
+Allow: /Autentification/ActivateAccount/accountEmailView.html
+Allow: /Autentification/ActivateAccount/activateAccountView.html
