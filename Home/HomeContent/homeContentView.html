@@ -32,24 +32,50 @@
                 <div class="container container-cardsParrent">
 
                     <div class="container-cards">
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo1')">
-                            <img src="/Home/images-home/card/Card-1.png" title="Click to show the video" alt="HOW WE MAKE SENSOR HOUSING check4green sensors iot petrosani tutorials"></div>
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo2')">
-                            <img src="/Home/images-home/card/Card-2.png" title="Click to show the video" alt="HOW DOES OUR NETWORK WORK check4green sensors iot petrosani tutorials"></div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo1')" onmouseover="hoverToPlay1()" onmouseout="hoverToPause1()">
+                            
+                                <video id="video-network" muted>
+                                  <source src="/Home/source-video/Retea-C4G- prima randare 40sec.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                                  Your browser does not support HTML5 video.
+                                </video>
+
+                        </div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo2')" onmouseover="hoverToPlay2()" onmouseout="hoverToPause2()">
+                                <video id="video-sH" muted>
+                                  <source src="/Home/source-video/rander.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                                  Your browser does not support HTML5 video.
+                                </video>                        
+                        </div>
                     </div>
 
                     <div class="container-cards">
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo4')">
-                            <img src="/Home/images-home/card/Card-3.png" title="Click to show the video" alt="HOW TO ACTIVE A SENSOR check4green sensors iot petrosani tutorials"></div>
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo5')">
-                            <img src="/Home/images-home/card/Card-4.png" title="Click to show the video" alt="HOW TO REGISTER A SENSOR check4green sensors iot petrosani tutorials"></div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo4')" onmouseover="hoverToPlay3()" onmouseout="hoverToPause3()">
+                                <video id="video-edisS" muted>
+                                  <source src="/Home/source-video/edit-1.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                                  Your browser does not support HTML5 video.
+                                </video>
+                        </div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo5')" onmouseover="hoverToPlay4()" onmouseout="hoverToPause4()">
+                                <video id="video-register" muted>
+                                  <source src="/Home/source-video/Register-randare2.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                                  Your browser does not support HTML5 video.
+                                </video>
+                        </div>
                     </div>
 
                     <div class="container-cards">
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo6')">
-                            <img src="/Home/images-home/card/Card-5.png" title="Click to show the video" alt="HOW USE CHART VIEW check4green sensors iot petrosani tutorials"></div>
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo7')">
-                            <img src="/Home/images-home/card/Card-6.png" title="Click to show the video" alt="HOW TO EDIT SENSOR check4green sensors iot petrosani tutorials"></div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo6')" onmouseover="hoverToPlay5()" onmouseout="hoverToPause5()">
+                                <video id="video-activeS" muted>
+                                  <source src="/Home/source-video/Active-sensor-full.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                                  Your browser does not support HTML5 video.
+                                </video>
+                        </div>
+                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo7')" onmouseover="hoverToPlay6()" onmouseout="hoverToPause6()">
+                                <video id="video-chart" muted>
+                                  <source src="/Home/source-video/Video-chart.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                                  Your browser does not support HTML5 video.
+                                </video>
+                        </div>
                     </div>
 
                 </div>
@@ -62,10 +88,10 @@
             <div class="container-video" id="containerVideo1">
                 <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo1')"></span>
                 <div class="container-videoBG">
-                    <h1>How do we create sensors housing?</h1>
+                    <h1>How our network works </h1>
                 
                     <video id="video-1" controls>
-                      <source src="/Home/source-video/rander.mp4" type="video/mp4" alt="check4green End to End IoT Platform">
+                      <source src="/Home/source-video/Retea-C4G- prima randare 40sec.mp4" type="video/mp4" alt="check4green End to End IoT Platform">
                       Your browser does not support HTML5 video.
                     </video>
                 </div>
@@ -76,10 +102,10 @@
             <div class="container-video" id="containerVideo2">
                 <span class="fas fa-window-close span-video" onclick="toggle_visibility('containerVideo2')"></span>
                 <div class="container-videoBG">
-                    <h1>How our network works</h1>
+                    <h1>How do we create sensors housing?</h1>
                 
                     <video id="video-2" controls>
-                      <source src="/Home/source-video/Retea-C4G- prima randare 40sec.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                      <source src="/Home/source-video/rander.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
                       Your browser does not support HTML5 video.
                     </video>
                 </div>
@@ -90,10 +116,10 @@
             <div class="container-video" id="containerVideo4">
                 <span class="fas fa-window-close span-video" onclick="toggle_visibility('containerVideo4')"></span>
                 <div class="container-videoBG">
-                    <h1>How to activate a sensor?</h1>
+                    <h1>How to edit a sensor?</h1>
                 
                     <video id="video-4" controls>
-                      <source src="/Home/source-video/Active-sensor-full.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                      <source src="/Home/source-video/edit-1.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
                       Your browser does not support HTML5 video.
                     </video>
                 </div>
@@ -117,10 +143,10 @@
             <div class="container-video" id="containerVideo6">
                 <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo6')"></span>
                 <div class="container-videoBG">
-                    <h1>How to use the chart view</h1>
+                    <h1>How to activate a sensor?</h1>
                 
                     <video id="video-6" controls>
-                      <source src="/Home/source-video/Video-chart.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                      <source src="/Home/source-video/Active-sensor-full.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
                       Your browser does not support HTML5 video.
                     </video>
                 </div>
@@ -131,9 +157,9 @@
             <div class="container-video" id="containerVideo7">
                 <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo7')"></span>
                 <div class="container-videoBG">
-                    <h1>How to edit a sensor?</h1>
+                    <h1>How to use the chart view</h1>
                     <video id="video-7" controls>
-                      <source src="/Home/source-video/edit-1.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
+                      <source src="/Home/source-video/Video-chart.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
                       Your browser does not support HTML5 video.
                     </video>
                 </div>
