@@ -1,7 +1,8 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", 
+    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         $scope.sensorData = true;
@@ -16,6 +17,7 @@
         $scope.sensorData = false;
         $scope.noData = false;
         $sessionStorage.home = false;
+        $scope.change = true;
         $scope.searchSensor ='';
         if($localStorage.email && $localStorage.password){
             $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
@@ -72,6 +74,53 @@
                     }
                     
                 });
+            }
+            var expanded = false;
+            $scope.showCheckboxes = function()
+            {
+                var checkboxes = document.getElementById("checkboxes");
+                if(!expanded){
+                    checkboxes.style.display = "block";
+                    expanded = true;
+                } else{
+                    checkboxes.style.display = "none";
+                    expanded = false;
+                }
+            }
+            $scope.showActiveSensors = function(value)
+            {
+                if(value == true)
+                {
+                    sensorModelService.getSensors($scope.currentPage, $scope.allSensors, $scope.encodeduser)
+                        .then(function(response)
+                        {
+                            $scope.actSensors = response.data;
+                            $scope.loading = false;
+                            $scope.noSensorsData = false;
+                            $scope.sensorData = true;
+                            $scope.actsens = [];
+                            for(var i=0; i<$scope.actSensors.length; i++)
+                            {
+                                if($scope.actSensors[i].active == true)
+                                {
+                                    $scope.actsens.push($scope.actSensors[i]);
+                                }
+                            }
+                            $scope.sensors = $scope.actsens;
+                            $scope.active = true;
+                            
+                        })
+                        .catch(function()
+                        {
+                            $scope.noSensorsData = true;
+                            $scope.loading = false;
+                            $scope.sensorData = false;
+                        })
+                }
+                else
+                {
+                    getSens($scope.currentPage, $scope.allSensors, $scope.encodeduser);
+                }
             }
             getSens($scope.currentPage, $scope.allSensors, $scope.encodeduser)
                 
@@ -134,6 +183,68 @@
             $sessionStorage.uplInt = uploadInterval;
             $sessionStorage.batchSize = batchSize;
             $sessionStorage.location = {lat: lat, lng: long};
+        }
+        if($sessionStorage.cards == true){
+            $scope.cards = true;
+            $scope.grid = false;
+            $scope.editCards = true;
+        } else{
+            $scope.grid = true;
+            $scope.cards = false;
+            $scope.editCards = false;
+        }
+        $scope.changeLayout = function(){
+            if($scope.cards == false){
+                $scope.noSensorData = false;
+                $scope.sensorData = false;
+                $scope.buttons = false;
+                $scope.cards = true;
+                $scope.editCards = true;
+                $scope.grid = false;
+                $sessionStorage.cards = true;
+                $scope.editLocation = false;
+                $sessionStorage.details = true;
+            } else{
+                $scope.sensorData = true;
+                $scope.buttons = false;
+                $scope.cards = false;
+                $scope.editCards = false;
+                $scope.grid = true;
+                $sessionStorage.details = false;
+                $sessionStorage.cards = false;
+                if($sessionStorage.cancelEdit){
+                    var timer = $timeout(function(){
+                        $window.location.reload();
+                    }, 1);
+                    $sessionStorage.cancelEdit = false;
+                }
+            }
+            
+        }
+        $scope.details = function(){
+            $scope.detailsData = false;
+            $scope.clientAddr = $sessionStorage.clientAdd;
+            $scope.gatewayAddr = $sessionStorage.gatewayAdd;
+            $scope.editLoc = true;
+            $scope.cards = false;
+            $scope.backButton = false;
+            $scope.change = false;
+            $scope.cancel = true;
+            $scope.registerButton = false;
+            $scope.refresh = true;
+            $scope.detail = true;
+        }
+        $scope.cancelDetails = function(){
+            $scope.cancel = false;
+            $scope.refresh = false;
+            $scope.cards = true;
+            $scope.backButton = true;
+            $scope.change = true;
+            $scope.registerButton = true;
+            $scope.editLoc = false;
+            $sessionStorage.editLoc = false;
+            $scope.detailsData = true;
+            $scope.detail = false;
         }
        //live view
 

@@ -51,14 +51,8 @@
             url:"https://swiss-iot.azurewebsites.net/api/sensor-types/"+ SENSOR_TYPE.ID +"/users/sensors?page=" + pag + "&pageSize=" + size,
             headers: {'Authorization': 'Basic '+ encodedData}
         })
-            .catch(getError);
+            
      }
-       function sensorsSuccess(response){
-           return response.data;
-       }
-       function getError(response){
-           return $q.reject('Error retriving sensor(s).(HTTP status:' +response.status + ')');
-       }
         function getAllSensors(size, encodedData){
             //    return  $http.get('http://192.168.0.18:32333/api/sensor-types/' + SENSOR_TYPE.ID + '/sensors?page=0&pageSize=' + size)
              return  $http({
@@ -101,11 +95,6 @@
              url:"https://swiss-iot.azurewebsites.net/api/sensors/address/" + gatewayAddress + "/" + clientAddress,
              headers: {'Authorization' :'Basic ' + encodedData}
            })
-           .then(sensorsSuccess)
-           .catch(deleteError);
-       }
-       function deleteError(response){
-           return $q.reject('Error deleting sensor(s).(HTTP status:' +response.status + ')');
        }
        function getMeasurements(gatewayAddress, clientAddress, page, pageSize, encodedData){
         //    return $http.get('http://192.168.0.18:32333/api/sensors/address/' + gatewayAddress  + '/' +clientAddress + '/readings?page='+ page +'&pageSize='+ pageSize)

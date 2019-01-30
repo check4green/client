@@ -25,7 +25,20 @@
             <div class="grow"></div>
             <search></search> 
         </div>
-        
+        <form>
+                <div class="multiselect form-group ">
+                    <div class="selectBox" ng-click="showCheckboxes()">
+                        <select class="form-control">
+                            <option>Filters</option>
+                        </select>
+                        <div class="overSelect"></div>
+                    </div>
+                    <div id="checkboxes">
+                        <label for="active"><input type="checkbox" ng-model="value" id="active" ng-click="showActiveSens(value)"/>Active</label>
+                    </div>
+                </div>
+            </form>
+       
         <table class="table">
             <thead>
                 <tr>

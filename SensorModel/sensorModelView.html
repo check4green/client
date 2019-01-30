@@ -2,10 +2,25 @@
     <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
     </div>
-    <register-sensor></register-sensor>
+    <div class="container-registerButtons">
+            <div class="container-registerSensor">
+                <register-sensor></register-sensor>
+            </div>
+            <div class="padding-button">
+                <button type="button" class="button-cardView" ng-click="changeLayout()" ng-if= "change && grid" title="Large view">
+                    <span>Cards </span>
+                    <i class="fas fa-th-large"></i>
+                </button>
+                <button type="button" class="button-cardView" ng-click="changeLayout()" ng-if= "change && cards" title="Small view">
+                    <span>Grid </span>
+                    <i class=" fas fa-th-list"></i>
+                </button>
+                
+            </div>
+        </div>
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensorsData" class="noData">No Data</div>
-    <div ng-show="sensorData"  class="table-overflow">
+    <div ng-show="(sensorData && grid)"  class="table-overflow">
         <div  class="form-group measurementsContainerSet">
             <label>Sensors per page:</label>
             <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
@@ -23,9 +38,19 @@
             <div class="grow"></div>
             <search></search>
         </div>
-
-        
-        
+        <form>
+            <div class="multiselect form-group">
+                <div class="selectBox" ng-click="showCheckboxes()">
+                    <select class="form-control">
+                        <option>Filters</option>
+                    </select>
+                    <div class="overSelect"></div>
+                </div>
+                <div id="checkboxes">
+                    <label for="active"><input type="checkbox" ng-model="value" id="active" ng-click="showActiveSensors(value)"/>Active</label>
+                </div>
+            </div>
+        </form>
         <table class="table">
             <thead>
                 <tr>
@@ -76,7 +101,53 @@
         <div ng-show="!filterSensors.length" id="alert-error"><p>No result</p></div> 
         <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
         <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div> 
+    </div>
+<!-- CARDS -->
+<div class="container-parrents-cards" ng-show ="cards && !loading">
 
+        <div class="container-contentCards" ng-repeat= "sensor in sensors">
+            <div class="box-shadow">
+                <div class="container-contentCrd">
+                    <form>
+                        <b> {{$index+1}}. {{sensor.name}}</b>
+                        <div class="container-AI">
+                            <span class="label label-success" ng-if="sensor.active == true">Active</span>
+                            <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
+                        </div>
+                    </form>
+
+                    <button  type="button" ng-ig="detailsData" class="button-cardView" ng-click=" chart(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements(); startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude); details();  outOfRange(sensor.sensorTypeId); measureUnit(sensor.sensorTypeId);">
+                        Details</button>
+                    <button type="button" class="button-cardView" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-if="editButton">
+                        Edit</button>
+                    <button type="button" class="button-cardView" ng-click="startDelete(); gaCa(sensor.gatewayAddress, sensor.clientAddress)" ng-if="deleteButton">
+                        Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <edit-sensor></edit-sensor>
+    
+    <div class="container-buttonRB">
+        <button type="button" class="button-cardView"  style ="width: 100px;" ng-click="cancelDetails(); cancelMeasurements(); cancelChart()" ng-if="cancel">
+            <span>Back</span>
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button type="button" class="button-cardView" ui-sref="sensorsHome.editLocation" ng-if="editLoc">
+            <span>Location</span>
+            <i class="fas fa-map-marker-alt"></i>
+        </button>
+        <button type="button" class="button-cardView" ng-if="refresh" ng-click="chart(gatewayAddr, clientAddr); measurementSensor(gatewayAddr, clientAddr)">
+            <span>Refresh</span>
+            <i class="fas fa-redo-alt"></i>
+        </button>
+    </div>
+    <delete-sensor></delete-sensor>
+    <chartd3></chartd3>
+    <measurements></measurements>
+
+    <!-- CARDS -->
     </div>
     <!-- <div>
         <form>

@@ -68,6 +68,50 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                     }
                 });
             }
+            var expanded = false;
+            $scope.showCheckboxes = function()
+            {
+                var checkboxes = document.getElementById("checkboxes");
+                if(!expanded){
+                    checkboxes.style.display = "block";
+                    expanded = true;
+                } else{
+                    checkboxes.style.display = "none";
+                    expanded = false;
+                }
+            }
+            $scope.showActiveSens = function(value)
+            {
+                if(value == true){
+                    autentificationService.getUserSensors(encodeduser,  $scope.currentPage, $scope.allSensors)
+                        .then(function(response){
+                            $scope.actSensors = response.data;
+                            $scope.loading = false;
+                            $scope.noSensorsData = false;
+                            $scope.sensorData = true;
+                            $scope.actsens = [];
+                            for(var i=0; i<$scope.actSensors.length; i++)
+                            {
+                                if($scope.actSensors[i].active == true)
+                                {
+                                    $scope.actsens.push($scope.actSensors[i]);
+                                }
+                            }
+                    
+                            $scope.userSensors = $scope.actsens;
+                            $scope.act = true;
+                    
+                        })
+                        .catch(function(){
+                            $scope.noSensorsData = true;
+                            $scope.loading = false;
+                            $scope.sensorData = false;
+                        })
+                } else{
+                    getSens(encodeduser,  $scope.currentPage, $scope.allSensors);
+                }
+            }
+            
         })
         $scope.measureUnit = function(sensTypeID){
             sensorModelService.getMeasureId(sensTypeID)

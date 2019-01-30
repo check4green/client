@@ -45,6 +45,150 @@
 }
 /* <-- Search */
 
+/* Button now */
+.sensorModel .padding-button{
+    display: flex;
+    justify-content: flex-end;
+}
+.padding-button .button-cardView{
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.button-cardView i{
+    font-size: 16px;
+    padding: 2px;
+    margin-left: 10px;
+}
+
+.button-cardView{
+    display: inline-block;
+    justify-content: space-between;
+    position: relative;
+    color: white;
+    font-size: 14px;
+    background-color: #4e9a06;
+    border: 2px solid #43a303;
+    border-radius: 5%;
+    text-decoration: none;
+    /* width: 100px; */
+  }
+  .button-cardView:hover{
+    color: #1b4101;
+    background-color: white;
+    border: 2px solid #1b4101;
+  }
+/* Button now */
+
+/* CARDS */
+.container-parrents-cards{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f4f4f4;
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
+    padding: 15px;
+    justify-content: flex-start;
+}
+.container-parrents-cards .container-contentCards:hover{
+    background: radial-gradient(ellipse at center,
+     #fff 100%,
+      #fff 100%,
+       #fff 100%);
+    box-shadow: 5px 5px 2px -2px #0000002d;
+    border: 1px solid #cacaca;
+    transform: scale(1.2);
+    border-radius: 5px;
+}
+.container-parrents-cards .container-contentCards .box-shadow{
+    padding: 5px;
+}
+.container-parrents-cards .container-contentCards .box-shadow:hover{
+    background: radial-gradient(ellipse at center,
+     #4e9a0600 5%,
+      #ffffff00 70%,
+       #4e9a06 155%);
+    border-radius: 5px;
+}
+.container-parrents-cards .container-contentCards{
+    flex: 19%;
+    max-width: 19%;
+    margin: 5px;
+    background-color: #ffffff;
+    border: 1px solid #cacaca00;
+    box-shadow: 1px 1px 17px 0px #00000013;
+}
+@media screen and (max-width: 1200px){
+    .container-parrents-cards .container-contentCards{
+    flex: 25%;
+    max-width: 25%;
+    }
+}
+@media screen and (max-width: 995px){
+    .container-parrents-cards .container-contentCards{
+    flex: 30%;
+    max-width: 30%;
+    }
+}
+@media screen and (max-width: 760px){
+    .container-parrents-cards .container-contentCards{
+    flex: 100%;
+    max-width: 40%;
+    }
+    .container-parrents-cards{
+    justify-content: space-around;
+    }
+    .container-parrents-cards .container-contentCards .container-contentCrd{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    }
+}
+@media screen and (max-width: 560px){
+    .container-parrents-cards .container-contentCards{
+    flex: 100%;
+    max-width: 60%;
+    }
+}
+@media screen and (max-width: 416px){
+    .container-parrents-cards .container-contentCards{
+    flex: 100%;
+    max-width: 100%;
+    }
+}
+
+
+.sensorModel .container-registerButtons{
+    position: relative;
+}
+.container-registerButtons .container-registerSensor #registerButtonR{
+    position: absolute;
+    bottom: 5px;
+}
+@media screen and (max-width: 390px){
+    .container-registerButtons .container-registerSensor #registerNot{
+        bottom: 35px;
+    }
+}
+.container-parrents-cards .container-contentCards form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+}
+.container-parrents-cards .container-contentCards form b{
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid #333; 
+}
+
+.container-parrents-cards .container-contentCards .container-AI{
+    margin-top: 10px;
+}
+.container-parrents-cards .container-contentCards .container-contentCrd{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+/* CARDS */
 /* --> Edit info */
 .container-name{
     display: flex;
@@ -424,3 +568,28 @@ overflow{
 .map-google{
     width: 80%;
 }
+/* checkboxes filters */
+.multiselect{
+    width: 200px;
+  }
+  .selectBox {
+    position: relative;
+  }
+  .selectBox select{
+    width: 100%;
+    font-weight: bold;
+  }
+  .overSelect {
+    position: absolute;;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  #checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+  }
+  #checkboxes label {
+        display:block;
+  }
