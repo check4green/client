@@ -38,6 +38,8 @@ app.directive('measurements', function(){
             $scope.measurementSensor = function(gatewayAddress, clientAddress){
                 $scope.clientAddress = clientAddress;
                 $scope.gatewayAddress = gatewayAddress;
+                $sessionStorage.clientAdd = clientAddress;
+                $sessionStorage.gatewayAdd= gatewayAddress
                 $scope.page = 1;
                 $scope.size = 10;
                 $scope.pageSize = "";
@@ -80,13 +82,13 @@ app.directive('measurements', function(){
                 })
                 //pagination for readings
                 $scope.setPage = function(){
-                    sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.currentPage, $scope.size, $scope.encodedData)
+                    sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.page, $scope.size, $scope.encodedData)
                         .then(measureSuccess)
                     function measureSuccess(measurements){
                         $scope.measurementSensors = measurements;
                     }
                 }
-                $scope.$watch('currentPage', $scope.setPage);
+                $scope.$watch('page', $scope.setPage);
                 $scope.getLastRead = function(GA, CA){
                     $scope.noRead = false;
                     $scope.detailsData = false;

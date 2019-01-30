@@ -69,7 +69,9 @@ app.directive('map', function(){
                                 clientAddress = sensors[i].clientAddress;
                                 sensTypeId = sensors[i].sensorTypeId;
                                 var loc = [long, lat, name, status, gatewayAddress, clientAddress, sensTypeId]
-                                pos.push(loc)
+                                if(long !=0 && lat!=0){
+                                    pos.push(loc)
+                                }
                             }
                             var overlay = new google.maps.OverlayView;
                             overlay.onAdd = function() {

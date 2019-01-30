@@ -14,11 +14,20 @@ app.directive('deleteSensor', function(){
                 $scope.editLocation = false;
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
+                $scope.cards = false;
             }
             if($localStorage.email && $localStorage.password){
                 $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
                 $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+            }
+            if($sessionStorage.cards == true){
+                $scope.gaCa = function(ga, ca){
+                    $scope.del = true;
+                    $scope.gaAdd = ga;
+                    $scope.clAdd = ca;
+
+                } 
             }
             var timer;
             $scope.deleteSensor = function(gatewayAddress, clientAddress){
@@ -36,6 +45,16 @@ app.directive('deleteSensor', function(){
                 $scope.editButton = true;
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;
+                if($sessionStorage.cards == true){
+                    $window.location.reload();
+                    $timeout(function(){
+                        $scope.cards = true;
+                        $scope.grid = false;
+                    }, 100)
+                } else{
+                    $scope.cards = false;
+                    $scope.grid = true;
+                }
             };
         }
     }

@@ -68,14 +68,51 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                     }
                 });
             }
-        })
-        $scope.vibrationSens = function(id){
-            if(id == 37){
-                $scope.vibrations = true;
-            }else{
-                $scope.vibrations = false;
+            var expanded = false;
+            $scope.showCheckboxes = function()
+            {
+                var checkboxes = document.getElementById("checkboxes");
+                if(!expanded){
+                    checkboxes.style.display = "block";
+                    expanded = true;
+                } else{
+                    checkboxes.style.display = "none";
+                    expanded = false;
+                }
             }
-        }
+            $scope.showActiveSens = function(value)
+            {
+                if(value == true){
+                    autentificationService.getUserSensors(encodeduser,  $scope.currentPage, $scope.allSensors)
+                        .then(function(response){
+                            $scope.actSensors = response.data;
+                            $scope.loading = false;
+                            $scope.noSensorsData = false;
+                            $scope.sensorData = true;
+                            $scope.actsens = [];
+                            for(var i=0; i<$scope.actSensors.length; i++)
+                            {
+                                if($scope.actSensors[i].active == true)
+                                {
+                                    $scope.actsens.push($scope.actSensors[i]);
+                                }
+                            }
+                    
+                            $scope.userSensors = $scope.actsens;
+                            $scope.act = true;
+                    
+                        })
+                        .catch(function(){
+                            $scope.noSensorsData = true;
+                            $scope.loading = false;
+                            $scope.sensorData = false;
+                        })
+                } else{
+                    getSens(encodeduser,  $scope.currentPage, $scope.allSensors);
+                }
+            }
+            
+        })
         $scope.measureUnit = function(sensTypeID){
             sensorModelService.getMeasureId(sensTypeID)
                 .then(idSuccess)
@@ -95,29 +132,34 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
             sensorModelService.getMeasurements(GA, CA, '1', '1', $scope.encodeduser)
                 .then(measureSuccess)
                 .catch(measureError)
-            function measureSuccess(measurements){
-                $scope.lastRead = measurements;
+            function measureSuccess(measurement){
+                $scope.lastRead = measurement;
                 $scope.noRead = false;
                 $scope.detailsData = true;
                 $scope.loadingDetails = false;
             }
-            function measureError(measurements){
+            function measureError(){
                 $scope.noRead = true;
                 $scope.loadingDetails = false;
                 $scope.detailsData = true;
             }
             $scope.lastRead = null;
         }      
-        $scope.outOfRange = function(sensType){
+        $scope.outOfRangeAllSens = function(sensType){
             if(sensType == 33){
-                $scope.outOfRangeError = 401;
+                $scope.outOfRangePositiveError = 401;
+                $scope.outOfRangeNegativeError = -1;
             } else if(sensType == 31){
-                $scope.outOfRangeError = 101;
+                $scope.outOfRangePositiveError = 126;
+                $scope.outOfRangeNegativeError = -56;
             }else if(sensType == 34){
-                $scope.outOfRangeError = 101;
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -1;
             }
             if(sensType == 37){
                 $scope.vibrations =true;
+            } else{
+                $scope.vibrations = false;
             }
         }
         $scope.startEditLocation = function(gatewayAddress, clientAddress, name, uploadInterval, batchSize, lat, long){

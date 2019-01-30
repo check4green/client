@@ -66,7 +66,7 @@ angular.module("sensorApp")
               headers: {'Authorization': 'Basic '+ encodedData}
             })
             .then(function(response){
-              return response.headers('X-Tracker-Pagination-SensorCount')
+              return response.headers('X-Tracker-Pagination-TotalCount')
             })
           }
           function getRequestDemo(request){
