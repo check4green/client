@@ -42,9 +42,10 @@
 .container-cards .container-cardsChild:hover{
     transform: scale(0.97);
     transition: 0.3s;
+    opacity: 0.9;
     box-shadow: 6px 6px 9px -7px #000000;
 }
-.container-cards .container-cardsChild img{
+.container-cards .container-cardsChild video{
     vertical-align: middle;
     height: auto;
     width: 100%;

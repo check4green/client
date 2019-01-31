@@ -179,6 +179,63 @@ function toggle_visibility(id){
        else
        e.style.display = 'initial';
 }
+//Play video on hover 
+//1
+function hoverToPlay1(){
+    var video1 = document.getElementById("video-network"); // Video var
+    video1.play();
+}
+function hoverToPause1(){
+    var video1 = document.getElementById("video-network"); // Video var
+    video1.pause();
+}
+//2
+function hoverToPlay2(){
+    var video2 = document.getElementById("video-sH"); // Video var
+    video2.play();
+}
+function hoverToPause2(){
+    var video2 = document.getElementById("video-sH"); // Video var
+    video2.pause();
+}
+//3
+function hoverToPlay3(){
+    var video3 = document.getElementById("video-edisS"); // Video var
+    video3.play();
+}
+function hoverToPause3(){
+    var video3 = document.getElementById("video-edisS"); // Video var
+    video3.pause();
+}
+//4
+function hoverToPlay4(){
+    var video4 = document.getElementById("video-register"); // Video var
+    video4.play();
+}
+function hoverToPause4(){
+    var video4 = document.getElementById("video-register"); // Video var
+    video4.pause();
+}
+//5
+function hoverToPlay5(){
+    var video5 = document.getElementById("video-activeS"); // Video var
+    video5.play();
+}
+function hoverToPause5(){
+    var video5 = document.getElementById("video-activeS"); // Video var
+    video5.pause();
+}
+//6
+function hoverToPlay6(){
+    var video6 = document.getElementById("video-chart"); // Video var
+    video6.play();
+}
+function hoverToPause6(){
+    var video6 = document.getElementById("video-chart"); // Video var
+    video6.pause();
+}
+
+//Play video on hover 
 
 //Modal gallery
 
