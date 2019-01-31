@@ -20,6 +20,9 @@ app.directive('registerSensor', function(){
                     $scope.registerButton = false;
                     $scope.noSensorsData = false;
                     $scope.sensorData = false;
+                    $scope.backButton = false;
+                    $scope.change = false;
+                    $scope.cards =false;
 
                 }
             };
@@ -114,6 +117,8 @@ app.directive('registerSensor', function(){
                     $scope.registerDisplay = false;
                     $sessionStorage.register = false;
                     $scope.noSensorsData = true;
+                    $scope.backButton = true;
+                    $scope.change = true;
                 },300);
                 $timeout.cancel(timer)
                 // $scope.registerProductionDate ='';
