@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+      xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://www.check4green.com/home</loc>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/Logo-png-pises/LogoC4G_Header-with-LOGO-pises.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/Logo-png-pises/LogoC4G_Header-with-ALL-pises.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/Logo-png-pises/LogoC4G_Header-with-TXT-pises.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/Logo-png-pises/LogoC4G_Header-with-BG-reflect-pises.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/Logo-png-pises/LogoC4Gparts-bg-white.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/Logo-png-pises/Logo.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/newGallery-images/1.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/newGallery-images/2.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/newGallery-images/3.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/newGallery-images/4.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/newGallery-images/BG-paralax.svg.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/card/Card-1.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/card/Card-2.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/card/Card-3.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/card/Card-4.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/card/Card-5.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/card/Card-6.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/C4G-logo-BG-white-2.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/icon-logo.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/ilustratie-sgca.svg</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/Home/images-home/Logo-for-sensorHome.svg</image:loc>
+  </image:image>
+
+  <lastmod>2019-01-29T12:24:52+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://www.check4green.com/home/pricing</loc>
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/Pricing/PNGsensors/airQualitySensor.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/Pricing/PNGsensors/androidApp-2.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/Pricing/PNGsensors/currentSensor.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/Pricing/PNGsensors/distanceSensor.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/Pricing/PNGsensors/temperatureSensor.png</image:loc>
+  </image:image>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/Pricing/PNGsensors/Gateway.png</image:loc>
+  </image:image>
+
+  <lastmod>2019-01-29T12:24:52+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://www.check4green.com/home/products</loc>
+  <lastmod>2019-01-29T12:24:52+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://www.check4green.com/home/technology</loc>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/Technology/schema-platforma.svg</image:loc>
+  </image:image>
+
+  <lastmod>2019-01-29T12:24:52+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://www.check4green.com/home/aboutUs</loc>
+
+  <image:image>
+    <image:loc>https://www.check4green.com/textHeader/AboutUs/Proud-to-be-Petrosani.svg</image:loc>
+  </image:image>
+
+  <lastmod>2019-01-29T12:24:52+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+
+</urlset>
