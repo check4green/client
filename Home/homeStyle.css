@@ -14,10 +14,54 @@ html, body{
     background-attachment: fixed;
     background-size: 90%;
     background-repeat: no-repeat;
+    position: relative;
 }
 #imgHeader{
     display: none;
 }
+
+/* videoGallery 
+.container-videoGallery .container-video{
+    position: relative;
+    max-height: 300px;
+}
+.container-videoGallery .container-video video{
+    height: auto;
+    width: 210px;
+    padding: 5px;
+}
+.container-videoGallery .container-video i{
+    position: absolute;
+    top: 40px;
+    z-index: 10;
+    background-size: 200%;
+}
+.container-videoGallery .container-video i:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #686868;
+}
+ .container-header-logoIMG .container-videoGallery{
+    height: auto;
+    width: 100%;
+    position: relative;
+}
+.container-video{
+    display: flex;
+    padding: 5px;
+    position: absolute;
+    bottom: -80px;
+}
+.container-videoGallery .container-video video{
+    height: auto;
+    width: 210px;
+    padding: 5px;
+}
+
+} */
+
+/* videoGallery */
+
 @media screen and (max-width: 960px){
     #logoC4Gheader{
         display: initial;

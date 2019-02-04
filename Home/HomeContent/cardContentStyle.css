@@ -40,10 +40,9 @@
     box-shadow: 6px 6px 9px -7px #00000071;
 }
 .container-cards .container-cardsChild:hover{
-    transform: scale(0.97);
+    transform: scale(1.15);
     transition: 0.3s;
-    opacity: 0.9;
-    box-shadow: 6px 6px 9px -7px #000000;
+    box-shadow: 7px 12px 9px -7px #000000;
 }
 .container-cards .container-cardsChild video{
     vertical-align: middle;

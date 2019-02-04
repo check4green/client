@@ -187,7 +187,7 @@ function hoverToPlay1(){
 }
 function hoverToPause1(){
     var video1 = document.getElementById("video-network"); // Video var
-    video1.pause();
+    video1.load();
 }
 //2
 function hoverToPlay2(){
@@ -196,7 +196,7 @@ function hoverToPlay2(){
 }
 function hoverToPause2(){
     var video2 = document.getElementById("video-sH"); // Video var
-    video2.pause();
+    video2.load();
 }
 //3
 function hoverToPlay3(){
@@ -205,7 +205,7 @@ function hoverToPlay3(){
 }
 function hoverToPause3(){
     var video3 = document.getElementById("video-edisS"); // Video var
-    video3.pause();
+    video3.load();
 }
 //4
 function hoverToPlay4(){
@@ -214,7 +214,7 @@ function hoverToPlay4(){
 }
 function hoverToPause4(){
     var video4 = document.getElementById("video-register"); // Video var
-    video4.pause();
+    video4.load();
 }
 //5
 function hoverToPlay5(){
@@ -223,7 +223,7 @@ function hoverToPlay5(){
 }
 function hoverToPause5(){
     var video5 = document.getElementById("video-activeS"); // Video var
-    video5.pause();
+    video5.load();
 }
 //6
 function hoverToPlay6(){
@@ -232,7 +232,7 @@ function hoverToPlay6(){
 }
 function hoverToPause6(){
     var video6 = document.getElementById("video-chart"); // Video var
-    video6.pause();
+    video6.load();
 }
 
 //Play video on hover 
