@@ -21,7 +21,7 @@
                     keywords: ["check4green home page", "iot platform", "smart monitoring", "sensor housing"],
                     description: "IoT based hardware and software solutions integrated with LTE and LPWAN technologies such as: SIGFOX, LoRA and NB-IOT.",
                     robots: "index, follow",
-                    //canonical: 'https://www.check4green.com/home'
+                    canonical: 'https://www.check4green.com/home'
                 }
              },
              views: {
@@ -68,7 +68,7 @@
                     keywords: ["check4green informations", "contact"],
                     description: "If you have further questions, contact us!",
                     robots: "index, follow",
-                    //canonical: 'https://www.check4green.com/contact'
+                    canonical: 'https://www.check4green.com/contact'
                 }
              },
              views: {
@@ -95,7 +95,7 @@
                      keywords: ["about check4green", "Startup", "Swiss Integrated Services Petrosani"],
                      description: "Startup founded in 2016 in Petrosani, Romania by Swiss Integrated Services in partnership with Jiu Valley Sensor Ventures.",
                      robots: "index, follow",
-                     //canonical: 'https://www.check4green.com/home/aboutUs'
+                     canonical: 'https://www.check4green.com/home/aboutUs'
                  }
              },
              views: {
@@ -119,7 +119,7 @@
                                 "air quality sensor", "electrical current sensor", "vibration sensor"],
                     description: "Find out the prices of our products.",
                     robots: "index, follow",
-                    //canonical: 'https://www.check4green.com/home/pricing'
+                    canonical: 'https://www.check4green.com/home/pricing'
                  }
              },
              views: {
@@ -138,10 +138,10 @@
                  head: 
                  {
                      title: 'Technology',
-                     keywords: ["lora", "network server", "web application", "technology"],
+                     keywords: ["lora", "network server", "web application", "technology", "LTE", "LPWAN", "SIGFOX", "NB-IOT"],
                      description: "Our products and services are based on LoRA technology to help provide top class solutions, compatible with the latest trends in the IoT field.",
                      robots: "index, follow",
-                     //canonical: 'https://www.check4green.com/home/technology'
+                     canonical: 'https://www.check4green.com/home/technology'
                  }
              },
              views: {
@@ -163,7 +163,7 @@
                     keywords: ["smart sensors", "monitoring platform", "end to end iot platform", "products", "iot"],
                     description: "Find out what products we can offer you",
                     robots: "index, follow",
-                    //canonical: 'https://www.check4green.com/home/products'
+                    canonical: 'https://www.check4green.com/home/products'
                 }
              },
              views: {
