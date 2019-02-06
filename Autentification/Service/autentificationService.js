@@ -32,10 +32,10 @@ angular.module("sensorApp")
             return $http.post("https://swiss-iot.azurewebsites.net/api/users", user)
           }
           function activateAccount(code){
-            return $http.put("http://swiss-iot.azurewebsites.net/api/users/validation", code)
+            return $http.put("https://swiss-iot.azurewebsites.net/api/users/validation", code)
           }
           function getActivationCode(email){
-            return $http.put("http://swiss-iot.azurewebsites.net/api/users/getValidationCode", email)
+            return $http.put("https://swiss-iot.azurewebsites.net/api/users/getValidationCode", email)
           }
           function settings(encodedData, newUser){
             return $http({
