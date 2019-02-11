@@ -8,7 +8,7 @@
     });
     app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", 
                function($stateProvider, $urlRouterProvider, $locationProvider){
-                $locationProvider.html5Mode(true);
+                // $locationProvider.html5Mode(true);
                 $urlRouterProvider.otherwise('/home')
                    $stateProvider
             .state("home",{
@@ -313,6 +313,19 @@
                        controller: function(SENSOR_TYPE, $sessionStorage){
                         SENSOR_TYPE.ID = "37";
                         SENSOR_TYPE.TITLE = "Vibrations";
+                        $sessionStorage.home = false;
+                   }
+                }
+               }
+               })
+               .state('sensorsHome.pressure',{
+                url: "/pressure",
+                views: {
+                   'pressure@':{
+                       template: "<pressure></pressure>",
+                       controller: function(SENSOR_TYPE, $sessionStorage){
+                        SENSOR_TYPE.ID = "39";
+                        SENSOR_TYPE.TITLE = "Pressure";
                         $sessionStorage.home = false;
                    }
                 }
