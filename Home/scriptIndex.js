@@ -34,6 +34,23 @@ function buttonFunction() {
 }
 
 
+// function functionColorRound(){
+//     document.getElementById("sliderRound").style.background.color = "#23b39f";
+// }
+
+function myFunction() {
+    // Get the checkbox
+    var checkBox = document.getElementById("chartChecked");
+    // Get the output text
+    var text = document.getElementById("sliderRound");
+  
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+      text.style.background.color = "#23b39f";
+    } else {
+      text.style.background.color = "#fffff";
+    }
+  }
 // show text HomeHeader
 // open/close menu
 function openNav() {
