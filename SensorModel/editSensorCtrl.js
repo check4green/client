@@ -1,45 +1,49 @@
-var app = angular.module("sensorApp");
-app.directive('editSensor', function(){
-    return {
-        restrict: 'E',
-        templateUrl: 'SensorModel/editSensorDirectiveView.html',
-        controller: function($scope, sensorModelService, $window, $localStorage, $sessionStorage){
+(function(){
+    "use strict";
+   var app = angular.module("sensorApp");
+   app.controller("editSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window", "$timeout",
+function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window, $timeout){
+            var vm = this;
+            if($sessionStorage.title == false){
+                $scope.title = false;
+            } else{
+                $scope.title = true;
+                vm.title = SENSOR_TYPE.TITLE;
+            }
+            
             $scope.editButton = true;
-            $scope.editDisplay = false;
-            $sessionStorage.editDisplay = $scope.editDisplay;
+            $scope.name = $sessionStorage.name
+            
+            if($scope.cards == true){
+                $scope.cards = false;
+                $scope.backButton = false;
+            }
+            $scope.measurementsButton = false;
+            $scope.chartButton = false;
             $scope.sensorEditError = false;
             $scope.sensorEditSuccess = false;
-            $scope.startEdit = function() {
-                $scope.editButton = false;
-                $scope.detailsDisplay = false;
-                $scope.deleteButton = false;
-                $scope.editLocation = false;
-                if($scope.cards == true){
-                    $scope.cards = false;
-                    $scope.backButton = false;
-                }
-                $scope.measurementsButton = false;
-                $scope.chartButton = false;
-                if($scope.editDisplay == false){
-                    $scope.editDisplay = true;
-                    $sessionStorage.editDisplay = $scope.editDisplay;
-                    $scope.editButton = false;
-                }
-            };
+            $scope.editButton = false;
+            $scope.detailsDisplay = false;
+            $scope.deleteButton = false;
+            $scope.editLocation = false;
+            
+            $scope.editButton = false;
+            
             if ($localStorage.email && $localStorage.password){
               $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
                 $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }
-            $scope.getSensor = function(gatewayAddress, clientAddress){
-                sensorModelService.getSensorsByAddress(gatewayAddress, clientAddress, $scope.encodedData)
+            sensorModelService.getSensorsByAddress($sessionStorage.ga, $sessionStorage.ca, $scope.encodedData)
                         .then(function(sensor){
                                 var name = sensor.name;
                                 var uploadInterval = sensor.uploadInterval;
                                 var latitude = sensor.latitude;
                                 var longitude = sensor.longitude;
                                 $scope.editSensor = {name, uploadInterval, latitude, longitude};
-                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, gatewayAddress, clientAddress){
+                                var ga = sensor.gatewayAddress;
+                                var ca = sensor.clientAddress;
+                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, ga, ca){
                                 if (editName){
                                     $scope.editSensor.name = editName
                                 } 
@@ -66,10 +70,9 @@ app.directive('editSensor', function(){
                                         }
                                         $scope.sensorEditError = false;
                                         $scope.sensorEditSuccess = true;
-                                        if($scope.sensor){
-                                            $scope.sensor.uploadInterval=$scope.editSensor.uploadInterval;
-                                            $scope.sensor.name = $scope.editSensor.name;
-                                        }
+                                        $scope.sensor.uploadInterval=$scope.editSensor.uploadInterval;
+                                        $scope.sensor.name = $scope.editSensor.name;
+                                        
                                         
                                     })
                                     .catch(function(response){
@@ -82,30 +85,47 @@ app.directive('editSensor', function(){
                                     });
                             };
                         })
-            }
+            
             $scope.cancelEditSensor = function(){
-                $scope.editButton = true;
-                $scope.editDisplay = false;
-                $scope.detailsDisplay = true;
-                $scope.deleteButton = true;
-                $scope.measurementsButton = true;
-                $scope.editLocation = true;
-                $scope.chartButton = true;
-                $scope.sensorEditError = false;
-                $scope.sensorEditSuccess = false;
-                if($sessionStorage.cards == true){
-                    $window.location.reload();
-                    $timeout(function(){
-                        $scope.cards = true;
-                        $scope.grid = false;
-                        $scope.backButton = true;
-                    }, 100)
-                } else{
+                if($sessionStorage.editSensGrid == true){
+                    $scope.editButton = true;
+                    $scope.editDisplay = false;
+                    $scope.detailsDisplay = true;
+                    $scope.deleteButton = true;
+                    $scope.measurementsButton = true;
+                    $scope.editLocation = true;
+                    $scope.chartButton = true;
+                    $scope.sensorEditError = false;
+                    $scope.sensorEditSuccess = false;
                     $scope.cards = false;
                     $scope.grid = true;
                     $scope.backButton = true;
+                    $sessionStorage.editDisplay = false;
+                }else{
+                    $window.history.back();
+                    $scope.editButton = true;
+                    $scope.detailsDisplay = true;
+                    $scope.deleteButton = true;
+                    $scope.measurementsButton = true;
+                    $scope.editLocation = true;
+                    $scope.chartButton = true;
+                    $scope.sensorEditError = false;
+                    $scope.sensorEditSuccess = false;
+                    if($sessionStorage.cards == true){
+                    
+                        $scope.cards = true;
+                        $scope.grid = false;
+                        $scope.backButton = true;
+                        $timeout(function(){
+                            $window.location.reload();
+                        }, 100)
+                    } else{
+                        $scope.cards = false;
+                        $scope.grid = true;
+                        $scope.backButton = true;
+                    }
                 }
             };
         }
-    }
-});
+   ])
+}())

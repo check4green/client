@@ -84,7 +84,7 @@
 .container-parrents-cards{
     display: flex;
     flex-wrap: wrap;
-    background-color: #f4f4f4;
+    background-color: #e6e6e6;
     border-top: 1px solid #cacaca;
     border-bottom: 1px solid #cacaca;
     padding: 15px;

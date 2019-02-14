@@ -1,31 +1,23 @@
-var app = angular.module("sensorApp");
-app.directive('registerSensor', function(){
-    return {
-        restrict: 'E',
-        templateUrl: 'SensorModel/registerSensorDirectiveView.html',
-        controller: function($scope, SENSOR_TYPE, sensorModelService, $timeout, $window, $localStorage, $sessionStorage){
+(function(){
+    "use strict";
+   var app = angular.module("sensorApp");
+   app.controller("registerSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window", "$timeout",
+        function registerSensorCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window, $timeout) {
             var vm = this;
-            $sessionStorage.register = false;
-            if($sessionStorage.register == false){
-                $scope.registerDisplay = false;
-            }
+            vm.titleGrid = SENSOR_TYPE.TITLE;
             $scope.registerButton = true;
             $scope.sensorRegisterError = false;
             $scope.sensorRegisterSuccess = false;
-            $scope.startRegister = function(){
-                $scope.sensorData = false;
-                if($scope.registerDisplay == false){
-                    $scope.registerDisplay = true;
-                    $sessionStorage.register = true;
-                    $scope.registerButton = false;
-                    $scope.noSensorsData = false;
-                    $scope.sensorData = false;
-                    $scope.backButton = false;
-                    $scope.change = false;
-                    $scope.cards =false;
-
-                }
-            };
+            $scope.sensorData = false;
+            $scope.registerDisplay = true;
+            $sessionStorage.register = true;
+            $scope.registerButton = false;
+            $scope.noSensorsData = false;
+            $scope.sensorData = false;
+            $scope.backButton = false;
+            $scope.change = false;
+            $scope.cards =false;
+            
             if (SENSOR_TYPE.ID == 37){
                 $scope.vibrations = true;
             }
@@ -84,7 +76,7 @@ app.directive('registerSensor', function(){
             // $scope.registerGatewayAddress = '';
             // $scope.registerClientAddress = '';
             };
-            $scope.updateTime = function(){
+            
                 $scope.today = new Date();
                 var day = $scope.today.getDate();
                 var month = $scope.today.getMonth() +1;
@@ -105,12 +97,11 @@ app.directive('registerSensor', function(){
                     month = '0' + month;
                 }
                 $scope.maxDate = year+ '-' + month +'-'+  day + 'T'+ $scope.time;
-            }
+                
             var timer;
             $scope.cancelRegisterSensor = function(){
-                $window.location.reload();
-                timer = $timeout(function(){
-                    $scope.sensorRegisterError = false;
+                $window.history.back();
+                $scope.sensorRegisterError = false;
                     $scope.sensorRegisterSuccess = false;
                     $scope.registerButton = true;
                     $scope.sensorData = true;
@@ -119,6 +110,8 @@ app.directive('registerSensor', function(){
                     $scope.noSensorsData = true;
                     $scope.backButton = true;
                     $scope.change = true;
+                timer = $timeout(function(){
+                    $window.location.reload();
                 },300);
                 $timeout.cancel(timer)
                 // $scope.registerProductionDate ='';
@@ -127,6 +120,6 @@ app.directive('registerSensor', function(){
                 // $scope.registerGatewayAddress = '';
                 // $scope.registerClientAddress = '';
             };
-        }
-    }
-});
+        }])
+
+}());

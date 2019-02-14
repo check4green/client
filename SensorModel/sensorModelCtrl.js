@@ -10,6 +10,9 @@
             $scope.sensors.forEach(function(val){
                 val.expanded=false;
                 $scope.editLocation = true;
+                $sessionStorage.editDisplay = false;
+                $scope.editDisplay = false;
+                $scope.editButton = true;
 
             })
             sensor.expanded=true;
@@ -175,6 +178,44 @@
                     };
             $scope.lastRead = null;
         }
+        if($sessionStorage.editDisplay == false){
+            $scope.editDisplay = false;
+        }
+        $scope.editButton  = true;
+        $scope.editSensorGrid = function(){
+            $sessionStorage.title = false;
+            $sessionStorage.editDisplay = true;
+            $scope.editDisplay = true;
+            $scope.measurementsButton = false;
+            $scope.chartButton = false;
+            $scope.editButton = false;
+            $scope.editLocation = false;
+            $scope.deleteButton = false;
+            $sessionStorage.editSensGrid = true;
+            $scope.detailsDisplay = false;
+            $scope.editButton = false;
+
+        }
+        $scope.cancelEdit = function(){
+            $scope.editButton = true;
+            $scope.editDisplay = false;
+            $scope.detailsDisplay = true;
+            $scope.deleteButton = true;
+            $scope.measurementsButton = true;
+            $scope.editLocation = true;
+            $scope.chartButton = true;
+            $scope.sensorEditError = false;
+            $scope.sensorEditSuccess = false;
+            $scope.cards = false;
+            $scope.grid = true;
+            $scope.backButton = true;
+            $sessionStorage.editDisplay = false;
+        }
+        $scope.getSensor = function(ga, ca, name){
+            $sessionStorage.ga = ga;
+            $sessionStorage.ca = ca;
+            $sessionStorage.name = name;
+        }
         $scope.startEditLocation = function(gatewayAddress, clientAddress, name, uploadInterval, batchSize, lat, long){
             $sessionStorage.home = false;
             $sessionStorage.gatewayAddress = gatewayAddress;
@@ -204,7 +245,12 @@
                 $sessionStorage.cards = true;
                 $scope.editLocation = false;
                 $sessionStorage.details = true;
+                $sessionStorage.editDisplay = true;
+                $sessionStorage.editSensGrid = false;
+                $sessionStorage.title = true;
             } else{
+                $sessionStorage.editSensGrid = true;
+                $sessionStorage.editDisplay = false;
                 $scope.sensorData = true;
                 $scope.buttons = false;
                 $scope.cards = false;
@@ -212,6 +258,7 @@
                 $scope.grid = true;
                 $sessionStorage.details = false;
                 $sessionStorage.cards = false;
+                $sessionStorage.title = false;
                 if($sessionStorage.cancelEdit){
                     var timer = $timeout(function(){
                         $window.location.reload();
