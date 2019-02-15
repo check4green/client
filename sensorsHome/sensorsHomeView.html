@@ -62,24 +62,24 @@
         <a href="javascript:void(0)" class="closebtn"><img src="/Home/images-home/C4G-logo-BG-white-2.svg"></a>
 
         <a class="a" onclick="closeNav()" ui-sref="sensorsHome.sensors">
-            Home<i class="fas fa-home"></i></a>
+            All sensors<i class="fas fa-home"></i></a>
 
         <a class="a dorpdown-btn-menu" onclick="colapseCategories1(this)">
             Measurement sensors <i id="caretMenu1" class="fas fa-caret-right"></i></a>
 
         <div id="content1" class="dropdown-container-menu">
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.distance" ng-click="hideRegisterDist()" title="distance sesors list">
+            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.distance" title="distance sesors list">
                 Distance<i class="fas fa-crop-alt"></i></a>
 
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.temperature" ng-click="hideRegisterTemp()" title="temperature sensors list">
+            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.temperature" title="temperature sensors list">
                 Temperature<i class="fas fa-thermometer-half"></i></a>
 
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.electricalCurrent" ng-click="hideRegisterElect()"  title="electrical current sensors list">
+            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.electricalCurrent"  title="electrical current sensors list">
                 Electrical Current<i class="fas fa-bolt"></i></a>
 
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.airQuality" ng-click="hideRegisterAir()" title="air quality sensors list">
+            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.airQuality" title="air quality sensors list">
                 Air Quality<i class="	fab fa-mixcloud"></i></a>
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.pressure" ng-click="hideRegisterAir()" title="pressure sensors list">
+            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.pressure"  title="pressure sensors list">
                 Pressure<i class="fab fa-cloudscale"></i></a>
         </div>
 
@@ -87,7 +87,7 @@
                 Alert sensors <i id="caretMenu2" class="fas fa-caret-right"></i></a>
 
         <div id="content2" class="dropdown-container-menu">
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.vibration" ng-click="hideRegisterVibrations()" title="vibrations sensors list">
+            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.vibration" title="vibrations sensors list">
                 Vibrations<i class="fas fa-signature"></i></a>
         </div>
 
@@ -108,6 +108,8 @@
             <div ui-view="gridSensors@"></div>
             <div ui-view="editLocation@"></div>
             <div ui-view="pressure@"></div>
+            <div ui-view="registerSensor@"></div>
+            <div ui-view="editSensor@"></div>
         </div>
         <!-- /route-grid -->
 </div>

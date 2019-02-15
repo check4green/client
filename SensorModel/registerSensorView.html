@@ -1,6 +1,7 @@
-<button type="button" class="btn btn-success registerSensorButton" ng-click="startRegister(); updateTime(); vibrationSens()" ng-show="registerButton">Add sensor</button>
 <div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
-
+    <div class="title-grid">
+        <p>{{::vm.titleGrid}}</p>
+    </div>
     <span id="alert-error" ng-show="sensorRegisterError"><p>{{message}}</p></span>
     <span id="alert-succesful" ng-show="sensorRegisterSuccess"><p>Sensor created successful!</p></span>
 

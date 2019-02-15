@@ -38,7 +38,7 @@ function buttonFunction() {
 //     document.getElementById("sliderRound").style.background.color = "#23b39f";
 // }
 
-function myFunction() {
+function functionColorRound() {
     // Get the checkbox
     var checkBox = document.getElementById("chartChecked");
     // Get the output text

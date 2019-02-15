@@ -14,7 +14,6 @@ app.directive('deleteSensor', function(){
                 $scope.editLocation = false;
                 $scope.measurementsButton = false;
                 $scope.chartButton = false;
-                $scope.cards = false;
             }
             if($localStorage.email && $localStorage.password){
                 $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
@@ -46,11 +45,9 @@ app.directive('deleteSensor', function(){
                 $scope.measurementsButton = true;
                 $scope.chartButton = true;
                 if($sessionStorage.cards == true){
-                    $window.location.reload();
-                    $timeout(function(){
-                        $scope.cards = true;
-                        $scope.grid = false;
-                    }, 100)
+                    $scope.cards = true;
+                    $scope.grid = false;
+                    
                 } else{
                     $scope.cards = false;
                     $scope.grid = true;

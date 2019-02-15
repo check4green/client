@@ -14,36 +14,6 @@
       $scope.refreshButton = function(){
         $window.location.reload();
       }
-      $scope.hideRegisterDist = function(){
-        if($sessionStorage.register == true){
-          $sessionStorage.register = false;
-          $location.path('/sensorsHome/distance');
-        }
-      }
-      $scope.hideRegisterTemp = function(){
-        if($sessionStorage.register == true){
-          $sessionStorage.register = false;
-          $location.path('/sensorsHome/temperature');
-        }
-      }
-      $scope.hideRegisterElect = function(){
-        if($sessionStorage.register == true){
-          $sessionStorage.register = false;
-          $location.path('/sensorsHome/electricalCurrent');
-        }
-      }
-      $scope.hideRegisterAir = function(){
-        if($sessionStorage.register == true){
-          $sessionStorage.register = false;
-          $location.path('/sensorsHome/airQuality');
-        }
-      }
-      $scope.hideRegisterVibrations = function(){
-        if($sessionStorage.register == true){
-          $sessionStorage.register = false;
-          $location.path('/sensorsHome/vibration');
-        }
-      }
       autentificationService.getUser(encodeduser)
         .then(function(response){
             $scope.user = response.data;

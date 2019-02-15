@@ -344,6 +344,33 @@
                     }
                 }
             })
+            .state('sensorsHome.addSensor', {
+                url: "/add-sensor",
+                views: {
+                    'registerSensor@':{
+                        template: "<register-sensor></register-sensor>",
+                        controller: function($sessionStorage, SENSOR_TYPE){
+                            $sessionStorage.register = true;
+                            SENSOR_TYPE.TITLE = 'Add a sensor';
+            
+                        }
+                    }
+                }
+                
+            })
+            .state('sensorsHome.editSensor', {
+                url: "/edit-sensor",
+                views: {
+                    'editSensor@':{
+                        template: "<edit-sensor></edit-sensor>",
+                        controller: function($sessionStorage, SENSOR_TYPE){
+                            SENSOR_TYPE.TITLE = 'Edit sensor';
+            
+                        }
+                    }
+                }
+                
+            })
            
         }
     ]);
