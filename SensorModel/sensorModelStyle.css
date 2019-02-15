@@ -487,10 +487,13 @@ inLine-measurement{
     margin-right: 0px;
     user-select: none;
 }
+.chartDisplay body{
+    background-color: #ffffff00 !important;
+}
 
 .checkbox-inline-a{
-    margin: 10px;
-    margin-left: 5px;
+    margin-top: -15px;
+    margin-left: 7px;
     text-decoration: none;
     color: black;
     font-size: 13px;

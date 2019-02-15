@@ -231,7 +231,8 @@
                                     })
                                     .on("mouseover", function(){
                                         inf
-                                            .style("opacity", 0.9)
+                                            .style("opacity", 1)
+                                            .style("padding", 10)
                                     })
                                 svg.select("#chartChecked")
                                     .attr("value", "value")

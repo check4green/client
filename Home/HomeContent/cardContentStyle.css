@@ -25,6 +25,7 @@
     padding: 15px;
     border-top: 1px solid #33333346;
     border-bottom: 1px solid #33333346;
+    background-color: #3bc4d6bb;
 }
 .container-header-logoIMG .carousel-inner video{
     height: auto;
@@ -35,7 +36,7 @@
 .container-cardsParrent .container-cards {
     flex: 15%;
     padding: 0 4px;
-    margin-left: 5%;
+    margin: auto;
 }
 .container-cards .container-cardsChild {
     margin-top: 8px;
