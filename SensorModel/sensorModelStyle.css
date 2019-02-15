@@ -462,22 +462,35 @@ inLine-measurement{
     fill: #4e9a06;
     opacity: 2;
 }
+#line2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding: 20px;
+    border: 1px solid rgb(189, 189, 189);
+    box-shadow: 1px 1px 7px rgba(51, 51, 51, 0.089);
+}
+#line{
+    margin-top: 20px;
+    padding-top: 20px;
+    padding: 20px;
+    border: 1px solid rgb(189, 189, 189);
+    box-shadow: 1px 1px 7px rgba(51, 51, 51, 0.089);
+}
 .legend{
     padding: 5px;
     font: 10px sans-serif;
     box-shadow: 2px 2px 1px #888;
 }
 .checkbox-inline{
-    position: absolute;
-    left: 500px;
-    top: 3px;
+    margin: 10px;
+    margin-right: 0px;
     user-select: none;
 }
 
 .checkbox-inline-a{
-    position: absolute;
-    left: 540px;
-    top: 5px;
+    margin: 10px;
+    margin-left: 5px;
     text-decoration: none;
     color: black;
     font-size: 13px;
@@ -491,7 +504,7 @@ overflow{
     width: 100%;
 }
 .svgChart{
-    width: 960px;
+    width: 100%;
     overflow-x: scroll;
 }
 
@@ -513,14 +526,14 @@ overflow{
     .svgChart{
         width: 600px;
     }
-    .checkbox-inline{
+    /*.checkbox-inline{
         top: 5px;
         left: 80px;
     }
-    .checkbox-inline-a{
+    /* .checkbox-inline-a{
         left: 120px;
         top: 5px;
-    }
+    } */
     .pages-center{
         z-index: 0 !important;
         margin-left: 10%;

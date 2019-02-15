@@ -148,7 +148,7 @@
                                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                                     .call(zoom);
 
-                                $scope.showValues = function(value) {
+                                function showValues(value) {
                                     if( value == true){
                                     //show tooltips
                                             Line_chart.selectAll(".dot")
@@ -198,6 +198,7 @@
                                                                         }
                                                                     }
                                                                     })
+                                                inf.style("opacity", 0)
                                     }
                                     else{
                                         //hide tooltips
@@ -205,8 +206,43 @@
                                                .style("display", "none");
                                         Line_chart.selectAll("text")
                                                .style("display", "none");
+                                        inf.style("opacity", 0)
+
                                     }
                                 }
+
+                            //slider
+                                svg.append("foreignObject")
+                                    .attr("height", 80)
+                                    .attr("width", 90)
+                                    .attr("x", 800)
+                                    .attr("y", 25)
+                                    .append("xhtml:body")
+                                    .html("<label id=slider><input type=checkbox id=chartChecked ><span id=sliderRound></span></label><div id=text title=Show values on chart.>Show values</div> ")
+                                    
+                                var inf = svg.select("#text")
+                                    .attr("class", "checkbox-inline-a")
+                                    .style("opacity", 0)
+                                svg.select("#slider")
+                                    .attr("class", "checkbox-inline switch")
+                                    .on("mouseout", function(){
+                                        inf
+                                            .style("opacity", 0)
+                                    })
+                                    .on("mouseover", function(){
+                                        inf
+                                            .style("opacity", 0.9)
+                                    })
+                                svg.select("#chartChecked")
+                                    .attr("value", "value")
+                                    .on("click", function(d, i){
+                                        functionColorRound();
+                                        showValues(svg.select("#chartChecked").node().checked)
+                                    })
+                                svg.select("#sliderRound")
+                                    .attr("class", "slider round")
+                                    .on("click", functionColorRound)
+                                    
 
                             //legend
                                 if((SENSOR_TYPE.ID != 37 && SENSOR_TYPE.ID !=0)|| !$scope.vibrations){
@@ -223,12 +259,12 @@
                                                 .append("g")
                             //value legend
                                     legend.append("circle")
-                                        .attr("cx", 600)
+                                        .attr("cx", 650)
                                         .attr("cy", 10)
                                         .attr("r", 6)
                                         .style("fill","#4e9a06");
                                     legend.append("text")
-                                        .attr("x", 610)
+                                        .attr("x", 660)
                                         .attr("y", 13)
                                         .attr("height", 30)
                                         .attr("width", 100)
@@ -236,24 +272,24 @@
                                         .text("Value")
                             //error legend
                                     legend.append("circle")
-                                        .attr("cx", 650)
+                                        .attr("cx", 700)
                                         .attr("cy", 10)
                                         .attr("r", 6)
                                         .style("fill","#d9534f");
                                     legend.append("text")
-                                        .attr("x", 660)
+                                        .attr("x", 710)
                                         .attr("y", 13)
                                         .attr("height", 30)
                                         .attr("width", 100)
                                         .style("fill", "#d9534f")
                                         .text("Invalid sensor (0)")
                                     legend.append("circle")
-                                        .attr("cx", 750)
+                                        .attr("cx", 800)
                                         .attr("cy", 10)
                                         .attr("r", 6)
                                         .style("fill","#286090");
                                     legend.append("text")
-                                        .attr("x", 760)
+                                        .attr("x", 810)
                                         .attr("y", 13)
                                         .attr("height", 30)
                                         .attr("width", 100)

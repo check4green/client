@@ -87,21 +87,7 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                         })
             
             $scope.cancelEditSensor = function(){
-                if($sessionStorage.editSensGrid == true){
-                    $scope.editButton = true;
-                    $scope.editDisplay = false;
-                    $scope.detailsDisplay = true;
-                    $scope.deleteButton = true;
-                    $scope.measurementsButton = true;
-                    $scope.editLocation = true;
-                    $scope.chartButton = true;
-                    $scope.sensorEditError = false;
-                    $scope.sensorEditSuccess = false;
-                    $scope.cards = false;
-                    $scope.grid = true;
-                    $scope.backButton = true;
-                    $sessionStorage.editDisplay = false;
-                }else{
+                
                     $window.history.back();
                     $scope.editButton = true;
                     $scope.detailsDisplay = true;
@@ -124,7 +110,7 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                         $scope.grid = true;
                         $scope.backButton = true;
                     }
-                }
+                
             };
         }
    ])

@@ -91,8 +91,9 @@
                                 <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="(deleteButton && !editDisplay)">Delete</button>
 
                             </div> 
+                            <span class="fas fa-window-close span-x" style="float: right;" ng-click="cancelEdit()" ng-show="editDisplay"></span>
+
                             <edit-sensor ng-if="editDisplay"></edit-sensor>
-                            <button type="button" class="btn btn" ng-click="cancelEdit()" ng-show="editDisplay">Cancel</button>
                             <measurements></measurements>
                             <chartd3></chartd3>
                             <delete-sensor></delete-sensor>
@@ -145,7 +146,9 @@
             <i class="fas fa-redo-alt"></i>
         </button>
     </div>
-    
+    <delete-sensor></delete-sensor>
+
+<!-- 2 cards-->
     <chartd3></chartd3>
     <measurements></measurements>
     <!-- CARDS -->
