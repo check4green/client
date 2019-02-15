@@ -215,7 +215,7 @@
                                 svg.append("foreignObject")
                                     .attr("height", 80)
                                     .attr("width", 90)
-                                    .attr("x", 800)
+                                    .attr("x", 100)
                                     .attr("y", 25)
                                     .append("xhtml:body")
                                     .html("<label id=slider><input type=checkbox id=chartChecked ><span id=sliderRound></span></label><div id=text title=Show values on chart.>Show values</div> ")
