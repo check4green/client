@@ -26,6 +26,12 @@
     border-top: 1px solid #33333346;
     border-bottom: 1px solid #33333346;
 }
+.container-header-logoIMG .carousel-inner video{
+    height: auto;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
 .container-cardsParrent .container-cards {
     flex: 15%;
     padding: 0 4px;
