@@ -82,12 +82,12 @@
                     <td colspan="8" class="subTable">
                         <div ng-show="loadingDetails" class="loader"></div>
                         <div ng-show="detailsData">
-                            <details-sensor ng-if="!editDisplay"></details-sensor>
+                            <details-sensor ng-if="(!editDisplay && !chartDisplay && !measurementsDisplay && !deleteDisplay)"></details-sensor>
                             <div>
                                 <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="(measurementsButton && !editDisplay)">Reading History</button>
                                 <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="(chartButton && !editDisplay)">Chart History</button>
-                                <button type="button" class="btn btn-success" ng-click="getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name); editSensorGrid();" ng-if="editButton">Edit</button>
-                                <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude)" ng-if="editLocation">Location</button>
+                                <button type="button" class="btn btn-success" ng-click="getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name); editSensorGrid();" ng-if="(editButton && !editDisplay)">Edit</button>
+                                <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude)" ng-if="(editLocation && !editDisplay)">Location</button>
                                 <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="(deleteButton && !editDisplay)">Delete</button>
 
                             </div> 

@@ -6,7 +6,6 @@ app.directive('detailsSensor', function(){
         controller: function($scope, sensorModelService, SENSOR_TYPE){
             var vm=this;
             $scope.detailsDisplay = true;
-            
             $scope.vibrationSens = function(id){
                 if(id == 37){
                     $scope.vibrations = true;

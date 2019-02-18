@@ -10,7 +10,6 @@
             $scope.sensors.forEach(function(val){
                 val.expanded=false;
                 $scope.editLocation = true;
-                $sessionStorage.editDisplay = false;
                 $scope.editDisplay = false;
                 $scope.editButton = true;
 
@@ -152,6 +151,10 @@
                 $scope.outOfRangePositiveError = 101;
                 $scope.outOfRangeNegativeError = -1;
             }
+            else if(sensType == 39){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -1;
+            }
         }
         $scope.vibrationSens = function(id){
             if(id == 37){
@@ -178,9 +181,9 @@
                     };
             $scope.lastRead = null;
         }
-        if($sessionStorage.editDisplay == false){
-            $scope.editDisplay = false;
-        }
+        
+        $scope.editDisplay = false;
+        
         $scope.editButton  = true;
         $scope.editSensorGrid = function(){
             $sessionStorage.title = false;
