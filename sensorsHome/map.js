@@ -190,47 +190,47 @@ app.directive('map', function(){
                                     }) 
                                     if(!$sessionStorage.editLoc){ 
                                         marker.append("circle")
-                                            .data(sensors)
+                                            .data(d3.entries(pos))
                                             .attr("r",11)
                                             .attr("cx", padding)
                                             .attr("cy", padding)
                                             .style("fill", function(d){
-                                                if(d.sensorTypeId == 31){
+                                                if(d.value[6] == 31){
                                                     return 'red';
                                                 }
-                                                if(d.sensorTypeId == 33){
+                                                if(d.value[6] == 33){
                                                     return 'blue';
                                                 }
-                                                if(d.sensorTypeId == 34){
+                                                if(d.value[6] == 34){
                                                     return '#4e9a06';
                                                 }
-                                                if(d.sensorTypeId == 35){
+                                                if(d.value[6] == 35){
                                                     return 'black';
                                                 }
-                                                if(d.sensorTypeId == 37){
+                                                if(d.value[6] == 37){
                                                     return '#bd611f';
                                                 }
-                                                if(d.sensorTypeId == 39){
+                                                if(d.value[6] == 39){
                                                     return '#FFFF00'
                                                 }
                                             })
                                         marker.append("text")
-                                           .data(sensors)
+                                           .data(d3.entries(pos))
                                            .attr("x", padding+12)
                                            .attr("y", padding)
                                            .attr("dy", ".31em")
                                            .style("font-weight", "bold")
                                            .style("fill", function(d){
-                                                if(d.sensorTypeId == 31){
+                                                if(d.value[6] == 31){
                                                     return 'red';
                                                 }
-                                                if(d.sensorTypeId == 33){
+                                                if(d.value[6] == 33){
                                                     return 'blue';
                                                 }
-                                                if(d.sensorTypeId == 34){
+                                                if(d.value[6] == 34){
                                                     return '#4e9a06';
                                                 }
-                                                if(d.sensorTypeId == 35){
+                                                if(d.value[6] == 35){
                                                     return 'black';
                                                 }
                                            })

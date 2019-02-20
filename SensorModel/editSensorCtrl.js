@@ -1,15 +1,11 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("editSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window", "$timeout",
-function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window, $timeout){
+   app.controller("editSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window",
+function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window){
             var vm = this;
-            if($sessionStorage.title == false){
-                $scope.title = false;
-            } else{
-                $scope.title = true;
-                vm.title = SENSOR_TYPE.TITLE;
-            }
+            $scope.title = true;
+            vm.title = SENSOR_TYPE.TITLE;
             
             $scope.editButton = true;
             $scope.name = $sessionStorage.name
@@ -18,6 +14,7 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                 $scope.cards = false;
                 $scope.backButton = false;
             }
+            $scope.editDisplay = true;
             $scope.measurementsButton = false;
             $scope.chartButton = false;
             $scope.sensorEditError = false;
@@ -87,7 +84,6 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                         })
             
             $scope.cancelEditSensor = function(){
-                
                     $window.history.back();
                     $scope.editButton = true;
                     $scope.detailsDisplay = true;
@@ -98,13 +94,9 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                     $scope.sensorEditError = false;
                     $scope.sensorEditSuccess = false;
                     if($sessionStorage.cards == true){
-                    
                         $scope.cards = true;
                         $scope.grid = false;
                         $scope.backButton = true;
-                        $timeout(function(){
-                            $window.location.reload();
-                        }, 100)
                     } else{
                         $scope.cards = false;
                         $scope.grid = true;

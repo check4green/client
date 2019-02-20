@@ -6,7 +6,12 @@ app.directive('deleteSensor', function(){
         controller: function($scope, sensorModelService, $window, $timeout, $localStorage, $sessionStorage){
             $scope.deleteButton = true;
             $scope.deleteDisplay = false;
-            $scope.startDelete = function(){
+            $scope.startDelete = function(sensor){
+                $scope.sensors.forEach(function(val){
+                    val.deleteDisplay = false;
+                
+                });
+                sensor.deleteDisplay = true;
                 $scope.deleteDisplay = true;
                 $scope.deleteButton = false;
                 $scope.detailsDisplay = false;

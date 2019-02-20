@@ -17,15 +17,13 @@ app.controller('editLocationCtrl', function($scope, $sessionStorage, $localStora
         $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
     }
     
+    $scope.name = $sessionStorage.name;
     $scope.editLocation = function(){
-        var lat = $sessionStorage.latitude;
-        var long = $sessionStorage.longitude;
         var name = $sessionStorage.name;
         var uploadInterval = $sessionStorage.uplInt;
-        var batchSize = $sessionStorage.batchSize;
         var latitude = $sessionStorage.lat;
         var longitude = $sessionStorage.lng;
-        $scope.editLoc = {name, uploadInterval, batchSize, latitude, longitude}
+        $scope.editLoc = {name, uploadInterval, latitude, longitude}
         sensorModelService.updateSensors($scope.editLoc, $sessionStorage.gatewayAddress, $sessionStorage.clientAddress, $scope.encodedData)
             .then(function(){
                 $sessionStorage.lng = longitude;

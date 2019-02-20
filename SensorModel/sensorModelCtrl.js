@@ -185,35 +185,6 @@
         $scope.editDisplay = false;
         
         $scope.editButton  = true;
-        $scope.editSensorGrid = function(){
-            $sessionStorage.title = false;
-            $sessionStorage.editDisplay = true;
-            $scope.editDisplay = true;
-            $scope.measurementsButton = false;
-            $scope.chartButton = false;
-            $scope.editButton = false;
-            $scope.editLocation = false;
-            $scope.deleteButton = false;
-            $sessionStorage.editSensGrid = true;
-            $scope.detailsDisplay = false;
-            $scope.editButton = false;
-
-        }
-        $scope.cancelEdit = function(){
-            $scope.editButton = true;
-            $scope.editDisplay = false;
-            $scope.detailsDisplay = true;
-            $scope.deleteButton = true;
-            $scope.measurementsButton = true;
-            $scope.editLocation = true;
-            $scope.chartButton = true;
-            $scope.sensorEditError = false;
-            $scope.sensorEditSuccess = false;
-            $scope.cards = false;
-            $scope.grid = true;
-            $scope.backButton = true;
-            $sessionStorage.editDisplay = false;
-        }
         $scope.getSensor = function(ga, ca, name){
             $sessionStorage.ga = ga;
             $sessionStorage.ca = ca;
@@ -231,11 +202,10 @@
         if($sessionStorage.cards == true){
             $scope.cards = true;
             $scope.grid = false;
-            $scope.editCards = true;
-        } else{
+        } 
+        else{
             $scope.grid = true;
             $scope.cards = false;
-            $scope.editCards = false;
         }
         $scope.changeLayout = function(){
             if($scope.cards == false){
@@ -263,7 +233,7 @@
                 $sessionStorage.cards = false;
                 $sessionStorage.title = false;
                 if($sessionStorage.cancelEdit){
-                    var timer = $timeout(function(){
+                    $timeout(function(){
                         $window.location.reload();
                     }, 1);
                     $sessionStorage.cancelEdit = false;
@@ -271,10 +241,13 @@
             }
             
         }
+        
         $scope.details = function(){
+            $scope.name = $sessionStorage.name;
+            $scope.detailsDisplay = true;
             $scope.detailsData = false;
-            $scope.clientAddr = $sessionStorage.clientAdd;
-            $scope.gatewayAddr = $sessionStorage.gatewayAdd;
+            $scope.clientAddr = $sessionStorage.ca;
+            $scope.gatewayAddr = $sessionStorage.ga;
             $scope.editLoc = true;
             $scope.cards = false;
             $scope.backButton = false;
@@ -283,8 +256,11 @@
             $scope.registerButton = false;
             $scope.refresh = true;
             $scope.detail = true;
+            $sessionStorage.detail = true
+            $scope.sensName = true;
         }
-        $scope.cancelDetails = function(){
+        $scope.cancelDetails = function(){  
+            $scope.detailsDisplay = false;   
             $scope.cancel = false;
             $scope.refresh = false;
             $scope.cards = true;
@@ -295,6 +271,8 @@
             $sessionStorage.editLoc = false;
             $scope.detailsData = true;
             $scope.detail = false;
+            $sessionStorage.detail = false;
+            $scope.sensName = false;
         }
        //live view
 

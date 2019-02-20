@@ -1,4 +1,4 @@
-<div class="editDisplay">
+<div class="editDisplay" ng-if="editDisplay">
     <div class="title-grid" ng-if="title">
         <p>{{::vm.title}} : {{name}}</p>
     </div>
@@ -45,7 +45,7 @@
         </div>
             
         <button type="button" class="btn btn-success" ng-click="sensorEdit(editName, editDays, editHours, editMinutes, sensor.gatewayAddress, sensor.clientAddress)">Edit</button>
-        <button type="button" class="btn btn" ng-if="title" ng-click="cancelEditSensor()">Cancel</button>
+        <button type="button" class="btn btn" ng-click="cancelEditSensor()">Cancel</button>
 
     </form>
 </div>

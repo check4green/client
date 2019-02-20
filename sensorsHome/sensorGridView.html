@@ -84,11 +84,11 @@
                             <div>
                                 <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements()" ng-show="measurementsButton">Reading History</button>
                                 <button type="button" class="btn btn-success" ng-click="chart(sensor.gatewayAddress, sensor.clientAddress)" ng-show="chartButton">Chart History</button>
-                                <button type="button" class="btn btn-success" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-show="editButton">Edit</button>
+                                <button type="button" class="btn btn-success" ng-click="startEdit(); getSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-if="(editButton && !editDisplay)">Edit</button>
                                 <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude); hideSensGrid()" ng-show="editLocation">Location</button>
                                 <button type="button" class="btn btn-success" ng-click="startDelete()" ng-show="deleteButton">Delete</button>
                             </div>
-                            <edit-sensor></edit-sensor>
+                            <edit-directive></edit-directive>
                             <measurements></measurements>
                             <chartd3></chartd3>
                             <delete-sensor></delete-sensor>
