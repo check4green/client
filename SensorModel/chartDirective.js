@@ -42,6 +42,14 @@
                                     var measurements = data;
                                 for (var i=0; i<measurements.length; i++){
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);
+                                   if($scope.vibrations == false){
+                                   if(measurements[i].value >= $scope.outOfRangePositiveError){
+                                        measurements[i].value = $scope.outOfRangePositiveError;
+                                   }
+                                   if(measurements[i].value <= $scope.outOfRangeNegativeError){
+                                    measurements[i].value = $scope.outOfRangeNegativeError
+                                   }
+                                }
                                 
                                 }
                                 var svg = d3.select("#chart");
@@ -107,8 +115,7 @@
                                     .attr("class", "context")
                                     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
                                 x.domain(d3.extent(measurements, function(d) {return d.readingDate; }));
-                                y.domain([d3.min(measurements, function(d){ return d.value-2}), 
-                                        d3.max(measurements, function (d) { return d.value +20; })]);
+                                y.domain([$scope.outOfRangeNegativeError-10, $scope.outOfRangePositiveError +20]);
                                 x2.domain(x.domain());
                                 y2.domain(y.domain());
                                 focus.append("g")

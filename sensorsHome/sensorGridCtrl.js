@@ -12,7 +12,7 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
         $scope.home = false;
     }
     $scope.expandSelected = function(sensor){
-        $scope.userSensors.forEach(function(val){
+        $scope.sensors.forEach(function(val){
             val.expanded=false;
             $scope.editLocation = true;
         })
@@ -20,11 +20,21 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
     };
     $scope.sensorHomeData = false;
     $scope.noData = false;
+    $scope.change = true;
     $scope.searchSensor ='';
     function getSens(user, page, size){
+        $scope.activeCount =0;
+        $scope.inactiveCount =0;
         autentificationService.getUserSensors(user, page, size)
             .then(function(response){
-                $scope.userSensors = response.data;
+                $scope.sensors = response.data;
+                for(var i=0; i<response.data.length; i++){
+                    if($scope.sensors[i].active == true){
+                        $scope.activeCount++;
+                    }else{
+                        $scope.inactiveCount++;
+                    }
+                }
                 $scope.loading=false;
                 $scope.sensorHomeData = true;
             })
@@ -52,7 +62,7 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                     $scope.sensPerPage = gridSize;
                 }
             }
-            getSens(encodeduser,  $scope.currentPage, $scope.allSensors)
+            // getSens(encodeduser,  $scope.currentPage, $scope.allSensors)
             $scope.search = function(){
                 $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
                     if(newValue == data){
@@ -98,7 +108,7 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                                 }
                             }
                     
-                            $scope.userSensors = $scope.actsens;
+                            $scope.sensors = $scope.actsens;
                             $scope.act = true;
                     
                         })
@@ -113,6 +123,85 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
             }
             
         })
+        $scope.getSensor = function(ga, ca, name){
+            $sessionStorage.ga = ga;
+            $sessionStorage.ca = ca;
+            $sessionStorage.name = name;
+        }
+        if($sessionStorage.cards == true){
+            $scope.cards = true;
+            $scope.grid = false;
+        } 
+        else{
+            $scope.grid = true;
+            $scope.cards = false;
+        }
+        $scope.changeLayout = function(){
+            if($scope.cards == false){
+                $scope.noSensorData = false;
+                $scope.sensorData = false;
+                $scope.buttons = false;
+                $scope.cards = true;
+                $scope.editCards = true;
+                $scope.grid = false;
+                $sessionStorage.cards = true;
+                $scope.editLocation = false;
+                $sessionStorage.details = true;
+                $sessionStorage.editDisplay = true;
+                $sessionStorage.editSensGrid = false;
+                $sessionStorage.title = true;
+            } else{
+                $sessionStorage.editSensGrid = true;
+                $sessionStorage.editDisplay = false;
+                $scope.sensorData = true;
+                $scope.buttons = false;
+                $scope.cards = false;
+                $scope.editCards = false;
+                $scope.grid = true;
+                $sessionStorage.details = false;
+                $sessionStorage.cards = false;
+                $sessionStorage.title = false;
+                if($sessionStorage.cancelEdit){
+                    $timeout(function(){
+                        $window.location.reload();
+                    }, 1);
+                    $sessionStorage.cancelEdit = false;
+                }
+            }
+            
+        }
+        $scope.details = function(){
+            $scope.name = $sessionStorage.name;
+            $scope.detailsDisplay = true;
+            $scope.detailsData = false;
+            $scope.clientAddr = $sessionStorage.ca;
+            $scope.gatewayAddr = $sessionStorage.ga;
+            $scope.editLoc = true;
+            $scope.cards = false;
+            $scope.backButton = false;
+            $scope.change = false;
+            $scope.cancel = true;
+            $scope.registerButton = false;
+            $scope.refresh = true;
+            $scope.detail = true;
+            $sessionStorage.detail = true
+            $scope.sensName = true;
+        }
+        $scope.cancelDetails = function(){  
+            $scope.detailsDisplay = false;   
+            $scope.cancel = false;
+            $scope.refresh = false;
+            $scope.cards = true;
+            $scope.backButton = true;
+            $scope.change = true;
+            $scope.registerButton = true;
+            $scope.editLoc = false;
+            $sessionStorage.editLoc = false;
+            $scope.detailsData = true;
+            $scope.detail = false;
+            $sessionStorage.detail = false;
+            $scope.sensName = false;
+        }
         $scope.measureUnit = function(sensTypeID){
             sensorModelService.getMeasureId(sensTypeID)
                 .then(idSuccess)
@@ -153,6 +242,10 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                 $scope.outOfRangePositiveError = 126;
                 $scope.outOfRangeNegativeError = -56;
             }else if(sensType == 34){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -1;
+            }
+            else if(sensType == 39){
                 $scope.outOfRangePositiveError = 101;
                 $scope.outOfRangeNegativeError = -1;
             }

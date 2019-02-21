@@ -27,9 +27,18 @@
           $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
         function getSens(page, size, user){
+            $scope.activeCount =0;
+            $scope.inactiveCount =0;
             sensorModelService.getSensors(page, size, user)
                 .then(function(response){
                     $scope.sensors = response.data;
+                    for(var i=0; i<response.data.length; i++){
+                        if($scope.sensors[i].active == true){
+                            $scope.activeCount++;
+                        }else{
+                            $scope.inactiveCount++;
+                        }
+                    }
                     $scope.loading = false;
                     $scope.noSensorsData = false;
                     $scope.sensorData = true;
@@ -124,7 +133,7 @@
                     getSens($scope.currentPage, $scope.allSensors, $scope.encodeduser);
                 }
             }
-            getSens($scope.currentPage, $scope.allSensors, $scope.encodeduser)
+            //getSens($scope.currentPage, $scope.allSensors, $scope.encodeduser)
                 
         }
         
@@ -209,8 +218,6 @@
         }
         $scope.changeLayout = function(){
             if($scope.cards == false){
-                $scope.noSensorData = false;
-                $scope.sensorData = false;
                 $scope.buttons = false;
                 $scope.cards = true;
                 $scope.editCards = true;

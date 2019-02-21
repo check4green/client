@@ -14,6 +14,9 @@
       $scope.refreshButton = function(){
         $window.location.reload();
       }
+      $scope.cancelCards = function(){
+        $sessionStorage.cards = false;
+      }
       autentificationService.getUser(encodeduser)
         .then(function(response){
             $scope.user = response.data;
