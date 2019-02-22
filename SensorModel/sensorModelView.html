@@ -22,7 +22,7 @@
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensorsData" class="noData">No Data</div>
     <div ng-show="sensorData"  class="table-overflow">
-        <div  class="form-group measurementsContainerSet" ng-if="!detail">
+        <div  class="form-group measurementsContainerSet" >
             <label>Sensors per page:</label>
             <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
                 <option selected disabled hidden value="">50</option>
@@ -34,7 +34,7 @@
                 <option value="200">200</option>
             </select>
         </div>
-        <div class="measurementsTotalReadings" ng-if="!detail">
+        <div class="measurementsTotalReadings" ng-show="!detail">
             <label>Total Sensors: {{totalSensors}}</label>
             <label>Acive sensors: {{activeCount}} </label>
             <label>Inactive sensors: {{inactiveCount}} </label>
@@ -54,6 +54,8 @@
                 </div>
             </div>
         </form>
+        <div ng-show="!filterSensors.length" id="alert-error"><p>No result</p></div> 
+
         <table class="table" ng-if="grid">
             <thead>
                 <tr>
@@ -108,7 +110,7 @@
 <!-- CARDS -->
 <div class="container-parrents-cards" ng-show ="cards && !loading">
 
-        <div class="container-contentCards" ng-repeat= "sensor in filterSensors =(sensors | filter: {name:filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
+        <div class="container-contentCards" ng-repeat= "sensor in filterSensors =(sensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
             <div class="box-shadow">
                 <div class="container-contentCrd">
                     <form ng-if="!sensor.deleteDisplay ">
@@ -154,7 +156,6 @@
         <chartd3></chartd3>
         <measurements></measurements>
     <!-- CARDS -->
-    <div ng-show="!filterSensors.length" id="alert-error"><p>No result</p></div> 
     <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
     <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
     </div>

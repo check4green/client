@@ -169,7 +169,7 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                 }
             }
             
-        }
+        }       
         $scope.details = function(){
             $scope.name = $sessionStorage.name;
             $scope.detailsDisplay = true;

@@ -248,7 +248,7 @@
             }
             
         }
-        
+
         $scope.details = function(){
             $scope.name = $sessionStorage.name;
             $scope.detailsDisplay = true;

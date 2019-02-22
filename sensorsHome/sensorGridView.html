@@ -31,13 +31,14 @@
                 <option value="200">200</option>
             </select>
         </div>
-        <div class="measurementsTotalReadings" ng-if="!detail">
+        <div class="measurementsTotalReadings" ng-show="!detail">
             <label>Total Sensors: {{totalSensors }} </label>
             <label>Acive sensors: {{activeCount }} </label>
             <label>Inactive sensors: {{inactiveCount}} </label>
             <div class="grow"></div>
             <search></search> 
         </div>
+        
         <form ng-if="!detail">
                 <div class="multiselect form-group ">
                     <div class="selectBox" ng-click="showCheckboxes()">
@@ -164,7 +165,7 @@
     <chartd3></chartd3>
     <measurements></measurements>
 <!-- CARDS -->
-<div ng-show="(!filterSensors.length || loading)" id="alert-error"><p>No result</p></div> 
+<div ng-show="(!filterSensors.length && sensorHomeData)" id="alert-error"><p>No result</p></div> 
 <div id="filteredSens" ng-show="filtSens">{{filterSensors.length}}</div> 
 <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled"></div>
 </div>
