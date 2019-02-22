@@ -54,7 +54,6 @@
                 </div>
             </div>
         </form>
-        <div ng-show="!filterSensors.length" id="alert-error"><p>No result</p></div> 
 
         <table class="table" ng-if="grid">
             <thead>
@@ -156,6 +155,7 @@
         <chartd3></chartd3>
         <measurements></measurements>
     <!-- CARDS -->
+    <div ng-show="(!filterSensors.length && sensorData)" id="alert-error"><p>No result</p></div> 
     <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
     <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
     </div>
