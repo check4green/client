@@ -216,8 +216,8 @@
             $scope.grid = true;
             $scope.cards = false;
         }
-        $scope.changeLayout = function(){
-            if($scope.cards == false){
+        $scope.changeLayoutCards = function(){
+            
                 $scope.buttons = false;
                 $scope.cards = true;
                 $scope.editCards = true;
@@ -228,7 +228,8 @@
                 $sessionStorage.editDisplay = true;
                 $sessionStorage.editSensGrid = false;
                 $sessionStorage.title = true;
-            } else{
+            } 
+            $scope.changeLayoutGrid = function(){
                 $sessionStorage.editSensGrid = true;
                 $sessionStorage.editDisplay = false;
                 $scope.sensorData = true;
@@ -247,7 +248,7 @@
                 }
             }
             
-        }
+        
 
         $scope.details = function(){
             $scope.name = $sessionStorage.name;

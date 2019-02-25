@@ -136,8 +136,8 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
             $scope.grid = true;
             $scope.cards = false;
         }
-        $scope.changeLayout = function(){
-            if($scope.cards == false){
+        $scope.changeLayoutCards = function(){
+            
                 $scope.noSensorData = false;
                 $scope.sensorData = false;
                 $scope.buttons = false;
@@ -150,7 +150,8 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                 $sessionStorage.editDisplay = true;
                 $sessionStorage.editSensGrid = false;
                 $sessionStorage.title = true;
-            } else{
+            } 
+            $scope.changeLayoutGrid = function(){
                 $sessionStorage.editSensGrid = true;
                 $sessionStorage.editDisplay = false;
                 $scope.sensorData = true;
@@ -169,7 +170,7 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                 }
             }
             
-        }       
+               
         $scope.details = function(){
             $scope.name = $sessionStorage.name;
             $scope.detailsDisplay = true;
