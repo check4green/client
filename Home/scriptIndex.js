@@ -33,10 +33,14 @@ function buttonFunction() {
     document.body.scrollTop = 0;
 }
 
+// filters menu
+function showFilters(){
+    document.getElementById("filterMenu").style.display = "initial";
+}
+function hideFilters(){
+    document.getElementById("filterMenu").style.display = "none";
+}
 
-// function functionColorRound(){
-//     document.getElementById("sliderRound").style.background.color = "#23b39f";
-// }
 
 function functionColorRound() {
     // Get the checkbox
@@ -52,6 +56,29 @@ function functionColorRound() {
     }
   }
 // show text HomeHeader
+//focus view list
+function focusButtonLarge(){
+    document.getElementById("list").style.color = "#4e9a06";
+    document.getElementById("large").style.color = "#2b5504";
+}
+function focusButtonList(){
+    document.getElementById("large").style.color = "#4e9a06";
+    document.getElementById("list").style.color = "#2b5504";
+}
+
+// collapse Search BOX******************
+function collapseSearchBOX(){
+    document.getElementById("searchBOX").style.display = "block";
+}
+
+function closeSearchBOX(e) {
+    //See notes about 'which' and 'key'
+    if (e.keyCode == 13) {
+        document.getElementById("searchBOX").style.display = "none";
+    }
+}
+// collapse Search BOX******************
+
 // open/close menu
 function openNav() {
     document.getElementById("mySidenav").style.width = "215px";

@@ -2,58 +2,60 @@
     <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
     </div>
-    <div class="container-registerButtons">
-            <div class="container-registerSensor">
-                <button type="button" class="btn btn-success registerSensorButton"  ng-if="!detail" ui-sref="sensorsHome.addSensor" >Add sensor</button>
 
-            </div>
-            <div class="padding-button">
-                <button type="button" class="button-cardView" ng-click="changeLayoutCards()" ng-if= "change " title="Large view">
-                    <span>Cards </span>
-                    <i class="fas fa-th-large"></i>
-                </button>
-                <button type="button" class="button-cardView" ng-click="changeLayoutGrid()" ng-if= "change " title="Small view">
-                    <span>Grid </span>
-                    <i class=" fas fa-th-list"></i>
-                </button>
-                
-            </div>
-    </div>
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensorsData" class="noData">No Data</div>
     <div ng-show="sensorData"  class="table-overflow">
-        <div  class="form-group measurementsContainerSet" >
-            <label>Sensors per page:</label>
-            <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
-                <option selected disabled hidden value="">50</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="120">120</option>
-                <option value="140">140</option>
-                <option value="160">160</option>
-                <option value="200">200</option>
-            </select>
-        </div>
-        <div class="measurementsTotalReadings" ng-show="!detail">
-            <label>Total Sensors: {{totalSensors}}</label>
-            <label>Acive sensors: {{activeCount}} </label>
-            <label>Inactive sensors: {{inactiveCount}} </label>
+        
+        <div class="container-buttonGrid">
+            <div class="container-leftButtons">
+
+                <button type="button" class="btn btn-success registerSensorButton"  ng-if="!detail" ui-sref="sensorsHome.addSensor" >Add sensor</button>
+
+                <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" >
+                        <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
+                            <option selected disabled hidden value="">Sensors per page: <b>50</b></option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="120">120</option>
+                            <option value="140">140</option>
+                            <option value="160">160</option>
+                            <option value="200">200</option>
+                        </select>
+                    </div>
+
+                    <div ng-if="!detail" class="container-filters" style="margin-left: 5px;" onclick="showFilters()">
+                        <div class="container-front "><p>Filters</p><i class="fas fa-caret-down addStyle"></i></div>
+                        <div id="filterMenu" class="container-back">
+                            <div class="container-backFlex">
+                                <input  onmouseout="hideFilters()" type="checkbox" ng-model="value" id="active" ng-click="showActiveSensors(value)"/><p>Show active sensors</p>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+
             <div class="grow"></div>
-            <search></search>
-        </div>
-        <form ng-if="!detail">
-            <div class="multiselect form-group">
-                <div class="selectBox" ng-click="showCheckboxes()">
-                    <select class="form-control">
-                        <option>Filters</option>
-                    </select>
-                    <div class="overSelect"></div>
-                </div>
-                <div id="checkboxes">
-                    <label for="active"><input type="checkbox" ng-model="value" id="active" ng-click="showActiveSensors(value)"/>Active</label>
+
+            <div class="container-rightButtons">
+                <search></search>
+                
+                <div class="container-buttonView">
+                    <a>View:</a>
+                    <div class="button-view">
+                        <i id="large" class="fas fa-th-large" ng-click="changeLayoutCards()" ng-if= "change " onclick="focusButtonLarge()" ></i>
+                        <i id="list" class=" fas fa-th-list" ng-click="changeLayoutGrid()" ng-if= "change " onclick="focusButtonList()"></i>
+                    </div>
                 </div>
             </div>
-        </form>
+            
+        </div>
+        
+        <div class="measurementsTotalReadings" ng-if="!detail">
+            <label style="font-weight: initial;">Total Sensors: <b>{{totalSensors}}</b>.</label>
+            <label style="font-weight: initial;">Acive: <b style="color: #5cb85c;">{{activeCount}}</b>,</label>
+            <label style="font-weight: initial;">inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></label>
+        </div>
 
         <table class="table" ng-if="grid">
             <thead>

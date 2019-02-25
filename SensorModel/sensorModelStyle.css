@@ -3,7 +3,7 @@
     display: flex;
     width: 100%;
     margin-bottom: 15px;
-    height: 40px;
+    height: 34px;
     position: relative;
 }
 .search-container .input-group-container .input-icon{
@@ -39,11 +39,84 @@
     width: 100%;
     padding: 10px;
     outline: none;
+    
+}
+#searchBOX{
+    display: none;
+    transition: 1s;
 }
 .search-container .input-group-container .input-form-control:focus{
     border: 2px solid #4e9a06;
 }
 /* <-- Search */
+
+/* Tabel buttons */
+.table-overflow .container-buttonGrid{
+    display: flex;
+    justify-content: baseline;
+}
+@media screen and (max-width: 700px){
+    .table-overflow .container-buttonGrid{
+        flex-direction: column-reverse;
+    }
+    .table-overflow .container-buttonGrid .container-leftButtons{
+        flex-direction: column;
+    }
+    .table-overflow .container-buttonGrid .grow{
+        margin-top: 15px;
+    }
+    .container-leftButtons .registerSensorButton{
+        margin-bottom: 15px;
+        width: 100px;
+    }
+    .container-rightButtons{
+        align-self: flex-end;
+    }
+    .measurementsTotalReadings{
+        margin-top: 50px;
+    }
+}
+.table-overflow .container-buttonGrid .container-leftButtons{
+    display: flex;
+}
+.table-overflow .container-buttonGrid .grow{
+    flex-grow: 1;
+}
+
+.table-overflow .container-buttonGrid .container-rightButtons{
+    display: flex;
+}
+.container-buttonGrid .container-rightButtons .container-buttonView{
+    display: flex;
+    margin-left: 5px;
+}
+.container-rightButtons .container-buttonView .button-view{
+    display: flex;
+    margin-left: 5px;
+
+}
+.container-buttonView a{
+    text-decoration: none;
+    color: #000000 !important;
+    font-size: 14px;
+    padding-top: 8px;
+}
+
+.container-rightButtons .container-buttonView .button-view i{
+    padding: 5px;
+    cursor: pointer;
+    font-size: 23px;
+    /* margin-right: 5px; */
+    color: #4e9a06;
+    /* border: 1px solid #ddd; */
+}
+.container-rightButtons .container-buttonView .button-view i:hover{
+    color: #3e7a06;
+}
+.container-rightButtons .container-buttonView .button-view i:focus{
+    color: #2b5504;
+}
+/* Tabel buttons */
 
 /* Button now */
 .sensorModel .padding-button{
@@ -71,14 +144,14 @@
     border: 2px solid #43a303;
     border-radius: 5%;
     text-decoration: none;
-    /* width: 100px; */
+
   }
   .button-cardView:hover{
     color: #1b4101;
     background-color: white;
     border: 2px solid #1b4101;
   }
-/* Button now */
+ /* Button now */
 
 /* CARDS */
 .container-parrents-cards{
@@ -157,7 +230,7 @@
 }
 
 
-.sensorModel .container-registerButtons{
+/* .sensorModel .container-registerButtons{
     position: relative;
 }
 .container-registerButtons .container-registerSensor #registerButtonR{
@@ -168,7 +241,7 @@
     .container-registerButtons .container-registerSensor #registerNot{
         bottom: 35px;
     }
-}
+} */
 .container-parrents-cards .container-contentCards form{
     display: flex;
     flex-direction: column;
@@ -371,7 +444,7 @@ inLine-measurement{
     margin-left: 25%;
     margin-right: 25%;
 }
-.measurementsContainerSet{
+/* .measurementsContainerSet{
     display: flex;
     width:200px;
     margin-left: 40%;
@@ -386,20 +459,24 @@ inLine-measurement{
 }
 .measurementsDisplay .measurementsContainerSet input{
     width:100px;
-}
+} */
 .measurementsDisplay table{
     text-align: center;
 }
-.measurementsContainerSet button{
+/* .measurementsContainerSet button{
     height:34px;
     margin-top:0px;
-}
+} */
 .measurementsTotalReadings{
     display: flex;
     font-size: 13px;
     align-self: baseline;
 }
- 
+.measurementsTotalReadings label{
+    padding-top: 8px;
+    padding-left: 5px;
+    font-size: 14px;
+}
 .measurementsTotalReadings .grow{
     flex-grow: 1;
 }
@@ -569,11 +646,11 @@ overflow{
         display: flex;
         flex-direction: column-reverse;
     }
-    .measurementsContainerSet{
+    /* .measurementsContainerSet{
         display: flex;
         width:150px;
         margin-left: 7%;
-    }
+    } */
     #butonRefresh{
         float: none;
     }
@@ -584,19 +661,19 @@ overflow{
 .map-google{
     width: 80%;
 }
-/* checkboxes filters */
+/* checkboxes filters 
 .multiselect{
-    width: 200px;
+    width: auto;
+    position: relative;
   }
   .selectBox {
     position: relative;
   }
   .selectBox select{
     width: 100%;
-    font-weight: bold;
   }
   .overSelect {
-    position: absolute;;
+    position: absolute;
     left: 0;
     right: 0;
     top: 0;
@@ -604,8 +681,56 @@ overflow{
   }
   #checkboxes {
     display: none;
-    border: 1px #dadada solid;
+  }
+  #checkboxes input{
+    color: red;
   }
   #checkboxes label {
-        display:block;
-  }
+        display: block;
+        font-weight: initial !important;
+        border: 1px #dadada solid;
+  } */
+.container-filters .container-front{
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #c5c5c5;
+    justify-content: space-between;
+    padding-top: 6px;
+    border-radius: 4px;
+    height: 34px;
+}
+
+/* width */
+.addStyle{
+    margin-left: 97px !important;
+}
+.container-filters .container-front i{
+    padding-right: 5px;
+    padding-top: 2px;
+    margin-left: 10px;
+}
+.container-filters .container-front p{
+    padding-left: 5px;
+}
+.container-filters .container-back{
+    background-color: white;
+    cursor: pointer;
+    position: absolute;
+    z-index: 20;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    padding: 5px;
+    padding-top: 10px;
+}
+.container-filters .container-back p{
+    margin-left: 2px;
+}
+.container-filters .container-backFlex{
+    display: flex;
+}
+.container-filters .container-back input{
+    cursor: pointer;
+}
+#filterMenu{display: none;}

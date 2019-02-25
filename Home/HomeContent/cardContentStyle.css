@@ -23,9 +23,9 @@
     flex-wrap: wrap;
     padding: 0 4px;
     padding: 15px;
-    border-top: 1px solid #33333346;
-    border-bottom: 1px solid #33333346;
-    background-color: #3bc4d6bb;
+    border: 1px solid #33333346;
+
+    /* background-color: #3bc4d6bb; */
 }
 .container-header-logoIMG .carousel-inner video{
     height: auto;
@@ -44,7 +44,8 @@
     cursor: pointer;
     width: 100%;
     height: auto;
-    box-shadow: 6px 6px 9px -7px #00000071;
+    box-shadow: 0px 6px 9px -7px #00000071;
+    border: 1px solid #33333346;
 }
 .container-cards .container-cardsChild:hover{
     transform: scale(1.15);
@@ -130,7 +131,7 @@
     padding: 10px;
     font-family: "FontC4G";
     height: auto;
-    width: 70%;
+    width: 80%;
     margin: auto;
 }
 .container-videoBG h1{

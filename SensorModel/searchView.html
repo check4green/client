@@ -1,8 +1,10 @@
 <form class="search-container">
     <div class="form-group">
+            <!-- <p id="hover-search">Click here to search</p> -->
         <div class="input-group-container">
-            <div class="input-icon"><i class="fa fa-search"></i><p id="hover-search">Click here to search</p></div>
-            <input type="text" class="input-form-control" ng-model="filterSearch" style="font-size: 13px;" placeholder="Search sensors by name" ng-model="searchSensor" ng-model-options="{ debounce: 250 }">
+            <div class="input-icon" onclick="collapseSearchBOX()"><i class="fa fa-search"></i></div>
+            <input id="searchBOX" onkeypress="return closeSearchBOX(event)" type="text" class="input-form-control" ng-model="filterSearch" 
+            placeholder="Search sensors by name" ng-model="searchSensor" ng-model-options="{ debounce: 250 }">
         </div>
     </div>
 </form>
