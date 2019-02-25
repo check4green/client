@@ -115,8 +115,8 @@
                                     .attr("class", "context")
                                     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
                                 x.domain(d3.extent(measurements, function(d) {return d.readingDate; }));
-                                y.domain([$scope.outOfRangeNegativeError-10, $scope.outOfRangePositiveError +20]);
-                                x2.domain(x.domain());
+                                y.domain([d3.min(measurements, function(d){ return d.value-2}), 
+                                    d3.max(measurements, function (d) { return d.value +20; })]);                                x2.domain(x.domain());
                                 y2.domain(y.domain());
                                 focus.append("g")
                                     .attr("class", "axis axis--x")
