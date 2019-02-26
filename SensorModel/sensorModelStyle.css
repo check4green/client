@@ -160,28 +160,18 @@
     background-color: #e6e6e6;
     border-top: 1px solid #cacaca;
     border-bottom: 1px solid #cacaca;
-    padding: 15px;
+    padding: 10px;
     justify-content: flex-start;
 }
 .container-parrents-cards .container-contentCards:hover{
-    background: radial-gradient(ellipse at center,
-     #fff 100%,
-      #fff 100%,
-       #fff 100%);
+    background: #16724c15;
+    border: 1px solid #069a26;
     box-shadow: 5px 5px 2px -2px #0000002d;
-    border: 1px solid #cacaca;
-    transform: scale(1.2);
-    border-radius: 5px;
+    transform: scale(1.1);
 }
-.container-parrents-cards .container-contentCards .box-shadow{
+.container-parrents-cards .container-contentCards{
     padding: 5px;
-}
-.container-parrents-cards .container-contentCards .box-shadow:hover{
-    background: radial-gradient(ellipse at center,
-     #4e9a0600 5%,
-      #ffffff00 70%,
-       #4e9a06 155%);
-    border-radius: 5px;
+    border: 1px solid #4e9a0600;
 }
 .container-parrents-cards .container-contentCards{
     flex: 19%;
@@ -258,6 +248,10 @@
     margin-top: 10px;
 }
 .container-parrents-cards .container-contentCards .container-contentCrd{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+.container-parrents-cards .container-contentCards .container-contentCrd button{
     margin-left: 3%;
     margin-right: 3%;
 }
@@ -375,15 +369,13 @@
     text-align: center;
     margin-left:auto;
     margin-right:auto;
-    padding:10px;
-    font-size:20px;
     color:#d9534f;
 }
 .inLine{
     display: flex;
 }
 .deleteDisplay button{
-    margin-top:30px;
+    margin-top: 5px;
 }
 .editDisplay{
     display:flex;
@@ -444,6 +436,12 @@ inLine-measurement{
     margin-left: 25%;
     margin-right: 25%;
 }
+
+.inLine-measurement .measurementsContainerSet{
+    display: flex;
+    width:200px;
+    margin-left: 10%;
+}
 /* .measurementsContainerSet{
     display: flex;
     width:200px;
@@ -467,10 +465,11 @@ inLine-measurement{
     height:34px;
     margin-top:0px;
 } */
-.measurementsTotalReadings{
+.measurementsDisplay .measurementsTotalReadings{
     display: flex;
     font-size: 13px;
     align-self: baseline;
+    justify-content: space-between;
 }
 .measurementsTotalReadings label{
     padding-top: 8px;

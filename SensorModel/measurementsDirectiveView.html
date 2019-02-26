@@ -5,9 +5,8 @@
     <div class="inLine-measurement">
         <button type="button" id="butonRefresh" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-if="detailsData">Refresh</button>
         <div  class="form-group measurementsContainerSet">
-            <label id="label-float">Number of readings:</label>
             <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
-                <option selected disabled hidden value="">10</option>
+                <option selected disabled hidden value="">Sensor per page: 10</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="40">40</option>
@@ -19,12 +18,12 @@
     </div>
         <div class="measurementsTotalReadings">
             <label>Total Readings: {{totalReadings}}</label>
-        </div>
-        <div class="legend-measurement" ng-if="!vibrations">
-            <a2 style="font-weight: bold;">Legend: </a2>
-            <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
-            <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor (0)</a1>
-            <span class="fa fa-circle" style="color: #286090;"></span><a1>Out of range</a1>
+            <div class="legend-measurement" ng-if="!vibrations">
+                <a2 style="font-weight: bold;">Legend: </a2>
+                <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
+                <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor (0)</a1>
+                <span class="fa fa-circle" style="color: #286090;"></span><a1>Out of range</a1>
+            </div>
         </div>
         <table class="table">
             <thead>

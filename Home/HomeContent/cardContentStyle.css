@@ -39,23 +39,25 @@
     margin: auto;
 }
 .container-cards .container-cardsChild {
+    background-color: white;
     margin-top: 8px;
-    vertical-align: middle;
-    cursor: pointer;
+   /*   vertical-align: middle;
     width: 100%;
     height: auto;
     box-shadow: 0px 6px 9px -7px #00000071;
-    border: 1px solid #33333346;
+    border: 1px solid #33333346; */
 }
-.container-cards .container-cardsChild:hover{
-    transform: scale(1.15);
-    transition: 0.3s;
+.container-cards .container-cardsChild video:hover{
+    border: 1px solid #333333;
     box-shadow: 7px 12px 9px -7px #000000;
+    cursor: pointer;
 }
 .container-cards .container-cardsChild video{
     vertical-align: middle;
     height: auto;
     width: 100%;
+    box-shadow: 0px 6px 9px -7px #00000071;
+    border: 1px solid #33333346;
 }
 @media screen and (max-width: 800px) {
     .container-cardsParrent .container-cards {

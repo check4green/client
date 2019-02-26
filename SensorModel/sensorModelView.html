@@ -112,7 +112,7 @@
 <div class="container-parrents-cards" ng-show ="cards && !loading">
 
         <div class="container-contentCards" ng-repeat= "sensor in filterSensors =(sensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
-            <div class="box-shadow">
+
                 <div class="container-contentCrd">
                     <form ng-if="!sensor.deleteDisplay ">
                         <b> {{$index+1}}. {{sensor.name}}</b>
@@ -131,7 +131,7 @@
                     <button type="button" class="button-cardView" ng-click="startDelete(sensor); gaCa(sensor.gatewayAddress, sensor.clientAddress)" ng-if="!sensor.deleteDisplay">
                         Delete</button>
                 </div>
-            </div>
+
         </div>
     </div>
     <div class="container-buttonRB" >
