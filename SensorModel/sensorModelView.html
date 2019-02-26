@@ -12,7 +12,7 @@
 
                 <button type="button" class="btn btn-success registerSensorButton"  ng-if="!detail" ui-sref="sensorsHome.addSensor" >Add sensor</button>
 
-                <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" >
+                <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" ng-show="!detail">
                         <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
                             <option selected disabled hidden value="">Sensors per page: <b>50</b></option>
                             <option value="50">50</option>
@@ -37,10 +37,10 @@
 
             <div class="grow"></div>
 
-            <div class="container-rightButtons">
+            <div class="container-rightButtons" ng-show="!detail">
                 <search></search>
                 
-                <div class="container-buttonView">
+                <div class="container-buttonView" >
                     <a>View:</a>
                     <div class="button-view">
                         <i id="large" class="fas fa-th-large" ng-click="changeLayoutCards()" ng-if= "change " onclick="focusButtonLarge()" ></i>

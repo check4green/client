@@ -9,10 +9,9 @@
     <div ng-show="noData" class="noData">No Data</div>
     <div ng-show="sensorHomeData" class="table-overflow">
 
-            <div class="container-buttonGrid">
+            <div class="container-buttonGrid" ng-show="!detail">
                     <div class="container-leftButtons">
         
-                        <button type="button" class="btn btn-success registerSensorButton"  ng-if="!detail" ui-sref="sensorsHome.addSensor" >Add sensor</button>
         
                         <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" >
                                 <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
@@ -30,7 +29,7 @@
                                 <div class="container-front "><p>Filters</p><i class="fas fa-caret-down addStyle"></i></div>
                                 <div id="filterMenu" class="container-back">
                                     <div class="container-backFlex">
-                                        <input  onmouseout="hideFilters()" type="checkbox" ng-model="value" id="active" ng-click="showActiveSensors(value)"/><p>Show active sensors</p>
+                                        <input  onmouseout="hideFilters()" type="checkbox" ng-model="value" id="active" ng-click="showActiveSens(value)"/><p>Show active sensors</p>
                                     </div>
                                 </div>
                             </div>
