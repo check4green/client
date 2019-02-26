@@ -23,9 +23,14 @@
   padding: 1px;
   cursor: pointer;
 }
+
+#headerImg{
+  margin: auto;
+  margin-left: 20%;
+}
 #headerImg img{
-  width: 100%;
   height: auto;
+  width: 70%;
 }
 
 .container-sensorHome .topnav-shome{
