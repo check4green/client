@@ -121,32 +121,38 @@
         
     </div>
     <!-- CARDS -->
-<div class="container-parrents-cards" ng-show ="cards && !loading">
 
-    <div class="container-contentCards" ng-repeat= "sensor in filterSensors =(sensors | filter: {name: filterSearch}) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
-        <div class="box-shadow">
-            <div class="container-contentCrd">
-                <form ng-if="!sensor.deleteDisplay ">
-                        
+    <div class="container-rowCards" ng-show ="cards && !loading">
+        <div class="column" ng-repeat= "sensor in filterSensors =(sensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
+            <div class="card">
+                <div class="title">
                     <b> {{$index+1}}. {{sensor.name}}</b>
-                    <div class="container-AI" >
-                        <span class="label label-success" ng-if="sensor.active == true">Active</span>
-                        <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
-                    </div>
-                    
-                </form>
-                <b ng-if="(sensor.deleteDisplay && cards)"> {{$index+1}}. {{sensor.name}}</b>
+                </div>
+
+                <div class="status">
+                    <span class="label label-success" ng-if="sensor.active == true">Active</span>
+                    <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
+                </div>
+                
+                <!-- <b ng-if="(sensor.deleteDisplay && cards)"> {{$index+1}}. {{sensor.name}}</b> -->
+                
+
+                <div class="buttons" ng-if="!sensor.deleteDisplay">
+                    <button  type="button" ng-if="!sensor.deleteDisplay" class="button-cardView" ng-click=" chart(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name); measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements(); startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude); details(); outOfRange(sensor.sensorTypeId);">
+                        Details</button>
+                    <button type="button" class="button-cardView" ui-sref="sensorsHome.editSensor" ng-click="getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name)" ng-if="!sensor.deleteDisplay">
+                        Edit</button>
+                    <button type="button" class="button-cardView" ng-click="startDelete(sensor); gaCa(sensor.gatewayAddress, sensor.clientAddress)" ng-if="!sensor.deleteDisplay">
+                        Delete</button>
+                </div>
+
                 <delete-sensor></delete-sensor>
-                <button  type="button" ng-if="!sensor.deleteDisplay" class="button-cardView" ng-click=" chart(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name); measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements(); startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude); details(); outOfRangeAllSens(sensor.sensorTypeId);">
-                    Details</button>
-                <button type="button" class="button-cardView" ui-sref="sensorsHome.editSensor" ng-click="getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name)" ng-if="!sensor.deleteDisplay">
-                    Edit</button>
-                <button type="button" class="button-cardView" ng-click="startDelete(sensor); gaCa(sensor.gatewayAddress, sensor.clientAddress)" ng-if="!sensor.deleteDisplay">
-                    Delete</button>
+
             </div>
+            
         </div>
     </div>
-</div>
+
 <div class="container-buttonRB" >
         <div ng-if="sensName">
                 <b>{{name}}</b>
