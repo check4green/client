@@ -43,19 +43,23 @@
                     $scope.noSensorsData = false;
                     $scope.sensorData = true;
                 })
-                .catch(function(){
+                .catch(function(response){
                     $scope.noSensorsData = true;
                     $scope.loading = false;
                     $scope.sensorData = false;
                 })
         }
+        
+        $scope.currentPage = 1;
         $scope.sensPerPage = 50;
         sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
-            .then(allSensors);
+            .then(allSensors)
+            .catch(function(response){
+                $scope.noSensorData = true;
+            })
         function allSensors(data){
             $scope.allSensors = data;
             $scope.totalSensors = data;
-            $scope.currentPage = 1;
             vm.setPage = function(){
                 getSens(1, $scope.allSensors, $scope.encodeduser)
                     
@@ -121,7 +125,7 @@
                             $scope.active = true;
                             
                         })
-                        .catch(function()
+                        .catch(function(response)
                         {
                             $scope.noSensorsData = true;
                             $scope.loading = false;

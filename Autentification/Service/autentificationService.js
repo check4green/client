@@ -68,6 +68,9 @@ angular.module("sensorApp")
             .then(function(response){
               return response.headers('X-Tracker-Pagination-TotalCount')
             })
+            .catch(function(response){
+              return response.status;
+            })
           }
           function getRequestDemo(request){
             return $http.post('https://swiss-iot.azurewebsites.net//api/demoRequest', request)

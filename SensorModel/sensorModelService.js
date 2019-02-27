@@ -63,6 +63,9 @@
                 .then(function (response){
                     return response.headers('X-Tracker-Pagination-TotalCount');
                 })
+                .catch(function(response){
+                    return response.status
+                })
         }
        function insertSensors(sensor,encodedData){
         //    return $http.post("http://192.168.0.18:32333/api/sensors", sensor)

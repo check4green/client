@@ -159,7 +159,7 @@
     <!-- CARDS -->
     <div ng-show="(!filterSensors.length && sensorData)" id="alert-error"><p>No result</p></div> 
     <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
-    <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
+    <div paging page="currentPage" page-size="sensPerPage" total="allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ng-if="sensorData"></div>
     </div>
     
     
