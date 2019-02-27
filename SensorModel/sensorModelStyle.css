@@ -153,109 +153,66 @@
   }
  /* Button now */
 
-/* CARDS */
-.container-parrents-cards{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #e6e6e6;
-    border-top: 1px solid #cacaca;
-    border-bottom: 1px solid #cacaca;
-    padding: 10px;
-    justify-content: flex-start;
+/* CARDS******************************************************************* */
+
+.container-rowCards .column {
+  float: left;
+  width: 25%;
+  padding: 10px 10px;
 }
-.container-parrents-cards .container-contentCards:hover{
-    background: #16724c15;
+
+.sensorModel .container-rowCards {margin: 0 -5px;}
+
+.sensorModel .container-rowCards:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container-rowCards .column .buttons{
+    margin-top: 50px;
+}
+
+.container-rowCards .column .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #16724c15;
+  border: 1px solid #069a2636;
+}
+
+.container-rowCards .column .card:hover{
+    background: #ffffff;
     border: 1px solid #069a26;
-    box-shadow: 5px 5px 2px -2px #0000002d;
-    transform: scale(1.1);
+    cursor: pointer;
 }
-.container-parrents-cards .container-contentCards{
-    padding: 5px;
-    border: 1px solid #4e9a0600;
-}
-.container-parrents-cards .container-contentCards{
-    flex: 19%;
-    max-width: 19%;
-    margin: 5px;
-    background-color: #ffffff;
-    border: 1px solid #cacaca00;
-    box-shadow: 1px 1px 17px 0px #00000013;
-}
-@media screen and (max-width: 1200px){
-    .container-parrents-cards .container-contentCards{
-    flex: 25%;
-    max-width: 25%;
-    }
-}
+
 @media screen and (max-width: 995px){
-    .container-parrents-cards .container-contentCards{
-    flex: 30%;
-    max-width: 30%;
-    }
+  .container-rowCards .column .buttons{
+      display: flex;
+      flex-direction: column;
+  }
+  .container-rowCards .column .buttons button{
+          margin-top: 5px;
+  }
 }
-@media screen and (max-width: 760px){
-    .container-parrents-cards .container-contentCards{
-    flex: 100%;
-    max-width: 40%;
-    }
-    .container-parrents-cards{
-    justify-content: space-around;
-    }
-    .container-parrents-cards .container-contentCards .container-contentCrd{
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    }
+
+@media screen and (max-width: 770px) {
+ .container-rowCards .column {
+    width: 30%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
-@media screen and (max-width: 560px){
-    .container-parrents-cards .container-contentCards{
-    flex: 100%;
-    max-width: 60%;
-    }
-}
-@media screen and (max-width: 416px){
-    .container-parrents-cards .container-contentCards{
-    flex: 100%;
-    max-width: 100%;
+
+@media screen and (max-width: 660px){
+    .container-rowCards .column{
+        width: 100%;
     }
 }
 
 
-/* .sensorModel .container-registerButtons{
-    position: relative;
-}
-.container-registerButtons .container-registerSensor #registerButtonR{
-    position: absolute;
-    bottom: 5px;
-}
-@media screen and (max-width: 390px){
-    .container-registerButtons .container-registerSensor #registerNot{
-        bottom: 35px;
-    }
-} */
-.container-parrents-cards .container-contentCards form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100px;
-}
-.container-parrents-cards .container-contentCards form b{
-    padding-left: 10px;
-    padding-right: 10px;
-    border-bottom: 1px solid #333; 
-}
-
-.container-parrents-cards .container-contentCards .container-AI{
-    margin-top: 10px;
-}
-.container-parrents-cards .container-contentCards .container-contentCrd{
-    margin-left: 3%;
-    margin-right: 3%;
-}
-.container-parrents-cards .container-contentCards .container-contentCrd button{
-    margin-left: 3%;
-    margin-right: 3%;
-}
-/* CARDS */
+/* CARDS******************************************************************* */
 /* --> Edit info */
 .container-name{
     display: flex;
@@ -365,17 +322,30 @@
 .registerSensorButton{
     margin-bottom:30px;
 }
+
+/* Delete button*********************************************** */
+
 .deleteDisplay{
     text-align: center;
     margin-left:auto;
     margin-right:auto;
     color:#d9534f;
 }
+.deleteDisplay b{
+    font-size: 13px;
+}
+.deleteDisplay .delete-buttons{
+    margin-top: 6px;
+}
+.deleteDisplay .delete-buttons button{
+    font-size: 13px;
+    padding: 5px 20px;
+}
+/* Delete button*********************************************** nth-child(2)*/
+
+
 .inLine{
     display: flex;
-}
-.deleteDisplay button{
-    margin-top: 5px;
 }
 .editDisplay{
     display:flex;
