@@ -155,18 +155,20 @@
 
 /* CARDS******************************************************************* */
 
-.container-rowCards .column {
-  float: left;
-  width: 25%;
-  padding: 10px 10px;
-}
-
-.sensorModel .container-rowCards {margin: 0 -5px;}
+.sensorModel .container-rowCards {
+    
+    margin: 0 -5px;}
 
 .sensorModel .container-rowCards:after {
   content: "";
   display: table;
   clear: both;
+}
+
+.container-rowCards .column {
+  float: left;
+  width: 25%;
+  padding: 10px 10px;
 }
 
 .container-rowCards .column .buttons{
@@ -179,6 +181,7 @@
   text-align: center;
   background-color: #16724c15;
   border: 1px solid #069a2636;
+  position: relative;
 }
 
 .container-rowCards .column .card:hover{
@@ -313,55 +316,31 @@
 }
 
 /* Delete button*********************************************** */
-
+.container-rowCards .column .card .container-deleteB{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 100;
+    width: 100%;
+}
 .deleteDisplay{
     text-align: center;
-    margin-left:auto;
-    margin-right:auto;
     color:#d9534f;
+    padding-bottom: 10px;
+    margin-top: 6px;
+    text-align: center;
+    background-color: #cef0de;
+    border-top: 1px solid #069a269f;
 }
 .deleteDisplay b{
     font-size: 13px;
 }
-.deleteDisplay .delete-buttons{
-    margin-top: 6px;
-}
+
 .deleteDisplay .delete-buttons button{
     font-size: 13px;
-    padding: 5px 20px;
 }
-@media screen and (max-width: 995px){
-    .deleteDisplay b{
-        font-size: 16px;
-    }
-    .deleteDisplay .delete-buttons{
-        margin-top: 0px;
-    }
-    .deleteDisplay .delete-buttons button{
-        font-size: 14px;
-    }
-}
-@media screen and (max-width: 670px){
-    .deleteDisplay .delete-buttons{
-        margin-top: 20px;
-    }
-    .deleteDisplay .delete-buttons button{
-        font-size: 13px;
-        padding: 7px 22px;
-    }
-}
-@media screen and (max-width: 400px){
-    .deleteDisplay b{
-        font-size: 14px;
-    }
-    .deleteDisplay .delete-buttons{
-        margin-top: 4px;
-    }
-    .deleteDisplay .delete-buttons button{
-        font-size: 14px;
-        padding: 5px 20px;
-    }
-}
+
 /* Delete button*********************************************** nth-child(2)*/
 
 

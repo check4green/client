@@ -135,18 +135,18 @@
                 </div>
                 
                 <!-- <b ng-if="(sensor.deleteDisplay && cards)"> {{$index+1}}. {{sensor.name}}</b> -->
-                
-
-                <div class="buttons" ng-if="!sensor.deleteDisplay">
-                    <button  type="button" ng-if="!sensor.deleteDisplay" class="button-cardView" ng-click=" chart(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name); measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements(); startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude); details(); outOfRange(sensor.sensorTypeId);">
-                        Details</button>
-                    <button type="button" class="button-cardView" ui-sref="sensorsHome.editSensor" ng-click="getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name)" ng-if="!sensor.deleteDisplay">
-                        Edit</button>
-                    <button type="button" class="button-cardView" ng-click="startDelete(sensor); gaCa(sensor.gatewayAddress, sensor.clientAddress)" ng-if="!sensor.deleteDisplay">
-                        Delete</button>
+                <div class="container-deleteB">
+                    <delete-sensor></delete-sensor>
                 </div>
 
-                <delete-sensor></delete-sensor>
+                <div class="buttons">
+                    <button  type="button" class="button-cardView" ng-click=" chart(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name); measurementSensor(sensor.gatewayAddress, sensor.clientAddress); startMeasurements(); startEditLocation(sensor.gatewayAddress, sensor.clientAddress, sensor.name, sensor.uploadInterval, sensor.batchSize, sensor.latitude, sensor.longitude); details(); outOfRange(sensor.sensorTypeId);">
+                        Details</button>
+                    <button type="button" class="button-cardView" ui-sref="sensorsHome.editSensor" ng-click="getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name)">
+                        Edit</button>
+                    <button type="button" class="button-cardView" ng-click="startDelete(sensor); gaCa(sensor.gatewayAddress, sensor.clientAddress)">
+                        Delete</button>
+                </div>
 
             </div>
             
