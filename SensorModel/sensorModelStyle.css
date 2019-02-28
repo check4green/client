@@ -188,24 +188,12 @@
 }
 
 @media screen and (max-width: 995px){
-  .container-rowCards .column .buttons{
-      display: flex;
-      flex-direction: column;
-  }
-  .container-rowCards .column .buttons button{
-          margin-top: 5px;
+  .container-rowCards .column {
+    width: 50%;
   }
 }
 
-@media screen and (max-width: 770px) {
- .container-rowCards .column {
-    width: 30%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (max-width: 660px){
+@media screen and (max-width: 670px){
     .container-rowCards .column{
         width: 100%;
     }
@@ -321,6 +309,7 @@
 }
 .registerSensorButton{
     margin-bottom:30px;
+    width: 100px;
 }
 
 /* Delete button*********************************************** */
@@ -340,6 +329,38 @@
 .deleteDisplay .delete-buttons button{
     font-size: 13px;
     padding: 5px 20px;
+}
+@media screen and (max-width: 995px){
+    .deleteDisplay b{
+        font-size: 16px;
+    }
+    .deleteDisplay .delete-buttons{
+        margin-top: 0px;
+    }
+    .deleteDisplay .delete-buttons button{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 670px){
+    .deleteDisplay .delete-buttons{
+        margin-top: 20px;
+    }
+    .deleteDisplay .delete-buttons button{
+        font-size: 13px;
+        padding: 7px 22px;
+    }
+}
+@media screen and (max-width: 400px){
+    .deleteDisplay b{
+        font-size: 14px;
+    }
+    .deleteDisplay .delete-buttons{
+        margin-top: 4px;
+    }
+    .deleteDisplay .delete-buttons button{
+        font-size: 14px;
+        padding: 5px 20px;
+    }
 }
 /* Delete button*********************************************** nth-child(2)*/
 
