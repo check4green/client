@@ -65,10 +65,6 @@
     .table-overflow .container-buttonGrid .grow{
         margin-top: 15px;
     }
-    .container-leftButtons .registerSensorButton{
-        margin-bottom: 15px;
-        width: 100px;
-    }
     .container-rightButtons{
         align-self: flex-end;
     }
@@ -311,7 +307,7 @@
     margin-bottom:10px;
 }
 .registerSensorButton{
-    margin-bottom:30px;
+    margin-bottom:15px;
     width: 100px;
 }
 
