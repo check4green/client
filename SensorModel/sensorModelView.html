@@ -2,6 +2,7 @@
     <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
     </div>
+    <button type="button" class="btn btn-success registerSensorButton"  ng-if="!detail" ui-sref="sensorsHome.addSensor" >Add sensor</button>
 
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensorsData" class="noData">No Data</div>
@@ -9,10 +10,7 @@
         
         <div class="container-buttonGrid">
             <div class="container-leftButtons">
-
-                <button type="button" class="btn btn-success registerSensorButton"  ng-if="!detail" ui-sref="sensorsHome.addSensor" >Add sensor</button>
-
-                <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" ng-show="!detail">
+                    <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" ng-show="!detail">
                         <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
                             <option selected disabled hidden value="">Sensors per page: <b>50</b></option>
                             <option value="50">50</option>

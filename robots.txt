@@ -22,3 +22,4 @@ Allow: /Autentification/ForgotPassword/resetPassword/resetPasswordView.html
 Allow: /Autentification/Contact/contactView.html
 Allow: /Autentification/ActivateAccount/accountEmailView.html
 Allow: /Autentification/ActivateAccount/activateAccountView.html
+Sitemap: https://www.check4green.com/sitemap.xml
