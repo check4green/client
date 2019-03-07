@@ -3,7 +3,7 @@ app.directive('map', function(){
     return {
         restrict: 'E',
         templateUrl: 'sensorsHome/map.html',
-        controller: function(sensorModelService, d3, $scope, $sessionStorage, $localStorage, $window, $timeout, autentificationService){
+        controller: function(sensorModelService, d3, $scope, $sessionStorage, $localStorage, autentificationService){
             var map = new google.maps.Map(d3.selectAll('#map').node(), {
                 zoom: 4,
                 center: new google.maps.LatLng(51.508742, -0.120850),
@@ -45,7 +45,6 @@ app.directive('map', function(){
                 $scope.legend = true;
             }
             
-            $sessionStorage.register = false;
             if($localStorage.email && $localStorage.password){
                 $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
             }else{

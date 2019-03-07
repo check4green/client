@@ -1,11 +1,11 @@
 (function(){
     "use strict";
     var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3", "bw.paging", "w11k.angular-seo-header"])
-    .constant('SENSOR_TYPE', {
-        'ID': '0',
-        'OUT_OF_RANGE': '0',
-        'TITLE': '0'
-    });
+                    .constant('SENSOR_TYPE', {
+                                'ID': '0',
+                                'OUT_OF_RANGE': '0',
+                                'TITLE': '0'
+                            });
     app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", 
                function($stateProvider, $urlRouterProvider, $locationProvider){
                 $locationProvider.html5Mode(true);
@@ -126,7 +126,7 @@
                 'pricing@':{
                     template: "<pricing></pricing>",
                     controller: function($scope, $sessionStorage){
-                        $sessionStorage.homeContent = false;
+                        $sessionStorage.homeContent = false;    
                     }
                 }
             }
@@ -148,7 +148,7 @@
                 'technology@':{
                     template: "<technology></technology>",
                     controller: function($scope, $sessionStorage){
-                        $sessionStorage.homeContent = false;
+                        $sessionStorage.homeContent = false;   
                     }
                 }
             }
@@ -170,7 +170,7 @@
                 'products@':{
                     template: "<products></products>",
                     controller: function($scope, $sessionStorage){
-                        $sessionStorage.homeContent = false;
+                        $sessionStorage.homeContent = false;   
                     }
                 }
             }

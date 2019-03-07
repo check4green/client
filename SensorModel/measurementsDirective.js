@@ -3,7 +3,7 @@ app.directive('measurements', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/measurementsDirectiveView.html',
-        controller: function($scope, sensorModelService, SENSOR_TYPE, $localStorage, $location, $sessionStorage){
+        controller: function($scope, sensorModelService, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout){
             var vm = this;
 
             $scope.measurementsButton = true;
@@ -34,7 +34,7 @@ app.directive('measurements', function(){
               }else{
                   $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
               }
-            //readings
+            
             $scope.measurementSensor = function(gatewayAddress, clientAddress){
                 $scope.clientAddress = clientAddress;
                 $scope.gatewayAddress = gatewayAddress;
@@ -46,6 +46,7 @@ app.directive('measurements', function(){
                 if(SENSOR_TYPE.ID == 37){
                     $scope.vibrations = true;
                 }
+                
                 //set the number of readings/ page
                 $scope.setPageSize = function(pageSize){
                     if (pageSize){
@@ -110,6 +111,7 @@ app.directive('measurements', function(){
                     $scope.lastRead = null;
                 }
             };
+             //$timeout( sensorModelService.getMeasurements($sessionStorage.ga, $sessionStorage.ca,1, 10, $scope.encodeduser), 1000)
         }
     }
 });
