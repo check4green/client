@@ -8,7 +8,7 @@
             $scope.email = {email: emailAddress}
             autentificationService.getActivationCode($scope.email)
                 .then(function(response){
-                    $location.path("/logIn/accountEmail/activateAccount")
+                    $location.path("accountEmail/activateAccount")
                 })
                 .catch(function(response){
                     $scope.errorMsg = true;

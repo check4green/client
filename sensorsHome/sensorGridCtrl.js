@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module("sensorApp");
 app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorage, autentificationService, sensorModelService, SENSOR_TYPE){
     var vm = this;
@@ -266,3 +267,4 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
             $sessionStorage.location = {lat: lat, lng: long};
         }
 });
+}());

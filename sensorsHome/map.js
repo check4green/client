@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module('sensorApp');
 app.directive('map', function(){
     return {
@@ -252,5 +253,6 @@ app.directive('map', function(){
         }
     }
             
-})
+});
+}());
         

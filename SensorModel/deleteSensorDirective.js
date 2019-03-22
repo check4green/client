@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module("sensorApp");
 app.directive('deleteSensor', function(){
     return {
@@ -62,3 +63,4 @@ app.directive('deleteSensor', function(){
         }
     }
 });
+}());

@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module("sensorApp");
 app.directive('measurements', function(){
     return {
@@ -115,3 +116,4 @@ app.directive('measurements', function(){
         }
     }
 });
+}());

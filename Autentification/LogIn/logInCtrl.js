@@ -19,7 +19,7 @@
           autentificationService.logIn($scope.encodeduser)
               .then(function(response){
                   $scope.loading = false;
-                  $location.path('/sensorsHome/sensors');
+                  $location.path('sensorsHome/sensors');
                   $sessionStorage.email = email;
                   $sessionStorage.password = password;
               })

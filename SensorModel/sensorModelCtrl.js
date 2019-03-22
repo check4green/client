@@ -299,11 +299,7 @@
         // };
         // vm.reload();
     }]);
-}());
 
-
-
-var app = angular.module('sensorApp');
 app.directive('caGaValidation', function() {
     return {
         require: 'ngModel',
@@ -337,3 +333,4 @@ app.directive('nameValidation', function() {
         }
     };
 });
+}());

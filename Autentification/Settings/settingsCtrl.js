@@ -340,7 +340,7 @@
           })
         }
       }
-    })
+    });
     
     app.directive("validEmail", function(){
       return{
@@ -352,7 +352,7 @@
           })
         }
       }
-    })
+    });
     app.directive('phoneValidation', function(){
       return{
         require:'ngModel',
@@ -368,5 +368,5 @@
           mCtrl.$parsers.push(myValid);
         }
       }
-    })
+    });
 }());

@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module("sensorApp");
 app.component('editSensor', {
     templateUrl: "SensorModel/editSensorView.html",
@@ -103,3 +104,4 @@ app.directive('editDirective', function(){
         }
     }
 });
+}());

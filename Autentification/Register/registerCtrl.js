@@ -1,4 +1,5 @@
-
+(function(){
+  "use strict";
    var app = angular.module("sensorApp");
    app.controller("registerCtrl", function ($scope, $location, $localStorage, $sessionStorage, autentificationService) {
         var vm = this;
@@ -165,8 +166,8 @@
             })
         }
 
-    })
-    .directive("validPassword", function(){
+    });
+    app.directive("validPassword", function(){
       return{
         require:'ngModel',
         link: function(scope, elem, attrs, ctrl){
@@ -176,8 +177,8 @@
           })
         }
       }
-    })
-    .directive('nameValid', function(){
+    });
+    app.directive('nameValid', function(){
       return {
         require: 'ngModel',
         link: function(scope, element, attr, mCtrl){
@@ -192,8 +193,8 @@
           mCtrl.$parsers.push(myValid);
         }
       };
-    })
-    .directive('phoneValid', function(){
+    });
+    app.directive('phoneValid', function(){
       return {
         require: 'ngModel',
         link: function(scope, element, attr, ctrl){
@@ -208,4 +209,5 @@
           ctrl.$parsers.push(valid);
         }
       }
-    })
+    });
+  }());
