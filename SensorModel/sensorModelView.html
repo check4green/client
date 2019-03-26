@@ -77,7 +77,7 @@
                     </td>
                     <td class="sensorModelContainerInfo">
                         <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="vm.expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); outOfRange(sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); vibrationSens(sensor.sensorTypeId); getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name)">+</button>
-                        <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
+                        <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false; cancelMeasurements();">-</button>
                     </td>
 
                 </tr>

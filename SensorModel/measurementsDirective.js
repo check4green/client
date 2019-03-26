@@ -69,7 +69,6 @@ app.directive('measurements', function(){
                 sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size, $scope.encodedData)
                                     .then(function(measurements){
                                         $rootScope.measurementSensors = measurements;
-                                        console.log($rootScope.measurementSensors)
                                         $scope.loadingMeasurements = false;
                                         $scope.noDataMeasurements = false;
                                         $scope.dataMeasurements = true;
@@ -142,11 +141,10 @@ app.factory("hubConnection", function($rootScope, sensorModelService, $sessionSt
         }
         $.connection.hub.start()
             .done(function(){
-                console.log("Connected to hub. ");
+                
                
             })
             .fail(function(){
-                console.log("Could not connect to hub")
             })
             
             
