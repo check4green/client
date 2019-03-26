@@ -24,29 +24,11 @@
 
     <!--Style-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"><!-- font and icons /-->
-    <link rel="stylesheet" type="text/css" href="StyleIndex/headerStyle.css"> <!-- swiss HEADER-->
-    <link rel="stylesheet" type="text/css" href="StyleIndex/menuStyle.css"> <!--swiss MENU-->
-    <link rel="stylesheet" type="text/css" href="Home/homeStyle.css"> <!--swiss HOME-->
-    <link rel="stylesheet" type="text/css" href="Home/RequestDemo/requestDemo.css"> <!--swiss RQ Demo-->
-    <link rel="stylesheet" type="text/css" href="Home/imgGalleryCtrlStyle.css"> <!--swiss Glr Demo-->
-    <link rel="stylesheet" type="text/css" href="Home/HomeContent/cardContentStyle.css"> <!--swiss cardContent-->
-    <link rel="stylesheet" type="text/css" href="sensorsHome/sensorsHomeStyle.css"> <!--swiss SENSORS-HOME-->
-    <link rel="stylesheet" type="text/css" href="Calculator/rangeBar.css"> <!--swiss CALCULATOR-HOME-->
-    <link rel="stylesheet" type="text/css" href="StyleIndex/switchChartStyle.css"> <!--swiss SWTICH-->
-    <link rel="stylesheet" type="text/css" href="StyleIndex/loaderStyle.css"> <!--swiss LOADER-->
-    <link rel="stylesheet" type="text/css" href="Autentification/LogIn/logInStyle.css"> <!--swiss LOG IN-->
-    <link rel="stylesheet" type="text/css" href="Autentification/Register/registerStyle.css"> <!--swiss REGISTER-->
-    <link rel="stylesheet" type="text/css" href="Autentification/Settings/settingsStyle.css"> <!--swiss SETTINGS-->
-    <link rel="stylesheet" type="text/css" href="Autentification/ForgotPassword/forgotPasswordStyle.css"> <!--swiss FORGOT PASS-->
-    <link rel="stylesheet" type="text/css" href="Autentification/ForgotPassword/resetPassword/resetPasswordStyle.css"> <!--swiss RESET PASS-->
-    <link rel="stylesheet" type="text/css" href="Autentification/Contact/contactStyle.css"> <!--swiss CONTACT-->
-    <link rel="stylesheet" type="text/css" href="textHeader/AboutUs/aboutUsStyle.css"> <!--swiss ABOUT-US-->
-    <link rel="stylesheet" type="text/css" href="textHeader/Pricing/pricingStyle.css"> <!--swiss PRICING-->
-    <link rel="stylesheet" type="text/css" href="textHeader/Products/productsStyle.css"> <!--swiss PRODUCTS-->
-    <link rel="stylesheet" type="text/css" href="textHeader/Technology/technologyStyle.css"> <!--swiss TECHNOLOGY-->
-    <link rel="stylesheet" href="StyleIndex/bootstrap.min.css">
-    <link rel="stylesheet" href="SensorModel/sensorModelStyle.css" type="text/css">  <!-- swiss SensorModel -->
-    <link rel="stylesheet" href="sensorsHome/map.css" type="text/css">  <!-- swiss map -->
+    <link rel="stylesheet" type="text/css" href="/StyleIndex/headerStyle.css"> <!-- swiss HEADER-->
+    <link rel="stylesheet" type="text/css" href="/StyleIndex/menuStyle.css"> <!--swiss MENU-->
+    <link rel="stylesheet" href="/StyleIndex/switchChartStyle.css"> <!--swiss SWTICH-->
+    <link rel="stylesheet" type="text/css" href="/StyleIndex/loaderStyle.css"> <!--swiss LOADER-->
+    <link rel="stylesheet" href="/StyleIndex/bootstrap.min.css">
 
 </head>
 
@@ -58,7 +40,7 @@
     <div ui-view="cardContent1"></div>
     <div ui-view="logIn"></div>
     <div ui-view="register@"></div>
-    <div ui-view="accountEmail@"></div>
+    <div ui-view="accountEmail"></div>
     <div ui-view="activateAccount@"></div>
     <div ui-view="forgotPassword@"></div>
     <div ui-view="resetPassword"></div>
@@ -69,7 +51,6 @@
 </body>
 
 <!--JS Script-->
-<script src="Home/scriptIndex.js"></script> <!-- style index.js -->
 
 <!--Library-->
 <script src="Library/jquery-1.6.4.min.js"></script>
@@ -80,76 +61,18 @@
 <script src="Library/d3.min.js"></script>
 <script src="Library/paginationDirective.js"></script>
 <script src="Library/angular-seo-header.js"></script>
+<script src="Library/ocLazyLoad.min.js"></script>
+<script src="Library/jquery.min.js"></script>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA4oDU1249QKoLHbjRQsZTFQRQb32B2-A&token=36623"></script>
 <!-- <script src="/Library/googleMaps.js"></script>  -->
 
 <!-- Ui-route -->
 <script src="routeCtrl.js"></script>
 
+
 <!--Data-->
-<script src="SensorModel/sensorModelService.js"></script>
-<script src="Autentification/Service/autentificationService.js"></script>
-
-<!--Controllers-->
-<script src="SensorModel/sensorModelCtrl.js"></script>
-<script src="Home/homeCtrl.js"></script>
-<script src="Home/HomeContent/homeContentCtrl.js"></script>
-<script src="sensorsHome/sensorsHomeCtrl.js"></script>
-<script src="Autentification/LogIn/logInCtrl.js"></script>
-<script src="Autentification/Register/registerCtrl.js"></script>
-<script src="Autentification/Settings/settingsCtrl.js"></script>
-<script src="Autentification/ForgotPassword/forgotPasswordCtrl.js"></script>
-<script src="Autentification/ForgotPassword/resetPassword/resetPasswordCtrl.js"></script>
-<script src="Autentification/Contact/contactCtrl.js"></script>
-<script src="textHeader/AboutUs/aboutUsCtrl.js"></script>
-<script src="textHeader/Pricing/pricingCtrl.js"></script>
-<script src="textHeader/Products/productsCtrl.js"></script>
-<script src="textHeader/Technology/technologyCtrl.js"></script>
-<script src="Autentification/ActivateAccount/activateAccountCtrl.js"></script>
-<script src="Autentification/ActivateAccount/accountEmailCtrl.js"></script>
-<script src="sensorsHome/editLocationCtrl.js"></script>
-<script src="sensorsHome/sensorGridCtrl.js"></script>
-<script src="Home/RequestDemo/requestDemoCtrl.js"></script>
-<script src="SensorModel/registerSensorCtrl.js"></script>
-<script src="SensorModel/editSensorCtrl.js"></script>
-
-<!--Components-->
-<script src="Home/homeComponent.js"></script>
-<script src="sensorsHome/sensorsHomeComponent.js"></script>
-<script src="Sensors/Distance/distanceComponent.js"></script>
-<script src="Sensors/Temperature/temperatureComponent.js"></script>
-<script src="Sensors/ElectricalCurrent/electricalCurrentComponent.js"></script>
-<script src="Sensors/AirQuality/airQualityComponent.js"></script>
-<script src="Sensors/Vibration/vibrationComponent.js"></script>
-<script src="Autentification/LogIn/logInComponent.js"></script>
-<script src="Autentification/Register/registerComponent.js"></script>
-<script src="Autentification/Settings/settingsComponent.js"></script>
-<script src="Autentification/ForgotPassword/forgotPasswordComponent.js"></script>
-<script src="Autentification/ForgotPassword/resetPassword/resetPasswordComponent.js"></script>
-<script src="Autentification/Contact/contactComponent.js"></script>
-<script src="textHeader/AboutUs/aboutUsComponent.js"></script>
-<script src="textHeader/Pricing/pricingComponent.js"></script>
-<script src="textHeader/Products/productsComponent.js"></script>
-<script src="textHeader/Technology/technologyComponent.js"></script>
-<script src="Autentification/ActivateAccount/activateAccountComponent.js"></script>
-<script src="Autentification/ActivateAccount/accountEmailComponent.js"></script>
-<script src="sensorsHome/editLocationComponent.js"></script>
-<script src="sensorsHome/sensorGridComponent.js"></script>
-<script src="Home/RequestDemo/requestDemoComponent.js"></script>
-<script src="Sensors/Pressure/pressureComponent.js"></script>
-<script src="SensorModel/registerSensorComponent.js"></script>
-<script src="SensorModel/editSensorComponent.js"></script>
 
 
-<!--Directive-->
-<script src="SensorModel/deleteSensorDirective.js"></script>
-<script src="SensorModel/measurementsDirective.js"></script>
-<script src="SensorModel/detailsSensorDirective.js"></script>
-<script src="SensorModel/chartDirective.js"></script>
-<script src="Calculator/calculatorDirective.js"></script>
-<script src="SensorModel/searchDirective.js"></script>
-<script src="sensorsHome/map.js"></script> 
-<script src="Home/HomeContent/homeContentDirective.js"></script>
 
 <!--hub-->
 <script src="https://swiss-iot.azurewebsites.net/signalr/hubs"></script>

@@ -332,4 +332,10 @@ html, body{
         margin-bottom: 10px;
     }
 }
+footer {
+    background-color: #333;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
 /* footer <-- */

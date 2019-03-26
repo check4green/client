@@ -1,16 +1,16 @@
 (function(){
     "use strict";
-    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3", "bw.paging", "w11k.angular-seo-header"])
+    var app = angular.module("sensorApp", ["ui.router", "ngStorage", "d3", "bw.paging", "w11k.angular-seo-header", "oc.lazyLoad"])
                     .constant('SENSOR_TYPE', {
                                 'ID': '0',
                                 'OUT_OF_RANGE': '0',
                                 'TITLE': '0'
                             });
-    app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", 
-               function($stateProvider, $urlRouterProvider, $locationProvider){
+    app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider","$ocLazyLoadProvider", 
+               function($stateProvider, $urlRouterProvider, $locationProvider, $ocLazyLoadProvider){
                 $locationProvider.html5Mode(true);
                 $urlRouterProvider.otherwise('/home')
-                   $stateProvider
+                $stateProvider
             .state("home",{
              url:"/home",
              data:
@@ -32,6 +32,34 @@
                         
                     }
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Home/homeStyle.css',
+                        'Home/imgGalleryCtrlStyle.css',
+                        'Home/HomeContent/cardContentStyle.css',
+                        '/Home/HomeContent/homeContentCtrl.js',
+                        '/Home/HomeContent/homeContentDirective.js',
+                        '/Home/homeCtrl.js',
+                        '/Home/homeComponent.js',
+                        'Home/RequestDemo/requestDemo.css',
+                        '/Home/RequestDemo/requestDemoCtrl.js',
+                        '/Home/RequestDemo/requestDemoComponent.js',
+                        '/Home/scriptIndex.js',
+                        'Calculator/calculatorDirective.js',
+                        'Calculator/rangeBar.css',
+                        'textHeader/AboutUs/aboutUsComponent.js',
+                        'textHeader/AboutUs/aboutUsCtrl.js',
+                        'textHeader/Pricing/pricingComponent.js',
+                        'textHeader/Pricing/pricingCtrl.js',
+                        'textHeader/Products/productsComponent.js',
+                        'textHeader/Products/productsCtrl.js',
+                        'textHeader/Technology/technologyComponent.js',
+                        'textHeader/Technology/technologyCtrl.js',
+                        'Autentification/Service/autentificationService.js'
+                    ])
+                }]
             }
         })
             .state('logIn',{
@@ -40,6 +68,16 @@
                 'logIn@':{
                     template: "<log-in></log-in>"
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Autentification/Service/autentificationService.js',
+                        'Autentification/LogIn/logInComponent.js',
+                        'Autentification/LogIn/logInCtrl.js',
+                        'Autentification/LogIn/logInStyle.css',
+                    ])
+                }]
             }
         })
             .state('forgotPassword',{
@@ -48,6 +86,18 @@
                 'forgotPassword@':{
                     template: "<forgot-password></forgot-password>"
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Autentification/ForgotPassword/forgotPasswordStyle.css',
+                        'Autentification/ForgotPassword/forgotPasswordComponent.js',
+                        'Autentification/ForgotPassword/forgotPasswordCtrl.js',
+                        'Autentification/Service/autentificationService.js'
+
+
+                    ])
+                }]
             }
         })
             .state('resetPassword',{
@@ -56,6 +106,16 @@
                 'resetPassword@':{
                     template: "<reset-password></reset-password>"
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Autentification/ForgotPassword/resetPassword/resetPasswordStyle.css',
+                        'Autentification/ForgotPassword/resetPassword/resetPasswordComponent.js',
+                        'Autentification/ForgotPassword/resetPassword/resetPasswordCtrl.js',
+                        'Autentification/Service/autentificationService.js'
+                    ])
+                }]
             }
         })
             .state('contact',{
@@ -75,6 +135,16 @@
                 'contact@':{
                     template: "<contact></contact>"
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Autentification/Contact/contactStyle.css',
+                        'Autentification/Contact/contactcomponent.js',
+                        'Autentification/Contact/contactCtrl.js',
+                        'Autentification/Service/autentificationService.js'
+                    ])
+                }]
             }
         })
             .state('request',{
@@ -106,6 +176,13 @@
                     }
                     
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'textHeader/AboutUs/aboutUsStyle.css'
+                    ])
+                }]
             }
         })
             .state('home.pricing',{
@@ -129,6 +206,13 @@
                         $sessionStorage.homeContent = false;    
                     }
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'textHeader/Pricing/pricingStyle.css'
+                    ])
+                }]
             }
         })
             .state('home.technology',{
@@ -151,6 +235,13 @@
                         $sessionStorage.homeContent = false;   
                     }
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'textHeader/Technology/technologyStyle.css'
+                    ])
+                }]
             }
         })
             .state('home.products',{
@@ -173,6 +264,15 @@
                         $sessionStorage.homeContent = false;   
                     }
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'textHeader/Products/productsStyle.css',
+                        'Home/homeStyle.css',
+
+                    ])
+                }]
             }
         })
             .state('logIn.register',{
@@ -181,22 +281,54 @@
                 'register@':{
                     template: "<register></register>"
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Autentification/Register/registerStyle.css',
+                        'Autentification/Register/registerComponent.js',
+                        'Autentification/Register/registerCtrl.js',
+                        'Autentification/Service/autentificationService.js'
+                    ])
+                }]
             }
         })
-            .state('logIn.accountEmail',{
+            .state('accountEmail',{
                 url:'/accountEmail',
                 views: {
                     'accountEmail@':{
                         template: '<account-email></account-email>'
                     }
+                },
+                resolve:{
+                    loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                        'Autentification/ActivateAccount/accountEmailComponent.js',
+                        'Autentification/ActivateAccount/accountEmailCtrl.js',
+                        'Autentification/ForgotPassword/forgotPasswordStyle.css',
+                        'Autentification/Service/autentificationService.js'
+                       
+                        ])
+                    }]
                 }
             })
-            .state('logIn.accountEmail.activateAccount',{
+            .state('accountEmail.activateAccount',{
                 url: "/activateAccount",
                 views: {
                     'activateAccount@':{
                         template: "<activate-account></activate-account>"
                     }
+                },
+                resolve:{
+                    loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                        'Autentification/ActivateAccount/activateAccountComponent.js',
+                        'Autentification/ActivateAccount/activateAccountCtrl.js',
+                        'Autentification/ForgotPassword/resetPassword/resetPasswordStyle.css',
+                        'Autentification/Service/autentificationService.js'
+                       
+                        ])
+                    }]
                 }
             })
             .state('sensorsHome',{
@@ -210,11 +342,35 @@
                         }
                         $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
                             if(toState.name == 'sensorsHome'){
-                                $location.path('sensorsHome/sensors')
+                                $location.path('/sensorsHome/sensors')
                             }
                           });
                     }
                 }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'sensorsHome/sensorsHomeComponent.js',
+                        'sensorsHome/sensorsHomeCtrl.js',
+                        'sensorsHome/sensorsHomeStyle.css',
+                        'SensorModel/sensorModelStyle.css',
+                        'SensorModel/chartDirective.js',
+                        'SensorModel/deleteSensorDirective.js',
+                        'SensorModel/detailsSensorDirective.js',
+                        'SensorModel/editSensorComponent.js',
+                        'SensorModel/editSensorCtrl.js',
+                        'SensorModel/measurementsDirective.js',
+                        'SensorModel/searchDirective.js',
+                        'SensorModel/sensorModelCtrl.js',
+                        'Home/scriptIndex.js',
+                        'sensorsHome/map.js',
+                        'sensorsHome/map.css',
+                        'SensorModel/sensorModelService.js',
+                        'Autentification/Service/autentificationService.js'
+
+                    ])
+                }]
             }
         })
 
@@ -232,7 +388,17 @@
                         }
                     }
                 }
-            }
+            },
+            resolve:{
+             loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                 return $ocLazyLoad.load([
+                     'Autentification/Settings/settingsComponent.js',
+                     'Autentification/Settings/settingsCtrl.js',
+                     'Autentification/Settings/settingsStyle.css',
+                     'Autentification/Service/autentificationService.js'
+                 ])
+             }]
+         }
         })
         .state('sensorsHome.sensors',{
             url: "/sensors",
@@ -244,7 +410,15 @@
                        $sessionStorage.home = true;
                    }
                }
-           }
+           },
+           resolve:{
+            loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                    'sensorsHome/sensorGridComponent.js',
+                    'sensorsHome/sensorGridCtrl.js'
+                ])
+            }]
+        }
            })
             .state('sensorsHome.distance',{
              url: "/distance",
@@ -259,7 +433,14 @@
                         $sessionStorage.home = false;
                     }
                 }
-            }
+            },
+            resolve:{
+             loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                 return $ocLazyLoad.load([
+                     'Sensors/Distance/distanceComponent.js'
+                 ])
+             }]
+         }
             })
 
             .state('sensorsHome.temperature',{
@@ -274,7 +455,14 @@
                         $sessionStorage.home = false;
                     }
                 }
-            }
+            },
+            resolve:{
+             loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                 return $ocLazyLoad.load([
+                     'Sensors/Temperature/temperatureComponent.js'
+                 ])
+             }]
+         }
             })
 
             .state('sensorsHome.electricalCurrent',{
@@ -288,7 +476,14 @@
                         $sessionStorage.home = false;
                     }
                 }
-            }
+            },
+            resolve:{
+             loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                 return $ocLazyLoad.load([
+                     'Sensors/ElectricalCurrent/electricalCurrentComponent.js'
+                 ])
+             }]
+         }
             })
 
             .state('sensorsHome.airQuality',{
@@ -303,7 +498,14 @@
                         $sessionStorage.home = false;
                     }
                 }
-            }
+            },
+            resolve:{
+             loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                 return $ocLazyLoad.load([
+                     'Sensors/AirQuality/airQualityComponent.js'
+                 ])
+             }]
+         }
             })
             .state('sensorsHome.vibration',{
                 url: "/vibration",
@@ -316,7 +518,14 @@
                         $sessionStorage.home = false;
                    }
                 }
-               }
+               },
+               resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Sensors/Vibration/vibrationComponent.js'
+                    ])
+                }]
+            }
                })
                .state('sensorsHome.pressure',{
                 url: "/pressure",
@@ -329,7 +538,14 @@
                         $sessionStorage.home = false;
                    }
                 }
-               }
+               },
+               resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Sensors/Pressure/pressureComponent.js'
+                    ])
+                }]
+            }
                })
             .state('sensorsHome.editLocation', {
                 url: "/editLocation",
@@ -342,6 +558,16 @@
             
                         }
                     }
+                },
+                resolve:{
+                    loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                            'sensorsHome/map.js',
+                            'sensorsHome/map.css',
+                            'sensorsHome/editLocationComponent.js',
+                            'sensorsHome/editLocationCtrl.js'
+                        ])
+                    }]
                 }
             })
             .state('sensorsHome.addSensor', {
@@ -355,7 +581,15 @@
             
                         }
                     }
-                }
+                },
+                resolve:{
+                 loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                     return $ocLazyLoad.load([
+                         'SensorModel/registerSensorComponent.js',
+                         'SensorModel/registerSensorCtrl.js'
+                     ])
+                 }]
+             }
                 
             })
             .state('sensorsHome.editSensor', {
