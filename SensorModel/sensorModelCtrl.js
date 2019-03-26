@@ -1,8 +1,8 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", 
-    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$rootScope",
+    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $rootScope) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         $scope.sensorData = true;
@@ -43,7 +43,7 @@
                     $scope.noSensorsData = false;
                     $scope.sensorData = true;
                 })
-                .catch(function(response){
+                .catch(function(){
                     $scope.noSensorsData = true;
                     $scope.loading = false;
                     $scope.sensorData = false;
@@ -54,7 +54,7 @@
         $scope.sensPerPage = 50;
         sensorModelService.getAllSensors($scope.sensPerPage, $scope.encodeduser)
             .then(allSensors)
-            .catch(function(response){
+            .catch(function(){
                 $scope.noSensorData = true;
             })
         function allSensors(data){
@@ -181,18 +181,18 @@
             sensorModelService.getMeasurements(GA, CA, '1', '1', $scope.encodeduser)
                 .then(measureSuccess)
                 .catch(measureError)
-            function measureSuccess(measurements){
-                        $scope.lastRead = measurements;
-                        $scope.noRead = false;
-                        $scope.detailsData = true;
-                        $scope.loadingDetails = false;
-                    }
-            function measureError(measurements){
-                      $scope.noRead = true;
-                      $scope.loadingDetails = false;
-                      $scope.detailsData = true;
-                    };
-            $scope.lastRead = null;
+            function measureSuccess(measurement){
+                $rootScope.lastRead = measurement;
+                $scope.noRead = false;
+                $scope.detailsData = true;
+                $scope.loadingDetails = false;
+            }
+            function measureError(){
+                $scope.noRead = true;
+                $scope.loadingDetails = false;
+                $scope.detailsData = true;
+            }
+            $rootScope.lastRead = null;
         }
         
         $scope.editDisplay = false;
@@ -299,11 +299,7 @@
         // };
         // vm.reload();
     }]);
-}());
 
-
-
-var app = angular.module('sensorApp');
 app.directive('caGaValidation', function() {
     return {
         require: 'ngModel',
@@ -337,3 +333,4 @@ app.directive('nameValidation', function() {
         }
     };
 });
+}());

@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module("sensorApp");
 app.controller('editLocationCtrl', function($scope, $sessionStorage, $localStorage, $window, $timeout, sensorModelService, d3){
     var vm = this;
@@ -39,4 +40,5 @@ app.controller('editLocationCtrl', function($scope, $sessionStorage, $localStora
             });
     
     }
-})
+});
+}());

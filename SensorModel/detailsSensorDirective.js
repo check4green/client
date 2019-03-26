@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module("sensorApp");
 app.directive('detailsSensor', function(){
     return {
@@ -46,4 +47,5 @@ app.filter("uploadint", function(){
         }
         return input;
     }
-})
+});
+}());

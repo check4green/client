@@ -21,22 +21,22 @@
                 <td ng-if="!vibrations">{{unitOfMeasure}}</td>
                 <td ng-if="!vibrations">
                     <span ng-show="noRead">-</span>
-                    <div class="measurementsOk" ng-if="(lastRead[0].value < outOfRangePositiveError) && (lastRead[0].value > outOfRangeNegativeError) && (lastRead[0].value != 0)">{{lastRead[0].value}}</div>
-                    <div class="measurementsOutOfRange" ng-if="lastRead[0].value > outOfRangePositiveError">ORP</div>
-                    <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError > lastRead[0].value">ORN</div>
-                    <div class="measurementsInvalidSensor" ng-if="lastRead[0].value == 0">IS(0)</div>
+                    <div class="measurementsOk" ng-if="($root.lastRead[0].value < outOfRangePositiveError) && ($root.lastRead[0].value > outOfRangeNegativeError) && ($root.lastRead[0].value != 0)">{{$root.lastRead[0].value}}</div>
+                    <div class="measurementsOutOfRange" ng-if="$root.lastRead[0].value > outOfRangePositiveError">ORP</div>
+                    <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError > $root.lastRead[0].value">ORN</div>
+                    <div class="measurementsInvalidSensor" ng-if="$root.lastRead[0].value == 0">IS(0)</div>
                 </td>
                 <td ng-if="vibrations"> 
                     <span ng-show="noRead">-</span>
-                    <div ng-if="lastRead[0].value == 100 && vibrations" class="measurementsInvalidSensor">x</div>
-                    <div ng-if="lastRead[0].value == 200 && vibrations" class="measurementsInvalidSensor">y</div>
-                    <div ng-if="lastRead[0].value == 300 && vibrations" class="measurementsInvalidSensor">z</div>
-                    <div ng-if="lastRead[0].value == 400 && vibrations" class="measurementsInvalidSensor">xy</div>
-                    <div ng-if="lastRead[0].value == 500 && vibrations" class="measurementsInvalidSensor">xz</div>
-                    <div ng-if="lastRead[0].value == 600 && vibrations" class="measurementsInvalidSensor">yz</div>
-                    <div ng-if="lastRead[0].value == 700 && vibrations" class="measurementsInvalidSensor">xyz</div>
+                    <div ng-if="$root.lastRead[0].value == 100 && vibrations" class="measurementsInvalidSensor">x</div>
+                    <div ng-if="$root.lastRead[0].value == 200 && vibrations" class="measurementsInvalidSensor">y</div>
+                    <div ng-if="$root.lastRead[0].value == 300 && vibrations" class="measurementsInvalidSensor">z</div>
+                    <div ng-if="$root.lastRead[0].value == 400 && vibrations" class="measurementsInvalidSensor">xy</div>
+                    <div ng-if="$root.lastRead[0].value == 500 && vibrations" class="measurementsInvalidSensor">xz</div>
+                    <div ng-if="$root.lastRead[0].value == 600 && vibrations" class="measurementsInvalidSensor">yz</div>
+                    <div ng-if="$root.lastRead[0].value == 700 && vibrations" class="measurementsInvalidSensor">xyz</div>
                 </td>
-                <td>{{lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
+                <td>{{$root.lastRead[0].readingDate}}<span ng-show="noRead">-</span></td>
             </tr>
 
         </tbody>

@@ -35,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="measurementSensor in measurementSensors">
+                <tr ng-repeat="measurementSensor in $root.measurementSensors">
                     <div></div>
                     <td>{{$index+1}}</td>
                     <td>{{measurementSensor.readingDate}}</td>

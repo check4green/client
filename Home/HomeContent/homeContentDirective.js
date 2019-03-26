@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module('sensorApp');
 app.directive('content', function(){
     return{
@@ -11,4 +12,5 @@ app.directive('content', function(){
             }
         }
     }
-})
+});
+}());

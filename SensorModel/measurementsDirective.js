@@ -1,11 +1,11 @@
+(function(){
 var app = angular.module("sensorApp");
 app.directive('measurements', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/measurementsDirectiveView.html',
-        controller: function($scope, sensorModelService, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout){
+        controller: function( $rootScope, $scope, sensorModelService, hubConnection, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout){
             var vm = this;
-
             $scope.measurementsButton = true;
             $scope.measurementsDisplay = false;
             $scope.startMeasurements = function(){
@@ -14,12 +14,15 @@ app.directive('measurements', function(){
                 $scope.editButton = false;
                 $scope.chartButton = false;
                 $scope.editLocation = false;
+                hubConnection.connectingToHub();
+
                 if($scope.measurementsDisplay == false){
                     $scope.measurementsDisplay = true;
                     $scope.measurementsButton = false;
                 }
             };
             $scope.cancelMeasurements = function(){
+                hubConnection.disconnectFromHub();
                 $scope.measurementsButton = true;
                 $scope.editLocation = true;
                 $scope.measurementsDisplay = false;
@@ -42,6 +45,7 @@ app.directive('measurements', function(){
                 $sessionStorage.gatewayAdd= gatewayAddress
                 $scope.page = 1;
                 $scope.size = 10;
+                $sessionStorage.pag = 10;
                 $scope.pageSize = "";
                 if(SENSOR_TYPE.ID == 37){
                     $scope.vibrations = true;
@@ -51,10 +55,11 @@ app.directive('measurements', function(){
                 $scope.setPageSize = function(pageSize){
                     if (pageSize){
                         $scope.size = pageSize;
+                        $sessionStorage.pag = pageSize;
                         sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size, $scope.encodedData)
                             .then(measureSuccess)
                         function measureSuccess(measurements){
-                            $scope.measurementSensors = measurements;
+                            $rootScope.measurementSensors = measurements;
                         }
                     }
                 }
@@ -63,7 +68,8 @@ app.directive('measurements', function(){
                 $scope.dataMeasurements = false;
                 sensorModelService.getMeasurements(gatewayAddress, clientAddress, $scope.page, $scope.size, $scope.encodedData)
                                     .then(function(measurements){
-                                        $scope.measurementSensors = measurements;
+                                        $rootScope.measurementSensors = measurements;
+                                        console.log($rootScope.measurementSensors)
                                         $scope.loadingMeasurements = false;
                                         $scope.noDataMeasurements = false;
                                         $scope.dataMeasurements = true;
@@ -73,8 +79,8 @@ app.directive('measurements', function(){
                                             $scope.noDataMeasurements = true;
                                             $scope.dataMeasurements = false;
                                         });
-                                        $scope.measurementSensors = null;
-                                        if($scope.measurementSensors == null){
+                                        $rootScope.measurementSensors = null;
+                                        if($rootScope.measurementSensors == null){
                                             $scope.totalReadings = 0;
                                         }
                 sensorModelService.getFinalPageReadings(gatewayAddress, clientAddress, $scope.encodedData)
@@ -86,7 +92,7 @@ app.directive('measurements', function(){
                     sensorModelService.getMeasurements($scope.gatewayAddress, $scope.clientAddress, $scope.page, $scope.size, $scope.encodedData)
                         .then(measureSuccess)
                     function measureSuccess(measurements){
-                        $scope.measurementSensors = measurements;
+                        $rootScope.measurementSensors = measurements;
                     }
                 }
                 $scope.$watch('page', $scope.setPage);
@@ -98,7 +104,7 @@ app.directive('measurements', function(){
                         .then(measureSuccess)
                         .catch(measureError)
                     function measureSuccess(measurements){
-                                $scope.lastRead = measurements;
+                                $rootScope.lastRead = measurements;
                                 $scope.noRead = false;
                                 $scope.detailsData = true;
                                 $scope.loadingDetails = false;
@@ -108,10 +114,47 @@ app.directive('measurements', function(){
                               $scope.loadingDetails = false;
                               $scope.detailsData = true;
                             };
-                    $scope.lastRead = null;
+                    $rootScope.lastRead = null;
                 }
             };
-             //$timeout( sensorModelService.getMeasurements($sessionStorage.ga, $sessionStorage.ca,1, 10, $scope.encodeduser), 1000)
+
         }
     }
 });
+app.factory("hubConnection", function($rootScope, sensorModelService, $sessionStorage, $localStorage){
+    return {connectingToHub: connectingToHub,
+            disconnectFromHub: disconnectFromHub}
+    function connectingToHub(){
+        
+        $.connection.hub.url = "https://swiss-iot.azurewebsites.net/signalr/hubs";
+        var address = $sessionStorage.gatewayAdd + '/' + $sessionStorage.clientAdd;
+        $.connection.hub.qs = {'address': address};
+        $.connection.readingsHub.client.refreshReadings = function(readings){
+            if ($localStorage.email && $localStorage.password){
+                var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+              }else{
+                  var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+              }
+            sensorModelService.getMeasurements($sessionStorage.gatewayAdd, $sessionStorage.clientAdd, 1, $sessionStorage.pag, encodedData)
+                .then(function(data){
+                    $rootScope.measurementSensors = data;
+                })
+        }
+        $.connection.hub.start()
+            .done(function(){
+                console.log("Connected to hub. ");
+               
+            })
+            .fail(function(){
+                console.log("Could not connect to hub")
+            })
+            
+            
+    }
+    function disconnectFromHub(){
+        $.connection.hub.url = "https://swiss-iot.azurewebsites.net/signalr/hubs";
+        $.connection.hub.stop();
+
+    }
+})
+}());

@@ -1,3 +1,4 @@
+(function(){
 var app = angular.module("sensorApp");
 app.component('registerSensor', {
     templateUrl: "SensorModel/registerSensorView.html",
@@ -6,3 +7,4 @@ app.component('registerSensor', {
     
     
 });
+}());

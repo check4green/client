@@ -105,5 +105,5 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                 
             };
         }
-   ])
-}())
+   ]);
+}());

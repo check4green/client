@@ -1,5 +1,6 @@
+(function(){
 var app = angular.module("sensorApp");
-app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorage, autentificationService, sensorModelService, SENSOR_TYPE){
+app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, autentificationService, sensorModelService, SENSOR_TYPE){
     var vm = this;
     vm.titleGrid = SENSOR_TYPE.TITLE;
     if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
@@ -223,7 +224,7 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                 .then(measureSuccess)
                 .catch(measureError)
             function measureSuccess(measurement){
-                $scope.lastRead = measurement;
+                $rootScope.lastRead = measurement;
                 $scope.noRead = false;
                 $scope.detailsData = true;
                 $scope.loadingDetails = false;
@@ -233,7 +234,7 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
                 $scope.loadingDetails = false;
                 $scope.detailsData = true;
             }
-            $scope.lastRead = null;
+            $rootScope.lastRead = null;
         }      
         $scope.outOfRangeAllSens = function(sensType){
             if(sensType == 33){
@@ -266,3 +267,4 @@ app.controller("sensorGridCtrl", function ($scope, $sessionStorage, $localStorag
             $sessionStorage.location = {lat: lat, lng: long};
         }
 });
+}());

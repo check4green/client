@@ -1,3 +1,5 @@
+(function(){
+      "use strict";
 var app = angular.module("sensorApp");
 app.directive("calculator", function(){
       return {
@@ -105,4 +107,5 @@ app.directive("calculator", function(){
                   }
             }
       }
-})
+});
+}());

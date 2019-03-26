@@ -91,7 +91,7 @@
                     </td>
                     <td class="sensorModelContainerInfo">
                         <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="expandSelected(sensor); getLastRead(sensor.gatewayAddress, sensor.clientAddress); measureUnit(sensor.sensorTypeId); outOfRangeAllSens(sensor.sensorTypeId); getSensor(sensor.gatewayAddress, sensor.clientAddress, sensor.name);">+</button>
-                        <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false">-</button>
+                        <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false; cancelMeasurements();">-</button>
                     </td>
 
                 </tr>

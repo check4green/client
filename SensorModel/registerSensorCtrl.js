@@ -120,6 +120,6 @@
                 // $scope.registerGatewayAddress = '';
                 // $scope.registerClientAddress = '';
             };
-        }])
+        }]);
 
 }());

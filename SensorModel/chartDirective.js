@@ -1,3 +1,4 @@
+    (function(){
     var app = angular.module('sensorApp');
     app.directive('chartd3', function(){
         return {
@@ -356,4 +357,5 @@
             }
         }
     }
-    })
+    });
+}());
