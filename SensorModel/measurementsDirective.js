@@ -14,7 +14,6 @@ app.directive('measurements', function(){
                 $scope.editButton = false;
                 $scope.chartButton = false;
                 $scope.editLocation = false;
-                hubConnection.connectingToHub();
 
                 if($scope.measurementsDisplay == false){
                     $scope.measurementsDisplay = true;
@@ -22,7 +21,6 @@ app.directive('measurements', function(){
                 }
             };
             $scope.cancelMeasurements = function(){
-                hubConnection.disconnectFromHub();
                 $scope.measurementsButton = true;
                 $scope.editLocation = true;
                 $scope.measurementsDisplay = false;
