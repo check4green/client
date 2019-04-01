@@ -1,6 +1,6 @@
 (function(){
 var app = angular.module("sensorApp");
-app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, autentificationService, sensorModelService, SENSOR_TYPE){
+app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, autentificationService, sensorModelService, SENSOR_TYPE, hubConnection){
     var vm = this;
     vm.titleGrid = SENSOR_TYPE.TITLE;
     if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
@@ -14,6 +14,7 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
     }
     $scope.expandSelected = function(sensor){
         $scope.sensors.forEach(function(val){
+            hubConnection.disconnectFromHub();
             val.expanded=false;
             $scope.editLocation = true;
         })
@@ -217,6 +218,9 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
             }
         }
         $scope.getLastRead = function(GA, CA){
+            $sessionStorage.clientAdd = CA;
+            $sessionStorage.gatewayAdd= GA;
+            hubConnection.connectingToHub();
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;

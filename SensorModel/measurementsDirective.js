@@ -41,8 +41,6 @@ app.directive('measurements', function(){
             $scope.measurementSensor = function(gatewayAddress, clientAddress){
                 $scope.clientAddress = clientAddress;
                 $scope.gatewayAddress = gatewayAddress;
-                $sessionStorage.clientAdd = clientAddress;
-                $sessionStorage.gatewayAdd= gatewayAddress
                 $scope.page = 1;
                 $scope.size = 10;
                 $sessionStorage.pag = 10;
@@ -137,6 +135,7 @@ app.factory("hubConnection", function($rootScope, sensorModelService, $sessionSt
             sensorModelService.getMeasurements($sessionStorage.gatewayAdd, $sessionStorage.clientAdd, 1, $sessionStorage.pag, encodedData)
                 .then(function(data){
                     $rootScope.measurementSensors = data;
+                    $rootScope.lastRead = data;
                 })
         }
         $.connection.hub.start()

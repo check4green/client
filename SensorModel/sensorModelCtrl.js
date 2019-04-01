@@ -1,13 +1,14 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$rootScope",
-    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $rootScope) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$rootScope", "hubConnection",
+    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $rootScope, hubConnection) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         $scope.sensorData = true;
         vm.expandSelected = function(sensor){
             $scope.sensors.forEach(function(val){
+                hubConnection.disconnectFromHub();
                 val.expanded=false;
                 $scope.editLocation = true;
                 $scope.editDisplay = false;
@@ -175,6 +176,9 @@
             }
         }
         $scope.getLastRead = function(GA, CA){
+            $sessionStorage.clientAdd = CA;
+            $sessionStorage.gatewayAdd= GA;
+            hubConnection.connectingToHub();
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
