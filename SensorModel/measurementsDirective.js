@@ -116,7 +116,7 @@ app.factory("hubConnection", function($rootScope, sensorModelService, $sessionSt
     }
     function connectingToHub(){
         
-        $.connection.hub.url = 'http://192.168.0.18:32332/signalr/hubs'; //"https://swiss-iot.azurewebsites.net/signalr/hubs";
+        $.connection.hub.url = "https://swiss-iot.azurewebsites.net/signalr/hubs";
         var address = $sessionStorage.sensorAddress;
         $.connection.hub.qs = {'address': address};
         $.connection.readingsHub.client.refreshReadings = function(readings){
