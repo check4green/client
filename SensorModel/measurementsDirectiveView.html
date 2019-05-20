@@ -1,9 +1,10 @@
 <div class="measurementsDisplay" ng-show="measurementsDisplay" id="line">
     <div ng-show="loadingMeasurements" class="loader"></div>
     <div ng-show="noDataMeasurements" class="noData">No data</div>
+
     <div ng-show="dataMeasurements">
     <div class="inLine-measurement">
-        <button type="button" id="butonRefresh" class="btn btn-success" ng-click="measurementSensor(sensor.gatewayAddress, sensor.clientAddress)" ng-if="detailsData">Refresh</button>
+        <button type="button" id="butonRefresh" class="btn btn-success" ng-click="measurementSensor(sensor.id)" ng-if="detailsData">Refresh</button>
         <div  class="form-group measurementsContainerSet">
             <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
                 <option selected disabled hidden value="">Sensor per page: 10</option>

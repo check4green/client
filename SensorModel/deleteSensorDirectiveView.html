@@ -2,8 +2,8 @@
     <b>Are you sure you want to delete this sensor?</b>
 
     <div class="delete-buttons">
-        <button type="button" class="btn btn-danger" ng-if="!del" ng-click="deleteSensor(sensor.gatewayAddress, sensor.clientAddress)">Yes</button>
-        <button type = "button" class="btn btn-danger" ng-click="deleteSensor(gaAdd, clAdd);" ng-if="del">Yes</button>
+        <button type="button" class="btn btn-danger" ng-if="!del" ng-click="deleteSensor(sensor.id)">Yes</button>
+        <button type = "button" class="btn btn-danger" ng-click="deleteSensor(id);" ng-if="del">Yes</button>
         <button type="button" class="btn btn-primary" ng-click="cancelDeleteSensor(); sensor.deleteDisplay = false;">No</button>
     </div>
 

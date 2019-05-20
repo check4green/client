@@ -1,0 +1,13 @@
+<div>
+    <h1>Network details</h1>
+    <button type="button" class="button-cardView buttonNetAndAdd" ng-click="cancelDetails()">
+        <span>Back</span>
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <div> Network name: <b>{{name}}</b> </div>
+    <label style="font-weight: initial;">Total devices: <b>{{allDevices}}</b>.</label>
+    <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeDevices}}</b></label>
+    <map ng-show="!noSensors"></map>
+
+</div>

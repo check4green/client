@@ -8,7 +8,7 @@ app.directive('detailsSensor', function(){
             var vm=this;
             $scope.detailsDisplay = true;
             $scope.vibrationSens = function(id){
-                if(id == 37){
+                if(id == 6){
                     $scope.vibrations = true;
                 }
             }

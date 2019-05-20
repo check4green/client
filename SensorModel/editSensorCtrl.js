@@ -1,8 +1,8 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("editSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window",
-function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window){
+   app.controller("editSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window", "$timeout",
+function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window, $timeout){
             var vm = this;
             $scope.title = true;
             vm.title = SENSOR_TYPE.TITLE;
@@ -17,6 +17,7 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
             $scope.editDisplay = true;
             $scope.measurementsButton = false;
             $scope.chartButton = false;
+            $scope.gatewayButton = false;
             $scope.sensorEditError = false;
             $scope.sensorEditSuccess = false;
             $scope.editButton = false;
@@ -27,20 +28,19 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
             $scope.editButton = false;
             
             if ($localStorage.email && $localStorage.password){
-              $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+              var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
-                $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+                var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }
-            sensorModelService.getSensorsByAddress($sessionStorage.ga, $sessionStorage.ca, $scope.encodedData)
+            sensorModelService.getSensorsById(encodedData, $sessionStorage.netId, $sessionStorage.sensorId)
                         .then(function(sensor){
                                 var name = sensor.name;
                                 var uploadInterval = sensor.uploadInterval;
                                 var latitude = sensor.latitude;
                                 var longitude = sensor.longitude;
                                 $scope.editSensor = {name, uploadInterval, latitude, longitude};
-                                var ga = sensor.gatewayAddress;
-                                var ca = sensor.clientAddress;
-                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, ga, ca){
+                                
+                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes){
                                 if (editName){
                                     $scope.editSensor.name = editName
                                 } 
@@ -59,12 +59,33 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                                 if(!editName && !editDays && !editHours && !editMinutes){
                                     $scope.editSensor ='';
                                 } 
-                                sensorModelService.updateSensors($scope.editSensor, sensor.gatewayAddress, sensor.clientAddress, $scope.encodedData)
+                                sensorModelService.updateSensors(encodedData , $sessionStorage.netId, $sessionStorage.sensorId, $scope.editSensor)
                                     .then(function(response){
                                         if($scope.editSensor.uploadInterval < sensor.uploadInterval){
                                             $scope.ui = true;
                                             $scope.uploadIntMessage = response.message;
                                         }
+                                        $timeout(function(){
+                                            
+                                            $scope.editButton = true;
+                                            $scope.detailsDisplay = true;
+                                            $scope.deleteButton = true;
+                                            $scope.measurementsButton = true;
+                                            $scope.editLocation = true;
+                                            $scope.chartButton = true;
+                                            $scope.sensorEditError = false;
+                                            $scope.sensorEditSuccess = false;
+                                            if($sessionStorage.cards == true){
+                                                $scope.cards = true;
+                                                $scope.grid = false;
+                                                $scope.backButton = true;
+                                            } else{
+                                                $scope.cards = false;
+                                                $scope.grid = true;
+                                                $scope.backButton = true;
+                                            }
+                                            $window.history.back();
+                                        }, 1000)
                                         $scope.sensorEditError = false;
                                         $scope.sensorEditSuccess = true;
                                         $scope.sensor.uploadInterval=$scope.editSensor.uploadInterval;
@@ -93,6 +114,7 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                     $scope.chartButton = true;
                     $scope.sensorEditError = false;
                     $scope.sensorEditSuccess = false;
+                    $scope.gatewayButton = true;
                     if($sessionStorage.cards == true){
                         $scope.cards = true;
                         $scope.grid = false;

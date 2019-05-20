@@ -2,8 +2,7 @@
 <table class="table"  ng-if="detailsDisplay">
         <thead>
             <tr>
-                <td>Gateway Address</td>
-                <td>Client Address</td>
+                <td>Address</td>
                 <td>Register Date</td>
                 <td ng-if="!vibrations">Upload Interval</td>
                 <td ng-if="!vibrations">Unit Of Measure</td>
@@ -14,8 +13,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{sensor.gatewayAddress}}</td>
-                <td>{{sensor.clientAddress}}</td>
+                <td>{{sensor.address}}</td>
                 <td>{{sensor.productionDate}}</td>
                 <td ng-if="!vibrations">{{sensor.uploadInterval | uploadint}}</td>
                 <td ng-if="!vibrations">{{unitOfMeasure}}</td>

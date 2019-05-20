@@ -1,0 +1,24 @@
+<div class="measurementsDisplay" ng-show="showSensors" id="line">
+        <div ng-show="loadingSensors" class="loader"></div>
+        <div ng-show="noSensors" class="noData">No data</div>
+        <table class="table" ng-show="!loadingSensors && !noSensors">
+            <thead>
+                <tr>
+                    <td>Index</td>
+                    <td>Name</td>
+                    <td>Address</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sensor in gatewaySensors">
+                    <div></div>
+                    <td>{{$index+1}}</td>
+                    <td>{{sensor.name}}</td>
+                    <td>{{sensor.address}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn" ng-click="cancel()">Cancel</button>
+
+</div>

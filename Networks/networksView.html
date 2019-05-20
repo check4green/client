@@ -1,0 +1,25 @@
+<div class="sensorModel container">
+    <div class="noData" ng-show="noNetworks">Currently you don't have any networks. Go to <a style="text-decoration: none;">Add network</a> to register one</div>
+    <div class="noData" ng-show="serverError">An error has occured. Please try again later.</div>
+    <div  class="container-buttonNetwork" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
+        <h1 >Chose your network</h1>
+        <div ng-show="loadingNetworks" class="loader"></div>
+        <div class="container-networksROW" >
+            <div class="container-networksCOLUMN" ng-repeat="network in networks">
+                <div class="container-networksCARD">
+                    <div class="container-networkTitle">
+                        <button type="button" ng-click="filterGateways(network)">Go to {{network.name}} <i class="fas fa-sign-in-alt"></i></button>
+                    </div>
+                    <div class="container-networkCtrl">
+                        <button type="button" class="button-cardView buttonNetAndAdd" ui-sref="sensorsHome.networkDetails" ng-click="getNetwork(network)">Details</button>
+                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startEditNetwork(network)">Edit</button>
+                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startDeleteNetwork(network)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <edit-network></edit-network>
+    <delete-network></delete-network>
+</div>

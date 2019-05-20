@@ -11,11 +11,12 @@
         }else{
           var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
-      $scope.refreshButton = function(){
-        $window.location.reload();
-      }
+      
       $scope.cancelCards = function(){
         $sessionStorage.cards = false;
+        $sessionStorage.buttons = true;
+        $sessionStorage.gatewayCards = false;
+        $sessionStorage.showNetworkDetails = false;
       }
       autentificationService.getUser(encodeduser)
         .then(function(response){

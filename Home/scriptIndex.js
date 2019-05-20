@@ -35,10 +35,10 @@ function buttonFunction() {
 
 // filters menu
 function showFilters(){
-    document.getElementById("filterMenu").style.display = "initial";
-}
-function hideFilters(){
-    document.getElementById("filterMenu").style.display = "none";
+    var display = document.getElementById("filterMenu"); 
+    var caret = document.getElementById("caret"); 
+    display.classList.toggle("hidemenu");
+    caret.classList.toggle("fa-caret-up");
 }
 
 
@@ -84,16 +84,16 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "215px";
     document.getElementById("main").style.marginLeft = "215px";
     document.getElementById("bg-gray").style.display = "block";
-    document.getElementById("close-menu").style.display = "block";
-    document.getElementById("close-menu").style.marginLeft = "214px";
+    // document.getElementById("close-menu").style.display = "block";
+    // document.getElementById("close-menu").style.marginLeft = "214px";
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
     document.getElementById("bg-gray").style.display = "none";
-    document.getElementById("close-menu").style.display = "none";
-    document.getElementById("close-menu").style.marginLeft= "0";
+    // document.getElementById("close-menu").style.display = "none";
+    // document.getElementById("close-menu").style.marginLeft= "0";
 }
 
 // focus input register/settings
@@ -329,6 +329,19 @@ function colapseCategories2(x) {
     // Get the content collapse 1
     var cont2 = document.getElementById("content2");
     x = document.getElementById("caretMenu2");
+
+    x.classList.toggle("rotateCaret");
+    // If the checkbox is checked, display the output text
+    if (cont2.style.display === "block"){
+        cont2.style.display = "none";
+    } else {
+        cont2.style.display = "block";
+    }
+  }
+function colapseCategories3(x) {
+    // Get the content collapse 1
+    var cont2 = document.getElementById("content3");
+    x = document.getElementById("caretMenu3");
 
     x.classList.toggle("rotateCaret");
     // If the checkbox is checked, display the output text

@@ -18,15 +18,15 @@
             $scope.change = false;
             $scope.cards =false;
             
-            if (SENSOR_TYPE.ID == 37){
+            if (SENSOR_TYPE.ID == 6){
                 $scope.vibrations = true;
             }
             if($localStorage.email && $localStorage.password){
-                $scope.encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
+                var encodeduser = btoa($localStorage.email + ':' + $localStorage.password);
             }else{
-                $scope.encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
+                var encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
             }
-            $scope.sensorRegister = function(registerName, registerDays, registerHours, registerMinutes, registerGatewayAddress, registerClientAddress, sensors){
+            $scope.sensorRegister = function(registerName, registerDays, registerHours, registerMinutes, registerClientAddress, sensors){
                
                 if(registerDays == null){
                     registerDays = 0;
@@ -41,7 +41,7 @@
                 var hours = registerHours*60;
                 var minutes = registerMinutes;
                 $scope.uploadInt = days + hours + minutes;
-                if (SENSOR_TYPE.ID == 37){
+                if (SENSOR_TYPE.ID == 6){
                     $scope.uploadInt = 60;
                 }
                 if($sessionStorage.lat == null && $sessionStorage.lng == null){
@@ -49,18 +49,18 @@
                     var lng = 0;
                 } else{
                     var lat = $sessionStorage.lat;
-                    var lng = $sessionStorage.lng
+                    var lng = $sessionStorage.lng;
                 }
-                var sensorPost = {'sensorTypeId':SENSOR_TYPE.ID, 
+                var sensorPost = {
                               'name':registerName,
                               'productionDate':$scope.maxDate,
                               'uploadInterval':$scope.uploadInt,
-                              'gatewayAddress':registerGatewayAddress,
-                              'clientAddress':registerClientAddress,
+                              'address':registerClientAddress,
                               'latitude': lat,
                               'longitude': lng,
+                              'sensorTypeId':SENSOR_TYPE.ID,
                                userId: "1" }
-                sensorModelService.insertSensors(sensorPost, $scope.encodeduser)
+                sensorModelService.insertSensors( encodeduser, $sessionStorage.netId, sensorPost)
                     .then(function(){
                     $scope.sensorRegisterError = false;
                     $scope.sensorRegisterSuccess = true;

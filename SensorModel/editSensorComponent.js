@@ -9,7 +9,7 @@ app.directive('editDirective', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/editSensorView.html',
-        controller: function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window){
+        controller: function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $timeout){
             var vm = this;
             $scope.title = false;
             $scope.editDisplay = false;
@@ -23,6 +23,7 @@ app.directive('editDirective', function(){
                     $scope.sensorEditError = false;
                     $scope.sensorEditSuccess = false;
                     $scope.editButton = false;
+                    $scope.gatewayButton = false;
                     $scope.detailsDisplay = false;
                     $scope.deleteButton = false;
                     $scope.editLocation = false;
@@ -30,20 +31,19 @@ app.directive('editDirective', function(){
                 }
             }
             if ($localStorage.email && $localStorage.password){
-              $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+              var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
-                $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+                var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }
-            sensorModelService.getSensorsByAddress($sessionStorage.ga, $sessionStorage.ca, $scope.encodedData)
+            sensorModelService.getSensorsById(encodedData, $sessionStorage.netId, $sessionStorage.sensorId)
                         .then(function(sensor){
                                 var name = sensor.name;
                                 var uploadInterval = sensor.uploadInterval;
                                 var latitude = sensor.latitude;
                                 var longitude = sensor.longitude;
                                 $scope.editSensor = {name, uploadInterval, latitude, longitude};
-                                var ga = sensor.gatewayAddress;
-                                var ca = sensor.clientAddress;
-                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes, ga, ca){
+                                
+                            $scope.sensorEdit = function(editName,  editDays, editHours, editMinutes){
                                 if (editName){
                                     $scope.editSensor.name = editName
                                 } 
@@ -62,7 +62,7 @@ app.directive('editDirective', function(){
                                 if(!editName && !editDays && !editHours && !editMinutes){
                                     $scope.editSensor ='';
                                 } 
-                                sensorModelService.updateSensors($scope.editSensor, sensor.gatewayAddress, sensor.clientAddress, $scope.encodedData)
+                                sensorModelService.updateSensors(encodedData , $sessionStorage.netId, $sessionStorage.sensorId, $scope.editSensor)
                                     .then(function(response){
                                         if($scope.editSensor.uploadInterval < sensor.uploadInterval){
                                             $scope.ui = true;
@@ -72,7 +72,20 @@ app.directive('editDirective', function(){
                                         $scope.sensorEditSuccess = true;
                                         $scope.sensor.uploadInterval=$scope.editSensor.uploadInterval;
                                         $scope.sensor.name = $scope.editSensor.name;
-                                        
+                                        $timeout(function(){
+                                            $scope.editButton = true;
+                                            $scope.editDisplay = false;
+                                            $scope.detailsDisplay = true;
+                                            $scope.deleteButton = true;
+                                            $scope.measurementsButton = true;
+                                            $scope.editLocation = true;
+                                            $scope.chartButton = true;
+                                            $scope.sensorEditError = false;
+                                            $scope.sensorEditSuccess = false;
+                                            $scope.cards = false;
+                                            $scope.grid = true;
+                                            $scope.backButton = true;
+                                        }, 1000)
                                         
                                     })
                                     .catch(function(response){
@@ -99,6 +112,7 @@ app.directive('editDirective', function(){
                     $scope.cards = false;
                     $scope.grid = true;
                     $scope.backButton = true;
+                    $scope.gatewayButton = true;
                 
             };
         }

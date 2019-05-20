@@ -1,23 +1,22 @@
 <div class="container-sensorHome" id="sensorsHomeView">
-    <!-- img-header -->
-    <div id="headerImg" class="header">
-      <img src="/Home/images-home/Logo-for-sensorHome.svg" alt="Check4Green"/>
-    </div>
-    <!-- /img-header -->
+
+    <!-- Fake elements -->
+    <div id="myTopnav" style=" display: none !important; "></div>
+    <div id="logoC4Gheader" style=" display: none !important; "></div>
+    <!-- Fake elements -->
 
       <header class="headerSensorHome">
-          <div id="myTopnav" style=" display: none !important; "></div>
-          <div id="logoC4Gheader" style=" display: none !important; "></div>
         <div class="topnav-shome">
             <!-- menu button-->
-            <span id="close-menu" class="fas fa-outdent"></span>
-            <span id="main" class="fas fa-bars" onclick="openNav()" title="Show sensor menu"></span>
-            <!-- /menu button-->
-            
-            <!-- <a class="icon fa fa-caret-down" onclick="showNavText(this)" title="Show header menu"></a> -->
-            <div class="logged-hover" onclick="toggle_visibility('containerAccountId')">
-                <img src="/sensorsHome/img-logged-in-as/user-250p.png">
+            <a id="main" class="" onclick="openNav()" title="Show sensor menu"><i class="fas fa-bars"></i></a>
+            <a type="button" class="registerSensorButton" ui-sref="sensorsHome.addNetwork">Add network</a>
+            <!-- <button id="close-menu" class="btn btn-success" onclick="openNav()" title="Show sensor menu"><i class="fas fa-outdent"></i></button> -->
 
+            <div class="grow"></div>
+
+            <a class="homeHouse" ui-sref="home" ng-click="cancelCards()" title="Home page"><i class="fas fa-home"></i></a>
+            <div class="logged-hover" onclick="toggle_visibility('containerAccountId')">
+                <a class="fas fa-user"></a>
                 <div class="logged-container"> 
                     <p class="title-user">Check4Green account</p>
                     <p class="about-user">User: {{vm.username}}</p>
@@ -25,7 +24,7 @@
                 </div>
                 
             </div>
-            <a class="active" ui-sref="home" ng-click="showSensGrid()" title="Home page"><i class="fas fa-home" style="color: #4e9a06;"></i></a>
+
         </div>
 
 
@@ -51,45 +50,53 @@
         </div>
         <div class="bg-total" id="bg-total-account"></div>
         <!-- /Menu account -->
-        
 
-
-        <!-- <div id="outside-element" class="outside-element" ></div> -->
 
       </header>
       <!-- menu-body -->
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn"><img src="/Home/images-home/C4G-logo-BG-white-2.svg"></a>
 
-        <a class="a" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.sensors">
-            All sensors<i class="fas fa-home"></i></a>
+        <a class="a" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.devices">
+            All devices<i class="fas fa-home" style="margin-top: 2px;"></i></a>
+        <a class="a" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.gateways">
+            Gateways<i id="" class="fas fa-clipboard-list" style="margin-top: 2px;"></i></a>
 
-        <a class="a dorpdown-btn-menu" onclick="colapseCategories1(this)">
-            Measurement sensors <i id="caretMenu1" class="fas fa-caret-right"></i></a>
-
-        <div id="content1" class="dropdown-container-menu">
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.distance" ng-click="cancelCards()" title="distance sesors list">
-                Distance<i class="fas fa-crop-alt"></i></a>
-
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.temperature" ng-click="cancelCards()" title="temperature sensors list">
-                Temperature<i class="fas fa-thermometer-half"></i></a>
-
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.electricalCurrent" ng-click="cancelCards()" title="electrical current sensors list">
-                Electrical Current<i class="fas fa-bolt"></i></a>
-
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.airQuality" ng-click="cancelCards()" title="air quality sensors list">
-                Air Quality<i class="	fab fa-mixcloud"></i></a>
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.pressure" ng-click="cancelCards()"  title="pressure sensors list">
-                Pressure<i class="fab fa-cloudscale"></i></a>
+        <a class="a dorpdown-btn-menu" onclick="colapseCategories3(this)">
+            Sensors <i id="caretMenu3" class="	fas fa-angle-right	" style="margin-top: 3px;"></i></a>
+            
+        <div id="content3" class="dropdown-container-menu">
+            <a class="a" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.sensors">
+                All sensors</a>
+            <a class="a dorpdown-btn-menu" onclick="colapseCategories1(this)">
+                Measurement sensors <i id="caretMenu1" class="fas fa-caret-right"></i></a>
+    
+            <div id="content1" class="dropdown-container-menu">
+                <a class="a" onclick="closeNav()" ui-sref="sensorsHome.distance" ng-click="cancelCards()" title="distance sesors list">
+                    Distance<i class="fas fa-crop-alt"></i></a>
+    
+                <a class="a" onclick="closeNav()" ui-sref="sensorsHome.temperature" ng-click="cancelCards()" title="temperature sensors list">
+                    Temperature<i class="fas fa-thermometer-half"></i></a>
+    
+                <a class="a" onclick="closeNav()" ui-sref="sensorsHome.electricalCurrent" ng-click="cancelCards()" title="electrical current sensors list">
+                    Electrical Current<i class="fas fa-bolt"></i></a>
+    
+                <a class="a" onclick="closeNav()" ui-sref="sensorsHome.airQuality" ng-click="cancelCards()" title="air quality sensors list">
+                    Air Quality<i class="	fab fa-mixcloud"></i></a>
+                <a class="a" onclick="closeNav()" ui-sref="sensorsHome.pressure" ng-click="cancelCards()"  title="pressure sensors list">
+                    Pressure<i class="fab fa-cloudscale"></i></a>
+            </div>
+    
+            <a class="a dorpdown-btn-menu" onclick="colapseCategories2(this)">
+                    Alert sensors <i id="caretMenu2" class="fas fa-caret-right"></i></a>
+    
+            <div id="content2" class="dropdown-container-menu">
+                <a class="a" onclick="closeNav()" ui-sref="sensorsHome.vibration" ng-click="cancelCards()" title="vibrations sensors list">
+                    Vibrations<i class="fas fa-signature"></i></a>
+            </div>
         </div>
-
-        <a class="a dorpdown-btn-menu" onclick="colapseCategories2(this)">
-                Alert sensors <i id="caretMenu2" class="fas fa-caret-right"></i></a>
-
-        <div id="content2" class="dropdown-container-menu">
-            <a class="a" onclick="closeNav()" ui-sref="sensorsHome.vibration" ng-click="cancelCards()" title="vibrations sensors list">
-                Vibrations<i class="fas fa-signature"></i></a>
-        </div>
+        
+        
 
       </div>
       <!-- /menu-body -->
@@ -104,12 +111,23 @@
             <div ui-view="temperature@"></div>
             <div ui-view="electricalCurrent@"></div>
             <div ui-view="airQuality@"></div>
+            <div ui-view="pressure@"></div>
             <div ui-view="vibration@"></div>
             <div ui-view="gridSensors@"></div>
+            <div ui-view="devices@"></div>
+            <div ui-view="networks@"></div>
             <div ui-view="editLocation@"></div>
-            <div ui-view="pressure@"></div>
             <div ui-view="registerSensor@"></div>
             <div ui-view="editSensor@"></div>
+            <div ui-view="registerNetwork@"></div>
+            <div ui-view="registerGateway@"></div>
+            <div ui-view ="gateways@"></div>
+            <div ui-view="editgateway@"></div>
+            <div ui-view="gatewayLocation@"></div>
+            <div ui-view="detailsNetwork@"></div>
+            
+
+            
         </div>
         <!-- /route-grid -->
 </div>

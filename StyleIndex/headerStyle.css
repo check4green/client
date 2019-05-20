@@ -1,4 +1,166 @@
-.container-sensorHome .topnav-shome {
+.container-sensorHome .headerSensorHome{
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2000;
+}
+.container-sensorHome .headerSensorHome .topnav-shome{
+  display: flex;
+  align-items: baseline;
+  font-size: 20px;
+  background-color: #333;
+}
+.container-sensorHome .headerSensorHome .topnav-shome #main{
+  margin: 5px !important;
+  background: #525252;
+  border-radius: 50%;
+  color: white;
+}
+.container-sensorHome .headerSensorHome .topnav-shome #main:hover{
+  text-decoration: none;
+  color: white;
+  background: #414141 !important;
+  transition: 0.3s;
+}
+.container-sensorHome .headerSensorHome .topnav-shome #main i{
+  padding: 3px;
+  color: #ffff;
+}
+.container-sensorHome .headerSensorHome .topnav-shome .homeHouse{
+  margin: 5px;
+  background: #525252;
+  border-radius: 50%;
+}
+.container-sensorHome .headerSensorHome .topnav-shome .homeHouse:hover{
+  text-decoration: none;
+  background: #414141 !important;
+  transition: 0.3s;
+}
+.container-sensorHome .headerSensorHome .topnav-shome .homeHouse i{
+  padding: 7px;
+  color: #1ec033;
+}
+
+.container-sensorHome .headerSensorHome .topnav-shome .logged-hover{
+  margin: 5px;
+  border-radius: 50%;
+  background: #525252;
+ }
+ .container-sensorHome .headerSensorHome .topnav-shome .logged-hover:hover{
+  text-decoration: none;
+  background: #414141 !important;
+  transition: 0.3s;
+ }
+ .container-sensorHome .headerSensorHome .topnav-shome .logged-hover a{
+  padding: 6px;
+  color: #1ec033;
+ }
+ .registerSensorButton{
+  width: 100px;
+  margin: 0px;
+  padding: 8px 6px;
+  border-radius: 50px;
+  border: 0px;
+  background: #525252 !important;
+  color: white;
+  font-size: 15px;
+}
+.registerSensorButton:hover{
+  text-decoration: none;
+  color: white;
+  background: #414141 !important;
+  transition: 0.3s;
+}
+.registerSensorButton:focus{
+  color: white;
+  text-decoration: none;
+}
+.grow{
+  flex-grow: 1;
+}
+
+.container-sensorHome .headerSensorHome .topnav-shome .logged-hover{
+  
+}
+
+
+
+/* --> colapse account */
+#containerAccountId{
+  display: none;
+}
+.container-account{
+  position: absolute;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #d8d8d8;
+  box-shadow: 0px 2px 15px  #707070;
+  top: 45px;
+  right: 10px;
+  background-color: white;
+  z-index: 100;
+}
+.container-account span{
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+.container-account span:hover{
+  color: #d9534f;
+  text-shadow: 0px 2px 2px  #707070;
+}
+.container-account .container-detailAcc{
+  display: flex;
+  padding: 5px;
+}
+.container-account .container-detailAcc img{
+  width: auto;
+  height: 60px;
+  border-radius: 50%;
+}
+.container-account .container-loggedMenu{
+  font-size: 13px;
+  margin-left: 10px;
+  padding: 5px;
+  line-height: 9px;
+  font-family: "FontC4G";
+}
+.container-account .container-loggedMenu .title-user{
+  font-weight: bold;
+}
+.container-account .container-logOut{
+  display: flex;
+  font-size: 13px;
+  font-family: "FontC4G";
+  border-top: 1px solid #333;
+}
+.container-account .container-logOut .flex-settings{
+  flex-grow: 2;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid rgb(197, 195, 195);
+  margin-top: 5px;
+  text-align: center;
+}
+.container-account .container-logOut .flex-logOut{
+  flex-grow: 1;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid rgb(197, 195, 195);
+  margin-top: 5px;
+  margin-left: 5px;
+  text-align: center;
+  font-family: "FontC4G";
+}
+.container-account .container-logOut a:hover{
+  background-color: rgb(206, 206, 206);
+  transition: 0.5s;
+}
+/* <-- colapse account */
+
+/* .container-sensorHome .topnav-shome {
   position: relative;
   background-color: #333;
 }
@@ -50,34 +212,4 @@
   cursor: pointer;
   user-select: none;
 }
-
-/* --> icon ce apare cu media */
-
-.container-sensorHome .topnav-shome .icon {
-  display: none;
-  font-size: 20px;
-  background-color: #4e9a06;
-  height: 52px;
-}
-.container-sensorHome .topnav-shome .icon i{
-  background-size: 200px 100px !important; 
-  font-size: 30px;
-}
-
-.container-sensorHome .topnav-shome .icon:hover{
-  color: white;
-  border-bottom: none;
-}
-#alert-error p{
-  padding: 10px;
-  background-color: #d9544f55;
-  color: #d9534f;
-  border: 2px solid #d9534f;
-  border-radius: 8px;
-  width: 240px;
-  text-align: center;
-  font-weight: bold;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* <-- icon ce apare cu media */
+ */

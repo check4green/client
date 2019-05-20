@@ -55,6 +55,7 @@
     display: flex;
     justify-content: baseline;
 }
+
 @media screen and (max-width: 700px){
     .table-overflow .container-buttonGrid{
         flex-direction: column-reverse;
@@ -115,6 +116,38 @@
 /* Tabel buttons */
 
 /* Button now */
+.sensorModel .container-buttonNetwork{
+    text-align: center;
+    border: 1px solid #333;
+    padding: 50px;
+}
+/* .container-buttonNetwork .buttonNetAndAdd:not(:first-child){
+    margin-left: 10px;
+} */
+.buttonNetAndAdd{
+    color: white !important;
+    background-color: #4e9a06;
+    border: 1px solid rgba(51, 51, 51, 0);
+    border-radius: 5px;
+}
+.buttonNetAndAdd:hover{
+    color: black !important;
+    border: 1px solid rgb(45, 92, 43);
+    transition: 0.5s;
+}
+@media screen and (max-width: 500px){
+    .sensorModel .container-buttonNetwork{
+        display: flex;
+        flex-direction: column;
+    }
+    .buttonNetAndAdd{
+        margin-bottom: 10px;
+    }
+}
+.sensorModel .container-buttonNetwork h1{
+    margin-bottom: 30px;
+}
+
 .sensorModel .padding-button{
     display: flex;
     justify-content: flex-end;
@@ -134,25 +167,96 @@
     display: inline-block;
     justify-content: space-between;
     position: relative;
-    color: white;
-    font-size: 14px;
-    background-color: #4e9a06;
-    border: 2px solid #43a303;
-    border-radius: 5%;
-    text-decoration: none;
 
   }
-  .button-cardView:hover{
-    color: #1b4101;
-    background-color: white;
-    border: 2px solid #1b4101;
+
+ /* Button now 
+     font-size: 14px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    background: #4e9a06;
+    border: 1px solid #47880a;
+ */
+
+/* CARDS networks******************************************************************* */
+.sensorModel .container-networksROW {
+    margin: 0 -5px;}
+
+.sensorModel .container-networksROW:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.container-networksCARD .container-networkTitle{
+    padding: 25px;
+    padding-top: 10px;
+}
+.container-networkTitle button{
+    border: 1px solid rgba(51, 51, 51, 0);
+    border-radius: 0px 200px 200px 0px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #4e9a06;
+    color: #fffbfb;
+}
+.container-networkTitle button:hover{
+    border-right-color: #27612a;
+    border-top-color: #27612a;
+    border-bottom-color: #27612a;
+    /* border-left-color: #70b173; */
+    color: black;
+    transition: 0.5s;
+}
+.container-networkTitle button:focus{
+    border-right-color: #4e9a06;
+    border-top-color: #4e9a06;
+    border-bottom-color: #4e9a06;
+    border-left-color: #27612a;
+}
+.container-networkCtrl button{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.container-networksROW .container-networksCOLUMN {
+  float: left;
+  width: 30%;
+  padding: 10px 10px;
+}
+
+.container-networksROW .container-networksCOLUMN .buttons{
+    margin-top: 50px;
+}
+
+.container-networksROW .container-networksCOLUMN .container-networksCARD {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #16724c15;
+  border: 1px solid #069a2636;
+  position: relative;
+}
+
+.container-networksROW .container-networksCOLUMN .container-networksCARD:hover{
+    background: #ffffff;
+    border: 1px solid #069a26;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 995px){
+  .container-networksROW .container-networksCOLUMN {
+    width: 50%;
   }
- /* Button now */
+}
+
+@media screen and (max-width: 670px){
+    .container-networksROW .container-networksCOLUMN{
+        width: 100%;
+    }
+}
 
 /* CARDS******************************************************************* */
-
 .sensorModel .container-rowCards {
-    
     margin: 0 -5px;}
 
 .sensorModel .container-rowCards:after {
@@ -261,9 +365,6 @@
 .table-overflow{
     overflow-x: auto;
 }
-.btn-success, .btn-success:hover{
-    background-color:#4e9a06;
-}
 .sensorModel{
     display: flex;
     flex-direction: column;
@@ -306,10 +407,7 @@
 .registerDisplay input{
     margin-bottom:10px;
 }
-.registerSensorButton{
-    margin-bottom:15px;
-    width: 100px;
-}
+
 
 /* Delete button*********************************************** */
 .container-rowCards .column .card .container-deleteB{
@@ -694,8 +792,18 @@ overflow{
 }
 .container-filters .container-backFlex{
     display: flex;
+    flex-direction: column;
+    min-width: 144px;
+}
+.container-filters .container-backFlex .sayFlex{
+    display: flex;
 }
 .container-filters .container-back input{
     cursor: pointer;
 }
-#filterMenu{display: none;}
+#filterMenu{
+    display: none;
+}
+.hidemenu{
+    display: initial !important;
+}

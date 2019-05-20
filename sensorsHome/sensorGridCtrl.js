@@ -1,6 +1,6 @@
 (function(){
 var app = angular.module("sensorApp");
-app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, autentificationService, sensorModelService, SENSOR_TYPE, hubConnection){
+app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, $location, autentificationService, sensorModelService, SENSOR_TYPE,hubConnection, gatewayService, networkService){
     var vm = this;
     vm.titleGrid = SENSOR_TYPE.TITLE;
     if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
@@ -8,63 +8,111 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
     }else{
         var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
     }
+    if($sessionStorage.buttons == true){
+        $scope.buttons = true
+    }else {
+        $scope.buttons = false;
+        $scope.backButton = true;
+    }
+    if($sessionStorage.netName){
+        $scope.networkName = $sessionStorage.netName
+    }
+    $scope.backButton = true;
+    $scope.back = function(){
+        $sessionStorage.gate = false;
+        $scope.sensorData = false;
+        $scope.noSensorData = false;
+        $scope.buttons = true;
+        $scope.registerButton = false;
+        $sessionStorage.buttons = true;
+        $sessionStorage.cards = false;
+        delete $sessionStorage.netId;
+        $location.path('sensorsHome/networks')
+    }
+    if(!$sessionStorage.netId){
+        $scope.noNetworkSelected = true;
+    }else{
+        $scope.noNetworkSelected = false;
+    }
+    
     $scope.home = true;
+
     if($sessionStorage.home == false ){
         $scope.home = false;
     }
     $scope.expandSelected = function(sensor){
-        $scope.sensors.forEach(function(val){
-            hubConnection.disconnectFromHub();
+        $scope.userSensors.forEach(function(val){
             val.expanded=false;
             $scope.editLocation = true;
         })
         sensor.expanded=true;
     };
+    $scope.disconnectFromHub = function(){
+        hubConnection.disconnectFromHub();
+    }
     $scope.sensorHomeData = false;
     $scope.noData = false;
     $scope.change = true;
     $scope.searchSensor ='';
-    function getSens(user, page, size){
-        $scope.activeCount =0;
-        $scope.inactiveCount =0;
-        autentificationService.getUserSensors(user, page, size)
+    $scope.loading = true;
+    function getSensors(user, page, pageSize){
+        $scope.networkName = $sessionStorage.networkName;
+        autentificationService.getUserSensors(user, $sessionStorage.netId, page, pageSize)
             .then(function(response){
-                $scope.sensors = response.data;
-                for(var i=0; i<response.data.length; i++){
-                    if($scope.sensors[i].active == true){
-                        $scope.activeCount++;
-                    }else{
-                        $scope.inactiveCount++;
-                    }
+                $scope.userSensors = response.data;
+                for(var i=0; i<$scope.userSensors.length; i++){
+                    $scope.userSensors[i].productionDate = $scope.userSensors[i].productionDate.substr(0, 10)+ " "+ $scope.userSensors[i].productionDate.substr(11, 5)
                 }
                 $scope.loading=false;
                 $scope.sensorHomeData = true;
+                if($scope.userSensors.length == 0){
+                    $scope.noData = true;
+                    $scope.noSensors = true;
+                    $scope.sensorHomeData = false;
+                }else{
+                    $scope.noData = false;
+                    $scope.noSensors = false;
+                    $scope.sensorHomeData = true;
+                }
             })
             .catch(function(){
                 $scope.loading = false
                 $scope.noData = true;
                 $scope.sensorHomeData = false;
-                $scope.message = 'No data'
+                $scope.message = 'An error ocurred. Please try again later.'
             })
     }
-    autentificationService.getAllSensors(encodeduser)
+    autentificationService.getAllSensors(encodeduser, $sessionStorage.netId)
         .then(function(data){
             $scope.allSensors = data;
-            $scope.totalSensors = data;
             $scope.currentPage = 1;
             $scope.sensPerPage = 50;
             $scope.loading=true;
+            $scope.activeCount =0;
+            $scope.inactiveCount =0;
+            autentificationService.getUserSensors(encodeduser, $sessionStorage.netId, 1, data)
+            .then(function(response){
+                var actSensors = response.data;
+                for(var i=0; i<response.data.length; i++){
+                    if(actSensors[i].active == true){
+                        $scope.activeCount++;
+                    }else{
+                        $scope.inactiveCount++;
+                    }
+                }
+            })
             vm.setPage = function(){
-                getSens(encodeduser,  1, $scope.allSensors)
+                getSensors(encodeduser, 1, data);
+                
             }
             $scope.$watch('currentPage', vm.setPage);
             $scope.gridSize ='';
             $scope.setPageSize = function(gridSize){
                 if(gridSize){
                     $scope.sensPerPage = gridSize;
+                    getSensors(encodeduser, 1, $scope.sensPerPage);
                 }
             }
-            // getSens(encodeduser,  $scope.currentPage, $scope.allSensors)
             $scope.search = function(){
                 $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
                     if(newValue == data){
@@ -95,7 +143,7 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
             $scope.showActiveSens = function(value)
             {
                 if(value == true){
-                    autentificationService.getUserSensors(encodeduser,  $scope.currentPage, $scope.allSensors)
+                    autentificationService.getUserSensors(encodeduser, $sessionStorage.netId, $scope.currentPage, data)
                         .then(function(response){
                             $scope.actSensors = response.data;
                             $scope.loading = false;
@@ -109,10 +157,10 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
                                     $scope.actsens.push($scope.actSensors[i]);
                                 }
                             }
-                    
-                            $scope.sensors = $scope.actsens;
+                        
+                            $scope.userSensors = $scope.actsens;
                             $scope.act = true;
-                    
+                        
                         })
                         .catch(function(){
                             $scope.noSensorsData = true;
@@ -120,15 +168,26 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
                             $scope.sensorData = false;
                         })
                 } else{
-                    getSens(encodeduser,  $scope.currentPage, $scope.allSensors);
+                    getSensors(encodeduser,  $scope.currentPage, data);
                 }
             }
             
+            $scope.showAll = function(value){
+                if(value == true){
+                    getSensors(encodeduser,  $scope.currentPage, data);
+                }
+            }
         })
-        $scope.getSensor = function(ga, ca, name){
-            $sessionStorage.ga = ga;
-            $sessionStorage.ca = ca;
+
+        $scope.getSensor = function( name, id, address){
             $sessionStorage.name = name;
+            $sessionStorage.sensorId = id
+            $sessionStorage.sensorAddress = address;
+        }
+        $scope.getNetwork = function(network){
+            $sessionStorage.networkName = network.name;
+            $sessionStorage.netId = network.id;
+
         }
         if($sessionStorage.cards == true){
             $scope.cards = true;
@@ -138,6 +197,7 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
             $scope.grid = true;
             $scope.cards = false;
         }
+        
         $scope.changeLayoutCards = function(){
             
                 $scope.noSensorData = false;
@@ -177,8 +237,7 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
             $scope.name = $sessionStorage.name;
             $scope.detailsDisplay = true;
             $scope.detailsData = false;
-            $scope.clientAddr = $sessionStorage.ca;
-            $scope.gatewayAddr = $sessionStorage.ga;
+            $scope.id = $sessionStorage.sensorId;
             $scope.editLoc = true;
             $scope.cards = false;
             $scope.backButton = false;
@@ -189,6 +248,9 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
             $scope.detail = true;
             $sessionStorage.detail = true
             $scope.sensName = true;
+        }
+        $scope.refreshFunction = function(){
+            $scope.id = $sessionStorage.sensorId;
         }
         $scope.cancelDetails = function(){  
             $scope.detailsDisplay = false;   
@@ -205,6 +267,7 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
             $sessionStorage.detail = false;
             $scope.sensName = false;
         }
+        
         $scope.measureUnit = function(sensTypeID){
             sensorModelService.getMeasureId(sensTypeID)
                 .then(idSuccess)
@@ -217,21 +280,28 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
                 }
             }
         }
-        $scope.getLastRead = function(GA, CA){
-            $sessionStorage.clientAdd = CA;
-            $sessionStorage.gatewayAdd= GA;
+        $scope.getLastRead = function(id){
             hubConnection.connectingToHub();
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
-            sensorModelService.getMeasurements(GA, CA, '1', '1', $scope.encodeduser)
+            sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1 )
                 .then(measureSuccess)
                 .catch(measureError)
             function measureSuccess(measurement){
                 $rootScope.lastRead = measurement;
-                $scope.noRead = false;
-                $scope.detailsData = true;
-                $scope.loadingDetails = false;
+                for(var i=0; i<$rootScope.lastRead.length; i++){
+                    $rootScope.lastRead[i].readingDate = $rootScope.lastRead[i].readingDate.substr(0,10)+ " "+$rootScope.lastRead[i].readingDate.substr(11,5)
+                }
+                if($rootScope.lastRead == 0){
+                    $scope.noRead = true;
+                    $scope.loadingDetails = false;
+                    $scope.detailsData = true;
+                } else{
+                    $scope.noRead = false;
+                    $scope.detailsData = true;
+                    $scope.loadingDetails = false;
+                }
             }
             function measureError(){
                 $scope.noRead = true;
@@ -239,35 +309,37 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
                 $scope.detailsData = true;
             }
             $rootScope.lastRead = null;
+           
         }      
         $scope.outOfRangeAllSens = function(sensType){
-            if(sensType == 33){
+            if(sensType == 1){
                 $scope.outOfRangePositiveError = 401;
                 $scope.outOfRangeNegativeError = -1;
-            } else if(sensType == 31){
-                $scope.outOfRangePositiveError = 126;
-                $scope.outOfRangeNegativeError = -56;
-            }else if(sensType == 34){
+            } else if(sensType == 2){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -51;
+            }else if(sensType == 3){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -50;
+            }
+            else if(sensType == 5){
                 $scope.outOfRangePositiveError = 101;
                 $scope.outOfRangeNegativeError = -1;
             }
-            else if(sensType == 39){
+            else if(sensType == 7){
                 $scope.outOfRangePositiveError = 101;
                 $scope.outOfRangeNegativeError = -1;
             }
-            if(sensType == 37){
+            if(sensType == 6){
                 $scope.vibrations =true;
             } else{
                 $scope.vibrations = false;
             }
         }
-        $scope.startEditLocation = function(gatewayAddress, clientAddress, name, uploadInterval, batchSize, lat, long){
+        $scope.startEditLocation = function( name, uploadInterval, lat, long){
             $sessionStorage.home = false;
-            $sessionStorage.gatewayAddress = gatewayAddress;
-            $sessionStorage.clientAddress = clientAddress;
             $sessionStorage.name = name;
             $sessionStorage.uplInt = uploadInterval;
-            $sessionStorage.batchSize = batchSize;
             $sessionStorage.location = {lat: lat, lng: long};
         }
 });

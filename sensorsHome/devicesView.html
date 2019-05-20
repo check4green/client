@@ -1,0 +1,90 @@
+<div class="sensorModel container">
+        <div class="title-grid">
+            <p>{{::vm.titleGrid}}</p>
+        </div>
+        <div class="noData" ng-if="noNetworkSelected">You didn't selected any network. Go <a ng-click="back()">back</a> and select one.</div>
+            <div class="container-buttonGrid" style="margin-bottom: 10px;" ng-if="!noNetworkSelected">
+                <button type="button" class="btn buttonNetAndAdd" ng-click="back()" ng-if ="backButton" title="Back to selection"
+                    style="margin-right: 5px;">
+                    <span>Networks</span>
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+            <div ng-show="loading && !noNetworkSelected" class="loader"></div>
+            <div ng-show="noData" class="noData">Currently you don't have any devices registered on this network.</div>
+            <div class="table-overflow" ng-show="!loading && !noData && devicesData">
+                <div class="container-buttonGrid" ng-show="!detail">
+                    <div class="container-leftButtons">
+                        <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" >
+                            <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
+                                <option selected disabled hidden value="">Devices per page: <b>50</b></option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="120">120</option>
+                                <option value="140">140</option>
+                                <option value="160">160</option>
+                                <option value="200">200</option>
+                            </select>
+                        </div>
+                        <div ng-if="!detail" class="container-filters" style="margin-left: 5px;">
+                            <div class="container-front"  onclick="showFilters()"><p>Filters</p><i id="caret" class="fas fa-caret-down addStyle"></i></div>
+                            <div id="filterMenu" class="container-back">
+                                <div class="container-backFlex">
+                                    <div class="sayFlex"><input type="checkbox" ng-model="value" id="active" ng-click="showActiveSens(value)"/><p>Show active sensors</p></div>
+                                </div>
+                            </div>
+                        </div>
+                                
+                    </div>
+                    <div class="grow"></div>
+                    <div class="container-rightButtons">
+                        <search></search>
+                    </div>
+    
+                </div>
+    
+                <div class="measurementsTotalReadings" ng-if="!detail">
+                    <label style="font-weight: initial;">Network: <b>{{networkName}}</b>.</label>
+                    <label style="font-weight: initial;">Total Devices: <b>{{allDevices}}</b>.</label>
+                    <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeCount}}</b>,</label>
+                    <label style="font-weight: initial;">inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></label>
+                </div>
+           
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>No.</td>
+                            <td>Name</td>
+                            <td>Address</td>
+                            <td>Status</td>
+                            <td></td>
+                        </tr>
+    
+                    </thead>
+    
+                    <tbody>
+    
+                        <tr ng-repeat="sensor in filterSensors = (devices | filter: filterSearch) | limitTo: vm.sensPerPage: vm.sensPerPage*(vm.currentPage-1)">
+                            <td>{{$index+1}}</td>
+                            <td>{{sensor.name}}</td>
+                            <td>{{sensor.address}}</td>
+                            <td>
+                                <span class="label label-success" ng-if="sensor.active == true">Active</span>
+                                <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success" ng-if="sensor.sensorTypeId" ng-click="goToSensors()">Go to sensors</button>
+                                <button type="button" class="btn btn-success" ng-if="!sensor.sensorTypeId" ng-click="goToGateways()">Go to gateways</button>
+                            </td>
+    
+                        </tr>
+
+                    </tbody>
+                </table>
+           
+            
+            </div>
+            <div ng-show="((!filterSensors.length && !loading && devicesData) || noActiveData )" id="alert-error"><p>No result</p></div> 
+            <div id="filteredSens" ng-show="filtSens">{{filterSensors.length}}</div> 
+            <div paging page="vm.currentPage" page-size="vm.sensPerPage" total="allDevices" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ng-show="!noData"></div>
+    </div>

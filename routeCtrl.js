@@ -6,7 +6,7 @@
                                 'OUT_OF_RANGE': '0',
                                 'TITLE': '0'
                             });
-    app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider","$ocLazyLoadProvider", 
+    app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider","$ocLazyLoadProvider",
                function($stateProvider, $urlRouterProvider, $locationProvider, $ocLazyLoadProvider){
                 $locationProvider.html5Mode(true);
                 $urlRouterProvider.otherwise('/home')
@@ -140,7 +140,7 @@
                 loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                     return $ocLazyLoad.load([
                         'Autentification/Contact/contactStyle.css',
-                        'Autentification/Contact/contactcomponent.js',
+                        'Autentification/Contact/contactComponent.js',
                         'Autentification/Contact/contactCtrl.js',
                         'Autentification/Service/autentificationService.js'
                     ])
@@ -342,7 +342,7 @@
                         }
                         $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
                             if(toState.name == 'sensorsHome'){
-                                $location.path('/sensorsHome/sensors')
+                                $location.path('/sensorsHome/networks')
                             }
                           });
                     }
@@ -365,9 +365,14 @@
                         'SensorModel/sensorModelCtrl.js',
                         'Home/scriptIndex.js',
                         'sensorsHome/map.js',
+                        'Networks/deleteNetworkDirective.js',
+                        'Networks/editNetworkDirective.js',
+                        'SensorModel/sensorGatewayDirective.js',
                         'sensorsHome/map.css',
                         'SensorModel/sensorModelService.js',
-                        'Autentification/Service/autentificationService.js'
+                        'Autentification/Service/autentificationService.js',
+                        'Networks/networkService.js',
+                        'Gateways/gatewayService.js'
 
                     ])
                 }]
@@ -400,6 +405,22 @@
              }]
          }
         })
+        .state('sensorsHome.networks', {
+            url: '/networks',
+            views: {
+                'networks@':{
+                    template: "<networks></networks>"
+                }
+            },
+            resolve:{
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'Networks/networksComponent.js',
+                        'Networks/networksCtrl.js'
+                    ])
+                }]
+            }
+        })
         .state('sensorsHome.sensors',{
             url: "/sensors",
             views: {
@@ -408,6 +429,8 @@
                    controller: function(SENSOR_TYPE, $sessionStorage){
                        SENSOR_TYPE.TITLE = "Sensors";
                        $sessionStorage.home = true;
+                       $sessionStorage.gateWay = false;
+                       $sessionStorage.sens = true;
                    }
                }
            },
@@ -420,6 +443,25 @@
             }]
         }
            })
+           .state('sensorsHome.devices', {
+               url: "/devices",
+               views: {
+                   'devices@':{
+                       template: "<devices></devices>",
+                       controller: function(SENSOR_TYPE){
+                            SENSOR_TYPE.TITLE = 'Devices'
+                       }
+                   }
+               },
+               resolve: {
+                loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                    return $ocLazyLoad.load([
+                        'sensorsHome/devicesComponent.js',
+                        'sensorsHome/devicesCtrl.js'
+                    ])
+                }]
+               }
+           })
             .state('sensorsHome.distance',{
              url: "/distance",
              
@@ -427,10 +469,12 @@
                 'distance@':{
                     template: "<distance></distance>",
                     controller: function(SENSOR_TYPE, $sessionStorage){
-                        SENSOR_TYPE.ID = "33";
+                        SENSOR_TYPE.ID = "1";
                         SENSOR_TYPE.OUT_OF_RANGE = "401";
                         SENSOR_TYPE.TITLE = "Distance";
                         $sessionStorage.home = false;
+                        $sessionStorage.gateWay = false;
+                        $sessionStorage.sens = true;
                     }
                 }
             },
@@ -449,10 +493,12 @@
                 'temperature@':{
                     template: "<temperature></temperature>",
                     controller: function(SENSOR_TYPE, $sessionStorage){
-                        SENSOR_TYPE.ID = "31";
+                        SENSOR_TYPE.ID = "2";
                         SENSOR_TYPE.OUT_OF_RANGE = "101";
                         SENSOR_TYPE.TITLE = "Temperature";
                         $sessionStorage.home = false;
+                        $sessionStorage.gateWay = false;
+                        $sessionStorage.sens = true;
                     }
                 }
             },
@@ -471,9 +517,11 @@
                 'electricalCurrent@':{
                     template: "<electrical-current></electrical-current>",
                     controller: function(SENSOR_TYPE, $sessionStorage){
-                        SENSOR_TYPE.ID = "35";
+                        SENSOR_TYPE.ID = "3";
                         SENSOR_TYPE.TITLE = "Electrical Current";
                         $sessionStorage.home = false;
+                        $sessionStorage.gateWay = false;
+                        $sessionStorage.sens = true;
                     }
                 }
             },
@@ -492,10 +540,12 @@
                 'airQuality@':{
                     template: "<air-quality></air-quality>",
                     controller: function(SENSOR_TYPE, $sessionStorage){
-                        SENSOR_TYPE.ID = "34";
+                        SENSOR_TYPE.ID = "7";
                         SENSOR_TYPE.OUT_OF_RANGE = "101";
                         SENSOR_TYPE.TITLE = "Air Quality";
                         $sessionStorage.home = false;
+                        $sessionStorage.gateWay = false;
+                        $sessionStorage.sens = true;
                     }
                 }
             },
@@ -513,9 +563,11 @@
                    'vibration@':{
                        template: "<vibration></vibration>",
                        controller: function(SENSOR_TYPE, $sessionStorage){
-                        SENSOR_TYPE.ID = "37";
+                        SENSOR_TYPE.ID = "6";
                         SENSOR_TYPE.TITLE = "Vibrations";
                         $sessionStorage.home = false;
+                        $sessionStorage.gateWay = false;
+                        $sessionStorage.sens = true;
                    }
                 }
                },
@@ -533,9 +585,11 @@
                    'pressure@':{
                        template: "<pressure></pressure>",
                        controller: function(SENSOR_TYPE, $sessionStorage){
-                        SENSOR_TYPE.ID = "39";
+                        SENSOR_TYPE.ID = "5";
                         SENSOR_TYPE.TITLE = "Pressure";
                         $sessionStorage.home = false;
+                        $sessionStorage.gateWay = false;
+                        $sessionStorage.sens = true;
                    }
                 }
                },
@@ -555,6 +609,7 @@
                         controller: function($sessionStorage){
                             $sessionStorage.editLoc = true;
                             $sessionStorage.home = false;
+                            
             
                         }
                     }
@@ -578,6 +633,7 @@
                         controller: function($sessionStorage, SENSOR_TYPE){
                             $sessionStorage.register = true;
                             SENSOR_TYPE.TITLE = 'Add a sensor';
+                            $sessionStorage.gateWay = false;
             
                         }
                     }
@@ -604,6 +660,101 @@
                     }
                 }
                 
+            })
+            .state('sensorsHome.addNetwork', {
+                url: '/add-network',
+                views:{
+                    'registerNetwork@':{
+                        template: "<register-network></register-network>"
+                    }
+                },
+                resolve:{
+                 loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                     return $ocLazyLoad.load([
+                        'Networks/registerNetworkComponent.js',
+                        'Networks/registerNetworkCtrl.js',
+                     ])
+                 }]
+             }
+            })
+            .state('sensorsHome.networkDetails', {
+                url:'/network-details',
+                views: {
+                    'detailsNetwork@': {
+                        template: "<details-network></details-network>",
+                        controller: function($sessionStorage){
+                            $sessionStorage.netDet = true;
+                        }
+                    }
+                },
+                resolve:{
+                    loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                           'Networks/detailsNetworkDirective.js',
+                           'sensorsHome/map.js'
+                        ])
+                    }]
+                }
+            })
+            .state('sensorsHome.addGateway', {
+                url: '/add-gateway',
+                views:{
+                    'registerGateway@':{
+                        template: "<register-gateway></register-gateway>"
+                    }
+                },
+                resolve:{
+                 loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                     return $ocLazyLoad.load([
+                        'Gateways/registerGatewayComponent.js',
+                        'Gateways/registerGatewayCtrl.js',
+                        'Gateways/gatewayService.js'
+
+                     ])
+                 }]
+             }
+            })
+            .state('sensorsHome.gateways', {
+                url: '/gateways',
+                views:{
+                    'gateways@':{
+                        template: "<gateway></gateway>",
+                        controller: function($sessionStorage){
+                            $sessionStorage.gateWay = true;
+                            $sessionStorage.sens = false;
+                        }
+                    }
+                },
+                resolve:{
+                    loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                           'Gateways/gatewayComponent.js',
+                           'Gateways/gatewayDetailsDirective.js',
+                           'Gateways/deleteGatewayDirective.js',
+                           'Gateways/editGatewayDirective.js',
+                           'Gateways/searchDirective.js',
+                           'Gateways/gatewaySensorsDirective.js'
+                           
+                        ])
+                    }]
+                }
+            })
+            .state('sensorsHome.editGateway',{
+                url:'/edit-gateway',
+                views:{
+                    'editgateway@':{
+                        template: "<editgateway></editgateway>"
+                    }
+                },
+                resolve:{
+                    loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                        return $ocLazyLoad.load([
+                           'Gateways/editGatewayDirective.js',
+                           'Gateways/editGatewayCtrl.js',
+                           'Gateways/gatewayService.js'
+                        ])
+                    }]
+                }
             })
            
         }

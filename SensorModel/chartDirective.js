@@ -10,13 +10,14 @@
                     $scope.chartDisplay = false;
                     
                     if ($localStorage.email && $localStorage.password){
-                        $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+                        var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
                     }else{
-                        $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+                        var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
                     }
-                $scope.chart = function(gatewayAddress, clientAddress){
+                $scope.chart = function(id){
                     var page = 0
                     $scope.value = false;
+                    $scope.gatewayButton = false;
                     $scope.chartDisplay = true;
                     $scope.chartButton = false;
                     $scope.detailsDisplay = false;
@@ -28,7 +29,7 @@
                     $scope.loadingChart = true;
                     $scope.dataChart = false;
                     d3.selectAll("#chart > *").remove();
-                    sensorModelService.getMeasurements(gatewayAddress, clientAddress, page, readings, $scope.encodedData)
+                    sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, page, readings)
                                 .then(getSuccess)
                                 .catch(getError);
                                 function getError(){
@@ -41,6 +42,11 @@
                                     $scope.loadingChart = false;
                                     $scope.dataChart = true;
                                     var measurements = data;
+                                    if(measurements.length == 0){
+                                        $scope.noDataChart = true;
+                                        $scope.loadingChart = false;
+                                        $scope.dataChart = false;
+                                    }
                                 for (var i=0; i<measurements.length; i++){
                                    measurements[i].readingDate = measurements[i].readingDate.substr(0, 10)+" " +measurements[i].readingDate.substr(11, 8);
                                    if($scope.vibrations == false){
@@ -354,6 +360,7 @@
                 $scope.deleteButton = true;
                 $scope.measurementsButton = true;
                 $scope.editLocation = true;
+                $scope.gatewayButton = true;
             }
         }
     }

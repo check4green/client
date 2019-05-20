@@ -4,22 +4,24 @@
    app.controller("logInCtrl", function ($scope, autentificationService, $localStorage, $sessionStorage, $location) {
         var vm = this;
         var value = true;
-        $scope.remeberAccount = function(value, email, password){
-           if(value == true){
-             $localStorage.email = email;
-             $localStorage.password = password;
-           } else{
-             $sessionStorage.email = email;
-             $sessionStorage.password = password;
-           }
-     }
+        
         $scope.login = function(email, password){
           $scope.loading = true;
-          $scope.encodeduser = btoa(email +':'+ password)
+          $scope.encodeduser = btoa(email +':'+ password);
+          $scope.remeberAccount = function(value){
+            if(value == true){
+              $localStorage.email = email;
+              $localStorage.password = password;
+            } else{
+              $sessionStorage.email = email;
+              $sessionStorage.password = password;
+            }
+          }
           autentificationService.logIn($scope.encodeduser)
               .then(function(response){
                   $scope.loading = false;
-                  $location.path('sensorsHome/sensors');
+                  $sessionStorage.buttons = true;
+                  $location.path('sensorsHome/networks');
                   $sessionStorage.email = email;
                   $sessionStorage.password = password;
               })
