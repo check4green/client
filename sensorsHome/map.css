@@ -32,3 +32,8 @@
     border-radius: 2px;
     pointer-events: none;    
   }
+  #marginTopView > div:nth-child(18) > details-network > div > map > div > div.legend-measurement > span.fa.fa-circle.ng-scope{
+    color: rgb(255, 255, 255);
+    border-radius: 100%;
+    border: 1px solid #cdd1c8;
+}
