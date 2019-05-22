@@ -1,8 +1,8 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$location","$sessionStorage", "sensorModelService", "$rootScope","hubConnection", "networkService",
-    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $location, $sessionStorage, sensorModelService, $rootScope, hubConnection, networkService) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$location","$sessionStorage", "sensorModelService", "$rootScope","hubConnection", "$timeout", "$window",
+    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $location, $sessionStorage, sensorModelService, $rootScope, hubConnection, $timeout, $window) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         //network buttons
@@ -26,12 +26,11 @@
             $sessionStorage.buttons = true;
             $sessionStorage.cards = false;
             delete $sessionStorage.netId;
-            $location.path('/sensorsHome/networks')
-        }
-        if(!$sessionStorage.netId){
-            $scope.noNetworkSelected = true;
-        }else{
-            $scope.noNetworkSelected = false;
+            $location.path('/sensorsHome/networks');
+            $timeout(function(){
+                $window.location.reload();
+
+            }, 100)
         }
         if($localStorage.email && $localStorage.password){
             var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
@@ -54,7 +53,6 @@
         }
         $scope.sensorData = false;
         $scope.noData = false;
-        $sessionStorage.home = false;
         $scope.change = true;
         $scope.searchSensor ='';
         
@@ -268,7 +266,6 @@
             $sessionStorage.name = name;
         }
         $scope.startEditLocation = function(name, uploadInterval, lat, long){
-            $sessionStorage.home = false;
             $sessionStorage.name = name;
             $sessionStorage.uplInt = uploadInterval;
             $sessionStorage.location = {lat: lat, lng: long};

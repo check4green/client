@@ -1,9 +1,8 @@
-<div class="sensorModel container" ng-show="home">
+<div class="sensorModel container">
     <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
     </div>
-    <div class="noData" ng-if="noNetworkSelected">You didn't selected any network. Go <a ng-click="back()">back</a> and select one.</div>
-        <div class="container-buttonGrid" style="margin-bottom: 10px;" ng-if="!noNetworkSelected">
+        <div class="container-buttonGrid" style="margin-bottom: 10px;">
             <button type="button" class="btn buttonNetAndAdd" ng-click="back()" ng-if ="backButton" title="Back to selection"
                 style="margin-right: 5px;">
                 <span>Networks</span>
@@ -13,7 +12,7 @@
         <div ng-show="loading" class="loader"></div>
         <div style="height: 100px;"></div>
         
-        <div ng-show="noData && !loading && !noNetworkSelected" class="noData">Currently you don't have any devices registered on this network</div>
+        <div ng-show="noData && !loading " class="noData">Currently you don't have any devices registered on this network</div>
         
         <div ng-show="sensorHomeData && !noData && !loading" class="table-overflow">
 
@@ -75,7 +74,7 @@
 
                 <tbody>
 
-                    <tr ng-repeat-start="sensor in filterSensors = (userSensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
+                    <tr ng-repeat-start="sensor in filterSensors = (sensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
                         <td>{{$index+1}}</td>
                         <td>{{sensor.name}}</td>
                         <td>
@@ -119,7 +118,7 @@
         <!-- CARDS -->
 
         <div class="container-rowCards" ng-show ="cards && !loading">
-            <div class="column" ng-repeat= "sensor in filterSensors = (userSensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
+            <div class="column" ng-repeat= "sensor in filterSensors = (sensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
                 <div class="card">
                     <div class="title">
                         <b> {{$index+1}}. {{sensor.name}}</b>

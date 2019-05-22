@@ -5,7 +5,6 @@ app.controller('editLocationCtrl', function($scope, $sessionStorage, $localStora
     var timer;
     $scope.goBack = function(){
         $window.history.back();
-        $sessionStorage.home = true;
         $sessionStorage.editLoc = false;
         timer = $timeout(function(){
             $window.location.reload();

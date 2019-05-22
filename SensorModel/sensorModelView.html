@@ -2,8 +2,7 @@
     <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
     </div>
-    <div class="noData" ng-if="noNetworkSelected">You didn't selected any network. Go <a ng-click="back()">back</a> and select one.</div>
-       <div class="container-buttonGrid" style="margin-bottom: 10px;" ng-if="!noNetworkSelected">
+       <div class="container-buttonGrid" style="margin-bottom: 10px;">
                <button type="button" class="btn buttonNetAndAdd" ng-click="back()" ng-if ="backButton" title="Back to selection">
                <span>Networks</span>
                <i class="fas fa-arrow-left"></i>
@@ -15,7 +14,7 @@
                </button>
         </div>
         <div ng-show="loading" class="loader"></div>
-        <div ng-show="noSensorsData && !loading && !noNetworkSelected" class="noData">No Data</div>
+        <div ng-show="noSensorsData && !loading" class="noData">No Data</div>
         <div ng-show="sensorData && !loading"  class="table-overflow">
         
             <div class="container-buttonGrid">

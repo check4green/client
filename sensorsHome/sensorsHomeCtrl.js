@@ -11,7 +11,11 @@
         }else{
           var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
-      
+      if($sessionStorage.hideSensorMenu == true){
+        $scope.hideSensorMenu = true;
+      } else{
+        $scope.hideSensorMenu = false;
+      }
       $scope.cancelCards = function(){
         $sessionStorage.cards = false;
         $sessionStorage.buttons = true;

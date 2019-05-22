@@ -1,6 +1,6 @@
 (function(){
     var app = angular.module("sensorApp");
-    app.controller('devicesCtrl', function($scope, $sessionStorage, $localStorage, $location, gatewayService, autentificationService, networkService, SENSOR_TYPE){
+    app.controller('devicesCtrl', function($scope, $sessionStorage, $localStorage, $location, $timeout, $window, gatewayService, autentificationService, networkService, SENSOR_TYPE){
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
@@ -26,12 +26,11 @@
             $sessionStorage.buttons = true;
             $sessionStorage.cards = false;
             delete $sessionStorage.netId;
-            $location.path('/sensorsHome/networks')
-        }
-        if(!$sessionStorage.netId){
-            $scope.noNetworkSelected = true;
-        }else{
-            $scope.noNetworkSelected = false;
+            $location.path('/sensorsHome/networks');
+            $timeout(function(){
+                $window.location.reload();
+
+            }, 100)
         }
         $scope.backButton = true;
             $scope.expandSelected = function(sensor){

@@ -3,8 +3,7 @@
             <p>{{::vm.titleGrid}}</p>
         </div>
 
-        <div class="noData" ng-if="noNetworkSelected">You didn't selected any network. Go <a ng-click="back()">back</a> and select one.</div>
-        <div class="container-buttonGrid" style="margin-bottom: 10px;" ng-if="!noNetworkSelected">
+        <div class="container-buttonGrid" style="margin-bottom: 10px;">
             <button type="button" class="btn buttonNetAndAdd" ng-click="back()" ng-if ="backButton" title="Back to selection"
                 style="margin-right: 5px;">
                 <span>Networks</span>

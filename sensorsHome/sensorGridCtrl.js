@@ -1,6 +1,6 @@
 (function(){
 var app = angular.module("sensorApp");
-app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, $location, autentificationService, sensorModelService, SENSOR_TYPE,hubConnection, gatewayService, networkService){
+app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, $location, $timeout, $window, autentificationService, sensorModelService, SENSOR_TYPE,hubConnection, gatewayService, networkService){
     var vm = this;
     vm.titleGrid = SENSOR_TYPE.TITLE;
     if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
@@ -27,21 +27,14 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
         $sessionStorage.buttons = true;
         $sessionStorage.cards = false;
         delete $sessionStorage.netId;
-        $location.path('sensorsHome/networks')
-    }
-    if(!$sessionStorage.netId){
-        $scope.noNetworkSelected = true;
-    }else{
-        $scope.noNetworkSelected = false;
-    }
-    
-    $scope.home = true;
+        $location.path('sensorsHome/networks');
+        $timeout(function(){
+            $window.location.reload();
 
-    if($sessionStorage.home == false ){
-        $scope.home = false;
+        }, 100)
     }
     $scope.expandSelected = function(sensor){
-        $scope.userSensors.forEach(function(val){
+        $scope.sensors.forEach(function(val){
             val.expanded=false;
             $scope.editLocation = true;
         })
@@ -59,13 +52,13 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
         $scope.networkName = $sessionStorage.networkName;
         autentificationService.getUserSensors(user, $sessionStorage.netId, page, pageSize)
             .then(function(response){
-                $scope.userSensors = response.data;
-                for(var i=0; i<$scope.userSensors.length; i++){
-                    $scope.userSensors[i].productionDate = $scope.userSensors[i].productionDate.substr(0, 10)+ " "+ $scope.userSensors[i].productionDate.substr(11, 5)
+                $scope.sensors = response.data;
+                for(var i=0; i<$scope.sensors.length; i++){
+                    $scope.sensors[i].productionDate = $scope.sensors[i].productionDate.substr(0, 10)+ " "+ $scope.sensors[i].productionDate.substr(11, 5)
                 }
                 $scope.loading=false;
                 $scope.sensorHomeData = true;
-                if($scope.userSensors.length == 0){
+                if($scope.sensors.length == 0){
                     $scope.noData = true;
                     $scope.noSensors = true;
                     $scope.sensorHomeData = false;
@@ -158,7 +151,7 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
                                 }
                             }
                         
-                            $scope.userSensors = $scope.actsens;
+                            $scope.sensors = $scope.actsens;
                             $scope.act = true;
                         
                         })
@@ -337,7 +330,6 @@ app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, 
             }
         }
         $scope.startEditLocation = function( name, uploadInterval, lat, long){
-            $sessionStorage.home = false;
             $sessionStorage.name = name;
             $sessionStorage.uplInt = uploadInterval;
             $sessionStorage.location = {lat: lat, lng: long};

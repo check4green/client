@@ -1,7 +1,7 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("logInCtrl", function ($scope, autentificationService, $localStorage, $sessionStorage, $location) {
+   app.controller("logInCtrl", function ($scope, autentificationService, $localStorage, $sessionStorage, $location, $timeout, $window) {
         var vm = this;
         var value = true;
         
@@ -24,6 +24,10 @@
                   $location.path('sensorsHome/networks');
                   $sessionStorage.email = email;
                   $sessionStorage.password = password;
+                  $timeout(function(){
+                    $window.location.reload();
+    
+                }, 100)
               })
               .catch(function(response){
                 $scope.loading = false;

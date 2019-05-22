@@ -5,7 +5,7 @@
         controller: 'gatewayCtrl',
         controllerAs : 'vm'
     });
-    app.controller('gatewayCtrl', function($scope, $sessionStorage, $localStorage, $location, gatewayService){
+    app.controller('gatewayCtrl', function($scope, $sessionStorage, $localStorage, $location, $timeout, $window, gatewayService){
         var vm = this;
         vm.titleGrid = 'Gateways';
         $scope.editLocationButton = true;
@@ -36,15 +36,12 @@
             $sessionStorage.cards = false;
             delete $sessionStorage.netId;
             $location.path('sensorsHome/networks');
+            $timeout(function(){
+                $window.location.reload();
+
+            }, 100)
         }
-        if(!$sessionStorage.netId){
-            $scope.noNetworkSelected = true;
-        }else{
-            $scope.noNetworkSelected = false;
-        }
-        
         var networkId = $sessionStorage.netId
-        
         function getGateways(user, netId, page, pageSize){
             $scope.loadingGateways = true;
             $scope.networkName = $sessionStorage.networkName;
