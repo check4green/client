@@ -24,6 +24,9 @@
                         .then(function(response){
                             $scope.gateway = response.data;
                             $scope.loadingGateways = false;
+                            for(var i=0; i<$scope.gateway.length; i++){
+                                $scope.gateway[i].lastSensorDate = $scope.gateway[i].lastSensorDate.substr(0, 10)+ " "+ $scope.gateway[i].lastSensorDate.substr(11, 5)
+                            }
                             if($scope.gateway.length == 0){
                                 $scope.noGateway = true;
                             }else{

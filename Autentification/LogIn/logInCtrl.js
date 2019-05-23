@@ -24,6 +24,7 @@
                   $location.path('sensorsHome/networks');
                   $sessionStorage.email = email;
                   $sessionStorage.password = password;
+                  $sessionStorage.hideSensorMenu = true;
                   $timeout(function(){
                     $window.location.reload();
     

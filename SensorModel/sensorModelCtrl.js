@@ -5,18 +5,8 @@
     function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $location, $sessionStorage, sensorModelService, $rootScope, hubConnection, $timeout, $window) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
-        //network buttons
-        if($sessionStorage.buttons == true){
-            $scope.buttons = true
-        }else {
-            $scope.buttons = false;
-            $scope.backButton = true;
-        }
-        if($sessionStorage.networkName){
-            $scope.networkName = $sessionStorage.networkName;
-        }
+        $scope.networkName = $sessionStorage.networkName;
         $scope.backButton = true;
-
         $scope.back = function(){
             $sessionStorage.gate = false;
             $scope.sensorData = false;
@@ -37,6 +27,7 @@
         }else {
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
+
         vm.expandSelected = function(sensor){
             $scope.sensors.forEach(function(val){
                 val.expanded=false;
@@ -49,16 +40,18 @@
         };
         $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
-
         }
+
         $scope.sensorData = false;
         $scope.noData = false;
         $scope.change = true;
         $scope.searchSensor ='';
-        
         $scope.loading = true;
+        vm.currentPage = 1;
+        vm.sensPerPage = 50;
         function getSens(user, networkId, page, size){
             $scope.networkName = $sessionStorage.networkName;
+            $scope.loading = true;
             sensorModelService.getSensors(user, networkId, page, size)
                 .then(function(response){
                     $scope.sensors = response.data;
@@ -81,9 +74,6 @@
                     $scope.sensorData = false;
                 })
         }
-        
-        vm.currentPage = 1;
-        vm.sensPerPage = 50;
         sensorModelService.getAllSensors(encodeduser, $sessionStorage.netId, vm.sensPerPage, )
             .then(allSensors)
             .catch(function(){
@@ -94,7 +84,7 @@
             $scope.totalSensors = data;
             $scope.activeCount =0;
             $scope.inactiveCount =0;
-            sensorModelService.getSensors(encodeduser, $sessionStorage.networkId, 1, data)
+            sensorModelService.getSensors(encodeduser, $sessionStorage.netId, 1, data)
                 .then(function(response){
                     var actSensors = response.data;
                     for(var i=0; i<response.data.length; i++){
@@ -115,9 +105,6 @@
                     
             }
             $scope.$watch('vm.currentPage', vm.setPage);
-            $scope.loading = true;
-            $scope.sensorData = false;
-            $scope.noSensorData = false;
             $scope.setPageSize = function(modelSize){
                 if(modelSize){
                     vm.sensPerPage = modelSize;
@@ -190,85 +177,6 @@
                 }
             }
              
-        }
-        
-         $scope.measureUnit = function(sensTypeId){
-            sensorModelService.getMeasureId(sensTypeId)
-                 .then(idSuccess)
-            function idSuccess(data){
-                $scope.id= data.measureId;
-                sensorModelService.getUnitOfMeasure($scope.id)
-                    .then(unitOfMeasureSuccess)
-                function unitOfMeasureSuccess(data){
-                    $scope.unitOfMeasure = data.unitOfMeasure;
-                }
-            }
-        }
-        $scope.outOfRange = function(sensType){
-            if(sensType == 1){
-                $scope.outOfRangePositiveError = 401;
-                $scope.outOfRangeNegativeError = -1;
-            } else if(sensType == 2){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -51;
-            }else if(sensType == 3){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -50;
-            }
-            else if(sensType == 5){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -1;
-            }
-            else if(sensType == 7){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -1;
-            }
-        }
-        $scope.vibrationSens = function(id){
-            if(id == 6){
-                $scope.vibrations = true;
-            }
-        }
-        $scope.getLastRead = function(id){
-            hubConnection.connectingToHub();
-            $scope.noRead = false;
-            $scope.detailsData = false;
-            $scope.loadingDetails = true;
-            sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1, )
-                .then(measureSuccess)
-                .catch(measureError)
-            function measureSuccess(measurement){
-                $rootScope.lastRead = measurement;
-                for(var i=0; i<$rootScope.lastRead.length; i++){
-                    $rootScope.lastRead[i].readingDate = $rootScope.lastRead[i].readingDate.substr(0,10)+ " "+$rootScope.lastRead[i].readingDate.substr(11,5)
-                }
-                if($rootScope.lastRead == 0){
-                    $scope.noRead = true;
-                    $scope.loadingDetails = false;
-                    $scope.detailsData = true;
-                } else{
-                    $scope.noRead = false;
-                    $scope.detailsData = true;
-                    $scope.loadingDetails = false;
-                }
-            }
-            function measureError(){
-                $scope.noRead = true;
-                $scope.loadingDetails = false;
-                $scope.detailsData = true;
-            }
-            $rootScope.lastRead = null;
-        }
-        $scope.editDisplay = false;
-        $scope.editButton  = true;
-        $scope.getSensor = function(name,id){
-            $sessionStorage.sensorId = id;
-            $sessionStorage.name = name;
-        }
-        $scope.startEditLocation = function(name, uploadInterval, lat, long){
-            $sessionStorage.name = name;
-            $sessionStorage.uplInt = uploadInterval;
-            $sessionStorage.location = {lat: lat, lng: long};
         }
         if($sessionStorage.cards == true){
             $scope.cards = true;
@@ -345,6 +253,84 @@
             $sessionStorage.detail = false;
             $scope.sensName = false;
         }
+        
+         $scope.measureUnit = function(sensTypeId){
+            sensorModelService.getMeasureId(sensTypeId)
+                 .then(idSuccess)
+            function idSuccess(data){
+                $scope.id= data.measureId;
+                sensorModelService.getUnitOfMeasure($scope.id)
+                    .then(unitOfMeasureSuccess)
+                function unitOfMeasureSuccess(data){
+                    $scope.unitOfMeasure = data.unitOfMeasure;
+                }
+            }
+        }
+        $scope.outOfRange = function(sensType){
+            if(sensType == 1){
+                $scope.outOfRangePositiveError = 401;
+                $scope.outOfRangeNegativeError = -1;
+            } else if(sensType == 2){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -51;
+            }else if(sensType == 3){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -50;
+            }
+            else if(sensType == 5){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -1;
+            }
+            else if(sensType == 7){
+                $scope.outOfRangePositiveError = 101;
+                $scope.outOfRangeNegativeError = -1;
+            }
+            else if(sensType == 6){
+                $scope.vibrations = true;
+            }
+        }
+        $scope.getLastRead = function(id){
+            hubConnection.connectingToHub();
+            $scope.noRead = false;
+            $scope.detailsData = false;
+            $scope.loadingDetails = true;
+            sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1, )
+                .then(measureSuccess)
+                .catch(measureError)
+            function measureSuccess(measurement){
+                $rootScope.lastRead = measurement;
+                for(var i=0; i<$rootScope.lastRead.length; i++){
+                    $rootScope.lastRead[i].readingDate = $rootScope.lastRead[i].readingDate.substr(0,10)+ " "+$rootScope.lastRead[i].readingDate.substr(11,5)
+                }
+                if($rootScope.lastRead == 0){
+                    $scope.noRead = true;
+                    $scope.loadingDetails = false;
+                    $scope.detailsData = true;
+                } else{
+                    $scope.noRead = false;
+                    $scope.detailsData = true;
+                    $scope.loadingDetails = false;
+                }
+            }
+            function measureError(){
+                $scope.noRead = true;
+                $scope.loadingDetails = false;
+                $scope.detailsData = true;
+            }
+            $rootScope.lastRead = null;
+        }
+        $scope.editDisplay = false;
+        $scope.editButton  = true;
+        $scope.getSensor = function(name,id){
+            $sessionStorage.sensorId = id;
+            $sessionStorage.name = name;
+        }
+        $scope.startEditLocation = function(name, uploadInterval, lat, long){
+            $sessionStorage.name = name;
+            $sessionStorage.uplInt = uploadInterval;
+            $sessionStorage.location = {lat: lat, lng: long};
+        }
+        
     }]);
 
 app.directive('caGaValidation', function() {
