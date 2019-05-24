@@ -15,7 +15,7 @@ app.directive('measurements', function(){
                 $scope.chartButton = false;
                 $scope.editLocation = false;
                 $scope.gatewayButton = false;
-                hubConnection.connectingToHub();
+                //hubConnection.connectingToHub();
 
                 if($scope.measurementsDisplay == false){
                     $scope.measurementsDisplay = true;

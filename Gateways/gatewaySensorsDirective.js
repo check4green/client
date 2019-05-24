@@ -25,6 +25,11 @@
                     gatewayService.gatewaySensors($scope.encodeduser, $sessionStorage.netId, $sessionStorage.gatewayEditId)
                         .then(function(response){
                             $scope.gatewaySensors = response.data;
+                            for(var i=0; i<$scope.gatewaySensors.length; i++){
+                                if($scope.gatewaySensors[i].lastReadingDate){
+                                    $scope.gatewaySensors[i].lastReadingDate = $scope.gatewaySensors[i].lastReadingDate.substr(0,10)+ " " +$scope.gatewaySensors[i].lastReadingDate.substr(11,5);
+                                }
+                            }
                             $scope.loadingSensors = false;
                             if($scope.gatewaySensors.length == 0){
                                 $scope.noSensors = true;
