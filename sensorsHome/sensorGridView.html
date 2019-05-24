@@ -10,12 +10,8 @@
             </button>
         </div>
         <div ng-show="loading" class="loader"></div>
-        <div style="height: 100px;"></div>
-        
         <div ng-show="noData && !loading " class="noData">Currently you don't have any devices registered on this network</div>
-        
         <div ng-show="sensorHomeData && !noData && !loading" class="table-overflow">
-
             <div class="container-buttonGrid" ng-show="!detail">
                 <div class="container-leftButtons">
                     <div  class="form-group measurementsContainerSet" style="margin-left: 5px;" >
@@ -38,7 +34,6 @@
                             </div>
                         </div>
                     </div>
-                            
                 </div>
                 <div class="grow"></div>
                 <div class="container-rightButtons">
@@ -51,16 +46,13 @@
                         </div>
                      </div>
                 </div>
-
             </div>
-
             <div class="measurementsTotalReadings" ng-if="!detail">
                 <label style="font-weight: initial;">Network: <b>{{networkName}}</b>.</label>
                 <label style="font-weight: initial;">Total Sensors: <b>{{allSensors}}</b>.</label>
                 <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeCount}}</b>,</label>
                 <label style="font-weight: initial;">inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></label>
             </div>
-       
             <table class="table" ng-if="grid">
                 <thead>
                     <tr>
@@ -69,11 +61,8 @@
                         <td>Status</td>
                         <td></td>
                     </tr>
-
                 </thead>
-
                 <tbody>
-
                     <tr ng-repeat-start="sensor in filterSensors = (sensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
                         <td>{{$index+1}}</td>
                         <td>{{sensor.name}}</td>
@@ -85,7 +74,6 @@
                             <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="expandSelected(sensor); getLastRead(sensor.id); measureUnit(sensor.sensorTypeId); outOfRangeAllSens(sensor.sensorTypeId); getSensor(sensor.name, sensor.id, sensor.address); showSensorGateway(sensor.id)">+</button>
                             <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false; disconnectFromHub()">-</button>
                         </td>
-
                     </tr>
                     <tr ng-if="sensor.expanded" ng-repeat-end="" class="table-overflow">
                         <td colspan="8" class="subTable">
@@ -108,31 +96,24 @@
                                 <delete-sensor></delete-sensor>
                             </div>
                         </td>
-
                     </tr>
                 </tbody>
             </table>
-       
-        
         </div>
         <!-- CARDS -->
-
         <div class="container-rowCards" ng-show ="cards && !loading">
             <div class="column" ng-repeat= "sensor in filterSensors = (sensors | filter: filterSearch) | limitTo: sensPerPage: sensPerPage*(currentPage-1)">
                 <div class="card">
                     <div class="title">
                         <b> {{$index+1}}. {{sensor.name}}</b>
                     </div>
-
                     <div class="status">
                         <span class="label label-success" ng-if="sensor.active == true">Active</span>
                         <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
                     </div>
-
                     <div class="container-deleteB">
                         <delete-sensor></delete-sensor>
                     </div>
-
                     <div class="buttons">
                         <button  type="button" class="button-cardView buttonNetAndAdd" ng-click=" chart(sensor.id); measureUnit(sensor.sensorTypeId); getSensor( sensor.name, sensor.id, sensor.address); measurementSensor(sensor.id); startMeasurements(); startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude); details(); outOfRangeAllSens(sensor.sensorTypeId);">
                             Details</button>
@@ -141,12 +122,9 @@
                         <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startDelete(sensor); getSensor(sensor.name, sensor.id, sensor.address)">
                             Delete</button>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
         <div class="container-buttonRB" >
             <div ng-if="sensName">
                 <b>{{name}}</b>
@@ -163,9 +141,7 @@
                 <span>Refresh</span>
                 <i class="fas fa-redo-alt"></i>
             </button>
-
         </div>
-
         <!-- 2 cards-->
         <chartd3></chartd3>
         <measurements></measurements>
