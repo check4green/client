@@ -8,23 +8,16 @@
     app.controller('gatewayCtrl', function($scope, $sessionStorage, $localStorage, $location, $timeout, $window, gatewayService){
         var vm = this;
         vm.titleGrid = 'Gateways';
+        var networkId = $sessionStorage.netId;
+        $scope.networkName = $sessionStorage.networkName;
         $scope.editLocationButton = true;
         $scope.editButton = true;
-        if($sessionStorage.buttons == true){
-            $scope.buttons = true
-        }else {
-            $scope.buttons = false;
-            $scope.backButton = true;
-        }
-        if($sessionStorage.netName){
-            $scope.networkName = $sessionStorage.netName
-        }
+        $scope.backButton = true;
         if($localStorage.email && $localStorage.password){
             var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
         }else {
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
-        $scope.backButton = true;
         $scope.back = function(){
             $sessionStorage.gate = false;
             $scope.gatewayData = false;
@@ -41,10 +34,8 @@
 
             }, 100)
         }
-        var networkId = $sessionStorage.netId
         function getGateways(user, netId, page, pageSize){
             $scope.loadingGateways = true;
-            $scope.networkName = $sessionStorage.networkName;
             gatewayService.getGateways(user, netId, page, pageSize)
                     .then(function(response){
                         $scope.gateways = response.data;
@@ -166,13 +157,6 @@
             $sessionStorage.gatewayName = name;
             $sessionStorage.gatewayLat = latitude;
             $sessionStorage.gatewayLong = longitude;
-        }
-    
-        
-        $scope.getNetwork = function(network){
-            $sessionStorage.networkName = network.name;
-            $sessionStorage.netId = network.id;
-            
         }
         $scope.startEditLocation = function( name, lat, long){
             $sessionStorage.name = name;

@@ -3,9 +3,7 @@
    var app = angular.module("sensorApp");
    app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $window, $location, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
         var vm = this;
-
         vm.titleGrid = SENSOR_TYPE.TITLE;
-
         if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
           var encodeduser = btoa($localStorage.email+ ':'+ $localStorage.password)
         }else{
@@ -18,7 +16,6 @@
       }
       $scope.cancelCards = function(){
         $sessionStorage.cards = false;
-        $sessionStorage.buttons = true;
         $sessionStorage.gatewayCards = false;
         $sessionStorage.showNetworkDetails = false;
       }

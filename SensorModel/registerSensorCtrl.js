@@ -27,7 +27,6 @@
                 var encodeduser = btoa($sessionStorage.email + ':' + $sessionStorage.password);
             }
             $scope.sensorRegister = function(registerName, registerDays, registerHours, registerMinutes, registerClientAddress, sensors){
-               
                 if(registerDays == null){
                     registerDays = 0;
                 }
@@ -70,34 +69,27 @@
                     $scope.sensorRegisterError = true;
                     $scope.sensorRegisterSuccess = false;
                 });
-            // $scope.registerProductionDate ='';
-            // $scope.registerUploadInterval = '';
-            // $scope.registerBatchSize = '';
-            // $scope.registerGatewayAddress = '';
-            // $scope.registerClientAddress = '';
             };
-            
-                $scope.today = new Date();
-                var day = $scope.today.getDate();
-                var month = $scope.today.getMonth() +1;
-                var year = $scope.today.getFullYear();
-                var hour = $scope.today.getHours();
-                var minutes = $scope.today.getMinutes();
-                if(hour< 10){
-                     hour = '0' + hour;
-                 }
-                if(minutes< 10){
-                    minutes ='0' + minutes;
-                }
-                $scope.time = hour +':' + minutes;
-                if (day< 10){
-                    day = '0'+ day;
-                }
-                if(month< 10){
-                    month = '0' + month;
-                }
-                $scope.maxDate = year+ '-' + month +'-'+  day + 'T'+ $scope.time;
-                
+            $scope.today = new Date();
+            var day = $scope.today.getDate();
+            var month = $scope.today.getMonth() +1;
+            var year = $scope.today.getFullYear();
+            var hour = $scope.today.getHours();
+            var minutes = $scope.today.getMinutes();
+            if(hour< 10){
+                 hour = '0' + hour;
+             }
+            if(minutes< 10){
+                minutes ='0' + minutes;
+            }
+            $scope.time = hour +':' + minutes;
+            if (day< 10){
+                day = '0'+ day;
+            }
+            if(month< 10){
+                month = '0' + month;
+            }
+            $scope.maxDate = year+ '-' + month +'-'+  day + 'T'+ $scope.time;
             var timer;
             $scope.cancelRegisterSensor = function(){
                 $window.history.back();
@@ -114,11 +106,6 @@
                     $window.location.reload();
                 },300);
                 $timeout.cancel(timer)
-                // $scope.registerProductionDate ='';
-                // $scope.registerUploadInterval = '';
-                // $scope.registerBatchSize = '';
-                // $scope.registerGatewayAddress = '';
-                // $scope.registerClientAddress = '';
             };
         }]);
 

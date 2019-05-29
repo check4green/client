@@ -71,7 +71,7 @@
                             <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
                         </td>
                         <td class="sensorModelContainerInfo">
-                            <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="expandSelected(sensor); getLastRead(sensor.id); measureUnit(sensor.sensorTypeId); outOfRangeAllSens(sensor.sensorTypeId); getSensor(sensor.name, sensor.id, sensor.address); showSensorGateway(sensor.id)">+</button>
+                            <button type="button" class="btn btn-success" ng-if="!sensor.expanded" ng-click="expandSelected(sensor); getLastRead(sensor.id); measureUnit(sensor.sensorTypeId); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId); showSensorGateway(sensor.id)">+</button>
                             <button type="button" class="btn btn" ng-if="sensor.expanded" ng-click="sensor.expanded = false; disconnectFromHub()">-</button>
                         </td>
                     </tr>
@@ -115,11 +115,11 @@
                         <delete-sensor></delete-sensor>
                     </div>
                     <div class="buttons">
-                        <button  type="button" class="button-cardView buttonNetAndAdd" ng-click=" chart(sensor.id); measureUnit(sensor.sensorTypeId); getSensor( sensor.name, sensor.id, sensor.address); measurementSensor(sensor.id); startMeasurements(); startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude); details(); outOfRangeAllSens(sensor.sensorTypeId);">
+                        <button  type="button" class="button-cardView buttonNetAndAdd" ng-click=" chart(sensor.id); measureUnit(sensor.sensorTypeId); measurementSensor(sensor.id); startMeasurements(); startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude); details(); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId);">
                             Details</button>
-                        <button type="button" class="button-cardView buttonNetAndAdd" ui-sref="sensorsHome.editSensor" ng-click="getSensor(sensor.name, sensor.id, sensor.address)">
+                        <button type="button" class="button-cardView buttonNetAndAdd" ui-sref="sensorsHome.editSensor">
                             Edit</button>
-                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startDelete(sensor); getSensor(sensor.name, sensor.id, sensor.address)">
+                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startDelete(sensor);">
                             Delete</button>
                     </div>
                 </div>

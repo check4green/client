@@ -2,209 +2,205 @@
     "use strict";
    var app = angular.module("sensorApp");
    app.controller("settingsCtrl", function ($scope, autentificationService, $localStorage, $sessionStorage) {
-          var vm = this;
-          if ($localStorage.email && $localStorage.password){
-          var encodeduser = btoa($localStorage.email +':' + $localStorage.password);
+      var vm = this;
+      if ($localStorage.email && $localStorage.password){
+        var encodeduser = btoa($localStorage.email +':' + $localStorage.password);
+      }else{
+        var encodeduser = btoa($sessionStorage.email +':' + $sessionStorage.password);
+      }
+      autentificationService.getUser(encodeduser)
+        .then(function(response){
+          $scope.user = response.data;
+          if($localStorage.password){
+            $scope.user.password = $localStorage.password;
+          }else {
+            $scope.user.password = $sessionStorage.password;
+          }
+          $sessionStorage.user = $scope.user;
+        })
+      $sessionStorage.home = true;
+      vm.showUserName = false;
+      vm.showEmailAddress = false;
+      vm.showPassword = false;
+      vm.showCompanyName = false;
+      vm.showCountry = false;
+      vm.showPhoneNumber = false;
+      vm.showSettingsMessage = false;
+      vm.showSettingsError = false;
+      vm.collapsUserName = function(){
+        if(vm.showUserName == false){
+          vm.showUserName = true;
+        } else{
+          vm.showUserName = false;
+        }
+      }
+      vm.collapsEmailAddress = function(){
+        if(vm.showEmailAddress == false){
+          vm.showEmailAddress = true;
         }else{
-          var encodeduser = btoa($sessionStorage.email +':' + $sessionStorage.password);
+          vm.showEmailAddress = false;
         }
-          autentificationService.getUser(encodeduser)
-            .then(function(response){
-              $scope.user = response.data;
-              if($localStorage.password){
-                $scope.user.password = $localStorage.password;
-              }else {
-                $scope.user.password = $sessionStorage.password;
+      }
+      vm.collapsPassword = function(){
+        if(vm.showPassword == false){
+          vm.showPassword = true;
+        }else{
+          vm.showPassword = false;
+        }
+      }
+      vm.collapsCompanyName = function(){
+        if(vm.showCompanyName == false){
+          vm.showCompanyName = true;
+        }else{
+          vm.showCompanyName = false;
+        }
+      }
+      vm.collapsCountry = function(){
+        if(vm.showCountry == false){
+          vm.showCountry = true;
+        }else{
+          vm.showCountry = false;
+        }
+      }
+      vm.collapsPhoneNumber = function(){
+        if(vm.showPhoneNumber == false){
+          vm.showPhoneNumber = true;
+        }else{
+          vm.showPhoneNumber = false;
+        }
+      }
+      
+      $scope.saveChanges = function(editFirstname, editLastname, currentEmail, editEmail, confirmEmail, password, editPassword, confirmEditPass, oldPassword, editCompany, editCountry, editPhone){
+        if($localStorage.email && $localStorage.password){
+          $scope.email = $localStorage.email;
+          $scope.password = $localStorage.password;
+        }else{
+          $scope.email = $sessionStorage.email;
+          $scope.password = $sessionStorage.password;
+        }
+        if(editFirstname && editLastname){
+          $scope.user.firstName = editFirstname;
+          $scope.user.lastName = editLastname;
+        }
+        if((currentEmail == $scope.email) && editEmail && confirmEmail && (password ==$scope.password)){
+          $scope.user.email = editEmail;
+        }
+        if((oldPassword == $scope.password) && editPassword){
+          $scope.user.password = editPassword;
+        }
+        if(editCompany){
+          $scope.user.companyName = editCompany;
+        }
+        if(editCountry){
+          $scope.user.country = editCountry.name;
+        }
+        if(editPhone){
+          $scope.user.phoneNumber = editPhone;
+        }
+        if(oldPassword && oldPassword !=$scope.password){
+                $scope.user ='';
+          }
+        if (password && password !=$scope.password){
+          $scope.user = '';
+        }
+        if(editPhone && editPhone.indexOf('+') !=0){
+          $scope.user ='';
+        }
+        if((!editFirstname && editLastname) || (editFirstname && !editLastname)){
+          $scope.user='';
+        }
+        if(editEmail != confirmEmail){
+          $scope.user ='';
+        }
+        if(currentEmail &&(currentEmail != $scope.email)){
+          $scope.user='';
+        }
+        if((!currentEmail && editEmail && confirmEmail) || (currentEmail && !editEmail && confirmEmail) || (currentEmail && editEmail && !confirmEmail) ||(currentEmail && !editEmail && !confirmEmail) || (!currentEmail && editEmail && !confirmEmail) || (!currentEmail && !editEmail && confirmEmail)){
+          $scope.user ='';
+        }
+        if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
+          $scope.user='';
+        }
+        if(!editFirstname && !editLastname && !editPassword && !oldPassword && !editEmail && !currentEmail && !confirmEmail && !editCompany && !editCountry && !editPhone){
+          $scope.user ='';
+        }
+        var encodedData = btoa($scope.email + ':' + $scope.password);
+        autentificationService.settings(encodedData, $scope.user)
+          .then(function(){
+              vm.showSettingsMessage = true;
+              vm.showSettingsError = false;
+              $scope.message = 'Account edited successfully!';
+              if(editPassword && oldPassword == $scope.password){
+                  $scope.password = editPassword;
               }
-              $sessionStorage.user = $scope.user;
-            })
-            $sessionStorage.home = true;
-            vm.showUserName = false;
-            vm.showEmailAddress = false;
-            vm.showPassword = false;
-            vm.showCompanyName = false;
-            vm.showCountry = false;
-            vm.showPhoneNumber = false;
-            vm.collapsUserName = function(){
-              if(vm.showUserName == false){
-                vm.showUserName = true;
-              } else{
-                vm.showUserName = false;
+              if (editEmail && (password ==$scope.password)){
+                if($localStorage.email && $localStorage.password){
+                  $localStorage.email = editEmail;
+                }else{
+                  $sessionStorage.email = editEmail;
+                }
               }
-            }
-            vm.collapsEmailAddress = function(){
-              if(vm.showEmailAddress == false){
-                vm.showEmailAddress = true;
-              }else{
-                vm.showEmailAddress = false;
+              if(editEmail && currentEmail == $scope.email){
+                if($localStorage.email && $localStorage.password){
+                  $localStorage.email = editEmail;
+                  $localStorage.password = editPassword
+                }else{
+                  $sessionStorage.email = editEmail;
+                  $sessionStorage.password = editPassword;
+                }
               }
-            }
-            vm.collapsPassword = function(){
-              if(vm.showPassword == false){
-                vm.showPassword = true;
-              }else{
-                vm.showPassword = false;
-              }
-            }
-            vm.collapsCompanyName = function(){
-              if(vm.showCompanyName == false){
-                vm.showCompanyName = true;
-              }else{
-                vm.showCompanyName = false;
-              }
-            }
-            vm.collapsCountry = function(){
-              if(vm.showCountry == false){
-                vm.showCountry = true;
-              }else{
-                vm.showCountry = false;
-              }
-            }
-            vm.collapsPhoneNumber = function(){
-              if(vm.showPhoneNumber == false){
-                vm.showPhoneNumber = true;
-              }else{
-                vm.showPhoneNumber = false;
-              }
-            }
+          })
+          .catch(function(response){
             vm.showSettingsMessage = false;
-            vm.showSettingsError = false;
-
-
-        $scope.saveChanges = function(editFirstname, editLastname, currentEmail, editEmail, confirmEmail, password, editPassword, confirmEditPass, oldPassword, editCompany, editCountry, editPhone){
-          if($localStorage.email && $localStorage.password){
-            $scope.email = $localStorage.email;
-            $scope.password = $localStorage.password;
-          }else{
-            $scope.email = $sessionStorage.email;
-            $scope.password = $sessionStorage.password;
-          }
-          if(editFirstname && editLastname){
-            $scope.user.firstName = editFirstname;
-            $scope.user.lastName = editLastname;
-          }
-          if((currentEmail == $scope.email) && editEmail && confirmEmail && (password ==$scope.password)){
-            $scope.user.email = editEmail;
-          }
-          if((oldPassword == $scope.password) && editPassword){
-            $scope.user.password = editPassword;
-          }
-          if(editCompany){
-            $scope.user.companyName = editCompany;
-          }
-          if(editCountry){
-            $scope.user.country = editCountry.name;
-          }
-          if(editPhone){
-            $scope.user.phoneNumber = editPhone;
-          }
-          if(oldPassword && oldPassword !=$scope.password){
-                  $scope.user ='';
-            }
-          if (password && password !=$scope.password){
-                  $scope.user = '';
-            }
-            if(editPhone && editPhone.indexOf('+') !=0){
-              $scope.user ='';
-            }
-            if((!editFirstname && editLastname) || (editFirstname && !editLastname)){
-              $scope.user='';
-            }
-            if(editEmail != confirmEmail){
-              $scope.user ='';
-            }
-            if(currentEmail &&(currentEmail != $scope.email)){
-              $scope.user='';
-            }
-            if((!currentEmail && editEmail && confirmEmail) || (currentEmail && !editEmail && confirmEmail) || (currentEmail && editEmail && !confirmEmail) ||(currentEmail && !editEmail && !confirmEmail) || (!currentEmail && editEmail && !confirmEmail) || (!currentEmail && !editEmail && confirmEmail)){
-              $scope.user ='';
-            }
-            if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
-              $scope.user='';
-            }
-            if(!editFirstname && !editLastname && !editPassword && !oldPassword && !editEmail && !currentEmail && !confirmEmail && !editCompany && !editCountry && !editPhone){
-              $scope.user ='';
-            }
-          var encodedData = btoa($scope.email + ':' + $scope.password);
-
-          autentificationService.settings(encodedData, $scope.user)
-            .then(function(){
-                vm.showSettingsMessage = true;
-                vm.showSettingsError = false;
-                $scope.message = 'Account edited successfully!';
-                if(editPassword && oldPassword == $scope.password){
-                    $scope.password = editPassword;
-                }
-                if (editEmail && (password ==$scope.password)){
-                  if($localStorage.email && $localStorage.password){
-                    $localStorage.email = editEmail;
-                  }else{
-                    $sessionStorage.email = editEmail;
-                  }
-                }
-                if(editEmail && currentEmail == $scope.email){
-                  if($localStorage.email && $localStorage.password){
-                    $localStorage.email = editEmail;
-                    $localStorage.password = editPassword
-                  }else{
-                    $sessionStorage.email = editEmail;
-                    $sessionStorage.password = editPassword;
-                  }
-                }
-            })
-            .catch(function(response){
-              vm.showSettingsMessage = false;
-              vm.showSettingsError = true;
-              $scope.error = response.data.message;
-              $scope.user = $sessionStorage.user;
-              if(oldPassword && oldPassword != $scope.password){
-                      vm.showSettingsError = true;
-                      vm.showSettingsMessage = false;
-                      $scope.error = 'The old password is incorrect.';
-                }
-              if (password && password != $scope.password){
-                      vm.showSettingsError = true;
-                      vm.showSettingsMessage = false;
-                      $scope.error = 'The password is incorrect.';
-                }
-                if(editPhone && editPhone.indexOf('+') !=0){
-                  vm.showSettingsError = true;
-                  vm.showSettingsMessage = false;
-                  $scope.error ='You have to enter the country dial code.'
-                }
-
-                if((!editFirstname && editLastname) || (editFirstname && !editLastname)){
-                  vm.showSettingsError = true;
-                  vm.showSettingsMessage = false;
-                  $scope.error ='To change your user name you have to fill both fields.'
-                }
-                if((!currentEmail && editEmail && confirmEmail) || (currentEmail && !editEmail && confirmEmail) || (currentEmail && editEmail && !confirmEmail) ||(currentEmail && !editEmail && !confirmEmail) || (!currentEmail && editEmail && !confirmEmail) || (!currentEmail && !editEmail && confirmEmail)){
-                  vm.showSettingsError = true;
-                  vm.showSettingsMessage = false;
-                  $scope.error ='To change your email you have to fill all fields.'
-                }
-                if(currentEmail &&(currentEmail != $scope.email)){
-                  $scope.error = 'The current email is incorrect'
-                }
-                if(editEmail != confirmEmail){
-                  vm.showSettingsError = true;
-                  vm.showSettingsMessage = false;
-                  $scope.error ='The emails do not match.'
-                }
-                if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
-                  vm.showSettingsError = true;
-                  vm.showSettingsMessage = false;
-                  $scope.error ='To change your password you have to fill all three fields.'
-                }
-                if(!editFirstname && !editLastname && !editPassword && !editEmail && !currentEmail && !confirmEmail && !oldPassword && !editCompany && !editCountry && !editPhone){
-                  vm.showSettingsError = true;
-                  vm.showSettingsMessage = false;
-                  $scope.error ='To change your account you have to fill some fields.'
-                }
-            })
-
-        }
-        $scope.countries = [
+            vm.showSettingsError = true;
+            $scope.error = response.data.message;
+            $scope.user = $sessionStorage.user;
+            if(oldPassword && oldPassword != $scope.password){
+                    vm.showSettingsError = true;
+                    vm.showSettingsMessage = false;
+                    $scope.error = 'The old password is incorrect.';
+              }
+            if (password && password != $scope.password){
+                    vm.showSettingsError = true;
+                    vm.showSettingsMessage = false;
+                    $scope.error = 'The password is incorrect.';
+              }
+              if(editPhone && editPhone.indexOf('+') !=0){
+                vm.showSettingsError = true;
+                vm.showSettingsMessage = false;
+                $scope.error ='You have to enter the country dial code.'
+              }
+              if((!editFirstname && editLastname) || (editFirstname && !editLastname)){
+                vm.showSettingsError = true;
+                vm.showSettingsMessage = false;
+                $scope.error ='To change your user name you have to fill both fields.'
+              }
+              if((!currentEmail && editEmail && confirmEmail) || (currentEmail && !editEmail && confirmEmail) || (currentEmail && editEmail && !confirmEmail) ||(currentEmail && !editEmail && !confirmEmail) || (!currentEmail && editEmail && !confirmEmail) || (!currentEmail && !editEmail && confirmEmail)){
+                vm.showSettingsError = true;
+                vm.showSettingsMessage = false;
+                $scope.error ='To change your email you have to fill all fields.'
+              }
+              if(currentEmail &&(currentEmail != $scope.email)){
+                $scope.error = 'The current email is incorrect'
+              }
+              if(editEmail != confirmEmail){
+                vm.showSettingsError = true;
+                vm.showSettingsMessage = false;
+                $scope.error ='The emails do not match.'
+              }
+              if((!oldPassword && editPassword) || (oldPassword && !editPassword)){
+                vm.showSettingsError = true;
+                vm.showSettingsMessage = false;
+                $scope.error ='To change your password you have to fill all three fields.'
+              }
+              if(!editFirstname && !editLastname && !editPassword && !editEmail && !currentEmail && !confirmEmail && !oldPassword && !editCompany && !editCountry && !editPhone){
+                vm.showSettingsError = true;
+                vm.showSettingsMessage = false;
+                $scope.error ='To change your account you have to fill some fields.'
+              }
+          })
+      }
+      $scope.countries = [
           {
             "name": "Argentina",
             "dialCode": "+54"

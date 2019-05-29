@@ -3,10 +3,6 @@
    <div ng-show="noDataChart" class="noData">No data</div>
    <div ng-show="dataChart" class="bg-table">
        <button type="button" class="btn btn-success refreshMeasurements" ng-if="detailsData" ng-click="chart(sensor.id)">Refresh</button>
-
-       <!-- <label class="checkbox-inline">
-           <input type="checkbox" ng-model="value" ng-click="showValues(value)"> Show values on chart.
-       </label> -->
        <div class="svgChart">
            <svg width="960" height="500" id="chart"></svg>
        </div>

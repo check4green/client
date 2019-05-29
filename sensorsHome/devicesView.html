@@ -10,7 +10,13 @@
                 </button>
             </div>
             <div ng-show="loading" class="loader"></div>
-            <div ng-show="noData" class="noData">Currently you don't have any devices registered on this network.</div>
+            <div ng-show="noData">
+                <div class="noData">Currently you don't have any devices registered on this network.</div>
+                <div style="text-align:center;">
+                    <button type="button" class="btn buttonNetAndAdd" ui-sref="sensorsHome.addSensor">Add sensor</button>
+                    <button type="button" class="btn buttonNetAndAdd" ui-sref="sensorsHome.addGateway">Add gateway</button>
+                </div>
+            </div>
             <div class="table-overflow" ng-show="!loading && !noData && devicesData">
                 <div class="container-buttonGrid" ng-show="!detail">
                     <div class="container-leftButtons">

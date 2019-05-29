@@ -38,7 +38,7 @@
 
         }
 });
-}())
+}());
 var app = angular.module('sensorApp');
 app.directive('ngEnter', function(){
   return function(scope, element, attrs){

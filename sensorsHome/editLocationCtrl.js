@@ -16,10 +16,8 @@ app.controller('editLocationCtrl', function($scope, $sessionStorage, $localStora
     }else{
         var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
     }
-    
     $scope.name = $sessionStorage.name;
     $scope.editLocation = function(){
-        console.log($sessionStorage.sens +" "+ $sessionStorage.gateWay);
         if($sessionStorage.sens == true){
             var name = $sessionStorage.name;
             var uploadInterval = $sessionStorage.uplInt;

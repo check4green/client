@@ -29,7 +29,7 @@
           $timeout(function(){
             $window.location.reload();
 
-        }, 100)
+          }, 100)
         }
       }
       $scope.logOut = function(){

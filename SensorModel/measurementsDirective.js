@@ -15,7 +15,6 @@ app.directive('measurements', function(){
                 $scope.chartButton = false;
                 $scope.editLocation = false;
                 $scope.gatewayButton = false;
-                //hubConnection.connectingToHub();
 
                 if($scope.measurementsDisplay == false){
                     $scope.measurementsDisplay = true;
@@ -23,7 +22,6 @@ app.directive('measurements', function(){
                 }
             };
             $scope.cancelMeasurements = function(){
-                //hubConnection.disconnectFromHub();
                 $scope.measurementsButton = true;
                 $scope.gatewayButton = true;
                 $scope.editLocation = true;
@@ -115,7 +113,6 @@ app.factory("hubConnection", function($rootScope, sensorModelService, $sessionSt
         disconnectFromHub: disconnectFromHub,
     }
     function connectingToHub(){
-        
         $.connection.hub.url = "https://swiss-iot.azurewebsites.net/signalr/hubs";
         var address = $sessionStorage.sensorAddress;
         $.connection.hub.qs = {'address': address};

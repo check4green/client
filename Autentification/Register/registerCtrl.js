@@ -1,9 +1,9 @@
 (function(){
   "use strict";
-   var app = angular.module("sensorApp");
-   app.controller("registerCtrl", function ($scope, $location, $localStorage, $sessionStorage, autentificationService) {
-        var vm = this;
-        $scope.countries = [
+  var app = angular.module("sensorApp");
+  app.controller("registerCtrl", function ($scope, $location, $sessionStorage, autentificationService) {
+    var vm = this;
+    $scope.countries = [
           {
             "name": "Argentina",
             "dialCode": "+54"
@@ -129,85 +129,85 @@
             "dialCode": "+598"
           },
         ]
-        vm.showRegisterError = false;
-        $scope.register = function(registerFirstName, registerLastName, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
-          if (!registerCountry){
-            $scope.user ={
+    vm.showRegisterError = false;
+    $scope.register = function(registerFirstName, registerLastName, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
+      if (!registerCountry){
+        $scope.user ={
+          firstName:registerFirstName ,
+          lastName:registerLastName ,
+          email:registerEmail ,
+          password:registerPassword ,
+          companyName:registerCompany ,
+          country: 'Romania' ,
+          phoneNumber:'+40'+registerPhone
+         }
+         document.getElementById('inputPhone').value = '+40';
+       }
+       else{
+          $scope.user = {
               firstName:registerFirstName ,
               lastName:registerLastName ,
-              email:registerEmail ,
+              email:$sessionStorage.accountEmail ,
               password:registerPassword ,
               companyName:registerCompany ,
-              country: 'Romania' ,
-              phoneNumber:'+40'+registerPhone
-             }
-             document.getElementById('inputPhone').value = '+40';
-           }
-           else{
-              $scope.user = {
-                  firstName:registerFirstName ,
-                  lastName:registerLastName ,
-                  email:$sessionStorage.accountEmail ,
-                  password:registerPassword ,
-                  companyName:registerCompany ,
-                  country:registerCountry.name ,
-                  phoneNumber:registerCountry.dialCode+registerPhone
-                }
-         }
-          autentificationService.register($scope.user)
-            .then(function(){
-              $location.path('/sensorsHome/sensors');
-               $sessionStorage.email = $scope.user.email;
-               $sessionStorage.password = $scope.user.password;
-            })
-            .catch(function(response){
-              vm.showRegisterError = true;
-              $scope.error = response.data.message;
-            })
-        }
+              country:registerCountry.name ,
+              phoneNumber:registerCountry.dialCode+registerPhone
+            }
+     }
+      autentificationService.register($scope.user)
+        .then(function(){
+          $location.path('/sensorsHome/sensors');
+           $sessionStorage.email = $scope.user.email;
+           $sessionStorage.password = $scope.user.password;
+        })
+        .catch(function(response){
+          vm.showRegisterError = true;
+          $scope.error = response.data.message;
+        })
+    }
 
-    });
-    app.directive("validPassword", function(){
-      return{
-        require:'ngModel',
-        link: function(scope, elem, attrs, ctrl){
-          ctrl.$parsers.unshift(function(viewValue, $scope){
-            var noMatch = viewValue != scope.regForm.pass.$viewValue
-              ctrl.$setValidity('noMatch', !noMatch)
-          })
-        }
+  });
+  app.directive("validPassword", function(){
+    return{
+      require:'ngModel',
+      link: function(scope, elem, attrs, ctrl){
+        ctrl.$parsers.unshift(function(viewValue, $scope){
+          var noMatch = viewValue != scope.regForm.pass.$viewValue
+            ctrl.$setValidity('noMatch', !noMatch)
+        })
       }
-    });
-    app.directive('nameValid', function(){
-      return {
-        require: 'ngModel',
-        link: function(scope, element, attr, mCtrl){
-          function myValid(value){
-            if ((value.indexOf("-") == 0) || (value.indexOf('--') >-1)) {
-              mCtrl.$setValidity('charE', false);
-            } else{
-              mCtrl.$setValidity('charE', true);
-            }
-            return value;
+    }
+  });
+  app.directive('nameValid', function(){
+    return {
+      require: 'ngModel',
+      link: function(scope, element, attr, mCtrl){
+        function myValid(value){
+          if ((value.indexOf("-") == 0) || (value.indexOf('--') >-1)) {
+            mCtrl.$setValidity('charE', false);
+          } else{
+            mCtrl.$setValidity('charE', true);
           }
-          mCtrl.$parsers.push(myValid);
+          return value;
         }
-      };
-    });
-    app.directive('phoneValid', function(){
-      return {
-        require: 'ngModel',
-        link: function(scope, element, attr, ctrl){
-          function valid(value){
-            if ((value.indexOf('++') >-1)){
-              ctrl.$setValidity('charE', false);
-            } else{
-              ctrl.$setValidity('charE', true);
-            }
-            return value;
-          }
-          ctrl.$parsers.push(valid);
-        }
+        mCtrl.$parsers.push(myValid);
       }
-    });
-  }());
+    };
+  });
+  app.directive('phoneValid', function(){
+    return {
+      require: 'ngModel',
+      link: function(scope, element, attr, ctrl){
+        function valid(value){
+          if ((value.indexOf('++') >-1)){
+            ctrl.$setValidity('charE', false);
+          } else{
+            ctrl.$setValidity('charE', true);
+          }
+          return value;
+        }
+        ctrl.$parsers.push(valid);
+      }
+    }
+  });
+}());

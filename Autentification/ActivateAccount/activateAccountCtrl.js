@@ -18,5 +18,5 @@
                     $scope.error = response.data.message;
                 })
         }
-    })
-}())
+    });
+}());

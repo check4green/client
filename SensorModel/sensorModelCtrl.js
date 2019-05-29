@@ -5,29 +5,33 @@
     function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $location, $sessionStorage, sensorModelService, $rootScope, hubConnection, $timeout, $window) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
+        $scope.outOfRangePositiveError = SENSOR_TYPE.OUT_OF_RANGE_POSITIVE;
+        $scope.outOfRangeNegativeError = SENSOR_TYPE.OUT_OF_RANGE_NEGATIVE;
         $scope.networkName = $sessionStorage.networkName;
         $scope.backButton = true;
+        $scope.sensorData = false;
+        $scope.noData = false;
+        $scope.change = true;
+        $scope.searchSensor ='';
+        $scope.loading = true;
+        vm.currentPage = 1;
+        vm.sensPerPage = 50;
         $scope.back = function(){
-            $sessionStorage.gate = false;
             $scope.sensorData = false;
             $scope.noSensorData = false;
-            $scope.buttons = true;
-            $scope.registerButton = false;
-            $sessionStorage.buttons = true;
             $sessionStorage.cards = false;
             delete $sessionStorage.netId;
             $location.path('/sensorsHome/networks');
             $timeout(function(){
                 $window.location.reload();
 
-            }, 100)
+            }, 1000)
         }
         if($localStorage.email && $localStorage.password){
             var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
         }else {
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
-
         vm.expandSelected = function(sensor){
             $scope.sensors.forEach(function(val){
                 val.expanded=false;
@@ -41,17 +45,7 @@
         $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
         }
-
-        $scope.sensorData = false;
-        $scope.noData = false;
-        $scope.change = true;
-        $scope.searchSensor ='';
-        $scope.loading = true;
-        vm.currentPage = 1;
-        vm.sensPerPage = 50;
         function getSens(user, networkId, page, size){
-            $scope.networkName = $sessionStorage.networkName;
-            $scope.loading = true;
             sensorModelService.getSensors(user, networkId, page, size)
                 .then(function(response){
                     $scope.sensors = response.data;
@@ -118,7 +112,6 @@
                         vm.allSensors = data;
                         vm.sensPerPage = 50;
                         return;
-                        
                     }
                     if(oldValue == newValue){
                         vm.currentPage = 1; 
@@ -126,7 +119,6 @@
                         vm.allSensors = filterSensors.innerHTML;
                         vm.sensPerPage = filterSensors.innerHTML;
                     }
-                    
                 });
             }
             var expanded = false;
@@ -176,7 +168,6 @@
                     getSens( encodeduser, $sessionStorage.netId,vm.currentPage, vm.allSensors);
                 }
             }
-             
         }
         if($sessionStorage.cards == true){
             $scope.cards = true;
@@ -187,41 +178,38 @@
             $scope.cards = false;
         }
         $scope.changeLayoutCards = function(){
-            
-                $scope.buttons = false;
-                $scope.cards = true;
-                $scope.editCards = true;
-                $scope.grid = false;
-                $sessionStorage.cards = true;
-                $scope.editLocation = false;
-                $sessionStorage.details = true;
-                $sessionStorage.editDisplay = true;
-                $sessionStorage.editSensGrid = false;
-                $sessionStorage.title = true;
-            } 
-            $scope.changeLayoutGrid = function(){
-                $sessionStorage.editSensGrid = true;
-                $sessionStorage.editDisplay = false;
-                $scope.sensorData = true;
-                $scope.buttons = false;
-                $scope.cards = false;
-                $scope.editCards = false;
-                $scope.grid = true;
-                $sessionStorage.details = false;
-                $sessionStorage.cards = false;
-                $sessionStorage.title = false;
-                if($sessionStorage.cancelEdit){
-                    $timeout(function(){
-                        $window.location.reload();
-                    }, 1);
-                    $sessionStorage.cancelEdit = false;
-                }
+            $scope.buttons = false;
+            $scope.cards = true;
+            $scope.editCards = true;
+            $scope.grid = false;
+            $sessionStorage.cards = true;
+            $scope.editLocation = false;
+            $sessionStorage.details = true;
+            $sessionStorage.editDisplay = true;
+            $sessionStorage.editSensGrid = false;
+            $sessionStorage.title = true;
+        } 
+        $scope.changeLayoutGrid = function(){
+            $sessionStorage.editSensGrid = true;
+            $sessionStorage.editDisplay = false;
+            $scope.sensorData = true;
+            $scope.buttons = false;
+            $scope.cards = false;
+            $scope.editCards = false;
+            $scope.grid = true;
+            $sessionStorage.details = false;
+            $sessionStorage.cards = false;
+            $sessionStorage.title = false;
+            if($sessionStorage.cancelEdit){
+                $timeout(function(){
+                    $window.location.reload();
+                }, 1);
+                $sessionStorage.cancelEdit = false;
             }
-            
+        }
         $scope.refreshFunction = function(){
             $scope.id = $sessionStorage.sensorId;
         }
-
         $scope.details = function(){
             $scope.name = $sessionStorage.name;
             $scope.detailsDisplay = true;
@@ -253,8 +241,7 @@
             $sessionStorage.detail = false;
             $scope.sensName = false;
         }
-        
-         $scope.measureUnit = function(sensTypeId){
+        $scope.measureUnit = function(sensTypeId){
             sensorModelService.getMeasureId(sensTypeId)
                  .then(idSuccess)
             function idSuccess(data){
@@ -266,26 +253,10 @@
                 }
             }
         }
-        $scope.outOfRange = function(sensType){
-            if(sensType == 1){
-                $scope.outOfRangePositiveError = 401;
-                $scope.outOfRangeNegativeError = -1;
-            } else if(sensType == 2){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -51;
-            }else if(sensType == 3){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -50;
-            }
-            else if(sensType == 5){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -1;
-            }
-            else if(sensType == 7){
-                $scope.outOfRangePositiveError = 101;
-                $scope.outOfRangeNegativeError = -1;
-            }
-            else if(sensType == 6){
+        $scope.sensData = function(name, id, sensType){
+            $sessionStorage.sensorId = id;
+            $sessionStorage.name = name;
+            if(sensType == 6){
                 $scope.vibrations = true;
             }
         }
@@ -294,36 +265,23 @@
             $scope.noRead = false;
             $scope.detailsData = false;
             $scope.loadingDetails = true;
-            sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1, )
-                .then(measureSuccess)
-                .catch(measureError)
-            function measureSuccess(measurement){
-                $rootScope.lastRead = measurement;
-                for(var i=0; i<$rootScope.lastRead.length; i++){
-                    $rootScope.lastRead[i].readingDate = $rootScope.lastRead[i].readingDate.substr(0,10)+ " "+$rootScope.lastRead[i].readingDate.substr(11,5)
-                }
-                if($rootScope.lastRead == 0){
-                    $scope.noRead = true;
-                    $scope.loadingDetails = false;
-                    $scope.detailsData = true;
-                } else{
-                    $scope.noRead = false;
-                    $scope.detailsData = true;
-                    $scope.loadingDetails = false;
-                }
-            }
-            function measureError(){
-                $scope.noRead = true;
-                $scope.loadingDetails = false;
-                $scope.detailsData = true;
-            }
+            sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1)
+                .then(function(measurement){
+                    $rootScope.lastRead = measurement;
+                    for(var i=0; i<$rootScope.lastRead.length; i++){
+                        $rootScope.lastRead[i].readingDate = $rootScope.lastRead[i].readingDate.substr(0,10)+ " "+$rootScope.lastRead[i].readingDate.substr(11,5)
+                    }
+                    if($rootScope.lastRead == 0){
+                        $scope.noRead = true;
+                        $scope.loadingDetails = false;
+                        $scope.detailsData = true;
+                    } else{
+                        $scope.noRead = false;
+                        $scope.detailsData = true;
+                        $scope.loadingDetails = false;
+                    }
+                })
             $rootScope.lastRead = null;
-        }
-        $scope.editDisplay = false;
-        $scope.editButton  = true;
-        $scope.getSensor = function(name,id){
-            $sessionStorage.sensorId = id;
-            $sessionStorage.name = name;
         }
         $scope.startEditLocation = function(name, uploadInterval, lat, long){
             $sessionStorage.name = name;
@@ -332,38 +290,20 @@
         }
         
     }]);
-
-app.directive('caGaValidation', function() {
-    return {
-        require: 'ngModel',
-        link: function(scope, element, attr, mCtrl) {
-            function myValidation(value) {
-                if (value.indexOf("0x") != 0) {
-                    mCtrl.$setValidity('charE', false);
-                } else {
-                    mCtrl.$setValidity('charE', true);
+    app.directive('nameValidation', function() {
+        return {
+            require: 'ngModel',
+            link: function(scope, element, attr, mCtrl) {
+                function myValidation(value) {
+                if ((value.indexOf("--") > -1) || (value.indexOf("__") > -1) || (value.indexOf("-_") > -1) || (value.indexOf("_-") > -1) || (value.indexOf("-") == 0) || (value.indexOf("_") == 0) || value.indexOf("-") == (value.length - 1) || value.indexOf("_") == (value.length - 1) || (value.match(/[a-z]/i) > -1)) {
+                        mCtrl.$setValidity('charE', false);
+                    } else {
+                        mCtrl.$setValidity('charE', true);
+                    }
+                    return value;
                 }
-                return value;
+                mCtrl.$parsers.push(myValidation);
             }
-            mCtrl.$parsers.push(myValidation);
-        }
-    };
-});
-
-app.directive('nameValidation', function() {
-    return {
-        require: 'ngModel',
-        link: function(scope, element, attr, mCtrl) {
-            function myValidation(value) {
-            if ((value.indexOf("--") > -1) || (value.indexOf("__") > -1) || (value.indexOf("-_") > -1) || (value.indexOf("_-") > -1) || (value.indexOf("-") == 0) || (value.indexOf("_") == 0) || value.indexOf("-") == (value.length - 1) || value.indexOf("_") == (value.length - 1) || (value.match(/[a-z]/i) > -1)) {
-                    mCtrl.$setValidity('charE', false);
-                } else {
-                    mCtrl.$setValidity('charE', true);
-                }
-                return value;
-            }
-            mCtrl.$parsers.push(myValidation);
-        }
-    };
-});
+        };
+    });
 }());

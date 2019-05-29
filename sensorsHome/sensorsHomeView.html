@@ -5,13 +5,11 @@
     <div id="logoC4Gheader" style=" display: none !important; "></div>
     <!-- Fake elements -->
 
-      <header class="headerSensorHome">
+    <header class="headerSensorHome">
         <div class="topnav-shome">
             <!-- menu button-->
             <a id="main" class="" onclick="openNav()" title="Show sensor menu" ng-show="!hideSensorMenu"><i class="fas fa-bars"></i></a>
             <a type="button" class="registerSensorButton" ui-sref="sensorsHome.addNetwork">Add network</a>
-            <!-- <button id="close-menu" class="btn btn-success" onclick="openNav()" title="Show sensor menu"><i class="fas fa-outdent"></i></button> -->
-
             <div class="grow"></div>
 
             <a class="homeHouse" ui-sref="home" ng-click="cancelCards()" title="Home page"><i class="fas fa-home"></i></a>
@@ -26,7 +24,6 @@
             </div>
 
         </div>
-
 
         <!-- Menu account -->
         <div id="containerAccountId" class="container-account">
@@ -52,9 +49,9 @@
         <!-- /Menu account -->
 
 
-      </header>
+    </header>
       <!-- menu-body -->
-      <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn"><img src="/Home/images-home/C4G-logo-BG-white-2.svg"></a>
 
         <a class="a" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.devices">
@@ -98,13 +95,12 @@
         
         
 
-      </div>
+    </div>
       <!-- /menu-body -->
 
-      <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
+    <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
 
     <div class="homeMenu">
-
         <!-- route-grid -->
         <div id="marginTopView" class="container gridView">
             <div ui-view="distance@"></div>
@@ -125,9 +121,7 @@
             <div ui-view="editgateway@"></div>
             <div ui-view="gatewayLocation@"></div>
             <div ui-view="detailsNetwork@"></div>
-            
-
-            
         </div>
         <!-- /route-grid -->
+    </div>
 </div>
