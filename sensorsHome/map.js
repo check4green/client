@@ -62,7 +62,7 @@
                                 var sensors = response.data;
                                 var pos = [];
                                 var lat, long, name, status,address, id, sensTypeId;
-                                if($sessionStorage.netDet == true){
+                                if($sessionStorage.netDet == true || $scope.registerDisplay==true || $sessionStorage.gatewayRegister == true){
                                     $scope.gate = true;
                                     gatewayService.getGateways(encodeduser, $sessionStorage.netId, 0, pageSize)
                                         .then(function(response){

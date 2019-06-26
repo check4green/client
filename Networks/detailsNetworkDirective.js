@@ -16,6 +16,7 @@
         if($sessionStorage.activeDevices || $sessionStorage.activeDevices ==0){
             $scope.activeDevices = $sessionStorage.activeDevices;
         }
+        $scope.gate = true;
         $scope.name = $sessionStorage.networkName;
             $scope.name = $sessionStorage.networkName;
             $scope.activeDevices =0;

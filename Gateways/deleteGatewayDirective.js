@@ -27,7 +27,7 @@
                 }
                 $scope.deleteGateway = function(){
                     var deleteId = $sessionStorage.deleteGatewayId;
-                    var networkId = $sessionStorage.nettreId;
+                    var networkId = $sessionStorage.netId;
                     gatewayService.deleteGateway(encodeduser, networkId, deleteId)
                         .then(function(){
                             $timeout(function(){
