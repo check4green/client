@@ -659,8 +659,7 @@
                             return $ocLazyLoad.load([
                                 'Networks/registerNetworkComponent.js',
                                 'Networks/registerNetworkCtrl.js',
-                                'Networks/registerLocalizationGraph.js',
-                                'Networks/graph.css'
+                                
                             ])
                         }]
                     }
