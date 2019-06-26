@@ -24,7 +24,6 @@
             $location.path('/sensorsHome/networks');
             $timeout(function(){
                 $window.location.reload();
-
             }, 1000)
         }
         if($localStorage.email && $localStorage.password){
@@ -38,7 +37,6 @@
                 $scope.editLocation = true;
                 $scope.editDisplay = false;
                 $scope.editButton = true;
-
             })
             sensor.expanded=true;
         };

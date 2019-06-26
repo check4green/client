@@ -8,9 +8,9 @@
                 $scope.deleteNetworkDisplay = false;
                 $scope.deleteButton = true;
                 if($localStorage.email && $localStorage.password){
-                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+                    var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
                 }else {
-                  $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                    var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
                 }
                 $scope.startDeleteNetwork = function(network){
                     $scope.networks.forEach(function(val){
@@ -28,7 +28,7 @@
                 }
                 $scope.deleteNetwork = function(id){
                     id = $sessionStorage.deleteId;
-                    networkService.deleteNetwork($scope.encodeduser, id)
+                    networkService.deleteNetwork(encodeduser, id)
                     .then(function(){
                         $timeout(function(){
                             $window.location.reload();

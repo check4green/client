@@ -8,9 +8,9 @@
                 $scope.editButton = true;
                 $scope.editDisplay = false;
                 if($localStorage.email && $localStorage.password){
-                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+                    var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
                 }else {
-                  $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                    var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
                 }
                 $scope.startEdit = function(gateway){
                     $scope.gateways.forEach(function(val){
@@ -32,7 +32,7 @@
                     var gatewayEdit={'name': name};
                     var networkId = $sessionStorage.netId;
                     var gatewayId = $sessionStorage.editGatewayId;
-                    gatewayService.updateGateway($scope.encodeduser, networkId, gatewayId, gatewayEdit)
+                    gatewayService.updateGateway(encodeduser, networkId, gatewayId, gatewayEdit)
                         .then(function(){
                             $scope.editGatewaySuccess = true;
                             $scope.gateway.name = gatewayEdit.name;

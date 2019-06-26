@@ -28,7 +28,7 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
             $scope.editButton = false;
             
             if ($localStorage.email && $localStorage.password){
-              var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+                var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
                 var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }

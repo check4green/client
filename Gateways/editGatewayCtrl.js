@@ -16,9 +16,9 @@
         $scope.editGatewayRoute = true;
         $scope.gatewayName = $sessionStorage.gatewayName;
         if($localStorage.email && $localStorage.password){
-            $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+            var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
         }else {
-          $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+            var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
         $scope.editGateway= function(name){
             var lat = $sessionStorage.gatewayLat;
@@ -26,7 +26,7 @@
             var gateway = {'name' : name, 'latitude': lat, 'longitude': long};
             var networkId = $sessionStorage.netId;
             var id = $sessionStorage.gatewayEditId;
-            gatewayService.updateGateway($scope.encodeduser, networkId, id, gateway)
+            gatewayService.updateGateway(encodeduser, networkId, id, gateway)
             .then(function(){
                 $scope.editGatewaySuccess = true;
                 $timeout(function(){

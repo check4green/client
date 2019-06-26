@@ -23,9 +23,9 @@ app.directive('deleteSensor', function(){
                 $scope.chartButton = false;
             }
             if($localStorage.email && $localStorage.password){
-                $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
+                var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
-                $scope.encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+                var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
             }
             if($sessionStorage.cards == true){
                 $scope.id = $sessionStorage.sensorId;
@@ -34,7 +34,7 @@ app.directive('deleteSensor', function(){
             }
             var timer;
             $scope.deleteSensor = function(id){
-                sensorModelService.deleteSensors($scope.encodedData, $sessionStorage.netId, id);
+                sensorModelService.deleteSensors(encodedData, $sessionStorage.netId, id);
                 timer = $timeout(function(){
                     $window.location.reload();
                 },300);

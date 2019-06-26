@@ -8,9 +8,9 @@
                 $scope.deleteDisplay = false;
                 $scope.deleteButton = true;
                 if($localStorage.email && $localStorage.password){
-                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+                    var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
                 }else {
-                  $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                    var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
                 }
                 $scope.startDelete = function(gateway){
                     $scope.gateways.forEach(function(val){
@@ -27,8 +27,8 @@
                 }
                 $scope.deleteGateway = function(){
                     var deleteId = $sessionStorage.deleteGatewayId;
-                    var networkId = $sessionStorage.networkId;
-                    gatewayService.deleteGateway($scope.encodeduser, networkId, deleteId)
+                    var networkId = $sessionStorage.nettreId;
+                    gatewayService.deleteGateway(encodeduser, networkId, deleteId)
                         .then(function(){
                             $timeout(function(){
                                 $window.location.reload();

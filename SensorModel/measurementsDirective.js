@@ -35,7 +35,7 @@ app.directive('measurements', function(){
             if ($localStorage.email && $localStorage.password){
                 var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
               }else{
-                  var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
+                var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
               }
             
             $scope.measurementSensor = function(id){

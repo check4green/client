@@ -6,9 +6,9 @@
             templateUrl: 'Gateways/gatewaySensorsView.html',
             controller: function($scope, gatewayService, $localStorage, $sessionStorage){
                 if($localStorage.email && $localStorage.password){
-                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+                    var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
                 }else {
-                  $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                    var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
                 }
                 $scope.sensors = true;
                 $scope.showSensors = false;
@@ -22,7 +22,7 @@
                     $scope.editLocationButton = false;
                     $scope.gatewayDetails = false;
                     $scope.showSensors = true;
-                    gatewayService.gatewaySensors($scope.encodeduser, $sessionStorage.netId, $sessionStorage.gatewayEditId)
+                    gatewayService.gatewaySensors(encodeduser, $sessionStorage.netId, $sessionStorage.gatewayEditId)
                         .then(function(response){
                             $scope.gatewaySensors = response.data;
                             for(var i=0; i<$scope.gatewaySensors.length; i++){
