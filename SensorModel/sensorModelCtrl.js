@@ -251,9 +251,10 @@
                 }
             }
         }
-        $scope.sensData = function(name, id, sensType){
+        $scope.sensData = function(name, id, sensType, address){
             $sessionStorage.sensorId = id;
             $sessionStorage.name = name;
+            $sessionStorage.sensorAddress = address;
             if(sensType == 6){
                 $scope.vibrations = true;
             }
