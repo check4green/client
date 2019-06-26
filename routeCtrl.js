@@ -76,6 +76,7 @@
                                 'Autentification/LogIn/logInComponent.js',
                                 'Autentification/LogIn/logInCtrl.js',
                                 'Autentification/LogIn/logInStyle.css',
+                                'Home/scriptIndex.js'
                             ])
                         }]
                     }
@@ -658,6 +659,8 @@
                             return $ocLazyLoad.load([
                                 'Networks/registerNetworkComponent.js',
                                 'Networks/registerNetworkCtrl.js',
+                                'Networks/registerLocalizationGraph.js',
+                                'Networks/graph.css'
                             ])
                         }]
                     }

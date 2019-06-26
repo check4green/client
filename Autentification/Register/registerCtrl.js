@@ -132,16 +132,17 @@
     vm.showRegisterError = false;
     $scope.register = function(registerFirstName, registerLastName, registerPassword, registerPassword2, registerCompany, registerCountry, registerPhone){
       if (!registerCountry){
+        document.getElementById('inputPhone').value = "+40";
         $scope.user ={
           firstName:registerFirstName ,
           lastName:registerLastName ,
-          email:registerEmail ,
+          email:$sessionStorage.accountEmail ,
           password:registerPassword ,
           companyName:registerCompany ,
           country: 'Romania' ,
           phoneNumber:'+40'+registerPhone
          }
-         document.getElementById('inputPhone').value = '+40';
+         
        }
        else{
           $scope.user = {
