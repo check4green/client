@@ -1,18 +1,30 @@
-// rotate on settings
-function showSettingsColapse(a){
-    a.classList.toggle("rotate");
-  }
 
+
+// Show Firlters 
+function hideFilters(){
+    var s = document.getElementsByClassName("chevron");
+}
   // show text headerHome and rotate arrow
-    function nowHeaderFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "header-container") {
-            x.className += " responsive";
-        } else {
-            x.className = "header-container";
-        }
+  function nowHeaderFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "header-container") {
+        x.className += " responsive";
+    } else {
+        x.className = "header-container";
     }
+}
 
+
+// rotate on settings
+function showPass() {
+    var x = document.getElementById("passwordA");
+
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 // scroll button
 window.onscroll = function() { buttonScrollFunction()};
 
@@ -20,13 +32,16 @@ function buttonScrollFunction() {
 
     var element = document.getElementById("myTopnav");
     var logo = document.getElementById("logoC4Gheader");
+    var logIn = document.getElementById("bLogIn");
 
     if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60 & screen.width > 900 ) {
         element.classList.add("header-home-add"),  //header
         logo.classList.add("logo-header-home-add");  //header
+        logIn.classList.add("logo-header-home-remove");  //header
     } else {
         element.classList.remove("header-home-add"),  //header
         logo.classList.remove("logo-header-home-add");  //header
+        logIn.classList.remove("logo-header-home-remove");  //header
     }
 }
 function buttonFunction() {
@@ -81,19 +96,13 @@ function closeSearchBOX(e) {
 
 // open/close menu
 function openNav() {
-    document.getElementById("mySidenav").style.width = "215px";
-    document.getElementById("main").style.marginLeft = "215px";
+    document.getElementById("mySidenav").style.width = "300px";
     document.getElementById("bg-gray").style.display = "block";
-    // document.getElementById("close-menu").style.display = "block";
-    // document.getElementById("close-menu").style.marginLeft = "214px";
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
     document.getElementById("bg-gray").style.display = "none";
-    // document.getElementById("close-menu").style.display = "none";
-    // document.getElementById("close-menu").style.marginLeft= "0";
 }
 
 // focus input register/settings
@@ -225,6 +234,15 @@ function toggle_visibility(id){
 }
 //Play video on hover 
 //1
+function hoverToPlay0(){
+    var video0 = document.getElementById("video-presentation"); // Video var
+    video0.play();
+}
+function hoverToPause0(){
+    var video0 = document.getElementById("video-presentation"); // Video var
+    video0.pause();
+}
+
 function hoverToPlay1(){
     var video1 = document.getElementById("video-network"); // Video var
     video1.play();

@@ -1,26 +1,26 @@
-<div class="forgotPassword-container-big">
-    <span class="fa fa-close span-x" ui-sref="home"></span>
-    <span class="fa fa-arrow-left span-back" ui-sref="logIn"></span>
+<div class="login-container-big">
+    <img class="sign-icon back" src="/Home/images-home/Icons/Back1.0.svg"  ui-sref="logIn" alt="Check4Green original icon" title="Back">
+    <img class="sign-icon" src="/Home/images-home/Icons/Close1.0.svg" ui-sref="home" alt="Check4Green original icon" title="Close">
 
-    <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="forgotPassword-image">
+    <div class="c-login-parrent">
+            <img src="/Home/images-home/Home-page/Check4Green-logoPP.svg" alt="Check4Green original logo">
 
-    <div class="forgotPassword-container container">
-            <h2>Validation code</h2>
+      <div class="c-login-form" name="form">
             <span ng-show="errorMsg" id="alert-error"><p>{{error}}</p></span>
-      <form name="form">
-        <div class="form-group" ng-class="{'has-error': form.uname.$invalid && form.uname.$dirty}">
-        <div class="forgotPassword-input-container">
-            <i class="fa fa-envelope icon"></i>
+
+          <div class="f-group" ng-class="{'has-error': form.uname.$invalid && form.uname.$dirty}">
             <input class="forgotPassword-input-filed" type="email" ng-model="emailAddress" placeholder="Enter email" class="form-control" ng-pattern="/^[A-Za-z0-9._@]*$/" name="uname" required>
-        </div>
-            <div class="help-block has-error">
-              <div ng-show="form.uname.$error.required && form.uname.$dirty">This field is required!</div>
-              <div ng-show="form.uname.$error.email || form.uname.$error.pattern">This email address is invalid!</div>
+          
+            <div class="error-style">
+                <div ng-show="form.uname.$error.required && form.uname.$dirty"><p>This field is required!</p></div>
+                <div ng-show="form.uname.$error.email || form.uname.$error.pattern"><p>This email address is invalid!</p></div>
+            </div>
           </div>
       </div>
-
-      </form>
-        <button type="button" ng-click="sendCode(emailAddress)">Send code</button>
+      
+      <div class="c-login-register">
+        <a ng-click="sendCode(emailAddress)">Send code</a>
+      </div>
 
     </div>
 </div>

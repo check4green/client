@@ -1,9 +1,11 @@
-<div class="deleteDisplay" ng-if="deleteNetworkDisplay">
-        <div><label style="font-weight: initial;"> <b>{{networkName}}</b></label></div>
-        <b>Are you sure you want to delete this network? </b>
-    <div class="delete-buttons">
-        <button type = "button" class="btn btn-danger" ng-click="deleteNetwork(network.id)">Yes</button>
-        <button type="button" class="btn btn-primary" ng-click="cancelDelete();">No</button>
-    </div>
+<div class="c-edit-network" ng-if="deleteNetworkDisplay">
+        <span id="alert-error" ng-show="errorEdit"><p>{{message}}</p></span>
 
+        <div class="c-content-edit-network">
+            <p>This item will be <b>permanently</b> delete!</p>
+        </div>
+        <div class="a-edit-netwotk">
+            <a ng-click="deleteNetwork(network.id)">Delete</a>
+            <a ng-click="cancelDelete();">Close</a>
+        </div>
 </div>

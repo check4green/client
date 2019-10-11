@@ -4,14 +4,40 @@ app.directive('detailsSensor', function(){
     return {
         restrict: 'E',
         templateUrl: 'SensorModel/detailsSensorDirectiveView.html',
-        controller: function($scope, sensorModelService, SENSOR_TYPE){
-            var vm=this;
-            $scope.detailsDisplay = true;
+        controller: function($scope){
+                //$scope.detailsDisplay = true;
+                document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('details').style.backgroundColor = '#168040';
+                document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('editButton').style.backgroundColor = '#3CDB41';
+                document.getElementById('mapButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('deleteButton').style.backgroundColor = '#E88282';
+                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
             $scope.vibrationSens = function(id){
                 if(id == 6){
                     $scope.vibrations = true;
                 }
             }
+            $scope.startShowDetails = function(){
+                document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('details').style.backgroundColor = '#168040';
+                document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('editButton').style.backgroundColor = '#3CDB41';
+                document.getElementById('mapButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('deleteButton').style.backgroundColor = '#E88282';
+                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                $scope.detailsDisplay = true;
+                $scope.chartDisplay = false;
+                $scope.measurementsDisplay = false;
+                $scope.showGateways = false;
+                $scope.editLocationDisplay = false;
+                $scope.editDisplay = false;
+                $scope.deleteDisplay = false;
+
+            }
+            
             
         }
     }

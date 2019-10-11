@@ -6,23 +6,34 @@
             templateUrl: 'Gateways/gatewaySensorsView.html',
             controller: function($scope, gatewayService, $localStorage, $sessionStorage){
                 if($localStorage.email && $localStorage.password){
-                    var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
                 }else {
-                    var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                  $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
                 }
+                
                 $scope.sensors = true;
                 $scope.showSensors = false;
                 $scope.showGatewaySensors = function(){
+                    $scope.editLocationDisplay = false;
+                    $scope.editDisplay = false;
                     $scope.loadingSensors = true;
                     $scope.sensors = false;
                     $scope.detailsButton = false;
+                    $scope.deleteDisplay = false;
+
                     $scope.sensors = false;
                     $scope.editButton = false;
                     $scope.deleteButton = false;
                     $scope.editLocationButton = false;
                     $scope.gatewayDetails = false;
                     $scope.showSensors = true;
-                    gatewayService.gatewaySensors(encodeduser, $sessionStorage.netId, $sessionStorage.gatewayEditId)
+                    document.getElementById('sensorsButton').style.backgroundColor='#244E70';
+                    document.getElementById('gatewayDetails').style.backgroundColor = '#3CDB41';
+                    document.getElementById('hideDetailsButton').style.backgroundColor='#4DA8F2';
+                    document.getElementById('editGatewayButton').style.backgroundColor='#3CDB41';
+                    document.getElementById('deleteGatewayButton').style.backgroundColor='#E88282';
+                    document.getElementById('editGatewayLocBtn').style.backgroundColor='#4DA8F2';
+                    gatewayService.gatewaySensors($scope.encodeduser, $sessionStorage.netId, $sessionStorage.gatewayEditId)
                         .then(function(response){
                             $scope.gatewaySensors = response.data;
                             for(var i=0; i<$scope.gatewaySensors.length; i++){

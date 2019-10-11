@@ -19,16 +19,15 @@
           }
           autentificationService.logIn($scope.encodeduser)
               .then(function(response){
-                  $scope.loading = false;
-                  $sessionStorage.buttons = true;
+                  vm.showLogInError = false;
                   $location.path('sensorsHome/networks');
                   $sessionStorage.email = email;
                   $sessionStorage.password = password;
+                  $scope.loading = false;
                   $sessionStorage.hideSensorMenu = true;
                   $timeout(function(){
                     $window.location.reload();
-    
-                }, 100)
+                })
               })
               .catch(function(response){
                 $scope.loading = false;

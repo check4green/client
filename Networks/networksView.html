@@ -1,25 +1,50 @@
-<div class="sensorModel container">
+<div class="c-network-view">
     <div class="noData" ng-show="noNetworks">Currently you don't have any networks. Go to <a style="text-decoration: none;">Add network</a> to register one</div>
     <div class="noData" ng-show="serverError">An error has occured. Please try again later.</div>
-    <div  class="container-buttonNetwork" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
-        <h1 >Chose your network</h1>
+
+    <div  class="c-inside-body-network" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
+        <div class="header-network-card">
+            <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="networkDetails" alt="Check4Green Icons" title="Back" ng-click="cancelDetails()">
+            <h1 ng-show="!sensorsGatewaysButtons && !networkDetails">Choose your network</h1>
+            <h1 ng-show="sensorsGatewaysButtons">Choose what you want to see</h1>
+            <h1 ng-if="networkDetails">Network details</h1>
+
+
+            <a ui-sref="sensorsHome.addNetwork"><i class="fas fa-plus"></i>Add a new network</a>
+        </div>
+        
+
         <div ng-show="loadingNetworks" class="loader"></div>
-        <div class="container-networksROW" >
-            <div class="container-networksCOLUMN" ng-repeat="network in networks">
-                <div class="container-networksCARD">
-                    <div class="container-networkTitle">
-                        <button type="button" ng-click="filterGateways(network)">Go to {{network.name}} <i class="fas fa-sign-in-alt"></i></button>
+
+        <div class="c-aranjament" >
+            <div class="c-column" ng-repeat="network in networks" ng-if="!networkDetails">
+                <div class="c-card">
+                    <div class="c-title-network" ng-show="!network.sensorsGatewaysButtons && !deleteNetworkDisplay && !editNetworkDisplay">
+                        <a ng-click="sensorsGateways(network)"><i class="fas fa-arrow-right"></i>Go to {{network.name}}</a>
                     </div>
-                    <div class="container-networkCtrl">
-                        <button type="button" class="button-cardView buttonNetAndAdd" ui-sref="sensorsHome.networkDetails" ng-click="getNetwork(network)">Details</button>
-                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startEditNetwork(network)">Edit</button>
-                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startDeleteNetwork(network)">Delete</button>
+
+                    <img src="/Home/images-home/Icons/Close1.0.svg" ng-show="network.sensorsGatewaysButtons" ng-click="cancelSensorsGateways(network)" alt="Check4Green Icons" title="Back">
+
+                    <div class="c-title-network-2" ng-show="network.sensorsGatewaysButtons ">
+                        <a ng-click="filterSensors(network)"><i class="fas fa-arrow-right"></i>Go to sensors</a>
+                        <a ng-click="filterGateways(network)"><i class="fas fa-arrow-right"></i>Go to gateways</a>
+                    </div>
+
+                    <div class="c-view-action">
+                        <edit-network></edit-network>
+                        <delete-network></delete-network>
+                    </div>
+
+                    <div class="c-buttons-network" ng-show="!deleteNetworkDisplay && !editNetworkDisplay && !network.sensorsGatewaysButtons">
+                        <a ng-click="startEditNetwork(network)">Edit</a>
+                        <a ng-click="details(network);">Details</a>
+                        <a ng-click="startDeleteNetwork(network)">Delete</a>
                     </div>
                 </div>
             </div>
+            <div class="c-details" ng-if="networkDetails">
+                <details-net></details-net>
+            </div>
         </div>
-        
     </div>
-    <edit-network></edit-network>
-    <delete-network></delete-network>
 </div>

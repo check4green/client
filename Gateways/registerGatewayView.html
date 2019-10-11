@@ -1,18 +1,69 @@
-<div class="registerDisplay row vertical-align">
-    <div class="title-grid">
-        <p>Register gateway</p>
-    </div>
-    <span id="alert-error" ng-show="gatewayRegisterError">
-        <p>{{message}}</p>
-    </span>
-    <span id="alert-succesful" ng-show="gatewayRegisterSuccess">
-        <p>Gateway created successful!</p>
-    </span>
+<div class="c-network-view">
 
+    <div  class="c-inside-body-network" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
+        <div class="header-network-card">
+            <img ng-click="cancelRegister()" src="/Home/images-home/Icons/Back1.0.svg" title="Back" alt="Check4Green icon">
+            <h1>Register gateway</h1>
+        </div>
+        <div ng-show="loadingNetworks" class="loader"></div>
+
+        <form class="c-network" name="registerGatewayForm" novalidate>
+            <div class="c-content-edit-network" ng-class="{'has-error':registerNetworkForm.inputName.$invalid && registerNetworkForm.inputName.$dirty}">
+    
+        <span id="alert-error" ng-show="gatewayRegisterError"><p>{{message}}</p></span>
+        <span id="alert-succesful" ng-show="gatewayRegisterSuccess"><p>Gateway created successful!</p></span>
+
+                <label>Address:</label>
+                <div class="form-group" ng-class="{'has-error':registerGatewayForm.inputGatewayAdd.$invalid && registerGatewayForm.inputGatewayAdd.$dirty}">
+                    <div class="container-name">
+                        <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="Address"
+                            ng-pattern="/^[a-z0-9 ]{10}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()"
+                            autocomplete="off" type="text" class="form-control"
+                            ng-model="registerGatewayAddress" required ng-minlength="10" ng-maxlength="10" maxlength="10" />
+                        <div class="container-info 	fa fa-info-circle">
+                            <p class="info-hover">Write your gateway address (find the address on the casing). </p>
+                        </div>
+                    </div>
+                    <span class="help-block has-error">
+                        <span ng-show="registerGatewayForm.inputGatewayAdd.$error.required">Gateway Address is required</span>
+                        <span ng-show="registerGatewayForm.inputGatewayAdd.$error.pattern">The Gateway Address must contain 10 alphanumeric characters.</span>
+                    </span>
+                </div>
+                
+                <label>Name:</label>
+                <div class="form-group"
+                ng-class="{'has-error':registerGatewayForm.inputName.$invalid && registerGatewayForm.inputName.$dirty}">
+                <div class="container-name">
+                    <input id="inputName" name="inputName" type="text" maxlength="30" placeholder="Gateway name" ng-pattern="/^[a-zA-Z 0-9 _-]*$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" ng-model="gatewayName" ng-model-options="{ debounce: 250 }" required>
+    
+                    <div class="container-info 	fa fa-info-circle">
+                        <p class="info-hover">Name your gateway. </p>
+                    </div>
+                </div>
+                <span class="help-block has-error">
+                    <span ng-show="registerGatewayForm.inputName.$error.required">Name is required</span>
+                    <span ng-show="!registerGatewayForm.inputName.$error.required && registerGatewayForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'.</span>
+                    <span ng-show="!registerGatewayForm.inputName.$valid && !registerGatewayForm.inputName.$error.required && !registerGatewayForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after the word, and the word needs min one letter.</span>
+                </span>
+            </div>
+
+                <div class="a-edit-netwotk-2">
+                    <a ng-click="registerGateway(registerGatewayAddress, gatewayName)">Save</a>
+                    <a ng-click="cancelRegister()">Cancel</a>
+                </div>
+            </div>
+        </form>
+        <div class="map-google">
+            <label>Choose the location of your gateway on the map: </label>
+            <div id ="registerGatewayMap"></div>
+        </div>
+    </div>
+</div>
+<!-- -----*****************************
+<div class="registerDisplay row vertical-align">
     <form class="col-md-3" name="registerGatewayForm" novalidate>
         <label>Address:</label>
-        <div class="form-group"
-            ng-class="{'has-error':registerGatewayForm.inputGatewayAdd.$invalid && registerGatewayForm.inputGatewayAdd.$dirty}">
+        <div class="form-group" ng-class="{'has-error':registerGatewayForm.inputGatewayAdd.$invalid && registerGatewayForm.inputGatewayAdd.$dirty}">
             <div class="container-name">
                 <input id="inputGatewayAdd" name="inputGatewayAdd" placeholder="Address"
                     ng-pattern="/^[a-z0-9 ]{10}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()"
@@ -25,7 +76,6 @@
             <span class="help-block has-error">
                 <span ng-show="registerGatewayForm.inputGatewayAdd.$error.required">Gateway Address is required</span>
                 <span ng-show="registerGatewayForm.inputGatewayAdd.$error.pattern">The Gateway Address must contain 10 alphanumeric characters.</span>
-                
         </div>
         <label>Name:</label>
         <div class="form-group"
@@ -40,9 +90,7 @@
             <span class="help-block has-error">
                 <span ng-show="registerGatewayForm.inputName.$error.required">Name is required</span>
                 <span ng-show="!registerGatewayForm.inputName.$error.required && registerGatewayForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'.</span>
-
                 <span ng-show="!registerGatewayForm.inputName.$valid && !registerGatewayForm.inputName.$error.required && !registerGatewayForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after the word, and the word needs min one letter.</span>
-
             </span>
         </div>
 
@@ -54,4 +102,4 @@
         <label>Choose the location of your gateway on the map: </label>
         <map></map>
     </div>
-</div>
+</div> -->

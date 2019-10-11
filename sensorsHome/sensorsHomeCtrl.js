@@ -1,22 +1,25 @@
 (function(){
-    "use strict";
-   var app = angular.module("sensorApp");
-   app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $window, $location, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
-        var vm = this;
-        vm.titleGrid = SENSOR_TYPE.TITLE;
-        if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
-          var encodeduser = btoa($localStorage.email+ ':'+ $localStorage.password)
-        }else{
-          var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
-        }
-      if($sessionStorage.hideSensorMenu == true){
-        $scope.hideSensorMenu = true;
-      } else{
-        $scope.hideSensorMenu = false;
+  "use strict";
+  var app = angular.module("sensorApp");
+  app.controller("sensorsHomeCtrl", function ($scope, $sessionStorage, $window, $location, $localStorage, autentificationService, SENSOR_TYPE, sensorModelService) {
+      var vm = this;
+      vm.titleGrid = SENSOR_TYPE.TITLE;
+      if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
+        var encodeduser = btoa($localStorage.email+ ':'+ $localStorage.password)
+      }else{
+        var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
+      }
+      if(!$sessionStorage.netId){
+        $scope.noNetworkSelected = true;
+        document.getElementById('gatewaysMenu').style.pointerEvents='none';
+        document.getElementById('sensorsMenu').style.pointerEvents='none';
+      }else{
+        $scope.noNetworkSelected = false;
+        document.getElementById('gatewaysMenu').style.pointerEvents='all';
+        document.getElementById('sensorsMenu').style.pointerEvents='all';
+
       }
       $scope.cancelCards = function(){
-        $sessionStorage.cards = false;
-        $sessionStorage.gatewayCards = false;
         $sessionStorage.showNetworkDetails = false;
       }
       autentificationService.getUser(encodeduser)

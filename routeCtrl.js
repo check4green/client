@@ -9,7 +9,7 @@
     });
     app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider","$ocLazyLoadProvider",
         function($stateProvider, $urlRouterProvider, $locationProvider, $ocLazyLoadProvider){
-            $locationProvider.html5Mode(true);
+//            $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise('/home')
             $stateProvider
                 .state("home",{
@@ -91,7 +91,6 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Autentification/ForgotPassword/forgotPasswordStyle.css',
                                 'Autentification/ForgotPassword/forgotPasswordComponent.js',
                                 'Autentification/ForgotPassword/forgotPasswordCtrl.js',
                                 'Autentification/Service/autentificationService.js'
@@ -109,7 +108,6 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Autentification/ForgotPassword/resetPassword/resetPasswordStyle.css',
                                 'Autentification/ForgotPassword/resetPassword/resetPasswordComponent.js',
                                 'Autentification/ForgotPassword/resetPassword/resetPasswordCtrl.js',
                                 'Autentification/Service/autentificationService.js'
@@ -131,6 +129,24 @@
                                 'Autentification/Contact/contactComponent.js',
                                 'Autentification/Contact/contactCtrl.js',
                                 'Autentification/Service/autentificationService.js'
+                            ])
+                        }]
+                    }
+                })
+                .state('presentation',{
+                    url: "/presentation",
+                    views: {
+                        'presentation@':{
+                            template: "<presentation></presentation>"
+                        }
+                    },
+                    resolve:{
+                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
+                            return $ocLazyLoad.load([
+                                'Home/HomeContent/PresentationContent/presentationComponent.js',
+                                'Home/HomeContent/PresentationContent/presentationCtrl.js',
+                                'Home/homeStyle.css',
+                                'Home/HomeContent/cardContentStyle.css'
                             ])
                         }]
                     }
@@ -263,7 +279,7 @@
                         }]
                     }
                 })
-                .state('logIn.register',{
+                .state('register',{
                     url: "/register",
                     views: {
                         'register@':{
@@ -273,7 +289,6 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Autentification/Register/registerStyle.css',
                                 'Autentification/Register/registerComponent.js',
                                 'Autentification/Register/registerCtrl.js',
                                 'Autentification/Service/autentificationService.js'
@@ -293,7 +308,6 @@
                             return $ocLazyLoad.load([
                             'Autentification/ActivateAccount/accountEmailComponent.js',
                             'Autentification/ActivateAccount/accountEmailCtrl.js',
-                            'Autentification/ForgotPassword/forgotPasswordStyle.css',
                             'Autentification/Service/autentificationService.js'
                             
                             ])
@@ -312,7 +326,6 @@
                             return $ocLazyLoad.load([
                             'Autentification/ActivateAccount/activateAccountComponent.js',
                             'Autentification/ActivateAccount/activateAccountCtrl.js',
-                            'Autentification/ForgotPassword/resetPassword/resetPasswordStyle.css',
                             'Autentification/Service/autentificationService.js'
                             
                             ])
@@ -346,21 +359,20 @@
                                 'SensorModel/chartDirective.js',
                                 'SensorModel/deleteSensorDirective.js',
                                 'SensorModel/detailsSensorDirective.js',
-                                'SensorModel/editSensorComponent.js',
-                                'SensorModel/editSensorCtrl.js',
+                                'SensorModel/editSensorDirective.js',
                                 'SensorModel/measurementsDirective.js',
                                 'SensorModel/searchDirective.js',
                                 'SensorModel/sensorModelCtrl.js',
                                 'Home/scriptIndex.js',
-                                'sensorsHome/map.js',
                                 'Networks/deleteNetworkDirective.js',
                                 'Networks/editNetworkDirective.js',
                                 'SensorModel/sensorGatewayDirective.js',
-                                'sensorsHome/map.css',
                                 'SensorModel/sensorModelService.js',
                                 'Autentification/Service/autentificationService.js',
                                 'Networks/networkService.js',
-                                'Gateways/gatewayService.js'
+                                'Gateways/gatewayService.js',
+                                'Networks/detailsNetworkDirective.js',
+                                'sensorsHome/editLocationDirective.js',
                             
                             ])
                         }]
@@ -387,6 +399,7 @@
                                  'Autentification/Settings/settingsComponent.js',
                                  'Autentification/Settings/settingsCtrl.js',
                                  'Autentification/Settings/settingsStyle.css',
+                                 'SensorModel/sensorModelStyle.css',
                                  'Autentification/Service/autentificationService.js'
                             ])
                         }]
@@ -402,8 +415,12 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                                 'Networks/networksComponent.js',
-                                'Networks/networksCtrl.js'
+                                'Networks/networksCtrl.js',
+                                
+                                
                             ])
                         }]
                     }
@@ -424,27 +441,10 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'sensorsHome/sensorGridComponent.js',
-                                'sensorsHome/sensorGridCtrl.js'
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.devices', {
-                    url: "/devices",
-                    views: {
-                        'devices@':{
-                            template: "<devices></devices>",
-                            controller: function(SENSOR_TYPE){
-                                SENSOR_TYPE.TITLE = 'Devices';
-                            }
-                        }
-                    },
-                    resolve: {
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
-                                'sensorsHome/devicesComponent.js',
-                                'sensorsHome/devicesCtrl.js'
+                                'sensorsHome/map.css',
+                                'Sensors/AllSensors/sensorGridComponent.js',
+                                'SensorModel/sensorGridCtrl.js',
+                                
                             ])
                         }]
                     }
@@ -468,7 +468,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Distance/distanceComponent.js'
+                                'Sensors/Distance/distanceComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -492,7 +494,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Temperature/temperatureComponent.js'
+                                'Sensors/Temperature/temperatureComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -516,7 +520,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/ElectricalCurrent/electricalCurrentComponent.js'
+                                'Sensors/ElectricalCurrent/electricalCurrentComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -540,7 +546,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/AirQuality/airQualityComponent.js'
+                                'Sensors/AirQuality/airQualityComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -562,7 +570,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Vibration/vibrationComponent.js'
+                                'Sensors/Vibration/vibrationComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -586,29 +596,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Pressure/pressureComponent.js'
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.editLocation', {
-                    url: "/editLocation",
-                    views: {
-                        'editLocation@':{
-                            template: "<edit-location></edit-location>",
-                            controller: function($sessionStorage){
-                                $sessionStorage.editLoc = true;
-                                $sessionStorage.home = false;
-                            }
-                        }
-                    },
-                    resolve:{
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
+                                'Sensors/Pressure/pressureComponent.js',
                                 'sensorsHome/map.js',
                                 'sensorsHome/map.css',
-                                'sensorsHome/editLocationComponent.js',
-                                'sensorsHome/editLocationCtrl.js'
                             ])
                         }]
                     }
@@ -630,21 +620,10 @@
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
                                 'SensorModel/registerSensorComponent.js',
-                                'SensorModel/registerSensorCtrl.js'
+                                'SensorModel/registerSensorCtrl.js',
+                                
                             ])
                         }]
-                    }
-                })
-                .state('sensorsHome.editSensor', {
-                    url: "/edit-sensor",
-                    views: {
-                        'editSensor@':{
-                            template: "<edit-sensor></edit-sensor>",
-                            controller: function($sessionStorage, SENSOR_TYPE){
-                                SENSOR_TYPE.TITLE = 'Edit sensor';
-                            
-                            }
-                        }
                     }
                 })
                 .state('sensorsHome.addNetwork', {
@@ -659,26 +638,6 @@
                             return $ocLazyLoad.load([
                                 'Networks/registerNetworkComponent.js',
                                 'Networks/registerNetworkCtrl.js',
-                                
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.networkDetails', {
-                    url:'/network-details',
-                    views: {
-                        'detailsNetwork@': {
-                            template: "<details-network></details-network>",
-                            controller: function($sessionStorage){
-                                $sessionStorage.netDet = true;
-                            }
-                        }
-                    },
-                    resolve:{
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
-                               'Networks/detailsNetworkDirective.js',
-                               'sensorsHome/map.js'
                             ])
                         }]
                     }
@@ -714,30 +673,15 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
+                            'SensorModel/sensorModelStyle.css',
                                'Gateways/gatewayComponent.js',
                                'Gateways/gatewayDetailsDirective.js',
                                'Gateways/deleteGatewayDirective.js',
                                'Gateways/editGatewayDirective.js',
                                'Gateways/searchDirective.js',
-                               'Gateways/gatewaySensorsDirective.js'
+                               'Gateways/gatewaySensorsDirective.js',
+                               'sensorsHome/map.css',
                             
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.editGateway',{
-                    url:'/edit-gateway',
-                    views:{
-                        'editgateway@':{
-                            template: "<editgateway></editgateway>"
-                        }
-                    },
-                    resolve:{
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
-                               'Gateways/editGatewayDirective.js',
-                               'Gateways/editGatewayCtrl.js',
-                               'Gateways/gatewayService.js'
                             ])
                         }]
                     }

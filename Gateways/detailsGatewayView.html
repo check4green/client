@@ -1,12 +1,8 @@
-<table class="table" ng-if="gatewayDetails">
+<table class="table body-table" ng-show="gatewayDetails">
     <thead>
         <tr>
-            <td>Address</td>
+            <td>Address:</td>
+            <td class="td-adress">{{gateway.address}}</td>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td>{{gateway.address}}</td>
-        </tr>
-    </tbody>
 </table>

@@ -6,7 +6,6 @@
         templateUrl: 'SensorModel/chartDirectiveView.html',
         controller: function chartd3Ctrl(sensorModelService, d3, $scope, SENSOR_TYPE, $localStorage, $sessionStorage){
                     var readings = 1000;
-                    $scope.chartButton = true;
                     $scope.chartDisplay = false;
                     
                     if ($localStorage.email && $localStorage.password){
@@ -15,16 +14,25 @@
                         var encodedData = btoa($sessionStorage.email +':'+ $sessionStorage.password)
                     }
                 $scope.chart = function(id){
+                    document.getElementById('chartButton').style.backgroundColor = '#244E70';
+                    document.getElementById('deleteButton').style.backgroundColor = '#E88282';
+                    document.getElementById('editButton').style.backgroundColor = '#3CDB41';
+                    document.getElementById('mapButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('details').style.backgroundColor = '#3CDB41';
+                    document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
                     var page = 0
                     $scope.value = false;
                     $scope.gatewayButton = false;
+                    $scope.editLocationDisplay = false;
                     $scope.chartDisplay = true;
-                    $scope.chartButton = false;
                     $scope.detailsDisplay = false;
+                    $scope.editDisplay = false;
+                    $scope.showGateways = false;
+                    $scope.deleteDisplay = false;
+                    $scope.measurementsDisplay = false; 
                     $scope.measurementsButton = false;
-                    $scope.deleteButton = false;
-                    $scope.editLocation = false;
-                    $scope.editButton = false;
                     $scope.noDataChart = false;
                     $scope.loadingChart = true;
                     $scope.dataChart = false;
@@ -123,7 +131,8 @@
                                     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
                                 x.domain(d3.extent(measurements, function(d) {return d.readingDate; }));
                                 y.domain([d3.min(measurements, function(d){ return d.value-2}), 
-                                    d3.max(measurements, function (d) { return d.value +20; })]);                                x2.domain(x.domain());
+                                    d3.max(measurements, function (d) { return d.value +20; })]);                                
+                                x2.domain(x.domain());
                                 y2.domain(y.domain());
                                 focus.append("g")
                                     .attr("class", "axis axis--x")
@@ -143,7 +152,6 @@
                                     .datum(measurements)
                                     .attr("class", "line")
                                     .attr("d", line2);
-
 
                                 context.append("g")
                                     .attr("class", "axis axis--x")
@@ -191,7 +199,7 @@
                                                 .attr("x", function(d) {return x(d.readingDate); })
                                                 .attr("y", function(d) {return y(d.value)-3; })
                                                 .text(function(d) { 
-                                                                    if(d.value<$scope.outOfRangePositiveError && d.value >$scope.outOfRangeNegativeError && d.value!=0){return d.value;} 
+                                                                    if(d.value<$scope.outOfRangePositiveError && d.value >$scope.outOfRangeNegativeError && d.value!=0 && (!$scope.vibrations || SENSOR_TYPE.ID != 37)){return d.value;} 
                                                                     if(SENSOR_TYPE.ID == 37 || $scope.vibrations){
                                                                         if(d.value == 100){
                                                                             return 'x';
@@ -350,17 +358,6 @@
                                     return d;
                                 }
         }
-            }
-
-            $scope.cancelChart = function(){
-                $scope.chartDisplay = false;
-                $scope.chartButton = true;
-                $scope.editButton = true;
-                $scope.detailsDisplay = true;
-                $scope.deleteButton = true;
-                $scope.measurementsButton = true;
-                $scope.editLocation = true;
-                $scope.gatewayButton = true;
             }
         }
     }

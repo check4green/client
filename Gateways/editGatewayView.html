@@ -1,26 +1,14 @@
-<div ng-if="editDisplay" class="editDisplay">
-        <div class="title-grid" ng-if="editGatewayRoute">
-                <p>{{::vm.title}} : {{gatewayName}}</p>
-            </div>
-        <span id="alert-error" ng-show="editGatewayError">
-                <p>{{message}}</p>
-            </span>
-            <span id="alert-succesful" ng-show="editGatewaySuccess">
-                <p>Gateway edited successful!</p>
-            </span>
-    <form class="col-md-3" name="editForm" novalidate>
-
-        <label>Name:</label>
-        
-        <div class="form-group" ng-class="{'has-error':editForm.inputName.$invalid && editForm.inputName.$dirty}">
+<div class="c-edit-view" ng-if="editDisplay">
+    <div>
+        <span id="alert-error" ng-show="editGatewayError"><p>{{message}}</p></span>
+        <span id="alert-succesful" ng-show="editGatewaySuccess"><p>Gateway edited successful!</p></span>
+    </div>
+    <form  class="c-edit-content" name="editForm" novalidate>
+        <div class="name-edit" ng-class="{'has-error':editForm.inputName.$invalid && editForm.inputName.$dirty}">
             <div class="container-name">
                 <input name="inputName" type="text" maxlength="30" placeholder="Gateway name" ng-pattern="/^[a-zA-Z 0-9 _-]+$/" 
-                name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" 
-                ng-model="editName" ng-model-options="{ debounce: 250 }" required>
-
-                <div class="container-info 	fa fa-info-circle">
-                    <p class="info-hover">The name is a gateway identifier. To make it easier to find.</p>
-                </div>
+                        name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" class="form-control" 
+                        ng-model="editName" ng-model-options="{ debounce: 250 }" required>
             </div>
             <span class="help-block has-error">
                 <span ng-show="editForm.inputName.$error.required && editForm.inputName.$dirty">Name is required</span>
@@ -28,8 +16,6 @@
                 <span ng-show="!editForm.inputName.$valid && !editForm.inputName.$error.required && !editForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after word, and word need min one letter.</span>
             </span>
         </div>
-        <button type="button" class="btn btn-success" ng-click="editGateway(editName)">Edit</button>
-        <button type="button" class="btn btn" ng-click="cancelEdit()">Cancel</button>
-        
+        <a ng-click="editGateway(editName)">Save</a>
     </form>
 </div>

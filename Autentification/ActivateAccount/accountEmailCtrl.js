@@ -6,14 +6,15 @@
         $scope.sendCode = function(emailAddress){
             $sessionStorage.accountEmail = emailAddress;
             $scope.email = {email: emailAddress};
-            autentificationService.getActivationCode($scope.email)
-                .then(function(response){
-                    $location.path("accountEmail/activateAccount");
-                })
-                .catch(function(response){
-                    $scope.errorMsg = true;
-                    $scope.error = response.data.message;
-                })
+            $location.path("accountEmail/activateAccount");
+            // autentificationService.getActivationCode($scope.email)
+            //     .then(function(response){
+                    
+            //     })
+            //     .catch(function(response){
+            //         $scope.errorMsg = true;
+            //         $scope.error = response.data.message;
+            //     })
         }
     });
 }());

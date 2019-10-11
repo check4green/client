@@ -1,14 +1,13 @@
-<div>
-    <div class="legend-measurement" ng-show="legend">
-        <a2 style="font-weight: bold;">Legend: </a2>
-        <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Air Quality</a1>
-        <span class="fa fa-circle" style="color: red;"></span><a1>Temperature</a1>
-        <span class="fa fa-circle" style="color: blue;"></span><a1>Distance</a1>
-        <span class="fa fa-circle" style="color: black;"></span><a1>Electrical Current</a1>
-        <span class="fa fa-circle" style="color: #bd611f;"></span><a1>Vibrations</a1>
-        <span class="fa fa-circle" style="color: #FFFF00;"></span><a1>Pressure</a1>
-        <span class="fa fa-circle" ng-if="gate"></span><a1 ng-if="gate">Gateway</a1>
-
+<div class="c-body-map">
+    <div class="legend-measurement" ng-show="!loading">
+        <b style="font-weight: bold;">Legend: </b>
+        <p><i class="fa fa-circle" style="color: #4e9a06;"></i>Air Quality</p>
+        <p><i class="fa fa-circle" style="color: red;"></i>Temperature</p>
+        <p><i class="fa fa-circle" style="color: blue;"></i>Distance</p>
+        <p><i class="fa fa-circle" style="color: black;"></i>Electrical Current</p>
+        <p><i class="fa fa-circle" style="color: #bd611f;"></i>Vibrations</p>
+        <p><i class="fa fa-circle" style="color: #FFFF00;"></i>Pressure</p>
+        <p><i class="fa fa-circle"></i>Gateway</p>
     </div>
-    <div id="map"></div> 
+    <div id="map" ng-show="!loading"></div> 
 </div> 

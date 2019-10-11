@@ -1,14 +1,15 @@
 <span ng-if="ui" style ="color:red">{{uploadIntMessage}}</span>
-<table class="table"  ng-if="detailsDisplay">
+<div ng-show="loadingDetails" class="loader"></div>
+<table class="table body-table"  ng-if="detailsDisplay && !loadingDetails">
         <thead>
             <tr>
-                <td>Address</td>
-                <td>Register Date</td>
-                <td ng-if="!vibrations">Upload Interval</td>
-                <td ng-if="!vibrations">Unit Of Measure</td>
-                <td  ng-if="!vibrations">Last Value</td>
-                <td ng-if="vibrations">Last alert</td>
-                <td>Last Date</td>
+                <th>Address</th>
+                <th>Register Date</th>
+                <th ng-if="!vibrations">Upload Interval</th>
+                <th ng-if="!vibrations">Unit Of Measure</th>
+                <th  ng-if="!vibrations">Last Value</th>
+                <th ng-if="vibrations">Last alert</th>
+                <th>Last Date</th>
             </tr>
         </thead>
         <tbody>
@@ -20,8 +21,8 @@
                 <td ng-if="!vibrations">
                     <span ng-show="noRead">-</span>
                     <div class="measurementsOk" ng-if="($root.lastRead[0].value < outOfRangePositiveError) && ($root.lastRead[0].value > outOfRangeNegativeError) && ($root.lastRead[0].value != 0)">{{$root.lastRead[0].value}}</div>
-                    <div class="measurementsOutOfRange" ng-if="$root.lastRead[0].value > outOfRangePositiveError">ORP</div>
-                    <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError > $root.lastRead[0].value">ORN</div>
+                    <div class="measurementsOutOfRange" ng-if="$root.lastRead[0].value >= outOfRangePositiveError">ORP</div>
+                    <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError >= $root.lastRead[0].value">ORN</div>
                     <div class="measurementsInvalidSensor" ng-if="$root.lastRead[0].value == 0">IS(0)</div>
                 </td>
                 <td ng-if="vibrations"> 

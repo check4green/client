@@ -46,6 +46,14 @@
     -ms-transform: translateX(13px);
     transform: translateX(13px);
   }
+
+  .pagination a {
+    margin: 0 0.9px;
+
+  }
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
   
   /* Rounded sliders 
   .slider.round {

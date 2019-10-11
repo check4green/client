@@ -1,9 +1,22 @@
 <div class="contact-container-big">
-        <span class="fas fa-window-close span-x" ui-sref="home"></span>
+        <img src="/Home/images-home/Icons/Close1.0.svg" alt="Check4Greenoriginal icon" ui-sref="home" title="Close">
 
-        <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="contact-image">
-        <div class="contact-container container">
-                <h2>Contact</h2>
+        <div class="c-iong-contact">
+          <!-- <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="contact-image"> -->
+          <div class="c-icon-contact">
+            <a target="_blank" href="https://www.linkedin.com/in/check-green-68152a120?trk=hp-identity-name" title="LinkdIn"><span class="fab fa-linkedin"></span></a>
+            <a target="_blank" href="https://www.youtube.com/channel/UCcN0yl6WLk7jJ1EObr7-Hdg?view_as=subscriber" title="YouTube"><span class="fab fa-youtube"></span></a>
+            <a target="_blank" href="https://www.facebook.com/Check4Green-227916074770088" title="Facebook"><span class="	fab fa-facebook"></span></a>
+          </div>
+          <div class="c-icon-contact">
+            <a target="_blank" href="https://twitter.com/CheckforGreen" title="Twitter"><span class="fab fa-twitter"></span></a>
+            <a href="tel:0040724147687" title="+40 724 147 687"><span class="	fas fa-phone-square"></span></a>
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=appinventor.ai_stefan_swiss_0514.Check4GreenSstefan01" title="Android app"><span class="fab fa-google-play"></span></a>
+          </div>
+        </div>
+
+        <div class="contact-container">
+                <h2>CONTACT</h2>
             <span id="alert-succesful" ng-show="succMsg"><p>Your message has been successfully sent.</p></span>
             <span id="alert-error" ng-show="errorMsg"><p>{{message}}</p></span>
             <div class="area-text-container">
@@ -15,10 +28,10 @@
                         <i class="fas fa-address-card icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Your full name" ng-model="name" ng-pattern="/^[A-Za-z\s-]*$/" class="form-control" name="uname" name-valid required>
                     </div>
-                    <div class="help-block has-error">
-                      <div ng-show="contactForm.uname.$error.required && contactForm.uname.$dirty">This field is required!</div>
-                      <div ng-show="!contactForm.uname.$error.required  && contactForm.uname.$error.pattern">The name format is invalid! Use only 'A-Z', 'a-z', '-' and space.</div>
-                      <div ng-show="!contactForm.uname.$error.required && !contactForm.uname.$error.pattern && !contactForm.uname.$valid">The name is invalid!</div>
+                    <div class="error-style">
+                      <div ng-show="contactForm.uname.$error.required && contactForm.uname.$dirty"><a>This field is required!</a></div>
+                      <div ng-show="!contactForm.uname.$error.required  && contactForm.uname.$error.pattern"><a>The name format is invalid! Use only 'A-Z', 'a-z', '-' and space.</a></div>
+                      <div ng-show="!contactForm.uname.$error.required && !contactForm.uname.$error.pattern && !contactForm.uname.$valid"><a>The name is invalid!</a></div>
                   </div>
                 </div>
 
@@ -27,9 +40,9 @@
                         <i class="fas fa-envelope icon"></i>
                         <input class="contact-input-filed" type="email" placeholder="Your email address" ng-model="email" class="form-control" ng-pattern="/^[A-Za-z0-9._@]*$/" name="mail" required>
                     </div>
-                    <div class="help-block has-error">
-                      <div ng-show="contactForm.mail.$error.required && contactForm.mail.$dirty">This field is required!</div>
-                      <div ng-show="contactForm.mail.$error.email || contactForm.mail.$error.pattern">The email address is invalid!</div>
+                    <div class="error-style">
+                      <div ng-show="contactForm.mail.$error.required && contactForm.mail.$dirty"><a>This field is required!</a></div>
+                      <div ng-show="contactForm.mail.$error.email || contactForm.mail.$error.pattern"><a>The email address is invalid!</a></div>
                     </div>
                   </div>
 
@@ -38,9 +51,9 @@
                         <i class="fas fa-phone icon"></i>
                         <input class="contact-input-filed" type="text" placeholder="Your phone number" ng-model="number" class="form-control" name="phone" ng-pattern="/^[0-9+\s]*$/" required>
                     </div>
-                    <div class="help-block has-error">
-                      <div ng-show="contactForm.phone.$error.required && contactForm.phone.$dirty">This field is required!</div>
-                      <div ng-show="contactForm.phone.$error.pattern">The phone number is invalid!</div>
+                    <div class="error-style">
+                      <div ng-show="contactForm.phone.$error.required && contactForm.phone.$dirty"><a>This field is required!</a></div>
+                      <div ng-show="contactForm.phone.$error.pattern"><a>The phone number is invalid!</a></div>
                     </div>
                   </div>
                   </form>

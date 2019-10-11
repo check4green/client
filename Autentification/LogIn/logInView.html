@@ -1,41 +1,43 @@
 <div class="login-container-big">
-    <span class="fas fa-window-close span-x" ui-sref="home"></span>
-    <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="login-image">
+    <img class="sign-icon" src="/Home/images-home/Icons/Close1.0.svg" ui-sref="home" alt="Check4Green original icon" title="Close">
 
-    <div class="login-container container">
-            <h2>Log in</h2>
+    <div class="c-login-parrent">
+            <img src="/Home/images-home/Home-page/Check4Green-logoPP.svg" alt="Check4Green original logo">
+
             <div ng-if = "loading" class="loader"></div>
             <div ng-show="vm.showLogInError" id="alert-error"><p>{{message}}</p></div>
-      <form name="loginForm" novalidate ng-hide="loading">
-          <div class="form-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
-        <div class="login-input-container">
-            <i class="fas fa-envelope icon"></i>
-            <input class="login-input-filed" type="email" placeholder="Enter email" ng-model="email" ng-pattern="/^[A-Za-z0-9._@]*$/" class="form-control" name="uname" required>
-          </div>
-          <div class="help-block has-error">
-            <div ng-show="loginForm.uname.$error.required && loginForm.uname.$dirty">This field is required!</div>
-            <div ng-show="loginForm.uname.$error.email || loginForm.uname.$error.pattern">This email address is invalid!</div>
-          </div>
-        </div>
-        <div class="form-group" ng-class="{'has-error': loginForm.psw.$invalid && loginForm.psw.$dirty}">
-        <div class="login-input-container">
-            <i class="fas fa-key icon"></i>
-            <input class="login-input-filed" type="password" placeholder="Enter password" ng-enter="login(email, password)" ng-model="password" class="form-control" name="psw" required>
-        </div>
-        <div class="help-block has-error" ng-show="loginForm.psw.$error.required && loginForm.psw.$dirty">This field is required!</div>
-      </div>
-      </form>
-        <button type="button" ng-click="login(email, password)" ng-hide="loading">Log in</button>
 
-        <label class="container-checkboxes" ng-hide="loading">
-            <input type="checkbox" checked ng-model="value" ng-click="remeberAccount(value)">Remember me
-            <span class="checkmark"></span>
-        </label>
-        
-        <label class="register-pass" ng-hide="loading">
+      <div class="c-login-form" name="loginForm" novalidate ng-if="!loading">
+
+          <div class="f-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
+              <input type="email" placeholder="Enter email" ng-model="email" ng-pattern="/^[A-Za-z0-9._@]*$/" name="uname" required>
+          
+            <div class="error-style">
+              <div ng-show="loginForm.uname.$error.required && loginForm.uname.$dirty"><p>This field is required!</p></div>
+              <div ng-show="loginForm.uname.$error.email || loginForm.uname.$error.pattern"><p>This email address is invalid!</p></div>
+            </div>
+          </div>
+
+          <div class="f-group passRelative" ng-class="{'has-error': loginForm.psw.$invalid && loginForm.psw.$dirty}">
+              <input type="password" id="passwordA" placeholder="Enter password" ng-enter="login(email, password)" ng-model="password" name="psw" required>
+              <i class="fas fas fa-eye dadad" onclick="showPass()"></i>
+          </div>
+          <div class="error-style" ng-show="loginForm.psw.$error.required && loginForm.psw.$dirty"><p>This field is required!</p></div>
+      </div>
+      <div class="remember-fpass" ng-hide="loading">
+          <label class="container-checkboxes">
+              <input type="checkbox" checked ng-model="value" ng-click="remeberAccount(value)"><a>Remember me</a>
+              <span class="checkmark"></span>
+          </label>
+          
+          <a ui-sref="forgotPassword">Forgot your password?</a>
+      </div>
+      
+      <div class="c-login-register" ng-hide="loading">
+        <a ng-click="login(email, password)">Log in</a>
         <a ui-sref="accountEmail">Register</a>
-        <a class="register-pass" ui-sref="forgotPassword">Forgot your password?</a>
-        </label>
+      </div>
+
     </div>
 </div>
-<div class="header-home-add" style="display: none !important;" title="Fake-element"></div>
+<!-- <div class="header-home-add" style="display: none !important;" title="Fake-element"></div> -->

@@ -4,6 +4,24 @@
     margin: 0;
     padding: 0;
 }
+#editLocMap {
+    width: 100%;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+}
+#registerMap {
+    width: 100%;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+}
+#registerGatewayMap{
+    width: 100%;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+}
 .stations, .stations svg{
     position: absolute
 } 

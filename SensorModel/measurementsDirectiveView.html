@@ -3,47 +3,53 @@
     <div ng-show="noDataMeasurements" class="noData">No data</div>
 
     <div ng-show="dataMeasurements">
-    <div class="inLine-measurement">
-        <button type="button" id="butonRefresh" class="btn btn-success" ng-click="measurementSensor(sensor.id)" ng-if="detailsData">Refresh</button>
-        <div  class="form-group measurementsContainerSet">
-            <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
-                <option selected disabled hidden value="">Sensor per page: 10</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="40">40</option>
-                <option value="60">60</option>
-                <option value="100">100</option>
-                <option value="200">200</option>
-            </select>
-        </div>
-    </div>
-        <div class="measurementsTotalReadings">
-            <label>Total Readings: {{totalReadings}}</label>
+        <div class="measuremet-filters">
+            <div class="c-filter">
+                <!-- <a>Readings</a> -->
+                <p>Total readings: <b>{{totalReadings}}</b></p>
+                <p>Values: <b style="color: #5cb85c;">{{valuesCount}}</b></p>
+                <p>Invalid: <b style="color: #d9534f;">{{invalidCount}}</b></p>
+                <p>Out of range: <b style="color: #286090;">{{outOfRangeCount}}</b></p>
+                <!-- <i class="fas fa-chevron-left chevron"></i> -->
+            </div>
+
+            <div class="c-filter" >
+                <!-- <a>Filters</a> -->
+                <label class="ceckbox-sensors" ng-repeat="filter in filters" ng-if="!vibrations">
+                    {{filter.Name}}
+                  <input id="active" type="checkbox" ng-model="filter.Selected" ng-change="filterValues(filter.Id)">
+                  <span></span>
+                </label>
+
+                <label class="ceckbox-sensors-no">Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size"></label>
+                <!-- <i class="fas fa-chevron-left"></i> -->
+            </div>
+
             <div class="legend-measurement" ng-if="!vibrations">
-                <a2 style="font-weight: bold;">Legend: </a2>
-                <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
-                <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor (0)</a1>
-                <span class="fa fa-circle" style="color: #286090;"></span><a1>Out of range</a1>
+                <b>Legend: </b>
+                <p> <i class="fa fa-circle" style="color: #4e9a06;"></i>Value</p>
+                <p> <i class="fa fa-circle" style="color: #d9534f;"></i>Invalid sensor (0)</p>
+                <p> <i class="fa fa-circle" style="color: #286090;"></i>Out of range</p>
             </div>
         </div>
-        <table class="table">
+        <table class="table body-table">
             <thead>
                 <tr>
-                    <td>Index</td>
-                    <td>Reading Date</td>
-                    <td ng-if="!vibrations">Val({{unitOfMeasure}})</td>
-                    <td ng-if="vibrations">Alerts</td>
+                    <th>Index</th>
+                    <th>Reading Date</th>
+                    <th ng-if="!vibrations">Val({{unitOfMeasure}})</th>
+                    <th ng-if="vibrations">Alerts</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="measurementSensor in $root.measurementSensors">
+                <tr ng-repeat="measurementSensor in $root.measurementSensors| limitTo: size: size*(page-1)">
                     <div></div>
-                    <td>{{$index+1}}</td>
+                    <td>{{ ($index + 1) + (page - 1) * size }}</td>
                     <td>{{measurementSensor.readingDate}}</td>
                     <td ng-if= "!vibrations">
                         <div class="measurementsOk" ng-if="(measurementSensor.value < outOfRangePositiveError) && (measurementSensor.value > outOfRangeNegativeError) && (measurementSensor.value != 0)">{{measurementSensor.value}}</div>
-                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > outOfRangePositiveError">ORP</div>
-                        <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError > measurementSensor.value">ORN</div>
+                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value >= outOfRangePositiveError">ORP</div>
+                        <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError >= measurementSensor.value">ORN</div>
                         <div class="measurementsInvalidSensor" ng-if="measurementSensor.value == 0">IS(0)</div>
                     </td>
                     <td ng-if ="vibrations">
@@ -60,5 +66,5 @@
         </table>
         <div class="pages-center" paging page="page" total="totalReadings" page-size="size" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
     </div>
-    <button type="button" class="btn btn" ng-click="cancelMeasurements()" ng-if="detailsData">Cancel</button>
+
 </div>

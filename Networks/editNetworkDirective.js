@@ -8,9 +8,9 @@
                 $scope.editButton = true;
                 $scope.editNetworkDisplay = false;
                 if($localStorage.email && $localStorage.password){
-                    var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
+                    $scope.encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
                 }else {
-                    var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
+                  $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
                 };
                 $scope.startEditNetwork = function(network){
                     $scope.networks.forEach(function(val){
@@ -28,7 +28,7 @@
                 $scope.editNetwork = function(id, name){
                     id = $sessionStorage.editId;
                     var network = {'name': name}
-                    networkService.updateNetwork(encodeduser, id, network)
+                    networkService.updateNetwork($scope.encodeduser, id, network)
                         .then(function(){
                             $timeout(function(){
                                 $window.location.reload();

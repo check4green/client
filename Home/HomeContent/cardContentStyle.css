@@ -1,22 +1,13 @@
-
 /* Card tutorial*/
 .contaner-cardsAndTitle{
     padding-top: 100px;
     padding-bottom: 150px;
 }
-.container-bg2{
-    width: 100%;
-    height: auto;
-    background-image: url("/Home/images-home/Logo-png-pises/LogoC4G_Header-with-BG-reflect-pises.svg");
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-size: cover;
-}
 .container-titleCards h1{
     text-align: center;
-    font-family: "FontC4G";
     font-size: 25px;
     margin-bottom: 15px;
+    color: #00AC06;
 }
 .container-cardsParrent{
     display: flex;
@@ -24,28 +15,27 @@
     padding: 0 4px;
     padding: 15px;
     border: 1px solid #33333346;
-
-    /* background-color: #3bc4d6bb; */
+}
+.container-header-logoIMG .carousel-inner{
+   
 }
 .container-header-logoIMG .carousel-inner video{
     height: auto;
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
+    border-radius: 10px;
 }
 .container-cardsParrent .container-cards {
     flex: 15%;
     padding: 0 4px;
     margin: auto;
+
 }
 .container-cards .container-cardsChild {
     background-color: white;
-    margin-top: 8px;
-   /*   vertical-align: middle;
-    width: 100%;
-    height: auto;
-    box-shadow: 0px 6px 9px -7px #00000071;
-    border: 1px solid #33333346; */
+    margin-top: 10px;
+    
 }
 .container-cards .container-cardsChild video:hover{
     border: 1px solid #333333;
@@ -96,9 +86,10 @@
     left:0;
     right: 0;
     overflow: auto;
-    background: -webkit-linear-gradient(-60deg, 
+    background-color: white;
+    /* background: -webkit-linear-gradient(-60deg, 
     #77ab88 0%, #77ab88 25%, 
-    #308f58 25%, #308f58 100%); 
+    #308f58 25%, #308f58 100%);  */
 }
 .container-video::-webkit-scrollbar {
     width: 0px;
@@ -131,14 +122,12 @@
 .container-videoBG{
     background-color: white;
     padding: 10px;
-    font-family: "FontC4G";
     height: auto;
     width: 80%;
     margin: auto;
 }
 .container-videoBG h1{
     text-align: center;
-    font-family: "FontC4G";
     font-size: 25px;
 }
 .container-videoBG p{

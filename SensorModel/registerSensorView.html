@@ -1,13 +1,14 @@
-<div class="registerDisplay row vertical-align"  ng-show="registerDisplay">
-    <div class="title-grid">
-        <p>{{::vm.titleGrid}}</p>
+<div class="c-register-sensor" ng-show="registerDisplay">
+    <div class="header-register-s">
+        <img src="/Home/images-home/Icons/Back1.0.svg" alt="Check4Green Icon" title="Back" ng-click="cancelRegisterSensor()">
+        <h1>Sensor registration</h1>
     </div>
     <span id="alert-error" ng-show="sensorRegisterError"><p>{{message}}</p></span>
     <span id="alert-succesful" ng-show="sensorRegisterSuccess"><p>Sensor created successful!</p></span>
 
-    <form class="col-md-3" name="registerForm" novalidate>
-        <label>Name:</label>
-        <div class="form-group" ng-class="{'has-error':registerForm.inputName.$invalid && registerForm.inputName.$dirty}">
+    <form class="c-edit-content" name="registerForm" novalidate>
+        <p>Name:</p>
+        <div class="name-edit" ng-class="{'has-error':registerForm.inputName.$invalid && registerForm.inputName.$dirty}">
 
             
             <div class="container-name">
@@ -23,9 +24,10 @@
                 <span ng-show="!registerForm.inputName.$valid && !registerForm.inputName.$error.required && !registerForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after the word, and the word needs min one letter. Exemple: (Proximity-Sensor_01)</span>
             </span>
         </div>
-        <label ng-show="!vibrations">Upload Interval:</label>
-        <div ng-show="!vibrations" class="form-group" ng-class="{'has-error':(registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
-            <div class="container-name">
+
+        <p ng-show="!vibrations">Upload Interval:</p>
+        <div ng-show="!vibrations" class="upload-edit" ng-class="{'has-error':(registerForm.inputDays.$invalid && registerForm.inputDays.$dirty) || (registerForm.inputHours.$invalid && registerForm.inputHours.$dirty)|| (registerForm.inputMinutes.$invalid && registerForm.inputMinutes.$dirty)}">
+            <div class="container-name space-input">
                 <input id="inputDays" name="inputDays" type="number" min="0" placeholder="Days" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerDays" ng-model-options="{ debounce: 250 }" required />
                 <input id="inputHours" name="inputHours" type="number" min="0" placeholder="Hours" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerHours" ng-model-options="{ debounce: 250 }" required />
                 <input id="inputMinutes" name="inputMinutes" type="number" min="0" placeholder="Minutes" onkeydown="javascript: return event.keyCode == 69 ? false : true" class="form-control" ng-model="registerMinutes" ng-model-options="{ debounce: 250 }" required />
@@ -38,8 +40,9 @@
                 <span ng-show="registerForm.inputDays.$error.required && registerForm.inputHours.$error.required && registerForm.inputMinutes.$error.required">Upload Interval is required</span>
             </span>
         </div>
-        <label>Address:</label>
-        <div class="form-group" ng-class="{'has-error':registerForm.inputClientAdd.$invalid && registerForm.inputClientAdd.$dirty}">
+
+        <p>Address:</p>
+        <div class="name-edit" ng-class="{'has-error':registerForm.inputClientAdd.$invalid && registerForm.inputClientAdd.$dirty}">
             <div class="container-name">
                 <input id="inputClientAdd" name="inputClientAdd" placeholder="Sensor Address" ng-pattern="/^[a-z0-9]{10}$/" ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" type="text" class="form-control" ng-model="registerClientAddress" ng-model-options="{ debounce: 250 }" required ng-minlength="10" ng-maxlength="10" maxlength="10" />
                 <div class="container-info 	fa fa-info-circle">
@@ -52,11 +55,10 @@
             </span>
         </div>
         
-        <button type="button" class="btn btn-success" ng-click="sensorRegister(registerName, registerDays,registerHours, registerMinutes, registerClientAddress, vm.sensors)">Add</button>
-        <button type="button" class="btn btn" ng-click="cancelRegisterSensor()">Cancel</button>
+        <a ng-click="sensorRegister(registerName, registerDays,registerHours, registerMinutes, registerClientAddress, vm.sensors)">Add</a>
     </form>
     <div class="map-google">
         <label>Choose the location of your sensor on the map: </label>
-        <map></map>
+        <div id ="registerMap"></div>
     </div>
 </div>

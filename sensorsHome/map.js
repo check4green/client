@@ -16,88 +16,35 @@
                     mapTypeControl: false,
                     streetViewControl: false
                 });
-                var marker;
-                if($sessionStorage.editLoc == true){
-                    marker= new google.maps.Marker({
-                        position: $sessionStorage.location,
-                        map:map
-                    })
-                    map.setCenter($sessionStorage.location)
-                }
-                google.maps.event.addListener(map, "click", function(event){
-                  if($sessionStorage.register == true || $sessionStorage.editLoc == true || $sessionStorage.gatewayRegister == true){  
-                      placeMarker(map, event.latLng)
-                    } 
-                })
-                function placeMarker(map, location){
-                    if(!marker || !marker.setPosition){
-                        marker= new google.maps.Marker({
-                            position: location,
-                            map:map
-                        })
-                        $sessionStorage.lat = marker.getPosition().lat();
-                        $sessionStorage.lng = marker.getPosition().lng();
-                    } else{
-                        marker.setPosition(location);
-                        $sessionStorage.lat = marker.getPosition().lat();
-                        $sessionStorage.lng = marker.getPosition().lng();
-                    }
-                }
-                $sessionStorage.lat = null;
-                $sessionStorage.lng = null;
-                if(($sessionStorage.register == true) || ($sessionStorage.editLoc == true) || ($sessionStorage.gatewayRegister == true)){
-                    $scope.legend = false;
-                } else{
-                    $scope.legend = true;
-                }
 
-
-
+                $scope.noSensors = true;
+                $scope.loading = true;
                 autentificationService.getAllSensors(encodeduser, $sessionStorage.netId)
                     .then(function(data){
-                        var loading = true;
                         var pageSize = data;
                         autentificationService.getUserSensors(encodeduser,$sessionStorage.netId, 0, pageSize)
                             .then(function(response){
                                 var sensors = response.data;
                                 var pos = [];
                                 var lat, long, name, status,address, id, sensTypeId;
-                                if($sessionStorage.netDet == true || $scope.registerDisplay==true || $sessionStorage.gatewayRegister == true){
-                                    $scope.gate = true;
-                                    gatewayService.getGateways(encodeduser, $sessionStorage.netId, 0, pageSize)
-                                        .then(function(response){
-                                            $scope.gateway = response.data;
-                                            for(var i=0; i<$scope.gateway.length; i++){
-                                                lat = $scope.gateway[i].latitude;
-                                                long = $scope.gateway[i].longitude;
-                                                name = $scope.gateway[i].name;
-                                                status = $scope.gateway[i].active;
-                                                address = $scope.gateway[i].address;
-                                                id = $scope.gateway[i].id;
-                                                sensTypeId = 0;
-                                                var loc = [long, lat, name, status, address, id, sensTypeId];
-                                                if(long !=0 && lat!=0){
-                                                    pos.push(loc);
-                                                    loading = false;
-                                                }
-                                            }
-                                            
-                                        });
-                                        for(var i=0; i< sensors.length; i++){
-                                            lat = sensors[i].latitude;
-                                            long = sensors[i].longitude;
-                                            name = sensors[i].name;
-                                            status = sensors[i].active;
-                                            address = sensors[i].address;
-                                            id = sensors[i].id;
-                                            sensTypeId = sensors[i].sensorTypeId;
-                                            var loc = [long, lat, name, status, address, id, sensTypeId]
+                                gatewayService.getGateways(encodeduser, $sessionStorage.netId, 0, pageSize)
+                                    .then(function(response){
+                                        $scope.gateway = response.data;
+                                        for(var i=0; i<$scope.gateway.length; i++){
+                                            lat = $scope.gateway[i].latitude;
+                                            long = $scope.gateway[i].longitude;
+                                            name = $scope.gateway[i].name;
+                                            status = $scope.gateway[i].active;
+                                            address = $scope.gateway[i].address;
+                                            id = $scope.gateway[i].id;
+                                            sensTypeId = 0;
+                                            var loc = [long, lat, name, status, address, id, sensTypeId];
                                             if(long !=0 && lat!=0){
-                                                pos.push(loc)
-                                                loading = false;
+                                                pos.push(loc);
+                                                $scope.loading = false;
                                             }
                                         }
-                                } else{
+                                    });
                                     for(var i=0; i< sensors.length; i++){
                                         lat = sensors[i].latitude;
                                         long = sensors[i].longitude;
@@ -109,10 +56,14 @@
                                         var loc = [long, lat, name, status, address, id, sensTypeId]
                                         if(long !=0 && lat!=0){
                                             pos.push(loc)
-                                            loading = false;
+                                            $scope.loading = false;
                                         }
                                     }
-                                }
+                                    if(pos.length == 0){
+                                        $scope.noSensors = true;
+                                    } else{
+                                        $scope.noSensors = false;
+                                    }
                                 $timeout(function(){
                                     var overlay = new google.maps.OverlayView;
                                     overlay.onAdd = function() {
@@ -126,7 +77,6 @@
                                                             .append("div")
                                                             .attr("class", "tooltip")
                                                             .style("opacity", 0);
-
                                                 var marker = layer.selectAll("svg")
                                                     .data(d3.entries(pos))
                                                     .each(transform)
@@ -220,9 +170,7 @@
                                                                         }
                                                                     }
                                                                 
-
                                                                 } else{
-
                                                                     tooltip.transition()
                                                                     .duration(0)
                                                                     .style("opacity", 0.9)
@@ -244,7 +192,6 @@
                                                             .duration(200)
                                                             .style("opacity", 0);
                                                         $scope.click = true;
-
                                                     })
                                                 
                                                 google.maps.event.addListener(map,"mouseout", function(){
@@ -258,7 +205,7 @@
                                                             .duration(200)
                                                             .style("opacity", 0);
                                                 }) 
-                                                if(!$sessionStorage.editLoc && !loading){ 
+                                                if(!$sessionStorage.editLoc && !$scope.loading){ 
                                                     marker.append("circle")
                                                         .data(d3.entries(pos))
                                                         .attr("r",function(d){
@@ -338,7 +285,6 @@
                                 }, 1000)
                             })
                     })
-                
             }
         }
             

@@ -1,7 +1,7 @@
 <div class="measurementsDisplay" ng-show="showGateways" id="line">
         <div ng-show="loadingGateways" class="loader"></div>
         <div ng-show="noGateway" class="noData">No data</div>
-        <table class="table" ng-show="!loadingGateways && !noGateway">
+        <table class="table body-table" ng-show="!loadingGateways && !noGateway">
             <thead>
                 <tr>
                     <td>Index</td>
@@ -25,6 +25,5 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" class="btn btn" ng-click="cancel()">Cancel</button>
 
 </div>

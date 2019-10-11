@@ -26,9 +26,6 @@
                 headers:{'Authorization' : 'Basic ' +encodedData}
 
          })
-           .then(function(response){
-               return response.data;
-           })
        }
        function getFinalPage(encodedData, networkId, size){
            return  $http({

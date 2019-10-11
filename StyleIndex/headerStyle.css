@@ -1,4 +1,43 @@
-.container-sensorHome .headerSensorHome{
+.header-sensor-home{
+  background-color: black;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2000;
+  padding: 5px;
+  display: flex;
+}
+.header-sensor-home > img{
+  height: auto;
+  width: 30px;
+  cursor: pointer;
+}
+.header-sensor-home > img:hover{
+  opacity: 0.9;
+}
+#sensorsHomeView > header > img:nth-child(1){
+  left: 10px;
+}
+#sensorsHomeView > header > img:nth-child(2){
+  right: 10px;
+}
+.c-flex-grow{
+  flex-grow: 2;
+}
+
+.homeHouse{
+  margin-right: 10px;
+  
+  font-size: 27px;
+}
+.homeHouse:hover{
+  opacity: 0.9;
+}
+.homeHouse i{
+  margin-top:10px;
+  color: black;
+}
+/* .container-sensorHome .headerSensorHome{
   position: sticky;
   top: 0;
   width: 100%;
@@ -25,22 +64,9 @@
 .container-sensorHome .headerSensorHome .topnav-shome #main i{
   padding: 3px;
   color: #ffff;
-}
-.container-sensorHome .headerSensorHome .topnav-shome .homeHouse{
-  margin: 5px;
-  background: #525252;
-  border-radius: 50%;
-}
-.container-sensorHome .headerSensorHome .topnav-shome .homeHouse:hover{
-  text-decoration: none;
-  background: #414141 !important;
-  transition: 0.3s;
-}
-.container-sensorHome .headerSensorHome .topnav-shome .homeHouse i{
-  padding: 7px;
-  color: #1ec033;
-}
+} */
 
+/*
 .container-sensorHome .headerSensorHome .topnav-shome .logged-hover{
   margin: 5px;
   border-radius: 50%;
@@ -79,13 +105,6 @@
   flex-grow: 1;
 }
 
-.container-sensorHome .headerSensorHome .topnav-shome .logged-hover{
-  
-}
-
-
-
-/* --> colapse account */
 #containerAccountId{
   display: none;
 }
@@ -123,7 +142,6 @@
   margin-left: 10px;
   padding: 5px;
   line-height: 9px;
-  font-family: "FontC4G";
 }
 .container-account .container-loggedMenu .title-user{
   font-weight: bold;
@@ -131,7 +149,6 @@
 .container-account .container-logOut{
   display: flex;
   font-size: 13px;
-  font-family: "FontC4G";
   border-top: 1px solid #333;
 }
 .container-account .container-logOut .flex-settings{
@@ -152,64 +169,8 @@
   margin-top: 5px;
   margin-left: 5px;
   text-align: center;
-  font-family: "FontC4G";
 }
 .container-account .container-logOut a:hover{
   background-color: rgb(206, 206, 206);
   transition: 0.5s;
-}
-/* <-- colapse account */
-
-/* .container-sensorHome .topnav-shome {
-  position: relative;
-  background-color: #333;
-}
-.container-sensorHome .headerSensorHome {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: #333;
-  font-size: 20px;
-  z-index: 99;
-  transition: top 0.3s;
-}
-
-#close-menu{
-  display: none;
-  background-color: #4e9a06;
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  left: 8px;
-  top: 6px;
-  padding: 1px;
-  cursor: pointer;
-}
-
-#headerImg{
-  margin: auto;
-  margin-left: 20%;
-}
-#headerImg img{
-  height: auto;
-  width: 70%;
-}
-
-.container-sensorHome .topnav-shome{
-  position: relative;
-  background-color: #333;
-}
-.container-sensorHome .topnav-shome .logged-hover{
-  float: right;
-}
-.container-sensorHome .topnav-shome a {
-  float: right;
-  text-align: center;
-  color: white;
-  padding: 2px 2px;
-  text-decoration: none !important;
-  font-size: 20px;
-  cursor: pointer;
-  user-select: none;
-}
- */
+} */

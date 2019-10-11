@@ -1,179 +1,64 @@
 <div ng-show="homeContent">
         <head><meta name="Homepage" content="IoT based hardware and software solutions integrated with LTE and LPWAN technologies such as: SIGFOX, LoRA and NB-IOT."></head>
     <div class="container-header-logoIMG" >
-        <img src="/Home/images-home/Logo-png-pises/LogoC4G_Header-with-LOGO-pises.svg" alt="check4green End to End IoT Platform">
-        <img id="imgHeader" src="/Home/images-home/Logo-png-pises/LogoC4G_Header-with-ALL-pises.svg" alt="check4green End to End IoT Platform">
+        <div class=""></div>
+        <img id="bLogIn" ui-sref="logIn" ng-show="vm.log" src="/Home/images-home/Home-page/Button-logIn1.0.svg" alt="check4green End to End IoT Platform">
     </div>
 
-    <div class="container-big-gallery">
-        <section class="container">
-            <div class="containerGallery-big" title="Click to next photo">
-                <img onclick="show_gallery_content_1()" id="1Img" alt="smart sensors" src="/Home/images-home/newGallery-images/1.svg">
-                <img onclick="show_gallery_content_2()" style="display: none;" id="2Img" alt="gateways" src="/Home/images-home/newGallery-images/2.svg">
-                <img onclick="show_gallery_content_3()" style="display: none;" id="3Img" alt="check4green server" src="/Home/images-home/newGallery-images/3.svg">
-                <img onclick="show_gallery_content_4()" style="display: none;" id="4Img" alt="check4green End to End IoT Platform web app" src="/Home/images-home/newGallery-images/4.svg">
-            </div>
-            <div class="containerGallery-mini">
-                <div class="box-spanGallery">
-                    <span id="circleG1" onclick="show_gallery_content_5()" class="fas fa-circle" title="Click to next photo (Connect devices)"></span>
-                    <span id="circleG2" onclick="show_gallery_content_6()" class="fas fa-circle" title="Click to next photo (Collect data)"></span>
-                    <span id="circleG3" onclick="show_gallery_content_7()" class="fas fa-circle" title="Click to next photo (Server system)"></span>
-                    <span id="circleG4" onclick="show_gallery_content_8()" class="fas fa-circle" title="Click to next photo (Web application)"></span>
+    <div class="c-border">
+        <div class="container c-domains">
+            <h1><b>Check4Green </b>is designed to be used in as many domains as possible:</h1>
+            <div class="c-domains-child">
+                <div class="c-domains-align">
+                <img class="img-domains" src="/Home/images-home/Home-page/Icon-domains/Factories-icon-1.0.svg" alt="Check4Green original svg" title="Factories">
+                <strong>Factories</strong>
+                </div>
+
+                <div class="c-domains-align">
+                <img class="img-domains" src="/Home/images-home/Home-page/Icon-domains/Stadium-icon-1.0.svg" alt="Check4Green original svg" title="Stadium">
+                <strong>Stadium</strong>
+                </div>
+
+                <div class="c-domains-align">
+                <img class="img-domains" src="/Home/images-home/Home-page/Icon-domains/Hotel-icon-1.0.svg" alt="Check4Green original svg" title="Hotels">
+                <strong>Hotels</strong>
                 </div>
             </div>
-        </section>
+
+            <div class="c-domains-child">
+                <div class="c-domains-align">
+                <img class="img-domains" src="/Home/images-home/Home-page/Icon-domains/Agriculture-icon-1.0.svg" alt="Check4Green original svg" title="Agriculture">
+                <strong>Agriculture</strong>
+                </div>
+
+                <div class="c-domains-align">
+                <img class="img-domains" src="/Home/images-home/Home-page/Icon-domains/House-icon-1.0.svg" alt="Check4Green original svg" title="Personal households">
+                <strong>Personal households</strong>
+                </div>
+
+                <div class="c-domains-align">
+                <img class="img-domains" src="/Home/images-home/Home-page/Icon-domains/ComercialCenter-icon-1.0.svg" alt="Check4Green original svg" title="Commercial centers">
+                <strong>Commercial centers</strong>
+                </div>
+            </div>
+        </div>
     </div>
 
-        <!-- /start page -->
-
-        <!-- Card tutorial-->
-        <div class="container-bg2">
-            <div class="container contaner-cardsAndTitle">
-                <div class="container-titleCards"><h1>TUTORIALS</h1></div>
-                <div class="container container-cardsParrent">
-
-                    <div class="container-cards">
-                        <div class="container-cardsChild" style="margin-top: 0px;" onclick="toggle_visibility('containerVideo1')" onmouseover="hoverToPlay1()" onmouseout="hoverToPause1()">
-
-                            
-
-                                <video id="video-network" muted>
-                                  <source src="/Home/source-video/HowOurNetworkWorks.mp4" alt="check4green sensors iot petrosani tutorials" type="video/mp4">
-                                  Your browser does not support HTML5 video.
-                                </video>
-
-                        </div>
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo2')" onmouseover="hoverToPlay2()" onmouseout="hoverToPause2()">
-                                <video id="video-sH" muted>
-                                  <source src="/Home/source-video/HowDoWeCreateSensorHousing.mp4" alt="sensor housing tutorials" type="video/mp4">
-                                  Your browser does not support HTML5 video.
-                                </video>                        
-                        </div>
-                    </div>
-
-                    <div class="container-cards">
-                        <div class="container-cardsChild" style="margin-top: 0px;" onclick="toggle_visibility('containerVideo4')" onmouseover="hoverToPlay3()" onmouseout="hoverToPause3()">
-                                <video id="video-edisS" muted>
-                                  <source src="/Home/source-video/HowToEditASensor.mp4" alt="edit a sensor on our platform" type="video/mp4">
-                                  Your browser does not support HTML5 video.
-                                </video>
-                        </div>
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo5')" onmouseover="hoverToPlay4()" onmouseout="hoverToPause4()">
-                                <video id="video-register" muted>
-                                  <source src="/Home/source-video/HowToRegisterASensor.mp4" alt="register a sensor on our platform" type="video/mp4">
-                                  Your browser does not support HTML5 video.
-                                </video>
-                        </div>
-                    </div>
-
-                    <div class="container-cards">
-                        <div class="container-cardsChild" style="margin-top: 0px;" onclick="toggle_visibility('containerVideo6')" onmouseover="hoverToPlay5()" onmouseout="hoverToPause5()">
-                                <video id="video-activeS" muted>
-                                  <source src="/Home/source-video/HowToActiveASensor.mp4" alt="activate a sensor" type="video/mp4">
-                                  Your browser does not support HTML5 video.
-                                </video>
-                        </div>
-                        <div class="container-cardsChild" onclick="toggle_visibility('containerVideo7')" onmouseover="hoverToPlay6()" onmouseout="hoverToPause6()">
-                                <video id="video-chart" muted>
-                                  <source src="/Home/source-video/HowToUseTheChartView.mp4" alt="manage the data from the sensors" type="video/mp4">
-                                  Your browser does not support HTML5 video.
-                                </video>
-                        </div>
-                    </div>
-
-                </div>
+    <div class="c-presentation" onmouseover="hoverToPlay0()" onmouseout="hoverToPause0()" ui-sref="presentation" title="CLICK HERE TO OPEN THE PRESENTATION PAGE">
+            <video muted id="video-presentation">
+                <source src="/Home/source-video/Joseph-video/Joseph-presentation.mp4" title="Click me!" type="video/mp4">
+            </video>
+            <img src="/Home/images-home/Home-page/Monitor.svg" alt="Check4Green original svg">
+            <div class="c-text-monitor">
+                <p>
+                CLICK HERE TO OPEN THE PRESENTATION PAGE
+                </p>
             </div>
-        </div>
-        <!-- Card tutorial-->
+    </div>
 
-        <!-- Video tutorial  -->
-        <div class=" container-row-descr">
-            <div class="container-video" id="containerVideo1">
-                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo1')"></span>
-                <div class="container-videoBG">
-                    <h1>How our network works </h1>
-                
-                    <video id="video-1" controls>
-                      <source src="/Home/source-video/HowOurNetworkWorks.mp4" type="video/mp4" alt="check4green End to End IoT Platform">
-                      Your browser does not support HTML5 video.
-                    </video>
-                </div>
-            </div>
-        </div>
-
-        <div class=" container-row-descr">
-            <div class="container-video" id="containerVideo2">
-                <span class="fas fa-window-close span-video" onclick="toggle_visibility('containerVideo2')"></span>
-                <div class="container-videoBG">
-                    <h1>How do we create sensors housing?</h1>
-                
-                    <video id="video-2" controls>
-                      <source src="/Home/source-video/HowDoWeCreateSensorHousing.mp4" alt="sensor housing tutorials" type="video/mp4">
-                      Your browser does not support HTML5 video.
-                    </video>
-                </div>
-            </div>
-        </div>
-        
-        <div class=" container-row-descr">
-            <div class="container-video" id="containerVideo4">
-                <span class="fas fa-window-close span-video" onclick="toggle_visibility('containerVideo4')"></span>
-                <div class="container-videoBG">
-                    <h1>How to edit a sensor?</h1>
-                
-                    <video id="video-4" controls>
-                      <source src="/Home/source-video/HowToEditASensor.mp4" alt="edit a sensor on our platform" type="video/mp4">
-                      Your browser does not support HTML5 video.
-                    </video>
-                </div>
-            </div>
-        </div>
-
-        <div class=" container-row-descr">
-            <div class="container-video" id="containerVideo5">
-                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo5')"></span>
-                <div class="container-videoBG">
-                    <h1>How to register a sensor?</h1>
-                    <video id="video-5" controls>
-                      <source src="/Home/source-video/HowToRegisterASensor.mp4" alt="register a sensor on our platform" type="video/mp4">
-                      Your browser does not support HTML5 video.
-                      </video>
-                </div>
-            </div>
-        </div>
-
-        <div class=" container-row-descr">
-            <div class="container-video" id="containerVideo6">
-                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo6')"></span>
-                <div class="container-videoBG">
-                    <h1>How to activate a sensor?</h1>
-                
-                    <video id="video-6" controls>
-                      <source src="/Home/source-video/HowToActiveASensor.mp4" alt="activate a sensor" type="video/mp4">
-                      Your browser does not support HTML5 video.
-                    </video>
-                </div>
-            </div>
-        </div>
-
-        <div class=" container-row-descr">
-            <div class="container-video" id="containerVideo7">
-                <span class="fas fa-window-close span-video"  onclick="toggle_visibility('containerVideo7')"></span>
-                <div class="container-videoBG">
-                    <h1>How to use the chart view</h1>
-                    <video id="video-7" controls>
-                      <source src="/Home/source-video/HowToUseTheChartView.mp4" alt="manage the data from the sensors" type="video/mp4">
-                      Your browser does not support HTML5 video.
-                    </video>
-                </div>
-            </div>
-        </div>
-        <!-- Video tutorial  -->
-        
-        <!-- calculator -->
-        <div class="container-calculator-request">
-        <calculator></calculator>
-        </div>
-    
-        <!-- Request demo -->
+    <div class="container c-request">
+        <request></request>
+        <img src="/Home/images-home/Home-page/Joseph1.1.svg" alt="Check4Green Joseph personaje" title="Please, complete the request to contact our team!">
+    </div>
 </div>
+

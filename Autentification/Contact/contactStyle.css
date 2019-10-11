@@ -5,21 +5,22 @@
     z-index: 3124324;
     width: 100%;
     height: 100%;
-    background: -webkit-linear-gradient(-60deg, 
-    #77ab88 0%, #77ab88 25%, 
-    #308f58 25%, #308f58 100%); 
-
+    background-image: url("/Home/images-home/Home-page/BG-login1.0.svg");
+    background-attachment: fixed;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    overflow: auto;
 }
-.contact-container-big .span-x{
-    font-size: 25px;
+.contact-container-big > img:first-child{
+    height: auto;
+    width: 30px;
     position: fixed;
     right: 20px;
-    top: 10px;
+    top: 20px;
     cursor: pointer;
-    text-shadow: 1px 1px #e0e0e0;
 }
-.contact-container-big .span-x:hover{
-    text-shadow: 0px 0px #e0e0e0;
+.contact-container-big > img:first-child:hover{
+    opacity: 0.7;
 }
 .contact-container-big span:hover{
     color:  #d9534f;
@@ -29,11 +30,30 @@
     font-size: 25px;
     font-weight: bold;
 }
-.contact-container-big .contact-image{
-    width: 50%;
-    height: auto;
-    margin-left: 25%;
-    margin-right: auto;
+.c-iong-contact{
+    position: absolute;
+    right: 12%;
+    top: 15%;
+}
+.c-icon-contact > a > span{
+    color: #24D324;
+    font-size: 30px;
+    padding: 30px;
+}
+body > div:nth-child(10) > contact > div.contact-container-big > div.c-iong-contact > div:nth-child(1) > a:nth-child(1) > span:hover{
+    color: rgb(98, 181, 236);
+}
+body > div:nth-child(10) > contact > div.contact-container-big > div.c-iong-contact > div:nth-child(1) > a:nth-child(3) > span:hover{
+    color: rgb(24, 152, 238);
+}
+body > div:nth-child(10) > contact > div.contact-container-big > div.c-iong-contact > div:nth-child(2) > a:nth-child(1) > span:hover{
+    color: rgb(57, 130, 179);
+}
+body > div:nth-child(10) > contact > div.contact-container-big > div.c-iong-contact > div:nth-child(2) > a:nth-child(2) > span:hover{
+    color: rgb(19, 241, 49);
+}
+body > div:nth-child(10) > contact > div.contact-container-big > div.c-iong-contact > div:nth-child(2) > a:nth-child(3) > span:hover{
+    color: rgb(240, 136, 17);
 }
 .contact-container-big .contact-container{
     display: flex;
@@ -41,8 +61,13 @@
     width: 90%;
     padding: 20px;
     min-width: 300px;
-    background-color: white;
-    box-shadow: 6px 6px 9px -7px #000000;
+    /* background-color: white;
+    border-radius: 10px;
+    border: 1px solid #B1D8B1;
+    box-shadow: 6px 6px 9px -7px #00000059; */
+    position: absolute;
+    bottom: 20px;
+    right: 0px;
 }
 .contact-container-big .contact-container .area-text-container{
     display: flex;
@@ -53,14 +78,18 @@
     margin-bottom: 15px;
     flex-grow: 1;
 }
+.contact-container > h2{
+    color: #00AC06;
+    font-weight: normal;
+}
 .contact-container-big .contact-container .area-text-container .textarea-container-flex textarea{
     height: 100%;
-    width: 100%;
-    border-radius: 1px;
-    border: solid 1px #a3a2a2;
+    width: 90%;
+    border-radius: 10px;
+    border: solid 1px #B1D8B1;
 }
 .contact-container-big .contact-container .area-text-container .textarea-container-flex textarea:focus{
-    border: solid 2px #4e9a06;
+    border: solid 1px #24D324;
 }
 .contact-container-big .contact-container .contact-input-container{
     display: flex;
@@ -69,28 +98,32 @@
 }
 .contact-container-big .contact-container .contact-input-container .icon{
     padding: 10px;
-    background: #4e9a06;
+    background: #24D324;
     color: white;
     min-width: 50px;
     text-align: center;
+    border-radius: 5px 0px 0px 5px;
 }
 .contact-container-big .contact-container .contact-input-filed{
     width: 100%;
     padding: 5px;
     outline: none;
+    border: 1px solid #B1D8B1;
+    border-radius: 0px 5px 5px 0px;
 }
 .contact-container-big .contact-container .contact-input-filed:focus{
-    border: 2px solid #4e9a06;
+    border: 1px solid rgb(34, 173, 34);
 }
 .contact-container-big .contact-container button{
-    background-color: #4e9a06;
+    background-color: #24D324;
     color: white;
     padding: 8px 10px;
     border: none;
     cursor: pointer;
-    width: 30%;
+    width: 150px;
     opacity: 0.9;
-    align-self: flex-end;
+    align-self: center;
+    border-radius: 10px;
 }
 .contact-container-big .contact-container button:hover{
     opacity: 1;
@@ -102,7 +135,6 @@
 }
 @media screen and (max-width: 600px){
     .contact-container-big .contact-container button{
-        align-self: auto;
         width: 215px;
     }
     .contact-container-big .contact-container .area-text-container{
@@ -111,4 +143,7 @@
     .contact-container-big .contact-container .area-text-container .textarea-container-flex{
         margin-left: 0px;
     }
+    /* .contact-container-big .contact-image{
+        margin-left: 20%;
+    } */
 }

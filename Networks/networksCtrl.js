@@ -7,7 +7,6 @@
         }else {
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
-        $sessionStorage.hideSensorMenu = true;
         $scope.loadingNetworks = true;
         networkService.getNetworks(encodeduser)
             .then(function(response){
@@ -24,14 +23,52 @@
                 $scope.serverError = true;
                 $scope.loadingNetworks = false;
 
+            });
+        $scope.details = function(network){
+            $scope.networks.forEach(function(val){
+                val.detailsNetwork = false;
             })
+            $sessionStorage.editLoc = false;
+            $scope.networkDetails = true;
+            $sessionStorage.networkName = network.name;
+            $sessionStorage.netId = network.id;
+            $scope.network = network;
+        }
+
+        $scope.cancelDetails = function(){
+            $scope.buttons = true;
+            $scope.networkDetails = false;
+            delete $sessionStorage.allDevices;
+            delete $sessionStorage.activeDevices;
             
+        }
+        $scope.sensorsGateways = function(network){
+            $scope.networks.forEach(function(val){
+                val.sensorsGatewaysButtons = false;
+            });
+            network.sensorsGatewaysButtons = true;
+            $scope.sensorsGatewaysButtons = true;
+        }
+        $scope.cancelSensorsGateways = function(network) {
+            network.sensorsGatewaysButtons = false;
+            $scope.sensorsGatewaysButtons = false;
+
+        }   
         $scope.filterGateways = function(network){
             $scope.networkName = network.name;
             $sessionStorage.networkName = network.name;
             $sessionStorage.netId = network.id;
-            $sessionStorage.hideSensorMenu = false;
-            $location.path('/sensorsHome/devices');
+            $location.path('/sensorsHome/gateways');
+            $timeout(function(){
+                $window.location.reload();
+
+            }, 100)
+        }
+        $scope.filterSensors = function(network){
+            $scope.networkName = network.name;
+            $sessionStorage.networkName = network.name;
+            $sessionStorage.netId = network.id;
+            $location.path('/sensorsHome/sensors');
             $timeout(function(){
                 $window.location.reload();
 

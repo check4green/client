@@ -1,25 +1,27 @@
-<div class="resetPassword-container-big">
-    <span class="fa fa-close span-x" ui-sref="home"></span>
-    <span class="fa fa-arrow-left span-back" ui-sref="logIn.accountEmail"></span>
-
-    <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="resetPassword-image">
-
-    <div class="resetPassword-container container">
-        <h2>Activate account</h2>
-        <div ng-show="vm.showMessage" style="color:red;"><p>{{vm.message}}</p></div>
-        <div ng-show="errorMsg" id="alert-error"><p>{{error}}</p></div>
-        <form name="form" novalidate>
-            <div class="form-group" ng-class="{'has-error': form.code.$invalid && form.code.$dirty}">
-                <div class="resetPassword-input-container">
-                    <i class="fa fa-key icon"></i>
-                    <input class="resetPassword-input-filed" type="text" placeholder="Enter code" ng-model="activationCode" class="form-control" ng-pattern="/^[0-9]*$/" name="code" required>
+<div class="login-container-big">
+        <img class="sign-icon back" src="/Home/images-home/Icons/Back1.0.svg" ui-sref="logIn.accountEmail" alt="Check4Green original icon" title="Back">
+        <img class="sign-icon" src="/Home/images-home/Icons/Close1.0.svg" ui-sref="home" alt="Check4Green original icon" title="Close">
+    
+        <div class="c-login-parrent">
+                <img src="/Home/images-home/Home-page/Check4Green-logoPP.svg" alt="Check4Green original logo">
+    
+          <div class="c-login-form" name="form" novalidate>
+                <div ng-show="vm.showMessage"><p>{{vm.message}}</p></div>
+                <div ng-show="errorMsg" id="alert-error"><p>{{error}}</p></div>
+    
+              <div class="f-group" ng-class="{'has-error': form.code.$invalid && form.code.$dirty}">
+                <input class="resetPassword-input-filed" type="text" placeholder="Enter code" ng-model="activationCode" class="form-control" ng-pattern="/^[0-9]*$/" name="code" required>
+              
+                <div class="error-style">
+                    <div ng-show="form.code.$error.required && form.code.$dirty"><p>This field is required</p></div>
+                    <div ng-show="!form.code.$error.requires && form.code.$error.pattern"><p>The code must contain only numbers</p></div>
                 </div>
-                <div class="help-block has-error">
-                    <div ng-show="form.code.$error.required && form.code.$dirty">This field is required</div>
-                    <div ng-show="!form.code.$error.requires && form.code.$error.pattern">The code must contain only numbers</div>
-                </div>
-            </div>
-        </form>
-        <button type="button" ng-click="activate(activationCode)">Register Account</button>
+              </div>
+          </div>
+          
+          <div class="c-login-register">
+            <a ng-click="activate(activationCode)">Register Account</a>
+          </div>
+    
+        </div>
     </div>
-</div>

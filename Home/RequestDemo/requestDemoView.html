@@ -1,7 +1,45 @@
+<div class="c-request-form">
+    <h1>REQUEST A DEMO</h1>
+    <span ng-show="errorMessage" id="alert-error" ><p>{{errorMsg}}</p></span>
+    <span id="alert-succesful" ng-show="successMessage"><p>Request send successfully!</p></span>
+
+    <input class="contact-input-filed" type="text" name ="name" placeholder="Full name*" ng-pattern="/^[a-zA-Z -]*$/" ng-model="fullName" class="form-control" required>
+
+    <span class="help-block has-error">
+        <span ng-show="requestForm.name.$error.required && requestForm.name.$dirty">Name is required!</span>
+        <span ng-show="!requestForm.name.$error.required && requestForm.name.$error.pattern">Name is invalid!</span>
+    </span>
+
+    <input class="contact-input-filed" type="email" placeholder="Business email address*" ng-pattern="/^[A-Za-z0-9._@]*$/" ng-model="emailAddr" class="form-control" name="mail" required>
+
+    <div class="help-block has-error">
+        <div ng-show="requestForm.mail.$error.required && requestForm.mail.$dirty">Email is required!</div>
+        <div ng-show="!requestForm.mail.$error.required && (requestForm.mail.$error.pattern || requestForm.mail.$error.email)">Email is invalid!</div>
+    </div>
+
+    <input class="contact-input-filed" type="text" placeholder="Company*" class="form-control" ng-model="companyName" name="company" required>
+
+    <div class="help-block has-error">
+        <div ng-show="requestForm.company.$error.required && requestForm.company.$dirty">Company name is required!</div>
+    </div>
+
+    <input class="contact-input-filed" type="text" placeholder="Job title" class="form-control" ng-model="job" name="jobTitle" required>
+
+    <input class="contact-input-filed" type="text" placeholder="Company size" class="form-control" ng-model ="compSize" name="compSize" required>
+
+    <input class="contact-input-filed" type="text" placeholder="Phone number" ng-model="phone" class="form-control" name="phone" ng-pattern="/^[0-9+()\s]*$/" required>
+
+    <div class="help-block has-error">
+        <div ng-show="requestForm.phone.$error.pattern">The phone number is invalid!</div>
+    </div>
+
+    <textarea class="form-control contact-input-filed" name="message" ng-model= "message" placeholder="Your message..." required></textarea>
+
+    <a  ng-click="requestDemo(fullName, emailAddr, companyName, job, compSize, phone, message)">Send message</a>
+
+</div>
+<!-- 
 <div class="contact-container-request">
-
-        <!-- <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="C4G-full-moto" class="contact-image"> -->
-
         <div class="contact-container">
                 <h2>Request a demo</h2>
                 <span ng-show="errorMessage" id="alert-error" ><p>{{errorMsg}}</p></span>
@@ -29,7 +67,7 @@
                     <div class="help-block has-error">
                         <div ng-show="requestForm.mail.$error.required && requestForm.mail.$dirty">Email is required!</div>
                         <div ng-show="!requestForm.mail.$error.required && (requestForm.mail.$error.pattern || requestForm.mail.$error.email)">Email is invalid!</div>
-                        </div>
+                    </div>
                   </div>
 
                   <div class="form-group" ng-class="{'has-error': requestForm.company.$invalid && requestForm.company.$dirty}">
@@ -74,4 +112,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

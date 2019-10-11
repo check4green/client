@@ -2,10 +2,9 @@
    <div ng-show="loadingChart" class="loader"></div>
    <div ng-show="noDataChart" class="noData">No data</div>
    <div ng-show="dataChart" class="bg-table">
-       <button type="button" class="btn btn-success refreshMeasurements" ng-if="detailsData" ng-click="chart(sensor.id)">Refresh</button>
        <div class="svgChart">
            <svg width="960" height="500" id="chart"></svg>
        </div>
+
    </div>
-   <button type="button" class="btn btn cancelButton" ng-if="detailsData" ng-click="cancelChart()">Cancel</button>
 </div>

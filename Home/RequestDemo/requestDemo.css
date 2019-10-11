@@ -1,4 +1,4 @@
-.contact-container-request h2{
+/* .contact-container-request h2{
     text-align: center;
     font-size: 25px;
     font-weight: bold;
@@ -53,14 +53,4 @@
 }
 .contact-input-container textarea{
     min-height: 100px;
-}
-/* @media screen and (max-width: 800px){
-    .contact-container-request .contact-container .area-text-container{
-        width: 70%;
-    }
-}
-@media screen and (max-width: 600px){
-    .contact-container-request .contact-container .area-text-container{
-        width: 100%;
-    }
 } */
